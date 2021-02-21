@@ -1,0 +1,1319 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		00E356F31AD99517003FC87E /* designeratTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 00E356F21AD99517003FC87E /* designeratTests.m */; };
+		13B07FBC1A68108700A75B9A /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 13B07FB01A68108700A75B9A /* AppDelegate.m */; };
+		13B07FBF1A68108700A75B9A /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 13B07FB51A68108700A75B9A /* Images.xcassets */; };
+		13B07FC11A68108700A75B9A /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 13B07FB71A68108700A75B9A /* main.m */; };
+		2D02E4BC1E0B4A80006451C7 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 13B07FB01A68108700A75B9A /* AppDelegate.m */; };
+		2D02E4BD1E0B4A84006451C7 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 13B07FB51A68108700A75B9A /* Images.xcassets */; };
+		2D02E4BF1E0B4AB3006451C7 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 13B07FB71A68108700A75B9A /* main.m */; };
+		2DCD954D1E0B4F2C00145EB5 /* designeratTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 00E356F21AD99517003FC87E /* designeratTests.m */; };
+		5063567E25E23E9F00CDBDBE /* File.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5063567D25E23E9F00CDBDBE /* File.swift */; };
+		5063598C25E2ABF400CDBDBE /* Tajawal-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 5063595F25E2ABF000CDBDBE /* Tajawal-Bold.ttf */; };
+		5063598D25E2ABF400CDBDBE /* Changa-SemiBold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 5063596025E2ABF000CDBDBE /* Changa-SemiBold.ttf */; };
+		5063598E25E2ABF400CDBDBE /* Comfortaa-Light.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 5063596125E2ABF000CDBDBE /* Comfortaa-Light.ttf */; };
+		5063598F25E2ABF400CDBDBE /* Almarai-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 5063596225E2ABF000CDBDBE /* Almarai-Regular.ttf */; };
+		5063599025E2ABF400CDBDBE /* Changa-Medium.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 5063596325E2ABF000CDBDBE /* Changa-Medium.ttf */; };
+		5063599125E2ABF400CDBDBE /* ArchivoNarrow-MediumItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 5063596425E2ABF000CDBDBE /* ArchivoNarrow-MediumItalic.ttf */; };
+		5063599225E2ABF400CDBDBE /* Changa-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 5063596525E2ABF000CDBDBE /* Changa-Regular.ttf */; };
+		5063599325E2ABF400CDBDBE /* ArchivoNarrow-BoldItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 5063596625E2ABF000CDBDBE /* ArchivoNarrow-BoldItalic.ttf */; };
+		5063599425E2ABF400CDBDBE /* ArchivoNarrow-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 5063596725E2ABF000CDBDBE /* ArchivoNarrow-Regular.ttf */; };
+		5063599525E2ABF400CDBDBE /* Cairo_Black.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 5063596825E2ABF000CDBDBE /* Cairo_Black.ttf */; };
+		5063599625E2ABF400CDBDBE /* Cairo-Black.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 5063596925E2ABF100CDBDBE /* Cairo-Black.ttf */; };
+		5063599725E2ABF400CDBDBE /* ArchivoNarrow-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 5063596A25E2ABF100CDBDBE /* ArchivoNarrow-Bold.ttf */; };
+		5063599825E2ABF400CDBDBE /* Changa-ExtraLight.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 5063596B25E2ABF100CDBDBE /* Changa-ExtraLight.ttf */; };
+		5063599925E2ABF400CDBDBE /* AR-Almarai-Font.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 5063596C25E2ABF100CDBDBE /* AR-Almarai-Font.ttf */; };
+		5063599A25E2ABF400CDBDBE /* Almarai-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 5063596D25E2ABF100CDBDBE /* Almarai-Bold.ttf */; };
+		5063599B25E2ABF400CDBDBE /* Comfortaa-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 5063596E25E2ABF100CDBDBE /* Comfortaa-Regular.ttf */; };
+		5063599C25E2ABF400CDBDBE /* Tajawal-Black.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 5063596F25E2ABF100CDBDBE /* Tajawal-Black.ttf */; };
+		5063599D25E2ABF400CDBDBE /* Tajawal-Light.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 5063597025E2ABF100CDBDBE /* Tajawal-Light.ttf */; };
+		5063599E25E2ABF400CDBDBE /* cairo.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 5063597125E2ABF100CDBDBE /* cairo.ttf */; };
+		5063599F25E2ABF400CDBDBE /* AlMohanad.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 5063597225E2ABF100CDBDBE /* AlMohanad.ttf */; };
+		506359A025E2ABF400CDBDBE /* ArchivoNarrow-Medium.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 5063597325E2ABF100CDBDBE /* ArchivoNarrow-Medium.ttf */; };
+		506359A125E2ABF400CDBDBE /* Actor-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 5063597425E2ABF200CDBDBE /* Actor-Regular.ttf */; };
+		506359A225E2ABF400CDBDBE /* Changa-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 5063597525E2ABF200CDBDBE /* Changa-Bold.ttf */; };
+		506359A325E2ABF400CDBDBE /* Almarai-Light.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 5063597625E2ABF200CDBDBE /* Almarai-Light.ttf */; };
+		506359A425E2ABF400CDBDBE /* ArchivoNarrow-Italic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 5063597725E2ABF200CDBDBE /* ArchivoNarrow-Italic.ttf */; };
+		506359A525E2ABF400CDBDBE /* Cairo-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 5063597825E2ABF200CDBDBE /* Cairo-Bold.ttf */; };
+		506359A625E2ABF400CDBDBE /* Changa-ExtraBold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 5063597925E2ABF200CDBDBE /* Changa-ExtraBold.ttf */; };
+		506359A725E2ABF400CDBDBE /* Comfortaa-SemiBold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 5063597A25E2ABF200CDBDBE /* Comfortaa-SemiBold.ttf */; };
+		506359A825E2ABF400CDBDBE /* Tajawal-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 5063597B25E2ABF200CDBDBE /* Tajawal-Regular.ttf */; };
+		506359A925E2ABF400CDBDBE /* Changa-Light.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 5063597C25E2ABF200CDBDBE /* Changa-Light.ttf */; };
+		506359AA25E2ABF400CDBDBE /* Bein-Normal.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 5063597D25E2ABF300CDBDBE /* Bein-Normal.ttf */; };
+		506359AB25E2ABF400CDBDBE /* ArchivoNarrow-SemiBold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 5063597E25E2ABF300CDBDBE /* ArchivoNarrow-SemiBold.ttf */; };
+		506359AC25E2ABF400CDBDBE /* Ar-Ith.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 5063597F25E2ABF300CDBDBE /* Ar-Ith.ttf */; };
+		506359AD25E2ABF400CDBDBE /* Tajawal-ExtraBold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 5063598025E2ABF300CDBDBE /* Tajawal-ExtraBold.ttf */; };
+		506359AE25E2ABF400CDBDBE /* Tajawal-Medium.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 5063598125E2ABF300CDBDBE /* Tajawal-Medium.ttf */; };
+		506359AF25E2ABF400CDBDBE /* Sst-Arabicbold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 5063598225E2ABF300CDBDBE /* Sst-Arabicbold.ttf */; };
+		506359B025E2ABF400CDBDBE /* AR-BBC-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 5063598325E2ABF300CDBDBE /* AR-BBC-Regular.ttf */; };
+		506359B125E2ABF400CDBDBE /* Tajawal-ExtraLight.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 5063598425E2ABF300CDBDBE /* Tajawal-ExtraLight.ttf */; };
+		506359B225E2ABF400CDBDBE /* ArchivoNarrow-SemiBoldItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 5063598525E2ABF300CDBDBE /* ArchivoNarrow-SemiBoldItalic.ttf */; };
+		506359B325E2ABF400CDBDBE /* Comfortaa-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 5063598625E2ABF300CDBDBE /* Comfortaa-Bold.ttf */; };
+		506359B425E2ABF400CDBDBE /* Almarai-ExtraBold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 5063598725E2ABF300CDBDBE /* Almarai-ExtraBold.ttf */; };
+		506359B525E2ABF400CDBDBE /* Comfortaa-Medium.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 5063598825E2ABF300CDBDBE /* Comfortaa-Medium.ttf */; };
+		506359B625E2ABF400CDBDBE /* Varela-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 5063598925E2ABF300CDBDBE /* Varela-Regular.ttf */; };
+		506359B725E2ABF400CDBDBE /* Cairo_Semi_Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 5063598A25E2ABF400CDBDBE /* Cairo_Semi_Bold.ttf */; };
+		506359B825E2ABF400CDBDBE /* Bein-Black.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 5063598B25E2ABF400CDBDBE /* Bein-Black.ttf */; };
+		585C05036384150E7A2D4DA8 /* libPods-designerat.a in Frameworks */ = {isa = PBXBuildFile; fileRef = C019611E633AC616AF223BD5 /* libPods-designerat.a */; };
+		603122CE040510B46744FEBA /* libPods-designerat-designeratTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 764C4D8B715C35BF5D1DB046 /* libPods-designerat-designeratTests.a */; };
+		61DD1C306309E1CB2D210959 /* libPods-designerat-tvOSTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 290879D2E6EF7072EE9AA0D2 /* libPods-designerat-tvOSTests.a */; };
+		81AB9BB82411601600AC10FF /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 81AB9BB72411601600AC10FF /* LaunchScreen.storyboard */; };
+		B0EEBE1704CBEA89C20B1DDD /* libPods-designerat-tvOS.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 1D8C466173A91418B954ED2D /* libPods-designerat-tvOS.a */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		00E356F41AD99517003FC87E /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 83CBB9F71A601CBA00E9B192 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 13B07F861A680F5B00A75B9A;
+			remoteInfo = designerat;
+		};
+		2D02E4911E0B4A5D006451C7 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 83CBB9F71A601CBA00E9B192 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 2D02E47A1E0B4A5D006451C7;
+			remoteInfo = "designerat-tvOS";
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		008F07F21AC5B25A0029DE68 /* main.jsbundle */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = main.jsbundle; sourceTree = "<group>"; };
+		00E356EE1AD99517003FC87E /* designeratTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = designeratTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		00E356F11AD99517003FC87E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		00E356F21AD99517003FC87E /* designeratTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = designeratTests.m; sourceTree = "<group>"; };
+		0E15B271ADE662C61B59F5EF /* Pods-designerat-tvOS.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-designerat-tvOS.debug.xcconfig"; path = "Target Support Files/Pods-designerat-tvOS/Pods-designerat-tvOS.debug.xcconfig"; sourceTree = "<group>"; };
+		13B07F961A680F5B00A75B9A /* designerat.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = designerat.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		13B07FAF1A68108700A75B9A /* AppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AppDelegate.h; path = designerat/AppDelegate.h; sourceTree = "<group>"; };
+		13B07FB01A68108700A75B9A /* AppDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = AppDelegate.m; path = designerat/AppDelegate.m; sourceTree = "<group>"; };
+		13B07FB51A68108700A75B9A /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = Images.xcassets; path = designerat/Images.xcassets; sourceTree = "<group>"; };
+		13B07FB61A68108700A75B9A /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = Info.plist; path = designerat/Info.plist; sourceTree = "<group>"; };
+		13B07FB71A68108700A75B9A /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = main.m; path = designerat/main.m; sourceTree = "<group>"; };
+		1D8C466173A91418B954ED2D /* libPods-designerat-tvOS.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-designerat-tvOS.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		1F25A56AD6F9DDB90470A6E4 /* Pods-designerat.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-designerat.debug.xcconfig"; path = "Target Support Files/Pods-designerat/Pods-designerat.debug.xcconfig"; sourceTree = "<group>"; };
+		290879D2E6EF7072EE9AA0D2 /* libPods-designerat-tvOSTests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-designerat-tvOSTests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		2D02E47B1E0B4A5D006451C7 /* designerat-tvOS.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "designerat-tvOS.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		2D02E4901E0B4A5D006451C7 /* designerat-tvOSTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "designerat-tvOSTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
+		407BBB76A16A20681225D58C /* Pods-designerat.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-designerat.release.xcconfig"; path = "Target Support Files/Pods-designerat/Pods-designerat.release.xcconfig"; sourceTree = "<group>"; };
+		5063567C25E23E9F00CDBDBE /* designerat-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "designerat-Bridging-Header.h"; sourceTree = "<group>"; };
+		5063567D25E23E9F00CDBDBE /* File.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = File.swift; sourceTree = "<group>"; };
+		5063595F25E2ABF000CDBDBE /* Tajawal-Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "Tajawal-Bold.ttf"; path = "../assets/fonts/Tajawal-Bold.ttf"; sourceTree = "<group>"; };
+		5063596025E2ABF000CDBDBE /* Changa-SemiBold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "Changa-SemiBold.ttf"; path = "../assets/fonts/Changa-SemiBold.ttf"; sourceTree = "<group>"; };
+		5063596125E2ABF000CDBDBE /* Comfortaa-Light.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "Comfortaa-Light.ttf"; path = "../assets/fonts/Comfortaa-Light.ttf"; sourceTree = "<group>"; };
+		5063596225E2ABF000CDBDBE /* Almarai-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "Almarai-Regular.ttf"; path = "../assets/fonts/Almarai-Regular.ttf"; sourceTree = "<group>"; };
+		5063596325E2ABF000CDBDBE /* Changa-Medium.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "Changa-Medium.ttf"; path = "../assets/fonts/Changa-Medium.ttf"; sourceTree = "<group>"; };
+		5063596425E2ABF000CDBDBE /* ArchivoNarrow-MediumItalic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "ArchivoNarrow-MediumItalic.ttf"; path = "../assets/fonts/ArchivoNarrow-MediumItalic.ttf"; sourceTree = "<group>"; };
+		5063596525E2ABF000CDBDBE /* Changa-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "Changa-Regular.ttf"; path = "../assets/fonts/Changa-Regular.ttf"; sourceTree = "<group>"; };
+		5063596625E2ABF000CDBDBE /* ArchivoNarrow-BoldItalic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "ArchivoNarrow-BoldItalic.ttf"; path = "../assets/fonts/ArchivoNarrow-BoldItalic.ttf"; sourceTree = "<group>"; };
+		5063596725E2ABF000CDBDBE /* ArchivoNarrow-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "ArchivoNarrow-Regular.ttf"; path = "../assets/fonts/ArchivoNarrow-Regular.ttf"; sourceTree = "<group>"; };
+		5063596825E2ABF000CDBDBE /* Cairo_Black.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = Cairo_Black.ttf; path = ../assets/fonts/Cairo_Black.ttf; sourceTree = "<group>"; };
+		5063596925E2ABF100CDBDBE /* Cairo-Black.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "Cairo-Black.ttf"; path = "../assets/fonts/Cairo-Black.ttf"; sourceTree = "<group>"; };
+		5063596A25E2ABF100CDBDBE /* ArchivoNarrow-Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "ArchivoNarrow-Bold.ttf"; path = "../assets/fonts/ArchivoNarrow-Bold.ttf"; sourceTree = "<group>"; };
+		5063596B25E2ABF100CDBDBE /* Changa-ExtraLight.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "Changa-ExtraLight.ttf"; path = "../assets/fonts/Changa-ExtraLight.ttf"; sourceTree = "<group>"; };
+		5063596C25E2ABF100CDBDBE /* AR-Almarai-Font.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "AR-Almarai-Font.ttf"; path = "../assets/fonts/AR-Almarai-Font.ttf"; sourceTree = "<group>"; };
+		5063596D25E2ABF100CDBDBE /* Almarai-Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "Almarai-Bold.ttf"; path = "../assets/fonts/Almarai-Bold.ttf"; sourceTree = "<group>"; };
+		5063596E25E2ABF100CDBDBE /* Comfortaa-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "Comfortaa-Regular.ttf"; path = "../assets/fonts/Comfortaa-Regular.ttf"; sourceTree = "<group>"; };
+		5063596F25E2ABF100CDBDBE /* Tajawal-Black.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "Tajawal-Black.ttf"; path = "../assets/fonts/Tajawal-Black.ttf"; sourceTree = "<group>"; };
+		5063597025E2ABF100CDBDBE /* Tajawal-Light.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "Tajawal-Light.ttf"; path = "../assets/fonts/Tajawal-Light.ttf"; sourceTree = "<group>"; };
+		5063597125E2ABF100CDBDBE /* cairo.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = cairo.ttf; path = ../assets/fonts/cairo.ttf; sourceTree = "<group>"; };
+		5063597225E2ABF100CDBDBE /* AlMohanad.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = AlMohanad.ttf; path = ../assets/fonts/AlMohanad.ttf; sourceTree = "<group>"; };
+		5063597325E2ABF100CDBDBE /* ArchivoNarrow-Medium.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "ArchivoNarrow-Medium.ttf"; path = "../assets/fonts/ArchivoNarrow-Medium.ttf"; sourceTree = "<group>"; };
+		5063597425E2ABF200CDBDBE /* Actor-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "Actor-Regular.ttf"; path = "../assets/fonts/Actor-Regular.ttf"; sourceTree = "<group>"; };
+		5063597525E2ABF200CDBDBE /* Changa-Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "Changa-Bold.ttf"; path = "../assets/fonts/Changa-Bold.ttf"; sourceTree = "<group>"; };
+		5063597625E2ABF200CDBDBE /* Almarai-Light.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "Almarai-Light.ttf"; path = "../assets/fonts/Almarai-Light.ttf"; sourceTree = "<group>"; };
+		5063597725E2ABF200CDBDBE /* ArchivoNarrow-Italic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "ArchivoNarrow-Italic.ttf"; path = "../assets/fonts/ArchivoNarrow-Italic.ttf"; sourceTree = "<group>"; };
+		5063597825E2ABF200CDBDBE /* Cairo-Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "Cairo-Bold.ttf"; path = "../assets/fonts/Cairo-Bold.ttf"; sourceTree = "<group>"; };
+		5063597925E2ABF200CDBDBE /* Changa-ExtraBold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "Changa-ExtraBold.ttf"; path = "../assets/fonts/Changa-ExtraBold.ttf"; sourceTree = "<group>"; };
+		5063597A25E2ABF200CDBDBE /* Comfortaa-SemiBold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "Comfortaa-SemiBold.ttf"; path = "../assets/fonts/Comfortaa-SemiBold.ttf"; sourceTree = "<group>"; };
+		5063597B25E2ABF200CDBDBE /* Tajawal-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "Tajawal-Regular.ttf"; path = "../assets/fonts/Tajawal-Regular.ttf"; sourceTree = "<group>"; };
+		5063597C25E2ABF200CDBDBE /* Changa-Light.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "Changa-Light.ttf"; path = "../assets/fonts/Changa-Light.ttf"; sourceTree = "<group>"; };
+		5063597D25E2ABF300CDBDBE /* Bein-Normal.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "Bein-Normal.ttf"; path = "../assets/fonts/Bein-Normal.ttf"; sourceTree = "<group>"; };
+		5063597E25E2ABF300CDBDBE /* ArchivoNarrow-SemiBold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "ArchivoNarrow-SemiBold.ttf"; path = "../assets/fonts/ArchivoNarrow-SemiBold.ttf"; sourceTree = "<group>"; };
+		5063597F25E2ABF300CDBDBE /* Ar-Ith.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "Ar-Ith.ttf"; path = "../assets/fonts/Ar-Ith.ttf"; sourceTree = "<group>"; };
+		5063598025E2ABF300CDBDBE /* Tajawal-ExtraBold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "Tajawal-ExtraBold.ttf"; path = "../assets/fonts/Tajawal-ExtraBold.ttf"; sourceTree = "<group>"; };
+		5063598125E2ABF300CDBDBE /* Tajawal-Medium.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "Tajawal-Medium.ttf"; path = "../assets/fonts/Tajawal-Medium.ttf"; sourceTree = "<group>"; };
+		5063598225E2ABF300CDBDBE /* Sst-Arabicbold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "Sst-Arabicbold.ttf"; path = "../assets/fonts/Sst-Arabicbold.ttf"; sourceTree = "<group>"; };
+		5063598325E2ABF300CDBDBE /* AR-BBC-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "AR-BBC-Regular.ttf"; path = "../assets/fonts/AR-BBC-Regular.ttf"; sourceTree = "<group>"; };
+		5063598425E2ABF300CDBDBE /* Tajawal-ExtraLight.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "Tajawal-ExtraLight.ttf"; path = "../assets/fonts/Tajawal-ExtraLight.ttf"; sourceTree = "<group>"; };
+		5063598525E2ABF300CDBDBE /* ArchivoNarrow-SemiBoldItalic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "ArchivoNarrow-SemiBoldItalic.ttf"; path = "../assets/fonts/ArchivoNarrow-SemiBoldItalic.ttf"; sourceTree = "<group>"; };
+		5063598625E2ABF300CDBDBE /* Comfortaa-Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "Comfortaa-Bold.ttf"; path = "../assets/fonts/Comfortaa-Bold.ttf"; sourceTree = "<group>"; };
+		5063598725E2ABF300CDBDBE /* Almarai-ExtraBold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "Almarai-ExtraBold.ttf"; path = "../assets/fonts/Almarai-ExtraBold.ttf"; sourceTree = "<group>"; };
+		5063598825E2ABF300CDBDBE /* Comfortaa-Medium.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "Comfortaa-Medium.ttf"; path = "../assets/fonts/Comfortaa-Medium.ttf"; sourceTree = "<group>"; };
+		5063598925E2ABF300CDBDBE /* Varela-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "Varela-Regular.ttf"; path = "../assets/fonts/Varela-Regular.ttf"; sourceTree = "<group>"; };
+		5063598A25E2ABF400CDBDBE /* Cairo_Semi_Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = Cairo_Semi_Bold.ttf; path = ../assets/fonts/Cairo_Semi_Bold.ttf; sourceTree = "<group>"; };
+		5063598B25E2ABF400CDBDBE /* Bein-Black.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "Bein-Black.ttf"; path = "../assets/fonts/Bein-Black.ttf"; sourceTree = "<group>"; };
+		73D94FCF683B031F0EB6E064 /* Pods-designerat-designeratTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-designerat-designeratTests.debug.xcconfig"; path = "Target Support Files/Pods-designerat-designeratTests/Pods-designerat-designeratTests.debug.xcconfig"; sourceTree = "<group>"; };
+		764C4D8B715C35BF5D1DB046 /* libPods-designerat-designeratTests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-designerat-designeratTests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		81AB9BB72411601600AC10FF /* LaunchScreen.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = LaunchScreen.storyboard; path = designerat/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		A919735D302BF15818CFE7CA /* Pods-designerat-designeratTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-designerat-designeratTests.release.xcconfig"; path = "Target Support Files/Pods-designerat-designeratTests/Pods-designerat-designeratTests.release.xcconfig"; sourceTree = "<group>"; };
+		B3D3CB06C5AE638BDD2200A7 /* Pods-designerat-tvOSTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-designerat-tvOSTests.release.xcconfig"; path = "Target Support Files/Pods-designerat-tvOSTests/Pods-designerat-tvOSTests.release.xcconfig"; sourceTree = "<group>"; };
+		B7561795C95BBE0281456544 /* Pods-designerat-tvOS.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-designerat-tvOS.release.xcconfig"; path = "Target Support Files/Pods-designerat-tvOS/Pods-designerat-tvOS.release.xcconfig"; sourceTree = "<group>"; };
+		BCF827D68154ACCBC9457DAC /* Pods-designerat-tvOSTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-designerat-tvOSTests.debug.xcconfig"; path = "Target Support Files/Pods-designerat-tvOSTests/Pods-designerat-tvOSTests.debug.xcconfig"; sourceTree = "<group>"; };
+		C019611E633AC616AF223BD5 /* libPods-designerat.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-designerat.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		ED297162215061F000B7C4FE /* JavaScriptCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = JavaScriptCore.framework; path = System/Library/Frameworks/JavaScriptCore.framework; sourceTree = SDKROOT; };
+		ED2971642150620600B7C4FE /* JavaScriptCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = JavaScriptCore.framework; path = Platforms/AppleTVOS.platform/Developer/SDKs/AppleTVOS12.0.sdk/System/Library/Frameworks/JavaScriptCore.framework; sourceTree = DEVELOPER_DIR; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		00E356EB1AD99517003FC87E /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				603122CE040510B46744FEBA /* libPods-designerat-designeratTests.a in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		13B07F8C1A680F5B00A75B9A /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				585C05036384150E7A2D4DA8 /* libPods-designerat.a in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		2D02E4781E0B4A5D006451C7 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				B0EEBE1704CBEA89C20B1DDD /* libPods-designerat-tvOS.a in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		2D02E48D1E0B4A5D006451C7 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				61DD1C306309E1CB2D210959 /* libPods-designerat-tvOSTests.a in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		00E356EF1AD99517003FC87E /* designeratTests */ = {
+			isa = PBXGroup;
+			children = (
+				00E356F21AD99517003FC87E /* designeratTests.m */,
+				00E356F01AD99517003FC87E /* Supporting Files */,
+			);
+			path = designeratTests;
+			sourceTree = "<group>";
+		};
+		00E356F01AD99517003FC87E /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				00E356F11AD99517003FC87E /* Info.plist */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		13B07FAE1A68108700A75B9A /* designerat */ = {
+			isa = PBXGroup;
+			children = (
+				008F07F21AC5B25A0029DE68 /* main.jsbundle */,
+				13B07FAF1A68108700A75B9A /* AppDelegate.h */,
+				13B07FB01A68108700A75B9A /* AppDelegate.m */,
+				13B07FB51A68108700A75B9A /* Images.xcassets */,
+				13B07FB61A68108700A75B9A /* Info.plist */,
+				81AB9BB72411601600AC10FF /* LaunchScreen.storyboard */,
+				13B07FB71A68108700A75B9A /* main.m */,
+			);
+			name = designerat;
+			sourceTree = "<group>";
+		};
+		2D16E6871FA4F8E400B85C8A /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				ED297162215061F000B7C4FE /* JavaScriptCore.framework */,
+				ED2971642150620600B7C4FE /* JavaScriptCore.framework */,
+				C019611E633AC616AF223BD5 /* libPods-designerat.a */,
+				764C4D8B715C35BF5D1DB046 /* libPods-designerat-designeratTests.a */,
+				1D8C466173A91418B954ED2D /* libPods-designerat-tvOS.a */,
+				290879D2E6EF7072EE9AA0D2 /* libPods-designerat-tvOSTests.a */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		49937B17AAF49D16E5CB9A7A /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				1F25A56AD6F9DDB90470A6E4 /* Pods-designerat.debug.xcconfig */,
+				407BBB76A16A20681225D58C /* Pods-designerat.release.xcconfig */,
+				73D94FCF683B031F0EB6E064 /* Pods-designerat-designeratTests.debug.xcconfig */,
+				A919735D302BF15818CFE7CA /* Pods-designerat-designeratTests.release.xcconfig */,
+				0E15B271ADE662C61B59F5EF /* Pods-designerat-tvOS.debug.xcconfig */,
+				B7561795C95BBE0281456544 /* Pods-designerat-tvOS.release.xcconfig */,
+				BCF827D68154ACCBC9457DAC /* Pods-designerat-tvOSTests.debug.xcconfig */,
+				B3D3CB06C5AE638BDD2200A7 /* Pods-designerat-tvOSTests.release.xcconfig */,
+			);
+			path = Pods;
+			sourceTree = "<group>";
+		};
+		63432E3A8A024543B3BBE42A /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				5063597425E2ABF200CDBDBE /* Actor-Regular.ttf */,
+				5063596D25E2ABF100CDBDBE /* Almarai-Bold.ttf */,
+				5063598725E2ABF300CDBDBE /* Almarai-ExtraBold.ttf */,
+				5063597625E2ABF200CDBDBE /* Almarai-Light.ttf */,
+				5063596225E2ABF000CDBDBE /* Almarai-Regular.ttf */,
+				5063597225E2ABF100CDBDBE /* AlMohanad.ttf */,
+				5063596C25E2ABF100CDBDBE /* AR-Almarai-Font.ttf */,
+				5063598325E2ABF300CDBDBE /* AR-BBC-Regular.ttf */,
+				5063597F25E2ABF300CDBDBE /* Ar-Ith.ttf */,
+				5063596A25E2ABF100CDBDBE /* ArchivoNarrow-Bold.ttf */,
+				5063596625E2ABF000CDBDBE /* ArchivoNarrow-BoldItalic.ttf */,
+				5063597725E2ABF200CDBDBE /* ArchivoNarrow-Italic.ttf */,
+				5063597325E2ABF100CDBDBE /* ArchivoNarrow-Medium.ttf */,
+				5063596425E2ABF000CDBDBE /* ArchivoNarrow-MediumItalic.ttf */,
+				5063596725E2ABF000CDBDBE /* ArchivoNarrow-Regular.ttf */,
+				5063597E25E2ABF300CDBDBE /* ArchivoNarrow-SemiBold.ttf */,
+				5063598525E2ABF300CDBDBE /* ArchivoNarrow-SemiBoldItalic.ttf */,
+				5063598B25E2ABF400CDBDBE /* Bein-Black.ttf */,
+				5063597D25E2ABF300CDBDBE /* Bein-Normal.ttf */,
+				5063596825E2ABF000CDBDBE /* Cairo_Black.ttf */,
+				5063598A25E2ABF400CDBDBE /* Cairo_Semi_Bold.ttf */,
+				5063596925E2ABF100CDBDBE /* Cairo-Black.ttf */,
+				5063597825E2ABF200CDBDBE /* Cairo-Bold.ttf */,
+				5063597125E2ABF100CDBDBE /* cairo.ttf */,
+				5063597525E2ABF200CDBDBE /* Changa-Bold.ttf */,
+				5063597925E2ABF200CDBDBE /* Changa-ExtraBold.ttf */,
+				5063596B25E2ABF100CDBDBE /* Changa-ExtraLight.ttf */,
+				5063597C25E2ABF200CDBDBE /* Changa-Light.ttf */,
+				5063596325E2ABF000CDBDBE /* Changa-Medium.ttf */,
+				5063596525E2ABF000CDBDBE /* Changa-Regular.ttf */,
+				5063596025E2ABF000CDBDBE /* Changa-SemiBold.ttf */,
+				5063598625E2ABF300CDBDBE /* Comfortaa-Bold.ttf */,
+				5063596125E2ABF000CDBDBE /* Comfortaa-Light.ttf */,
+				5063598825E2ABF300CDBDBE /* Comfortaa-Medium.ttf */,
+				5063596E25E2ABF100CDBDBE /* Comfortaa-Regular.ttf */,
+				5063597A25E2ABF200CDBDBE /* Comfortaa-SemiBold.ttf */,
+				5063598225E2ABF300CDBDBE /* Sst-Arabicbold.ttf */,
+				5063596F25E2ABF100CDBDBE /* Tajawal-Black.ttf */,
+				5063595F25E2ABF000CDBDBE /* Tajawal-Bold.ttf */,
+				5063598025E2ABF300CDBDBE /* Tajawal-ExtraBold.ttf */,
+				5063598425E2ABF300CDBDBE /* Tajawal-ExtraLight.ttf */,
+				5063597025E2ABF100CDBDBE /* Tajawal-Light.ttf */,
+				5063598125E2ABF300CDBDBE /* Tajawal-Medium.ttf */,
+				5063597B25E2ABF200CDBDBE /* Tajawal-Regular.ttf */,
+				5063598925E2ABF300CDBDBE /* Varela-Regular.ttf */,
+			);
+			name = Resources;
+			sourceTree = "<group>";
+		};
+		832341AE1AAA6A7D00B99B32 /* Libraries */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Libraries;
+			sourceTree = "<group>";
+		};
+		83CBB9F61A601CBA00E9B192 = {
+			isa = PBXGroup;
+			children = (
+				5063567D25E23E9F00CDBDBE /* File.swift */,
+				13B07FAE1A68108700A75B9A /* designerat */,
+				832341AE1AAA6A7D00B99B32 /* Libraries */,
+				00E356EF1AD99517003FC87E /* designeratTests */,
+				83CBBA001A601CBA00E9B192 /* Products */,
+				2D16E6871FA4F8E400B85C8A /* Frameworks */,
+				49937B17AAF49D16E5CB9A7A /* Pods */,
+				5063567C25E23E9F00CDBDBE /* designerat-Bridging-Header.h */,
+				63432E3A8A024543B3BBE42A /* Resources */,
+			);
+			indentWidth = 2;
+			sourceTree = "<group>";
+			tabWidth = 2;
+			usesTabs = 0;
+		};
+		83CBBA001A601CBA00E9B192 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				13B07F961A680F5B00A75B9A /* designerat.app */,
+				00E356EE1AD99517003FC87E /* designeratTests.xctest */,
+				2D02E47B1E0B4A5D006451C7 /* designerat-tvOS.app */,
+				2D02E4901E0B4A5D006451C7 /* designerat-tvOSTests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		00E356ED1AD99517003FC87E /* designeratTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 00E357021AD99517003FC87E /* Build configuration list for PBXNativeTarget "designeratTests" */;
+			buildPhases = (
+				8C53FBC6B40E117EC2C2EA36 /* [CP] Check Pods Manifest.lock */,
+				00E356EA1AD99517003FC87E /* Sources */,
+				00E356EB1AD99517003FC87E /* Frameworks */,
+				00E356EC1AD99517003FC87E /* Resources */,
+				DE71215A059D0A00523537C1 /* [CP] Copy Pods Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				00E356F51AD99517003FC87E /* PBXTargetDependency */,
+			);
+			name = designeratTests;
+			productName = designeratTests;
+			productReference = 00E356EE1AD99517003FC87E /* designeratTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+		13B07F861A680F5B00A75B9A /* designerat */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 13B07F931A680F5B00A75B9A /* Build configuration list for PBXNativeTarget "designerat" */;
+			buildPhases = (
+				7AA229D998FD0F4AF9AB3CBD /* [CP] Check Pods Manifest.lock */,
+				FD10A7F022414F080027D42C /* Start Packager */,
+				13B07F871A680F5B00A75B9A /* Sources */,
+				13B07F8C1A680F5B00A75B9A /* Frameworks */,
+				13B07F8E1A680F5B00A75B9A /* Resources */,
+				00DD1BFF1BD5951E006B06BC /* Bundle React Native code and images */,
+				453EE438D939B1FA3D15B9CF /* [CP] Copy Pods Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = designerat;
+			productName = designerat;
+			productReference = 13B07F961A680F5B00A75B9A /* designerat.app */;
+			productType = "com.apple.product-type.application";
+		};
+		2D02E47A1E0B4A5D006451C7 /* designerat-tvOS */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 2D02E4BA1E0B4A5E006451C7 /* Build configuration list for PBXNativeTarget "designerat-tvOS" */;
+			buildPhases = (
+				0625C6F2249760ED72D82ADB /* [CP] Check Pods Manifest.lock */,
+				FD10A7F122414F3F0027D42C /* Start Packager */,
+				2D02E4771E0B4A5D006451C7 /* Sources */,
+				2D02E4781E0B4A5D006451C7 /* Frameworks */,
+				2D02E4791E0B4A5D006451C7 /* Resources */,
+				2D02E4CB1E0B4B27006451C7 /* Bundle React Native Code And Images */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = "designerat-tvOS";
+			productName = "designerat-tvOS";
+			productReference = 2D02E47B1E0B4A5D006451C7 /* designerat-tvOS.app */;
+			productType = "com.apple.product-type.application";
+		};
+		2D02E48F1E0B4A5D006451C7 /* designerat-tvOSTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 2D02E4BB1E0B4A5E006451C7 /* Build configuration list for PBXNativeTarget "designerat-tvOSTests" */;
+			buildPhases = (
+				976791B82183F7C3247B6D37 /* [CP] Check Pods Manifest.lock */,
+				2D02E48C1E0B4A5D006451C7 /* Sources */,
+				2D02E48D1E0B4A5D006451C7 /* Frameworks */,
+				2D02E48E1E0B4A5D006451C7 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				2D02E4921E0B4A5D006451C7 /* PBXTargetDependency */,
+			);
+			name = "designerat-tvOSTests";
+			productName = "designerat-tvOSTests";
+			productReference = 2D02E4901E0B4A5D006451C7 /* designerat-tvOSTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		83CBB9F71A601CBA00E9B192 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 1130;
+				TargetAttributes = {
+					00E356ED1AD99517003FC87E = {
+						CreatedOnToolsVersion = 6.2;
+						TestTargetID = 13B07F861A680F5B00A75B9A;
+					};
+					13B07F861A680F5B00A75B9A = {
+						LastSwiftMigration = 1240;
+					};
+					2D02E47A1E0B4A5D006451C7 = {
+						CreatedOnToolsVersion = 8.2.1;
+						ProvisioningStyle = Automatic;
+					};
+					2D02E48F1E0B4A5D006451C7 = {
+						CreatedOnToolsVersion = 8.2.1;
+						ProvisioningStyle = Automatic;
+						TestTargetID = 2D02E47A1E0B4A5D006451C7;
+					};
+				};
+			};
+			buildConfigurationList = 83CBB9FA1A601CBA00E9B192 /* Build configuration list for PBXProject "designerat" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 83CBB9F61A601CBA00E9B192;
+			productRefGroup = 83CBBA001A601CBA00E9B192 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				13B07F861A680F5B00A75B9A /* designerat */,
+				00E356ED1AD99517003FC87E /* designeratTests */,
+				2D02E47A1E0B4A5D006451C7 /* designerat-tvOS */,
+				2D02E48F1E0B4A5D006451C7 /* designerat-tvOSTests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		00E356EC1AD99517003FC87E /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		13B07F8E1A680F5B00A75B9A /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				506359B325E2ABF400CDBDBE /* Comfortaa-Bold.ttf in Resources */,
+				506359A825E2ABF400CDBDBE /* Tajawal-Regular.ttf in Resources */,
+				506359A725E2ABF400CDBDBE /* Comfortaa-SemiBold.ttf in Resources */,
+				81AB9BB82411601600AC10FF /* LaunchScreen.storyboard in Resources */,
+				5063598F25E2ABF400CDBDBE /* Almarai-Regular.ttf in Resources */,
+				5063599225E2ABF400CDBDBE /* Changa-Regular.ttf in Resources */,
+				13B07FBF1A68108700A75B9A /* Images.xcassets in Resources */,
+				5063599B25E2ABF400CDBDBE /* Comfortaa-Regular.ttf in Resources */,
+				506359B225E2ABF400CDBDBE /* ArchivoNarrow-SemiBoldItalic.ttf in Resources */,
+				506359AB25E2ABF400CDBDBE /* ArchivoNarrow-SemiBold.ttf in Resources */,
+				506359B425E2ABF400CDBDBE /* Almarai-ExtraBold.ttf in Resources */,
+				5063598E25E2ABF400CDBDBE /* Comfortaa-Light.ttf in Resources */,
+				506359A025E2ABF400CDBDBE /* ArchivoNarrow-Medium.ttf in Resources */,
+				506359AF25E2ABF400CDBDBE /* Sst-Arabicbold.ttf in Resources */,
+				5063599725E2ABF400CDBDBE /* ArchivoNarrow-Bold.ttf in Resources */,
+				5063599025E2ABF400CDBDBE /* Changa-Medium.ttf in Resources */,
+				5063599D25E2ABF400CDBDBE /* Tajawal-Light.ttf in Resources */,
+				506359A125E2ABF400CDBDBE /* Actor-Regular.ttf in Resources */,
+				506359A525E2ABF400CDBDBE /* Cairo-Bold.ttf in Resources */,
+				506359A425E2ABF400CDBDBE /* ArchivoNarrow-Italic.ttf in Resources */,
+				506359B825E2ABF400CDBDBE /* Bein-Black.ttf in Resources */,
+				5063599925E2ABF400CDBDBE /* AR-Almarai-Font.ttf in Resources */,
+				506359A925E2ABF400CDBDBE /* Changa-Light.ttf in Resources */,
+				506359AC25E2ABF400CDBDBE /* Ar-Ith.ttf in Resources */,
+				5063599325E2ABF400CDBDBE /* ArchivoNarrow-BoldItalic.ttf in Resources */,
+				5063599125E2ABF400CDBDBE /* ArchivoNarrow-MediumItalic.ttf in Resources */,
+				5063599A25E2ABF400CDBDBE /* Almarai-Bold.ttf in Resources */,
+				506359B025E2ABF400CDBDBE /* AR-BBC-Regular.ttf in Resources */,
+				506359AE25E2ABF400CDBDBE /* Tajawal-Medium.ttf in Resources */,
+				506359A625E2ABF400CDBDBE /* Changa-ExtraBold.ttf in Resources */,
+				506359AA25E2ABF400CDBDBE /* Bein-Normal.ttf in Resources */,
+				5063599425E2ABF400CDBDBE /* ArchivoNarrow-Regular.ttf in Resources */,
+				5063599C25E2ABF400CDBDBE /* Tajawal-Black.ttf in Resources */,
+				5063599E25E2ABF400CDBDBE /* cairo.ttf in Resources */,
+				506359B725E2ABF400CDBDBE /* Cairo_Semi_Bold.ttf in Resources */,
+				506359AD25E2ABF400CDBDBE /* Tajawal-ExtraBold.ttf in Resources */,
+				506359B525E2ABF400CDBDBE /* Comfortaa-Medium.ttf in Resources */,
+				506359A325E2ABF400CDBDBE /* Almarai-Light.ttf in Resources */,
+				506359B125E2ABF400CDBDBE /* Tajawal-ExtraLight.ttf in Resources */,
+				506359A225E2ABF400CDBDBE /* Changa-Bold.ttf in Resources */,
+				5063599625E2ABF400CDBDBE /* Cairo-Black.ttf in Resources */,
+				5063599F25E2ABF400CDBDBE /* AlMohanad.ttf in Resources */,
+				5063598D25E2ABF400CDBDBE /* Changa-SemiBold.ttf in Resources */,
+				5063599825E2ABF400CDBDBE /* Changa-ExtraLight.ttf in Resources */,
+				5063599525E2ABF400CDBDBE /* Cairo_Black.ttf in Resources */,
+				5063598C25E2ABF400CDBDBE /* Tajawal-Bold.ttf in Resources */,
+				506359B625E2ABF400CDBDBE /* Varela-Regular.ttf in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		2D02E4791E0B4A5D006451C7 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				2D02E4BD1E0B4A84006451C7 /* Images.xcassets in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		2D02E48E1E0B4A5D006451C7 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		00DD1BFF1BD5951E006B06BC /* Bundle React Native code and images */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Bundle React Native code and images";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "export NODE_BINARY=node\n../node_modules/react-native/scripts/react-native-xcode.sh";
+		};
+		0625C6F2249760ED72D82ADB /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-designerat-tvOS-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		2D02E4CB1E0B4B27006451C7 /* Bundle React Native Code And Images */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Bundle React Native Code And Images";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "export NODE_BINARY=node\n../node_modules/react-native/scripts/react-native-xcode.sh";
+		};
+		453EE438D939B1FA3D15B9CF /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-designerat/Pods-designerat-resources.sh",
+				"${PODS_ROOT}/FBSDKCoreKit/FacebookSDKStrings.bundle",
+				"${PODS_ROOT}/GoogleSignIn/Resources/GoogleSignIn.bundle",
+				"${PODS_ROOT}/Mixpanel/Mixpanel/Images/MPArrowLeft.png",
+				"${PODS_ROOT}/Mixpanel/Mixpanel/Images/MPArrowLeft@2x.png",
+				"${PODS_ROOT}/Mixpanel/Mixpanel/Images/MPArrowRight.png",
+				"${PODS_ROOT}/Mixpanel/Mixpanel/Images/MPArrowRight@2x.png",
+				"${PODS_ROOT}/Mixpanel/Mixpanel/Images/MPCheckmark.png",
+				"${PODS_ROOT}/Mixpanel/Mixpanel/Images/MPCheckmark@2x.png",
+				"${PODS_ROOT}/Mixpanel/Mixpanel/Images/MPCloseButton.png",
+				"${PODS_ROOT}/Mixpanel/Mixpanel/Images/MPCloseButton@2x.png",
+				"${PODS_ROOT}/Mixpanel/Mixpanel/Images/MPCloseButton@3x.png",
+				"${PODS_ROOT}/Mixpanel/Mixpanel/Images/MPDismissKeyboard.png",
+				"${PODS_ROOT}/Mixpanel/Mixpanel/Images/MPDismissKeyboard@2x.png",
+				"${PODS_ROOT}/Mixpanel/Mixpanel/Images/MPLogo.png",
+				"${PODS_ROOT}/Mixpanel/Mixpanel/Images/MPLogo@2x.png",
+				"${PODS_ROOT}/Mixpanel/Mixpanel/Images/placeholder-image.png",
+				"${PODS_ROOT}/Mixpanel/Mixpanel/MPTakeoverNotificationViewController~ipad.xib",
+				"${PODS_ROOT}/Mixpanel/Mixpanel/MPTakeoverNotificationViewController~iphonelandscape.xib",
+				"${PODS_ROOT}/Mixpanel/Mixpanel/MPTakeoverNotificationViewController~iphoneportrait.xib",
+				"${PODS_CONFIGURATION_BUILD_DIR}/RNImageCropPicker/QBImagePicker.bundle",
+				"${PODS_ROOT}/../../node_modules/react-native-vector-icons/Fonts/AntDesign.ttf",
+				"${PODS_ROOT}/../../node_modules/react-native-vector-icons/Fonts/Entypo.ttf",
+				"${PODS_ROOT}/../../node_modules/react-native-vector-icons/Fonts/EvilIcons.ttf",
+				"${PODS_ROOT}/../../node_modules/react-native-vector-icons/Fonts/Feather.ttf",
+				"${PODS_ROOT}/../../node_modules/react-native-vector-icons/Fonts/FontAwesome.ttf",
+				"${PODS_ROOT}/../../node_modules/react-native-vector-icons/Fonts/FontAwesome5_Brands.ttf",
+				"${PODS_ROOT}/../../node_modules/react-native-vector-icons/Fonts/FontAwesome5_Regular.ttf",
+				"${PODS_ROOT}/../../node_modules/react-native-vector-icons/Fonts/FontAwesome5_Solid.ttf",
+				"${PODS_ROOT}/../../node_modules/react-native-vector-icons/Fonts/Fontisto.ttf",
+				"${PODS_ROOT}/../../node_modules/react-native-vector-icons/Fonts/Foundation.ttf",
+				"${PODS_ROOT}/../../node_modules/react-native-vector-icons/Fonts/Ionicons.ttf",
+				"${PODS_ROOT}/../../node_modules/react-native-vector-icons/Fonts/MaterialCommunityIcons.ttf",
+				"${PODS_ROOT}/../../node_modules/react-native-vector-icons/Fonts/MaterialIcons.ttf",
+				"${PODS_ROOT}/../../node_modules/react-native-vector-icons/Fonts/Octicons.ttf",
+				"${PODS_ROOT}/../../node_modules/react-native-vector-icons/Fonts/SimpleLineIcons.ttf",
+				"${PODS_ROOT}/../../node_modules/react-native-vector-icons/Fonts/Zocial.ttf",
+				"${PODS_CONFIGURATION_BUILD_DIR}/React-Core/AccessibilityResources.bundle",
+				"${PODS_CONFIGURATION_BUILD_DIR}/TOCropViewController/TOCropViewControllerBundle.bundle",
+				"${PODS_ROOT}/YoutubePlayer-in-WKWebView/WKYTPlayerView/WKYTPlayerView.bundle",
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/FacebookSDKStrings.bundle",
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/GoogleSignIn.bundle",
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/MPArrowLeft.png",
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/MPArrowLeft@2x.png",
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/MPArrowRight.png",
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/MPArrowRight@2x.png",
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/MPCheckmark.png",
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/MPCheckmark@2x.png",
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/MPCloseButton.png",
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/MPCloseButton@2x.png",
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/MPCloseButton@3x.png",
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/MPDismissKeyboard.png",
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/MPDismissKeyboard@2x.png",
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/MPLogo.png",
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/MPLogo@2x.png",
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/placeholder-image.png",
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/MPTakeoverNotificationViewController~ipad.nib",
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/MPTakeoverNotificationViewController~iphonelandscape.nib",
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/MPTakeoverNotificationViewController~iphoneportrait.nib",
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/QBImagePicker.bundle",
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/AntDesign.ttf",
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/Entypo.ttf",
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/EvilIcons.ttf",
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/Feather.ttf",
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/FontAwesome.ttf",
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/FontAwesome5_Brands.ttf",
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/FontAwesome5_Regular.ttf",
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/FontAwesome5_Solid.ttf",
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/Fontisto.ttf",
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/Foundation.ttf",
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/Ionicons.ttf",
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/MaterialCommunityIcons.ttf",
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/MaterialIcons.ttf",
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/Octicons.ttf",
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/SimpleLineIcons.ttf",
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/Zocial.ttf",
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/AccessibilityResources.bundle",
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/TOCropViewControllerBundle.bundle",
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/WKYTPlayerView.bundle",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-designerat/Pods-designerat-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		7AA229D998FD0F4AF9AB3CBD /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-designerat-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		8C53FBC6B40E117EC2C2EA36 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-designerat-designeratTests-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		976791B82183F7C3247B6D37 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-designerat-tvOSTests-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		DE71215A059D0A00523537C1 /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-designerat-designeratTests/Pods-designerat-designeratTests-resources.sh",
+				"${PODS_ROOT}/FBSDKCoreKit/FacebookSDKStrings.bundle",
+				"${PODS_ROOT}/GoogleSignIn/Resources/GoogleSignIn.bundle",
+				"${PODS_ROOT}/Mixpanel/Mixpanel/Images/MPArrowLeft.png",
+				"${PODS_ROOT}/Mixpanel/Mixpanel/Images/MPArrowLeft@2x.png",
+				"${PODS_ROOT}/Mixpanel/Mixpanel/Images/MPArrowRight.png",
+				"${PODS_ROOT}/Mixpanel/Mixpanel/Images/MPArrowRight@2x.png",
+				"${PODS_ROOT}/Mixpanel/Mixpanel/Images/MPCheckmark.png",
+				"${PODS_ROOT}/Mixpanel/Mixpanel/Images/MPCheckmark@2x.png",
+				"${PODS_ROOT}/Mixpanel/Mixpanel/Images/MPCloseButton.png",
+				"${PODS_ROOT}/Mixpanel/Mixpanel/Images/MPCloseButton@2x.png",
+				"${PODS_ROOT}/Mixpanel/Mixpanel/Images/MPCloseButton@3x.png",
+				"${PODS_ROOT}/Mixpanel/Mixpanel/Images/MPDismissKeyboard.png",
+				"${PODS_ROOT}/Mixpanel/Mixpanel/Images/MPDismissKeyboard@2x.png",
+				"${PODS_ROOT}/Mixpanel/Mixpanel/Images/MPLogo.png",
+				"${PODS_ROOT}/Mixpanel/Mixpanel/Images/MPLogo@2x.png",
+				"${PODS_ROOT}/Mixpanel/Mixpanel/Images/placeholder-image.png",
+				"${PODS_ROOT}/Mixpanel/Mixpanel/MPTakeoverNotificationViewController~ipad.xib",
+				"${PODS_ROOT}/Mixpanel/Mixpanel/MPTakeoverNotificationViewController~iphonelandscape.xib",
+				"${PODS_ROOT}/Mixpanel/Mixpanel/MPTakeoverNotificationViewController~iphoneportrait.xib",
+				"${PODS_CONFIGURATION_BUILD_DIR}/RNImageCropPicker/QBImagePicker.bundle",
+				"${PODS_ROOT}/../../node_modules/react-native-vector-icons/Fonts/AntDesign.ttf",
+				"${PODS_ROOT}/../../node_modules/react-native-vector-icons/Fonts/Entypo.ttf",
+				"${PODS_ROOT}/../../node_modules/react-native-vector-icons/Fonts/EvilIcons.ttf",
+				"${PODS_ROOT}/../../node_modules/react-native-vector-icons/Fonts/Feather.ttf",
+				"${PODS_ROOT}/../../node_modules/react-native-vector-icons/Fonts/FontAwesome.ttf",
+				"${PODS_ROOT}/../../node_modules/react-native-vector-icons/Fonts/FontAwesome5_Brands.ttf",
+				"${PODS_ROOT}/../../node_modules/react-native-vector-icons/Fonts/FontAwesome5_Regular.ttf",
+				"${PODS_ROOT}/../../node_modules/react-native-vector-icons/Fonts/FontAwesome5_Solid.ttf",
+				"${PODS_ROOT}/../../node_modules/react-native-vector-icons/Fonts/Fontisto.ttf",
+				"${PODS_ROOT}/../../node_modules/react-native-vector-icons/Fonts/Foundation.ttf",
+				"${PODS_ROOT}/../../node_modules/react-native-vector-icons/Fonts/Ionicons.ttf",
+				"${PODS_ROOT}/../../node_modules/react-native-vector-icons/Fonts/MaterialCommunityIcons.ttf",
+				"${PODS_ROOT}/../../node_modules/react-native-vector-icons/Fonts/MaterialIcons.ttf",
+				"${PODS_ROOT}/../../node_modules/react-native-vector-icons/Fonts/Octicons.ttf",
+				"${PODS_ROOT}/../../node_modules/react-native-vector-icons/Fonts/SimpleLineIcons.ttf",
+				"${PODS_ROOT}/../../node_modules/react-native-vector-icons/Fonts/Zocial.ttf",
+				"${PODS_CONFIGURATION_BUILD_DIR}/React-Core/AccessibilityResources.bundle",
+				"${PODS_CONFIGURATION_BUILD_DIR}/TOCropViewController/TOCropViewControllerBundle.bundle",
+				"${PODS_ROOT}/YoutubePlayer-in-WKWebView/WKYTPlayerView/WKYTPlayerView.bundle",
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/FacebookSDKStrings.bundle",
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/GoogleSignIn.bundle",
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/MPArrowLeft.png",
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/MPArrowLeft@2x.png",
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/MPArrowRight.png",
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/MPArrowRight@2x.png",
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/MPCheckmark.png",
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/MPCheckmark@2x.png",
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/MPCloseButton.png",
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/MPCloseButton@2x.png",
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/MPCloseButton@3x.png",
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/MPDismissKeyboard.png",
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/MPDismissKeyboard@2x.png",
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/MPLogo.png",
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/MPLogo@2x.png",
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/placeholder-image.png",
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/MPTakeoverNotificationViewController~ipad.nib",
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/MPTakeoverNotificationViewController~iphonelandscape.nib",
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/MPTakeoverNotificationViewController~iphoneportrait.nib",
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/QBImagePicker.bundle",
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/AntDesign.ttf",
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/Entypo.ttf",
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/EvilIcons.ttf",
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/Feather.ttf",
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/FontAwesome.ttf",
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/FontAwesome5_Brands.ttf",
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/FontAwesome5_Regular.ttf",
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/FontAwesome5_Solid.ttf",
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/Fontisto.ttf",
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/Foundation.ttf",
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/Ionicons.ttf",
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/MaterialCommunityIcons.ttf",
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/MaterialIcons.ttf",
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/Octicons.ttf",
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/SimpleLineIcons.ttf",
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/Zocial.ttf",
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/AccessibilityResources.bundle",
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/TOCropViewControllerBundle.bundle",
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/WKYTPlayerView.bundle",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-designerat-designeratTests/Pods-designerat-designeratTests-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		FD10A7F022414F080027D42C /* Start Packager */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+			);
+			name = "Start Packager";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "export RCT_METRO_PORT=\"${RCT_METRO_PORT:=8081}\"\necho \"export RCT_METRO_PORT=${RCT_METRO_PORT}\" > \"${SRCROOT}/../node_modules/react-native/scripts/.packager.env\"\nif [ -z \"${RCT_NO_LAUNCH_PACKAGER+xxx}\" ] ; then\n  if nc -w 5 -z localhost ${RCT_METRO_PORT} ; then\n    if ! curl -s \"http://localhost:${RCT_METRO_PORT}/status\" | grep -q \"packager-status:running\" ; then\n      echo \"Port ${RCT_METRO_PORT} already in use, packager is either not running or not running correctly\"\n      exit 2\n    fi\n  else\n    open \"$SRCROOT/../node_modules/react-native/scripts/launchPackager.command\" || echo \"Can't start packager automatically\"\n  fi\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+		FD10A7F122414F3F0027D42C /* Start Packager */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+			);
+			name = "Start Packager";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "export RCT_METRO_PORT=\"${RCT_METRO_PORT:=8081}\"\necho \"export RCT_METRO_PORT=${RCT_METRO_PORT}\" > \"${SRCROOT}/../node_modules/react-native/scripts/.packager.env\"\nif [ -z \"${RCT_NO_LAUNCH_PACKAGER+xxx}\" ] ; then\n  if nc -w 5 -z localhost ${RCT_METRO_PORT} ; then\n    if ! curl -s \"http://localhost:${RCT_METRO_PORT}/status\" | grep -q \"packager-status:running\" ; then\n      echo \"Port ${RCT_METRO_PORT} already in use, packager is either not running or not running correctly\"\n      exit 2\n    fi\n  else\n    open \"$SRCROOT/../node_modules/react-native/scripts/launchPackager.command\" || echo \"Can't start packager automatically\"\n  fi\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		00E356EA1AD99517003FC87E /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				00E356F31AD99517003FC87E /* designeratTests.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		13B07F871A680F5B00A75B9A /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				13B07FBC1A68108700A75B9A /* AppDelegate.m in Sources */,
+				5063567E25E23E9F00CDBDBE /* File.swift in Sources */,
+				13B07FC11A68108700A75B9A /* main.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		2D02E4771E0B4A5D006451C7 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				2D02E4BF1E0B4AB3006451C7 /* main.m in Sources */,
+				2D02E4BC1E0B4A80006451C7 /* AppDelegate.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		2D02E48C1E0B4A5D006451C7 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				2DCD954D1E0B4F2C00145EB5 /* designeratTests.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		00E356F51AD99517003FC87E /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 13B07F861A680F5B00A75B9A /* designerat */;
+			targetProxy = 00E356F41AD99517003FC87E /* PBXContainerItemProxy */;
+		};
+		2D02E4921E0B4A5D006451C7 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 2D02E47A1E0B4A5D006451C7 /* designerat-tvOS */;
+			targetProxy = 2D02E4911E0B4A5D006451C7 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin XCBuildConfiguration section */
+		00E356F61AD99517003FC87E /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 73D94FCF683B031F0EB6E064 /* Pods-designerat-designeratTests.debug.xcconfig */;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				INFOPLIST_FILE = designeratTests/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				OTHER_LDFLAGS = (
+					"-ObjC",
+					"-lc++",
+					"$(inherited)",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = "org.reactjs.native.example.$(PRODUCT_NAME:rfc1034identifier)";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/designerat.app/designerat";
+			};
+			name = Debug;
+		};
+		00E356F71AD99517003FC87E /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = A919735D302BF15818CFE7CA /* Pods-designerat-designeratTests.release.xcconfig */;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				COPY_PHASE_STRIP = NO;
+				INFOPLIST_FILE = designeratTests/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				OTHER_LDFLAGS = (
+					"-ObjC",
+					"-lc++",
+					"$(inherited)",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = "org.reactjs.native.example.$(PRODUCT_NAME:rfc1034identifier)";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/designerat.app/designerat";
+			};
+			name = Release;
+		};
+		13B07F941A680F5B00A75B9A /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 1F25A56AD6F9DDB90470A6E4 /* Pods-designerat.debug.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
+				CURRENT_PROJECT_VERSION = 1;
+				ENABLE_BITCODE = NO;
+				INFOPLIST_FILE = designerat/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				OTHER_LDFLAGS = (
+					"$(inherited)",
+					"-ObjC",
+					"-lc++",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = "org.reactjs.native.example.$(PRODUCT_NAME:rfc1034identifier)";
+				PRODUCT_NAME = designerat;
+				SWIFT_OBJC_BRIDGING_HEADER = "designerat-Bridging-Header.h";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 5.0;
+				VERSIONING_SYSTEM = "apple-generic";
+			};
+			name = Debug;
+		};
+		13B07F951A680F5B00A75B9A /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 407BBB76A16A20681225D58C /* Pods-designerat.release.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
+				CURRENT_PROJECT_VERSION = 1;
+				INFOPLIST_FILE = designerat/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				OTHER_LDFLAGS = (
+					"$(inherited)",
+					"-ObjC",
+					"-lc++",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = "org.reactjs.native.example.$(PRODUCT_NAME:rfc1034identifier)";
+				PRODUCT_NAME = designerat;
+				SWIFT_OBJC_BRIDGING_HEADER = "designerat-Bridging-Header.h";
+				SWIFT_VERSION = 5.0;
+				VERSIONING_SYSTEM = "apple-generic";
+			};
+			name = Release;
+		};
+		2D02E4971E0B4A5E006451C7 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 0E15B271ADE662C61B59F5EF /* Pods-designerat-tvOS.debug.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = "App Icon & Top Shelf Image";
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_TESTABILITY = YES;
+				GCC_NO_COMMON_BLOCKS = YES;
+				INFOPLIST_FILE = "designerat-tvOS/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				OTHER_LDFLAGS = (
+					"$(inherited)",
+					"-ObjC",
+					"-lc++",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = "org.reactjs.native.example.designerat-tvOS";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = appletvos;
+				TARGETED_DEVICE_FAMILY = 3;
+				TVOS_DEPLOYMENT_TARGET = 10.0;
+			};
+			name = Debug;
+		};
+		2D02E4981E0B4A5E006451C7 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = B7561795C95BBE0281456544 /* Pods-designerat-tvOS.release.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = "App Icon & Top Shelf Image";
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				GCC_NO_COMMON_BLOCKS = YES;
+				INFOPLIST_FILE = "designerat-tvOS/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				OTHER_LDFLAGS = (
+					"$(inherited)",
+					"-ObjC",
+					"-lc++",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = "org.reactjs.native.example.designerat-tvOS";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = appletvos;
+				TARGETED_DEVICE_FAMILY = 3;
+				TVOS_DEPLOYMENT_TARGET = 10.0;
+			};
+			name = Release;
+		};
+		2D02E4991E0B4A5E006451C7 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = BCF827D68154ACCBC9457DAC /* Pods-designerat-tvOSTests.debug.xcconfig */;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_TESTABILITY = YES;
+				GCC_NO_COMMON_BLOCKS = YES;
+				INFOPLIST_FILE = "designerat-tvOSTests/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				OTHER_LDFLAGS = (
+					"$(inherited)",
+					"-ObjC",
+					"-lc++",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = "org.reactjs.native.example.designerat-tvOSTests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = appletvos;
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/designerat-tvOS.app/designerat-tvOS";
+				TVOS_DEPLOYMENT_TARGET = 10.1;
+			};
+			name = Debug;
+		};
+		2D02E49A1E0B4A5E006451C7 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = B3D3CB06C5AE638BDD2200A7 /* Pods-designerat-tvOSTests.release.xcconfig */;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				GCC_NO_COMMON_BLOCKS = YES;
+				INFOPLIST_FILE = "designerat-tvOSTests/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				OTHER_LDFLAGS = (
+					"$(inherited)",
+					"-ObjC",
+					"-lc++",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = "org.reactjs.native.example.designerat-tvOSTests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = appletvos;
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/designerat-tvOS.app/designerat-tvOS";
+				TVOS_DEPLOYMENT_TARGET = 10.1;
+			};
+			name = Release;
+		};
+		83CBBA201A601CBA00E9B192 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
+				LD_RUNPATH_SEARCH_PATHS = "/usr/lib/swift $(inherited)";
+				LIBRARY_SEARCH_PATHS = (
+					"\"$(TOOLCHAIN_DIR)/usr/lib/swift/$(PLATFORM_NAME)\"",
+					"\"$(TOOLCHAIN_DIR)/usr/lib/swift-5.0/$(PLATFORM_NAME)\"",
+					"\"$(inherited)\"",
+				);
+				MTL_ENABLE_DEBUG_INFO = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+			};
+			name = Debug;
+		};
+		83CBBA211A601CBA00E9B192 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = YES;
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
+				LD_RUNPATH_SEARCH_PATHS = "/usr/lib/swift $(inherited)";
+				LIBRARY_SEARCH_PATHS = (
+					"\"$(TOOLCHAIN_DIR)/usr/lib/swift/$(PLATFORM_NAME)\"",
+					"\"$(TOOLCHAIN_DIR)/usr/lib/swift-5.0/$(PLATFORM_NAME)\"",
+					"\"$(inherited)\"",
+				);
+				MTL_ENABLE_DEBUG_INFO = NO;
+				SDKROOT = iphoneos;
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		00E357021AD99517003FC87E /* Build configuration list for PBXNativeTarget "designeratTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				00E356F61AD99517003FC87E /* Debug */,
+				00E356F71AD99517003FC87E /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		13B07F931A680F5B00A75B9A /* Build configuration list for PBXNativeTarget "designerat" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				13B07F941A680F5B00A75B9A /* Debug */,
+				13B07F951A680F5B00A75B9A /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		2D02E4BA1E0B4A5E006451C7 /* Build configuration list for PBXNativeTarget "designerat-tvOS" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				2D02E4971E0B4A5E006451C7 /* Debug */,
+				2D02E4981E0B4A5E006451C7 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		2D02E4BB1E0B4A5E006451C7 /* Build configuration list for PBXNativeTarget "designerat-tvOSTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				2D02E4991E0B4A5E006451C7 /* Debug */,
+				2D02E49A1E0B4A5E006451C7 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		83CBB9FA1A601CBA00E9B192 /* Build configuration list for PBXProject "designerat" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				83CBBA201A601CBA00E9B192 /* Debug */,
+				83CBBA211A601CBA00E9B192 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 83CBB9F71A601CBA00E9B192 /* Project object */;
+}

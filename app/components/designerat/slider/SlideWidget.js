@@ -1,0 +1,24 @@
+import React from 'react';
+import {Linking, TouchableOpacity} from 'react-native';
+import {width, touchOpacity} from '../../../constants/sizes';
+import {isNull} from 'lodash';
+import ImageLoaderContainer from '../../ImageLoaderContainer';
+
+const SlideWidget = ({slide}) => {
+  return (
+    <TouchableOpacity
+      activeOpacity={touchOpacity}
+      onPress={() => {
+        Linking.openURL(!isNull(slide.path) ? slide.path : slide.url);
+      }}
+      key={slide.id}>
+      <ImageLoaderContainer
+        img={slide.large}
+        style={{width: width, height: '100%'}}
+        resizeMode="contain"
+      />
+    </TouchableOpacity>
+  );
+};
+
+export default SlideWidget;
