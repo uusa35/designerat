@@ -14,34 +14,22 @@ import {createMaterialBottomTabNavigator} from '@react-navigation/material-botto
 import HomeStack from './designers/HomeStack';
 import {Icon} from 'react-native-elements';
 import TextTabBar from '../components/TextTabBar';
+import IconTabBar from '../components/IconTabBar';
+import {useSelector} from 'react-redux';
 // const Tab = createBottomTabNavigator();
 const Tab = createMaterialBottomTabNavigator();
 const Stack = createStackNavigator();
 const Drawer = createDrawerNavigator();
 
 const MainTab = () => {
+  const {colors} = useSelector((state) => state.settings);
   return (
     <Tab.Navigator
-      screenOptions={({route}) => ({
-        tabBarIcon: ({focused, color, size}) => {
-          let iconName;
-          if (route.name === 'Home') {
-            iconName = focused
-              ? 'ios-information-circle'
-              : 'ios-information-circle-outline';
-          } else if (route.name === 'Settings') {
-            iconName = focused ? 'ios-list-box' : 'ios-list';
-          }
-
-          // You can return any component that you like here!
-          return <Ionicons name={iconName} size={size} color={color} />;
-        },
-      })}
       tabBarOptions={{
-        activeTintColor: 'white',
-        inactiveTintColor: 'black',
-        inactiveBackgroundColor: 'black',
-        activeBackgroundColor: 'black',
+        activeTintColor: colors.icon_theme_color,
+        inactiveTintColor: colors.icon_bg_theme_color,
+        inactiveBackgroundColor: 'blue',
+        activeBackgroundColor: 'pink',
       }}
       barStyle={{
         backgroundColor: 'black',
@@ -49,19 +37,18 @@ const MainTab = () => {
       <Tab.Screen
         name="Home"
         component={HomeStack}
-        navigationOptions
-        options={{
-          tabBarLabel: () => (
-            <TextTabBar title={I18n.t('designers')} showLabel={true} />
-          ),
-          tabBarIcon: ({color}) => (
-            <Ionicons
-              name={'ios-home'}
+        options={({route}) => ({
+          title: I18n.t('designers'),
+          tabBarIcon: ({focused, color, size}) => (
+            <IconTabBar
+              name="home"
+              type="octicon"
+              focused={focused}
               color={color}
-              size={iconSizes.smaller}
+              showLabel={true}
             />
           ),
-        }}
+        })}
         headerLeft={({navigation}) => (
           <TouchableOpacity style={{paddingLeft: 20}}>
             <Ionicons
@@ -76,54 +63,66 @@ const MainTab = () => {
       <Tab.Screen
         name="CategoryIndex"
         component={HomeScreen}
-        options={{
-          tabBarLabel: I18n.t('categories'),
-          tabBarIcon: ({color}) => (
-            <Ionicons name="ios-shirt" color={color} size={iconSizes.smaller} />
+        options={({route}) => ({
+          title: I18n.t('designers'),
+          tabBarIcon: ({focused, color, size}) => (
+            <IconTabBar
+              name="home"
+              type="octicon"
+              focused={focused}
+              color={color}
+              showLabel={true}
+            />
           ),
-        }}
+        })}
       />
       <Tab.Screen
         name="ProductIndex"
         component={HomeScreen}
-        options={{
-          tabBarLabel: I18n.t('market'),
-          tabBarIcon: ({color}) => (
-            <Ionicons
-              name={'ios-bookmarks'}
+        options={({route}) => ({
+          title: I18n.t('designers'),
+          tabBarIcon: ({focused, color, size}) => (
+            <IconTabBar
+              name="home"
+              type="octicon"
+              focused={focused}
               color={color}
-              size={iconSizes.smaller}
+              showLabel={true}
             />
           ),
-        }}
+        })}
       />
       <Tab.Screen
         name="CartIndex"
         component={CartIndexScreen}
-        options={{
-          tabBarLabel: I18n.t('cart'),
-          tabBarIcon: ({color}) => (
-            <Ionicons
-              name={'ios-cart'}
+        options={({route}) => ({
+          title: I18n.t('designers'),
+          tabBarIcon: ({focused, color, size}) => (
+            <IconTabBar
+              name="home"
+              type="octicon"
+              focused={focused}
               color={color}
-              size={iconSizes.smaller}
+              showLabel={true}
             />
           ),
-        }}
+        })}
       />
       <Tab.Screen
         name="SettingIndex"
         component={SettingsScreen}
-        options={{
-          tabBarLabel: I18n.t('market'),
-          tabBarIcon: ({color}) => (
-            <Ionicons
-              name={'ios-bookmark'}
+        options={({route}) => ({
+          title: I18n.t('designers'),
+          tabBarIcon: ({focused, color, size}) => (
+            <IconTabBar
+              name="home"
+              type="octicon"
+              focused={focused}
               color={color}
-              size={iconSizes.smaller}
+              showLabel={true}
             />
           ),
-        }}
+        })}
       />
     </Tab.Navigator>
   );
