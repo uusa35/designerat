@@ -182,28 +182,23 @@ export function* startGetProductScenario(action) {
       }
       yield all([put({type: actions.SET_PRODUCT, payload: element})]);
       if (!validate.isEmpty(redirect) && redirect) {
+        RootNavigation.navigate('ProductShow', {
+          name: element.name,
+          id: element.id,
+          model: 'product',
+          type: 'product',
+        });
         yield all([
-          call(startGoogleAnalyticsScenario, {
-            payload: {type: 'Product', element},
-          }),
-          put(
-            RootNavigation.navigate({
-              routeName: 'Product',
-              params: {
-                name: element.name,
-                id: element.id,
-                model: 'product',
-                type: 'product',
-              },
-            }),
-          ),
+          // call(startGoogleAnalyticsScenario, {
+          //   payload: {type: 'Product', element},
+          // }),
         ]);
       }
     }
   } catch (e) {
-    // if (__DEV__) {
-    //   console.log('e', e);
-    // }
+    if (__DEV__) {
+      console.log('e', e);
+    }
     yield call(enableWarningMessage, I18n.t('error_while_loading_product'));
   } finally {
     if (action.payload.redirect) {

@@ -8,7 +8,6 @@ import {useSelector} from 'react-redux';
 import LoadingView from '../Loading/LoadingView';
 import LoadingOfflineView from '../Loading/LoadingOfflineView';
 import {GlobalValuesContext} from '../../redux/GlobalValuesContext';
-import {useNavigation} from '@react-navigation/native';
 
 const BgContainer = ({
   children,
@@ -16,6 +15,7 @@ const BgContainer = ({
   img = images.whiteBgUrl,
   enableMargin = false,
   marginVal = height / 30,
+  navigation,
 }) => {
   const {
     isLoading,

@@ -105,9 +105,10 @@
   "logout_success" : "تمت عملية الخروج بنجاح",
   "login_failure" : "لم تنجح عملية الدخول، يرجى المحاولة مرة أخرى ...",
   "enter" : "الدخول",
+  "elites" : "النخبة",
   "ok" : "موافق",
   "dob" : "يوم الميلاد",
-  "designers" : "المصممين",
+  "designers" : "المصممات",
   "celebrities" : "اختيارات المشاهير",
   "favorites" : "قائمة المفضلة",
   "error" : "خطأ",
@@ -681,5 +682,7 @@
   "old_version" : "يرجى تحديث البرنامج من الاستور",
   "update" : "تحديث",
   "you_can_only_add_to_cart_from_only_single_merchant" : "يمكن فقط إضافة منتجات من تاجر واحد فقط",
-  "market" : "السوق"
+  "market" : "السوق",
+  "show_all" : "عرض الكل",
+  "my_account" : "حسابي"
 }

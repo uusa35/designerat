@@ -45,18 +45,15 @@ export function* startGetDesignerScenario(action) {
       }
       if (!validate.isEmpty(redirect) && redirect) {
         yield all([
-          call(startGoogleAnalyticsScenario, {
-            payload: {type: 'User', element},
-          }),
+          // call(startGoogleAnalyticsScenario, {
+          //   payload: {type: 'User', element},
+          // }),
           put(
-            RootNavigation.navigate({
-              routeName: 'DesignerShow',
-              params: {
-                name: element.slug,
-                id: element.id,
-                model: 'user',
-                type: 'designer',
-              },
+            RootNavigation.navigate('DesignerShow', {
+              name: element.slug,
+              id: element.id,
+              model: 'user',
+              type: 'designer',
             }),
           ),
         ]);
@@ -67,9 +64,9 @@ export function* startGetDesignerScenario(action) {
       throw I18n.t('no_designer');
     }
   } catch (e) {
-    // if (__DEV__) {
-    //   console.log('ee', e);
-    // }
+    if (__DEV__) {
+      console.log('ee', e);
+    }
   } finally {
     yield call(disableLoadingProfile);
   }
@@ -207,14 +204,11 @@ export function* startGetCelebrityScenario(action) {
       }
       if (!validate.isEmpty(redirect) && redirect) {
         yield put(
-          RootNavigation.navigate({
-            routeName: 'CelebrityShow',
-            params: {
-              name: element.slug,
-              id: element.id,
-              type: 'designer',
-              model: 'user',
-            },
+          RootNavigation.navigate('UserShow', {
+            name: element.slug,
+            id: element.id,
+            type: 'designer',
+            model: 'user',
           }),
         );
       }

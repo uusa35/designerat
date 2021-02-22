@@ -1,13 +1,10 @@
 import React, {Fragment, useEffect} from 'react';
-import {useNavigation} from '@react-navigation/native';
 // import analytics from '@react-native-firebase/analytics';
 import {APP_CASE} from '../../../app';
 import moment from 'moment';
 import {isEmpty} from 'lodash';
 
-const AppGlobalConfig = () => {
-  const navigation = useNavigation();
-
+const AppGlobalConfig = ({navigation}) => {
   // useEffect(() => {
   //   if (!isEmpty(navigation)) {
   //     const {routeName} = navigation.state;

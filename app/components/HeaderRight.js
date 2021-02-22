@@ -13,14 +13,14 @@ import {Icon, Badge} from 'react-native-elements';
 import {linkingPrefix} from '../constants/links';
 import Share from 'react-native-share';
 import I18n from '../I18n';
-import widgetStyles from './widgetStyles';
-import {useNavigation} from '@react-navigation/native';
+import widgetStyles from './widgets/widgetStyles';
 import {APP_CASE, HOMEKEY, EXPO, ABATI} from '../../app';
 import {iconSizes} from '../constants/sizes';
 import {useDispatch, useSelector} from 'react-redux';
-import ImageLoaderContainer from './ImageLoaderContainer';
+import ImageLoaderContainer from './widgets/ImageLoaderContainer';
 import {isIOS} from '../constants';
 import {GlobalValuesContext} from '../redux/GlobalValuesContext';
+import {useNavigation, useRoute} from '@react-navigation/native';
 
 export const HeaderRight = ({
   showCountry = false,
@@ -30,13 +30,13 @@ export const HeaderRight = ({
   showExpoSearch = false,
   showHome = false,
   showCart = false,
-  showProductFavorite = false,
 }) => {
   const {country, settings, countryModal} = useSelector((state) => state);
   const {cartLength, colors} = useContext(GlobalValuesContext);
   const dispatch = useDispatch();
+  const route = useRoute();
   const navigation = useNavigation();
-  // const {params} = navigation.state;
+  const params = route.params ? route.params : null;
   const [downloadTitleMessage, setDownloadTitleMessage] = useState('');
   const [androidMessage, setAndroidMessage] = useState('');
   const [iphoneMessage, setIphoneMessage] = useState('');
@@ -107,20 +107,20 @@ export const HeaderRight = ({
           />
         </TouchableOpacity>
       )}
-      {/*{displayShare && (*/}
-      {/*  <Icon*/}
-      {/*    onPress={() =>*/}
-      {/*      shareLink(*/}
-      {/*        `${linkingPrefix}${params.model}&id=${params.id}&type=${params.type}`,*/}
-      {/*      )*/}
-      {/*    }*/}
-      {/*    name="share"*/}
-      {/*    size={iconSizes.small}*/}
-      {/*    underlayColor="transparent"*/}
-      {/*    hitSlop={{top: 15, bottom: 15, left: 15, right: 15}}*/}
-      {/*    color="black"*/}
-      {/*  />*/}
-      {/*)}*/}
+      {displayShare && (
+        <Icon
+          onPress={() =>
+            shareLink(
+              `${linkingPrefix}${params.model}&id=${params.id}&type=${params.type}`,
+            )
+          }
+          name="share"
+          size={iconSizes.small}
+          underlayColor="transparent"
+          hitSlop={{top: 15, bottom: 15, left: 15, right: 15}}
+          color="black"
+        />
+      )}
       {showClassifiedsFilter && (
         <Icon
           onPress={() => {
@@ -136,24 +136,15 @@ export const HeaderRight = ({
       )}
       {showProductsSearch && (
         <Icon
-          onPress={() => dispatch(showProductFilter())}
-          name="search-outline"
-          type="ionicon"
+          onPress={() => {
+            dispatch(showProductFilter());
+          }}
+          name="search1"
+          type="antdesign"
           size={iconSizes.small}
           underlayColor="transparent"
-          hitSlop={{top: 10, bottom: 10, left: 10, right: 10}}
-          color={settings.colors.icon_theme_color}
-        />
-      )}
-      {showProductFavorite && (
-        <Icon
-          onPress={() => dispatch(showProductFilter())}
-          name="heart-outline"
-          type="ionicon"
-          size={iconSizes.small}
-          underlayColor="transparent"
-          hitSlop={{top: 10, bottom: 10, left: 10, right: 10}}
-          color={settings.colors.icon_theme_color}
+          hitSlop={{top: 15, bottom: 15, left: 15, right: 15}}
+          color="black"
         />
       )}
       {showExpoSearch && (
@@ -191,7 +182,7 @@ export const HeaderRight = ({
             size={iconSizes.small}
             underlayColor="transparent"
             hitSlop={{top: 10, bottom: 10, left: 10, right: 10}}
-            color={settings.colors.icon_theme_color}
+            color={colors.icon_theme_color}
           />
           {cartLength > 0 ? (
             <Badge

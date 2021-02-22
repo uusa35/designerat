@@ -23,6 +23,61 @@ export const bottomVerticalContentInset = 200;
 export const bottomContentInset = 200;
 export const TheHold = 0.5;
 export const productWidget = {
+  DESIGNERAT: {
+    small: {
+      productWidth: 220,
+      productHeight: 293,
+    },
+    medium: {
+      productWidth: 250,
+      productHeight: 333,
+    },
+    large: {
+      productWidth: 280,
+      productHeight: 373,
+    },
+  },
+  x4Small: {
+    productWidth: 100,
+    productHeight: 160,
+  },
+  smallest: {
+    productWidth: 150,
+    productHeight: 200,
+  },
+  smaller: {
+    productWidth: 200,
+    productHeight: 267,
+  },
+  small: {
+    productWidth: 220,
+    productHeight: 293,
+  },
+  medium: {
+    productWidth: 250,
+    productHeight: 333,
+  },
+  large: {
+    productWidth: 280,
+    productHeight: 373,
+  },
+};
+
+export const userWidget = {
+  DESIGNERAT: {
+    small: {
+      width: 80,
+      height: 80,
+    },
+    medium: {
+      width: 150,
+      height: 150,
+    },
+    large: {
+      width: 200,
+      height: 200,
+    },
+  },
   x4Small: {
     productWidth: 100,
     productHeight: 160,
@@ -86,7 +141,7 @@ export const iconSizes = {
 
 export const getFont = () => {
   switch (APP_CASE) {
-    case 'Designer':
+    case 'DESIGNERAT':
       return isRTL ? SEVENTH_AR_FONT : FIFTH_EN_FONT;
     default:
       return isRTL ? FIRST_AR_FONT : FIFTH_EN_FONT;

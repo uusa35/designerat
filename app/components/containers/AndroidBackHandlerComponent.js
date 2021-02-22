@@ -1,12 +1,10 @@
 import React, {Fragment, useCallback, useEffect} from 'react';
 import {BackHandler} from 'react-native';
-import {useNavigation} from '@react-navigation/native';
 import {goBackBtn} from '../../redux/actions';
 import {isIOS} from '../../constants';
 import {useDispatch} from 'react-redux';
 
-const AndroidBackHandlerComponent = () => {
-  const navigation = useNavigation();
+const AndroidBackHandlerComponent = ({navigation}) => {
   const dispatch = useDispatch();
 
   useEffect(() => {
@@ -15,10 +13,9 @@ const AndroidBackHandlerComponent = () => {
       : null;
   }, []);
 
-  const handleBackPress = () => {
+  const handleBackPress = useCallback(() => {
     return dispatch(goBackBtn(navigation.dangerouslyGetParent().state.index));
-  };
-
+  });
   return <Fragment></Fragment>;
 };
 export default AndroidBackHandlerComponent;

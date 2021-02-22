@@ -7,7 +7,7 @@ import PropTypes from 'prop-types';
 import Spinner from 'react-native-spinkit';
 import {first, shuffle, isNull} from 'lodash';
 import RadialGradient from 'react-native-radial-gradient';
-import ImageLoaderContainer from '../ImageLoaderContainer';
+import ImageLoaderContainer from '../widgets/ImageLoaderContainer';
 import {useSelector} from 'react-redux';
 import LoadingOfflineView from './LoadingOfflineView';
 import I18n from '../../I18n';
@@ -16,6 +16,7 @@ import LoadingContentView from './LoadingContentView';
 import LoadingBoxedListView from './LoadingBoxedListView';
 import LottieView from 'lottie-react-native';
 import {animations} from '../../constants/animations';
+import {EXPO} from './../../../app';
 
 const LoadingView = ({
   loadingText = null,
@@ -56,34 +57,37 @@ const LoadingView = ({
           colors={[colors.btn_bg_theme_color, 'lightgrey', 'white']}
           center={[width / 2, 0]}
           radius={width}>
-          <LottieView
-            source={animations.expoLoading}
-            autoPlay
-            loop
-            resizeMode="cover"
-            style={{
-              alignSelf: 'center',
-              width: width / 8,
-              height: width / 8,
-            }}
-            enableMergePathsAndroidForKitKatAndAbove
-          />
-          <Fragment>
-            <ImageLoaderContainer
-              img={settings.logo}
+          {EXPO ? (
+            <LottieView
+              source={animations.expoLoading}
+              autoPlay
+              loop
+              resizeMode="cover"
               style={{
-                width: iconSizes.largest,
-                height: iconSizes.largest,
-                margin: 10,
+                alignSelf: 'center',
+                width: width / 8,
+                height: width / 8,
               }}
-              resizeMode="contain"
+              enableMergePathsAndroidForKitKatAndAbove
             />
-            <Spinner
-              type={shuffle ? first(shuffle(moveRand)) : type}
-              color={colors.btn_bg_theme_color}
-              size={iconSizes.medium}
-            />
-          </Fragment>
+          ) : (
+            <Fragment>
+              <ImageLoaderContainer
+                img={settings.logo}
+                style={{
+                  width: iconSizes.largest,
+                  height: iconSizes.largest,
+                  margin: 10,
+                }}
+                resizeMode="contain"
+              />
+              <Spinner
+                type={shuffle ? first(shuffle(moveRand)) : type}
+                color={colors.btn_bg_theme_color}
+                size={iconSizes.medium}
+              />
+            </Fragment>
+          )}
           {showLogo && (
             <ImageLoaderContainer
               img={settings.logo}

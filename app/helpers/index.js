@@ -6,8 +6,8 @@ import {Alert, Text} from 'react-native';
 import AsyncStorage from '@react-native-community/async-storage';
 import _ from 'lodash';
 import I18n from './../I18n';
-import {width} from './../constants/sizes';
-import {isIOS} from './../constants';
+import {width} from '../constants/sizes';
+import {isIOS} from '../constants';
 import geolib, {getDistance} from 'geolib';
 import validate from 'validate.js';
 

@@ -1,25 +1,45 @@
-import React from 'react';
+import React, {useContext} from 'react';
+import {Text} from 'react-native';
 import {createStackNavigator} from '@react-navigation/stack';
-import HomeScreen from '../../screens/designerat/HomeScreen';
 import I18n from '../../I18n';
 import {HeaderRight} from '../../components/HeaderRight';
 import {HeaderLeft} from '../../components/HeaderLeft';
 import {HeaderMiddle} from '../../components/HeaderMiddle';
+import AbatiHomeScreen from '../../screens/home/AbatiHomeScreen';
+import CelebrityIndexScreen from '../../screens/celebrity/CelebrityIndexScreen';
+import DesignerShowScreen from '../../screens/designer/DesignerShowScreen';
+import ProductShowScreen from '../../screens/product/ProductShowScreen';
+import NormalProductShowScreen from '../../screens/product/NormalProductShowScreen';
+import ContactusScreen from '../../screens/ContactusScreen';
+import ImageZoomWidget from '../../components/widgets/ImageZoomWidget';
+
+import {GlobalValuesContext} from '../../redux/GlobalValuesContext';
 
 const Stack = createStackNavigator();
 const HomeStack = () => {
+  const {colors} = useContext(GlobalValuesContext);
   return (
-    <Stack.Navigator>
+    <Stack.Navigator
+      screenOptions={{
+        headerBackTitleVisible: false,
+        headerStyle: {
+          backgroundColor: colors.header_theme_bg,
+        },
+        headerTitleStyle: {
+          color: colors.header_theme_color,
+        },
+      }}>
       <Stack.Screen
         name="Home"
-        component={HomeScreen}
+        headerBackTitleVisible={false}
+        component={AbatiHomeScreen}
         options={{
-          // title: I18n.t('designers'),
+          headerBackTitleVisible: false,
           headerStyle: {
-            backgroundColor: 'black',
+            backgroundColor: colors.header_theme_bg,
           },
           headerTitleStyle: {
-            color: 'white',
+            color: colors.header_theme_color,
           },
           headerRight: () => (
             <HeaderRight
@@ -34,6 +54,35 @@ const HomeStack = () => {
           ),
         }}
       />
+      <Stack.Screen name={'UserShow'} component={CelebrityIndexScreen} />
+      <Stack.Screen
+        name={'DesignerShow'}
+        options={{
+          headerTitle: () => <HeaderMiddle />,
+        }}
+        component={DesignerShowScreen}
+      />
+      <Stack.Screen
+        name={'ProductShow'}
+        options={{
+          headerTitle: () => <HeaderMiddle />,
+          headerRight: () => (
+            <HeaderRight showCart={true} displayShare={true} />
+          ),
+        }}
+        component={NormalProductShowScreen}
+        headerBackTitleVisible={false}
+      />
+      <Stack.Screen
+        name={'ImageZoom'}
+        component={ImageZoomWidget}
+        options={{
+          headerRight: () => <HeaderRight />,
+          headerTitle: () => <HeaderMiddle />,
+          headerBackTitle: () => null,
+        }}
+      />
+      <Stack.Screen name={'Contactus'} component={ContactusScreen} />
     </Stack.Navigator>
   );
 };

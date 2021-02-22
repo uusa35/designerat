@@ -6,9 +6,12 @@ import {StyleSheet, Text, View} from 'react-native';
 import {text} from './../constants/sizes';
 import FastImage from 'react-native-fast-image';
 import {useSelector} from 'react-redux';
-import ImageLoaderContainer from './ImageLoaderContainer';
+import ImageLoaderContainer from './widgets/ImageLoaderContainer';
+import {useRoute} from '@react-navigation/native';
 
 export const HeaderMiddle = ({title, showLogo = false}) => {
+  const route = useRoute();
+  console.log('the route', route);
   const {app_logo, colors} = useSelector((state) => state.settings);
   return (
     <View style={styles.container}>
@@ -30,7 +33,7 @@ export const HeaderMiddle = ({title, showLogo = false}) => {
             textAlign: 'center',
             color: colors.header_one_theme_color,
           }}>
-          {title ? title.substring(0, 20) : null}
+          {route.params.name ? route.params.name : title.substring(0, 20)}
         </Text>
       )}
     </View>

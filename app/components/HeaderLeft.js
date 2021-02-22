@@ -1,12 +1,11 @@
 /**
  * Created by usamaahmed on 9/28/17.
  */
-import React, {useContext, useState} from 'react';
+import React, {useContext} from 'react';
 import {StyleSheet, View} from 'react-native';
 import {Icon, Badge} from 'react-native-elements';
 import {GlobalValuesContext} from '../redux/GlobalValuesContext';
-import widgetStyles from './widgetStyles';
-import {useNavigation} from '@react-navigation/native';
+import widgetStyles from './widgets/widgetStyles';
 import {iconSizes} from '../constants/sizes';
 import {
   showProductFilter,
@@ -14,6 +13,7 @@ import {
 } from '../redux/actions';
 import {useDispatch, useSelector} from 'react-redux';
 import {EXPO} from '../../app';
+import {useNavigation} from '@react-navigation/native';
 
 export const HeaderLeft = ({
   showCart = false,
@@ -21,11 +21,9 @@ export const HeaderLeft = ({
   showAccount = false,
   showProductsSearch = false,
   showCompanySearchTextInputModal = false,
-  showProductFavorite = false,
 }) => {
-  const {navigate, openDrawer} = useNavigation();
-  const {colors} = useSelector((state) => state.settings);
-  const {cartLength} = useContext(GlobalValuesContext);
+  const navigation = useNavigation();
+  const {cartLength, colors} = useContext(GlobalValuesContext);
   const {companySearchTextInputModal} = useSelector((state) => state);
   const dispatch = useDispatch();
   return (
@@ -35,10 +33,10 @@ export const HeaderLeft = ({
           name="menu"
           type="material"
           size={iconSizes.small}
-          onPress={() => openDrawer()}
+          onPress={() => navigation.openDrawer()}
           underlayColor="transparent"
           hitSlop={{top: 15, bottom: 15, left: 15, right: 15}}
-          color="white"
+          color={colors.icon_theme_color}
         />
       )}
       {showCompanySearchTextInputModal && (
@@ -59,19 +57,8 @@ export const HeaderLeft = ({
       {showProductsSearch && (
         <Icon
           onPress={() => dispatch(showProductFilter())}
-          name="search-outline"
-          type="ionicon"
-          size={iconSizes.small}
-          underlayColor="transparent"
-          hitSlop={{top: 10, bottom: 10, left: 10, right: 10}}
-          color={colors.icon_theme_color}
-        />
-      )}
-      {showProductFavorite && (
-        <Icon
-          onPress={() => dispatch(showProductFilter())}
-          name="heart-outline"
-          type="ionicon"
+          name="filter"
+          type="antdesign"
           size={iconSizes.small}
           underlayColor="transparent"
           hitSlop={{top: 10, bottom: 10, left: 10, right: 10}}
@@ -81,7 +68,7 @@ export const HeaderLeft = ({
       {showCart ? (
         <View>
           <Icon
-            onPress={() => navigate('CartIndex')}
+            onPress={() => navigation.navigate('CartIndex')}
             name="shoppingcart"
             type="antdesign"
             size={iconSizes.small}
@@ -104,7 +91,7 @@ export const HeaderLeft = ({
         </View>
       ) : showAccount ? (
         <Icon
-          onPress={() => navigate('Account')}
+          onPress={() => navigation.navigate('Account')}
           name="user-circle"
           type="font-awesome"
           size={iconSizes.small}

@@ -4,23 +4,21 @@ import {Icon, Badge} from 'react-native-elements';
 import {GlobalValuesContext} from '../redux/GlobalValuesContext';
 import {iconSizes} from '../constants/sizes';
 import {EXPO, HOMEKEY, ESCRAP} from './../../app';
-import {useSelector} from 'react-redux';
 
 const IconTabBar = ({type, name, focused, showLabel = false}) => {
-  const {settings} = useSelector((state) => state);
+  const {colors, cartLength} = useContext(GlobalValuesContext);
   return (
-    <View>
-      <Icon
-        size={showLabel ? iconSizes.smaller : iconSizes.smallest}
-        name={name}
-        type={type}
-        color={
-          focused
-            ? settings.colors.icon_theme_color
-            : settings.colors.btn_bg_theme_color
-        }
-      />
-    </View>
+    <Icon
+      size={iconSizes.smaller}
+      name={name}
+      type={type}
+      // color={focused ? colors.footer_theme_color : colors.btn_bg_theme_color}
+      color={'white'}
+      containerStyle={{
+        borderBottomWidth: focused ? 1 : 0,
+        borderColor: focused ? colors.btn_bg_theme_color : 'transparent',
+      }}
+    />
   );
 };
 

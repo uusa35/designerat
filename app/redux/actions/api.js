@@ -1,5 +1,5 @@
 import axios from 'axios';
-import {links} from './../../constants/links';
+import {links} from '../../constants/links';
 import {createTransform} from 'redux-persist';
 import {
   checkImage,

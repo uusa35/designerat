@@ -7,13 +7,11 @@ import {Icon} from 'react-native-elements';
 import Share from 'react-native-share';
 import {linkingPrefix} from './../constants/links';
 import I18n from './../I18n';
-import {useNavigation} from 'react-navigation-hooks';
 import {APP_CASE, ABATI} from '../../app';
 import {useSelector} from 'react-redux';
 
-const HeaderCustom = () => {
-  const navigation = useNavigation();
-  const {params} = navigation.state;
+const HeaderCustom = ({navigation}) => {
+  const params = navigation.route.params;
   const {settings} = useSelector((state) => state);
   const [downloadTitleMessage, setDownloadTitleMessage] = useState('');
   const [androidMessage, setAndroidMessage] = useState('');
