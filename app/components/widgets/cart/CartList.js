@@ -17,6 +17,7 @@ import {useDispatch, useSelector} from 'react-redux';
 import {CREATE_MYFATOORAH_PAYMENT_URL} from '../../../redux/actions/types';
 import {getConvertedFinalPrice} from '../../../helpers';
 import KeyBoardContainer from '../../containers/KeyBoardContainer';
+import {useNavigation} from '@react-navigation/native';
 
 const CartList = ({
   shipmentCountry,
@@ -25,7 +26,6 @@ const CartList = ({
   coupon,
   selectedArea,
   shipmentFees,
-  navigation,
 }) => {
   const dispatch = useDispatch();
   const {
@@ -36,7 +36,7 @@ const CartList = ({
     currency_symbol,
   } = useContext(GlobalValuesContext);
   const {cart, auth, guest, country} = useSelector((state) => state);
-  const {navigate} = navigation;
+  const {navigate} = useNavigation();
   const [name, setName] = useState(!validate.isEmpty(auth) ? auth.name : null);
   const [email, setEmail] = useState(
     !validate.isEmpty(auth) ? auth.email : null,

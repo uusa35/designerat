@@ -2,7 +2,7 @@ import React, {useState, useEffect} from 'react';
 import {StyleSheet, Text, Linking, View} from 'react-native';
 import {useDispatch, useSelector} from 'react-redux';
 import ImagesWidget from '../../components/widgets/ImagesWidget';
-import {width, text, height} from './../../constants/sizes';
+import {width, text, height, productWidget} from './../../constants/sizes';
 import ProductInfoWidget from '../../components/widgets/product/ProductInfoWidget';
 import ProductInfoWidgetElement from './../../components/widgets/product/ProductInfoWidgetElement';
 import I18n from './../../I18n';
@@ -16,8 +16,9 @@ import VideosVerticalWidget from '../../components/widgets/video/VideosVerticalW
 import BgContainer from '../../components/containers/BgContainer';
 import KeyBoardContainer from '../../components/containers/KeyBoardContainer';
 import ProductHorizontalWidget from '../../components/widgets/product/ProductHorizontalWidget';
-import {EXPO} from './../../../app';
+import {EXPO, APP_CASE} from './../../../app';
 import {useNavigation} from '@react-navigation/native';
+import MainTab from '../../navigation/MainTab';
 
 const NormalProductShowScreen = () => {
   const {product, token, settings, products} = useSelector((state) => state);
@@ -45,6 +46,20 @@ const NormalProductShowScreen = () => {
     );
   };
 
+  React.useEffect(() => {
+    const unsubscribe = navigation.addListener('focus', () => {
+      // The screen is focused
+      // Call any action
+      console.log('here');
+      navigation.setOptions({
+        tabBarVisible: false,
+      });
+    });
+
+    // Return the function to unsubscribe from the event so it gets removed on unmount
+    return unsubscribe;
+  }, [navigation]);
+
   return (
     <BgContainer showImage={false}>
       <KeyBoardContainer behavior="position" handleRefresh={handleRefresh}>
@@ -64,6 +79,52 @@ const NormalProductShowScreen = () => {
           directPurchase={product.directPurchase}
         />
         <View style={{alignSelf: 'center', width: '95%'}}>
+          {product.brand && (
+            <View
+              style={{
+                backgroundColor: 'whitesmoke',
+                borderRadius: 10,
+                justifyContent: 'flex-start',
+                maxWidth: productWidget[APP_CASE].small.width,
+                height: 40,
+                flexDirection: 'row',
+                alignSelf: 'flex-start',
+                borderWidth: 1,
+                borderColor: 'lightgrey',
+                marginLeft: 10,
+                marginTop: 5,
+                marginBottom: 10,
+              }}>
+              <View
+                style={{
+                  flex: 1,
+                  borderTopLeftRadius: 10,
+                  borderBottomLeftRadius: 10,
+                  alignItems: 'center',
+                  justifyContent: 'center',
+                }}>
+                <Text style={{fontFamily: text.font}}>{I18n.t('brand')}</Text>
+              </View>
+              <View
+                style={{
+                  flex: 1,
+                  borderTopRightRadius: 10,
+                  borderBottomRightRadius: 10,
+                  alignItems: 'center',
+                  justifyContent: 'center',
+                  backgroundColor: settings.colors.btn_bg_theme_color,
+                }}>
+                <Text
+                  style={{
+                    fontFamily: text.font,
+                    color: settings.colors.btn_text_theme_color,
+                    backgroundColor: settings.colors.btn_bg_theme_color,
+                  }}>
+                  {product.brand.slug}
+                </Text>
+              </View>
+            </View>
+          )}
           <ProductInfoWidget element={product} />
           <View
             style={{
@@ -201,12 +262,12 @@ const NormalProductShowScreen = () => {
   );
 };
 
-NormalProductShowScreen.navigationOptions = ({navigation}) => ({
-  // headerTransparent: navigation.state.params.headerBg,
-  // headerStyle: {
-  //   backgroundColor: navigation.state.params.headerBgColor
-  // }
-});
+// NormalProductShowScreen.navigationOptions = ({navigation}) => ({
+//   headerTransparent: navigation.state.params.headerBg,
+//   headerStyle: {
+//     backgroundColor: navigation.state.params.headerBgColor
+//   }
+// });
 
 export default NormalProductShowScreen;
 

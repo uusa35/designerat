@@ -98,40 +98,42 @@ const ProductColorSizeGroup = ({element}) => {
           productAttribute={null}
         />
       )}
-      <View style={{width: '100%', alignSelf: 'center', marginTop: 5}}>
-        <Input
-          spellCheck={true}
-          placeholder={
-            element.notes
-              ? element.notes
-              : I18n.t(
-                  EXPO
-                    ? 'add_notes_shoulders_height_and_other_notes_expo'
-                    : 'add_notes_shoulders_height_and_other_notes',
-                )
-          }
-          containerStyle={{flex: 1}}
-          inputContainerStyle={{
-            borderWidth: 0.5,
-            borderColor: colors.btn_bg_theme_color,
-            borderRadius: iconSizes.tiny,
-            paddingLeft: 10,
-            paddingRight: 10,
-            height: 80,
-          }}
-          inputStyle={{
-            fontFamily: text.font,
-            textAlign: isRTL ? 'right' : 'left',
-          }}
-          defaultValue={notes ? notes : null}
-          disabled={!qty || requestQty <= 0}
-          shake={true}
-          keyboardType="default"
-          multiline={true}
-          numberOfLines={3}
-          onChangeText={(notes) => setNotes(notes)}
-        />
-      </View>
+      <Input
+        spellCheck={true}
+        placeholder={
+          element.notes
+            ? element.notes
+            : I18n.t(
+                EXPO
+                  ? 'add_notes_shoulders_height_and_other_notes_expo'
+                  : 'add_notes_shoulders_height_and_other_notes',
+              )
+        }
+        inputContainerStyle={{
+          borderWidth: 0.5,
+          borderColor: colors.btn_bg_theme_color,
+          borderRadius: iconSizes.tiny,
+          paddingLeft: 10,
+          paddingRight: 10,
+          height: 80,
+          width: '105%',
+          marginTop: 10,
+          position: 'relative',
+          left: -10,
+        }}
+        inputStyle={{
+          fontFamily: text.font,
+          textAlign: isRTL ? 'right' : 'left',
+          lineHeight: 25,
+        }}
+        defaultValue={notes ? notes : null}
+        disabled={!qty || requestQty <= 0}
+        shake={true}
+        keyboardType="default"
+        multiline={true}
+        numberOfLines={3}
+        onChangeText={(notes) => setNotes(notes)}
+      />
       {element.has_stock && element.is_available && (
         <Button
           onPress={() =>

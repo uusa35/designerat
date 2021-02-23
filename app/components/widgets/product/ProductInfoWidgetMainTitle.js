@@ -12,6 +12,8 @@ import {toggleProductFavorite} from '../../../redux/actions/product';
 import ImageLoaderContainer from '../ImageLoaderContainer';
 import {useDispatch, useSelector} from 'react-redux';
 import {isIOS} from '../../../constants';
+import {productWidget} from '../../../constants/sizes';
+import {APP_CASE} from '../../../../app.json';
 
 const ProductInfoWidgetMainTitle = ({element}) => {
   const dispatch = useDispatch();
@@ -35,9 +37,9 @@ const ProductInfoWidgetMainTitle = ({element}) => {
       <ImageLoaderContainer
         img={element.user.thumb}
         style={{
-          width: 60,
-          height: 60,
-          borderRadius: 60 / 2,
+          width: productWidget[APP_CASE].smaller.width / 2,
+          height: productWidget[APP_CASE].smaller.width / 2,
+          borderRadius: productWidget[APP_CASE].smaller.width / 2 / 2,
         }}
         resizeMode={isIOS ? 'contain' : 'cover'}
       />
@@ -46,6 +48,7 @@ const ProductInfoWidgetMainTitle = ({element}) => {
           style={{
             paddingRight: 5,
             paddingLeft: 5,
+            paddingBottom: 5,
             fontSize: 18,
             color: colors.header_one_theme_color,
             textAlign: 'left',

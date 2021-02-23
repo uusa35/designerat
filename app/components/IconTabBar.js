@@ -6,18 +6,19 @@ import {iconSizes} from '../constants/sizes';
 import {EXPO, HOMEKEY, ESCRAP} from './../../app';
 
 const IconTabBar = ({type, name, focused, showLabel = false}) => {
-  const {colors, cartLength} = useContext(GlobalValuesContext);
+  const {colors} = useContext(GlobalValuesContext);
   return (
     <Icon
       size={iconSizes.smaller}
       name={name}
       type={type}
-      // color={focused ? colors.footer_theme_color : colors.btn_bg_theme_color}
-      color={'white'}
-      containerStyle={{
-        borderBottomWidth: focused ? 1 : 0,
-        borderColor: focused ? colors.btn_bg_theme_color : 'transparent',
-      }}
+      color={focused ? colors.footer_theme_color : colors.icon_theme_color}
+      containerStyle={
+        {
+          // borderBottomWidth: focused ? 1 : 0,
+          // borderColor: focused ? colors.btn_bg_theme_color : 'transparent',
+        }
+      }
     />
   );
 };

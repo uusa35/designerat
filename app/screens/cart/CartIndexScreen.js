@@ -14,12 +14,13 @@ import {View as Animating} from 'react-native-animatable';
 import {EXPO, ABATI} from './../../../app';
 import EmptyListWidget from '../../components/Lists/EmptyListWidget';
 import KeyBoardContainer from '../../components/containers/KeyBoardContainer';
-
-const CartIndexScreen = ({navigation}) => {
+import {useNavigation} from '@react-navigation/native';
+const CartIndexScreen = () => {
   const {cart, country, shipmentFees, settings, coupon, area} = useSelector(
     (state) => state,
   );
   const {grossTotal, colors} = useContext(GlobalValuesContext);
+  const navigation = useNavigation();
 
   return (
     <BgContainer showImage={false}>

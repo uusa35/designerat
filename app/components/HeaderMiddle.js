@@ -11,7 +11,6 @@ import {useRoute} from '@react-navigation/native';
 
 export const HeaderMiddle = ({title, showLogo = false}) => {
   const route = useRoute();
-  console.log('the route', route);
   const {app_logo, colors} = useSelector((state) => state.settings);
   return (
     <View style={styles.container}>
@@ -33,7 +32,7 @@ export const HeaderMiddle = ({title, showLogo = false}) => {
             textAlign: 'center',
             color: colors.header_one_theme_color,
           }}>
-          {route.params.name ? route.params.name : title.substring(0, 20)}
+          {route.params?.name ? route.params.name : title.substring(0, 20)}
         </Text>
       )}
     </View>

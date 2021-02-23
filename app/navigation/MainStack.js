@@ -4,31 +4,38 @@ import {createDrawerNavigator} from '@react-navigation/drawer';
 import {createStackNavigator} from '@react-navigation/stack';
 import MainTab from './MainTab';
 import SideMenu from '../components/SideMenu';
-import CartStack from './designerat/CartStack';
-import CategoryStack from './designerat/CategoryStack';
 import {useNetInfo} from '@react-native-community/netinfo';
 import {useDispatch} from 'react-redux';
 import {appBootstrap} from '../redux/actions';
 import AppContainer from '../components/containers/AppContainer';
 import AccountStack from './designerat/AccountStack';
-import AbatiHomeScreen from '../screens/home/AbatiHomeScreen';
-import HomeStack from './designerat/HomeStack';
+import CelebrityIndexScreen from '../screens/celebrity/CelebrityIndexScreen';
 import {HeaderMiddle} from '../components/HeaderMiddle';
+import DesignerShowScreen from '../screens/designer/DesignerShowScreen';
 import {HeaderRight} from '../components/HeaderRight';
-import {HeaderBack} from '../components/HeaderBack';
 import NormalProductShowScreen from '../screens/product/NormalProductShowScreen';
+import LoginScreen from '../screens/auth/LoginScreen';
+import I18n from '../I18n';
+import RegisterScreen from '../screens/auth/RegisterScreen';
+import RoleIndexScreen from '../screens/role/RoleIndexScreen';
+import ImageZoomWidget from '../components/widgets/ImageZoomWidget';
+import ContactusScreen from '../screens/ContactusScreen';
+import HomeStack from './designerat/HomeStack';
+import CategoryStack from './designerat/CategoryStack';
+import AccountStackk from './designerat/AccountStack';
+import CartStack from './designerat/CartStack';
 const Tab = createBottomTabNavigator();
 const Stack = createStackNavigator();
 const Drawer = createDrawerNavigator();
 
-const MainDrawer = () => {
+const MainStack = () => {
   return (
-    <Drawer.Navigator
-      initialRouteName="Home"
-      drawerContent={(props) => <SideMenu {...props} showLogo={true} />}>
-      <Drawer.Screen name="Home" component={HomeStack} />
-    </Drawer.Navigator>
+    <Stack.Navigator
+      screenOptions={{
+        // header: null,
+        tabBarVisible: true,
+      }}></Stack.Navigator>
   );
 };
 
-export default MainDrawer;
+export default MainStack;

@@ -10,15 +10,16 @@ import {useDispatch, useSelector} from 'react-redux';
 import ImageLoaderContainer from './ImageLoaderContainer';
 import {first, filter, isEmpty} from 'lodash';
 import KeyBoardContainer from '../containers/KeyBoardContainer';
+import {useNavigation} from '@react-navigation/native';
 
-const LoginForm = ({showBtns = false, navigation}) => {
+const LoginForm = ({showBtns = false}) => {
   const {roles} = useSelector((state) => state);
   const {logo, colors} = useContext(GlobalValuesContext);
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('password');
   const [visiblePassword, setVisiblePassword] = useState(true);
   const dispatch = useDispatch();
-  const {navigate} = navigation;
+  const {navigate} = useNavigation();
 
   // GoogleSignin.configure({
   //   scopes: ['https://www.googleapis.com/auth/drive.readonly'], // what API you want to access on behalf of the user, default is email and profile
@@ -76,6 +77,14 @@ const LoginForm = ({showBtns = false, navigation}) => {
           shake={true}
           keyboardType="email-address"
           onChangeText={(email) => setEmail(email)}
+          leftIcon={() => (
+            <Icon
+              name="envelope"
+              type="evilicon"
+              size={iconSizes.smaller}
+              onPress={() => setVisiblePassword(!visiblePassword)}
+            />
+          )}
         />
         <Input
           rightIcon={() => (
@@ -83,6 +92,14 @@ const LoginForm = ({showBtns = false, navigation}) => {
               name="eye"
               type="font-awesome"
               size={iconSizes.smallest}
+              onPress={() => setVisiblePassword(!visiblePassword)}
+            />
+          )}
+          leftIcon={() => (
+            <Icon
+              name="lock"
+              type="evilicon"
+              size={iconSizes.smaller}
               onPress={() => setVisiblePassword(!visiblePassword)}
             />
           )}
@@ -119,6 +136,7 @@ const LoginForm = ({showBtns = false, navigation}) => {
           titleStyle={{
             fontFamily: text.font,
             color: colors.btn_text_theme_color,
+            fontWeight: text.bold,
           }}
           onPress={() => dispatch(submitAuth({email, password}))}
         />
@@ -134,6 +152,7 @@ const LoginForm = ({showBtns = false, navigation}) => {
             titleStyle={{
               fontFamily: text.font,
               color: colors.btn_text_theme_color,
+              fontWeight: text.bold,
             }}
             onPress={() => handleRegisterClick()}
           />
@@ -150,6 +169,7 @@ const LoginForm = ({showBtns = false, navigation}) => {
             titleStyle={{
               fontFamily: text.font,
               color: colors.btn_text_theme_color,
+              fontWeight: text.bold,
             }}
             onPress={() => Linking.openURL(`${appUrlIos}password/reset`)}
           />

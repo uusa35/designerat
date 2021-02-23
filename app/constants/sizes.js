@@ -24,42 +24,46 @@ export const bottomContentInset = 200;
 export const TheHold = 0.5;
 export const productWidget = {
   DESIGNERAT: {
+    smaller: {
+      width: 120,
+      height: 193,
+    },
     small: {
-      productWidth: 220,
-      productHeight: 293,
+      width: 220,
+      height: 293,
     },
     medium: {
-      productWidth: 250,
-      productHeight: 333,
+      width: 250,
+      height: 333,
     },
     large: {
-      productWidth: 280,
-      productHeight: 373,
+      width: 280,
+      height: 373,
     },
   },
   x4Small: {
-    productWidth: 100,
-    productHeight: 160,
+    width: 100,
+    height: 160,
   },
   smallest: {
-    productWidth: 150,
-    productHeight: 200,
+    width: 150,
+    height: 200,
   },
   smaller: {
-    productWidth: 200,
-    productHeight: 267,
+    width: 200,
+    height: 267,
   },
   small: {
-    productWidth: 220,
-    productHeight: 293,
+    width: 220,
+    height: 293,
   },
   medium: {
-    productWidth: 250,
-    productHeight: 333,
+    width: 250,
+    height: 333,
   },
   large: {
-    productWidth: 280,
-    productHeight: 373,
+    width: 280,
+    height: 373,
   },
 };
 
@@ -79,51 +83,92 @@ export const userWidget = {
     },
   },
   x4Small: {
-    productWidth: 100,
-    productHeight: 160,
+    width: 100,
+    height: 160,
   },
   smallest: {
-    productWidth: 150,
-    productHeight: 200,
+    width: 150,
+    height: 200,
   },
   smaller: {
-    productWidth: 200,
-    productHeight: 267,
+    width: 200,
+    height: 267,
   },
   small: {
-    productWidth: 220,
-    productHeight: 293,
+    width: 220,
+    height: 293,
   },
   medium: {
-    productWidth: 250,
-    productHeight: 333,
+    width: 250,
+    height: 333,
   },
   large: {
-    productWidth: 280,
-    productHeight: 373,
+    width: 280,
+    height: 373,
+  },
+};
+
+export const categoryWidget = {
+  DESIGNERAT: {
+    small: {
+      width: 80,
+      height: 80,
+    },
+    medium: {
+      width: 150,
+      height: 150,
+    },
+    large: {
+      width: 200,
+      height: 200,
+    },
+  },
+  x4Small: {
+    width: 100,
+    height: 160,
+  },
+  smallest: {
+    width: 150,
+    height: 200,
+  },
+  smaller: {
+    width: 200,
+    height: 267,
+  },
+  small: {
+    width: 220,
+    height: 293,
+  },
+  medium: {
+    width: 250,
+    height: 333,
+  },
+  large: {
+    width: 280,
+    height: 373,
   },
 };
 
 export const serviceWidget = {
   smallest: {
-    productWidth: 150,
-    productHeight: 200,
+    width: 150,
+    height: 200,
   },
   smaller: {
-    productWidth: 200,
-    productHeight: 267,
+    width: 200,
+    height: 267,
   },
   small: {
-    productWidth: 220,
-    productHeight: 293,
+    width: 220,
+    height: 293,
   },
   medium: {
-    productWidth: 250,
-    productHeight: 333,
+    width: 250,
+    height: 333,
   },
   large: {
-    productWidth: 280,
-    productHeight: 373,
+    width: 280,
+    height: 373,
   },
 };
 
@@ -155,5 +200,6 @@ export const text = {
   medium: 15,
   large: 20,
   xlarge: 25,
+  bold: 'bold',
   font: getFont(),
 };

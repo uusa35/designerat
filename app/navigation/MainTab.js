@@ -4,34 +4,51 @@ import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
 import {createDrawerNavigator} from '@react-navigation/drawer';
 import Ionicons from 'react-native-vector-icons/Ionicons';
 import {createStackNavigator} from '@react-navigation/stack';
-import {DrawerActions} from '@react-navigation/native';
+import {DrawerActions, useRoute} from '@react-navigation/native';
 import I18n from '../I18n';
 import {iconSizes, text} from '../constants/sizes';
 import {createMaterialBottomTabNavigator} from '@react-navigation/material-bottom-tabs';
-import HomeStack from './designers/HomeStack';
-import {Icon} from 'react-native-elements';
+import HomeStack from './designerat/HomeStack';
+import CategoryStack from './designerat/CategoryStack';
+import ProductStack from './designerat/ProductStack';
+import CartStack from './designerat/CartStack';
+import AccountStack from './designerat/AccountStack';
 import TextTabBar from '../components/TextTabBar';
 import IconTabBar from '../components/IconTabBar';
 import {useSelector} from 'react-redux';
-import CategoryIndexScreen from '../screens/category/CategoryIndexScreen';
 import ProductIndexAllScreen from '../screens/product/ProductIndexAllScreen';
 import CartIndexScreen from '../screens/cart/CartIndexScreen';
 import SettingsIndexScreen from '../screens/setting/SettingsIndexScreen';
+import AbatiHomeScreen from '../screens/home/AbatiHomeScreen';
+import CategoryIndexScreen from '../screens/category/CategoryIndexScreen';
 import {useContext} from 'react';
 import {GlobalValuesContext} from '../redux/GlobalValuesContext';
-const Tab = createMaterialBottomTabNavigator();
+import {getFocusedRouteNameFromRoute} from '@react-navigation/native';
+
+import {useNavigationState} from '@react-navigation/native';
+
+import {useNavigation} from '@react-navigation/native';
+
+const MaterialTab = createMaterialBottomTabNavigator();
+const Tab = createBottomTabNavigator();
 const Stack = createStackNavigator();
 const Drawer = createDrawerNavigator();
 
 const MainTab = () => {
   const {colors, cartLength} = useContext(GlobalValuesContext);
-  const {categories} = useSelector((state) => state);
   return (
     <Tab.Navigator
       laze={false}
       initialRouteName="Home"
-      barStyle={{
-        backgroundColor: colors.footer_bg_theme_color,
+      activeBackgroundColor="black"
+      inActiveBackgroundColor="black"
+      backBehavior="history"
+      tabBarOptions={{
+        style: {
+          backgroundColor: colors.footer_bg_theme_color,
+        },
+        activeBackgroundColor: colors.footer_bg_theme_color,
+        inactiveBackgroundColor: colors.footer_bg_theme_color,
       }}
       activeColor={colors.footer_theme_color}
       inactiveColor="white"
@@ -39,16 +56,16 @@ const MainTab = () => {
       labeled={true}>
       <Tab.Screen
         name="Home"
-        component={HomeStack}
-        options={({route}) => ({
-          tabBarLabel: (
+        component={AbatiHomeScreen}
+        options={() => ({
+          tabBarLabel: ({focused}) => (
             <TextTabBar
               showLabel={true}
               title={I18n.t('designers')}
-              focused={route.focused}
+              focused={focused}
             />
           ),
-          tabBarIcon: ({focused, color, size}) => (
+          tabBarIcon: ({focused}) => (
             <IconTabBar
               name="home"
               type="octicon"
@@ -56,6 +73,7 @@ const MainTab = () => {
               showLabel={true}
             />
           ),
+          tabBarVisible: true,
         })}
         headerLeft={({navigation}) => (
           <Ionicons
@@ -69,15 +87,15 @@ const MainTab = () => {
       <Tab.Screen
         name="CategoryIndex"
         component={CategoryIndexScreen}
-        options={({route}) => ({
-          tabBarLabel: (
+        options={({}) => ({
+          tabBarLabel: ({focused}) => (
             <TextTabBar
               showLabel={true}
               title={I18n.t('categories')}
-              focused={route.focused}
+              focused={focused}
             />
           ),
-          tabBarIcon: ({focused, color, size}) => (
+          tabBarIcon: ({focused}) => (
             <IconTabBar
               name="layers"
               type="entypo"
@@ -90,15 +108,15 @@ const MainTab = () => {
       <Tab.Screen
         name="ProductIndex"
         component={ProductIndexAllScreen}
-        options={({route}) => ({
-          tabBarLabel: (
+        options={() => ({
+          tabBarLabel: ({focused}) => (
             <TextTabBar
               showLabel={true}
               title={I18n.t('market')}
-              focused={route.focused}
+              focused={focused}
             />
           ),
-          tabBarIcon: ({focused, color, size}) => (
+          tabBarIcon: ({focused}) => (
             <IconTabBar
               name="shirt-sharp"
               type="ionicon"
@@ -112,14 +130,14 @@ const MainTab = () => {
         name="CartIndex"
         component={CartIndexScreen}
         options={({route}) => ({
-          tabBarLabel: (
+          tabBarLabel: ({focused}) => (
             <TextTabBar
               showLabel={true}
               title={I18n.t('cart')}
-              focused={route.focused}
+              focused={focused}
             />
           ),
-          tabBarIcon: ({focused, color, size}) => (
+          tabBarIcon: ({focused}) => (
             <IconTabBar
               name="cart"
               type="ionicon"
@@ -127,20 +145,21 @@ const MainTab = () => {
               showLabel={true}
             />
           ),
+          tabBarBadge: cartLength ? cartLength : null,
         })}
       />
       <Tab.Screen
         name="SettingIndex"
         component={SettingsIndexScreen}
         options={({route}) => ({
-          tabBarLabel: (
+          tabBarLabel: ({focused}) => (
             <TextTabBar
               showLabel={true}
               title={I18n.t('my_account')}
-              focused={route.focused}
+              focused={focused}
             />
           ),
-          tabBarIcon: ({focused, color, size}) => (
+          tabBarIcon: ({focused}) => (
             <IconTabBar
               name="ios-person-circle"
               type="ionicon"

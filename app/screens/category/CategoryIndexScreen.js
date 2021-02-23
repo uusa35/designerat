@@ -21,11 +21,16 @@ const CategoryIndexScreen = () => {
           useNativeDriver={true}
           animation="bounceIn"
           easing="ease-out"
-          style={{flex: show_commercials ? 0.8 : 1, backgroundColor: 'white'}}>
+          style={{
+            flex: show_commercials ? 0.8 : 1,
+            backgroundColor: 'white',
+            marginTop: '5%',
+          }}>
           <CategoriesList
             elements={homeCategories}
-            columns={2}
+            columns={1}
             showBtn={true}
+            showName={true}
             type={ABATI || MALLR || EXPO || DAILY ? 'product' : 'classified'}
           />
         </View>

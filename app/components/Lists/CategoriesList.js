@@ -19,7 +19,13 @@ import {getSearchProducts} from '../../redux/actions/product';
 import {setCategoryAndGoToNavChildren} from '../../redux/actions/category';
 import {getSearchClassifieds} from '../../redux/actions/classified';
 import {useNavigation} from '@react-navigation/native';
-const CategoriesList = ({elements, columns, type, showBtn = false}) => {
+const CategoriesList = ({
+  elements,
+  columns,
+  type,
+  showBtn = false,
+  showName,
+}) => {
   const {country} = useSelector((state) => state);
   const dispatch = useDispatch();
   const {goBack} = useNavigation();
@@ -34,7 +40,7 @@ const CategoriesList = ({elements, columns, type, showBtn = false}) => {
 
   useEffect(() => {}, [elements]);
 
-  const handleClick = useCallback((c) => {
+  const handleClick = (c) => {
     switch (type) {
       case 'product':
         dispatch(
@@ -63,7 +69,7 @@ const CategoriesList = ({elements, columns, type, showBtn = false}) => {
       default:
         null;
     }
-  });
+  };
 
   return (
     <ScrollView
@@ -81,7 +87,10 @@ const CategoriesList = ({elements, columns, type, showBtn = false}) => {
         />
       }>
       <View
-        style={[styles.wrapper, {flexDirection: columns ? 'row' : 'column'}]}>
+        style={[
+          styles.wrapper,
+          {flexDirection: columns > 1 ? 'row' : 'column'},
+        ]}>
         {!validate.isEmpty(elements) ? (
           map(elements, (c, i) => (
             <CategoryWidget
@@ -91,6 +100,7 @@ const CategoriesList = ({elements, columns, type, showBtn = false}) => {
               columns={columns}
               type={type}
               showBtn={showBtn}
+              showName={showName}
             />
           ))
         ) : (

@@ -12,16 +12,24 @@ import ProductShowScreen from '../../screens/product/ProductShowScreen';
 import NormalProductShowScreen from '../../screens/product/NormalProductShowScreen';
 import ContactusScreen from '../../screens/ContactusScreen';
 import ImageZoomWidget from '../../components/widgets/ImageZoomWidget';
-
+import LoginScreen from '../../screens/auth/LoginScreen';
+import RegisterScreen from '../../screens/auth/RegisterScreen';
+import RoleIndexScreen from '../../screens/role/RoleIndexScreen';
 import {GlobalValuesContext} from '../../redux/GlobalValuesContext';
+import {HeaderBack} from '../../components/HeaderBack';
+import MainTab from '../MainTab';
+import Ionicons from 'react-native-vector-icons/Ionicons';
+import {DrawerActions} from '@react-navigation/native';
 
 const Stack = createStackNavigator();
 const HomeStack = () => {
   const {colors} = useContext(GlobalValuesContext);
   return (
     <Stack.Navigator
+      initialRouteName="Home"
       screenOptions={{
-        headerBackTitleVisible: false,
+        tabBarVisible: false,
+        // headerBackTitleVisible: false,
         headerStyle: {
           backgroundColor: colors.header_theme_bg,
         },
@@ -30,29 +38,22 @@ const HomeStack = () => {
         },
       }}>
       <Stack.Screen
-        name="Home"
-        headerBackTitleVisible={false}
-        component={AbatiHomeScreen}
-        options={{
-          headerBackTitleVisible: false,
-          headerStyle: {
-            backgroundColor: colors.header_theme_bg,
-          },
-          headerTitleStyle: {
-            color: colors.header_theme_color,
-          },
-          headerRight: () => (
-            <HeaderRight
-              showCart={false}
-              showProductsSearch={true}
-              showProductFavorite={true}
+        options={({navigation}) => ({
+          headerLeft: () => (
+            <Ionicons
+              name="ios-menu"
+              size={25}
+              style={[{color: 'black'}]}
+              onPress={() => navigation.dispatch(DrawerActions.toggleDrawer())}
             />
           ),
-          headerLeft: () => <HeaderLeft />,
-          headerTitle: () => (
-            <HeaderMiddle title={I18n.t('home')} showLogo={true} />
+          headerTitle: () => <HeaderMiddle showLogo={true} />,
+          headerRight: () => (
+            <HeaderRight showCart={true} displayShare={true} />
           ),
-        }}
+        })}
+        name={'Home'}
+        component={MainTab}
       />
       <Stack.Screen name={'UserShow'} component={CelebrityIndexScreen} />
       <Stack.Screen
@@ -69,9 +70,36 @@ const HomeStack = () => {
           headerRight: () => (
             <HeaderRight showCart={true} displayShare={true} />
           ),
+          headerLeft: (props) => <HeaderBack {...props} />,
         }}
         component={NormalProductShowScreen}
-        headerBackTitleVisible={false}
+      />
+      <Stack.Screen
+        name={'Login'}
+        component={LoginScreen}
+        options={{
+          headerRight: () => <HeaderRight />,
+          headerTitle: () => <HeaderMiddle title={I18n.t('login')} />,
+          headerBackTitle: () => null,
+        }}
+      />
+      <Stack.Screen
+        name={'Register'}
+        component={RegisterScreen}
+        options={{
+          headerRight: () => <HeaderRight />,
+          headerTitle: () => <HeaderMiddle title={I18n.t('register')} />,
+          headerBackTitle: () => null,
+        }}
+      />
+      <Stack.Screen
+        name={'RoleIndex'}
+        component={RoleIndexScreen}
+        options={{
+          headerRight: () => <HeaderRight />,
+          headerTitle: () => <HeaderMiddle title={I18n.t('roles')} />,
+          headerBackTitle: () => null,
+        }}
       />
       <Stack.Screen
         name={'ImageZoom'}

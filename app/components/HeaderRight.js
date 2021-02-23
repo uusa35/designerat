@@ -30,6 +30,7 @@ export const HeaderRight = ({
   showExpoSearch = false,
   showHome = false,
   showCart = false,
+  showProductFavorite = false,
 }) => {
   const {country, settings, countryModal} = useSelector((state) => state);
   const {cartLength, colors} = useContext(GlobalValuesContext);
@@ -141,6 +142,17 @@ export const HeaderRight = ({
           }}
           name="search1"
           type="antdesign"
+          size={iconSizes.small}
+          underlayColor="transparent"
+          hitSlop={{top: 15, bottom: 15, left: 15, right: 15}}
+          color="black"
+        />
+      )}
+      {showProductFavorite && (
+        <Icon
+          onPress={() => {}}
+          name="heart-outline"
+          type="ionicon"
           size={iconSizes.small}
           underlayColor="transparent"
           hitSlop={{top: 15, bottom: 15, left: 15, right: 15}}
