@@ -83,15 +83,13 @@ const SettingsIndexScreen = ({navigation}) => {
           easing="ease-out"
           useNativeDriver={true}
           style={styles.container}>
-          {!guest && (MALLR || ABATI) ? (
-            <TouchableOpacity
-              activeOpacity={touchOpacity}
-              onPress={() => navigation.navigate('FavoriteProductIndex')}
-              style={styles.btnWrapper}>
-              <Icon name="staro" type="antdesign" size={iconSizes.medium} />
-              <Text style={styles.btnTitle}>{I18n.t('product_favorites')}</Text>
-            </TouchableOpacity>
-          ) : null}
+          <TouchableOpacity
+            activeOpacity={touchOpacity}
+            onPress={() => navigation.navigate('FavoriteProductIndex')}
+            style={styles.btnWrapper}>
+            <Icon name="staro" type="antdesign" size={iconSizes.medium} />
+            <Text style={styles.btnTitle}>{I18n.t('product_favorites')}</Text>
+          </TouchableOpacity>
           {!guest && (HOMEKEY || ESCRAP) ? (
             <Fragment>
               <TouchableOpacity

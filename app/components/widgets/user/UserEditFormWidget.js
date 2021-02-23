@@ -32,6 +32,7 @@ import {isNull} from 'lodash';
 import {useDispatch, useSelector} from 'react-redux';
 import BgContainer from '../../containers/BgContainer';
 import KeyBoardContainer from '../../containers/KeyBoardContainer';
+import {useNavigation} from '@react-navigation/native';
 
 const UserEditFormWidget = ({showIcon = true}) => {
   const {colors, logo} = useContext(GlobalValuesContext);
@@ -43,7 +44,7 @@ const UserEditFormWidget = ({showIcon = true}) => {
   const [description, setDescription] = useState(auth.address);
   const [image, setImage] = useState(null);
   const [sampleLogo, setSampleLogo] = useState(null);
-  const {goBack, navigate, dangerouslyGetParent} = navigation;
+  const {goBack, navigate, dangerouslyGetParent} = useNavigation();
   const parent = dangerouslyGetParent();
   const dispatch = useDispatch();
   const [selectedCountry, setSelectedCountry] = useState(auth.country);

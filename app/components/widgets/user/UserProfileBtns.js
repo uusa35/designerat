@@ -4,10 +4,11 @@ import I18n from '../../../I18n';
 import React, {useContext} from 'react';
 import {GlobalValuesContext} from '../../../redux/GlobalValuesContext';
 import {View} from 'react-native-animatable';
+import {useNavigation} from '@react-navigation/native';
 
-const UserProfileBtns = ({navigation}) => {
+const UserProfileBtns = () => {
   const {colors} = useContext(GlobalValuesContext);
-  const {navigate} = navigation;
+  const {navigate} = useNavigation();
   return (
     <View
       animation="fadeInUpBig"

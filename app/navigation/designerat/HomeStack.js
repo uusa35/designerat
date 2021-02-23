@@ -16,6 +16,10 @@ import LoginScreen from '../../screens/auth/LoginScreen';
 import RegisterScreen from '../../screens/auth/RegisterScreen';
 import RoleIndexScreen from '../../screens/role/RoleIndexScreen';
 import PaymentIndexScreen from '../../screens/PaymentIndexScreen';
+import ProfileIndexScreen from '../../screens/auth/ProfileIndexScreen';
+import UserEditScreen from '../../screens/auth/UserEditScreen';
+import FavoriteProductIndexScreen from '../../screens/product/FavoriteProductIndexScreen';
+import OrderIndexScreen from '../../screens/OrderIndexScreen';
 import {GlobalValuesContext} from '../../redux/GlobalValuesContext';
 import {HeaderBack} from '../../components/HeaderBack';
 import MainTab from '../MainTab';
@@ -143,6 +147,63 @@ const HomeStack = () => {
           headerLeft: () => <HeaderBack removeCart={true} />,
         }}
       />
+      <Stack.Screen
+        name="ProfileIndex"
+        component={ProfileIndexScreen}
+        options={{
+          headerStyle: {
+            backgroundColor: colors.header_theme_bg,
+          },
+          headerTitleStyle: {
+            color: colors.header_theme_color,
+          },
+          headerTitle: () => (
+            <HeaderMiddle title={I18n.t('cart_confirmation')} />
+          ),
+        }}
+      />
+      <Stack.Screen
+        name="UserEdit"
+        component={UserEditScreen}
+        options={{
+          headerStyle: {
+            backgroundColor: colors.header_theme_bg,
+          },
+          headerTitleStyle: {
+            color: colors.header_theme_color,
+          },
+          headerTitle: () => (
+            <HeaderMiddle title={I18n.t('edit_information')} />
+          ),
+        }}
+      />
+      <Stack.Screen
+        name="FavoriteProductIndex"
+        component={FavoriteProductIndexScreen}
+        options={{
+          headerStyle: {
+            backgroundColor: colors.header_theme_bg,
+          },
+          headerTitleStyle: {
+            color: colors.header_theme_color,
+          },
+          headerTitle: () => <HeaderMiddle title={I18n.t('wishlist')} />,
+        }}
+      />
+      <Stack.Screen
+        name="OrderIndex"
+        component={OrderIndexScreen}
+        options={{
+          headerStyle: {
+            backgroundColor: colors.header_theme_bg,
+          },
+          headerTitleStyle: {
+            color: colors.header_theme_color,
+          },
+          headerTitle: () => <HeaderMiddle title={I18n.t('order_history')} />,
+        }}
+      />
+
       <Stack.Screen name={'Contactus'} component={ContactusScreen} />
     </Stack.Navigator>
   );
