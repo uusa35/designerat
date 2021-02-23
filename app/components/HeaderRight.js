@@ -148,17 +148,6 @@ export const HeaderRight = ({
           color="black"
         />
       )}
-      {showProductFavorite && (
-        <Icon
-          onPress={() => {}}
-          name="heart-outline"
-          type="ionicon"
-          size={iconSizes.small}
-          underlayColor="transparent"
-          hitSlop={{top: 15, bottom: 15, left: 15, right: 15}}
-          color="black"
-        />
-      )}
       {showExpoSearch && (
         <Icon
           onPress={() => {
@@ -188,7 +177,7 @@ export const HeaderRight = ({
       {showCart && (
         <View>
           <Icon
-            onPress={() => navigation.navigate('CartIndex')}
+            onPress={() => navigation.navigate('CartTab')}
             name="shoppingcart"
             type="antdesign"
             size={iconSizes.small}
@@ -209,6 +198,17 @@ export const HeaderRight = ({
             />
           ) : null}
         </View>
+      )}
+      {showProductFavorite && (
+        <Icon
+          onPress={() => {}}
+          name="heart-outline"
+          type="ionicon"
+          size={iconSizes.small}
+          underlayColor="transparent"
+          hitSlop={{top: 15, bottom: 15, left: 15, right: 15}}
+          color="black"
+        />
       )}
     </View>
   );

@@ -10,8 +10,9 @@ import CartListConfirmationScreen from '../../components/widgets/cart/CartListCo
 import {GlobalValuesContext} from '../../redux/GlobalValuesContext';
 import KeyBoardContainer from '../../components/containers/KeyBoardContainer';
 import BgContainer from '../../components/containers/BgContainer';
+import {useNavigation} from '@react-navigation/native';
 
-const CartConfirmationScreen = ({navigation}) => {
+const CartConfirmationScreen = () => {
   const {
     cart,
     country,
@@ -22,6 +23,7 @@ const CartConfirmationScreen = ({navigation}) => {
     coupon,
   } = useSelector((state) => state);
   const {grossTotal, colors} = useContext(GlobalValuesContext);
+  const navigation = useNavigation();
 
   return (
     <BgContainer>

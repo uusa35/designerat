@@ -3,16 +3,18 @@ import {WebView} from 'react-native-webview';
 import {useDispatch, useSelector} from 'react-redux';
 import {isEmpty} from 'lodash';
 import BgContainer from '../components/containers/BgContainer';
+import {useRoute} from '@react-navigation/native';
 
-const PaymentIndexScreen = ({navigation}) => {
+const PaymentIndexScreen = () => {
   const {cart} = useSelector((state) => state);
   const dispatch = useDispatch();
+  const route = useRoute();
 
   return (
     <BgContainer>
       <WebView
         useWebKit={true}
-        source={{uri: navigation.state.params.paymentUrl}}
+        source={{uri: route.params.paymentUrl}}
         style={{marginTop: 20}}
         injectedJavaScript={'(function(){ return "test"}());'}
         onNavigationStateChange={(navEvent) =>

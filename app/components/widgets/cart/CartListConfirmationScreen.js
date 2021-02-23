@@ -20,6 +20,7 @@ import {GlobalValuesContext} from '../../../redux/GlobalValuesContext';
 import {MALLR, ABATI, HOMEKEY, PAYMENT} from './../../../../app';
 import validate from 'validate.js';
 import {useDispatch} from 'react-redux';
+import {useNavigation, useRoute} from '@react-navigation/native';
 
 const CartListConfirmationScreen = ({
   cart,
@@ -32,19 +33,12 @@ const CartListConfirmationScreen = ({
   editModeDefault = true,
   coupon = {},
   COD,
-  navigation,
 }) => {
   const dispatch = useDispatch();
   const {colors, total} = useContext(GlobalValuesContext);
-  const navigation = navigation;
-  const {
-    cName,
-    cEmail,
-    cMobile,
-    cAddress,
-    cNotes,
-    cArea,
-  } = navigation.state.params;
+  const navigation = useNavigation();
+  const route = useRoute();
+  const {cName, cEmail, cMobile, cAddress, cNotes, cArea} = route.params;
   const [name, setName] = useState(cName);
   const [email, setEmail] = useState(cEmail);
   const [mobile, setMobile] = useState(cMobile);

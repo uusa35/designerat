@@ -68,7 +68,7 @@ export const HeaderLeft = ({
       {showCart ? (
         <View>
           <Icon
-            onPress={() => navigation.navigate('CartIndex')}
+            onPress={() => navigation.navigate('CartTab')}
             name="shoppingcart"
             type="antdesign"
             size={iconSizes.small}

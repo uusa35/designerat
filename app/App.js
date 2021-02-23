@@ -21,9 +21,6 @@ import {createNativeStackNavigator} from 'react-native-screens/native-stack';
 const SwitchNavigator = createSwitchNavigator(
   {
     MainDrawer,
-    CategoryStack,
-    CartStack,
-    AccountStack,
   },
   {
     initialRouteName: 'MainDrawer',

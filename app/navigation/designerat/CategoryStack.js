@@ -47,7 +47,7 @@ const CategoryStack = () => {
           headerRight: () => (
             <HeaderRight
               showCart={false}
-              showProductsSearch={true}
+              showProductsSearch={false}
               showProductFavorite={true}
             />
           ),

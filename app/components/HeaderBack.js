@@ -6,24 +6,34 @@ import {StyleSheet} from 'react-native';
 import {Icon} from 'react-native-elements';
 import {
   useNavigation,
-  useRoute,
-  getFocusedRouteNameFromRoute,
+  TabActions,
+  DrawerActions,
 } from '@react-navigation/native';
+import {clearCart} from '../redux/actions/cart';
+import {useDispatch} from 'react-redux';
 
-export const HeaderBack = (props) => {
-  const route = useRoute();
-  console.log('the routte', route);
-  console.log('the props', props);
+export const HeaderBack = ({removeCart = false}) => {
   const navigation = useNavigation();
-  const test = getFocusedRouteNameFromRoute(route);
-  console.log('test', test);
-  console.log('navigation', navigation);
+  const dispatch = useDispatch();
+
+  console.log(navigation);
+
+  const handleBack = () => {
+    if (removeCart) {
+      dispatch(clearCart());
+      navigation.navigate('CartTab');
+    } else {
+      navigation.goBack();
+    }
+  };
+
   return (
     <Icon
       type="fontawesome"
       name="chevron-right"
       size={32}
-      onPress={() => navigation.goBack()}
+      // onPress={() => handleBack()}
+      onPress={() => handleBack()}
       underlayColor="transparent"
       hitSlop={{top: 30, bottom: 30, left: 30, right: 30}}
       color="black"

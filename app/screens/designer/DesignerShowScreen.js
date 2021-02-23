@@ -28,6 +28,7 @@ import ElementsHorizontalList from '../../components/Lists/ElementsHorizontalLis
 import {GlobalValuesContext} from '../../redux/GlobalValuesContext';
 import BgContainer from '../../components/containers/BgContainer';
 import {useNavigation} from '@react-navigation/native';
+import ImageLoaderContainer from '../../components/widgets/ImageLoaderContainer';
 
 const DesignerShowScreen = ({route}) => {
   const {designer, comments, commentModal, searchParams} = useSelector(
@@ -107,6 +108,12 @@ const DesignerShowScreen = ({route}) => {
             onRefresh={() => handleRefresh()}
           />
         }>
+        {designer.banner && (
+          <ImageLoaderContainer
+            img={designer.banner}
+            style={{width: '100%', height: 140}}
+          />
+        )}
         <View style={styles.wrapper}>
           <TriggeringView
           // onHide={() => console.log('text hidden')}

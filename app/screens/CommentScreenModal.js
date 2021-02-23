@@ -6,9 +6,11 @@ import CommentsList from '../components/Lists/CommentsList';
 import {Icon} from 'react-native-elements';
 import {isRTL} from '../I18n';
 import {useDispatch} from 'react-redux';
+import {useNavigation} from '@react-navigation/native';
 
 const CommentScreenModal = ({commentModal, elements, model, id}) => {
   const dispatch = useDispatch();
+  const navigation = useNavigation();
   const [visible, setVisible] = useState(commentModal);
   return (
     <SafeAreaView horizontal="always">

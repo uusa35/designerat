@@ -685,5 +685,6 @@
   "market" : "السوق",
   "show_all" : "عرض الكل",
   "my_account" : "حسابي",
-  "brand" : "الماركة"
+  "brand" : "الماركة",
+  "payment_page" : "صفحة الدفع"
 }

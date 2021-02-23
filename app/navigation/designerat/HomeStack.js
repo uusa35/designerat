@@ -15,11 +15,13 @@ import ImageZoomWidget from '../../components/widgets/ImageZoomWidget';
 import LoginScreen from '../../screens/auth/LoginScreen';
 import RegisterScreen from '../../screens/auth/RegisterScreen';
 import RoleIndexScreen from '../../screens/role/RoleIndexScreen';
+import PaymentIndexScreen from '../../screens/PaymentIndexScreen';
 import {GlobalValuesContext} from '../../redux/GlobalValuesContext';
 import {HeaderBack} from '../../components/HeaderBack';
 import MainTab from '../MainTab';
 import Ionicons from 'react-native-vector-icons/Ionicons';
 import {DrawerActions} from '@react-navigation/native';
+import CartConfirmationScreen from '../../screens/cart/CartConfirmationScreen';
 
 const Stack = createStackNavigator();
 const HomeStack = () => {
@@ -29,7 +31,7 @@ const HomeStack = () => {
       initialRouteName="Home"
       screenOptions={{
         tabBarVisible: false,
-        // headerBackTitleVisible: false,
+        headerBackTitleVisible: false,
         headerStyle: {
           backgroundColor: colors.header_theme_bg,
         },
@@ -49,10 +51,10 @@ const HomeStack = () => {
           ),
           headerTitle: () => <HeaderMiddle showLogo={true} />,
           headerRight: () => (
-            <HeaderRight showCart={true} displayShare={true} />
+            <HeaderRight showCart={true} showProductFavorite={true} />
           ),
         })}
-        name={'Home'}
+        name={'MainTab'}
         component={MainTab}
       />
       <Stack.Screen name={'UserShow'} component={CelebrityIndexScreen} />
@@ -60,6 +62,9 @@ const HomeStack = () => {
         name={'DesignerShow'}
         options={{
           headerTitle: () => <HeaderMiddle />,
+          headerRight: () => (
+            <HeaderRight showCart={true} displayShare={true} />
+          ),
         }}
         component={DesignerShowScreen}
       />
@@ -70,7 +75,6 @@ const HomeStack = () => {
           headerRight: () => (
             <HeaderRight showCart={true} displayShare={true} />
           ),
-          headerLeft: (props) => <HeaderBack {...props} />,
         }}
         component={NormalProductShowScreen}
       />
@@ -108,6 +112,35 @@ const HomeStack = () => {
           headerRight: () => <HeaderRight />,
           headerTitle: () => <HeaderMiddle />,
           headerBackTitle: () => null,
+        }}
+      />
+      <Stack.Screen
+        name="CartConfirmation"
+        component={CartConfirmationScreen}
+        options={{
+          headerStyle: {
+            backgroundColor: colors.header_theme_bg,
+          },
+          headerTitleStyle: {
+            color: colors.header_theme_color,
+          },
+          headerTitle: () => (
+            <HeaderMiddle title={I18n.t('cart_confirmation')} />
+          ),
+        }}
+      />
+      <Stack.Screen
+        name="PaymentIndex"
+        component={PaymentIndexScreen}
+        options={{
+          headerStyle: {
+            backgroundColor: colors.header_theme_bg,
+          },
+          headerTitleStyle: {
+            color: colors.header_theme_color,
+          },
+          headerTitle: () => <HeaderMiddle title={I18n.t('payment_page')} />,
+          headerLeft: () => <HeaderBack removeCart={true} />,
         }}
       />
       <Stack.Screen name={'Contactus'} component={ContactusScreen} />

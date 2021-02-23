@@ -388,7 +388,7 @@ export function* startSubmitAuthScenario(action) {
             }),
           );
         } else {
-          yield put(RootNavigation.back());
+          RootNavigation.back();
         }
       }
     } else {

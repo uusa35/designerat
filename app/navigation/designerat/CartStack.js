@@ -18,7 +18,9 @@ import RoleIndexScreen from '../../screens/role/RoleIndexScreen';
 import CategoryIndexScreen from '../../screens/category/CategoryIndexScreen';
 import ProductIndexAllScreen from '../../screens/product/ProductIndexAllScreen';
 import CartIndexScreen from '../../screens/cart/CartIndexScreen';
+import CartConfirmationScreen from '../../screens/cart/CartConfirmationScreen';
 import {GlobalValuesContext} from '../../redux/GlobalValuesContext';
+import {HeaderBack} from '../../components/HeaderBack';
 
 const Stack = createStackNavigator();
 const CartStack = () => {
@@ -26,7 +28,7 @@ const CartStack = () => {
   return (
     <Stack.Navigator
       screenOptions={{
-        headerBackTitleVisible: false,
+        // headerBackTitleVisible: false,
         headerStyle: {
           backgroundColor: colors.header_theme_bg,
         },
@@ -46,17 +48,6 @@ const CartStack = () => {
           headerTitleStyle: {
             color: colors.header_theme_color,
           },
-          headerRight: () => (
-            <HeaderRight
-              showCart={false}
-              showProductsSearch={true}
-              showProductFavorite={true}
-            />
-          ),
-          headerLeft: () => <HeaderLeft />,
-          headerTitle: () => (
-            <HeaderMiddle title={I18n.t('market')} showLogo={true} />
-          ),
         }}
       />
     </Stack.Navigator>

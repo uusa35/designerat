@@ -28,6 +28,9 @@ import {getFocusedRouteNameFromRoute} from '@react-navigation/native';
 import {useNavigationState} from '@react-navigation/native';
 
 import {useNavigation} from '@react-navigation/native';
+import {HeaderRight} from '../components/HeaderRight';
+import {HeaderLeft} from '../components/HeaderLeft';
+import {HeaderMiddle} from '../components/HeaderMiddle';
 
 const MaterialTab = createMaterialBottomTabNavigator();
 const Tab = createBottomTabNavigator();
@@ -85,7 +88,7 @@ const MainTab = () => {
         )}
       />
       <Tab.Screen
-        name="CategoryIndex"
+        name="CategoryTab"
         component={CategoryIndexScreen}
         options={({}) => ({
           tabBarLabel: ({focused}) => (
@@ -106,7 +109,7 @@ const MainTab = () => {
         })}
       />
       <Tab.Screen
-        name="ProductIndex"
+        name="ProductTab"
         component={ProductIndexAllScreen}
         options={() => ({
           tabBarLabel: ({focused}) => (
@@ -127,7 +130,7 @@ const MainTab = () => {
         })}
       />
       <Tab.Screen
-        name="CartIndex"
+        name="CartTab"
         component={CartIndexScreen}
         options={({route}) => ({
           tabBarLabel: ({focused}) => (
@@ -149,7 +152,7 @@ const MainTab = () => {
         })}
       />
       <Tab.Screen
-        name="SettingIndex"
+        name="SettingTab"
         component={SettingsIndexScreen}
         options={({route}) => ({
           tabBarLabel: ({focused}) => (

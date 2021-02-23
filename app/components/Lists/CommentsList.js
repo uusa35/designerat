@@ -15,9 +15,10 @@ import I18n from '../../I18n';
 import validate from 'validate.js';
 import {hideCommentModal} from '../../redux/actions';
 import {useDispatch, useSelector} from 'react-redux';
+import {useNavigation} from '@react-navigation/native';
 
-const CommentsList = ({elements, model, id, navigation}) => {
-  const {navigate} = navigation;
+const CommentsList = ({elements, model, id}) => {
+  const {navigate} = useNavigation();
   const [refresh, setRefresh] = useState(false);
   const {guest} = useSelector((state) => state);
   const dispatch = useDispatch();

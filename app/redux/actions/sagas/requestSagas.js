@@ -530,20 +530,15 @@ export function* startSubmitCartScenario(action) {
     } = action.payload;
     const result = validate({name, mobile, email, address}, registerConstrains);
     if (validate.isEmpty(result)) {
-      yield put(
-        RootNavigation.navigate({
-          routeName: 'CartConfirmation',
-          params: {
-            cName: name,
-            cEmail: email,
-            cMobile: mobile,
-            cAddress: address,
-            country_id,
-            cArea: area,
-            cNotes: notes,
-          },
-        }),
-      );
+      RootNavigation.navigate('CartConfirmation', {
+        cName: name,
+        cEmail: email,
+        cMobile: mobile,
+        cAddress: address,
+        country_id,
+        cArea: area,
+        cNotes: notes,
+      });
     } else {
       throw result['name']
         ? result['name'].toString()
@@ -631,14 +626,9 @@ export function* startCreateTapPaymentUrlScenario(action) {
     yield call(enableLoading);
     const url = yield call(api.makeTapPayment, action.payload);
     if (validate.isObject(url) && url.paymentUrl.includes('http')) {
-      yield put(
-        RootNavigation.navigate({
-          routeName: 'PaymentIndex',
-          params: {
-            paymentUrl: url.paymentUrl,
-          },
-        }),
-      );
+      RootNavigation.navigate('PaymentIndex', {
+        paymentUrl: url.paymentUrl,
+      });
     } else {
       throw url;
     }

@@ -26,7 +26,7 @@ const MainDrawer = () => {
     <Drawer.Navigator
       initialRouteName="Home"
       drawerContent={(props) => <SideMenu {...props} showLogo={true} />}>
-      <Drawer.Screen name="Home" component={HomeStack} />
+      <Drawer.Screen name="HomeStack" component={HomeStack} />
     </Drawer.Navigator>
   );
 };

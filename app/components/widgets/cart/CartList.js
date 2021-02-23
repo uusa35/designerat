@@ -618,7 +618,7 @@ const CartList = ({
                     address,
                     country_id: shipmentCountry.id,
                     notes,
-                    area: area ? area : selectedArea.slug,
+                    area: area ? area : 'N/A',
                   }),
                 )
               }
