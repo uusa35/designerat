@@ -687,5 +687,6 @@
   "my_account" : "حسابي",
   "brand" : "الماركة",
   "payment_page" : "صفحة الدفع",
-  "buy_now" : "اشتر الآن"
+  "buy_now" : "اشتر الآن",
+  "products_number" : "عدد المنتجات"
 }

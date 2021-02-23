@@ -28,7 +28,6 @@ const widgetStyles = StyleSheet.create({
     fontFamily: text.font,
     fontSize: text.large,
     shadowColor: '#000',
-    paddingLeft: 15,
     shadowOffset: {
       width: 0,
       height: 1,
@@ -42,7 +41,6 @@ const widgetStyles = StyleSheet.create({
     fontFamily: text.font,
     fontSize: text.xlarge,
     shadowColor: '#000',
-    paddingLeft: 15,
     shadowOffset: {
       width: 0,
       height: 1,
@@ -56,7 +54,6 @@ const widgetStyles = StyleSheet.create({
     fontFamily: text.font,
     fontSize: text.large,
     shadowColor: '#000',
-    paddingLeft: 15,
     shadowOffset: {
       width: 0,
       height: 1,
@@ -70,7 +67,6 @@ const widgetStyles = StyleSheet.create({
     fontFamily: text.font,
     fontSize: text.medium,
     shadowColor: '#000',
-    paddingLeft: 15,
     shadowOffset: {
       width: 0,
       height: 1,
@@ -84,7 +80,6 @@ const widgetStyles = StyleSheet.create({
     fontFamily: text.font,
     fontSize: text.small,
     shadowColor: '#000',
-    paddingLeft: 15,
     shadowOffset: {
       width: 0,
       height: 1,
@@ -98,7 +93,6 @@ const widgetStyles = StyleSheet.create({
     fontFamily: text.font,
     fontSize: text.smaller,
     shadowColor: '#000',
-    paddingLeft: 15,
     shadowOffset: {
       width: 0,
       height: 1,
@@ -112,7 +106,6 @@ const widgetStyles = StyleSheet.create({
     fontFamily: text.font,
     fontSize: text.smallest,
     shadowColor: '#000',
-    paddingLeft: 15,
     shadowOffset: {
       width: 0,
       height: 1,
@@ -124,7 +117,6 @@ const widgetStyles = StyleSheet.create({
   },
   simpleShadow: {
     shadowColor: '#000',
-    paddingLeft: 15,
     shadowOffset: {
       width: 0,
       height: 1,

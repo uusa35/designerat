@@ -153,8 +153,7 @@ const ProductWidget = ({
                 style={{
                   fontFamily: text.font,
                   fontSize: text.small,
-                  textAlign: 'left',
-                  marginLeft: 10,
+                  textAlign: 'center',
                   color: 'white',
                 }}>
                 {I18n.t('buy_now')}

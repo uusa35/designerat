@@ -30,6 +30,7 @@ import MainTab from '../MainTab';
 import Ionicons from 'react-native-vector-icons/Ionicons';
 import {DrawerActions} from '@react-navigation/native';
 import CartConfirmationScreen from '../../screens/cart/CartConfirmationScreen';
+import DesigneratCartIndexScreen from '../../screens/cart/DesigneratCartIndexScreen';
 
 const Stack = createStackNavigator();
 const HomeStack = () => {
@@ -250,8 +251,22 @@ const HomeStack = () => {
           headerTitle: () => <HeaderMiddle title={I18n.t('order_history')} />,
         }}
       />
-
       <Stack.Screen name={'Contactus'} component={ContactusScreen} />
+
+      <Stack.Screen
+        name="CartIndexSecond"
+        headerBackTitleVisible={false}
+        component={DesigneratCartIndexScreen}
+        options={{
+          headerBackTitleVisible: false,
+          headerStyle: {
+            backgroundColor: colors.header_theme_bg,
+          },
+          headerTitleStyle: {
+            color: colors.header_theme_color,
+          },
+        }}
+      />
     </Stack.Navigator>
   );
 };

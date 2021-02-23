@@ -37,12 +37,13 @@ const SideMeu = ({showLogo = true, navigation}) => {
     navigation.navigate('Home');
   };
   return (
-    <ImageBackground
-      source={{
-        // uri: menu_bg ? menu_bg : images.whiteBgUrl,
-        uri: images.whiteBgUrl,
+    <View
+      style={{
+        width: '100%',
+        flex: 1,
+        opacity: 1,
+        backgroundColor: colors.menu_theme_bg,
       }}
-      style={{width: '100%', flex: 1, opacity: 1}}
       resizeMode="cover">
       <SafeAreaView style={{flex: 1}}>
         <ScrollView
@@ -62,7 +63,7 @@ const SideMeu = ({showLogo = true, navigation}) => {
               name="close-o"
               type="evilicon"
               size={iconSizes.medium}
-              color={colors.main_theme_color}
+              color={colors.menu_theme_color}
               onPress={() => navigation.closeDrawer()}
             />
           </View>
@@ -75,18 +76,10 @@ const SideMeu = ({showLogo = true, navigation}) => {
             />
           ) : null}
 
-          <Text
-            style={[
-              styles.mainMenuText,
-              {color: colors.header_one_theme_color},
-            ]}>
+          <Text style={[styles.mainMenuText, {color: colors.menu_theme_color}]}>
             {I18n.t('menu')}
           </Text>
-          <Text
-            style={[
-              styles.mainMenuText,
-              {color: colors.header_one_theme_color},
-            ]}>
+          <Text style={[styles.mainMenuText, {color: colors.menu_theme_color}]}>
             {company}
           </Text>
           <View style={{width: '100%'}}>
@@ -121,9 +114,12 @@ const SideMeu = ({showLogo = true, navigation}) => {
                 name="home"
                 type="antdesign"
                 size={iconSizes.smaller}
-                color={colors.icon_theme_color}
+                color={colors.menu_theme_color}
               />
-              <Text style={styles.titleStyle}>{I18n.t('home')}</Text>
+              <Text
+                style={[styles.titleStyle, {color: colors.menu_theme_color}]}>
+                {I18n.t('home')}
+              </Text>
             </TouchableOpacity>
             {HOMEKEY ? (
               <TouchableOpacity
@@ -137,13 +133,10 @@ const SideMeu = ({showLogo = true, navigation}) => {
                   name="home"
                   type="antdesign"
                   size={iconSizes.smaller}
-                  color={colors.icon_theme_color}
+                  color={colors.menu_theme_color}
                 />
                 <Text
-                  style={[
-                    styles.titleStyle,
-                    {color: colors.header_one_theme_color},
-                  ]}>
+                  style={[styles.titleStyle, {color: colors.menu_theme_color}]}>
                   {I18n.t('new_classified')}
                 </Text>
               </TouchableOpacity>
@@ -158,13 +151,10 @@ const SideMeu = ({showLogo = true, navigation}) => {
                   name="gear"
                   type="evilicon"
                   size={iconSizes.smaller}
-                  color={colors.icon_theme_color}
+                  color={colors.menu_theme_color}
                 />
                 <Text
-                  style={[
-                    styles.titleStyle,
-                    {color: colors.header_one_theme_color},
-                  ]}>
+                  style={[styles.titleStyle, {color: colors.menu_theme_color}]}>
                   {I18n.t('settings')}
                 </Text>
               </TouchableOpacity>
@@ -177,13 +167,10 @@ const SideMeu = ({showLogo = true, navigation}) => {
                   name="login"
                   type="antdesign"
                   size={iconSizes.smaller}
-                  color={colors.icon_theme_color}
+                  color={colors.menu_theme_color}
                 />
                 <Text
-                  style={[
-                    styles.titleStyle,
-                    {color: colors.header_one_theme_color},
-                  ]}>
+                  style={[styles.titleStyle, {color: colors.menu_theme_color}]}>
                   {I18n.t('login')}
                 </Text>
               </TouchableOpacity>
@@ -196,12 +183,12 @@ const SideMeu = ({showLogo = true, navigation}) => {
                     name="login"
                     type="antdesign"
                     size={iconSizes.smaller}
-                    color={colors.icon_theme_color}
+                    color={colors.menu_theme_color}
                   />
                   <Text
                     style={[
                       styles.titleStyle,
-                      {color: colors.header_one_theme_color},
+                      {color: colors.menu_theme_color},
                     ]}>
                     {I18n.t('logout')}
                   </Text>
@@ -215,13 +202,10 @@ const SideMeu = ({showLogo = true, navigation}) => {
                 name="old-phone"
                 type="entypo"
                 size={iconSizes.smaller}
-                color={colors.icon_theme_color}
+                color={colors.menu_theme_color}
               />
               <Text
-                style={[
-                  styles.titleStyle,
-                  {color: colors.header_one_theme_color},
-                ]}>
+                style={[styles.titleStyle, {color: colors.menu_theme_color}]}>
                 {I18n.t('contactus')}
               </Text>
             </TouchableOpacity>
@@ -233,13 +217,10 @@ const SideMeu = ({showLogo = true, navigation}) => {
                   name="handshake-o"
                   type="font-awesome"
                   size={iconSizes.smaller}
-                  color={colors.icon_theme_color}
+                  color={colors.menu_theme_color}
                 />
                 <Text
-                  style={[
-                    styles.titleStyle,
-                    {color: colors.header_one_theme_color},
-                  ]}>
+                  style={[styles.titleStyle, {color: colors.menu_theme_color}]}>
                   {I18n.t('terms_and_conditions')}
                 </Text>
               </TouchableOpacity>
@@ -252,13 +233,10 @@ const SideMeu = ({showLogo = true, navigation}) => {
                   name="handshake-o"
                   type="font-awesome"
                   size={iconSizes.smaller}
-                  color={colors.icon_theme_color}
+                  color={colors.menu_theme_color}
                 />
                 <Text
-                  style={[
-                    styles.titleStyle,
-                    {color: colors.header_one_theme_color},
-                  ]}>
+                  style={[styles.titleStyle, {color: colors.menu_theme_color}]}>
                   {I18n.t('policies')}
                 </Text>
               </TouchableOpacity>
@@ -277,13 +255,10 @@ const SideMeu = ({showLogo = true, navigation}) => {
                   name="image"
                   type="entypo"
                   size={iconSizes.smaller}
-                  color={colors.icon_theme_color}
+                  color={colors.menu_theme_color}
                 />
                 <Text
-                  style={[
-                    styles.titleStyle,
-                    {color: colors.header_one_theme_color},
-                  ]}>
+                  style={[styles.titleStyle, {color: colors.menu_theme_color}]}>
                   {I18n.t('our_gallery', {name: company})}
                 </Text>
               </TouchableOpacity>
@@ -296,13 +271,10 @@ const SideMeu = ({showLogo = true, navigation}) => {
                   name="youtube"
                   type="entypo"
                   size={iconSizes.smaller}
-                  color={colors.icon_theme_color}
+                  color={colors.menu_theme_color}
                 />
                 <Text
-                  style={[
-                    styles.titleStyle,
-                    {color: colors.header_one_theme_color},
-                  ]}>
+                  style={[styles.titleStyle, {color: colors.menu_theme_color}]}>
                   {I18n.t('our_youtube_channel')}
                 </Text>
               </TouchableOpacity>
@@ -314,20 +286,17 @@ const SideMeu = ({showLogo = true, navigation}) => {
                 name="language"
                 type="fontawesome"
                 size={iconSizes.smaller}
-                color={colors.icon_theme_color}
+                color={colors.menu_theme_color}
               />
               <Text
-                style={[
-                  styles.titleStyle,
-                  {color: colors.header_one_theme_color},
-                ]}>
+                style={[styles.titleStyle, {color: colors.menu_theme_color}]}>
                 {I18n.t('lang')}
               </Text>
             </TouchableOpacity>
           </View>
         </ScrollView>
       </SafeAreaView>
-    </ImageBackground>
+    </View>
   );
 };
 
