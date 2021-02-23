@@ -81,7 +81,7 @@ const DesigneratHomeScreen = () => {
             elements={homeDesigners}
             showName={true}
             type="designer"
-            title={I18n.t('designers')}
+            title={I18n.t('celebrities')}
             showAll={true}
             rounded={false}
             searchParams={{is_designer: 1, country_id: country.id}}
@@ -96,6 +96,17 @@ const DesigneratHomeScreen = () => {
             rounded={true}
             showAll={true}
             searchParams={{is_company: 1, country_id: country.id}}
+          />
+        )}
+        {homeDesigners && (
+          <DesignersHorizontalWidget
+            elements={homeDesigners}
+            showName={true}
+            type="designer"
+            title={I18n.t('designers')}
+            showAll={true}
+            rounded={false}
+            searchParams={{is_designer: 1, country_id: country.id}}
           />
         )}
         {homeCategories && (

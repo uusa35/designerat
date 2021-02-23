@@ -26,7 +26,7 @@ export const productWidget = {
   DESIGNERAT: {
     smaller: {
       width: 120,
-      height: 193,
+      height: 220,
     },
     small: {
       width: 220,
