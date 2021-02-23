@@ -467,14 +467,9 @@ export function* startGetSearchCompaniesScenario(action) {
         put({type: actions.SET_SEARCH_PARAMS, payload: searchParams}),
       ]);
       if (!validate.isEmpty(redirect) && redirect) {
-        yield put(
-          RootNavigation.navigate({
-            routeName: 'CompanyIndex',
-            params: {
-              name: action.payload.name,
-            },
-          }),
-        );
+        RootNavigation.navigate('CompanyIndex', {
+          name: action.payload.name,
+        });
       }
     } else {
       yield put({type: actions.SET_COMPANIES, payload: []});
@@ -532,14 +527,9 @@ export function* startGetDesignersScenario(action) {
         put({type: actions.SET_SEARCH_PARAMS, payload: searchParams}),
       ]);
       if (!validate.isEmpty(redirect) && redirect) {
-        yield put(
-          RootNavigation.navigate({
-            routeName: 'DesignerIndex',
-            params: {
-              name: action.payload.name,
-            },
-          }),
-        );
+        RootNavigation.navigate('DesignerIndex', {
+          name: action.payload.name,
+        });
       }
     } else {
       yield put({type: actions.SET_DESIGNERS, payload: []});

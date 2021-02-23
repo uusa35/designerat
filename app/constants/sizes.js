@@ -203,3 +203,49 @@ export const text = {
   bold: 'bold',
   font: getFont(),
 };
+
+export const formWidget = {
+  DESIGNERAT: {
+    smaller: {
+      width: 120,
+      height: 50,
+    },
+    small: {
+      width: 220,
+      height: 293,
+    },
+    medium: {
+      width: 250,
+      height: 333,
+    },
+    large: {
+      width: 280,
+      height: 373,
+    },
+    inputRadius: 4,
+  },
+  x4Small: {
+    width: 100,
+    height: 160,
+  },
+  smallest: {
+    width: 150,
+    height: 200,
+  },
+  smaller: {
+    width: 200,
+    height: 267,
+  },
+  small: {
+    width: 220,
+    height: 293,
+  },
+  medium: {
+    width: 250,
+    height: 333,
+  },
+  large: {
+    width: 280,
+    height: 373,
+  },
+};

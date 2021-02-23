@@ -5,7 +5,7 @@ import I18n from '../../I18n';
 import {HeaderRight} from '../../components/HeaderRight';
 import {HeaderLeft} from '../../components/HeaderLeft';
 import {HeaderMiddle} from '../../components/HeaderMiddle';
-import AbatiHomeScreen from '../../screens/home/AbatiHomeScreen';
+import DesigneratHomeScreen from '../../screens/home/DesigneratHomeScreen';
 import CelebrityIndexScreen from '../../screens/celebrity/CelebrityIndexScreen';
 import DesignerShowScreen from '../../screens/designer/DesignerShowScreen';
 import ProductShowScreen from '../../screens/product/ProductShowScreen';

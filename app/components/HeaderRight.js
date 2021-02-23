@@ -201,7 +201,9 @@ export const HeaderRight = ({
       )}
       {showProductFavorite && (
         <Icon
-          onPress={() => {}}
+          onPress={() => {
+            navigation.navigate('FavoriteProductIndex');
+          }}
           name="heart-outline"
           type="ionicon"
           size={iconSizes.small}

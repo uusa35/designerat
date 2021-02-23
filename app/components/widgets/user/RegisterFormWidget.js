@@ -14,12 +14,13 @@ import {
   text,
   height,
   iconSizes,
+  formWidget,
 } from '../../../constants/sizes';
 import {icons} from '../../../constants/images';
 import {enableErrorMessage, showCountryModal} from '../../../redux/actions';
 import {companyRegister, register} from '../../../redux/actions/user';
 import {GlobalValuesContext} from '../../../redux/GlobalValuesContext';
-import {ABATI} from './../../../../app';
+import {ABATI, APP_CASE} from './../../../../app';
 import {useDispatch, useSelector} from 'react-redux';
 import {filter, first, map, remove} from 'lodash';
 import ImageLoaderContainer from '../ImageLoaderContainer';
@@ -193,7 +194,8 @@ const RegisterFormWidget = () => {
         inputContainerStyle={{
           borderWidth: 1,
           borderColor: 'lightgrey',
-          borderRadius: 5,
+          borderRadius: formWidget[APP_CASE].inputRadius,
+          height: formWidget[APP_CASE].smaller.height,
           paddingLeft: 15,
           paddingRight: 15,
           // marginBottom: 20,
@@ -217,7 +219,8 @@ const RegisterFormWidget = () => {
         inputContainerStyle={{
           borderWidth: 1,
           borderColor: 'lightgrey',
-          borderRadius: 5,
+          borderRadius: formWidget[APP_CASE].inputRadius,
+          height: formWidget[APP_CASE].smaller.height,
           paddingLeft: 15,
           paddingRight: 15,
           // marginBottom: 20,
@@ -234,13 +237,22 @@ const RegisterFormWidget = () => {
         shake={true}
         keyboardType="default"
         onChangeText={(text) => setPassword(text)}
+        leftIcon={() => (
+          <Icon
+            name="lock"
+            type="evilicon"
+            size={iconSizes.smaller}
+            onPress={() => setVisiblePassword(!visiblePassword)}
+          />
+        )}
       />
       <Input
         placeholder={I18n.t('email') + '*'}
         inputContainerStyle={{
           borderWidth: 1,
           borderColor: 'lightgrey',
-          borderRadius: 5,
+          borderRadius: formWidget[APP_CASE].inputRadius,
+          height: formWidget[APP_CASE].smaller.height,
           paddingLeft: 15,
           paddingRight: 15,
           // marginBottom: 20,
@@ -248,6 +260,7 @@ const RegisterFormWidget = () => {
         inputStyle={{
           fontFamily: text.font,
           textAlign: isRTL ? 'right' : 'left',
+          height: formWidget[APP_CASE].smaller.height,
         }}
         label={I18n.t('email')}
         labelStyle={[
@@ -257,6 +270,14 @@ const RegisterFormWidget = () => {
         shake={true}
         keyboardType="email-address"
         onChangeText={(text) => setEmail(text)}
+        leftIcon={() => (
+          <Icon
+            name="envelope"
+            type="evilicon"
+            size={iconSizes.smaller}
+            onPress={() => setVisiblePassword(!visiblePassword)}
+          />
+        )}
       />
       <Input
         leftIcon={() => <Text>+{country.calling_code}</Text>}
@@ -265,7 +286,8 @@ const RegisterFormWidget = () => {
         inputContainerStyle={{
           borderWidth: 1,
           borderColor: 'lightgrey',
-          borderRadius: 5,
+          borderRadius: formWidget[APP_CASE].inputRadius,
+          height: formWidget[APP_CASE].smaller.height,
           paddingLeft: 15,
           paddingRight: 15,
           // marginBottom: 20,
@@ -302,7 +324,7 @@ const RegisterFormWidget = () => {
           style={{
             borderWidth: 1,
             borderColor: 'lightgrey',
-            borderRadius: 5,
+            borderRadius: formWidget[APP_CASE].inputRadius,
             paddingLeft: 15,
             paddingRight: 15,
             marginBottom: 20,
@@ -328,7 +350,7 @@ const RegisterFormWidget = () => {
         inputContainerStyle={{
           borderWidth: 1,
           borderColor: 'lightgrey',
-          borderRadius: 5,
+          borderRadius: formWidget[APP_CASE].inputRadius,
           paddingLeft: 15,
           paddingRight: 15,
           height: 80,
@@ -354,7 +376,7 @@ const RegisterFormWidget = () => {
           inputContainerStyle={{
             borderWidth: 1,
             borderColor: 'lightgrey',
-            borderRadius: 5,
+            borderRadius: formWidget[APP_CASE].inputRadius,
             paddingLeft: 15,
             paddingRight: 15,
             height: 80,

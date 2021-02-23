@@ -16,6 +16,7 @@ import {
 import I18n from '../../../I18n';
 import * as RootNavigation from './../../../RootNavigation.js';
 import {SET_ELEMENT_TYPE} from '../types';
+import Animated from 'react-native-reanimated';
 
 export function* setHomeProducts(action) {
   try {
@@ -227,14 +228,9 @@ export function* startGetSearchProductsScenario(action) {
         put({type: actions.SET_SEARCH_PARAMS, payload: searchParams}),
       ]);
       if (!validate.isEmpty(redirect) && redirect) {
-        yield all([
-          put(
-            RootNavigation.navigate({
-              routeName: 'SearchProductIndex',
-              params: {name: name ? name : I18n.t('products')},
-            }),
-          ),
-        ]);
+        RootNavigation.navigate('SearchProductIndex', {
+          name: name ? name : I18n.t('products'),
+        });
       }
     } else {
       yield all([

@@ -5,11 +5,15 @@ import I18n from '../../I18n';
 import {HeaderRight} from '../../components/HeaderRight';
 import {HeaderLeft} from '../../components/HeaderLeft';
 import {HeaderMiddle} from '../../components/HeaderMiddle';
-import AbatiHomeScreen from '../../screens/home/AbatiHomeScreen';
+import DesigneratHomeScreen from '../../screens/home/DesigneratHomeScreen';
 import CelebrityIndexScreen from '../../screens/celebrity/CelebrityIndexScreen';
 import DesignerShowScreen from '../../screens/designer/DesignerShowScreen';
+import DesignerIndexScreen from '../../screens/designer/DesignerIndexScreen';
+import CompanyIndexScreen from '../../screens/company/CompanyIndexScreen';
 import ProductShowScreen from '../../screens/product/ProductShowScreen';
 import NormalProductShowScreen from '../../screens/product/NormalProductShowScreen';
+import SearchProductIndexScreen from '../../screens/product/SearchProductIndexScreen';
+import BrandIndexScreen from '../../screens/brand/BrandIndexScreen';
 import ContactusScreen from '../../screens/ContactusScreen';
 import ImageZoomWidget from '../../components/widgets/ImageZoomWidget';
 import LoginScreen from '../../screens/auth/LoginScreen';
@@ -73,14 +77,24 @@ const HomeStack = () => {
         component={DesignerShowScreen}
       />
       <Stack.Screen
-        name={'ProductShow'}
+        name={'DesignerIndex'}
         options={{
-          headerTitle: () => <HeaderMiddle />,
+          headerTitle: () => <HeaderMiddle title={I18n.t('designers')} />,
           headerRight: () => (
             <HeaderRight showCart={true} displayShare={true} />
           ),
         }}
-        component={NormalProductShowScreen}
+        component={DesignerIndexScreen}
+      />
+      <Stack.Screen
+        name={'CompanyIndex'}
+        options={{
+          headerTitle: () => <HeaderMiddle title={I18n.t('elites')} />,
+          headerRight: () => (
+            <HeaderRight showCart={true} displayShare={true} />
+          ),
+        }}
+        component={CompanyIndexScreen}
       />
       <Stack.Screen
         name={'Login'}
@@ -178,6 +192,26 @@ const HomeStack = () => {
         }}
       />
       <Stack.Screen
+        name={'ProductShow'}
+        options={{
+          headerTitle: () => <HeaderMiddle />,
+          headerRight: () => (
+            <HeaderRight showCart={true} displayShare={true} />
+          ),
+        }}
+        component={NormalProductShowScreen}
+      />
+      <Stack.Screen
+        name={'SearchProductIndex'}
+        options={{
+          headerTitle: () => <HeaderMiddle />,
+          headerRight: () => (
+            <HeaderRight showCart={true} displayShare={true} />
+          ),
+        }}
+        component={SearchProductIndexScreen}
+      />
+      <Stack.Screen
         name="FavoriteProductIndex"
         component={FavoriteProductIndexScreen}
         options={{
@@ -188,6 +222,19 @@ const HomeStack = () => {
             color: colors.header_theme_color,
           },
           headerTitle: () => <HeaderMiddle title={I18n.t('wishlist')} />,
+        }}
+      />
+      <Stack.Screen
+        name="BrandIndex"
+        component={BrandIndexScreen}
+        options={{
+          headerStyle: {
+            backgroundColor: colors.header_theme_bg,
+          },
+          headerTitleStyle: {
+            color: colors.header_theme_color,
+          },
+          headerTitle: () => <HeaderMiddle title={I18n.t('brands')} />,
         }}
       />
       <Stack.Screen

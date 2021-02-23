@@ -23,7 +23,7 @@ import AppContainer from '../../components/containers/AppContainer';
 import CompanyCategoryHorizontalWidget from '../../components/widgets/category/CompanyCategoryHorizontalWidget';
 import ExpoDesignerHorizontalWidget from '../../components/widgets/user/ExpoDesignerHorizontalWidget';
 
-const AbatiHomeScreen = () => {
+const DesigneratHomeScreen = () => {
   const {
     homeCategories,
     commercials,
@@ -80,7 +80,7 @@ const AbatiHomeScreen = () => {
           <DesignersHorizontalWidget
             elements={homeDesigners}
             showName={true}
-            name={I18n.t('designers')}
+            type="designer"
             title={I18n.t('designers')}
             showAll={true}
             rounded={false}
@@ -91,11 +91,11 @@ const AbatiHomeScreen = () => {
           <DesignersHorizontalWidget
             elements={homeCompanies}
             showName={true}
-            name={I18n.t('elites')}
+            type="company"
             title={I18n.t('elites')}
             rounded={true}
             showAll={true}
-            searchElements={{is_company: 1, country_id: country.id}}
+            searchParams={{is_company: 1, country_id: country.id}}
           />
         )}
         {homeCategories && (
@@ -153,7 +153,7 @@ const AbatiHomeScreen = () => {
   );
 };
 
-export default AbatiHomeScreen;
+export default DesigneratHomeScreen;
 
 const styles = StyleSheet.create({
   safeContainer: {

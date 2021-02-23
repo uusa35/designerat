@@ -11,7 +11,7 @@ import {useDispatch} from 'react-redux';
 import {appBootstrap} from '../redux/actions';
 import AppContainer from '../components/containers/AppContainer';
 import AccountStack from './designerat/AccountStack';
-import AbatiHomeScreen from '../screens/home/AbatiHomeScreen';
+import DesigneratHomeScreen from '../screens/home/DesigneratHomeScreen';
 import HomeStack from './designerat/HomeStack';
 import {HeaderMiddle} from '../components/HeaderMiddle';
 import {HeaderRight} from '../components/HeaderRight';

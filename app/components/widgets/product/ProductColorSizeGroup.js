@@ -44,12 +44,14 @@ const ProductColorSizeGroup = ({element}) => {
                 borderColor: 'lightgray',
                 alignItems: 'center',
                 justifyContent: 'space-around',
+                minHeight: 42,
               }}
               title={size ? size.name : I18n.t('choose_size')}
               titleStyle={{
                 fontFamily: text.font,
                 color: 'black',
-                fontSize: text.smaller,
+                fontSize: text.small,
+                fontWeight: text.bold,
               }}
             />
           )}
@@ -72,12 +74,14 @@ const ProductColorSizeGroup = ({element}) => {
                 borderColor: 'lightgray',
                 alignItems: 'center',
                 justifyContent: 'space-around',
+                minHeight: 42,
               }}
               title={color ? color.name : I18n.t('height')}
               titleStyle={{
                 fontFamily: text.font,
                 color: 'black',
-                fontSize: text.smaller,
+                fontSize: text.small,
+                fontWeight: text.bold,
               }}
             />
           )}

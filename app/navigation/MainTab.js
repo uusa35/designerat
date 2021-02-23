@@ -19,7 +19,7 @@ import {useSelector} from 'react-redux';
 import ProductIndexAllScreen from '../screens/product/ProductIndexAllScreen';
 import CartIndexScreen from '../screens/cart/CartIndexScreen';
 import SettingsIndexScreen from '../screens/setting/SettingsIndexScreen';
-import AbatiHomeScreen from '../screens/home/AbatiHomeScreen';
+import DesigneratHomeScreen from '../screens/home/DesigneratHomeScreen';
 import CategoryIndexScreen from '../screens/category/CategoryIndexScreen';
 import {useContext} from 'react';
 import {GlobalValuesContext} from '../redux/GlobalValuesContext';
@@ -59,7 +59,7 @@ const MainTab = () => {
       labeled={true}>
       <Tab.Screen
         name="Home"
-        component={AbatiHomeScreen}
+        component={DesigneratHomeScreen}
         options={() => ({
           tabBarLabel: ({focused}) => (
             <TextTabBar

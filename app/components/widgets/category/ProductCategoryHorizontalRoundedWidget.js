@@ -45,7 +45,7 @@ const ProductCategoryHorizontalRoundedWidget = ({
           <TouchableOpacity
             activeOpacity={touchOpacity}
             style={widgetStyles.titleContainer}
-            onPress={() => navigation.navigate('CategoryIndex')}>
+            onPress={() => navigation.navigate('CategoryTab')}>
             <View style={widgetStyles.titleWrapper}>
               <Text
                 style={[

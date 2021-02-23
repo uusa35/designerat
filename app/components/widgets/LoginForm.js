@@ -1,5 +1,5 @@
 import React, {useState, useContext} from 'react';
-import {iconSizes, text, height} from '../../constants/sizes';
+import {iconSizes, text, height, formWidget} from '../../constants/sizes';
 import {appUrlIos} from './../../env';
 import {Button, Icon, Input} from 'react-native-elements';
 import I18n, {isRTL} from '../../I18n';
@@ -11,6 +11,7 @@ import ImageLoaderContainer from './ImageLoaderContainer';
 import {first, filter, isEmpty} from 'lodash';
 import KeyBoardContainer from '../containers/KeyBoardContainer';
 import {useNavigation} from '@react-navigation/native';
+import {APP_CASE} from '../../../app.json';
 
 const LoginForm = ({showBtns = false}) => {
   const {roles} = useSelector((state) => state);
@@ -45,7 +46,7 @@ const LoginForm = ({showBtns = false}) => {
       <View
         style={{
           width: '95%',
-          minHeight: height,
+          paddingTop: '10%',
           alignSelf: 'center',
           marginTop: 0,
           justifyContent: 'center',
@@ -68,6 +69,7 @@ const LoginForm = ({showBtns = false}) => {
           inputStyle={{
             fontFamily: text.font,
             textAlign: isRTL ? 'right' : 'left',
+            height: formWidget[APP_CASE].smaller.height,
           }}
           label={I18n.t('email')}
           labelStyle={[
@@ -115,6 +117,7 @@ const LoginForm = ({showBtns = false}) => {
           inputStyle={{
             fontFamily: text.font,
             textAlign: isRTL ? 'right' : 'left',
+            height: formWidget[APP_CASE].smaller.height,
           }}
           label={I18n.t('password')}
           labelStyle={[

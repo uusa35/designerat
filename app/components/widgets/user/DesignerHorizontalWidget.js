@@ -31,6 +31,7 @@ const DesignerHorizontalWidget = ({
   showName,
   title,
   name,
+  type,
   searchParams,
   rounded = true,
   showAll = false,
@@ -39,17 +40,17 @@ const DesignerHorizontalWidget = ({
   const {colors} = useContext(GlobalValuesContext);
 
   const handleClick = () => {
-    if (ABATI) {
+    if (type === 'company') {
       return dispatch(
-        getSearchDesigners({
+        getSearchCompanies({
           searchParams,
-          name,
+          name: title,
           redirect: true,
         }),
       );
-    } else {
+    } else if (type === 'designer') {
       return dispatch(
-        getSearchCompanies({
+        getSearchDesigners({
           searchParams,
           name,
           redirect: true,
@@ -163,6 +164,7 @@ DesignerHorizontalWidget.propTypes = {
   colors: PropTypes.object,
   showName: PropTypes.bool,
   title: PropTypes.string,
+  type: PropTypes.string.isRequired,
 };
 
 const styles = StyleSheet.create({});
