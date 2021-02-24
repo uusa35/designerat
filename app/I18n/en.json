@@ -434,7 +434,7 @@
   "choose_color_or_height" : "Choose Height/Color",
   "color_or_height" : "Color/Height",
   "add_notes_shoulders_height_and_other_notes" : "Notes Length of shoulders / Height / Chest",
-  "add_notes_shoulders_height_and_other_notes_expo" : "Write any notes or Special hints for shoulders / Height / Chest",
+  "add_notes_shoulders_height_and_other_notes_expo" : "Write any notes or Special hints for your item.",
   "no_services" : "No Services",
   "no_more_services" : "No More Services To Preview",
   "add_notes_to_your_service" : "Add Any Notes attached to current service",
@@ -654,6 +654,10 @@
   "brand" : "Brand",
   "payment_page" : "Payment Page",
   "buy_now" : "Buy Now",
-  "products_number" : "Products No."
+  "products_number" : "Products No.",
+  "make_as_favorite" : "Add to favorite list",
+  "favorite_failure" : "Item is not added to Favorite list. Please register first.",
+  "step" : "Step",
+  "add_from_favorite_list" : "Add from favorite list"
 }
 

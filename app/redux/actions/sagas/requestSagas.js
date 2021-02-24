@@ -435,16 +435,12 @@ export function* startRemoveFromCartScenario(action) {
       yield all([
         call(startClearCartScenario),
         call(enableWarningMessage, I18n.t('cart_cleared')),
-        put(
-          RootNavigation.navigate({
-            routeName: 'Home',
-          }),
-        ),
       ]);
+      RootNavigation.navigate('Home');
     }
   } catch (e) {
     if (__DEV__) {
-      // console.log('the e', e);
+      console.log('the e', e);
     }
     yield call(enableErrorMessage, I18n.t('error_removing_product_from_cart'));
   } finally {

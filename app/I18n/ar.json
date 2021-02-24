@@ -468,7 +468,7 @@
   "choose_color_or_height" : "اختيار الألوان/الأطوال",
   "color_or_height" : "اللون / الطول",
   "add_notes_shoulders_height_and_other_notes" : "ملاحظات خاصة بالمنتج",
-  "add_notes_shoulders_height_and_other_notes_expo" : "يرجى كتابة الاطوال أو تفاصيل خاصه بالمنتج المطلوب",
+  "add_notes_shoulders_height_and_other_notes_expo" : "يرجى كتابة أية ملاحظات خاصه بالمنتج المطلوب",
   "no_services" : "لا توجد خدمات",
   "no_service" : "لا توجد خدمات",
   "no_more_services" : "لا توجد مزيد من الخدمات",
@@ -688,5 +688,9 @@
   "brand" : "الماركة",
   "payment_page" : "صفحة الدفع",
   "buy_now" : "اشتر الآن",
-  "products_number" : "عدد المنتجات"
+  "products_number" : "عدد المنتجات",
+  "make_as_favorite" : "انقل المنتج إلى قائمة المفضلات",
+  "favorite_failure" : "لم يتم الأضافه لقائمة المفضلات. يرجى التسجيل اولا",
+  "step" : "خطوة",
+  "add_from_favorite_list" : "إضافة من قائمة الأمنيات"
 }

@@ -301,7 +301,7 @@ export function* startToggleProductFavoriteScenario(action) {
       throw products;
     }
   } catch (e) {
-    yield call(enableWarningMessage, I18n.t('no_products'));
+    yield call(enableWarningMessage, I18n.t('favorite_failure'));
   } finally {
   }
 }

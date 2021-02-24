@@ -187,7 +187,7 @@ export const iconSizes = {
 export const getFont = () => {
   switch (APP_CASE) {
     case 'DESIGNERAT':
-      return isRTL ? SEVENTH_AR_FONT : FIFTH_EN_FONT;
+      return isRTL ? FIRST_AR_FONT : FIFTH_EN_FONT;
     default:
       return isRTL ? FIRST_AR_FONT : FIFTH_EN_FONT;
   }

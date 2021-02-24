@@ -1,15 +1,19 @@
 import React, {useContext, useState, useMemo} from 'react';
 import {Text, StyleSheet, TouchableOpacity} from 'react-native';
 import {View} from 'react-native-animatable';
-import {text} from '../../../constants/sizes';
+import {text, iconSizes} from '../../../constants/sizes';
 import PropTypes from 'prop-types';
 import I18n from './../../../I18n';
 import validate from 'validate.js';
 import {removeItem} from '../../../redux/actions/cart';
 import ImageLoaderContainer from '../ImageLoaderContainer';
 import {filter, first} from 'lodash';
-import {useDispatch} from 'react-redux';
+import {useDispatch, useSelector} from 'react-redux';
 import widgetStyles from '../widgetStyles';
+import {GlobalValuesContext} from '../../../redux/GlobalValuesContext';
+import {Button, Icon} from 'react-native-elements';
+import {toggleProductFavorite} from '../../../redux/actions/product';
+
 const DesigneratProductItem = ({
   item,
   logo,
@@ -18,6 +22,8 @@ const DesigneratProductItem = ({
   notes = null,
   timeData = null,
 }) => {
+  const {colors} = useContext(GlobalValuesContext);
+  const {token, guest} = useSelector((state) => state);
   const dispatch = useDispatch();
   const [element, setElement] = useState(item.element);
   const [selectedSize, setSelectedSize] = useState({});
@@ -37,7 +43,14 @@ const DesigneratProductItem = ({
   }, [element]);
 
   return (
-    <View>
+    <View
+      style={{
+        marginLeft: 15,
+        marginRight: 15,
+        marginBottom: 10,
+        backgroundColor: 'white',
+        padding: 10,
+      }}>
       <View
         style={{
           flex: 1,
@@ -46,6 +59,7 @@ const DesigneratProductItem = ({
           alignItems: 'flex-start',
           paddingTop: 10,
           paddingBottom: 10,
+          marginBottom: 15,
         }}>
         <ImageLoaderContainer
           img={element.thumb}
@@ -62,7 +76,7 @@ const DesigneratProductItem = ({
           <Text style={widgetStyles.headerTow}>{element.name}</Text>
           {!validate.isEmpty(timeData) ? (
             <View style={{flexDirection: 'row', paddingTop: 3}}>
-              <Text style={[widgetStyles.headerThree, {width: 100}]}>
+              <Text style={[widgetStyles.headerFour, {width: 100}]}>
                 {I18n.t('service_date_and_time')}
                 <Text>:</Text>
               </Text>
@@ -73,7 +87,7 @@ const DesigneratProductItem = ({
           ) : null}
           {!validate.isEmpty(element.user) ? (
             <View style={{flexDirection: 'row', paddingTop: 8}}>
-              <Text style={[widgetStyles.headerThree, {width: 100}]}>
+              <Text style={[widgetStyles.headerFour, {width: 100}]}>
                 {I18n.t('company')}
                 <Text>:</Text>
               </Text>
@@ -82,7 +96,7 @@ const DesigneratProductItem = ({
           ) : null}
           {!validate.isEmpty(element.sku) ? (
             <View style={{flexDirection: 'row', paddingTop: 8}}>
-              <Text style={[widgetStyles.headerThree, {width: 100}]}>
+              <Text style={[widgetStyles.headerFour, {width: 100}]}>
                 {I18n.t('sku')}
                 <Text>:</Text>
               </Text>
@@ -93,7 +107,7 @@ const DesigneratProductItem = ({
           ) : null}
           {!validate.isEmpty(element.size) && !element.has_attributes ? (
             <View style={{flexDirection: 'row', paddingTop: 8}}>
-              <Text style={[widgetStyles.headerThree, {width: 100}]}>
+              <Text style={[widgetStyles.headerFour, {width: 100}]}>
                 {I18n.t('size')}
                 <Text>:</Text>
               </Text>
@@ -102,7 +116,7 @@ const DesigneratProductItem = ({
           ) : null}
           {!validate.isEmpty(element.color) && !element.has_attributes ? (
             <View style={{flexDirection: 'row', paddingTop: 8}}>
-              <Text style={[widgetStyles.headerThree, {width: 100}]}>
+              <Text style={[widgetStyles.headerFour, {width: 100}]}>
                 {I18n.t('color_or_height')}
                 <Text>:</Text>
               </Text>
@@ -111,7 +125,7 @@ const DesigneratProductItem = ({
           ) : null}
           {!validate.isEmpty(element.qty) ? (
             <View style={{flexDirection: 'row', paddingTop: 8}}>
-              <Text style={[widgetStyles.headerThree, {width: 100}]}>
+              <Text style={[widgetStyles.headerFour, {width: 100}]}>
                 {I18n.t('qty')}
                 <Text>:</Text>
               </Text>
@@ -120,7 +134,7 @@ const DesigneratProductItem = ({
           ) : null}
           {!validate.isEmpty(selectedColor) ? (
             <View style={{flexDirection: 'row', paddingTop: 8}}>
-              <Text style={[widgetStyles.headerThree, {width: 100}]}>
+              <Text style={[widgetStyles.headerFour, {width: 100}]}>
                 {I18n.t('size')}
                 <Text>:</Text>
               </Text>
@@ -129,89 +143,94 @@ const DesigneratProductItem = ({
           ) : null}
           {!validate.isEmpty(selectedColor) ? (
             <View style={{flexDirection: 'row', paddingTop: 8}}>
-              <Text style={[widgetStyles.headerThree, {width: 100}]}>
+              <Text style={[widgetStyles.headerFour, {width: 100}]}>
                 {I18n.t('color_or_height')}
                 <Text>:</Text>
               </Text>
               <Text
-                style={{
-                  fontFamily: text.font,
-                  fontSize: text.smaller,
-                  textAlign: 'left',
-                  paddingLeft: 10,
-                  paddingRight: 10,
-                  color: selectedColor.code,
-                }}>
+                style={[widgetStyles.headerFour, {color: selectedColor.code}]}>
                 {selectedColor.name}
               </Text>
             </View>
           ) : null}
           {!validate.isEmpty(notes) ? (
             <View style={{flexDirection: 'row', paddingTop: 3, maxWidth: 140}}>
-              <Text style={[widgetStyles.headerThree, {width: 100}]}>
+              <Text style={[widgetStyles.headerFour, {width: 100}]}>
                 {I18n.t('notes')}
                 <Text>:</Text>
               </Text>
               <Text style={widgetStyles.headerThree}>{notes}</Text>
             </View>
           ) : null}
-          <Text style={widgetStyles.headerTow}>
+          <Text style={[widgetStyles.headerTow, {paddingTop: 10}]}>
             {element.finalPrice} {I18n.t('kwd')}
           </Text>
         </View>
       </View>
       {editMode ? (
-        <View style={{borderTopWidth: 0.5, paddingTop: 20}}>
-          <TouchableOpacity
-            onPress={() => dispatch(removeItem(element.id))}
-            style={{
-              flex: 1,
-              height: '100%',
+        <View
+          style={{
+            borderTopWidth: 0.5,
+            borderTopColor: colors.btn_bg_theme_color,
+            paddingTop: 20,
+            flexDirection: 'row',
+            flex: 1,
+          }}>
+          <Button
+            containerStyle={{
+              flex: 0.3,
               justifyContent: 'space-between',
               alignItems: 'center',
-            }}>
-            <View
-              style={{
-                flexDirection: 'row',
-                justifyContent: 'center',
-                alignItems: 'flex-start',
-              }}>
-              <Text
-                style={{
-                  fontFamily: text.font,
-                  fontSize: text.small,
-                  textAlign: 'left',
-                }}>
-                {I18n.t('kwd')}
-              </Text>
-            </View>
-            <View
-              style={{
-                backgroundColor: 'red',
-                height: '40%',
-                justifyContent: 'center',
-                alignItems: 'center',
-                width: '100%',
-                shadowColor: '#000',
-                shadowOffset: {
-                  width: 0,
-                  height: 1,
-                },
-                shadowOpacity: 0.2,
-                shadowRadius: 1.41,
-
-                elevation: 2,
-              }}>
-              <Text
-                style={{
-                  color: 'white',
-                  fontFamily: text.font,
-                  fontSize: text.medium,
-                }}>
-                {I18n.t('remove')}
-              </Text>
-            </View>
-          </TouchableOpacity>
+            }}
+            buttonStyle={{
+              width: '90%',
+              borderRadius: 0,
+              justifyContent: 'space-around',
+              alignItems: 'center',
+              borderRightWidth: 1,
+              borderRightColor: colors.btn_bg_theme_color,
+            }}
+            titleStyle={[
+              widgetStyles.headerThree,
+              {color: colors.header_one_theme_color},
+            ]}
+            onPress={() => dispatch(removeItem(element.id))}
+            title={I18n.t('remove')}
+            icon={
+              <Icon name="close" type="evilicon" size={iconSizes.smaller} />
+            }
+            type="clear"
+          />
+          <Button
+            containerStyle={{
+              flex: 0.7,
+              justifyContent: 'space-between',
+              alignItems: 'center',
+            }}
+            buttonStyle={{
+              width: '100%',
+              borderRadius: 0,
+              justifyContent: 'space-around',
+              alignItems: 'center',
+            }}
+            titleStyle={[
+              widgetStyles.headerThree,
+              {color: colors.header_one_theme_color},
+            ]}
+            onPress={() =>
+              dispatch(
+                toggleProductFavorite({
+                  api_token: token,
+                  product_id: element.id,
+                }),
+              )
+            }
+            title={I18n.t('make_as_favorite')}
+            icon={
+              <Icon name="heart" type="evilicon" size={iconSizes.smaller} />
+            }
+            type="clear"
+          />
         </View>
       ) : null}
     </View>

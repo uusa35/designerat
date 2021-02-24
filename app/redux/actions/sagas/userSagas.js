@@ -374,28 +374,23 @@ export function* startSubmitAuthScenario(action) {
         call(setProductFavorites, element.product_favorites),
         call(setClassifiedFavorites, element.classified_favorites),
         call(enableSuccessMessage, I18n.t('login_success')),
-        call(startGoogleAnalyticsScenario, {
-          payload: {type: 'UserLogged', element},
-        }),
+        // call(startGoogleAnalyticsScenario, {
+        //   payload: {type: 'UserLogged', element},
+        // }),
       ]);
       if (loginModal) {
         yield put({type: actions.HIDE_LOGIN_MODAL, payload: false});
       } else {
-        if (MALLR) {
-          yield put(
-            RootNavigation.navigate({
-              routeName: 'Account',
-            }),
-          );
-        } else {
-          RootNavigation.back();
-        }
+        RootNavigation.back();
       }
     } else {
       yield call(startLogoutScenario);
       throw element;
     }
   } catch (e) {
+    if (__DEV__) {
+      console.log('eee', e);
+    }
     yield call(enableErrorMessage, e);
   } finally {
     yield all([
