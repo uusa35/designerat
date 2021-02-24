@@ -658,6 +658,8 @@
   "make_as_favorite" : "Add to favorite list",
   "favorite_failure" : "Item is not added to Favorite list. Please register first.",
   "step" : "Step",
-  "add_from_favorite_list" : "Add from favorite list"
+  "add_from_favorite_list" : "Add from favorite list",
+  "total_details" : "Price Details",
+  "total_sum" : "Total"
 }
 

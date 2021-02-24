@@ -153,32 +153,31 @@ const DesigneratCartList = ({
         </View>
         <View
           style={{
+            flexDirection: 'column',
+            justifyContent: 'flex-end',
+            margin: 15,
+            paddingTop: 10,
+          }}>
+          <Text style={widgetStyles.headerThree}>
+            {I18n.t('total_details')}
+          </Text>
+        </View>
+        <View
+          style={{
             flexDirection: 'row',
             justifyContent: 'space-between',
-            alignText: 'center',
-            marginTop: 10,
-            paddingBottom: 20,
+            alignItems: 'center',
             paddingTop: 20,
-            borderTopWidth: 0.5,
-            borderTopColor: 'lightgrey',
+            paddingLeft: 15,
+            paddingRight: 15,
+            paddingBottom: 20,
+            backgroundColor: 'white',
+            borderTopWidth: 1,
+            borderBottomWidth: 1,
           }}>
-          <Text
-            style={{
-              fontFamily: text.font,
-              fontSize: text.medium,
-              color: colors.header_one_theme_color,
-            }}>
-            {I18n.t('total')}
-          </Text>
-          <View style={{flexDirection: 'row'}}>
-            <Text
-              style={{
-                fontFamily: text.font,
-                fontSize: text.medium,
-                color: colors.header_one_theme_color,
-              }}>
-              {round(total, 2)}
-            </Text>
+          <Text style={[widgetStyles.headerThree]}>{I18n.t('total_sum')}</Text>
+          <View style={{flexDirection: 'row', minWidth: 50}}>
+            <Text style={widgetStyles.headerThree}>{round(total, 2)}</Text>
             <Text
               style={{
                 fontFamily: text.font,
@@ -189,30 +188,25 @@ const DesigneratCartList = ({
             </Text>
           </View>
         </View>
+
         {shipmentFees > 0 ? (
           <View
             style={{
               flexDirection: 'row',
               justifyContent: 'space-between',
-              alignText: 'center',
-              marginTop: 10,
+              alignItems: 'center',
+              paddingTop: 20,
+              paddingLeft: 15,
+              paddingRight: 15,
               paddingBottom: 20,
+              backgroundColor: 'white',
+              borderBottomWidth: 1,
             }}>
-            <Text
-              style={{
-                fontFamily: text.font,
-                fontSize: text.medium,
-                color: colors.header_one_theme_color,
-              }}>
+            <Text style={widgetStyles.headerThree}>
               {I18n.t('shipment_fees_per_piece')}
             </Text>
-            <View style={{flexDirection: 'row'}}>
-              <Text
-                style={{
-                  fontFamily: text.font,
-                  fontSize: text.medium,
-                  color: colors.header_one_theme_color,
-                }}>
+            <View style={{flexDirection: 'row', minWidth: 50}}>
+              <Text style={widgetStyles.headerThree}>
                 {round(shipmentCountry.fixed_shipment_charge, 2)}
               </Text>
               <Text
@@ -232,66 +226,53 @@ const DesigneratCartList = ({
             style={{
               flexDirection: 'row',
               justifyContent: 'space-between',
-              alignText: 'center',
-              marginTop: 10,
-
+              alignItems: 'center',
+              paddingTop: 20,
+              paddingLeft: 15,
+              paddingRight: 15,
               paddingBottom: 20,
+              backgroundColor: 'white',
+              borderBottomWidth: 1,
             }}>
-            <Text
-              style={{
-                fontFamily: text.font,
-                fontSize: text.medium,
-                color: colors.header_one_theme_color,
-              }}>
-              {I18n.t('discount')}
-            </Text>
-            <View style={{flexDirection: 'row'}}>
-              <Text
-                style={{
-                  fontFamily: text.font,
-                  fontSize: text.medium,
-                  color: 'red',
-                }}>
+            <Text style={widgetStyles.headerThree}>{I18n.t('discount')}}</Text>
+            <View style={{flexDirection: 'row', minWidth: 50}}>
+              <Text style={widgetStyles.headerThree}>
                 {round(coupon.value, 2)}
               </Text>
               <Text
                 style={{
                   fontFamily: text.font,
                   fontSize: text.medium,
-                  color: 'red',
+                  color: colors.header_one_theme_color,
                 }}>
                 {I18n.t('kwd')}
               </Text>
             </View>
           </View>
         ) : null}
+
         <View
           style={{
             flexDirection: 'row',
             justifyContent: 'space-between',
-            alignText: 'center',
-            marginTop: 10,
+            alignItems: 'center',
             paddingTop: 20,
+            paddingLeft: 15,
+            paddingRight: 15,
             paddingBottom: 20,
-            borderTopWidth: 0.5,
-            borderTopColor: 'lightgrey',
+            backgroundColor: 'white',
+            borderBottomWidth: 1,
           }}>
-          <Text
-            style={{
-              fontFamily: text.font,
-              fontSize: text.medium,
-              color: colors.header_one_theme_color,
-            }}>
-            {I18n.t('grossTotal')}
-          </Text>
-          <View style={{flexDirection: 'row'}}>
+          <Text style={widgetStyles.headerThree}>{I18n.t('grossTotal')}</Text>
+          <View style={{flexDirection: 'row', minWidth: 50}}>
+            <Text style={widgetStyles.headerThree}>{round(grossTotal, 2)}</Text>
             <Text
               style={{
                 fontFamily: text.font,
                 fontSize: text.medium,
                 color: colors.header_one_theme_color,
               }}>
-              {`${round(grossTotal, 2)} ${I18n.t('kwd')}`}
+              {I18n.t('kwd')}
             </Text>
           </View>
         </View>

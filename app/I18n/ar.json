@@ -692,5 +692,7 @@
   "make_as_favorite" : "انقل المنتج إلى قائمة المفضلات",
   "favorite_failure" : "لم يتم الأضافه لقائمة المفضلات. يرجى التسجيل اولا",
   "step" : "خطوة",
-  "add_from_favorite_list" : "إضافة من قائمة الأمنيات"
+  "add_from_favorite_list" : "إضافة من قائمة الأمنيات",
+  "total_details" : "تفاصيل الأسعار",
+  "total_sum" : "المجموع الكلي"
 }

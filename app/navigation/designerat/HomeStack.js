@@ -265,6 +265,7 @@ const HomeStack = () => {
           headerTitleStyle: {
             color: colors.header_theme_color,
           },
+          headerTitle: () => <HeaderMiddle title={I18n.t('cart')} />,
         }}
       />
     </Stack.Navigator>
