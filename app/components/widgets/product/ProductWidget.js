@@ -28,6 +28,7 @@ import {Button, Icon} from 'react-native-elements';
 import {APP_CASE} from './../../../../app.json';
 import {toggleProductFavorite} from '../../../redux/actions/product';
 import {useDispatch, useSelector} from 'react-redux';
+import FavoriteIcon from '../favorite/FavoriteIcon';
 
 const ProductWidget = ({
   element,
@@ -160,31 +161,23 @@ const ProductWidget = ({
               </Text>
             </TouchableOpacity>
             <TouchableOpacity
+              onPress={() => {
+                dispatch(
+                  toggleProductFavorite({
+                    api_token: token,
+                    product_id: element.id,
+                  }),
+                );
+              }}
               style={{
-                alignSelf: 'center',
+                justifyContent: 'center',
                 alignItems: 'center',
                 flex: 1,
                 backgroundColor: 'lightgrey',
                 borderBottomRightRadius: 5,
                 height: 35,
               }}>
-              <Icon
-                disabled={guest}
-                onPress={() => {
-                  dispatch(
-                    toggleProductFavorite({
-                      api_token: token,
-                      product_id: element.id,
-                    }),
-                  );
-                }}
-                name="heart-outline"
-                type="ionicon"
-                size={iconSizes.small}
-                underlayColor="transparent"
-                hitSlop={{top: 15, bottom: 15, left: 15, right: 15}}
-                color="black"
-              />
+              <FavoriteIcon id={element.id} size={iconSizes.smaller} />
             </TouchableOpacity>
           </View>
         </View>

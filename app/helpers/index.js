@@ -10,6 +10,7 @@ import {width} from '../constants/sizes';
 import {isIOS} from '../constants';
 import geolib, {getDistance} from 'geolib';
 import validate from 'validate.js';
+import {useSelector} from 'react-redux';
 
 export const convertNumberToEnglish = (n) => {
   return n.replace(
@@ -113,3 +114,13 @@ export function adjustColor(color, amount) {
       )
   );
 }
+
+const checkIsFavorite = (id) => {
+  const {productFavorites, guest} = useSelector((state) => state);
+  console.log('productFavorites', productFavorites);
+  if (guest) {
+    return guest;
+  } else {
+    console.log('elements', elements);
+  }
+};

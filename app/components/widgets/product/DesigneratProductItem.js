@@ -13,6 +13,7 @@ import widgetStyles from '../widgetStyles';
 import {GlobalValuesContext} from '../../../redux/GlobalValuesContext';
 import {Button, Icon} from 'react-native-elements';
 import {toggleProductFavorite} from '../../../redux/actions/product';
+import FavoriteIcon from '../favorite/FavoriteIcon';
 
 const DesigneratProductItem = ({
   item,
@@ -226,9 +227,9 @@ const DesigneratProductItem = ({
               )
             }
             title={I18n.t('make_as_favorite')}
-            icon={
-              <Icon name="heart" type="evilicon" size={iconSizes.smaller} />
-            }
+            icon={() => (
+              <FavoriteIcon id={element.id} size={iconSizes.smallest} />
+            )}
             type="clear"
           />
         </View>
