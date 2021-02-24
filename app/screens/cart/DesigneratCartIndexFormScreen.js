@@ -16,7 +16,8 @@ import EmptyListWidget from '../../components/Lists/EmptyListWidget';
 import KeyBoardContainer from '../../components/containers/KeyBoardContainer';
 import {useNavigation} from '@react-navigation/native';
 import DesigneratCartList from '../../components/widgets/cart/DesigneratCartList';
-const DesigneratCartIndexScreen = () => {
+import DesigneratCartForm from '../../components/widgets/cart/DesigneratCartForm';
+const DesigneratCartFormIndexScreen = () => {
   const {cart, country, shipmentFees, settings, coupon, area} = useSelector(
     (state) => state,
   );
@@ -35,7 +36,7 @@ const DesigneratCartIndexScreen = () => {
         }}>
         <KeyBoardContainer>
           {!validate.isEmpty(cart) ? (
-            <DesigneratCartList
+            <DesigneratCartForm
               shipmentCountry={country}
               shipmentFees={shipmentFees}
               selectedArea={area}
@@ -124,6 +125,6 @@ const DesigneratCartIndexScreen = () => {
   );
 };
 
-export default DesigneratCartIndexScreen;
+export default DesigneratCartFormIndexScreen;
 
 const styles = StyleSheet.create({});

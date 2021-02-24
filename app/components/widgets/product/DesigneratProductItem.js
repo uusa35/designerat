@@ -160,7 +160,7 @@ const DesigneratProductItem = ({
                 {I18n.t('notes')}
                 <Text>:</Text>
               </Text>
-              <Text style={widgetStyles.headerThree}>{notes}</Text>
+              <Text style={widgetStyles.headerFour}>{notes}</Text>
             </View>
           ) : null}
           <Text style={[widgetStyles.headerTow, {paddingTop: 10}]}>

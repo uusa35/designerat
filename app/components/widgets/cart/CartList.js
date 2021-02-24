@@ -14,7 +14,10 @@ import {GlobalValuesContext} from '../../../redux/GlobalValuesContext';
 import validate from 'validate.js';
 import {KeyboardAwareScrollView} from 'react-native-keyboard-aware-scroll-view';
 import {useDispatch, useSelector} from 'react-redux';
-import {CREATE_MYFATOORAH_PAYMENT_URL} from '../../../redux/actions/types';
+import {
+  CREATE_MYFATOORAH_PAYMENT_URL,
+  CREATE_TAP_PAYMENT_URL,
+} from '../../../redux/actions/types';
 import {getConvertedFinalPrice} from '../../../helpers';
 import KeyBoardContainer from '../../containers/KeyBoardContainer';
 import {useNavigation} from '@react-navigation/native';
@@ -673,7 +676,7 @@ const CartList = ({
                 }}
                 onPress={() =>
                   dispatch({
-                    type: actions.CREATE_TAP_PAYMENT_URL,
+                    type: CREATE_TAP_PAYMENT_URL,
                     payload: {
                       name,
                       email,
@@ -685,7 +688,7 @@ const CartList = ({
                       total,
                       grossTotal,
                       shipment_fees: shipmentCountry.fixed_shipment_charge,
-                      discount,
+                      discount: coupon.value,
                       payment_method: isIOS
                         ? 'IOS - My Fatoorah'
                         : 'Android - My Fatoorah',

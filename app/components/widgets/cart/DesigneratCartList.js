@@ -19,15 +19,16 @@ import {map, round, isNull} from 'lodash';
 import ProductItem from '../product/ProductItem';
 import {GlobalValuesContext} from '../../../redux/GlobalValuesContext';
 import validate from 'validate.js';
-import {KeyboardAwareScrollView} from 'react-native-keyboard-aware-scroll-view';
 import {useDispatch, useSelector} from 'react-redux';
-import {CREATE_MYFATOORAH_PAYMENT_URL} from '../../../redux/actions/types';
 import {getConvertedFinalPrice} from '../../../helpers';
+import {KeyboardAwareScrollView} from 'react-native-keyboard-aware-scroll-view';
+import {CREATE_MYFATOORAH_PAYMENT_URL} from '../../../redux/actions/types';
 import KeyBoardContainer from '../../containers/KeyBoardContainer';
 import {useNavigation} from '@react-navigation/native';
 import DesigneratProductItem from '../product/DesigneratProductItem';
 import widgetStyles from '../widgetStyles';
 import {toggleProductFavorite} from '../../../redux/actions/product';
+import {width} from '../../../constants';
 
 const DesigneratCartList = ({
   shipmentCountry,
@@ -77,689 +78,303 @@ const DesigneratCartList = ({
   }, [auth]);
 
   return (
-    <Fragment>
+    <View
+      animation="bounceInLeft"
+      easing="ease-out"
+      useNativeDriver={true}
+      style={{flexDirection: 'column', width}}>
       <View
-        animation="bounceInLeft"
-        easing="ease-out"
-        useNativeDriver={true}
-        style={{flexDirection: 'column'}}>
-        <View
+        style={{
+          flex: 1,
+          flexDirection: 'row',
+          justifyContent: 'space-between',
+          padding: 15,
+          backgroundColor: 'white',
+        }}>
+        <Text style={widgetStyles.headerThree}>{I18n.t('cart')}</Text>
+        <Text style={widgetStyles.headerThree}>{I18n.t('step')} (1/2)</Text>
+      </View>
+      <View
+        style={{
+          flex: 1,
+          flexDirection: 'row',
+          justifyContent: 'space-between',
+          padding: 15,
+        }}>
+        <Text style={widgetStyles.headerThree}>
+          {I18n.t('products_number')} ({cartLength})
+        </Text>
+        <Text style={widgetStyles.headerThree}>
+          {grossTotal}.000 {I18n.t('kwd')}
+        </Text>
+      </View>
+      {map(cart, (item, i) => {
+        return (
+          <DesigneratProductItem
+            item={item}
+            timeData={item.type === 'service' ? item.timeData : null}
+            key={item.element.id}
+            editMode={editMode}
+            qty={item.qty}
+            notes={item.notes}
+          />
+        );
+      })}
+      <View
+        style={{
+          flex: 1,
+          flexDirection: 'row',
+          alignItems: 'center',
+          justifyContent: 'space-between',
+          marginLeft: 15,
+          marginRight: 15,
+          marginTop: 10,
+          backgroundColor: 'white',
+          padding: 15,
+        }}>
+        <TouchableOpacity
+          onPress={() => navigate('FavoriteProductIndex')}
           style={{
-            flex: 1,
             flexDirection: 'row',
-            justifyContent: 'space-between',
-            padding: 15,
-            backgroundColor: 'white',
-          }}>
-          <Text style={widgetStyles.headerThree}>{I18n.t('cart')}</Text>
-          <Text style={widgetStyles.headerThree}>{I18n.t('step')} (1/2)</Text>
-        </View>
-        <View
-          style={{
-            flex: 1,
-            flexDirection: 'row',
-            justifyContent: 'space-between',
-            padding: 15,
-          }}>
-          <Text style={widgetStyles.headerThree}>
-            {I18n.t('products_number')} ({cartLength})
-          </Text>
-          <Text style={widgetStyles.headerThree}>
-            {grossTotal}.000 {I18n.t('kwd')}
-          </Text>
-        </View>
-        {map(cart, (item, i) => {
-          return (
-            <DesigneratProductItem
-              item={item}
-              timeData={item.type === 'service' ? item.timeData : null}
-              key={item.element.id}
-              editMode={editMode}
-              qty={item.qty}
-              notes={item.notes}
-            />
-          );
-        })}
-        <View
-          style={{
-            flex: 1,
-            flexDirection: 'row',
+            justifyContent: 'space-evenly',
             alignItems: 'center',
-            justifyContent: 'space-between',
-            marginLeft: 15,
-            marginRight: 15,
-            marginTop: 10,
-            backgroundColor: 'white',
-            padding: 15,
           }}>
-          <TouchableOpacity
-            onPress={() => navigate('FavoriteProductIndex')}
+          <Icon name="heart" type="antdesign" size={iconSizes.smaller} />
+          <Text style={[widgetStyles.headerThree, {paddingLeft: 20}]}>
+            {I18n.t('add_from_favorite_list')}
+          </Text>
+        </TouchableOpacity>
+        <Icon
+          name="chevron-left"
+          type="evilicon"
+          size={iconSizes.medium}
+          color="gray"
+        />
+      </View>
+      <View
+        style={{
+          flexDirection: 'column',
+          justifyContent: 'flex-end',
+          margin: 15,
+          paddingTop: 10,
+        }}>
+        <Text style={widgetStyles.headerThree}>{I18n.t('total_details')}</Text>
+      </View>
+      <View
+        style={{
+          flexDirection: 'row',
+          justifyContent: 'space-between',
+          alignItems: 'center',
+          paddingTop: 20,
+          paddingLeft: 15,
+          paddingRight: 15,
+          paddingBottom: 20,
+          backgroundColor: 'white',
+          borderTopWidth: 1,
+          borderBottomWidth: 1,
+        }}>
+        <Text style={[widgetStyles.headerThree]}>{I18n.t('total_sum')}</Text>
+        <View style={{flexDirection: 'row', minWidth: 50}}>
+          <Text style={widgetStyles.headerThree}>{round(total, 2)}</Text>
+          <Text
             style={{
-              flexDirection: 'row',
-              justifyContent: 'space-evenly',
-              alignItems: 'center',
+              fontFamily: text.font,
+              fontSize: text.medium,
+              color: colors.header_one_theme_color,
             }}>
-            <Icon name="heart" type="antdesign" size={iconSizes.smaller} />
-            <Text style={[widgetStyles.headerThree, {paddingLeft: 20}]}>
-              {I18n.t('add_from_favorite_list')}
+            {I18n.t('kwd')}
+          </Text>
+        </View>
+      </View>
+
+      {shipmentFees > 0 ? (
+        <View
+          style={{
+            flexDirection: 'row',
+            justifyContent: 'space-between',
+            alignItems: 'center',
+            paddingTop: 20,
+            paddingLeft: 15,
+            paddingRight: 15,
+            paddingBottom: 20,
+            backgroundColor: 'white',
+            borderBottomWidth: 1,
+          }}>
+          <Text style={widgetStyles.headerThree}>
+            {I18n.t('shipment_fees_per_piece')}
+          </Text>
+          <View style={{flexDirection: 'row', minWidth: 50}}>
+            <Text style={widgetStyles.headerThree}>
+              {round(shipmentCountry.fixed_shipment_charge, 2)}
             </Text>
-          </TouchableOpacity>
-          <Icon
-            name="chevron-left"
-            type="evilicon"
-            size={iconSizes.medium}
-            color="gray"
+            <Text
+              style={{
+                fontFamily: text.font,
+                fontSize: text.medium,
+                color: colors.header_one_theme_color,
+              }}>
+              {I18n.t('kwd')}
+            </Text>
+          </View>
+        </View>
+      ) : null}
+
+      {coupon && coupon.value > 0 ? (
+        <View
+          style={{
+            flexDirection: 'row',
+            justifyContent: 'space-between',
+            alignItems: 'center',
+            paddingTop: 20,
+            paddingLeft: 15,
+            paddingRight: 15,
+            paddingBottom: 20,
+            backgroundColor: 'white',
+            borderBottomWidth: 1,
+          }}>
+          <Text style={widgetStyles.headerThree}>{I18n.t('discount')}}</Text>
+          <View style={{flexDirection: 'row', minWidth: 50}}>
+            <Text style={widgetStyles.headerThree}>
+              {round(coupon.value, 2)}
+            </Text>
+            <Text
+              style={{
+                fontFamily: text.font,
+                fontSize: text.medium,
+                color: colors.header_one_theme_color,
+              }}>
+              {I18n.t('kwd')}
+            </Text>
+          </View>
+        </View>
+      ) : null}
+
+      <View
+        style={{
+          flexDirection: 'row',
+          justifyContent: 'space-between',
+          alignItems: 'center',
+          paddingTop: 20,
+          paddingLeft: 15,
+          paddingRight: 15,
+          paddingBottom: 20,
+          backgroundColor: 'white',
+          borderBottomWidth: 1,
+        }}>
+        <Text style={widgetStyles.headerThree}>{I18n.t('grossTotal')}</Text>
+        <View style={{flexDirection: 'row', minWidth: 50}}>
+          <Text style={widgetStyles.headerThree}>{round(grossTotal, 2)}</Text>
+          <Text
+            style={{
+              fontFamily: text.font,
+              fontSize: text.medium,
+              color: colors.header_one_theme_color,
+            }}>
+            {I18n.t('kwd')}
+          </Text>
+        </View>
+      </View>
+      {!country.is_local && (
+        <View
+          style={{
+            flexDirection: 'row',
+            justifyContent: 'space-between',
+            alignText: 'center',
+            marginTop: 10,
+            paddingTop: 20,
+            paddingBottom: 20,
+            borderTopWidth: 0.5,
+            borderTopColor: 'lightgrey',
+          }}>
+          <Text
+            style={{
+              fontFamily: text.font,
+              fontSize: text.medium,
+              color: colors.header_one_theme_color,
+            }}>
+            {`${I18n.t('gross_total_in')} ${currency_symbol}`}
+          </Text>
+          <View style={{flexDirection: 'row'}}>
+            <Text
+              style={{
+                fontFamily: text.font,
+                fontSize: text.medium,
+                color: colors.header_one_theme_color,
+              }}>
+              {`${getConvertedFinalPrice(
+                round(grossTotal, 2),
+                exchange_rate,
+              )} ${currency_symbol}`}
+            </Text>
+          </View>
+        </View>
+      )}
+      {guest ? (
+        <View
+          style={{
+            flexDirection: 'row',
+            justifyContent: 'center',
+            alignItems: 'center',
+            width: '100%',
+          }}>
+          <Button
+            // onPress={() => dispatch(showLoginModal())}
+            onPress={() => navigate('Login')}
+            raised
+            containerStyle={{flex: 0.5, marginBottom: 10, margin: 5}}
+            buttonStyle={{
+              backgroundColor: 'white',
+              borderRadius: 10,
+              borderWidth: 0.5,
+              borderColor: 'black',
+            }}
+            title={I18n.t('login')}
+            titleStyle={{fontFamily: text.font, color: 'black'}}
+          />
+          <Button
+            onPress={() => navigate('Register')}
+            raised
+            containerStyle={{flex: 0.5, marginBottom: 10, margin: 5}}
+            buttonStyle={{
+              backgroundColor: 'white',
+              borderRadius: 10,
+              borderWidth: 0.5,
+              borderColor: 'black',
+            }}
+            title={I18n.t('register')}
+            titleStyle={{fontFamily: text.font, color: 'black'}}
           />
         </View>
-        <View
-          style={{
-            flexDirection: 'column',
-            justifyContent: 'flex-end',
-            margin: 15,
-            paddingTop: 10,
-          }}>
-          <Text style={widgetStyles.headerThree}>
-            {I18n.t('total_details')}
-          </Text>
-        </View>
-        <View
-          style={{
-            flexDirection: 'row',
-            justifyContent: 'space-between',
-            alignItems: 'center',
-            paddingTop: 20,
-            paddingLeft: 15,
-            paddingRight: 15,
-            paddingBottom: 20,
-            backgroundColor: 'white',
-            borderTopWidth: 1,
-            borderBottomWidth: 1,
-          }}>
-          <Text style={[widgetStyles.headerThree]}>{I18n.t('total_sum')}</Text>
-          <View style={{flexDirection: 'row', minWidth: 50}}>
-            <Text style={widgetStyles.headerThree}>{round(total, 2)}</Text>
-            <Text
-              style={{
-                fontFamily: text.font,
-                fontSize: text.medium,
-                color: colors.header_one_theme_color,
-              }}>
-              {I18n.t('kwd')}
-            </Text>
-          </View>
-        </View>
-
-        {shipmentFees > 0 ? (
-          <View
-            style={{
-              flexDirection: 'row',
-              justifyContent: 'space-between',
-              alignItems: 'center',
-              paddingTop: 20,
-              paddingLeft: 15,
-              paddingRight: 15,
-              paddingBottom: 20,
-              backgroundColor: 'white',
-              borderBottomWidth: 1,
-            }}>
-            <Text style={widgetStyles.headerThree}>
-              {I18n.t('shipment_fees_per_piece')}
-            </Text>
-            <View style={{flexDirection: 'row', minWidth: 50}}>
-              <Text style={widgetStyles.headerThree}>
-                {round(shipmentCountry.fixed_shipment_charge, 2)}
-              </Text>
-              <Text
-                style={{
-                  fontFamily: text.font,
-                  fontSize: text.medium,
-                  color: colors.header_one_theme_color,
-                }}>
-                {I18n.t('kwd')}
-              </Text>
-            </View>
-          </View>
-        ) : null}
-
-        {coupon && coupon.value > 0 ? (
-          <View
-            style={{
-              flexDirection: 'row',
-              justifyContent: 'space-between',
-              alignItems: 'center',
-              paddingTop: 20,
-              paddingLeft: 15,
-              paddingRight: 15,
-              paddingBottom: 20,
-              backgroundColor: 'white',
-              borderBottomWidth: 1,
-            }}>
-            <Text style={widgetStyles.headerThree}>{I18n.t('discount')}}</Text>
-            <View style={{flexDirection: 'row', minWidth: 50}}>
-              <Text style={widgetStyles.headerThree}>
-                {round(coupon.value, 2)}
-              </Text>
-              <Text
-                style={{
-                  fontFamily: text.font,
-                  fontSize: text.medium,
-                  color: colors.header_one_theme_color,
-                }}>
-                {I18n.t('kwd')}
-              </Text>
-            </View>
-          </View>
-        ) : null}
-
-        <View
-          style={{
-            flexDirection: 'row',
-            justifyContent: 'space-between',
-            alignItems: 'center',
-            paddingTop: 20,
-            paddingLeft: 15,
-            paddingRight: 15,
-            paddingBottom: 20,
-            backgroundColor: 'white',
-            borderBottomWidth: 1,
-          }}>
-          <Text style={widgetStyles.headerThree}>{I18n.t('grossTotal')}</Text>
-          <View style={{flexDirection: 'row', minWidth: 50}}>
-            <Text style={widgetStyles.headerThree}>{round(grossTotal, 2)}</Text>
-            <Text
-              style={{
-                fontFamily: text.font,
-                fontSize: text.medium,
-                color: colors.header_one_theme_color,
-              }}>
-              {I18n.t('kwd')}
-            </Text>
-          </View>
-        </View>
-        {!country.is_local && (
-          <View
-            style={{
-              flexDirection: 'row',
-              justifyContent: 'space-between',
-              alignText: 'center',
-              marginTop: 10,
-              paddingTop: 20,
-              paddingBottom: 20,
-              borderTopWidth: 0.5,
-              borderTopColor: 'lightgrey',
-            }}>
-            <Text
-              style={{
-                fontFamily: text.font,
-                fontSize: text.medium,
-                color: colors.header_one_theme_color,
-              }}>
-              {`${I18n.t('gross_total_in')} ${currency_symbol}`}
-            </Text>
-            <View style={{flexDirection: 'row'}}>
-              <Text
-                style={{
-                  fontFamily: text.font,
-                  fontSize: text.medium,
-                  color: colors.header_one_theme_color,
-                }}>
-                {`${getConvertedFinalPrice(
-                  round(grossTotal, 2),
-                  exchange_rate,
-                )} ${currency_symbol}`}
-              </Text>
-            </View>
-          </View>
+      ) : null}
+      <View>
+        {shipment_notes && (
+          <Button
+            raised
+            title={shipment_notes}
+            type="outline"
+            containerStyle={{marginBottom: 20}}
+            titleStyle={{
+              fontFamily: text.font,
+              fontSize: text.medium,
+              color: colors.header_one_theme_color,
+            }}
+          />
         )}
-        {guest ? (
-          <View
-            style={{
-              flexDirection: 'row',
-              justifyContent: 'center',
-              alignItems: 'center',
-              width: '100%',
-            }}>
-            <Button
-              // onPress={() => dispatch(showLoginModal())}
-              onPress={() => navigate('Login')}
-              raised
-              containerStyle={{flex: 0.5, marginBottom: 10, margin: 5}}
-              buttonStyle={{
-                backgroundColor: 'white',
-                borderRadius: 10,
-                borderWidth: 0.5,
-                borderColor: 'black',
-              }}
-              title={I18n.t('login')}
-              titleStyle={{fontFamily: text.font, color: 'black'}}
-            />
-            <Button
-              onPress={() => navigate('Register')}
-              raised
-              containerStyle={{flex: 0.5, marginBottom: 10, margin: 5}}
-              buttonStyle={{
-                backgroundColor: 'white',
-                borderRadius: 10,
-                borderWidth: 0.5,
-                borderColor: 'black',
-              }}
-              title={I18n.t('register')}
-              titleStyle={{fontFamily: text.font, color: 'black'}}
-            />
-          </View>
-        ) : null}
-        <View>
-          {shipment_notes && (
-            <Button
-              raised
-              title={shipment_notes}
-              type="outline"
-              containerStyle={{marginBottom: 20}}
-              titleStyle={{
-                fontFamily: text.font,
-                fontSize: text.medium,
-                color: colors.header_one_theme_color,
-              }}
-            />
-          )}
-          <View style={{paddingTop: 20, paddingBottom: 20}}>
-            <Input
-              editable={editMode}
-              placeholder={name ? name : I18n.t('name')}
-              value={name ? name : null}
-              inputContainerStyle={{
-                borderWidth: 1,
-                borderColor: 'lightgrey',
-                borderRadius: 10,
-                paddingLeft: 15,
-                paddingRight: 15,
-                marginBottom: iconSizes.tiny,
-              }}
-              inputStyle={{
-                fontFamily: text.font,
-                textAlign: isRTL ? 'right' : 'left',
-              }}
-              label={I18n.t('name')}
-              labelStyle={{
-                paddingBottom: 10,
-
-                fontFamily: text.font,
-                textAlign: 'left',
-              }}
-              shake={true}
-              keyboardType="default"
-              onChangeText={(name) => setName(name)}
-            />
-            <Input
-              editable={editMode}
-              placeholder={email ? email : I18n.t('email')}
-              value={email ? email : null}
-              inputContainerStyle={{
-                borderWidth: 1,
-                borderColor: 'lightgrey',
-                borderRadius: 10,
-                paddingLeft: 15,
-                paddingRight: 15,
-                marginBottom: iconSizes.tiny,
-              }}
-              inputStyle={{
-                fontFamily: text.font,
-                textAlign: isRTL ? 'right' : 'left',
-              }}
-              label={I18n.t('email')}
-              labelStyle={{
-                paddingBottom: 10,
-
-                fontFamily: text.font,
-                textAlign: 'left',
-              }}
-              shake={true}
-              keyboardType="email-address"
-              onChangeText={(email) => setEmail(email)}
-            />
-            <Input
-              editable={editMode}
-              textContentType="telephoneNumber"
-              placeholder={mobile ? mobile : I18n.t('mobile')}
-              leftIcon={() => <Text>+{country.calling_code}</Text>}
-              leftIconContainerStyle={{paddingRight: 15}}
-              value={mobile ? mobile : null}
-              inputContainerStyle={{
-                borderWidth: 1,
-                borderColor: 'lightgrey',
-                borderRadius: 10,
-                paddingLeft: 15,
-                paddingRight: 15,
-                marginBottom: iconSizes.tiny,
-              }}
-              inputStyle={{
-                fontFamily: text.font,
-                textAlign: isRTL ? 'right' : 'left',
-              }}
-              label={I18n.t('mobile')}
-              labelStyle={{
-                paddingBottom: 10,
-
-                fontFamily: text.font,
-                textAlign: 'left',
-              }}
-              shake={true}
-              keyboardType="number-pad"
-              onChangeText={(text) => setMobile(text)}
-            />
-            <TouchableOpacity
-              onPress={() => {
-                editMode ? dispatch(showCountryModal()) : null;
-              }}
-              style={{
-                borderWidth: 1,
-                borderColor: 'lightgrey',
-                borderRadius: 10,
-                paddingLeft: 15,
-                paddingRight: 15,
-                marginBottom: iconSizes.small,
-                height: 45,
-                width: '95%',
-                alignSelf: 'center',
-                justifyContent: 'center',
-                alignItems: 'center',
-              }}>
-              <Text
-                style={{
-                  fontFamily: text.font,
-                  fontSize: text.large,
-                  textAlign: isRTL ? 'right' : 'left',
-                  color: colors.main_theme_color,
-                }}>
-                {shipmentCountry.slug}
-              </Text>
-            </TouchableOpacity>
-            <Input
-              editable={editMode}
-              placeholder={area ? area : I18n.t('area')}
-              value={area ? area : null}
-              inputContainerStyle={{
-                borderWidth: 1,
-                borderColor: 'lightgrey',
-                borderRadius: 10,
-                paddingLeft: 15,
-                paddingRight: 15,
-                marginBottom: iconSizes.tiny,
-              }}
-              inputStyle={{
-                fontFamily: text.font,
-                textAlign: isRTL ? 'right' : 'left',
-              }}
-              label={I18n.t('area')}
-              labelStyle={{
-                paddingBottom: 10,
-
-                fontFamily: text.font,
-                textAlign: 'left',
-              }}
-              shake={true}
-              keyboardType="default"
-              onChangeText={(area) => setArea(area)}
-            />
-            <Input
-              editable={editMode}
-              placeholder={address ? address : I18n.t('full_address')}
-              value={address ? address : null}
-              inputContainerStyle={{
-                borderWidth: 1,
-                borderColor: 'lightgrey',
-                borderRadius: 10,
-                paddingLeft: 15,
-                paddingRight: 15,
-                marginBottom: iconSizes.tiny,
-                height: 80,
-              }}
-              inputStyle={{
-                fontFamily: text.font,
-                fontSize: 14,
-                textAlign: isRTL ? 'right' : 'left',
-              }}
-              label={I18n.t('address')}
-              labelStyle={{
-                paddingBottom: 10,
-
-                fontFamily: text.font,
-                textAlign: 'left',
-              }}
-              numberOfLines={3}
-              shake={true}
-              keyboardType="default"
-              onChangeText={(address) => setAddress(address)}
-            />
-            <Input
-              spellCheck={true}
-              editable={editMode}
-              placeholder={notes ? notes : I18n.t('additional_information')}
-              value={notes ? notes : null}
-              inputContainerStyle={{
-                borderWidth: 1,
-                borderColor: 'lightgrey',
-                borderRadius: 10,
-                paddingLeft: 15,
-                paddingRight: 15,
-                marginBottom: iconSizes.tiny,
-                height: 80,
-              }}
-              inputStyle={{
-                fontFamily: text.font,
-                textAlign: isRTL ? 'right' : 'left',
-              }}
-              label={I18n.t('additional_information')}
-              labelStyle={{
-                paddingBottom: 10,
-
-                fontFamily: text.font,
-                textAlign: 'left',
-              }}
-              shake={true}
-              keyboardType="default"
-              multiline={true}
-              numberOfLines={3}
-              onChangeText={(notes) => setNotes(notes)}
-            />
-
-            {coupon && editMode ? (
-              <View
-                style={{
-                  padding: 20,
-                  borderWidth: 1,
-                  borderColor: 'lightgrey',
-                  width: '100%',
-                  alignItems: 'center',
-                  justifyContent: 'center',
-                }}>
-                <Text
-                  style={{
-                    fontFamily: text.font,
-                    fontSize: text.medium,
-                    textAlign: 'center',
-                    paddingBottom: 10,
-                  }}>
-                  {I18n.t('have_coupon')}
-                </Text>
-                <Input
-                  placeholder={I18n.t('coupon')}
-                  value={code ? code : null}
-                  inputContainerStyle={{
-                    borderWidth: 1,
-                    borderColor: 'lightgrey',
-                    borderRadius: 10,
-                    paddingLeft: 15,
-                    paddingRight: 15,
-                    marginBottom: iconSizes.tiny,
-                  }}
-                  inputStyle={{
-                    fontFamily: text.font,
-                    textAlign: 'left',
-                  }}
-                  shake={true}
-                  keyboardType="default"
-                  onChangeText={(code) => setCode(code)}
-                />
-                <Button
-                  raised
-                  containerStyle={{marginBottom: 10, width: '90%'}}
-                  buttonStyle={{
-                    backgroundColor: colors.btn_bg_theme_color,
-                  }}
-                  title={I18n.t('add_coupon')}
-                  titleStyle={{
-                    fontFamily: text.font,
-                    color: colors.btn_text_theme_color,
-                  }}
-                  onPress={() => dispatch(getCoupon(code))}
-                />
-              </View>
-            ) : null}
-          </View>
-          <View
-            style={{
-              marginTop: 0,
-              marginBottom: 10,
-              width: '100%',
-              flexDirection: 'row',
-              justifyContent: 'center',
-              alignItems: 'center',
-            }}>
-            <CheckBox
-              containerStyle={{width: '90%'}}
-              title={I18n.t('agree_on_conditions_and_terms')}
-              iconType="material"
-              checkedIcon="check-box"
-              uncheckedIcon="check-box-outline-blank"
-              checked={checked}
-              onPress={() => setChecked(!checked)}
-              textStyle={{fontFamily: text.font, paddingTop: 5}}
-            />
-            <Icon
-              name="book"
-              type="font-awesome"
-              size={15}
-              onPress={() => navigate('TermAndCondition')}
-            />
-          </View>
-          {editMode ? (
-            <Button
-              disabled={!checked}
-              raised
-              containerStyle={{marginBottom: 10, width: '100%'}}
-              buttonStyle={{
-                backgroundColor: colors.btn_bg_theme_color,
-                borderRadius: 0,
-              }}
-              title={I18n.t('confirm_information')}
-              titleStyle={{
-                fontFamily: text.font,
-                color: colors.btn_text_theme_color,
-              }}
-              onPress={() =>
-                dispatch(
-                  submitCart({
-                    name,
-                    email,
-                    mobile,
-                    address,
-                    country_id: shipmentCountry.id,
-                    notes,
-                    area: area ? area : 'N/A',
-                  }),
-                )
-              }
-            />
-          ) : (
-            <View>
-              <Button
-                raised
-                containerStyle={{marginBottom: 10, width: '100%'}}
-                buttonStyle={{
-                  backgroundColor: colors.btn_bg_theme_color,
-                  borderRadius: 0,
-                }}
-                title={I18n.t('go_to_payment_my_fatoorah')}
-                titleStyle={{
-                  fontFamily: text.font,
-                  color: colors.btn_text_theme_color,
-                }}
-                onPress={() =>
-                  dispatch({
-                    type: CREATE_MYFATOORAH_PAYMENT_URL,
-                    payload: {
-                      name,
-                      email,
-                      mobile,
-                      address,
-                      country_id: shipmentCountry.id,
-                      coupon_id: !isNull(coupon) ? coupon.id : 0,
-                      cart,
-                      total,
-                      grossTotal,
-                      shipment_fees: shipmentCountry.fixed_shipment_charge,
-                      discount: coupon.value,
-                      payment_method: isIOS
-                        ? 'IOS - My Fatoorah'
-                        : 'Android - My Fatoorah',
-                    },
-                  })
-                }
-              />
-              <Button
-                raised
-                containerStyle={{marginBottom: 10, width: '100%'}}
-                buttonStyle={{
-                  backgroundColor: colors.btn_bg_theme_color,
-                  borderRadius: 0,
-                }}
-                title={I18n.t('go_to_payment_tap')}
-                titleStyle={{
-                  fontFamily: text.font,
-                  color: colors.btn_text_theme_color,
-                }}
-                onPress={() =>
-                  dispatch({
-                    type: actions.CREATE_TAP_PAYMENT_URL,
-                    payload: {
-                      name,
-                      email,
-                      mobile,
-                      address,
-                      country_id: shipmentCountry.id,
-                      coupon_id: !isNull(coupon) ? coupon.id : 0,
-                      cart,
-                      total,
-                      grossTotal,
-                      shipment_fees: shipmentCountry.fixed_shipment_charge,
-                      discount,
-                      payment_method: isIOS
-                        ? 'IOS - My Fatoorah'
-                        : 'Android - My Fatoorah',
-                    },
-                  })
-                }
-              />
-            </View>
-          )}
-        </View>
       </View>
       <Button
         raised
-        containerStyle={{marginBottom: 10}}
+        containerStyle={{margin: 15, marginTop: 50}}
         buttonStyle={{
           backgroundColor: colors.btn_bg_theme_color,
-          borderRadius: 0,
         }}
-        title={I18n.t('clear_cart')}
+        title={I18n.t('pay')}
         titleStyle={{
           fontFamily: text.font,
           color: colors.btn_text_theme_color,
         }}
-        onPress={() => dispatch(clearCart())}
+        onPress={() => navigate('CartIndexForm')}
       />
-    </Fragment>
+    </View>
   );
 };
 

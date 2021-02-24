@@ -31,6 +31,7 @@ import {useNavigation} from '@react-navigation/native';
 import {HeaderRight} from '../components/HeaderRight';
 import {HeaderLeft} from '../components/HeaderLeft';
 import {HeaderMiddle} from '../components/HeaderMiddle';
+import DesigneratCartIndexScreen from '../screens/cart/DesigneratCartIndexScreen';
 
 const MaterialTab = createMaterialBottomTabNavigator();
 const Tab = createBottomTabNavigator();
@@ -131,7 +132,7 @@ const MainTab = () => {
       />
       <Tab.Screen
         name="CartTab"
-        component={CartIndexScreen}
+        component={DesigneratCartIndexScreen}
         options={({route}) => ({
           tabBarLabel: ({focused}) => (
             <TextTabBar

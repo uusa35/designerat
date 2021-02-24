@@ -177,7 +177,7 @@ export const HeaderRight = ({
       {showCart && (
         <View>
           <Icon
-            onPress={() => navigation.navigate('CartIndexSecond')}
+            onPress={() => navigation.navigate('CartIndex')}
             name="shoppingcart"
             type="antdesign"
             size={iconSizes.small}
