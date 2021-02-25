@@ -1,5 +1,7 @@
 import {I18nManager, StyleSheet} from 'react-native';
-import {text, width} from '../../constants/sizes';
+import {formWidget, iconSizes, text, width} from '../../constants/sizes';
+import {isRTL} from '../../I18n';
+import {APP_CASE} from '../../../app.json';
 
 const widgetStyles = StyleSheet.create({
   container: {
@@ -213,6 +215,20 @@ const widgetStyles = StyleSheet.create({
     fontSize: text.large,
     paddingRight: 20,
     paddingLeft: 20,
+  },
+  inputStyle: {
+    fontFamily: text.font,
+    textAlign: isRTL ? 'right' : 'left',
+    height: formWidget[APP_CASE].smaller.height,
+  },
+  inputContainerStyle: {
+    borderWidth: 1,
+    borderColor: 'lightgrey',
+    borderRadius: 5,
+    paddingLeft: 15,
+    paddingRight: 15,
+    marginBottom: iconSizes.tiny,
+    backgroundColor: 'white',
   },
 });
 

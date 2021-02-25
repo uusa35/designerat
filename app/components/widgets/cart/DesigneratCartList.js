@@ -274,41 +274,30 @@ const DesigneratCartList = ({
           </Text>
         </View>
       </View>
-      {!country.is_local && (
-        <View
-          style={{
-            flexDirection: 'row',
-            justifyContent: 'space-between',
-            alignText: 'center',
-            marginTop: 10,
-            paddingTop: 20,
-            paddingBottom: 20,
-            borderTopWidth: 0.5,
-            borderTopColor: 'lightgrey',
-          }}>
-          <Text
-            style={{
-              fontFamily: text.font,
-              fontSize: text.medium,
-              color: colors.header_one_theme_color,
-            }}>
-            {`${I18n.t('gross_total_in')} ${currency_symbol}`}
-          </Text>
-          <View style={{flexDirection: 'row'}}>
-            <Text
-              style={{
-                fontFamily: text.font,
-                fontSize: text.medium,
-                color: colors.header_one_theme_color,
-              }}>
-              {`${getConvertedFinalPrice(
-                round(grossTotal, 2),
-                exchange_rate,
-              )} ${currency_symbol}`}
-            </Text>
-          </View>
+
+      <View
+        style={{
+          flexDirection: 'row',
+          justifyContent: 'space-between',
+          alignItems: 'center',
+          paddingTop: 20,
+          paddingLeft: 15,
+          paddingRight: 15,
+          paddingBottom: 20,
+          backgroundColor: 'white',
+          borderBottomWidth: 1,
+        }}>
+        <Text style={widgetStyles.headerThree}>{`${I18n.t(
+          'gross_total_in',
+        )} ${currency_symbol}`}</Text>
+        <View style={{flexDirection: 'row', minWidth: 50}}>
+          <Text style={widgetStyles.headerThree}>{`${getConvertedFinalPrice(
+            round(grossTotal, 2),
+            exchange_rate,
+          )} ${currency_symbol}`}</Text>
         </View>
-      )}
+      </View>
+
       {guest ? (
         <View
           style={{

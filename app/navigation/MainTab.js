@@ -31,7 +31,11 @@ import {useNavigation} from '@react-navigation/native';
 import {HeaderRight} from '../components/HeaderRight';
 import {HeaderLeft} from '../components/HeaderLeft';
 import {HeaderMiddle} from '../components/HeaderMiddle';
+import FastImage from 'react-native-fast-image';
 import DesigneratCartIndexScreen from '../screens/cart/DesigneratCartIndexScreen';
+import ImageLoaderContainer from '../components/widgets/ImageLoaderContainer';
+import {icons} from '../constants/images';
+import {Icon} from 'react-native-elements';
 
 const MaterialTab = createMaterialBottomTabNavigator();
 const Tab = createBottomTabNavigator();
@@ -70,11 +74,13 @@ const MainTab = () => {
             />
           ),
           tabBarIcon: ({focused}) => (
-            <IconTabBar
-              name="home"
-              type="octicon"
-              focused={focused}
-              showLabel={true}
+            <FastImage
+              source={icons.brandat}
+              resizeMode="contain"
+              style={{width: 25, height: 25}}
+              tintColor={
+                focused ? colors.btn_bg_theme_color : colors.icon_theme_color
+              }
             />
           ),
           tabBarVisible: true,
@@ -95,16 +101,18 @@ const MainTab = () => {
           tabBarLabel: ({focused}) => (
             <TextTabBar
               showLabel={true}
-              title={I18n.t('categories')}
+              title={I18n.t('sections')}
               focused={focused}
             />
           ),
           tabBarIcon: ({focused}) => (
-            <IconTabBar
-              name="layers"
-              type="entypo"
-              focused={focused}
-              showLabel={true}
+            <FastImage
+              source={icons.hanger}
+              resizeMode="contain"
+              style={{width: 25, height: 25}}
+              tintColor={
+                focused ? colors.btn_bg_theme_color : colors.icon_theme_color
+              }
             />
           ),
         })}
@@ -122,8 +130,8 @@ const MainTab = () => {
           ),
           tabBarIcon: ({focused}) => (
             <IconTabBar
-              name="shirt-sharp"
-              type="ionicon"
+              name="compass"
+              type=""
               focused={focused}
               showLabel={true}
             />
@@ -164,11 +172,13 @@ const MainTab = () => {
             />
           ),
           tabBarIcon: ({focused}) => (
-            <IconTabBar
-              name="ios-person-circle"
-              type="ionicon"
-              focused={focused}
-              showLabel={true}
+            <FastImage
+              source={icons.account}
+              resizeMode="contain"
+              style={{width: 25, height: 25}}
+              tintColor={
+                focused ? colors.btn_bg_theme_color : colors.icon_theme_color
+              }
             />
           ),
         })}

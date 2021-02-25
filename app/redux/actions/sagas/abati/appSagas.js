@@ -45,6 +45,7 @@ import {GET_ROLES} from '../../types';
 
 export function* abatiBootStrap() {
   try {
+    console.log('here');
     const {country} = yield select();
     yield all([
       call(getCountry),

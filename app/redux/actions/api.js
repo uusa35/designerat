@@ -49,6 +49,7 @@ export async function getSplashes() {
 }
 
 export async function getUsers(params) {
+  console.log(params);
   return await axiosInstance
     .get(`search/user`, {params})
     .then((r) => r.data)

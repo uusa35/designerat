@@ -1,6 +1,6 @@
 import {Button, CheckBox, Icon, Input} from 'react-native-elements';
 import I18n, {isRTL} from '../../../I18n';
-import {iconSizes, text} from '../../../constants/sizes';
+import {formWidget, iconSizes, text} from '../../../constants/sizes';
 import {Text, TouchableOpacity} from 'react-native';
 import {showCountryModal} from '../../../redux/actions';
 import {View} from 'react-native-animatable';
@@ -16,7 +16,8 @@ import {useDispatch, useSelector} from 'react-redux';
 import {GlobalValuesContext} from '../../../redux/GlobalValuesContext';
 import {useNavigation} from '@react-navigation/native';
 import validate from 'validate.js';
-
+import {APP_CASE} from '../../../../app.json';
+import widgetStyles from '../widgetStyles';
 const DesigneratCartForm = ({
   shipmentCountry,
   shipment_notes = null,
@@ -63,18 +64,8 @@ const DesigneratCartForm = ({
           editable={editMode}
           placeholder={name ? name : I18n.t('name')}
           value={name ? name : null}
-          inputContainerStyle={{
-            borderWidth: 1,
-            borderColor: 'lightgrey',
-            borderRadius: 10,
-            paddingLeft: 15,
-            paddingRight: 15,
-            marginBottom: iconSizes.tiny,
-          }}
-          inputStyle={{
-            fontFamily: text.font,
-            textAlign: isRTL ? 'right' : 'left',
-          }}
+          inputContainerStyle={widgetStyles.inputContainerStyle}
+          inputStyle={widgetStyles.inputStyle}
           label={I18n.t('name')}
           labelStyle={{
             paddingBottom: 10,
@@ -90,18 +81,8 @@ const DesigneratCartForm = ({
           editable={editMode}
           placeholder={email ? email : I18n.t('email')}
           value={email ? email : null}
-          inputContainerStyle={{
-            borderWidth: 1,
-            borderColor: 'lightgrey',
-            borderRadius: 10,
-            paddingLeft: 15,
-            paddingRight: 15,
-            marginBottom: iconSizes.tiny,
-          }}
-          inputStyle={{
-            fontFamily: text.font,
-            textAlign: isRTL ? 'right' : 'left',
-          }}
+          inputContainerStyle={widgetStyles.inputContainerStyle}
+          inputStyle={widgetStyles.inputStyle}
           label={I18n.t('email')}
           labelStyle={{
             paddingBottom: 10,
@@ -120,18 +101,8 @@ const DesigneratCartForm = ({
           leftIcon={() => <Text>+{country.calling_code}</Text>}
           leftIconContainerStyle={{paddingRight: 15}}
           value={mobile ? mobile : null}
-          inputContainerStyle={{
-            borderWidth: 1,
-            borderColor: 'lightgrey',
-            borderRadius: 10,
-            paddingLeft: 15,
-            paddingRight: 15,
-            marginBottom: iconSizes.tiny,
-          }}
-          inputStyle={{
-            fontFamily: text.font,
-            textAlign: isRTL ? 'right' : 'left',
-          }}
+          inputContainerStyle={widgetStyles.inputContainerStyle}
+          inputStyle={widgetStyles.inputStyle}
           label={I18n.t('mobile')}
           labelStyle={{
             paddingBottom: 10,
@@ -174,18 +145,8 @@ const DesigneratCartForm = ({
           editable={editMode}
           placeholder={area ? area : I18n.t('area')}
           value={area ? area : null}
-          inputContainerStyle={{
-            borderWidth: 1,
-            borderColor: 'lightgrey',
-            borderRadius: 10,
-            paddingLeft: 15,
-            paddingRight: 15,
-            marginBottom: iconSizes.tiny,
-          }}
-          inputStyle={{
-            fontFamily: text.font,
-            textAlign: isRTL ? 'right' : 'left',
-          }}
+          inputContainerStyle={widgetStyles.inputContainerStyle}
+          inputStyle={widgetStyles.inputStyle}
           label={I18n.t('area')}
           labelStyle={{
             paddingBottom: 10,
@@ -241,10 +202,7 @@ const DesigneratCartForm = ({
             marginBottom: iconSizes.tiny,
             height: 80,
           }}
-          inputStyle={{
-            fontFamily: text.font,
-            textAlign: isRTL ? 'right' : 'left',
-          }}
+          inputStyle={widgetStyles.inputStyle}
           label={I18n.t('additional_information')}
           labelStyle={{
             paddingBottom: 10,

@@ -695,5 +695,6 @@
   "add_from_favorite_list" : "إضافة من قائمة الأمنيات",
   "total_details" : "تفاصيل الأسعار",
   "total_sum" : "المجموع الكلي",
-  "pay" : "الدفع"
+  "pay" : "الدفع",
+  "sections" : "الأقسام"
 }

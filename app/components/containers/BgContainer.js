@@ -28,9 +28,11 @@ const BgContainer = ({
   const [currentLoading, setCurrentLoading] = useState(
     isLoading || isLoadingProfile || isLoadingContent || isLoadingBoxedList,
   );
-  const [bg, setBg] = useState(
-    !showImage ? images.whiteBg : mainBg.includes('.') ? mainBg : img,
-  );
+  const [bg, setBg] = useState();
+
+  useMemo(() => {
+    setBg(!showImage ? images.whiteBg : mainBg.includes('.') ? mainBg : img);
+  }, []);
 
   useMemo(() => {
     setCurrentLoading(

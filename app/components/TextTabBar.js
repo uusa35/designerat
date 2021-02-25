@@ -14,7 +14,7 @@ const TextTabBar = ({focused, title, showLabel = false}) => {
             fontSize: text.small,
             textAlign: 'center',
             color: focused
-              ? colors.footer_theme_color
+              ? colors.btn_bg_theme_color
               : colors.icon_theme_color,
           }}>
           {title}

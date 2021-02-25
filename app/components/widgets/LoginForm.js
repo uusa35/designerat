@@ -12,6 +12,7 @@ import {first, filter, isEmpty} from 'lodash';
 import KeyBoardContainer from '../containers/KeyBoardContainer';
 import {useNavigation} from '@react-navigation/native';
 import {APP_CASE} from '../../../app.json';
+import widgetStyles from './widgetStyles';
 
 const LoginForm = ({showBtns = false}) => {
   const {roles} = useSelector((state) => state);
@@ -59,18 +60,8 @@ const LoginForm = ({showBtns = false}) => {
         />
         <Input
           placeholder={I18n.t('email')}
-          inputContainerStyle={{
-            borderWidth: 1,
-            borderRadius: 5,
-            borderColor: 'lightgrey',
-            paddingLeft: 15,
-            paddingRight: 15,
-          }}
-          inputStyle={{
-            fontFamily: text.font,
-            textAlign: isRTL ? 'right' : 'left',
-            height: formWidget[APP_CASE].smaller.height,
-          }}
+          inputContainerStyle={widgetStyles.inputContainerStyle}
+          inputStyle={widgetStyles.inputStyle}
           label={I18n.t('email')}
           labelStyle={[
             styles.titleLabelStyle,
@@ -107,18 +98,8 @@ const LoginForm = ({showBtns = false}) => {
           )}
           placeholder={I18n.t('password')}
           secureTextEntry={visiblePassword}
-          inputContainerStyle={{
-            borderWidth: 1,
-            borderRadius: 5,
-            borderColor: 'lightgrey',
-            paddingLeft: 15,
-            paddingRight: 15,
-          }}
-          inputStyle={{
-            fontFamily: text.font,
-            textAlign: isRTL ? 'right' : 'left',
-            height: formWidget[APP_CASE].smaller.height,
-          }}
+          inputContainerStyle={widgetStyles.inputContainerStyle}
+          inputStyle={widgetStyles.inputStyle}
           label={I18n.t('password')}
           labelStyle={[
             styles.titleLabelStyle,

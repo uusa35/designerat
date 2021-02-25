@@ -25,16 +25,16 @@ const DesigneratCartIndexScreen = () => {
 
   return (
     <BgContainer showImage={false}>
-      <View
-        style={{
-          flex: 1,
-          justifyContent: 'center',
-          alignItems: 'center',
-          alignSelf: 'center',
-          backgroundColor: '#f7f7f7',
-        }}>
-        <KeyBoardContainer>
-          {!validate.isEmpty(cart) ? (
+      {!validate.isEmpty(cart) && (
+        <View
+          style={{
+            flex: 1,
+            justifyContent: 'center',
+            alignItems: 'center',
+            alignSelf: 'center',
+            backgroundColor: '#f7f7f7',
+          }}>
+          <KeyBoardContainer>
             <DesigneratCartList
               shipmentCountry={country}
               shipmentFees={shipmentFees}
@@ -45,81 +45,79 @@ const DesigneratCartIndexScreen = () => {
               editModeDefault={true}
               coupon={coupon}
             />
-          ) : (
-            <View
+          </KeyBoardContainer>
+        </View>
+      )}
+      {validate.isEmpty(cart) && (
+        <View
+          style={{
+            justifyContent: 'center',
+            backgroundColor: 'white',
+            margin: 20,
+          }}>
+          <LottieView
+            source={animations.emptyCart}
+            // source={animations.cart}
+            autoPlay
+            loop
+            resizeMode="cover"
+            style={{
+              alignSelf: 'center',
+              width: width / 3,
+              height: width / 3,
+            }}
+            enableMergePathsAndroidForKitKatAndAbove
+          />
+          <Animating
+            animation="bounceIn"
+            easing="ease-out"
+            useNativeDriver={true}>
+            <Button
+              raised
+              title={I18n.t('no_items')}
+              type="outline"
+              containerStyle={{marginBottom: 20}}
+              titleStyle={{
+                fontFamily: text.font,
+                color: colors.normal_text_theme_color,
+              }}
+              buttonStyle={{
+                borderColor: colors.btn_bg_theme_color,
+                color: colors.btn_bg_theme_color,
+              }}
+            />
+            <Button
+              onPress={() => navigation.navigate('Home')}
+              raised
+              title={I18n.t('shop_now')}
+              type="outline"
+              containerStyle={{marginBottom: 20}}
+              titleStyle={{
+                fontFamily: text.font,
+                color: colors.normal_text_theme_color,
+              }}
+              buttonStyle={{
+                borderColor: colors.btn_bg_theme_color,
+                color: colors.btn_bg_theme_color,
+              }}
+            />
+          </Animating>
+          {EXPO && (
+            <LottieView
+              source={animations.cart}
+              autoPlay
+              loop
+              resizeMode="cover"
               style={{
-                paddingTop: '30%',
-                backgroundColor: 'white',
-                width: width / 1.1,
-              }}>
-              {!ABATI ? (
-                <LottieView
-                  source={EXPO ? animations.emptyCart : animations.cart}
-                  autoPlay
-                  loop
-                  resizeMode="cover"
-                  style={{
-                    alignSelf: 'center',
-                    width: width / 3,
-                    height: width / 3,
-                  }}
-                  enableMergePathsAndroidForKitKatAndAbove
-                />
-              ) : (
-                <EmptyListWidget emptyImage="emptyOrder" />
-              )}
-              <Animating
-                animation="bounceIn"
-                easing="ease-out"
-                useNativeDriver={true}>
-                <Button
-                  raised
-                  title={I18n.t('no_items')}
-                  type="outline"
-                  containerStyle={{marginBottom: 20}}
-                  titleStyle={{
-                    fontFamily: text.font,
-                    color: colors.normal_text_theme_color,
-                  }}
-                  buttonStyle={{
-                    borderColor: colors.btn_bg_theme_color,
-                    color: colors.btn_bg_theme_color,
-                  }}
-                />
-                <Button
-                  onPress={() => navigation.navigate('Home')}
-                  raised
-                  title={I18n.t('shop_now')}
-                  type="outline"
-                  containerStyle={{marginBottom: 20}}
-                  titleStyle={{
-                    fontFamily: text.font,
-                    color: colors.normal_text_theme_color,
-                  }}
-                  buttonStyle={{
-                    borderColor: colors.btn_bg_theme_color,
-                    color: colors.btn_bg_theme_color,
-                  }}
-                />
-              </Animating>
-              {EXPO && (
-                <LottieView
-                  source={animations.cart}
-                  autoPlay
-                  loop
-                  resizeMode="cover"
-                  style={{
-                    alignSelf: 'center',
-                    width: width / 1.3,
-                    height: width / 1.3,
-                  }}
-                  enableMergePathsAndroidForKitKatAndAbove
-                />
-              )}
-            </View>
+                alignSelf: 'center',
+                width: width / 1.3,
+                height: width / 1.3,
+              }}
+              enableMergePathsAndroidForKitKatAndAbove
+            />
           )}
-        </KeyBoardContainer>
-      </View>
+        </View>
+      )}
     </BgContainer>
   );
 };

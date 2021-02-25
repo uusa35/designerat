@@ -12,6 +12,7 @@ import DesignerIndexScreen from '../../screens/designer/DesignerIndexScreen';
 import CompanyIndexScreen from '../../screens/company/CompanyIndexScreen';
 import ProductShowScreen from '../../screens/product/ProductShowScreen';
 import NormalProductShowScreen from '../../screens/product/NormalProductShowScreen';
+import DesigneratNormalProductShowScreen from '../../screens/product/DesigneratNormalProductShowScreen';
 import SearchProductIndexScreen from '../../screens/product/SearchProductIndexScreen';
 import BrandIndexScreen from '../../screens/brand/BrandIndexScreen';
 import ContactusScreen from '../../screens/ContactusScreen';
@@ -202,7 +203,7 @@ const HomeStack = () => {
             <HeaderRight showCart={true} displayShare={true} />
           ),
         }}
-        component={NormalProductShowScreen}
+        component={DesigneratNormalProductShowScreen}
       />
       <Stack.Screen
         name={'SearchProductIndex'}
