@@ -17,7 +17,9 @@ export const icons = {
   user: require('./../../assets/icons/user.png'),
   info: require('./../../assets/icons/info.png'),
   home: require('./../../assets/icons/home.png'),
-  brandat: require('./../../assets/icons/brandat.png'),
+  designerat: require('./../../assets/icons/designerat.png'),
   hanger: require('./../../assets/icons/hanger.png'),
-  account: require('./../../assets/icons/account.png'),
+  profile: require('./../../assets/icons/profile.png'),
+  compass: require('./../../assets/icons/compass.png'),
+  cart: require('./../../assets/icons/cart.png'),
 };

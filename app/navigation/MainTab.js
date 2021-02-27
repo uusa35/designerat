@@ -75,7 +75,7 @@ const MainTab = () => {
           ),
           tabBarIcon: ({focused}) => (
             <FastImage
-              source={icons.brandat}
+              source={icons.designerat}
               resizeMode="contain"
               style={{width: 25, height: 25}}
               tintColor={
@@ -129,11 +129,13 @@ const MainTab = () => {
             />
           ),
           tabBarIcon: ({focused}) => (
-            <IconTabBar
-              name="compass"
-              type=""
-              focused={focused}
-              showLabel={true}
+            <FastImage
+              source={icons.compass}
+              resizeMode="contain"
+              style={{width: 25, height: 25}}
+              tintColor={
+                focused ? colors.btn_bg_theme_color : colors.icon_theme_color
+              }
             />
           ),
         })}
@@ -150,11 +152,13 @@ const MainTab = () => {
             />
           ),
           tabBarIcon: ({focused}) => (
-            <IconTabBar
-              name="cart"
-              type="ionicon"
-              focused={focused}
-              showLabel={true}
+            <FastImage
+              source={icons.cart}
+              resizeMode="contain"
+              style={{width: 25, height: 25}}
+              tintColor={
+                focused ? colors.btn_bg_theme_color : colors.icon_theme_color
+              }
             />
           ),
           tabBarBadge: cartLength ? cartLength : null,
@@ -173,7 +177,7 @@ const MainTab = () => {
           ),
           tabBarIcon: ({focused}) => (
             <FastImage
-              source={icons.account}
+              source={icons.profile}
               resizeMode="contain"
               style={{width: 25, height: 25}}
               tintColor={
