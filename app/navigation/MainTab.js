@@ -19,6 +19,7 @@ import {useSelector} from 'react-redux';
 import ProductIndexAllScreen from '../screens/product/ProductIndexAllScreen';
 import CartIndexScreen from '../screens/cart/CartIndexScreen';
 import SettingsIndexScreen from '../screens/setting/SettingsIndexScreen';
+import DesigneratSettingsIndexScreen from '../screens/setting/DesigneratSettingsIndexScreen';
 import DesigneratHomeScreen from '../screens/home/DesigneratHomeScreen';
 import CategoryIndexScreen from '../screens/category/CategoryIndexScreen';
 import {useContext} from 'react';
@@ -166,7 +167,7 @@ const MainTab = () => {
       />
       <Tab.Screen
         name="SettingTab"
-        component={SettingsIndexScreen}
+        component={DesigneratSettingsIndexScreen}
         options={({route}) => ({
           tabBarLabel: ({focused}) => (
             <TextTabBar

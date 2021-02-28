@@ -4,21 +4,22 @@ import {StyleSheet} from 'react-native';
 import LoginForm from '../../components/widgets/user/LoginForm';
 import BgContainer from '../../components/containers/BgContainer';
 import {HOMEKEY} from './../../../app';
+import DesigneratLoginForm from '../../components/widgets/user/DesigneratLoginForm';
 
-const LoginScreen = () => {
+const DesigneratLoginScreen = () => {
   // const {goBack, navigate, dangerouslyGetParent} = useNavigation();
   // const parent = dangerouslyGetParent();
 
   return (
-    <BgContainer showImage={!HOMEKEY}>
-      <LoginForm showBtns={true} />
+    <BgContainer showImage={false}>
+      <DesigneratLoginForm showBtns={true} />
     </BgContainer>
   );
 };
 
-export default LoginScreen;
+export default DesigneratLoginScreen;
 
-LoginScreen.propTypes = {
+DesigneratLoginScreen.propTypes = {
   token: PropTypes.string,
 };
 

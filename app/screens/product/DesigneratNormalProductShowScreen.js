@@ -20,6 +20,7 @@ import {EXPO, APP_CASE} from './../../../app';
 import {useNavigation} from '@react-navigation/native';
 import MainTab from '../../navigation/MainTab';
 import widgetStyles from '../../components/widgets/widgetStyles';
+import DesigneratAddToCartStickyFooter from '../../components/widgets/product/DesigneratAddToCartStickyFooter';
 
 const DesineratNormalProductShowScreen = () => {
   const {product, token, settings, products} = useSelector((state) => state);
@@ -29,6 +30,7 @@ const DesineratNormalProductShowScreen = () => {
   const [refresh, setRefresh] = useState(false);
   const [headerBg, setHeaderBg] = useState(true);
   const [headerBgColor, setHeaderBgColor] = useState('transparent');
+  const [addToCartStatus, setAddToCartStatus] = useState(false);
 
   useEffect(() => {
     headerBg || headerBgColor
@@ -126,7 +128,10 @@ const DesineratNormalProductShowScreen = () => {
               </View>
             </View>
           )}
-          <ProductInfoWidget element={product} />
+          <ProductInfoWidget
+            element={product}
+            setAddToCartStatus={setAddToCartStatus}
+          />
           <View
             style={{
               borderWidth: 0.5,
@@ -258,43 +263,7 @@ const DesineratNormalProductShowScreen = () => {
           />
         )}
       </KeyBoardContainer>
-      <View
-        style={{
-          position: 'absolute',
-          left: 0,
-          right: 0,
-          bottom: 0,
-          flexDirection: 'row',
-          justifyContent: 'flex-start',
-          alignItems: 'center',
-          flex: 1,
-          height: '8%',
-          borderWidth: 1,
-          backgroundColor: 'black',
-        }}>
-        <View
-          style={{
-            backgroundColor: 'gold',
-            flex: 0.3,
-            height: '100%',
-            justifyContent: 'center',
-            alignItems: 'center',
-            borderWidth: 1,
-          }}>
-          <Text style={widgetStyles.headerThree}>Favorite</Text>
-        </View>
-        <View
-          style={{
-            backgroundColor: 'gold',
-            flex: 0.7,
-            height: '100%',
-            justifyContent: 'center',
-            alignItems: 'center',
-            borderWidth: 1,
-          }}>
-          <Text style={widgetStyles.headerThree}>Add To Cart</Text>
-        </View>
-      </View>
+      <DesigneratAddToCartStickyFooter disabled={addToCartStatus} />
       <ActionBtnWidget />
     </BgContainer>
   );

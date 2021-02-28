@@ -592,16 +592,12 @@ export function* startRegisterScenario(action) {
       const {email, password} = action.payload;
       yield put({type: actions.SUBMIT_AUTH, payload: {email, password}});
       yield all([
-        call(startGoogleAnalyticsScenario, {
-          payload: {type: 'UserRegister', element},
-        }),
+        // call(startGoogleAnalyticsScenario, {
+        //   payload: {type: 'UserRegister', element},
+        // }),
         call(enableSuccessMessage, I18n.t('register_success')),
-        put(
-          RootNavigation.navigate({
-            routeName: 'Home',
-          }),
-        ),
       ]);
+      RootNavigation.navigate('Home');
     } else {
       throw element;
     }
@@ -620,16 +616,12 @@ export function* startCompanyRegisterScenario(action) {
       const {email, password} = action.payload;
       yield put({type: actions.SUBMIT_AUTH, payload: {email, password}});
       yield all([
-        call(startGoogleAnalyticsScenario, {
-          payload: {type: 'UserRegister', element},
-        }),
+        // call(startGoogleAnalyticsScenario, {
+        //   payload: {type: 'UserRegister', element},
+        // }),
         call(enableSuccessMessage, I18n.t('register_success')),
-        put(
-          RootNavigation.navigate({
-            routeName: 'Home',
-          }),
-        ),
       ]);
+      RootNavigation.navigate('Home');
     } else {
       throw element;
     }

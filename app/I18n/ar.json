@@ -139,7 +139,8 @@
   "details" : "نبذة عن المحل",
   "no_internet" : "لا يوجد اتصال بالانترنت .. يرجى المحاولة لاحقا",
   "retry" : "أعد المحاولة ..",
-  "must_login_message" : "يجب عليك التسجيل لإتمام عملية التقييم",
+  "must_login_message" : "يجب عليك التسجيل أولا",
+  "must_login_message_or_favorite_list_is_empty" : "يجب عليك التسجيل أولا أو أن قائمة المفضلة حاليا فارغة.",
   "enter_application" : "أدخل البرنامج",
   "loading_data" : "جاري تحميل البيانات .. يرجى الإنتظار قليلا ..",
   "daleeli" : "دليلي",
@@ -696,5 +697,9 @@
   "total_details" : "تفاصيل الأسعار",
   "total_sum" : "المجموع الكلي",
   "pay" : "الدفع",
-  "sections" : "الأقسام"
+  "sections" : "الأقسام",
+  "favorite": "المفضلة",
+  "did_u_forget_password" : "هل نسيت كلمة المرور؟",
+  "u_dont_have_account_register_now" : "ليس لديك حساب؟ سجل الآن",
+  "u_have_account_already_log_in_now" : "هل تمتلك حساب بالفعل؟ سجل الدخول!"
 }

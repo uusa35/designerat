@@ -134,7 +134,8 @@
   "details": "About the shop",
   "no_internet": "No Internet Connection .. please try again later.",
   "retry": "Retry ..",
-  "must_login_message": "You must sign in before you can evaluate.",
+  "must_login_message": "You must sign in first.",
+  "must_login_message_or_favorite_list_is_empty" : "You must log in first or your favorite list mostly likely is empty.",
   "enter_application": "ُEnter Application",
   "loading_data": "Loading Data .. Please wait ..",
   "daleeli": "Daleeli",
@@ -662,6 +663,11 @@
   "total_details" : "Price Details",
   "total_sum" : "Total",
   "pay" : "Pay",
-  "sections" : "Sections"
+  "sections" : "Sections",
+  "favorite" : "Favorite",
+  "did_u_forget_password" : "Did you forget your password?",
+  "u_dont_have_account_register_now" : "You dont have account ? Register now",
+  "u_have_account_already_log_in_now" : "You have an account? Log in now."
+
 }
 

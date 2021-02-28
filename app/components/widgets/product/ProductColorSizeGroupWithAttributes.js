@@ -23,7 +23,7 @@ import {useDispatch, useSelector} from 'react-redux';
 import WrapAsGiftWidget from './WrapAsGiftWidget';
 import {EXPO} from './../../../../app';
 
-const ProductColorSizeGroupWithAttributes = ({element}) => {
+const ProductColorSizeGroupWithAttributes = ({element, setAddToCartStatus}) => {
   const {colors} = useContext(GlobalValuesContext);
   const dispatch = useDispatch();
   const {settings} = useSelector((state) => state);
@@ -40,10 +40,15 @@ const ProductColorSizeGroupWithAttributes = ({element}) => {
   const [wrapGift, setWrapGift] = useState(false);
   const [giftMessage, setGiftMessage] = useState('');
 
+  useEffect(() => {
+    setAddToCartStatus(!productAttribute || requestQty <= 0);
+  }, [requestQty]);
+
   useMemo(() => {
     if (sizeVisible) {
       setElementId(element.id);
       setRequestQty(0);
+      setAddToCartStatus(false);
       setSizeItem(null);
       setColorItem(null);
       setColorVisible(false);
@@ -53,6 +58,7 @@ const ProductColorSizeGroupWithAttributes = ({element}) => {
   useEffect(() => {
     if (element.id !== elementId && !isNull(elementId)) {
       setRequestQty(0);
+      setAddToCartStatus(false);
       setProductAttribute(null);
       setColorItems(null);
       setSizeItem(null);
@@ -92,6 +98,7 @@ const ProductColorSizeGroupWithAttributes = ({element}) => {
   const handleSize = useCallback(() => {
     setSizeVisible(true);
     setRequestQty(0);
+    setAddToCartStatus(false);
     setSizeItem(null);
     setColorItem(null);
     setColorName(null);
@@ -202,16 +209,16 @@ const ProductColorSizeGroupWithAttributes = ({element}) => {
           onPress={() =>
             dispatch(
               addToCart({
-                wrapGift,
+                element,
+                type: 'product',
+                product_id: productAttribute.product_id,
+                cart_id: productAttribute.cart_id,
+                qty: requestQty,
                 directPurchase: element.directPurchase,
                 product_attribute_id: productAttribute.id,
-                cart_id: productAttribute.cart_id,
-                product_id: productAttribute.product_id,
-                qty: requestQty,
-                type: 'product',
-                element,
                 color_id: colorItem ? colorItem.id : null,
                 size_id: sizeItem ? sizeItem.id : null,
+                wrapGift,
                 notes: wrapGift
                   ? notes.concat(
                       `\n :: ${I18n.t('wrap_as_gift', {

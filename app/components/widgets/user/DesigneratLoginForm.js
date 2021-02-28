@@ -1,20 +1,21 @@
 import React, {useState, useContext} from 'react';
-import {iconSizes, text, height, formWidget} from '../../constants/sizes';
-import {appUrlIos} from './../../env';
+import {View, Linking, StyleSheet, Text, TouchableOpacity} from 'react-native';
+import {iconSizes, text, height, formWidget} from '../../../constants/sizes';
+import {appUrlIos} from './../../../env';
 import {Button, Icon, Input} from 'react-native-elements';
-import I18n, {isRTL} from '../../I18n';
-import {googleLogin, setRole, submitAuth} from '../../redux/actions/user';
-import {View, Linking, StyleSheet} from 'react-native';
-import {GlobalValuesContext} from '../../redux/GlobalValuesContext';
+import I18n, {isRTL} from '../../../I18n';
+import {googleLogin, setRole, submitAuth} from '../../../redux/actions/user';
+import {GlobalValuesContext} from '../../../redux/GlobalValuesContext';
 import {useDispatch, useSelector} from 'react-redux';
-import ImageLoaderContainer from './ImageLoaderContainer';
+import ImageLoaderContainer from './../ImageLoaderContainer';
 import {first, filter, isEmpty} from 'lodash';
-import KeyBoardContainer from '../containers/KeyBoardContainer';
+import KeyBoardContainer from '../../containers/KeyBoardContainer';
 import {useNavigation} from '@react-navigation/native';
-import {APP_CASE} from '../../../app.json';
-import widgetStyles from './widgetStyles';
+import {APP_CASE} from '../../../../app.json';
+import widgetStyles from './../widgetStyles';
+import {width} from '../../../constants';
 
-const LoginForm = ({showBtns = false}) => {
+const DesigneratLoginForm = ({showBtns = false, showLabel = false}) => {
   const {roles} = useSelector((state) => state);
   const {logo, colors} = useContext(GlobalValuesContext);
   const [email, setEmail] = useState('');
@@ -46,9 +47,9 @@ const LoginForm = ({showBtns = false}) => {
     <KeyBoardContainer>
       <View
         style={{
-          width: '95%',
+          flex: 1,
+          margin: 10,
           paddingTop: '10%',
-          alignSelf: 'center',
           marginTop: 0,
           justifyContent: 'center',
           alignItems: 'center',
@@ -62,7 +63,7 @@ const LoginForm = ({showBtns = false}) => {
           placeholder={I18n.t('email')}
           inputContainerStyle={widgetStyles.inputContainerStyle}
           inputStyle={widgetStyles.inputStyle}
-          label={I18n.t('email')}
+          label={showLabel ? I18n.t('email') : null}
           labelStyle={[
             styles.titleLabelStyle,
             {color: colors.main_theme_color, paddingBottom: 10},
@@ -100,7 +101,7 @@ const LoginForm = ({showBtns = false}) => {
           secureTextEntry={visiblePassword}
           inputContainerStyle={widgetStyles.inputContainerStyle}
           inputStyle={widgetStyles.inputStyle}
-          label={I18n.t('password')}
+          label={showLabel ? I18n.t('password') : null}
           labelStyle={[
             styles.titleLabelStyle,
             {color: colors.main_theme_color, paddingBottom: 10},
@@ -109,69 +110,48 @@ const LoginForm = ({showBtns = false}) => {
           keyboardType="default"
           onChangeText={(password) => setPassword(password)}
         />
-        <Button
-          raised
-          containerStyle={{marginBottom: 10, width: '100%'}}
-          buttonStyle={{
+        <TouchableOpacity
+          style={{
+            width: '95%',
+            justifyContent: 'center',
+            alignItems: 'center',
             backgroundColor: colors.btn_bg_theme_color,
-            borderRadius: 0,
+            height: 50,
+            borderRadius: 3,
           }}
-          title={I18n.t('login')}
-          titleStyle={{
-            fontFamily: text.font,
-            color: colors.btn_text_theme_color,
-            fontWeight: text.bold,
-          }}
-          onPress={() => dispatch(submitAuth({email, password}))}
-        />
+          onPress={() => dispatch(submitAuth({email, password}))}>
+          <Text
+            style={[
+              widgetStyles.headerTow,
+              {color: colors.btn_theme_color, textAlign: 'center'},
+            ]}>
+            {I18n.t('login')}
+          </Text>
+        </TouchableOpacity>
         {showBtns && (
-          <Button
-            raised
-            containerStyle={{marginBottom: 10, width: '100%'}}
-            buttonStyle={{
-              backgroundColor: colors.btn_bg_theme_color,
-              borderRadius: 0,
-            }}
-            title={I18n.t('new_user')}
-            titleStyle={{
-              fontFamily: text.font,
-              color: colors.btn_text_theme_color,
-              fontWeight: text.bold,
-            }}
-            onPress={() => handleRegisterClick()}
-          />
+          <TouchableOpacity
+            style={{padding: 10, margin: 10}}
+            onPress={() => handleRegisterClick()}>
+            <Text style={widgetStyles.headerThree}>
+              {I18n.t('u_dont_have_account_register_now')}
+            </Text>
+          </TouchableOpacity>
         )}
         {showBtns && (
-          <Button
-            raised
-            containerStyle={{marginBottom: 10, width: '100%'}}
-            buttonStyle={{
-              backgroundColor: colors.btn_bg_theme_color,
-              borderRadius: 0,
-            }}
-            title={I18n.t('forget_password')}
-            titleStyle={{
-              fontFamily: text.font,
-              color: colors.btn_text_theme_color,
-              fontWeight: text.bold,
-            }}
-            onPress={() => Linking.openURL(`${appUrlIos}password/reset`)}
-          />
+          <TouchableOpacity
+            style={{padding: 10, margin: 10}}
+            onPress={() => Linking.openURL(`${appUrlIos}password/reset`)}>
+            <Text style={widgetStyles.headerThree}>
+              {I18n.t('did_u_forget_password')}
+            </Text>
+          </TouchableOpacity>
         )}
-        {/*<SocialIcon*/}
-        {/*  title={I18n.t('sign_with_google')}*/}
-        {/*  button*/}
-        {/*  type="google-plus-official"*/}
-        {/*  fontStyle={{fontFamily: text.font, fontSize: text.medium}}*/}
-        {/*  style={{width: '100%', height: 50, borderRadius: 0}}*/}
-        {/*  onPress={() => dispatch(googleLogin())}*/}
-        {/*/>*/}
       </View>
     </KeyBoardContainer>
   );
 };
 
-export default LoginForm;
+export default DesigneratLoginForm;
 
 const styles = StyleSheet.create({
   titleLabelStyle: {

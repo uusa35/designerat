@@ -298,7 +298,13 @@ export function* startToggleProductFavoriteScenario(action) {
         call(enableWarningMessage, I18n.t('favorite_success')),
       ]);
     } else {
-      yield put({type: actions.SET_PRODUCT_FAVORITES, payload: []});
+      yield all([
+        put({type: actions.SET_PRODUCT_FAVORITES, payload: []}),
+        call(
+          enableWarningMessage,
+          I18n.t('must_login_message_or_favorite_list_is_empty'),
+        ),
+      ]);
     }
   } catch (e) {
     if (__DEV__) {

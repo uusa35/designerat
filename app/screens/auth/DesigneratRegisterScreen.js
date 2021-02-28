@@ -5,8 +5,9 @@ import RegisterFormWidget from '../../components/widgets/user/RegisterFormWidget
 import BgContainer from '../../components/containers/BgContainer';
 import {useDispatch, useSelector} from 'react-redux';
 import validate from 'validate.js';
+import DesigneratRegisterFormWidget from '../../components/widgets/user/DesigneratRegisterFormWidget';
 
-const RegisterScreen = ({navigation}) => {
+const DesigneratRegisterScreen = ({navigation}) => {
   const [userCountryId, setUserCountryId] = useState('');
   const {token} = useSelector((state) => state);
   const dispatch = useDispatch();
@@ -23,12 +24,12 @@ const RegisterScreen = ({navigation}) => {
 
   return (
     <BgContainer showImage={false}>
-      <RegisterFormWidget userCountryId={userCountryId} />
+      <DesigneratRegisterFormWidget userCountryId={userCountryId} />
     </BgContainer>
   );
 };
 
-export default RegisterScreen;
+export default DesigneratRegisterScreen;
 const styles = StyleSheet.create({
   iconContainer: {
     flex: 0.1,

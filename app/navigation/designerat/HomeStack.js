@@ -18,7 +18,9 @@ import BrandIndexScreen from '../../screens/brand/BrandIndexScreen';
 import ContactusScreen from '../../screens/ContactusScreen';
 import ImageZoomWidget from '../../components/widgets/ImageZoomWidget';
 import LoginScreen from '../../screens/auth/LoginScreen';
+import DesigneratLoginScreen from '../../screens/auth/DesigneratLoginScreen';
 import RegisterScreen from '../../screens/auth/RegisterScreen';
+import DesigneratRegisterScreen from '../../screens/auth/DesigneratRegisterScreen';
 import RoleIndexScreen from '../../screens/role/RoleIndexScreen';
 import PaymentIndexScreen from '../../screens/PaymentIndexScreen';
 import ProfileIndexScreen from '../../screens/auth/ProfileIndexScreen';
@@ -102,7 +104,7 @@ const HomeStack = () => {
       />
       <Stack.Screen
         name={'Login'}
-        component={LoginScreen}
+        component={DesigneratLoginScreen}
         options={{
           headerRight: () => <HeaderRight />,
           headerTitle: () => <HeaderMiddle title={I18n.t('login')} />,
@@ -111,7 +113,7 @@ const HomeStack = () => {
       />
       <Stack.Screen
         name={'Register'}
-        component={RegisterScreen}
+        component={DesigneratRegisterScreen}
         options={{
           headerRight: () => <HeaderRight />,
           headerTitle: () => <HeaderMiddle title={I18n.t('register')} />,
