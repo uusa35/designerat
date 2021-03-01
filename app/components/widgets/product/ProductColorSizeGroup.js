@@ -11,7 +11,7 @@ import {useDispatch, useSelector} from 'react-redux';
 import WrapAsGiftWidget from './WrapAsGiftWidget';
 import {EXPO} from './../../../../app';
 
-const ProductColorSizeGroup = ({element, setAddToCartStatus}) => {
+const ProductColorSizeGroup = ({element, setAddToCartStatus, setCartItem}) => {
   const {settings} = useSelector((state) => state);
   const {colors} = settings;
   const dispatch = useDispatch();
@@ -145,30 +145,33 @@ const ProductColorSizeGroup = ({element, setAddToCartStatus}) => {
       {element.has_stock && element.is_available && (
         <Button
           onPress={() =>
-            dispatch(
-              addToCart({
-                element,
-                type: 'product',
-                product_attribute_id: null,
-                product_id: element.id,
-                cart_id: null,
-                qty: requestQty,
-                directPurchase: element.directPurchase,
-                wrapGift,
-                notes: wrapGift
-                  ? notes.concat(
-                      `\n :: (${I18n.t('wrap_as_gift', {
-                        item: settings.gift_fee,
-                      })}) :: \n ${giftMessage}`,
-                    )
-                  : notes,
-              }),
-            )
+            setCartItem({
+              element,
+              type: 'product',
+              product_attribute_id: null,
+              product_id: element.id,
+              cart_id: null,
+              qty: requestQty,
+              directPurchase: element.directPurchase,
+              wrapGift,
+              notes: wrapGift
+                ? notes.concat(
+                    `\n :: (${I18n.t('wrap_as_gift', {
+                      item: settings.gift_fee,
+                    })}) :: \n ${giftMessage}`,
+                  )
+                : notes,
+            })
           }
           disabled={!qty || requestQty <= 0}
           raised
-          containerStyle={{width: '100%'}}
-          buttonStyle={{backgroundColor: colors.btn_bg_theme_color}}
+          containerStyle={{width: '100%', justifyContent: 'center'}}
+          buttonStyle={{
+            backgroundColor: colors.btn_bg_theme_color,
+            height: 50,
+            justifyContent: 'center',
+            alignItems: 'center',
+          }}
           title={I18n.t('add_to_cart')}
           titleStyle={{
             fontFamily: text.font,

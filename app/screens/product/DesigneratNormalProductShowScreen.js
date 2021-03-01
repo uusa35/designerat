@@ -1,4 +1,4 @@
-import React, {useState, useEffect} from 'react';
+import React, {useState, useEffect, useMemo} from 'react';
 import {StyleSheet, Text, Linking, View} from 'react-native';
 import {useDispatch, useSelector} from 'react-redux';
 import ImagesWidget from '../../components/widgets/ImagesWidget';
@@ -21,6 +21,7 @@ import {useNavigation} from '@react-navigation/native';
 import MainTab from '../../navigation/MainTab';
 import widgetStyles from '../../components/widgets/widgetStyles';
 import DesigneratAddToCartStickyFooter from '../../components/widgets/product/DesigneratAddToCartStickyFooter';
+import {addToCart} from '../../redux/actions/cart';
 
 const DesineratNormalProductShowScreen = () => {
   const {product, token, settings, products} = useSelector((state) => state);
@@ -31,6 +32,7 @@ const DesineratNormalProductShowScreen = () => {
   const [headerBg, setHeaderBg] = useState(true);
   const [headerBgColor, setHeaderBgColor] = useState('transparent');
   const [addToCartStatus, setAddToCartStatus] = useState(false);
+  const [cartItem, setCartItem] = useState({});
 
   useEffect(() => {
     headerBg || headerBgColor
@@ -49,19 +51,41 @@ const DesineratNormalProductShowScreen = () => {
     );
   };
 
-  React.useEffect(() => {
-    const unsubscribe = navigation.addListener('focus', () => {
-      // The screen is focused
-      // Call any action
-      console.log('here');
-      navigation.setOptions({
-        tabBarVisible: false,
-      });
-    });
-
-    // Return the function to unsubscribe from the event so it gets removed on unmount
-    return unsubscribe;
-  }, [navigation]);
+  useMemo(() => {
+    if (!validate.isEmpty(cartItem)) {
+      setAddToCartStatus(true);
+      const {
+        element,
+        type,
+        product_id,
+        cart_id,
+        qty,
+        directPurchase,
+        product_attribute_id,
+        color_id,
+        size_id,
+        wrapGift,
+        notes,
+      } = cartItem;
+      dispatch(
+        addToCart({
+          element,
+          type,
+          product_id,
+          cart_id,
+          qty,
+          directPurchase,
+          product_attribute_id,
+          color_id,
+          size_id,
+          wrapGift,
+          notes,
+        }),
+      );
+    } else {
+      setAddToCartStatus(false);
+    }
+  }, [cartItem]);
 
   return (
     <BgContainer showImage={false}>
@@ -85,7 +109,7 @@ const DesineratNormalProductShowScreen = () => {
           {product.brand && (
             <View
               style={{
-                backgroundColor: 'whitesmoke',
+                backgroundColor: 'white',
                 borderRadius: 10,
                 justifyContent: 'flex-start',
                 maxWidth: productWidget[APP_CASE].small.width,
@@ -95,7 +119,7 @@ const DesineratNormalProductShowScreen = () => {
                 borderWidth: 1,
                 borderColor: 'lightgrey',
                 marginLeft: 10,
-                marginTop: 5,
+                marginTop: 20,
                 marginBottom: 10,
               }}>
               <View
@@ -131,6 +155,7 @@ const DesineratNormalProductShowScreen = () => {
           <ProductInfoWidget
             element={product}
             setAddToCartStatus={setAddToCartStatus}
+            setCartItem={setCartItem}
           />
           <View
             style={{

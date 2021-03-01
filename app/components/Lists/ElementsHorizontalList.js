@@ -13,6 +13,7 @@ import {
   Text,
   ActivityIndicator,
   StyleSheet,
+  ScrollView,
 } from 'react-native';
 import {
   getCompany,
@@ -532,7 +533,7 @@ const ElementsHorizontalList = ({
   };
 
   return (
-    <Fragment>
+    <ScrollView>
       {showSearch && <TopSearchInput search={search} setSearch={setSearch} />}
       <FlatList
         ListEmptyComponent={() => renderEmptyComponent()}
@@ -591,7 +592,7 @@ const ElementsHorizontalList = ({
         setSort={setSort}
         type={type}
       />
-    </Fragment>
+    </ScrollView>
   );
 };
 

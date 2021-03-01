@@ -9,7 +9,10 @@ import FastImage from 'react-native-fast-image';
 import {icons} from '../../../constants/images';
 import {adjustColor} from '../../../helpers';
 
-const DesigneratAddToCartStickyFooter = ({disabled = true}) => {
+const DesigneratAddToCartStickyFooter = ({
+  disabled = true,
+  handleAddToCart,
+}) => {
   const {product} = useSelector((state) => state);
   const {colors} = useContext(GlobalValuesContext);
   return (
@@ -42,7 +45,7 @@ const DesigneratAddToCartStickyFooter = ({disabled = true}) => {
         </Text>
       </View>
       <TouchableOpacity
-        onPress={() => console.log('clicked')}
+        onPress={() => handleAddToCart}
         disabled={disabled}
         style={{
           backgroundColor: disabled

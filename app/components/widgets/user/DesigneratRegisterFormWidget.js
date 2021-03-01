@@ -196,25 +196,34 @@ const DesigneratRegisterFormWidget = ({showLabel = false}) => {
         </TouchableOpacity>
       )}
       <Input
-        placeholder={I18n.t('name') + '*'}
+        placeholder={I18n.t('email') + '*'}
         containerStyle={{marginBottom: 0, paddingBottom: 0, height: 50}}
         inputContainerStyle={[
           widgetStyles.inputContainerStyle,
           {
             borderBottomWidth: 0,
-            borderBottomRightRadius: 0,
-            borderBottomLeftRadius: 0,
+            borderRadius: 0,
+            borderTopRightRadius: 3,
+            borderTopLeftRadius: 3,
           },
         ]}
         inputStyle={widgetStyles.inputStyle}
-        label={showLabel ? I18n.t('name') : null}
+        label={showLabel ? I18n.t('email') : null}
         labelStyle={[
           styles.titleLabelStyle,
           {color: colors.main_theme_color, paddingBottom: 10},
         ]}
         shake={true}
-        keyboardType="default"
-        onChangeText={(text) => setName(text)}
+        keyboardType="email-address"
+        onChangeText={(text) => setEmail(text)}
+        leftIcon={() => (
+          <Icon
+            name="envelope"
+            type="evilicon"
+            size={iconSizes.smaller}
+            onPress={() => setVisiblePassword(!visiblePassword)}
+          />
+        )}
       />
       <Input
         placeholder={I18n.t('password')}
@@ -243,29 +252,24 @@ const DesigneratRegisterFormWidget = ({showLabel = false}) => {
         )}
       />
       <Input
-        placeholder={I18n.t('email') + '*'}
+        placeholder={I18n.t('first_name') + '*'}
         containerStyle={{marginBottom: 0, paddingBottom: 0, height: 50}}
         inputContainerStyle={[
           widgetStyles.inputContainerStyle,
-          {borderBottomWidth: 0, borderRadius: 0},
+          {
+            borderBottomWidth: 0,
+            borderRadius: 0,
+          },
         ]}
         inputStyle={widgetStyles.inputStyle}
-        label={showLabel ? I18n.t('email') : null}
+        label={showLabel ? I18n.t('first_name') : null}
         labelStyle={[
           styles.titleLabelStyle,
           {color: colors.main_theme_color, paddingBottom: 10},
         ]}
         shake={true}
-        keyboardType="email-address"
-        onChangeText={(text) => setEmail(text)}
-        leftIcon={() => (
-          <Icon
-            name="envelope"
-            type="evilicon"
-            size={iconSizes.smaller}
-            onPress={() => setVisiblePassword(!visiblePassword)}
-          />
-        )}
+        keyboardType="default"
+        onChangeText={(text) => setName(text)}
       />
       <Input
         leftIcon={() => <Text>+{country.calling_code}</Text>}
@@ -274,7 +278,12 @@ const DesigneratRegisterFormWidget = ({showLabel = false}) => {
         placeholder={I18n.t('mobile') + '*'}
         inputContainerStyle={[
           widgetStyles.inputContainerStyle,
-          {borderTopRightRadius: 0, borderTopLeftRadius: 0},
+          {
+            borderTopRightRadius: 0,
+            borderTopLeftRadius: 0,
+            borderBottomLeftRadius: 3,
+            borderBottomRightRadius: 3,
+          },
         ]}
         inputStyle={widgetStyles.inputStyle}
         label={showLabel ? I18n.t('mobile') : null}

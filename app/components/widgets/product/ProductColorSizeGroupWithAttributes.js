@@ -23,7 +23,11 @@ import {useDispatch, useSelector} from 'react-redux';
 import WrapAsGiftWidget from './WrapAsGiftWidget';
 import {EXPO} from './../../../../app';
 
-const ProductColorSizeGroupWithAttributes = ({element, setAddToCartStatus}) => {
+const ProductColorSizeGroupWithAttributes = ({
+  element,
+  setAddToCartStatus,
+  setCartItem,
+}) => {
   const {colors} = useContext(GlobalValuesContext);
   const dispatch = useDispatch();
   const {settings} = useSelector((state) => state);
@@ -95,7 +99,7 @@ const ProductColorSizeGroupWithAttributes = ({element, setAddToCartStatus}) => {
     }
   }, [colorItem]);
 
-  const handleSize = useCallback(() => {
+  const handleSize = () => {
     setSizeVisible(true);
     setRequestQty(0);
     setAddToCartStatus(false);
@@ -103,7 +107,7 @@ const ProductColorSizeGroupWithAttributes = ({element, setAddToCartStatus}) => {
     setColorItem(null);
     setColorName(null);
     setWrapGift(false);
-  });
+  };
 
   return (
     <View
@@ -207,27 +211,25 @@ const ProductColorSizeGroupWithAttributes = ({element, setAddToCartStatus}) => {
       {element.has_stock && element.is_available && (
         <Button
           onPress={() =>
-            dispatch(
-              addToCart({
-                element,
-                type: 'product',
-                product_id: productAttribute.product_id,
-                cart_id: productAttribute.cart_id,
-                qty: requestQty,
-                directPurchase: element.directPurchase,
-                product_attribute_id: productAttribute.id,
-                color_id: colorItem ? colorItem.id : null,
-                size_id: sizeItem ? sizeItem.id : null,
-                wrapGift,
-                notes: wrapGift
-                  ? notes.concat(
-                      `\n :: ${I18n.t('wrap_as_gift', {
-                        item: settings.gift_fee,
-                      })} :: \n ${giftMessage}`,
-                    )
-                  : notes,
-              }),
-            )
+            setCartItem({
+              element,
+              type: 'product',
+              product_id: productAttribute.product_id,
+              cart_id: productAttribute.cart_id,
+              qty: requestQty,
+              directPurchase: element.directPurchase,
+              product_attribute_id: productAttribute.id,
+              color_id: colorItem ? colorItem.id : null,
+              size_id: sizeItem ? sizeItem.id : null,
+              wrapGift,
+              notes: wrapGift
+                ? notes.concat(
+                    `\n :: ${I18n.t('wrap_as_gift', {
+                      item: settings.gift_fee,
+                    })} :: \n ${giftMessage}`,
+                  )
+                : notes,
+            })
           }
           disabled={!productAttribute || requestQty <= 0}
           raised

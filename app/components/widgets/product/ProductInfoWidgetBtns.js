@@ -8,7 +8,7 @@ import ProductColorSizeGroup from './ProductColorSizeGroup';
 import ProductColorSizeGroupWithAttributes from './ProductColorSizeGroupWithAttributes';
 import {GlobalValuesContext} from '../../../redux/GlobalValuesContext';
 
-const ProductInfoWidgetBtns = ({element, setAddToCartStatus}) => {
+const ProductInfoWidgetBtns = ({element, setAddToCartStatus, setCartItem}) => {
   const {colors} = useContext(GlobalValuesContext);
   return (
     <View
@@ -58,11 +58,13 @@ const ProductInfoWidgetBtns = ({element, setAddToCartStatus}) => {
             <ProductColorSizeGroupWithAttributes
               element={element}
               setAddToCartStatus={setAddToCartStatus}
+              setCartItem={setCartItem}
             />
           ) : (
             <ProductColorSizeGroup
               element={element}
               setAddToCartStatus={setAddToCartStatus}
+              setCartItem={setCartItem}
             />
           )}
         </Fragment>

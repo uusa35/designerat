@@ -187,15 +187,13 @@ export function* startGetProductScenario(action) {
           // call(startGoogleAnalyticsScenario, {
           //   payload: {type: 'Product', element},
           // }),
-          yield put(
-            RootNavigation.navigate('ProductShow', {
-              name: element.name,
-              id: element.id,
-              model: 'product',
-              type: 'product',
-            }),
-          ),
         ]);
+        RootNavigation.navigate('ProductShow', {
+          name: element.name,
+          id: element.id,
+          model: 'product',
+          type: 'product',
+        });
       }
     }
   } catch (e) {
