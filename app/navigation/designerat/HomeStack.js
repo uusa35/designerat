@@ -65,7 +65,11 @@ const HomeStack = () => {
           ),
           headerTitle: () => <HeaderMiddle showLogo={true} />,
           headerRight: () => (
-            <HeaderRight showCart={true} showProductFavorite={true} />
+            <HeaderRight
+              showCart={true}
+              showProductFavorite={true}
+              showCountry={false}
+            />
           ),
         })}
         name={'MainTab'}

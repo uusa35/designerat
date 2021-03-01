@@ -14,21 +14,22 @@ import {animations} from '../../constants/animations';
 import {EXPO} from './../../../app';
 import {View as Animated} from 'react-native-animatable';
 import {shuffle, first} from 'lodash';
+import {themeColors} from '../../constants/colors';
 
 const CountriesList = ({country, countries}) => {
   const {countryModal} = useSelector((state) => state);
   const dispatch = useDispatch();
   const {colors} = useContext(GlobalValuesContext);
 
-  const handleClick = useCallback((c) => {
-    if (c.id !== country.id) {
-      dispatch(chooseCountry({country: c, redirect: EXPO}));
-    }
-  });
+  const handleClick = (c) => {
+    // if (c.id !== country.id) {
+    dispatch(chooseCountry({country: c, redirect: false}));
+    // }
+  };
 
   const hide = () => dispatch(hideCountryModal());
 
-  useEffect(() => {}, [countryModal]);
+  // useEffect(() => {}, [countryModal]);
 
   const renderItem = ({item, index}) => {
     return (
@@ -41,13 +42,7 @@ const CountriesList = ({country, countries}) => {
           key={index}
           hitSlop={{left: 15, right: 15}}
           onPress={() => handleClick(item)}
-          style={[
-            styles.wrapper,
-            {
-              borderColor:
-                item.id === country.id ? colors.btn_bg_theme_color : '#cdcdcd',
-            },
-          ]}>
+          style={[styles.wrapper]}>
           <ImageLoaderContainer
             img={item.thumb}
             style={styles.countryFlag}
@@ -147,6 +142,7 @@ const styles = StyleSheet.create({
   },
   wrapper: {
     borderWidth: 0.5,
+    borderColor: themeColors.desinerat.darkGray,
     borderRadius: 10,
     width: '30%',
     minWidth: 100,

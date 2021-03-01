@@ -53,8 +53,9 @@ const AppContainer = ({children}) => {
   }, [token]);
 
   useEffect(() => {
-    axiosInstance.defaults.headers['currency'] = currency;
-    axiosInstance.defaults.headers.common['currency'] = currency;
+    axiosInstance.defaults.headers['currency'] = currency.currency_symbol;
+    axiosInstance.defaults.headers.common['currency'] =
+      currency.currency_symbol;
     axiosInstance.defaults.headers['country'] = country.name;
     axiosInstance.defaults.headers.common['country'] = country.name;
   }, [lang]);
@@ -112,10 +113,8 @@ const AppContainer = ({children}) => {
               value={{
                 cartLength: cart.length,
                 countriesLength: countries.length,
-                currency_symbol: country
-                  ? country.currency.currency_symbol
-                  : 'KWD',
-                exchange_rate: country ? country.currency.exchange_rate : '1',
+                currency_symbol: currency ? currency.currency_symbol : 'KWD',
+                exchange_rate: currency ? currency.exchange_rate : '1',
                 total,
                 grossTotal,
                 colors: settings.colors,

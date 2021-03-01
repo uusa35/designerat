@@ -20,13 +20,11 @@ const ProductIndexAllScreen = () => {
     // }
   }, [products]);
 
-  console.log(products);
-
   return (
     <BgContainer showImage={false}>
       <ElementsHorizontalList
         elements={currentElements}
-        searchParams={{}}
+        searchParams={{country_id: country.id}}
         type="product"
         pageLimit={15}
         showRefresh={true}

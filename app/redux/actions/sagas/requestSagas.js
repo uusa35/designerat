@@ -198,28 +198,32 @@ export function* getCountry(country_id = null) {
 export function* startChooseCountryScenario(action) {
   try {
     const {country, redirect} = action.payload;
-    yield put({type: actions.SET_COUNTRY, payload: country});
     if (!validate.isEmpty(country) && validate.isObject(country)) {
       const {total, coupon, cart} = yield select();
-      yield all([
-        put({type: actions.SET_CURRENCY, payload: country.currency.symbol}),
-        put({type: actions.SET_AREAS, payload: country.areas}),
-        put({
-          type: actions.SET_AREA,
-          payload: !validate.isEmpty(country.areas)
-            ? first(country.areas)
-            : {id: 1, name: 'none'},
-        }),
-        put({type: actions.HIDE_COUNTRY_MODAL}),
-        put({
-          type: actions.SET_SHIPMENT_FEES,
-          payload: country.fixed_shipment_charge,
-        }),
-        call(setGrossTotalCartValue, {total, coupon, country, cart}),
-      ]);
+      yield put({type: actions.SET_CURRENCY, payload: country.currency});
       if (!validate.isEmpty(redirect) && redirect) {
+        yield put({type: actions.SET_COUNTRY, payload: country});
+        yield all([
+          put({type: actions.SET_AREAS, payload: country.areas}),
+          put({
+            type: actions.SET_AREA,
+            payload: !validate.isEmpty(country.areas)
+              ? first(country.areas)
+              : {id: 1, name: 'none'},
+          }),
+          put({type: actions.HIDE_COUNTRY_MODAL}),
+          put({
+            type: actions.SET_SHIPMENT_FEES,
+            payload: country.fixed_shipment_charge,
+          }),
+          call(setGrossTotalCartValue, {total, coupon, country, cart}),
+        ]);
         yield call(startClearCartScenario);
         yield call(startResetStoreScenario);
+      } else {
+        const {countries} = yield select();
+        const country = first(filter(countries, (c) => c.is_local));
+        yield put({type: actions.SET_COUNTRY, payload: country});
       }
     }
   } catch (e) {

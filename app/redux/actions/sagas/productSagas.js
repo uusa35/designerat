@@ -235,9 +235,12 @@ export function* startGetSearchProductsScenario(action) {
         put({type: actions.SET_SEARCH_PRODUCTS, payload: []}),
         put({type: actions.SET_SEARCH_PARAMS, payload: {}}),
       ]);
-      throw products;
+      throw elements;
     }
   } catch (e) {
+    if (__DEV__) {
+      console.log('the ee', e);
+    }
     if (action.payload.redirect) {
       yield call(enableWarningMessage, I18n.t('no_products'));
     }
@@ -266,6 +269,9 @@ export function* startGetAllProductsScenario(action) {
       throw 'no_products';
     }
   } catch (e) {
+    if (__DEV__) {
+      console.log('eee', e);
+    }
     // yield call(enableWarningMessage, I18n.t('no_products'));
   } finally {
     yield call(disableLoading);

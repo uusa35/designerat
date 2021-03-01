@@ -5,6 +5,7 @@ import I18n from '../../../I18n';
 import React, {useContext} from 'react';
 import {GlobalValuesContext} from '../../../redux/GlobalValuesContext';
 import PropTypes from 'prop-types';
+import {useSelector} from 'react-redux';
 
 const DesingeratBtn = ({
   handleClick,
@@ -13,7 +14,7 @@ const DesingeratBtn = ({
   titleStyle = widgetStyles.headerThree,
   marginTop = 5,
 }) => {
-  const {colors} = useContext(GlobalValuesContext);
+  const {colors} = useSelector((state) => state.settings);
   return (
     <TouchableOpacity
       style={{

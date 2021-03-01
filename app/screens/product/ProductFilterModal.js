@@ -23,6 +23,7 @@ import {ABATI, EXPO} from './../../../app';
 import ProductFilterHeightsWidget from '../../components/widgets/product/ProductFilterHeightsWidget';
 import ModalBackContainer from '../../components/containers/ModalBackContainer';
 import ProductSearchForm from '../../components/widgets/search/ProductSearchForm';
+import DesigneratBtn from '../../components/widgets/Button/DesigneratBtn';
 
 const ProductFilterModal = () => {
   const {
@@ -44,7 +45,7 @@ const ProductFilterModal = () => {
   const [visible, setVisible] = useState(productFilterModal);
   const [selectedCategory, setSelectedCategory] = useState({});
 
-  const handleSubmitFilter = useCallback(() => {
+  const handleSubmitFilter = () => {
     dispatch(
       getSearchProducts({
         searchParams: {
@@ -66,7 +67,7 @@ const ProductFilterModal = () => {
           : I18n.t('search_results'),
       }),
     );
-  });
+  };
 
   const handleClearFilter = useCallback(() => {
     dispatch(setColor(null));
@@ -97,7 +98,7 @@ const ProductFilterModal = () => {
       toggleVisible={productFilterModal}
       setToggleVisible={handleHideModal}
       title={I18n.t('product_filter')}>
-      {EXPO && <ProductSearchForm showBtn={EXPO} />}
+      <ProductSearchForm showBtn={true} />
       {categories ? (
         <View
           style={{
@@ -109,6 +110,7 @@ const ProductFilterModal = () => {
             padding: 10,
             borderColor: 'lightgrey',
             marginBottom: 10,
+            marginTop: 20,
             width: '100%',
           }}>
           <Text style={{fontFamily: text.font, fontSize: text.medium}}>
@@ -141,19 +143,11 @@ const ProductFilterModal = () => {
         </View>
       ) : null}
 
-      {!ABATI ? (
-        <ProductFilterColorsWidget
-          elements={productColors}
-          colors={settings.colors}
-          color={color}
-        />
-      ) : (
-        <ProductFilterHeightsWidget
-          elements={productColors}
-          colors={settings.colors}
-          color={color}
-        />
-      )}
+      <ProductFilterColorsWidget
+        elements={productColors}
+        colors={settings.colors}
+        color={color}
+      />
       <ProductFilterSizesWidget
         elements={sizes}
         colors={settings.colors}
@@ -229,6 +223,7 @@ const ProductFilterModal = () => {
           {I18n.t('price')} : {priceRange[0]} - {priceRange[1]}
         </Text>
       </View>
+
       <View
         style={{
           position: 'relative',
@@ -237,16 +232,9 @@ const ProductFilterModal = () => {
           alignItems: 'flex-end',
           justifyContent: 'flex-end',
         }}>
-        <Button
-          onPress={() => handleSubmitFilter()}
-          raised
-          containerStyle={{width: '95%', alignSelf: 'center'}}
-          buttonStyle={{backgroundColor: settings.colors.btn_bg_theme_color}}
+        <DesigneratBtn
+          handleClick={() => handleSubmitFilter()}
           title={I18n.t('apply_filter')}
-          titleStyle={{
-            fontFamily: text.font,
-            color: settings.colors.btn_text_theme_color,
-          }}
         />
         <Button
           onPress={() => handleClearFilter()}
@@ -257,7 +245,7 @@ const ProductFilterModal = () => {
             marginBottom: 50,
             marginTop: 10,
           }}
-          buttonStyle={{backgroundColor: 'red'}}
+          buttonStyle={{backgroundColor: 'red', height: 50}}
           title={I18n.t('remove_filter')}
           titleStyle={{
             fontFamily: text.font,
@@ -275,12 +263,12 @@ ProductFilterModal.propTypes = {};
 
 const styles = StyleSheet.create({
   btnStyle: {
-    height: 40,
+    height: 50,
     borderWidth: 0.5,
-    borderRadius: 10,
-    minWidth: 65,
+    borderRadius: 3,
+    width: 100,
     alignItems: 'center',
-    justifyContent: 'flex-end',
+    justifyContent: 'center',
     marginRight: 3,
     marginLeft: 3,
     shadowColor: 'black',
@@ -293,11 +281,9 @@ const styles = StyleSheet.create({
     elevation: 1,
   },
   btnTitle: {
-    fontSize: text.medium,
+    fontSize: text.small,
     fontFamily: text.font,
     color: 'black',
-    paddingRight: 5,
-    paddingLeft: 5,
-    marginBottom: 6,
+    textAlign: 'center',
   },
 });
