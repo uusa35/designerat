@@ -15,7 +15,7 @@ const BgContainer = ({
   img = images.whiteBgUrl,
   enableMargin = false,
   marginVal = height / 30,
-  navigation,
+  white = false,
 }) => {
   const {
     isLoading,
@@ -42,7 +42,7 @@ const BgContainer = ({
 
   return (
     <ImageBackground
-      source={!showImage ? images.grayBg : {uri: bg}}
+      source={!showImage ? (white ? images.whiteBg : images.grayBg) : {uri: bg}}
       style={{height, width, backgroundColor: 'white', flexGrow: 1, flex: 1}}
       resizeMode="cover">
       {isConnected ? (

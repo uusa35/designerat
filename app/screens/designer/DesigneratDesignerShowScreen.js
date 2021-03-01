@@ -29,8 +29,10 @@ import {GlobalValuesContext} from '../../redux/GlobalValuesContext';
 import BgContainer from '../../components/containers/BgContainer';
 import {useNavigation} from '@react-navigation/native';
 import ImageLoaderContainer from '../../components/widgets/ImageLoaderContainer';
+import DesingeratBtn from '../../components/widgets/Button/DesigneratBtn';
+import widgetStyles from '../../components/widgets/widgetStyles';
 
-const DesignerShowScreen = ({route}) => {
+const DesigneratDesignerShowScreen = ({route}) => {
   const {designer, comments, commentModal, searchParams} = useSelector(
     (state) => state,
   );
@@ -111,116 +113,34 @@ const DesignerShowScreen = ({route}) => {
         {designer.banner && (
           <ImageLoaderContainer
             img={designer.banner}
-            style={{width: '100%', height: 140}}
+            style={{width: '100%', height: 140, marginTop: 15}}
           />
         )}
         <View style={styles.wrapper}>
-          <TriggeringView
-          // onHide={() => console.log('text hidden')}
-          >
-            <UserImageProfile
-              member_id={designer.id}
-              showFans={true}
-              showRating={ABATI || MALLR || ESCRAP || HOMEKEY}
-              showComments={ABATI || MALLR || ESCRAP || (HOMEKEY && !guest)}
-              guest={guest}
-              isFanned={designer.isFanned}
-              totalFans={designer.totalFans}
-              currentRating={designer.rating}
-              medium={designer.medium}
-              logo={logo}
-              slug={designer.slug}
-              type={designer.role.slug}
-              views={designer.views}
-              commentsCount={designer.commentsCount}
-            />
-            {!validate.isEmpty(designer.slides) && (
-              <View style={{paddingTop: 10, paddingBottom: 10, width: width}}>
-                <MainSliderWidget slides={designer.slides} />
-              </View>
-            )}
-            {!validate.isEmpty(collectedCategories) && (
-              <ProductCategoryVerticalWidget
-                elements={collectedCategories}
-                user_id={designer.id}
-                showImage={false}
-                title={I18n.t('categories')}
-              />
-            )}
-            <TabView
-              lazy={true}
-              renderTabBar={(props) => (
-                <TabBar
-                  {...props}
-                  // tabStyle={{ backgroundColor: 'white'}}
-                  // indicatorContainerStyle={{backgroundColor: 'white'}}
-                  // contentContainerStyle={{backgroundColor: 'white'}}
-                  indicatorStyle={{
-                    backgroundColor: colors.btn_bg_theme_color,
-                  }}
-                  activeColor={colors.header_one_theme_color}
-                  inactiveColor={colors.header_tow_theme_color}
-                  style={{backgroundColor: 'white'}}
-                  labelStyle={{
-                    fontFamily: text.font,
-                    fontSize: text.small,
-                  }}
-                />
-              )}
-              navigationState={{
-                index,
-                routes,
-              }}
-              renderScene={SceneMap({
-                products: () => (
-                  <ElementsHorizontalList
-                    elements={products}
-                    searchParams={currentSearchParams}
-                    type="product"
-                    columns={2}
-                    showSearch={false}
-                    showTitle={true}
-                    showTitleIcons={true}
-                    showFooter={false}
-                    showMore={false}
-                  />
-                ),
-                info: () => (
-                  <UserInfoWidget
-                    has_map={designer.has_map}
-                    mobile={designer.mobile}
-                    phone={designer.phone}
-                    slug={designer.slug}
-                    whatsapp={designer.whatsapp}
-                    twitter={designer.twitter}
-                    facebook={designer.facebook}
-                    instagram={designer.instagram}
-                    android={designer.android}
-                    youtube={designer.youtube}
-                    website={designer.website}
-                    description={designer.description}
-                    service={designer.service}
-                    address={designer.address}
-                    images={designer.images}
-                    latitude={designer.latitude}
-                    longitude={designer.longitude}
-                    thumb={designer.thumb}
-                  />
-                ),
-                videos: () => (
-                  <VideosVerticalWidget videos={designer.videoGroup} />
-                ),
-              })}
-              style={{marginTop: 10, backgroundColor: 'white'}}
-              onIndexChange={(i) => setIndex(i)}
-              initialLayout={{width: width}}
-            />
-          </TriggeringView>
-          <CommentScreenModal
-            commentModal={commentModal}
-            elements={comments}
-            model="user"
-            id={designer.id}
+          {!validate.isEmpty(designer.slides) && (
+            <View style={{paddingTop: 10, paddingBottom: 10, width: width}}>
+              <MainSliderWidget elements={designer.slides} />
+            </View>
+          )}
+          <Text
+            style={[
+              widgetStyles.headerTow,
+              {marginTop: 20, marginBottom: 20, alignSelf: 'center'},
+            ]}>
+            {I18n.t('my_designs')}
+          </Text>
+          <ElementsHorizontalList
+            elements={products}
+            searchParams={currentSearchParams}
+            type="product"
+            columns={2}
+            showSearch={false}
+            showTitle={false}
+            showSortSearch={true}
+            showProductsFilter={true}
+            showTitleIcons={true}
+            showFooter={false}
+            showMore={false}
           />
         </View>
       </ScrollView>
@@ -228,14 +148,14 @@ const DesignerShowScreen = ({route}) => {
   );
 };
 
-DesignerShowScreen.navigationOptions = ({navigation}) => ({
+DesigneratDesignerShowScreen.navigationOptions = ({navigation}) => ({
   // headerTransparent: navigation.state.params.headerBg,
   // headerStyle: {
   //   backgroundColor: navigation.state.params.headerBgColor
   // }
 });
 
-export default DesignerShowScreen;
+export default DesigneratDesignerShowScreen;
 
 const styles = StyleSheet.create({
   mainTitle: {

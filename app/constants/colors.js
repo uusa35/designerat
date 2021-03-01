@@ -5,6 +5,7 @@ export const themeColors = {
   success: 'green',
   desinerat: {
     bg: '#f7f7f7',
+    darkGray: '#dbdbdb',
   },
   expo: {
     main: '#43cfd7',

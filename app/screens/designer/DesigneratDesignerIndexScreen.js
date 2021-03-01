@@ -4,7 +4,7 @@ import {StyleSheet} from 'react-native';
 import BgContainer from '../../components/containers/BgContainer';
 import ElementsHorizontalList from '../../components/Lists/ElementsHorizontalList';
 
-const DesignerIndexScreen = () => {
+const DesigneratDesignerIndexScreen = () => {
   const {designers, searchParams} = useSelector((state) => state);
   const [currentSearchParams, setCurrentSearchParams] = useState({});
   const [currentElements, setCurrentElements] = useState([]);
@@ -18,7 +18,6 @@ const DesignerIndexScreen = () => {
     <BgContainer showImage={false}>
       <ElementsHorizontalList
         elements={currentElements}
-        searchParams={{}}
         type="designer"
         searchParams={currentSearchParams}
         showMore={true}
@@ -29,6 +28,6 @@ const DesignerIndexScreen = () => {
   );
 };
 
-export default DesignerIndexScreen;
+export default DesigneratDesignerIndexScreen;
 
 const styles = StyleSheet.create({});

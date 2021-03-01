@@ -533,7 +533,7 @@ const ElementsHorizontalList = ({
   };
 
   return (
-    <ScrollView>
+    <Fragment>
       {showSearch && <TopSearchInput search={search} setSearch={setSearch} />}
       <FlatList
         ListEmptyComponent={() => renderEmptyComponent()}
@@ -570,9 +570,10 @@ const ElementsHorizontalList = ({
           justifyContent: 'flex-start',
           alignItems: 'flex-start',
           alignSelf: 'center',
-        }}
-        ListHeaderComponentStyle={{
-          backgroundColor: 'white',
+          marginLeft: 15,
+          marginRight: 15,
+          // marginBottom : 15,
+          marginTop: 15,
         }}
         renderItem={({item}) => renderItem(item)}
         ListFooterComponent={() => renderFooter()}
@@ -583,6 +584,9 @@ const ElementsHorizontalList = ({
         }}
         ListHeaderComponentStyle={{
           backgroundColor: 'white',
+          width,
+          alignSelf: 'center',
+          marginBottom: 10,
         }}
         ListHeaderComponent={() => renderHeader()}
       />
@@ -592,7 +596,7 @@ const ElementsHorizontalList = ({
         setSort={setSort}
         type={type}
       />
-    </ScrollView>
+    </Fragment>
   );
 };
 

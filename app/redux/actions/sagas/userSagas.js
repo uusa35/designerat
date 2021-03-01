@@ -48,15 +48,13 @@ export function* startGetDesignerScenario(action) {
           // call(startGoogleAnalyticsScenario, {
           //   payload: {type: 'User', element},
           // }),
-          put(
-            RootNavigation.navigate('DesignerShow', {
-              name: element.slug,
-              id: element.id,
-              model: 'user',
-              type: 'designer',
-            }),
-          ),
         ]);
+        RootNavigation.navigate('DesignerShow', {
+          name: element.slug,
+          id: element.id,
+          model: 'user',
+          type: 'designer',
+        });
       }
     } else {
       yield put({type: actions.SET_DESIGNER, payload: {}});

@@ -23,4 +23,6 @@ export const icons = {
   profile: require('./../../assets/icons/profile.png'),
   compass: require('./../../assets/icons/compass.png'),
   cart: require('./../../assets/icons/cart.png'),
+  colorFilter: require('./../../assets/icons/color_filter.png'),
+  categoryFilter: require('./../../assets/icons/category_filter.png'),
 };

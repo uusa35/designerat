@@ -11,7 +11,7 @@ import AppContainer from '../components/containers/AppContainer';
 import AccountStack from './designerat/AccountStack';
 import CelebrityIndexScreen from '../screens/celebrity/CelebrityIndexScreen';
 import {HeaderMiddle} from '../components/HeaderMiddle';
-import DesignerShowScreen from '../screens/designer/DesignerShowScreen';
+import DesineratDesignerShowScreen from '../screens/designer/DesignerShowScreen';
 import {HeaderRight} from '../components/HeaderRight';
 import NormalProductShowScreen from '../screens/product/NormalProductShowScreen';
 import LoginScreen from '../screens/auth/LoginScreen';

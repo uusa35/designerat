@@ -7,7 +7,7 @@ import {HeaderLeft} from '../../components/HeaderLeft';
 import {HeaderMiddle} from '../../components/HeaderMiddle';
 import DesigneratHomeScreen from '../../screens/home/DesigneratHomeScreen';
 import CelebrityIndexScreen from '../../screens/celebrity/CelebrityIndexScreen';
-import DesignerShowScreen from '../../screens/designer/DesignerShowScreen';
+import DesineratDesignerShowScreen from '../../screens/designer/DesignerShowScreen';
 import ProductShowScreen from '../../screens/product/ProductShowScreen';
 import NormalProductShowScreen from '../../screens/product/NormalProductShowScreen';
 import ContactusScreen from '../../screens/ContactusScreen';

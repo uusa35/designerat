@@ -1,5 +1,5 @@
 import React, {useEffect, useState, useMemo} from 'react';
-import {StyleSheet} from 'react-native';
+import {StyleSheet, View} from 'react-native';
 import {useDispatch, useSelector} from 'react-redux';
 import {getAllProducts} from '../../redux/actions/product';
 import BgContainer from '../../components/containers/BgContainer';
@@ -20,8 +20,10 @@ const ProductIndexAllScreen = () => {
     // }
   }, [products]);
 
+  console.log(products);
+
   return (
-    <BgContainer>
+    <BgContainer showImage={false}>
       <ElementsHorizontalList
         elements={currentElements}
         searchParams={{}}
@@ -29,7 +31,7 @@ const ProductIndexAllScreen = () => {
         pageLimit={15}
         showRefresh={true}
         showFooter={true}
-        showSearch={true}
+        showSearch={false}
         showSortSearch={true}
         showProductsFilter={true}
         showTitleIcons={true}

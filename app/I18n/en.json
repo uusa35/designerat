@@ -671,7 +671,10 @@
   "first_name" : "First Name",
   "male" : "Male",
   "female" : "Female",
-  "later" : "Later"
+  "later" : "Later",
+  "my_designs" : "My Designs",
+  "category_filter" : "Category Filter",
+  "color_filter" : "Color Filter"
 
 }
 

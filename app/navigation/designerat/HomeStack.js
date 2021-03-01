@@ -7,9 +7,8 @@ import {HeaderLeft} from '../../components/HeaderLeft';
 import {HeaderMiddle} from '../../components/HeaderMiddle';
 import DesigneratHomeScreen from '../../screens/home/DesigneratHomeScreen';
 import CelebrityIndexScreen from '../../screens/celebrity/CelebrityIndexScreen';
-import DesignerShowScreen from '../../screens/designer/DesignerShowScreen';
-import DesignerIndexScreen from '../../screens/designer/DesignerIndexScreen';
-import CompanyIndexScreen from '../../screens/company/CompanyIndexScreen';
+import DesigneratDesignerShowScreen from '../../screens/designer/DesigneratDesignerShowScreen';
+import DesigneratDesignerIndexScreen from '../../screens/designer/DesigneratDesignerIndexScreen';
 import ProductShowScreen from '../../screens/product/ProductShowScreen';
 import NormalProductShowScreen from '../../screens/product/NormalProductShowScreen';
 import DesigneratNormalProductShowScreen from '../../screens/product/DesigneratNormalProductShowScreen';
@@ -20,6 +19,7 @@ import ImageZoomWidget from '../../components/widgets/ImageZoomWidget';
 import LoginScreen from '../../screens/auth/LoginScreen';
 import DesigneratLoginScreen from '../../screens/auth/DesigneratLoginScreen';
 import RegisterScreen from '../../screens/auth/RegisterScreen';
+import CompanyIndexScreen from '../../screens/company/CompanyIndexScreen';
 import DesigneratRegisterScreen from '../../screens/auth/DesigneratRegisterScreen';
 import RoleIndexScreen from '../../screens/role/RoleIndexScreen';
 import PaymentIndexScreen from '../../screens/PaymentIndexScreen';
@@ -80,7 +80,7 @@ const HomeStack = () => {
             <HeaderRight showCart={true} displayShare={true} />
           ),
         }}
-        component={DesignerShowScreen}
+        component={DesigneratDesignerShowScreen}
       />
       <Stack.Screen
         name={'DesignerIndex'}
@@ -90,7 +90,7 @@ const HomeStack = () => {
             <HeaderRight showCart={true} displayShare={true} />
           ),
         }}
-        component={DesignerIndexScreen}
+        component={DesigneratDesignerIndexScreen}
       />
       <Stack.Screen
         name={'CompanyIndex'}

@@ -66,7 +66,7 @@ const DesineratNormalProductShowScreen = () => {
   };
 
   return (
-    <BgContainer showImage={false}>
+    <BgContainer showImage={false} white={true}>
       <KeyBoardContainer behavior="position" handleRefresh={handleRefresh}>
         <ImagesWidget
           sku={product.sku}
@@ -259,13 +259,13 @@ const DesineratNormalProductShowScreen = () => {
           !validate.isEmpty(product.videoGroup) && (
             <VideosVerticalWidget videos={product.videoGroup} />
           )}
-        {!validate.isEmpty(products) && EXPO && (
-          <ProductHorizontalWidget
-            elements={take(shuffle(products), 5)}
-            showName={true}
-            title={I18n.t('related_products')}
-          />
-        )}
+        {/*{!validate.isEmpty(products) && EXPO && (*/}
+        {/*  <ProductHorizontalWidget*/}
+        {/*    elements={take(shuffle(products), 5)}*/}
+        {/*    showName={true}*/}
+        {/*    title={I18n.t('related_products')}*/}
+        {/*  />*/}
+        {/*)}*/}
       </KeyBoardContainer>
       <DesigneratAddToCartStickyFooter
         disabled={addToCartStatus}

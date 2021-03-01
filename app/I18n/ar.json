@@ -109,7 +109,7 @@
   "ok" : "موافق",
   "dob" : "يوم الميلاد",
   "designers" : "المصممات",
-  "celebrities" : "اختيارات المشاهير",
+  "celebrities" : "المشاهير",
   "favorites" : "قائمة المفضلة",
   "error" : "خطأ",
   "success" : "تمت بنجاح",
@@ -705,5 +705,8 @@
   "first_name" : "الاسم الاول",
   "male" : "ذكر",
   "female" : "أنثى",
-  "later" : "لاحقا"
+  "later" : "لاحقا",
+  "my_designs" : "تصاميمي",
+  "category_filter" : "فلتر التصنيفات",
+  "color_filter" : "فلتر الألوان"
 }
