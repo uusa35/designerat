@@ -1,4 +1,4 @@
-import React, {useState, useContext} from 'react';
+import React, {useState, useContext, Fragment} from 'react';
 import {View, Linking, StyleSheet, Text, TouchableOpacity} from 'react-native';
 import {iconSizes, text, height, formWidget} from '../../../constants/sizes';
 import {appUrlIos} from './../../../env';
@@ -14,6 +14,7 @@ import {useNavigation} from '@react-navigation/native';
 import {APP_CASE} from '../../../../app.json';
 import widgetStyles from './../widgetStyles';
 import {width} from '../../../constants';
+import DesigneratBtn from '../Button/DesigneratBtn';
 
 const DesigneratLoginForm = ({showBtns = false, showLabel = false}) => {
   const {roles} = useSelector((state) => state);
@@ -110,41 +111,26 @@ const DesigneratLoginForm = ({showBtns = false, showLabel = false}) => {
           keyboardType="default"
           onChangeText={(password) => setPassword(password)}
         />
-        <TouchableOpacity
-          style={{
-            width: '95%',
-            justifyContent: 'center',
-            alignItems: 'center',
-            backgroundColor: colors.btn_bg_theme_color,
-            height: 50,
-            borderRadius: 3,
-          }}
-          onPress={() => dispatch(submitAuth({email, password}))}>
-          <Text
-            style={[
-              widgetStyles.headerTow,
-              {color: colors.btn_theme_color, textAlign: 'center'},
-            ]}>
-            {I18n.t('login')}
-          </Text>
-        </TouchableOpacity>
+        <DesigneratBtn
+          title={I18n.t('login')}
+          handleClick={() => dispatch(submitAuth({email, password}))}
+        />
         {showBtns && (
-          <TouchableOpacity
-            style={{padding: 10, margin: 10}}
-            onPress={() => handleRegisterClick()}>
-            <Text style={widgetStyles.headerThree}>
-              {I18n.t('u_dont_have_account_register_now')}
-            </Text>
-          </TouchableOpacity>
-        )}
-        {showBtns && (
-          <TouchableOpacity
-            style={{padding: 10, margin: 10}}
-            onPress={() => Linking.openURL(`${appUrlIos}password/reset`)}>
-            <Text style={widgetStyles.headerThree}>
-              {I18n.t('did_u_forget_password')}
-            </Text>
-          </TouchableOpacity>
+          <Fragment>
+            <DesigneratBtn
+              handleClick={() => handleRegisterClick()}
+              bg={false}
+              marginTop={20}
+              titleStyle={widgetStyles.headerThree}
+              title={I18n.t('u_dont_have_account_register_now')}
+            />
+            <DesigneratBtn
+              handleClick={() => Linking.openURL(`${appUrlIos}password/reset`)}
+              bg={false}
+              titleStyle={widgetStyles.headerThree}
+              title={I18n.t('did_u_forget_password')}
+            />
+          </Fragment>
         )}
       </View>
     </KeyBoardContainer>

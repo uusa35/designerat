@@ -702,5 +702,8 @@
   "did_u_forget_password" : "هل نسيت كلمة المرور؟",
   "u_dont_have_account_register_now" : "ليس لديك حساب؟ سجل الآن",
   "u_have_account_already_log_in_now" : "هل تمتلك حساب بالفعل؟ سجل الدخول!",
-  "first_name" : "الاسم الاول"
+  "first_name" : "الاسم الاول",
+  "male" : "ذكر",
+  "female" : "أنثى",
+  "later" : "لاحقا"
 }

@@ -76,7 +76,7 @@ const widgetStyles = StyleSheet.create({
     shadowOpacity: 0.18,
     shadowRadius: 1.0,
     elevation: 1,
-    textAlign: 'left',
+    textAlign: 'center',
   },
   headerFour: {
     fontFamily: text.font,

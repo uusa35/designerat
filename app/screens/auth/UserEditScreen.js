@@ -4,7 +4,7 @@ import BgContainer from '../../components/containers/BgContainer';
 
 const UserEditScreen = () => {
   return (
-    <BgContainer showImage={false}>
+    <BgContainer showImage={true}>
       <UserEditFormWidget showIcon={false} />
     </BgContainer>
   );

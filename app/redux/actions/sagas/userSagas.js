@@ -436,8 +436,9 @@ export function* startUpdateUserScenario(action) {
         put({type: actions.SET_AUTH, payload: element}),
         call(disableLoading),
         call(enableSuccessMessage, I18n.t('update_information_success')),
-        put(RootNavigation.back()),
+        call(startReAuthenticateScenario),
       ]);
+      RootNavigation.back();
     } else {
       throw element;
     }

@@ -34,6 +34,9 @@ import validate from 'validate.js';
 import {validateSubmitRegister} from '../../../constants/validations';
 import KeyBoardContainer from '../../containers/KeyBoardContainer';
 import {useNavigation} from '@react-navigation/native';
+import DesigneratBtn from '../Button/DesigneratBtn';
+import {themeColors} from '../../../constants/colors';
+import DesineratRegisterFormIsMaleComponenet from './DesineratRegisterFormIsMaleComponenet';
 
 const DesigneratRegisterFormWidget = ({showLabel = false}) => {
   const {colors, logo} = useContext(GlobalValuesContext);
@@ -49,6 +52,7 @@ const DesigneratRegisterFormWidget = ({showLabel = false}) => {
   const [image, setImage] = useState(null);
   const [sampleLogo, setSampleLogo] = useState(null);
   const [images, setImages] = useState();
+  const [isMale, setIsMale] = useState(false);
 
   const openLogoPicker = () => {
     return ImagePicker.openPicker({
@@ -155,6 +159,7 @@ const DesigneratRegisterFormWidget = ({showLabel = false}) => {
           address,
           player_id: playerId,
           description,
+          is_male: isMale,
           role_id: role ? role.id : first(filter(roles, (r) => r.isClient)).id,
         }),
       );
@@ -295,6 +300,11 @@ const DesigneratRegisterFormWidget = ({showLabel = false}) => {
         keyboardType="number-pad"
         onChangeText={(text) => setMobile(text)}
       />
+
+      <DesineratRegisterFormIsMaleComponenet
+        isMale={isMale}
+        setIsMale={setIsMale}
+      />
       {(role.isDesigner || role.isCompany) && (
         <Fragment>
           <Text
@@ -374,32 +384,18 @@ const DesigneratRegisterFormWidget = ({showLabel = false}) => {
         </ScrollView>
       )}
 
-      <TouchableOpacity
-        style={{
-          // width: '100%',
-          margin: 10,
-          marginTop: 30,
-          backgroundColor: colors.btn_bg_theme_color,
-          padding: 20,
-          borderRadius: 5,
-          marginBottom: 25,
-        }}
-        onPress={() => handleRegister()}>
-        <Text
-          style={[
-            widgetStyles.headerTow,
-            {color: colors.btn_theme_color, textAlign: 'center'},
-          ]}>
-          {I18n.t('login')}
-        </Text>
-      </TouchableOpacity>
-      <TouchableOpacity
-        style={{padding: 10, margin: 10, alignSelf: 'center'}}
-        onPress={() => navigation.navigate('Login')}>
-        <Text style={widgetStyles.headerThree}>
-          {I18n.t('u_have_account_already_log_in_now')}
-        </Text>
-      </TouchableOpacity>
+      <DesigneratBtn
+        handleClick={() => handleRegister()}
+        marginTop={20}
+        title={I18n.t('login')}
+      />
+
+      <DesigneratBtn
+        handleClick={() => navigation.navigate('Login')}
+        marginTop={20}
+        bg={false}
+        title={I18n.t('u_have_account_already_log_in_now')}
+      />
     </KeyBoardContainer>
   );
 };
