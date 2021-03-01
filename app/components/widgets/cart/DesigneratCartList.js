@@ -29,6 +29,7 @@ import DesigneratProductItem from '../product/DesigneratProductItem';
 import widgetStyles from '../widgetStyles';
 import {toggleProductFavorite} from '../../../redux/actions/product';
 import {width} from '../../../constants';
+import DesigneratBtn from '../Button/DesigneratBtn';
 
 const DesigneratCartList = ({
   shipmentCountry,
@@ -350,18 +351,10 @@ const DesigneratCartList = ({
           />
         )}
       </View>
-      <Button
-        raised
-        containerStyle={{margin: 15, marginTop: 50}}
-        buttonStyle={{
-          backgroundColor: colors.btn_bg_theme_color,
-        }}
+      <DesigneratBtn
         title={I18n.t('pay')}
-        titleStyle={{
-          fontFamily: text.font,
-          color: colors.btn_text_theme_color,
-        }}
-        onPress={() => navigate('CartIndexForm')}
+        handleClick={() => navigate('CartIndexForm')}
+        marginTop={20}
       />
     </View>
   );

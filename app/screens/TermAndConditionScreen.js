@@ -19,7 +19,7 @@ const TermAndConditionScreen = () => {
         showsVerticalScrollIndicator={false}
         contentContainerStyle={{
           flex: 1,
-          padding: 10,
+          margin: 15,
           paddingBottom: '15%',
           justifyContent: 'center',
         }}
@@ -28,7 +28,7 @@ const TermAndConditionScreen = () => {
           <WebView
             showsVerticalScrollIndicator={false}
             source={{html: terms}}
-            style={{width: '100%', height, marginTop: 10}}
+            style={{width: '100%', marginTop: 10, borderRadius: 10}}
           />
         ) : (
           <NoMoreElements title={I18n.t('not_available')} />

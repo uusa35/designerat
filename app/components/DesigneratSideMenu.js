@@ -25,7 +25,7 @@ import {useSelector, useDispatch} from 'react-redux';
 import AppContainer from './containers/AppContainer';
 import {TabActions} from '@react-navigation/native';
 
-const SideMeu = ({showLogo = true, navigation}) => {
+const DesigneratSideMenu = ({showLogo = true, navigation}) => {
   const {logo, company, menu_bg, youtube, colors, terms, policy} = useSelector(
     (state) => state.settings,
   );
@@ -84,31 +84,6 @@ const SideMeu = ({showLogo = true, navigation}) => {
           </Text>
           <View style={{width: '100%'}}>
             <Divider style={{marginTop: 10}} />
-            {__DEV__ && (
-              <Fragment>
-                <TouchableOpacity onPress={() => navigation.navigate('Mallr')}>
-                  <Text>Mallr</Text>
-                </TouchableOpacity>
-                <TouchableOpacity
-                  onPress={() => navigation.navigate('ServiceIndex')}>
-                  <Text>Service Index</Text>
-                </TouchableOpacity>
-                <TouchableOpacity onPress={() => navigation.navigate('Escrap')}>
-                  <Text>Escrap</Text>
-                </TouchableOpacity>
-                <TouchableOpacity
-                  onPress={() => navigation.navigate('Homekey')}>
-                  <Text>Homekey</Text>
-                </TouchableOpacity>
-                <TouchableOpacity
-                  onPress={() => navigation.navigate('ClassifiedIndex')}>
-                  <Text>Classifieds</Text>
-                </TouchableOpacity>
-                <TouchableOpacity onPress={() => navigation.navigate('Expo')}>
-                  <Text>MyExpo</Text>
-                </TouchableOpacity>
-              </Fragment>
-            )}
             <TouchableOpacity onPress={() => goToHome()} style={styles.menuBtn}>
               <Icon
                 name="home"
@@ -214,8 +189,8 @@ const SideMeu = ({showLogo = true, navigation}) => {
                 onPress={() => navigation.navigate('TermAndCondition')}
                 style={styles.menuBtn}>
                 <Icon
-                  name="handshake-o"
-                  type="font-awesome"
+                  name="book-open"
+                  type="simple-line-icon"
                   size={iconSizes.smaller}
                   color={colors.menu_theme_color}
                 />
@@ -300,7 +275,7 @@ const SideMeu = ({showLogo = true, navigation}) => {
   );
 };
 
-export default SideMeu;
+export default DesigneratSideMenu;
 
 const styles = StyleSheet.create({
   container: {

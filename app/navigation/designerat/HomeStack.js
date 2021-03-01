@@ -27,6 +27,8 @@ import ProfileIndexScreen from '../../screens/auth/ProfileIndexScreen';
 import UserEditScreen from '../../screens/auth/UserEditScreen';
 import FavoriteProductIndexScreen from '../../screens/product/FavoriteProductIndexScreen';
 import OrderIndexScreen from '../../screens/OrderIndexScreen';
+import TermAndConditionScreen from '../../screens/TermAndConditionScreen';
+import PolicyScreen from '../../screens/PolicyScreen';
 import {GlobalValuesContext} from '../../redux/GlobalValuesContext';
 import {HeaderBack} from '../../components/HeaderBack';
 import MainTab from '../MainTab';
@@ -130,15 +132,6 @@ const HomeStack = () => {
         options={{
           headerRight: () => <HeaderRight />,
           headerTitle: () => <HeaderMiddle title={I18n.t('roles')} />,
-          headerBackTitle: () => null,
-        }}
-      />
-      <Stack.Screen
-        name={'ImageZoom'}
-        component={ImageZoomWidget}
-        options={{
-          headerRight: () => <HeaderRight />,
-          headerTitle: () => <HeaderMiddle />,
           headerBackTitle: () => null,
         }}
       />
@@ -290,6 +283,47 @@ const HomeStack = () => {
             color: colors.header_theme_color,
           },
           headerTitle: () => <HeaderMiddle title={I18n.t('cart')} />,
+        }}
+      />
+      <Stack.Screen
+        name="TermAndCondition"
+        headerBackTitleVisible={false}
+        component={TermAndConditionScreen}
+        options={{
+          headerBackTitleVisible: false,
+          headerStyle: {
+            backgroundColor: colors.header_theme_bg,
+          },
+          headerTitleStyle: {
+            color: colors.header_theme_color,
+          },
+          headerTitle: () => (
+            <HeaderMiddle title={I18n.t('terms_and_conditions')} />
+          ),
+        }}
+      />
+      <Stack.Screen
+        name="Policy"
+        headerBackTitleVisible={false}
+        component={PolicyScreen}
+        options={{
+          headerBackTitleVisible: false,
+          headerStyle: {
+            backgroundColor: colors.header_theme_bg,
+          },
+          headerTitleStyle: {
+            color: colors.header_theme_color,
+          },
+          headerTitle: () => <HeaderMiddle title={I18n.t('policies')} />,
+        }}
+      />
+      <Stack.Screen
+        name={'ImageZoom'}
+        component={ImageZoomWidget}
+        options={{
+          headerRight: () => <HeaderRight />,
+          headerTitle: () => <HeaderMiddle />,
+          headerBackTitle: () => null,
         }}
       />
     </Stack.Navigator>
