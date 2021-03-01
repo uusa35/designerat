@@ -27,6 +27,7 @@ const ProductColorSizeGroupWithAttributes = ({
   element,
   setAddToCartStatus,
   setCartItem,
+  handleAddToCart,
 }) => {
   const {colors} = useContext(GlobalValuesContext);
   const dispatch = useDispatch();
@@ -46,6 +47,29 @@ const ProductColorSizeGroupWithAttributes = ({
 
   useEffect(() => {
     setAddToCartStatus(!productAttribute || requestQty <= 0);
+    if (requestQty <= 0) {
+      setCartItem({});
+    } else {
+      setCartItem({
+        element,
+        type: 'product',
+        product_id: productAttribute.product_id,
+        cart_id: productAttribute.cart_id,
+        qty: requestQty,
+        directPurchase: element.directPurchase,
+        product_attribute_id: productAttribute.id,
+        color_id: colorItem ? colorItem.id : null,
+        size_id: sizeItem ? sizeItem.id : null,
+        wrapGift,
+        notes: wrapGift
+          ? notes.concat(
+              `\n :: ${I18n.t('wrap_as_gift', {
+                item: settings.gift_fee,
+              })} :: \n ${giftMessage}`,
+            )
+          : notes,
+      });
+    }
   }, [requestQty]);
 
   useMemo(() => {
@@ -210,27 +234,7 @@ const ProductColorSizeGroupWithAttributes = ({
       </View>
       {element.has_stock && element.is_available && (
         <Button
-          onPress={() =>
-            setCartItem({
-              element,
-              type: 'product',
-              product_id: productAttribute.product_id,
-              cart_id: productAttribute.cart_id,
-              qty: requestQty,
-              directPurchase: element.directPurchase,
-              product_attribute_id: productAttribute.id,
-              color_id: colorItem ? colorItem.id : null,
-              size_id: sizeItem ? sizeItem.id : null,
-              wrapGift,
-              notes: wrapGift
-                ? notes.concat(
-                    `\n :: ${I18n.t('wrap_as_gift', {
-                      item: settings.gift_fee,
-                    })} :: \n ${giftMessage}`,
-                  )
-                : notes,
-            })
-          }
+          onPress={() => handleAddToCart()}
           disabled={!productAttribute || requestQty <= 0}
           raised
           containerStyle={{width: '100%', marginTop: 10, marginBottom: 10}}

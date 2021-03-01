@@ -319,6 +319,7 @@ export function* setHomeSplashes() {
 
 export function* startAddToCartScenario(action) {
   try {
+    console.log('action payload', action.payload);
     const {cart, country, product, settings} = yield select();
     if (!country.is_local && action.payload.type === 'service') {
       throw I18n.t(

@@ -11,7 +11,12 @@ import {useDispatch, useSelector} from 'react-redux';
 import WrapAsGiftWidget from './WrapAsGiftWidget';
 import {EXPO} from './../../../../app';
 
-const ProductColorSizeGroup = ({element, setAddToCartStatus, setCartItem}) => {
+const ProductColorSizeGroup = ({
+  element,
+  setAddToCartStatus,
+  setCartItem,
+  handleAddToCart,
+}) => {
   const {settings} = useSelector((state) => state);
   const {colors} = settings;
   const dispatch = useDispatch();
@@ -23,6 +28,27 @@ const ProductColorSizeGroup = ({element, setAddToCartStatus, setCartItem}) => {
 
   useEffect(() => {
     setAddToCartStatus(!qty || requestQty <= 0);
+    if (requestQty <= 0) {
+      setCartItem({});
+    } else {
+      setCartItem({
+        element,
+        type: 'product',
+        product_attribute_id: null,
+        product_id: element.id,
+        cart_id: null,
+        qty: requestQty,
+        directPurchase: element.directPurchase,
+        wrapGift,
+        notes: wrapGift
+          ? notes.concat(
+              `\n :: (${I18n.t('wrap_as_gift', {
+                item: settings.gift_fee,
+              })}) :: \n ${giftMessage}`,
+            )
+          : notes,
+      });
+    }
   }, [requestQty]);
 
   return (
@@ -144,25 +170,7 @@ const ProductColorSizeGroup = ({element, setAddToCartStatus, setCartItem}) => {
       />
       {element.has_stock && element.is_available && (
         <Button
-          onPress={() =>
-            setCartItem({
-              element,
-              type: 'product',
-              product_attribute_id: null,
-              product_id: element.id,
-              cart_id: null,
-              qty: requestQty,
-              directPurchase: element.directPurchase,
-              wrapGift,
-              notes: wrapGift
-                ? notes.concat(
-                    `\n :: (${I18n.t('wrap_as_gift', {
-                      item: settings.gift_fee,
-                    })}) :: \n ${giftMessage}`,
-                  )
-                : notes,
-            })
-          }
+          onPress={() => handleAddToCart()}
           disabled={!qty || requestQty <= 0}
           raised
           containerStyle={{width: '100%', justifyContent: 'center'}}

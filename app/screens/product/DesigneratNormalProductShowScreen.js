@@ -1,4 +1,4 @@
-import React, {useState, useEffect, useMemo} from 'react';
+import React, {useState, useEffect, useMemo, useCallback} from 'react';
 import {StyleSheet, Text, Linking, View} from 'react-native';
 import {useDispatch, useSelector} from 'react-redux';
 import ImagesWidget from '../../components/widgets/ImagesWidget';
@@ -51,41 +51,19 @@ const DesineratNormalProductShowScreen = () => {
     );
   };
 
-  useMemo(() => {
+  useCallback(() => {
     if (!validate.isEmpty(cartItem)) {
       setAddToCartStatus(true);
-      const {
-        element,
-        type,
-        product_id,
-        cart_id,
-        qty,
-        directPurchase,
-        product_attribute_id,
-        color_id,
-        size_id,
-        wrapGift,
-        notes,
-      } = cartItem;
-      dispatch(
-        addToCart({
-          element,
-          type,
-          product_id,
-          cart_id,
-          qty,
-          directPurchase,
-          product_attribute_id,
-          color_id,
-          size_id,
-          wrapGift,
-          notes,
-        }),
-      );
     } else {
       setAddToCartStatus(false);
     }
-  }, [cartItem]);
+  }, [cartItem, cartItem.qty]);
+
+  const handleAddToCart = () => {
+    if (!validate.isEmpty(cartItem)) {
+      return dispatch(addToCart(cartItem));
+    }
+  };
 
   return (
     <BgContainer showImage={false}>
@@ -156,6 +134,7 @@ const DesineratNormalProductShowScreen = () => {
             element={product}
             setAddToCartStatus={setAddToCartStatus}
             setCartItem={setCartItem}
+            handleAddToCart={handleAddToCart}
           />
           <View
             style={{
@@ -288,7 +267,10 @@ const DesineratNormalProductShowScreen = () => {
           />
         )}
       </KeyBoardContainer>
-      <DesigneratAddToCartStickyFooter disabled={addToCartStatus} />
+      <DesigneratAddToCartStickyFooter
+        disabled={addToCartStatus}
+        handleAddToCart={handleAddToCart}
+      />
       <ActionBtnWidget />
     </BgContainer>
   );

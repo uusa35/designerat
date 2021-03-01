@@ -9,7 +9,12 @@ import I18n from './../../../I18n';
 import {text} from '../../../constants/sizes';
 import {useSelector} from 'react-redux';
 
-const ProductInfoWidget = ({element, setAddToCartStatus, setCartItem}) => {
+const ProductInfoWidget = ({
+  element,
+  setAddToCartStatus,
+  setCartItem,
+  handleAddToCart,
+}) => {
   return (
     <View
       useNativeDriver={true}
@@ -37,6 +42,7 @@ const ProductInfoWidget = ({element, setAddToCartStatus, setCartItem}) => {
           element={element}
           setAddToCartStatus={setAddToCartStatus}
           setCartItem={setCartItem}
+          handleAddToCart={handleAddToCart}
         />
       )}
     </View>

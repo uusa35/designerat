@@ -45,7 +45,7 @@ const DesigneratAddToCartStickyFooter = ({
         </Text>
       </View>
       <TouchableOpacity
-        onPress={() => handleAddToCart}
+        onPress={() => handleAddToCart()}
         disabled={disabled}
         style={{
           backgroundColor: disabled
