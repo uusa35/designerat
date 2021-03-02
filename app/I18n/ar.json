@@ -710,5 +710,12 @@
   "category_filter" : "فلتر التصنيفات",
   "color_filter" : "فلتر الألوان",
   "cart_is_empty" : "سلة تسوقك فارغة",
-  "continue_shopping" : "متابعة التسوق"
+  "continue_shopping" : "متابعة التسوق",
+  "shipment_address" : "عنوان الشحن",
+  "block" : "قطعة",
+  "building_no" : "رقم البيت/ مبنى",
+  "street" : "شارع",
+  "change_modify_address" : "تعديل / تغيير العنوان",
+  "add_new_address" : "اضف عنوان جديد",
+  "go_to_payment_page" : "الذهاب إلى صفحة الدفع"
 }

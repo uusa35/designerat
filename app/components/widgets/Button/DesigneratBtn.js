@@ -6,6 +6,7 @@ import React, {useContext} from 'react';
 import {GlobalValuesContext} from '../../../redux/GlobalValuesContext';
 import PropTypes from 'prop-types';
 import {useSelector} from 'react-redux';
+import {isNull} from 'lodash';
 
 const DesingeratBtn = ({
   handleClick,
@@ -14,16 +15,23 @@ const DesingeratBtn = ({
   titleStyle = widgetStyles.headerThree,
   marginTop = 5,
   width = '95%',
+  bgColor = null,
+  disabled = false,
 }) => {
   const {colors} = useSelector((state) => state.settings);
   return (
     <TouchableOpacity
+      disabled={disabled}
       style={{
         width,
         justifyContent: 'center',
         alignItems: 'center',
         alignSelf: 'center',
-        backgroundColor: bg ? colors.btn_bg_theme_color : 'transparent',
+        backgroundColor: bg
+          ? isNull(bgColor)
+            ? colors.btn_bg_theme_color
+            : bgColor
+          : 'transparent',
         height: 50,
         borderRadius: 3,
         marginTop,

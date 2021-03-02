@@ -16,7 +16,7 @@ const persistConfig = {
   blacklist: [
     'message',
     // 'cart',
-    'coupon',
+    // 'coupon',
     'shipment_fees',
     'countryModal',
     'loginModal',

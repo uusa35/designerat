@@ -16,9 +16,14 @@ import DesigneratCartList from '../../components/widgets/cart/DesigneratCartList
 import DesigneratBtn from '../../components/widgets/Button/DesigneratBtn';
 import widgetStyles from '../../components/widgets/widgetStyles';
 const DesigneratCartIndexScreen = () => {
-  const {cart, country, shipmentFees, settings, coupon, area} = useSelector(
-    (state) => state,
-  );
+  const {
+    cart,
+    shipmentCountry,
+    shipmentFees,
+    settings,
+    coupon,
+    area,
+  } = useSelector((state) => state);
   const {grossTotal, colors} = useContext(GlobalValuesContext);
   const navigation = useNavigation();
 
@@ -35,7 +40,7 @@ const DesigneratCartIndexScreen = () => {
           }}>
           <KeyBoardContainer>
             <DesigneratCartList
-              shipmentCountry={country}
+              shipmentCountry={shipmentCountry}
               shipmentFees={shipmentFees}
               selectedArea={area}
               grossTotal={grossTotal}

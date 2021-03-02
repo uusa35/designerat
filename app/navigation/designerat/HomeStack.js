@@ -38,6 +38,9 @@ import CartConfirmationScreen from '../../screens/cart/CartConfirmationScreen';
 import CartIndexScreen from '../../screens/cart/CartIndexScreen';
 import DesigneratCartIndexScreen from '../../screens/cart/DesigneratCartIndexScreen';
 import DesigneratCartIndexFormScreen from '../../screens/cart/DesigneratCartIndexFormScreen';
+import DesigneratCartConfirmationScreen from '../../screens/cart/DesigneratCartConfirmationScreen';
+import UserAddressIndexScreen from '../../screens/auth/UserAddressIndexScreen';
+import UserAddressCreateScreen from '../../screens/auth/UserAddressCreateScreen';
 
 const Stack = createStackNavigator();
 const HomeStack = () => {
@@ -136,35 +139,6 @@ const HomeStack = () => {
         }}
       />
       <Stack.Screen
-        name="CartConfirmation"
-        component={CartConfirmationScreen}
-        options={{
-          headerStyle: {
-            backgroundColor: colors.header_theme_bg,
-          },
-          headerTitleStyle: {
-            color: colors.header_theme_color,
-          },
-          headerTitle: () => (
-            <HeaderMiddle title={I18n.t('cart_confirmation')} />
-          ),
-        }}
-      />
-      <Stack.Screen
-        name="PaymentIndex"
-        component={PaymentIndexScreen}
-        options={{
-          headerStyle: {
-            backgroundColor: colors.header_theme_bg,
-          },
-          headerTitleStyle: {
-            color: colors.header_theme_color,
-          },
-          headerTitle: () => <HeaderMiddle title={I18n.t('payment_page')} />,
-          headerLeft: () => <HeaderBack removeCart={true} />,
-        }}
-      />
-      <Stack.Screen
         name="ProfileIndex"
         component={ProfileIndexScreen}
         options={{
@@ -174,9 +148,7 @@ const HomeStack = () => {
           headerTitleStyle: {
             color: colors.header_theme_color,
           },
-          headerTitle: () => (
-            <HeaderMiddle title={I18n.t('cart_confirmation')} />
-          ),
+          headerTitle: () => <HeaderMiddle title={I18n.t('profile')} />,
         }}
       />
       <Stack.Screen
@@ -283,6 +255,83 @@ const HomeStack = () => {
             color: colors.header_theme_color,
           },
           headerTitle: () => <HeaderMiddle title={I18n.t('cart')} />,
+        }}
+      />
+      <Stack.Screen
+        name="CartConfirmation"
+        headerBackTitleVisible={false}
+        component={DesigneratCartConfirmationScreen}
+        options={{
+          headerBackTitleVisible: false,
+          headerStyle: {
+            backgroundColor: colors.header_theme_bg,
+          },
+          headerTitleStyle: {
+            color: colors.header_theme_color,
+          },
+          headerTitle: () => (
+            <HeaderMiddle title={I18n.t('cart_confirmation')} />
+          ),
+        }}
+      />
+
+      <Stack.Screen
+        name="UserAddressIndex"
+        headerBackTitleVisible={false}
+        component={UserAddressIndexScreen}
+        options={{
+          headerBackTitleVisible: false,
+          headerStyle: {
+            backgroundColor: colors.header_theme_bg,
+          },
+          headerTitleStyle: {
+            color: colors.header_theme_color,
+          },
+          headerTitle: () => <HeaderMiddle title={I18n.t('addresses')} />,
+        }}
+      />
+      <Stack.Screen
+        name="UserAddressCreate"
+        headerBackTitleVisible={false}
+        component={UserAddressCreateScreen}
+        options={{
+          headerBackTitleVisible: false,
+          headerStyle: {
+            backgroundColor: colors.header_theme_bg,
+          },
+          headerTitleStyle: {
+            color: colors.header_theme_color,
+          },
+          headerTitle: () => <HeaderMiddle title={I18n.t('add_new_address')} />,
+        }}
+      />
+      {/*<Stack.Screen*/}
+      {/*  name="CartConfirmation"*/}
+      {/*  component={CartConfirmationScreen}*/}
+      {/*  options={{*/}
+      {/*    headerStyle: {*/}
+      {/*      backgroundColor: colors.header_theme_bg,*/}
+      {/*    },*/}
+      {/*    headerTitleStyle: {*/}
+      {/*      color: colors.header_theme_color,*/}
+      {/*    },*/}
+      {/*    headerTitle: () => (*/}
+      {/*      <HeaderMiddle title={I18n.t('cart_confirmation')} />*/}
+      {/*    ),*/}
+      {/*  }}*/}
+      {/*/>*/}
+      <Stack.Screen
+        name="PaymentIndex"
+        component={PaymentIndexScreen}
+        options={{
+          headerStyle: {
+            backgroundColor: colors.header_theme_bg,
+          },
+          headerTitleStyle: {
+            color: colors.header_theme_color,
+          },
+          headerTitle: () => <HeaderMiddle title={I18n.t('payment_page')} />,
+          headerLeft: () => <HeaderBack removeCart={true} />,
         }}
       />
       <Stack.Screen

@@ -28,6 +28,7 @@ import homeCompanies from './homeCompanies';
 import company from './company';
 import countries from './countries';
 import country from './country';
+import shipmentCountry from './shipmentCountry';
 import area from './area';
 import areas from './areas';
 import color from './color';
@@ -69,6 +70,7 @@ import showIntroduction from './showIntroduction';
 import linking from './linking';
 import playerId from './playerId';
 import auth from './auth';
+import address from './address';
 import coupon from './coupon';
 import searchParams from './searchParams';
 import commentModal from './commentModal';
@@ -148,6 +150,7 @@ let reducers = combineReducers({
   countries,
   splashes,
   country,
+  shipmentCountry,
   currency,
   area,
   areas,
@@ -160,6 +163,7 @@ let reducers = combineReducers({
   playerId,
   guest,
   auth,
+  address,
   token,
   countryModal,
   areaModal,

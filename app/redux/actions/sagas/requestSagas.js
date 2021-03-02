@@ -158,6 +158,10 @@ export function* setCountries() {
     const countries = yield call(api.getCountries);
     if (!validate.isEmpty(countries) && validate.isArray(countries)) {
       yield put({type: actions.SET_COUNTRIES, payload: countries});
+      const localCountry = first(filter(countries, (c) => c.is_local));
+      if (!validate.isEmpty(localCountry)) {
+        yield put({type: actions.SET_SHIPMENT_COUNTRY, payload: localCountry});
+      }
     } else {
       throw I18n.t('no_countries');
     }
@@ -525,6 +529,9 @@ export function* startSubmitCartScenario(action) {
       country_id,
       notes,
       area,
+      block,
+      street,
+      building,
     } = action.payload;
     const result = validate({name, mobile, email, address}, registerConstrains);
     if (validate.isEmpty(result)) {
@@ -532,9 +539,12 @@ export function* startSubmitCartScenario(action) {
         cName: name,
         cEmail: email,
         cMobile: mobile,
+        cArea: area,
+        cBlock: block,
+        cStreet: street,
+        cBuilding: building,
         cAddress: address,
         country_id,
-        cArea: area,
         cNotes: notes,
       });
     } else {

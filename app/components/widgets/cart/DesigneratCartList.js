@@ -1,6 +1,5 @@
 import React, {useContext, useState, useEffect, Fragment} from 'react';
-import {StyleSheet, Text, TouchableOpacity} from 'react-native';
-import {View} from 'react-native-animatable';
+import {StyleSheet, Text, TouchableOpacity, View} from 'react-native';
 import I18n, {isRTL} from '../../../I18n';
 import {isIOS} from '../../../constants';
 import {iconSizes, text} from '../../../constants/sizes';
@@ -22,7 +21,10 @@ import validate from 'validate.js';
 import {useDispatch, useSelector} from 'react-redux';
 import {getConvertedFinalPrice} from '../../../helpers';
 import {KeyboardAwareScrollView} from 'react-native-keyboard-aware-scroll-view';
-import {CREATE_MYFATOORAH_PAYMENT_URL} from '../../../redux/actions/types';
+import {
+  CREATE_MYFATOORAH_PAYMENT_URL,
+  CREATE_TAP_PAYMENT_URL,
+} from '../../../redux/actions/types';
 import KeyBoardContainer from '../../containers/KeyBoardContainer';
 import {useNavigation} from '@react-navigation/native';
 import DesigneratProductItem from '../product/DesigneratProductItem';
@@ -81,11 +83,7 @@ const DesigneratCartList = ({
   }, [auth]);
 
   return (
-    <View
-      animation="bounceInLeft"
-      easing="ease-out"
-      useNativeDriver={true}
-      style={{flexDirection: 'column', width}}>
+    <View style={{flexDirection: 'column', width}}>
       <View
         style={{
           flex: 1,
@@ -95,7 +93,7 @@ const DesigneratCartList = ({
           backgroundColor: 'white',
         }}>
         <Text style={widgetStyles.headerThree}>{I18n.t('cart')}</Text>
-        <Text style={widgetStyles.headerThree}>{I18n.t('step')} (1/2)</Text>
+        <Text style={widgetStyles.headerThree}>{I18n.t('step')} (1/3)</Text>
       </View>
       <View
         style={{
@@ -134,6 +132,7 @@ const DesigneratCartList = ({
           marginTop: 10,
           backgroundColor: 'white',
           padding: 15,
+          borderRadius: 5,
         }}>
         <TouchableOpacity
           onPress={() => navigate('FavoriteProductIndex')}
@@ -154,6 +153,41 @@ const DesigneratCartList = ({
           color={colors.icon_theme_color}
         />
       </View>
+
+      <View
+        style={{
+          flex: 1,
+          justifyContent: 'flex-start',
+          alignItems: 'flex-start',
+          marginLeft: 15,
+          marginRight: 15,
+          marginTop: 10,
+          backgroundColor: 'white',
+          paddingTop: 10,
+          paddingBottom: 20,
+          borderRadius: 5,
+        }}>
+        <Text
+          style={[widgetStyles.headerThree, {textAlign: 'left', padding: 15}]}>
+          {I18n.t('have_coupon')}
+        </Text>
+        <Input
+          placeholder={I18n.t('coupon')}
+          value={code ? code : null}
+          containerStyle={{height: 50}}
+          inputContainerStyle={widgetStyles.inputContainerStyle}
+          inputStyle={widgetStyles.inputStyle}
+          shake={true}
+          keyboardType="default"
+          onChangeText={(code) => setCode(code)}
+        />
+        <DesingeratBtn
+          handleClick={() => dispatch(getCoupon(code))}
+          title={I18n.t('add_coupon')}
+          marginTop={20}
+        />
+      </View>
+
       <View
         style={{
           flexDirection: 'column',
@@ -223,7 +257,7 @@ const DesigneratCartList = ({
             backgroundColor: 'white',
             borderBottomWidth: 1,
           }}>
-          <Text style={widgetStyles.headerThree}>{I18n.t('discount')}}</Text>
+          <Text style={widgetStyles.headerThree}>{I18n.t('discount')}</Text>
           <View style={{flexDirection: 'row', minWidth: 50}}>
             <Text style={widgetStyles.headerThree}>
               {`${round(coupon.value, 2)} ${I18n.t('kwd')}`}
@@ -253,28 +287,30 @@ const DesigneratCartList = ({
         </View>
       </View>
 
-      <View
-        style={{
-          flexDirection: 'row',
-          justifyContent: 'space-between',
-          alignItems: 'center',
-          paddingTop: 20,
-          paddingLeft: 15,
-          paddingRight: 15,
-          paddingBottom: 20,
-          backgroundColor: 'white',
-          borderBottomWidth: 1,
-        }}>
-        <Text style={widgetStyles.headerThree}>{`${I18n.t(
-          'gross_total_in',
-        )} ${currency_symbol}`}</Text>
-        <View style={{flexDirection: 'row', minWidth: 50}}>
-          <Text style={widgetStyles.headerThree}>{`${getConvertedFinalPrice(
-            round(grossTotal, 2),
-            exchange_rate,
+      {!shipmentCountry.is_local && (
+        <View
+          style={{
+            flexDirection: 'row',
+            justifyContent: 'space-between',
+            alignItems: 'center',
+            paddingTop: 20,
+            paddingLeft: 15,
+            paddingRight: 15,
+            paddingBottom: 20,
+            backgroundColor: 'white',
+            borderBottomWidth: 1,
+          }}>
+          <Text style={widgetStyles.headerThree}>{`${I18n.t(
+            'gross_total_in',
           )} ${currency_symbol}`}</Text>
+          <View style={{flexDirection: 'row', minWidth: 50}}>
+            <Text style={widgetStyles.headerThree}>{`${getConvertedFinalPrice(
+              round(grossTotal, 2),
+              exchange_rate,
+            )} ${currency_symbol}`}</Text>
+          </View>
         </View>
-      </View>
+      )}
 
       {guest ? (
         <View
@@ -298,8 +334,9 @@ const DesigneratCartList = ({
         </View>
       ) : null}
       <DesigneratBtn
-        title={I18n.t('pay')}
+        title={I18n.t('continue')}
         handleClick={() => navigate('CartIndexForm')}
+        marginTop={20}
       />
     </View>
   );

@@ -19,8 +19,8 @@ import * as RootNavigation from './../../../RootNavigation.js';
 import I18n from '../../../I18n';
 import validate from 'validate.js';
 import {HOMEKEY, ABATI, MALLR, ESCRAP} from './../../../../app';
-import {isLocal} from '../../../env';
 import {SET_ROLES} from '../types';
+import {first} from 'lodash';
 
 export function* startGetDesignerScenario(action) {
   try {
@@ -368,6 +368,7 @@ export function* startSubmitAuthScenario(action) {
         put({type: actions.SET_AUTH, payload: element}),
         put({type: actions.SET_TOKEN, payload: element.api_token}),
         put({type: actions.SET_ORDERS, payload: element.orders}),
+        put({type: actions.SET_ADDRESS, payload: first(element.addresses)}),
         put({type: actions.TOGGLE_GUEST, payload: false}),
         call(setProductFavorites, element.product_favorites),
         call(setClassifiedFavorites, element.classified_favorites),
