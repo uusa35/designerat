@@ -8,7 +8,7 @@ import React, {
 import {Linking} from 'react-native';
 import {
   ABATI,
-  ABATI_ONE_SIGNAL_APP_ID,
+  DESIGNERAT_ONE_SIGNAL_APP_ID,
   MALLR,
   MALLR_ONE_SIGNAL_APP_ID,
   HOMEKEY,
@@ -42,23 +42,10 @@ const AppHomeConfigComponent = () => {
 
   useMemo(() => {
     // analytics().setAnalyticsCollectionEnabled(true);
-    if (ABATI) {
-      setSignalId(ABATI_ONE_SIGNAL_APP_ID);
-    } else if (MALLR) {
-      setSignalId(MALLR_ONE_SIGNAL_APP_ID);
-    } else if (HOMEKEY) {
-      setSignalId(HOMKEY_ONE_SIGNAL_APP_ID);
-    } else if (ESCRAP) {
-      setSignalId(ESCRAP_ONE_SIGNAL_APP_ID);
-    } else if (EXPO) {
-      setSignalId(EXPO_ONE_SIGNAL_APP_ID);
-    } else if (DAILY) {
-      setSignalId(DAILY_ONE_SIGNAL_APP_ID);
-    }
   }, [bootStrapped]);
 
   useEffect(() => {
-    OneSignal.setAppId('ce8572ae-ff57-4e77-a265-5c91f00ecc4c');
+    OneSignal.setAppId(DESIGNERAT_ONE_SIGNAL_APP_ID);
     OneSignal.setLogLevel(6, 0);
     OneSignal.setRequiresUserPrivacyConsent(false);
     OneSignal.promptForPushNotificationsWithUserResponse((response) => {

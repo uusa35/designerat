@@ -1,21 +1,20 @@
 import React, {useContext} from 'react';
-import {StyleSheet, View} from 'react-native';
+import {StyleSheet, View, Text} from 'react-native';
 import {useSelector} from 'react-redux';
 import validate from 'validate.js';
-import CartList from '../../components/widgets/cart/CartList';
 import {text, width, height} from '../../constants/sizes';
-import {Button} from 'react-native-elements';
 import I18n from '../../I18n';
 import BgContainer from '../../components/containers/BgContainer';
 import {GlobalValuesContext} from '../../redux/GlobalValuesContext';
 import LottieView from 'lottie-react-native';
 import {animations} from '../../constants/animations';
 import {View as Animating} from 'react-native-animatable';
-import {EXPO, ABATI} from './../../../app';
 import EmptyListWidget from '../../components/Lists/EmptyListWidget';
 import KeyBoardContainer from '../../components/containers/KeyBoardContainer';
 import {useNavigation} from '@react-navigation/native';
 import DesigneratCartList from '../../components/widgets/cart/DesigneratCartList';
+import DesigneratBtn from '../../components/widgets/Button/DesigneratBtn';
+import widgetStyles from '../../components/widgets/widgetStyles';
 const DesigneratCartIndexScreen = () => {
   const {cart, country, shipmentFees, settings, coupon, area} = useSelector(
     (state) => state,
@@ -53,7 +52,8 @@ const DesigneratCartIndexScreen = () => {
           style={{
             justifyContent: 'center',
             backgroundColor: 'white',
-            margin: 20,
+            flex: 1,
+            padding: 20,
           }}>
           <LottieView
             source={animations.emptyCart}
@@ -72,50 +72,19 @@ const DesigneratCartIndexScreen = () => {
             animation="bounceIn"
             easing="ease-out"
             useNativeDriver={true}>
-            <Button
-              raised
-              title={I18n.t('no_items')}
-              type="outline"
-              containerStyle={{marginBottom: 20}}
-              titleStyle={{
-                fontFamily: text.font,
-                color: colors.normal_text_theme_color,
-              }}
-              buttonStyle={{
-                borderColor: colors.btn_bg_theme_color,
-                color: colors.btn_bg_theme_color,
-              }}
+            <Text style={[widgetStyles.headerThree, {marginBottom: 20}]}>
+              {I18n.t('cart_is_empty')}
+            </Text>
+            <DesigneratBtn
+              handleClick={() => navigation.navigate('FavoriteProductIndex')}
+              title={I18n.t('add_from_favorite_list')}
             />
-            <Button
-              onPress={() => navigation.navigate('Home')}
-              raised
-              title={I18n.t('shop_now')}
-              type="outline"
-              containerStyle={{marginBottom: 20}}
-              titleStyle={{
-                fontFamily: text.font,
-                color: colors.normal_text_theme_color,
-              }}
-              buttonStyle={{
-                borderColor: colors.btn_bg_theme_color,
-                color: colors.btn_bg_theme_color,
-              }}
+            <DesigneratBtn
+              handleClick={() => navigation.navigate('Home')}
+              marginTop={20}
+              title={I18n.t('continue_shopping')}
             />
           </Animating>
-          {EXPO && (
-            <LottieView
-              source={animations.cart}
-              autoPlay
-              loop
-              resizeMode="cover"
-              style={{
-                alignSelf: 'center',
-                width: width / 1.3,
-                height: width / 1.3,
-              }}
-              enableMergePathsAndroidForKitKatAndAbove
-            />
-          )}
         </View>
       )}
     </BgContainer>

@@ -674,7 +674,9 @@
   "later" : "Later",
   "my_designs" : "My Designs",
   "category_filter" : "Category Filter",
-  "color_filter" : "Color Filter"
+  "color_filter" : "Color Filter",
+  "cart_is_empty" : "Shopping Cart is empty.",
+  "continue_shopping" : "Continue Shopping"
 
 }
 

@@ -482,6 +482,7 @@
 						TestTargetID = 13B07F861A680F5B00A75B9A;
 					};
 					13B07F861A680F5B00A75B9A = {
+						DevelopmentTeam = 7AHR2W6P49;
 						LastSwiftMigration = 1240;
 					};
 					2D02E47A1E0B4A5D006451C7 = {
@@ -1046,6 +1047,7 @@
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_ENTITLEMENTS = designerat/designerat.entitlements;
 				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 7AHR2W6P49;
 				ENABLE_BITCODE = NO;
 				INFOPLIST_FILE = designerat/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
@@ -1054,7 +1056,7 @@
 					"-ObjC",
 					"-lc++",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.applicationat.designerat;
+				PRODUCT_BUNDLE_IDENTIFIER = com.applicationatkw.designerat;
 				PRODUCT_NAME = designerat;
 				SWIFT_OBJC_BRIDGING_HEADER = "designerat-Bridging-Header.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
@@ -1072,6 +1074,7 @@
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_ENTITLEMENTS = designerat/designerat.entitlements;
 				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 7AHR2W6P49;
 				INFOPLIST_FILE = designerat/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				OTHER_LDFLAGS = (
@@ -1079,7 +1082,7 @@
 					"-ObjC",
 					"-lc++",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.applicationat.designerat;
+				PRODUCT_BUNDLE_IDENTIFIER = com.applicationatkw.designerat;
 				PRODUCT_NAME = designerat;
 				SWIFT_OBJC_BRIDGING_HEADER = "designerat-Bridging-Header.h";
 				SWIFT_VERSION = 5.0;

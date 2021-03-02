@@ -4,15 +4,12 @@ import CategoriesList from '../../components/Lists/CategoriesList';
 import CommercialSliderWidget from '../../components/widgets/CommercialSliderWidget';
 import PropTypes from 'prop-types';
 import {View} from 'react-native-animatable';
-import {ABATI, MALLR, EXPO, DAILY} from './../../../app';
 import BgContainer from '../../components/containers/BgContainer';
 
 const CategoryIndexScreen = () => {
   const {homeCategories, commercials, show_commercials} = useSelector(
     (state) => state,
   );
-
-  useEffect(() => {}, [homeCategories]);
 
   return (
     <BgContainer showImage={false}>
@@ -31,7 +28,7 @@ const CategoryIndexScreen = () => {
             columns={1}
             showBtn={true}
             showName={true}
-            type={ABATI || MALLR || EXPO || DAILY ? 'product' : 'classified'}
+            type={'product'}
           />
         </View>
         {show_commercials ? (

@@ -13,12 +13,13 @@ const DesingeratBtn = ({
   bg = true,
   titleStyle = widgetStyles.headerThree,
   marginTop = 5,
+  width = '95%',
 }) => {
   const {colors} = useSelector((state) => state.settings);
   return (
     <TouchableOpacity
       style={{
-        width: '95%',
+        width,
         justifyContent: 'center',
         alignItems: 'center',
         alignSelf: 'center',
@@ -26,6 +27,14 @@ const DesingeratBtn = ({
         height: 50,
         borderRadius: 3,
         marginTop,
+        shadowColor: '#000',
+        shadowOffset: {
+          width: 0,
+          height: 1,
+        },
+        shadowOpacity: 0.18,
+        shadowRadius: 1.0,
+        elevation: 1,
       }}
       onPress={() => handleClick()}>
       <Text

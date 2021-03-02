@@ -3,7 +3,6 @@ import {ImageBackground, SafeAreaView, View} from 'react-native';
 import {height, width} from '../../constants/sizes';
 import {images} from '../../constants/images';
 import AndroidBackHandlerComponent from './AndroidBackHandlerComponent';
-import AppGlobalConfig from './AppGlobalConfig';
 import {useSelector} from 'react-redux';
 import LoadingView from '../Loading/LoadingView';
 import LoadingOfflineView from '../Loading/LoadingOfflineView';
@@ -40,6 +39,21 @@ const BgContainer = ({
     );
   }, [isLoading, isLoadingBoxedList, isLoadingProfile, isLoadingContent]);
 
+  // useEffect(() => {
+  //   if (!isEmpty(navigation)) {
+  //     const {routeName} = navigation.state;
+  //     if (__DEV__) {
+  //       // console.log('dev routeName', routeName);
+  //     }
+  //     analytics().logEvent(routeName, {
+  //       item: `${APP_CASE}_${routeName}`,
+  //       description: `${routeName}_${moment().format('YYYY-MM-DD')}`,
+  //       start_date: moment().format('YYYY-MM-DD'),
+  //     });
+  //     analytics().setCurrentScreen(routeName);
+  //   }
+  // }, []);
+
   return (
     <ImageBackground
       source={!showImage ? (white ? images.whiteBg : images.grayBg) : {uri: bg}}
@@ -57,7 +71,6 @@ const BgContainer = ({
         <LoadingOfflineView />
       )}
       <AndroidBackHandlerComponent />
-      <AppGlobalConfig />
     </ImageBackground>
   );
 };

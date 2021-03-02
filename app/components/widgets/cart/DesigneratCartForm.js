@@ -60,6 +60,21 @@ const DesigneratCartForm = ({
   return (
     <View>
       <View style={{paddingTop: 20, paddingBottom: 20}}>
+        <View>
+          {shipment_notes && (
+            <Button
+              raised
+              title={shipment_notes}
+              type="outline"
+              containerStyle={{marginBottom: 20}}
+              titleStyle={{
+                fontFamily: text.font,
+                fontSize: text.medium,
+                color: colors.header_one_theme_color,
+              }}
+            />
+          )}
+        </View>
         <Input
           editable={editMode}
           placeholder={name ? name : I18n.t('name')}

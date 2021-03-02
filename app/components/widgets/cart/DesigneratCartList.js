@@ -30,6 +30,8 @@ import widgetStyles from '../widgetStyles';
 import {toggleProductFavorite} from '../../../redux/actions/product';
 import {width} from '../../../constants';
 import DesigneratBtn from '../Button/DesigneratBtn';
+import DesigneratDesignerShowScreen from '../../../screens/designer/DesigneratDesignerShowScreen';
+import DesingeratBtn from '../Button/DesigneratBtn';
 
 const DesigneratCartList = ({
   shipmentCountry,
@@ -106,7 +108,7 @@ const DesigneratCartList = ({
           {I18n.t('products_number')} ({cartLength})
         </Text>
         <Text style={widgetStyles.headerThree}>
-          {grossTotal}.000 {I18n.t('kwd')}
+          {grossTotal} {I18n.t('kwd')}
         </Text>
       </View>
       {map(cart, (item, i) => {
@@ -146,10 +148,10 @@ const DesigneratCartList = ({
           </Text>
         </TouchableOpacity>
         <Icon
-          name="chevron-left"
+          name="chevron-right"
           type="evilicon"
           size={iconSizes.medium}
-          color="gray"
+          color={colors.icon_theme_color}
         />
       </View>
       <View
@@ -176,15 +178,9 @@ const DesigneratCartList = ({
         }}>
         <Text style={[widgetStyles.headerThree]}>{I18n.t('total_sum')}</Text>
         <View style={{flexDirection: 'row', minWidth: 50}}>
-          <Text style={widgetStyles.headerThree}>{round(total, 2)}</Text>
-          <Text
-            style={{
-              fontFamily: text.font,
-              fontSize: text.medium,
-              color: colors.header_one_theme_color,
-            }}>
-            {I18n.t('kwd')}
-          </Text>
+          <Text style={widgetStyles.headerThree}>{`${round(total, 2)} ${I18n.t(
+            'kwd',
+          )}`}</Text>
         </View>
       </View>
 
@@ -206,15 +202,9 @@ const DesigneratCartList = ({
           </Text>
           <View style={{flexDirection: 'row', minWidth: 50}}>
             <Text style={widgetStyles.headerThree}>
-              {round(shipmentCountry.fixed_shipment_charge, 2)}
-            </Text>
-            <Text
-              style={{
-                fontFamily: text.font,
-                fontSize: text.medium,
-                color: colors.header_one_theme_color,
-              }}>
-              {I18n.t('kwd')}
+              {`${round(shipmentCountry.fixed_shipment_charge, 2)} ${I18n.t(
+                'kwd',
+              )}`}
             </Text>
           </View>
         </View>
@@ -236,15 +226,7 @@ const DesigneratCartList = ({
           <Text style={widgetStyles.headerThree}>{I18n.t('discount')}}</Text>
           <View style={{flexDirection: 'row', minWidth: 50}}>
             <Text style={widgetStyles.headerThree}>
-              {round(coupon.value, 2)}
-            </Text>
-            <Text
-              style={{
-                fontFamily: text.font,
-                fontSize: text.medium,
-                color: colors.header_one_theme_color,
-              }}>
-              {I18n.t('kwd')}
+              {`${round(coupon.value, 2)} ${I18n.t('kwd')}`}
             </Text>
           </View>
         </View>
@@ -264,15 +246,10 @@ const DesigneratCartList = ({
         }}>
         <Text style={widgetStyles.headerThree}>{I18n.t('grossTotal')}</Text>
         <View style={{flexDirection: 'row', minWidth: 50}}>
-          <Text style={widgetStyles.headerThree}>{round(grossTotal, 2)}</Text>
-          <Text
-            style={{
-              fontFamily: text.font,
-              fontSize: text.medium,
-              color: colors.header_one_theme_color,
-            }}>
-            {I18n.t('kwd')}
-          </Text>
+          <Text style={widgetStyles.headerThree}>{`${round(
+            grossTotal,
+            2,
+          )} ${I18n.t('kwd')}`}</Text>
         </View>
       </View>
 
@@ -303,58 +280,26 @@ const DesigneratCartList = ({
         <View
           style={{
             flexDirection: 'row',
-            justifyContent: 'center',
+            justifyContent: 'space-between',
             alignItems: 'center',
-            width: '100%',
+            flex: 1,
+            margin: 15,
           }}>
-          <Button
-            // onPress={() => dispatch(showLoginModal())}
-            onPress={() => navigate('Login')}
-            raised
-            containerStyle={{flex: 0.5, marginBottom: 10, margin: 5}}
-            buttonStyle={{
-              backgroundColor: 'white',
-              borderRadius: 10,
-              borderWidth: 0.5,
-              borderColor: 'black',
-            }}
+          <DesingeratBtn
+            handleClick={() => navigate('Login')}
             title={I18n.t('login')}
-            titleStyle={{fontFamily: text.font, color: 'black'}}
+            width={'45%'}
           />
-          <Button
-            onPress={() => navigate('Register')}
-            raised
-            containerStyle={{flex: 0.5, marginBottom: 10, margin: 5}}
-            buttonStyle={{
-              backgroundColor: 'white',
-              borderRadius: 10,
-              borderWidth: 0.5,
-              borderColor: 'black',
-            }}
+          <DesingeratBtn
+            handleClick={() => navigate('Register')}
             title={I18n.t('register')}
-            titleStyle={{fontFamily: text.font, color: 'black'}}
+            width={'45%'}
           />
         </View>
       ) : null}
-      <View>
-        {shipment_notes && (
-          <Button
-            raised
-            title={shipment_notes}
-            type="outline"
-            containerStyle={{marginBottom: 20}}
-            titleStyle={{
-              fontFamily: text.font,
-              fontSize: text.medium,
-              color: colors.header_one_theme_color,
-            }}
-          />
-        )}
-      </View>
       <DesigneratBtn
         title={I18n.t('pay')}
         handleClick={() => navigate('CartIndexForm')}
-        marginTop={20}
       />
     </View>
   );

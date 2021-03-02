@@ -14,14 +14,12 @@ import SimpleSpinner from './../../components/SimpleSpinner';
 import ProductFilterModal from './../../screens/product/ProductFilterModal';
 import LoadingOfflineView from './../../components/Loading/LoadingOfflineView';
 import {useNetInfo} from '@react-native-community/netinfo';
-import {TOGGLE_BOOTSTRAPPED} from './../../redux/actions/types';
 import DeviceInfo from 'react-native-device-info';
 import OldVersionComponent from './../../components/widgets/OldVersionComponenet';
 import {minOldVersionApple, minOldVersionAndroid} from './../../../app.json';
 import {isIOS} from './../../constants';
 
 const AppContainer = ({children}) => {
-  const colorScheme = useColorScheme();
   const {
     bootStrapped,
     message,
@@ -67,13 +65,13 @@ const AppContainer = ({children}) => {
   }, [appState]);
 
   useEffect(() => {
-    codePush.sync({installMode: codePush.InstallMode.IMMEDIATE});
+    // codePush.sync({installMode: codePush.InstallMode.IMMEDIATE});
     codePush.checkForUpdate().then((update) => {
       if (!update) {
-        // console.warn('====> The app is up to date!');
+        console.warn('====> The app is up to date!');
       } else {
         if (__DEV__) {
-          // console.warn('===> there is an update here');
+          console.warn('===> there is an update here');
         }
       }
     });
@@ -83,13 +81,13 @@ const AppContainer = ({children}) => {
     }
   }, []);
 
-  useMemo(() => {
-    if (!bootStrapped) {
-      setTimeout(() => {
-        dispatch({type: TOGGLE_BOOTSTRAPPED, payload: true});
-      }, 5000);
-    }
-  }, [bootStrapped]);
+  // useMemo(() => {
+  //   if (!bootStrapped) {
+  //     setTimeout(() => {
+  //       dispatch({type: TOGGLE_BOOTSTRAPPED, payload: true});
+  //     }, 5000);
+  //   }
+  // }, [bootStrapped]);
 
   useEffect(() => {
     if (isConnected) {
@@ -99,13 +97,13 @@ const AppContainer = ({children}) => {
 
   const handleAppStateChange = (nextAppState) => {
     if (appState.match(/inactive|background/) && nextAppState === 'active') {
+      console.log('active');
     }
     setAppState(nextAppState);
   };
 
   return (
     <Fragment>
-      <StatusBar barStyle={`${colorScheme}-content`} />
       {isConnected ? (
         <Fragment>
           {bootStrapped ? (

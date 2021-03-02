@@ -11,7 +11,7 @@ import {
   setVersion,
   enableResetApp,
 } from './settingSagas';
-import {abatiBootStrap} from './abati/appSagas';
+import {designeratBootStrap} from './designerat/appSagas';
 
 export function* startAppBootStrap() {
   try {
@@ -19,7 +19,7 @@ export function* startAppBootStrap() {
     yield call(defaultLang);
     yield call(setVersion);
     if (!bootStrapped) {
-      yield call(abatiBootStrap);
+      yield call(designeratBootStrap);
     }
   } catch (e) {
     if (__DEV__) {

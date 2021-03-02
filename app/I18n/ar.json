@@ -708,5 +708,7 @@
   "later" : "لاحقا",
   "my_designs" : "تصاميمي",
   "category_filter" : "فلتر التصنيفات",
-  "color_filter" : "فلتر الألوان"
+  "color_filter" : "فلتر الألوان",
+  "cart_is_empty" : "سلة تسوقك فارغة",
+  "continue_shopping" : "متابعة التسوق"
 }

@@ -1,9 +1,9 @@
 import {
   APP_CASE,
   ENV,
-  AT_SPOT_PUSHER_KEY,
   pusherEnabled,
-  EXPO_PUSHER_KEY,
+  DESIGNERAT_PUSHER_ID,
+  DESIGNERAT_PUSHER_KEY,
 } from '../app';
 import Pusher from 'pusher-js/react-native';
 const isLocal = __DEV__;
@@ -21,9 +21,9 @@ const appUrlAndroid =
 const pusherInstance = () => {
   switch (APP_CASE) {
     case 'DESIGNERAT':
-      return EXPO_PUSHER_KEY;
+      return DESIGNERAT_PUSHER_ID;
     default:
-      return pusherEnabled ? AT_SPOT_PUSHER_KEY : '';
+      return pusherEnabled ? DESIGNERAT_PUSHER_KEY : '';
   }
 };
 const pusher = new Pusher(pusherInstance(), {

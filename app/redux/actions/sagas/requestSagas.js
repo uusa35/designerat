@@ -48,6 +48,8 @@ import {homeKeyBootStrap} from './homekey/appSagas';
 import {expoBootStrap} from './expo/appSagas';
 import {dailyBootStrap} from './daily/appSagas';
 import {startGetServiceScenario} from './serviceSagas';
+import shipmentFees from '../../reducers/shipmentFees';
+import {designeratBootStrap} from './designerat/appSagas';
 
 export function* startGetHomeCategoriesScenario(action) {
   try {
@@ -279,22 +281,10 @@ export function* startDeepLinkingScenario(action) {
 
 export function* startRefetchHomeElementsScenario() {
   try {
-    if (ABATI) {
-      yield call(abatiBootStrap);
-    } else if (MALLR) {
-      yield call(mallrBootStrap);
-    } else if (ESCRAP) {
-      yield call(escrapBootStrap);
-    } else if (HOMEKEY) {
-      yield call(homeKeyBootStrap);
-    } else if (EXPO) {
-      yield call(expoBootStrap);
-    } else if (DAILY) {
-      yield call(dailyBootStrap);
-    }
+    yield call(designeratBootStrap);
   } catch (e) {
     if (__DEV__) {
-      // console.log('the e', e);
+      console.log('the e', e);
     }
     yield call(enableErrorMessage, I18n.t('refetch_home_error'));
   } finally {
@@ -406,15 +396,17 @@ export function* setGrossTotalCartValue(values) {
     if (__DEV__) {
       // console.log('the coupon from calculating', coupon);
     }
-    const finalShipment =
+    const finalShipment = parseFloat(
       cart.length === 1 && first(cart).type === 'service'
         ? 0
         : country.is_local
         ? country.fixed_shipment_charge
-        : country.fixed_shipment_charge * countPieces;
-    const grossTotal = parseFloat(
-      total + finalShipment - (!validate.isEmpty(coupon) ? coupon.value : 0),
+        : country.fixed_shipment_charge * countPieces,
     );
+    const couponValue = parseFloat(
+      !validate.isEmpty(coupon) ? coupon.value : 0,
+    );
+    const grossTotal = parseFloat(total + finalShipment - couponValue);
     yield put({type: actions.SET_GROSS_TOTAL_CART, payload: grossTotal});
     yield put({type: actions.SET_SHIPMENT_FEES, payload: finalShipment});
   } catch (e) {
