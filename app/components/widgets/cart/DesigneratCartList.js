@@ -34,6 +34,7 @@ import {width} from '../../../constants';
 import DesigneratBtn from '../Button/DesigneratBtn';
 import DesigneratDesignerShowScreen from '../../../screens/designer/DesigneratDesignerShowScreen';
 import DesingeratBtn from '../Button/DesigneratBtn';
+import DesigneratCartPriceSummary from './DesigneratCartPriceSummary';
 
 const DesigneratCartList = ({
   shipmentCountry,
@@ -74,12 +75,12 @@ const DesigneratCartList = ({
   const [checked, setChecked] = useState(false);
   const [area, setArea] = useState('');
 
+  console.log('cart', cart);
   useEffect(() => {
     setEmail(auth.email);
     setName(auth.name);
     setMobile(auth.mobile);
     setAddress(auth.address);
-    setNotes(auth.description);
   }, [auth]);
 
   return (
@@ -122,18 +123,15 @@ const DesigneratCartList = ({
         );
       })}
       <View
-        style={{
-          flex: 1,
-          flexDirection: 'row',
-          alignItems: 'center',
-          justifyContent: 'space-between',
-          marginLeft: 15,
-          marginRight: 15,
-          marginTop: 10,
-          backgroundColor: 'white',
-          padding: 15,
-          borderRadius: 5,
-        }}>
+        style={[
+          widgetStyles.panelContent,
+          {
+            flexDirection: 'row',
+            alignItems: 'center',
+            justifyContent: 'space-between',
+            padding: 15,
+          },
+        ]}>
         <TouchableOpacity
           onPress={() => navigate('FavoriteProductIndex')}
           style={{
@@ -155,18 +153,12 @@ const DesigneratCartList = ({
       </View>
 
       <View
-        style={{
-          flex: 1,
-          justifyContent: 'flex-start',
-          alignItems: 'flex-start',
-          marginLeft: 15,
-          marginRight: 15,
-          marginTop: 10,
-          backgroundColor: 'white',
-          paddingTop: 10,
-          paddingBottom: 20,
-          borderRadius: 5,
-        }}>
+        style={[
+          widgetStyles.panelContent,
+          {
+            paddingBottom: 20,
+          },
+        ]}>
         <Text
           style={[widgetStyles.headerThree, {textAlign: 'left', padding: 15}]}>
           {I18n.t('have_coupon')}
@@ -188,129 +180,7 @@ const DesigneratCartList = ({
         />
       </View>
 
-      <View
-        style={{
-          flexDirection: 'column',
-          justifyContent: 'flex-end',
-          margin: 15,
-          paddingTop: 10,
-        }}>
-        <Text style={widgetStyles.headerThree}>{I18n.t('total_details')}</Text>
-      </View>
-      <View
-        style={{
-          flexDirection: 'row',
-          justifyContent: 'space-between',
-          alignItems: 'center',
-          paddingTop: 20,
-          paddingLeft: 15,
-          paddingRight: 15,
-          paddingBottom: 20,
-          backgroundColor: 'white',
-          borderTopWidth: 1,
-          borderBottomWidth: 1,
-        }}>
-        <Text style={[widgetStyles.headerThree]}>{I18n.t('total_sum')}</Text>
-        <View style={{flexDirection: 'row', minWidth: 50}}>
-          <Text style={widgetStyles.headerThree}>{`${round(total, 2)} ${I18n.t(
-            'kwd',
-          )}`}</Text>
-        </View>
-      </View>
-
-      {shipmentFees > 0 ? (
-        <View
-          style={{
-            flexDirection: 'row',
-            justifyContent: 'space-between',
-            alignItems: 'center',
-            paddingTop: 20,
-            paddingLeft: 15,
-            paddingRight: 15,
-            paddingBottom: 20,
-            backgroundColor: 'white',
-            borderBottomWidth: 1,
-          }}>
-          <Text style={widgetStyles.headerThree}>
-            {I18n.t('shipment_fees_per_piece')}
-          </Text>
-          <View style={{flexDirection: 'row', minWidth: 50}}>
-            <Text style={widgetStyles.headerThree}>
-              {`${round(shipmentCountry.fixed_shipment_charge, 2)} ${I18n.t(
-                'kwd',
-              )}`}
-            </Text>
-          </View>
-        </View>
-      ) : null}
-
-      {coupon && coupon.value > 0 ? (
-        <View
-          style={{
-            flexDirection: 'row',
-            justifyContent: 'space-between',
-            alignItems: 'center',
-            paddingTop: 20,
-            paddingLeft: 15,
-            paddingRight: 15,
-            paddingBottom: 20,
-            backgroundColor: 'white',
-            borderBottomWidth: 1,
-          }}>
-          <Text style={widgetStyles.headerThree}>{I18n.t('discount')}</Text>
-          <View style={{flexDirection: 'row', minWidth: 50}}>
-            <Text style={widgetStyles.headerThree}>
-              {`${round(coupon.value, 2)} ${I18n.t('kwd')}`}
-            </Text>
-          </View>
-        </View>
-      ) : null}
-
-      <View
-        style={{
-          flexDirection: 'row',
-          justifyContent: 'space-between',
-          alignItems: 'center',
-          paddingTop: 20,
-          paddingLeft: 15,
-          paddingRight: 15,
-          paddingBottom: 20,
-          backgroundColor: 'white',
-          borderBottomWidth: 1,
-        }}>
-        <Text style={widgetStyles.headerThree}>{I18n.t('grossTotal')}</Text>
-        <View style={{flexDirection: 'row', minWidth: 50}}>
-          <Text style={widgetStyles.headerThree}>{`${round(
-            grossTotal,
-            2,
-          )} ${I18n.t('kwd')}`}</Text>
-        </View>
-      </View>
-
-      {!shipmentCountry.is_local && (
-        <View
-          style={{
-            flexDirection: 'row',
-            justifyContent: 'space-between',
-            alignItems: 'center',
-            paddingTop: 20,
-            paddingLeft: 15,
-            paddingRight: 15,
-            paddingBottom: 20,
-            backgroundColor: 'white',
-            borderBottomWidth: 1,
-          }}>
-          <Text style={widgetStyles.headerThree}>{`${I18n.t(
-            'gross_total_in',
-          )} ${currency_symbol}`}</Text>
-          <View style={{flexDirection: 'row', minWidth: 50}}>
-            <Text style={widgetStyles.headerThree}>{`${getConvertedFinalPrice(
-              round(grossTotal, 2),
-              exchange_rate,
-            )} ${currency_symbol}`}</Text>
-          </View>
-        </View>
-      )}
+      <DesigneratCartPriceSummary />
 
       {guest ? (
         <View

@@ -17,6 +17,15 @@ const widgetStyles = StyleSheet.create({
     margin: 5,
     width: '100%',
   },
+  panelContent: {
+    flex: 1,
+    marginLeft: text.medium,
+    marginRight: text.medium,
+    marginTop: text.medium,
+    padding: text.smallest,
+    backgroundColor: 'white',
+    borderRadius: text.smallest,
+  },
   titleContainer: {
     flexDirection: 'row',
     width: '100%',

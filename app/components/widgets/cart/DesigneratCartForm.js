@@ -47,7 +47,7 @@ const DesigneratCartForm = ({
     !validate.isEmpty(auth) ? auth.mobile : null,
   );
   const [currentAddress, setCurrentAddress] = useState(
-    !validate.isEmpty(auth) ? auth.address : null,
+    !validate.isEmpty(address) ? address : null,
   );
   const [notes, setNotes] = useState(null);
   const [code, setCode] = useState(
@@ -102,277 +102,277 @@ const DesigneratCartForm = ({
         {I18n.t('confirm_information')}
       </Text>
       <View
-        style={{
-          marginLeft: 15,
-          marginRight: 15,
-          backgroundColor: 'white',
-          justifyContent: 'flex-start',
-          borderRadius: 10,
-        }}>
-        <View style={{padding: 10, paddingTop: 30, paddingBottom: 30}}>
-          <Input
-            editable={editMode}
-            placeholder={name ? name : I18n.t('name')}
-            value={name ? name : null}
-            leftIcon={() =>
-              name ? (
-                <Text style={widgetStyles.headerThree}>{I18n.t('name')}</Text>
-              ) : null
-            }
-            leftIconContainerStyle={{paddingRight: 15}}
-            containerStyle={{marginBottom: 0, paddingBottom: 0, height: 50}}
-            inputContainerStyle={[
-              widgetStyles.inputContainerStyle,
-              {
-                borderBottomWidth: 0,
-                borderRadius: 0,
-                borderTopRightRadius: 3,
-                borderTopLeftRadius: 3,
-              },
-            ]}
-            inputStyle={widgetStyles.inputStyle}
-            label={showLabel ? I18n.t('email') : null}
-            labelStyle={[
-              styles.titleLabelStyle,
-              {color: colors.main_theme_color, paddingBottom: 10},
-            ]}
-            shake={true}
-            keyboardType="default"
-            onChangeText={(name) => setName(name)}
-          />
-          <Input
-            editable={editMode}
-            placeholder={email ? email : I18n.t('email')}
-            value={email ? email : null}
-            leftIcon={() =>
-              email ? (
-                <Text style={widgetStyles.headerThree}>{I18n.t('email')}</Text>
-              ) : null
-            }
-            leftIconContainerStyle={{paddingRight: 15}}
-            label={showLabel ? I18n.t('email') : null}
-            containerStyle={{marginBottom: 0, paddingBottom: 0, height: 50}}
-            inputContainerStyle={[
-              widgetStyles.inputContainerStyle,
-              {
-                borderBottomWidth: 0,
-                borderRadius: 0,
-                borderTopRightRadius: 3,
-                borderTopLeftRadius: 3,
-              },
-            ]}
-            inputStyle={widgetStyles.inputStyle}
-            labelStyle={[
-              styles.titleLabelStyle,
-              {color: colors.main_theme_color, paddingBottom: 10},
-            ]}
-            shake={true}
-            keyboardType="email-address"
-            onChangeText={(email) => setEmail(email)}
-          />
-          <Input
-            editable={editMode}
-            value={mobile ? mobile : null}
-            textContentType="telephoneNumber"
-            leftIcon={() => <Text>+{country.calling_code}</Text>}
-            leftIconContainerStyle={{paddingRight: 15, paddingBottom: 4}}
-            containerStyle={{marginBottom: 0, paddingBottom: 0, height: 50}}
-            placeholder={I18n.t('mobile') + '*'}
-            inputContainerStyle={[
-              widgetStyles.inputContainerStyle,
-              {
-                borderRadius: 0,
-              },
-            ]}
-            inputStyle={widgetStyles.inputStyle}
-            label={showLabel ? I18n.t('mobile') : null}
-            labelStyle={[
-              styles.titleLabelStyle,
-              {color: colors.main_theme_color, paddingBottom: 10},
-            ]}
-            shake={true}
-            keyboardType="number-pad"
-            onChangeText={(text) => setMobile(text)}
-          />
-          <TouchableOpacity
-            // onPress={() => {
-            //   editMode ? dispatch(showCountryModal()) : null;
-            // }}
-            style={{
-              borderWidth: 1,
-              borderTopWidth: 0,
+        style={[
+          widgetStyles.panelContent,
+          {
+            paddingBottom: 20,
+            paddingTop: 20,
+            marginTop: 0,
+          },
+        ]}>
+        <Input
+          editable={editMode}
+          placeholder={name ? name : I18n.t('name')}
+          value={name ? name : null}
+          leftIcon={() =>
+            name ? (
+              <Text style={widgetStyles.headerThree}>{I18n.t('name')}</Text>
+            ) : null
+          }
+          leftIconContainerStyle={{paddingRight: 15}}
+          containerStyle={{marginBottom: 0, paddingBottom: 0, height: 50}}
+          inputContainerStyle={[
+            widgetStyles.inputContainerStyle,
+            {
               borderBottomWidth: 0,
-              borderColor: 'lightgrey',
-              height: 50,
-              width: '94.5%',
-              alignSelf: 'center',
-              justifyContent: 'flex-start',
-              alignItems: 'center',
-              flexDirection: 'row',
-              paddingLeft: 15,
-            }}>
-            <Text style={[widgetStyles.headerThree, {paddingRight: 10}]}>
-              {I18n.t('country')}
-            </Text>
-            <Text style={widgetStyles.headerThree}>{shipmentCountry.slug}</Text>
-          </TouchableOpacity>
-          {!validate.isEmpty(address) && (
-            <>
-              <Input
-                editable={false}
-                placeholder={address.area ? address.area : I18n.t('area')}
-                value={address ? address.area : null}
-                leftIcon={() =>
-                  address.area ? (
-                    <Text style={widgetStyles.headerThree}>
-                      {I18n.t('area')}
-                    </Text>
-                  ) : null
-                }
-                leftIconContainerStyle={{paddingRight: 15}}
-                containerStyle={{marginBottom: 0, paddingBottom: 0, height: 50}}
-                inputContainerStyle={[
-                  widgetStyles.inputContainerStyle,
-                  {
-                    borderBottomWidth: 0,
-                    borderRadius: 0,
-                  },
-                ]}
-                inputStyle={widgetStyles.inputStyle}
-                label={showLabel ? I18n.t('area') : null}
-                labelStyle={[
-                  styles.titleLabelStyle,
-                  {color: colors.main_theme_color, paddingBottom: 10},
-                ]}
-                shake={true}
-                keyboardType="default"
-              />
-              <Input
-                editable={false}
-                placeholder={address.block ? address.block : I18n.t('block')}
-                value={address ? address.block : null}
-                leftIcon={() =>
-                  address.block ? (
-                    <Text style={widgetStyles.headerThree}>
-                      {I18n.t('block')}
-                    </Text>
-                  ) : null
-                }
-                leftIconContainerStyle={{paddingRight: 15}}
-                containerStyle={{marginBottom: 0, paddingBottom: 0, height: 50}}
-                inputContainerStyle={[
-                  widgetStyles.inputContainerStyle,
-                  {
-                    borderBottomWidth: 0,
-                    borderRadius: 0,
-                  },
-                ]}
-                inputStyle={widgetStyles.inputStyle}
-                label={showLabel ? I18n.t('block') : null}
-                labelStyle={[
-                  styles.titleLabelStyle,
-                  {color: colors.main_theme_color, paddingBottom: 10},
-                ]}
-                shake={true}
-                keyboardType="default"
-              />
-              <Input
-                editable={false}
-                placeholder={address.street ? address.street : I18n.t('street')}
-                value={address ? address.street : null}
-                leftIcon={() =>
-                  address.street ? (
-                    <Text style={widgetStyles.headerThree}>
-                      {I18n.t('street')}
-                    </Text>
-                  ) : null
-                }
-                leftIconContainerStyle={{paddingRight: 15}}
-                containerStyle={{marginBottom: 0, paddingBottom: 0, height: 50}}
-                inputContainerStyle={[
-                  widgetStyles.inputContainerStyle,
-                  {
-                    borderBottomWidth: 0,
-                    borderRadius: 0,
-                  },
-                ]}
-                inputStyle={widgetStyles.inputStyle}
-                label={showLabel ? I18n.t('street') : null}
-                labelStyle={[
-                  styles.titleLabelStyle,
-                  {color: colors.main_theme_color, paddingBottom: 10},
-                ]}
-                shake={true}
-                keyboardType="default"
-              />
-              <Input
-                editable={false}
-                placeholder={
-                  address.building ? address.building : I18n.t('building_no')
-                }
-                value={address ? address.building : null}
-                leftIcon={() =>
-                  address.building ? (
-                    <Text style={widgetStyles.headerThree}>
-                      {I18n.t('building_no')}
-                    </Text>
-                  ) : null
-                }
-                leftIconContainerStyle={{paddingRight: 15}}
-                containerStyle={{marginBottom: 0, paddingBottom: 0, height: 50}}
-                inputContainerStyle={[
-                  widgetStyles.inputContainerStyle,
-                  {
-                    borderBottomWidth: 0,
-                    borderRadius: 0,
-                  },
-                ]}
-                inputStyle={widgetStyles.inputStyle}
-                label={showLabel ? I18n.t('building') : null}
-                labelStyle={[
-                  styles.titleLabelStyle,
-                  {color: colors.main_theme_color, paddingBottom: 10},
-                ]}
-                shake={true}
-                keyboardType="default"
-              />
-            </>
-          )}
-          <Input
-            spellCheck={true}
-            editable={editMode}
-            placeholder={notes ? notes : I18n.t('additional_information')}
-            value={notes ? notes : null}
-            containerStyle={{
-              marginBottom: 0,
-              paddingBottom: 0,
+              borderRadius: 0,
+              borderTopRightRadius: 3,
+              borderTopLeftRadius: 3,
+            },
+          ]}
+          inputStyle={widgetStyles.inputStyle}
+          label={showLabel ? I18n.t('email') : null}
+          labelStyle={[
+            styles.titleLabelStyle,
+            {color: colors.main_theme_color, paddingBottom: 10},
+          ]}
+          shake={true}
+          keyboardType="default"
+          onChangeText={(name) => setName(name)}
+        />
+        <Input
+          editable={editMode}
+          placeholder={email ? email : I18n.t('email')}
+          value={email ? email : null}
+          leftIcon={() =>
+            email ? (
+              <Text style={widgetStyles.headerThree}>{I18n.t('email')}</Text>
+            ) : null
+          }
+          leftIconContainerStyle={{paddingRight: 15}}
+          label={showLabel ? I18n.t('email') : null}
+          containerStyle={{marginBottom: 0, paddingBottom: 0, height: 50}}
+          inputContainerStyle={[
+            widgetStyles.inputContainerStyle,
+            {
+              borderBottomWidth: 0,
+              borderRadius: 0,
+              borderTopRightRadius: 3,
+              borderTopLeftRadius: 3,
+            },
+          ]}
+          inputStyle={widgetStyles.inputStyle}
+          labelStyle={[
+            styles.titleLabelStyle,
+            {color: colors.main_theme_color, paddingBottom: 10},
+          ]}
+          shake={true}
+          keyboardType="email-address"
+          onChangeText={(email) => setEmail(email)}
+        />
+        <Input
+          editable={editMode}
+          value={mobile ? mobile : null}
+          textContentType="telephoneNumber"
+          leftIcon={() => <Text>+{country.calling_code}</Text>}
+          leftIconContainerStyle={{paddingRight: 15, paddingBottom: 4}}
+          containerStyle={{marginBottom: 0, paddingBottom: 0, height: 50}}
+          placeholder={I18n.t('mobile') + '*'}
+          inputContainerStyle={[
+            widgetStyles.inputContainerStyle,
+            {
+              borderRadius: 0,
+            },
+          ]}
+          inputStyle={widgetStyles.inputStyle}
+          label={showLabel ? I18n.t('mobile') : null}
+          labelStyle={[
+            styles.titleLabelStyle,
+            {color: colors.main_theme_color, paddingBottom: 10},
+          ]}
+          shake={true}
+          keyboardType="number-pad"
+          onChangeText={(text) => setMobile(text)}
+        />
+        <TouchableOpacity
+          // onPress={() => {
+          //   editMode ? dispatch(showCountryModal()) : null;
+          // }}
+          style={{
+            borderWidth: 1,
+            borderTopWidth: 0,
+            borderBottomWidth: 0,
+            borderColor: 'lightgrey',
+            height: 50,
+            width: '94.5%',
+            alignSelf: 'center',
+            justifyContent: 'flex-start',
+            alignItems: 'center',
+            flexDirection: 'row',
+            paddingLeft: 15,
+          }}>
+          <Text style={[widgetStyles.headerThree, {paddingRight: 10}]}>
+            {I18n.t('country')}
+          </Text>
+          <Text style={widgetStyles.headerThree}>{shipmentCountry.slug}</Text>
+        </TouchableOpacity>
+        {!validate.isEmpty(address) && (
+          <>
+            <Input
+              editable={false}
+              placeholder={address.area ? address.area : I18n.t('area')}
+              value={address ? address.area : null}
+              leftIcon={() =>
+                address.area ? (
+                  <Text style={widgetStyles.headerThree}>{I18n.t('area')}</Text>
+                ) : null
+              }
+              leftIconContainerStyle={{paddingRight: 15}}
+              containerStyle={{marginBottom: 0, paddingBottom: 0, height: 50}}
+              inputContainerStyle={[
+                widgetStyles.inputContainerStyle,
+                {
+                  borderBottomWidth: 0,
+                  borderRadius: 0,
+                },
+              ]}
+              inputStyle={widgetStyles.inputStyle}
+              label={showLabel ? I18n.t('area') : null}
+              labelStyle={[
+                styles.titleLabelStyle,
+                {color: colors.main_theme_color, paddingBottom: 10},
+              ]}
+              shake={true}
+              keyboardType="default"
+            />
+            <Input
+              editable={false}
+              placeholder={address.block ? address.block : I18n.t('block')}
+              value={address ? address.block : null}
+              leftIcon={() =>
+                address.block ? (
+                  <Text style={widgetStyles.headerThree}>
+                    {I18n.t('block')}
+                  </Text>
+                ) : null
+              }
+              leftIconContainerStyle={{paddingRight: 15}}
+              containerStyle={{marginBottom: 0, paddingBottom: 0, height: 50}}
+              inputContainerStyle={[
+                widgetStyles.inputContainerStyle,
+                {
+                  borderBottomWidth: 0,
+                  borderRadius: 0,
+                },
+              ]}
+              inputStyle={widgetStyles.inputStyle}
+              label={showLabel ? I18n.t('block') : null}
+              labelStyle={[
+                styles.titleLabelStyle,
+                {color: colors.main_theme_color, paddingBottom: 10},
+              ]}
+              shake={true}
+              keyboardType="default"
+            />
+            <Input
+              editable={false}
+              placeholder={address.street ? address.street : I18n.t('street')}
+              value={address ? address.street : null}
+              leftIcon={() =>
+                address.street ? (
+                  <Text style={widgetStyles.headerThree}>
+                    {I18n.t('street')}
+                  </Text>
+                ) : null
+              }
+              leftIconContainerStyle={{paddingRight: 15}}
+              containerStyle={{marginBottom: 0, paddingBottom: 0, height: 50}}
+              inputContainerStyle={[
+                widgetStyles.inputContainerStyle,
+                {
+                  borderBottomWidth: 0,
+                  borderRadius: 0,
+                },
+              ]}
+              inputStyle={widgetStyles.inputStyle}
+              label={showLabel ? I18n.t('street') : null}
+              labelStyle={[
+                styles.titleLabelStyle,
+                {color: colors.main_theme_color, paddingBottom: 10},
+              ]}
+              shake={true}
+              keyboardType="default"
+            />
+            <Input
+              editable={false}
+              placeholder={
+                address.building ? address.building : I18n.t('building_no')
+              }
+              value={address ? address.building : null}
+              leftIcon={() =>
+                address.building ? (
+                  <Text style={widgetStyles.headerThree}>
+                    {I18n.t('building_no')}
+                  </Text>
+                ) : null
+              }
+              leftIconContainerStyle={{paddingRight: 15}}
+              containerStyle={{marginBottom: 0, paddingBottom: 0, height: 50}}
+              inputContainerStyle={[
+                widgetStyles.inputContainerStyle,
+                {
+                  borderBottomWidth: 0,
+                  borderRadius: 0,
+                },
+              ]}
+              inputStyle={widgetStyles.inputStyle}
+              label={showLabel ? I18n.t('building') : null}
+              labelStyle={[
+                styles.titleLabelStyle,
+                {color: colors.main_theme_color, paddingBottom: 10},
+              ]}
+              shake={true}
+              keyboardType="default"
+            />
+          </>
+        )}
+        <Input
+          spellCheck={true}
+          editable={editMode}
+          placeholder={notes ? notes : I18n.t('additional_information')}
+          value={notes ? notes : null}
+          containerStyle={{
+            marginBottom: 0,
+            paddingBottom: 0,
+            height: 80,
+          }}
+          inputContainerStyle={[
+            widgetStyles.inputContainerStyle,
+            {
+              borderBottomWidth: 1,
+              borderRadius: 0,
+              borderTopRightRadius: 0,
+              borderTopLeftRadius: 0,
+              borderBottomRightRadius: 3,
+              borderBottomLeftRadius: 3,
               height: 80,
-            }}
-            inputContainerStyle={[
-              widgetStyles.inputContainerStyle,
-              {
-                borderBottomWidth: 1,
-                borderRadius: 0,
-                borderTopRightRadius: 0,
-                borderTopLeftRadius: 0,
-                borderBottomRightRadius: 3,
-                borderBottomLeftRadius: 3,
-                height: 80,
-              },
-            ]}
-            inputStyle={[widgetStyles.inputStyle, {alignItems: 'center'}]}
-            label={showLabel ? I18n.t('additional_information') : null}
-            labelStyle={[
-              styles.titleLabelStyle,
-              {color: colors.main_theme_color, paddingBottom: 10},
-            ]}
-            shake={true}
-            keyboardType="default"
-            // multiline={true}
-            numberOfLines={3}
-            onChangeText={(notes) => setNotes(notes)}
-          />
-        </View>
+            },
+          ]}
+          inputStyle={[widgetStyles.inputStyle, {alignItems: 'center'}]}
+          label={showLabel ? I18n.t('additional_information') : null}
+          labelStyle={[
+            styles.titleLabelStyle,
+            {color: colors.main_theme_color, paddingBottom: 10},
+          ]}
+          shake={true}
+          keyboardType="default"
+          // multiline={true}
+          numberOfLines={3}
+          onChangeText={(notes) => setNotes(notes)}
+        />
+      </View>
+
+      <View style={[widgetStyles.panelContent, {marginTop: 0}]}>
         <TouchableOpacity
           onPress={() => navigate('UserAddressIndex')}
           style={{
@@ -411,7 +411,9 @@ const DesigneratCartForm = ({
             justifyContent: 'space-between',
             backgroundColor: 'white',
             borderTopWidth: 1,
+            borderBottomWidth: 1,
             borderTopColor: colors.btn_bg_theme_color,
+            borderBottomColor: colors.btn_bg_theme_color,
             borderBottomRightRadius: 5,
             borderBottomLeftRadius: 5,
             height: 50,

@@ -683,7 +683,10 @@
   "street" : "Street",
   "change_modify_address" : "Change / Modify Address",
   "add_new_address" : "Add new address",
-  "go_to_payment_page" : "Go to payment page"
+  "go_to_payment_page" : "Go to payment page",
+  "order_summary" : "Order Summary",
+  "deliver_to" : "Deliver To",
+  "designerat" : "DESIGNERAT"
 
 }
 

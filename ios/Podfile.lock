@@ -319,7 +319,7 @@ PODS:
   - react-native-onesignal (4.0.4):
     - OneSignal (= 3.2.1)
     - React (< 1.0.0, >= 0.13.0)
-  - react-native-pdf (6.2.2):
+  - react-native-pdf (6.3.0):
     - React-Core
   - react-native-restart (0.0.20):
     - React-Core
@@ -332,7 +332,7 @@ PODS:
     - react-native-video/Video (= 5.1.1)
   - react-native-video/Video (5.1.1):
     - React-Core
-  - react-native-viewpager (4.2.3):
+  - react-native-viewpager (4.2.4):
     - React-Core
   - react-native-webview (11.2.3):
     - React-Core
@@ -402,13 +402,13 @@ PODS:
     - React-Core
   - RNCMaskedView (0.1.10):
     - React
-  - RNDeviceInfo (8.0.1):
+  - RNDeviceInfo (8.0.2):
     - React-Core
   - RNFastImage (8.3.4):
     - React-Core
     - SDWebImage (~> 5.8)
     - SDWebImageWebPCoder (~> 0.6.1)
-  - RNGestureHandler (1.10.1):
+  - RNGestureHandler (1.10.3):
     - React-Core
   - RNGoogleSignin (5.0.0):
     - GoogleSignIn (~> 5.0.0)
@@ -426,18 +426,18 @@ PODS:
     - TOCropViewController
   - RNReanimated (1.13.2):
     - React-Core
-  - RNScreens (2.17.1):
+  - RNScreens (2.18.1):
     - React-Core
-  - RNSentry (2.2.1):
+  - RNSentry (2.2.2):
     - React-Core
     - Sentry (= 6.1.4)
-  - RNShare (5.1.1):
+  - RNShare (5.1.4):
     - React-Core
   - RNSnackbar (2.3.2):
     - React-Core
   - RNSVG (12.1.0):
     - React
-  - RNVectorIcons (8.0.0):
+  - RNVectorIcons (8.1.0):
     - React-Core
   - SDWebImage (5.10.4):
     - SDWebImage/Core (= 5.10.4)
@@ -742,12 +742,12 @@ SPEC CHECKSUMS:
   react-native-mixpanel: 5d0bcea791fd938c35138be2d00e50e19b9de601
   react-native-netinfo: e849fc21ca2f4128a5726c801a82fc6f4a6db50d
   react-native-onesignal: 1de5a24906823ec20fb2a6576c7a4e2df869bfc3
-  react-native-pdf: 4b5a9e4465a6a3b399e91dc4838eb44ddf716d1f
+  react-native-pdf: ef641e79a6d550cfabe5d7ec1916799726514c43
   react-native-restart: a01029aadfe8e71f9e8205fdb17da2f0a4472d50
   react-native-safe-area-context: b6e0e284002381d2ff29fa4fff42b4d8282e3c94
   react-native-spinkit: da294fd828216ad211fe36a5c14c1e09f09e62db
   react-native-video: 0bb76b6d6b77da3009611586c7dbf817b947f30e
-  react-native-viewpager: 936c67cba6e9ca19793d04321427a44cb8e43395
+  react-native-viewpager: 32259f9d01874abdf42b25cf81a1d78d1aa55582
   react-native-webview: 6520e3e7b4933de76b95ef542c8d7115cf45b68e
   React-RCTActionSheet: 89a0ca9f4a06c1f93c26067af074ccdce0f40336
   React-RCTAnimation: 1bde3ecc0c104c55df246eda516e0deb03c4e49b
@@ -762,19 +762,19 @@ SPEC CHECKSUMS:
   rn-fetch-blob: f065bb7ab7fb48dd002629f8bdcb0336602d3cba
   RNCAsyncStorage: b03032fdbdb725bea0bd9e5ec5a7272865ae7398
   RNCMaskedView: 5a8ec07677aa885546a0d98da336457e2bea557f
-  RNDeviceInfo: 921a809eaf9de79645a24de1c6ca90db6cb91786
+  RNDeviceInfo: a9601119924a67d2479d3facf04cec7b658f44ed
   RNFastImage: d4870d58f5936111c56218dbd7fcfc18e65b58ff
-  RNGestureHandler: 5e58135436aacc1c5d29b75547d3d2b9430d052c
+  RNGestureHandler: a479ebd5ed4221a810967000735517df0d2db211
   RNGoogleSignin: ad866d4c4af2651e36801dd3b7771d7715353499
   RNI18n: e2f7e76389fcc6e84f2c8733ea89b92502351fd8
   RNImageCropPicker: e641bf83ac47324994cac139bde74635ec52c17c
   RNReanimated: e03f7425cb7a38dcf1b644d680d1bfc91c3337ad
-  RNScreens: b6c9607e6fe47c1b6e2f1910d2acd46dd7ecea3a
-  RNSentry: 7104cdfc1072ccb86015d9c8f210d81ae76806c1
-  RNShare: 6779fdd48e6246a8c79276a5b5e74a0f0d61a1ec
+  RNScreens: f7ad633b2e0190b77b6a7aab7f914fad6f198d8d
+  RNSentry: 490708be01d0871588b33435d144369551ab038d
+  RNShare: 8af5349f05fc042d230674dd650d19789187ff9c
   RNSnackbar: 2f790a7b5b685e9d3525968990ba3f82354b064c
   RNSVG: ce9d996113475209013317e48b05c21ee988d42e
-  RNVectorIcons: f67a1abce2ec73e62fe4606e8110e95a832bc859
+  RNVectorIcons: 31cebfcf94e8cf8686eb5303ae0357da64d7a5a4
   SDWebImage: c666b97e1fa9c64b4909816a903322018f0a9c84
   SDWebImageWebPCoder: d0dac55073088d24b2ac1b191a71a8f8d0adac21
   Sentry: 9d055e2de30a77685e86b219acf02e59b82091fc
@@ -785,6 +785,6 @@ SPEC CHECKSUMS:
   YogaKit: f782866e155069a2cca2517aafea43200b01fd5a
   YoutubePlayer-in-WKWebView: cfbf46da51d7370662a695a8f351e5fa1d3e1008
 
-PODFILE CHECKSUM: 98462533b6b4df9446319fa45051814bf7c5d4ee
+PODFILE CHECKSUM: 9c96ea0c9bd83783958e28b752be8ff112e5f793
 
 COCOAPODS: 1.10.1

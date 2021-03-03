@@ -1,7 +1,7 @@
 /**
  * Created by usamaahmed on 9/28/17.
  */
-import React from 'react';
+import React, {useContext} from 'react';
 import {StyleSheet} from 'react-native';
 import {Icon} from 'react-native-elements';
 import {
@@ -11,12 +11,13 @@ import {
 } from '@react-navigation/native';
 import {clearCart} from '../redux/actions/cart';
 import {useDispatch} from 'react-redux';
+import {GlobalValuesContext} from '../redux/GlobalValuesContext';
+import {iconSizes} from '../constants/sizes';
 
 export const HeaderBack = ({removeCart = false}) => {
   const navigation = useNavigation();
   const dispatch = useDispatch();
-
-  console.log(navigation);
+  const {colors} = useContext(GlobalValuesContext);
 
   const handleBack = () => {
     if (removeCart) {
@@ -31,12 +32,17 @@ export const HeaderBack = ({removeCart = false}) => {
     <Icon
       type="fontawesome"
       name="chevron-right"
-      size={32}
+      size={iconSizes.smaller}
       // onPress={() => handleBack()}
       onPress={() => handleBack()}
       underlayColor="transparent"
-      hitSlop={{top: 30, bottom: 30, left: 30, right: 30}}
-      color="black"
+      hitSlop={{
+        top: iconSizes.medium,
+        bottom: iconSizes.medium,
+        left: iconSizes.medium,
+        right: iconSizes.medium,
+      }}
+      color={colors.footer_theme_color}
     />
   );
 };

@@ -34,12 +34,6 @@ const DesineratNormalProductShowScreen = () => {
   const [addToCartStatus, setAddToCartStatus] = useState(false);
   const [cartItem, setCartItem] = useState({});
 
-  useEffect(() => {
-    headerBg || headerBgColor
-      ? navigation.setParams({headerBg, headerBgColor})
-      : null;
-  }, [headerBg, headerBgColor]);
-
   const handleRefresh = () => {
     setRefresh(false);
     dispatch(
@@ -64,6 +58,8 @@ const DesineratNormalProductShowScreen = () => {
       return dispatch(addToCart(cartItem));
     }
   };
+
+  console.log('cartItem', cartItem);
 
   return (
     <BgContainer showImage={false} white={true}>

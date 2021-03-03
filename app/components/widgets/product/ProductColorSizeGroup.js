@@ -1,4 +1,4 @@
-import React, {useEffect, useState} from 'react';
+import React, {useEffect, useMemo, useState} from 'react';
 import {StyleSheet, View} from 'react-native';
 import {Button, Icon, Input} from 'react-native-elements';
 import I18n, {isRTL} from '../../../I18n';
@@ -28,9 +28,10 @@ const ProductColorSizeGroup = ({
 
   useEffect(() => {
     setAddToCartStatus(!qty || requestQty <= 0);
-    if (requestQty <= 0) {
-      setCartItem({});
-    } else {
+  }, [requestQty]);
+
+  useMemo(() => {
+    if (!requestQty <= 0) {
       setCartItem({
         element,
         type: 'product',
@@ -49,7 +50,7 @@ const ProductColorSizeGroup = ({
           : notes,
       });
     }
-  }, [requestQty]);
+  }, [requestQty, notes, giftMessage]);
 
   return (
     <View

@@ -15,13 +15,13 @@ const CopyRightInfo = ({version}) => {
     <Fragment>
       <View
         style={{
+          width: '100%',
           backgroundColor: 'whitesmoke',
           padding: 5,
           paddingTop: 15,
           position: 'relative',
           left: 0,
           bottom: 0,
-          width,
           justifyContent: 'center',
           alignItems: 'center',
           flexDirection: 'row',
@@ -104,12 +104,12 @@ CopyRightInfo.propTypes = {
 const styles = StyleSheet.create({
   btnTitle: {
     fontFamily: text.font,
-    fontSize: text.medium,
+    fontSize: text.smaller,
     textAlign: 'center',
   },
   title: {
     fontFamily: text.font,
-    fontSize: text.medium,
+    fontSize: text.smaller,
     paddingLeft: 20,
     paddingRight: 20,
   },

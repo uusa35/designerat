@@ -15,7 +15,7 @@ import {
 } from '../../../redux/actions/cart';
 import {Button, CheckBox, Icon, Input} from 'react-native-elements';
 import PropTypes from 'prop-types';
-import {map, round, isNull} from 'lodash';
+import {map, round, isEmpty} from 'lodash';
 import ProductItem from '../product/ProductItem';
 import {GlobalValuesContext} from '../../../redux/GlobalValuesContext';
 import {MALLR, ABATI, HOMEKEY, PAYMENT} from './../../../../app';
@@ -30,11 +30,17 @@ import {
 } from '../../../redux/actions/types';
 import DesigneratBtn from '../Button/DesigneratBtn';
 import DesingeratBtn from '../Button/DesigneratBtn';
+import DesigneratCartPriceSummary from './DesigneratCartPriceSummary';
 
-const DesigneratCartListConfirmationScreen = ({shipment_notes, COD}) => {
+const DesigneratCartListConfirmationScreen = ({
+  showLabel = false,
+  editMode = false,
+}) => {
   const dispatch = useDispatch();
-  const {colors, total, grossTotal, discount} = useContext(GlobalValuesContext);
-  const {coupon, shipmentFees, cart, settings} = useSelector((state) => state);
+  const {colors, total, grossTotal} = useContext(GlobalValuesContext);
+  const {coupon, shipmentFees, cart, settings, shipmentCountry} = useSelector(
+    (state) => state,
+  );
   const navigation = useNavigation();
   const route = useRoute();
   const {
@@ -48,11 +54,10 @@ const DesigneratCartListConfirmationScreen = ({shipment_notes, COD}) => {
     cStreet,
     cBuilding,
     cAreaId,
-    cCountryId,
+    country_id,
+    area_id,
   } = route.params;
   const [checked, setChecked] = useState(false);
-
-  console.log('route params', route.params);
 
   const handleCashOnDelivery = () => {
     return Alert.alert(
@@ -78,14 +83,14 @@ const DesigneratCartListConfirmationScreen = ({shipment_notes, COD}) => {
                 street: cStreet,
                 area: cArea,
                 area_id: cAreaId,
-                country_id: cCountryId,
+                country_id,
                 cart,
                 price: total,
                 net_price: grossTotal,
                 shipment_fees: shipmentFees,
                 cash_on_delivery: settings.cash_on_delivery,
-                coupon_id: !isNull(coupon) ? coupon.id : null,
-                discount: !isNull(coupon) ? coupon.value : 0,
+                coupon_id: !isEmpty(coupon) ? coupon.id : null,
+                discount: !isEmpty(coupon) ? coupon.value : 0,
                 notes: cNotes,
                 payment_method: isIOS
                   ? 'Iphone - CASH ON DELIVERY'
@@ -113,7 +118,7 @@ const DesigneratCartListConfirmationScreen = ({shipment_notes, COD}) => {
         </Text>
         <Text style={widgetStyles.headerThree}>{I18n.t('step')} (3/3)</Text>
       </View>
-      {shipment_notes && (
+      {settings.shipment_notes && (
         <View
           style={{
             flex: 1,
@@ -124,9 +129,281 @@ const DesigneratCartListConfirmationScreen = ({shipment_notes, COD}) => {
             marginBottom: 10,
             backgroundColor: 'white',
           }}>
-          <Text style={widgetStyles.headerThree}>{shipment_notes}</Text>
+          <Text style={widgetStyles.headerThree}>
+            {settings.shipment_notes}
+          </Text>
         </View>
       )}
+
+      <DesigneratCartPriceSummary title={I18n.t('order_summary')} />
+      <Text
+        style={[widgetStyles.headerThree, {textAlign: 'left', padding: 20}]}>
+        {I18n.t('deliver_to')}
+      </Text>
+      <View
+        style={[
+          widgetStyles.panelContent,
+          {
+            paddingBottom: 20,
+            paddingTop: 20,
+            marginTop: 0,
+          },
+        ]}>
+        <Input
+          editable={editMode}
+          placeholder={cName ? cName : I18n.t('name')}
+          value={cName ? cName : null}
+          leftIcon={() =>
+            cName ? (
+              <Text style={widgetStyles.headerThree}>{I18n.t('name')}</Text>
+            ) : null
+          }
+          leftIconContainerStyle={{paddingRight: 15}}
+          containerStyle={{marginBottom: 0, paddingBottom: 0, height: 50}}
+          inputContainerStyle={[
+            widgetStyles.inputContainerStyle,
+            {
+              borderBottomWidth: 0,
+              borderRadius: 0,
+              borderTopRightRadius: 3,
+              borderTopLeftRadius: 3,
+            },
+          ]}
+          inputStyle={widgetStyles.inputStyle}
+          label={showLabel ? I18n.t('email') : null}
+          labelStyle={[
+            styles.titleLabelStyle,
+            {color: colors.main_theme_color, paddingBottom: 10},
+          ]}
+          shake={true}
+          keyboardType="default"
+        />
+        <Input
+          editable={editMode}
+          placeholder={cEmail ? cEmail : I18n.t('email')}
+          value={cEmail ? cEmail : null}
+          leftIcon={() =>
+            cEmail ? (
+              <Text style={widgetStyles.headerThree}>{I18n.t('email')}</Text>
+            ) : null
+          }
+          leftIconContainerStyle={{paddingRight: 15}}
+          label={showLabel ? I18n.t('email') : null}
+          containerStyle={{marginBottom: 0, paddingBottom: 0, height: 50}}
+          inputContainerStyle={[
+            widgetStyles.inputContainerStyle,
+            {
+              borderBottomWidth: 0,
+              borderRadius: 0,
+              borderTopRightRadius: 3,
+              borderTopLeftRadius: 3,
+            },
+          ]}
+          inputStyle={widgetStyles.inputStyle}
+          labelStyle={[
+            styles.titleLabelStyle,
+            {color: colors.main_theme_color, paddingBottom: 10},
+          ]}
+          shake={true}
+          keyboardType="email-address"
+        />
+        <Input
+          editable={editMode}
+          value={cMobile ? cMobile : null}
+          textContentType="telephoneNumber"
+          leftIcon={() => <Text>+{shipmentCountry.calling_code}</Text>}
+          leftIconContainerStyle={{paddingRight: 15, paddingBottom: 4}}
+          containerStyle={{marginBottom: 0, paddingBottom: 0, height: 50}}
+          placeholder={I18n.t('mobile') + '*'}
+          inputContainerStyle={[
+            widgetStyles.inputContainerStyle,
+            {
+              borderRadius: 0,
+            },
+          ]}
+          inputStyle={widgetStyles.inputStyle}
+          label={showLabel ? I18n.t('mobile') : null}
+          labelStyle={[
+            styles.titleLabelStyle,
+            {color: colors.main_theme_color, paddingBottom: 10},
+          ]}
+          shake={true}
+          keyboardType="number-pad"
+        />
+        <TouchableOpacity
+          // onPress={() => {
+          //   editMode ? dispatch(showCountryModal()) : null;
+          // }}
+          style={{
+            borderWidth: 1,
+            borderTopWidth: 0,
+            borderBottomWidth: 0,
+            borderColor: 'lightgrey',
+            height: 50,
+            width: '94.5%',
+            alignSelf: 'center',
+            justifyContent: 'flex-start',
+            alignItems: 'center',
+            flexDirection: 'row',
+            paddingLeft: 15,
+          }}>
+          <Text style={[widgetStyles.headerThree, {paddingRight: 10}]}>
+            {I18n.t('country')}
+          </Text>
+          <Text style={widgetStyles.headerThree}>{shipmentCountry.slug}</Text>
+        </TouchableOpacity>
+        {!validate.isEmpty(cAddress) && (
+          <>
+            <Input
+              editable={false}
+              placeholder={cArea ? cArea : I18n.t('area')}
+              value={cAddress ? cArea : null}
+              leftIcon={() =>
+                cArea ? (
+                  <Text style={widgetStyles.headerThree}>{I18n.t('area')}</Text>
+                ) : null
+              }
+              leftIconContainerStyle={{paddingRight: 15}}
+              containerStyle={{marginBottom: 0, paddingBottom: 0, height: 50}}
+              inputContainerStyle={[
+                widgetStyles.inputContainerStyle,
+                {
+                  borderBottomWidth: 0,
+                  borderRadius: 0,
+                },
+              ]}
+              inputStyle={widgetStyles.inputStyle}
+              label={showLabel ? I18n.t('area') : null}
+              labelStyle={[
+                styles.titleLabelStyle,
+                {color: colors.main_theme_color, paddingBottom: 10},
+              ]}
+              shake={true}
+              keyboardType="default"
+            />
+            <Input
+              editable={false}
+              placeholder={cBlock ? cBlock : I18n.t('block')}
+              value={cBlock ? cBlock : null}
+              leftIcon={() =>
+                cBlock ? (
+                  <Text style={widgetStyles.headerThree}>
+                    {I18n.t('block')}
+                  </Text>
+                ) : null
+              }
+              leftIconContainerStyle={{paddingRight: 15}}
+              containerStyle={{marginBottom: 0, paddingBottom: 0, height: 50}}
+              inputContainerStyle={[
+                widgetStyles.inputContainerStyle,
+                {
+                  borderBottomWidth: 0,
+                  borderRadius: 0,
+                },
+              ]}
+              inputStyle={widgetStyles.inputStyle}
+              label={showLabel ? I18n.t('block') : null}
+              labelStyle={[
+                styles.titleLabelStyle,
+                {color: colors.main_theme_color, paddingBottom: 10},
+              ]}
+              shake={true}
+              keyboardType="default"
+            />
+            <Input
+              editable={false}
+              placeholder={cStreet ? cStreet : I18n.t('street')}
+              value={cStreet ? cStreet : null}
+              leftIcon={() =>
+                cStreet ? (
+                  <Text style={widgetStyles.headerThree}>
+                    {I18n.t('street')}
+                  </Text>
+                ) : null
+              }
+              leftIconContainerStyle={{paddingRight: 15}}
+              containerStyle={{marginBottom: 0, paddingBottom: 0, height: 50}}
+              inputContainerStyle={[
+                widgetStyles.inputContainerStyle,
+                {
+                  borderBottomWidth: 0,
+                  borderRadius: 0,
+                },
+              ]}
+              inputStyle={widgetStyles.inputStyle}
+              label={showLabel ? I18n.t('street') : null}
+              labelStyle={[
+                styles.titleLabelStyle,
+                {color: colors.main_theme_color, paddingBottom: 10},
+              ]}
+              shake={true}
+              keyboardType="default"
+            />
+            <Input
+              editable={false}
+              placeholder={cBuilding ? cBuilding : I18n.t('building_no')}
+              value={cBuilding ? cBuilding : null}
+              leftIcon={() =>
+                cBuilding ? (
+                  <Text style={widgetStyles.headerThree}>
+                    {I18n.t('building_no')}
+                  </Text>
+                ) : null
+              }
+              leftIconContainerStyle={{paddingRight: 15}}
+              containerStyle={{marginBottom: 0, paddingBottom: 0, height: 50}}
+              inputContainerStyle={[
+                widgetStyles.inputContainerStyle,
+                {
+                  borderBottomWidth: 0,
+                  borderRadius: 0,
+                },
+              ]}
+              inputStyle={widgetStyles.inputStyle}
+              label={showLabel ? I18n.t('building') : null}
+              labelStyle={[
+                styles.titleLabelStyle,
+                {color: colors.main_theme_color, paddingBottom: 10},
+              ]}
+              shake={true}
+              keyboardType="default"
+            />
+          </>
+        )}
+        <Input
+          spellCheck={true}
+          editable={editMode}
+          placeholder={cNotes ? cNotes : I18n.t('additional_information')}
+          value={cNotes ? cNotes : null}
+          containerStyle={{
+            marginBottom: 0,
+            paddingBottom: 0,
+            height: 80,
+          }}
+          inputContainerStyle={[
+            widgetStyles.inputContainerStyle,
+            {
+              borderBottomWidth: 1,
+              borderRadius: 0,
+              borderTopRightRadius: 0,
+              borderTopLeftRadius: 0,
+              borderBottomRightRadius: 3,
+              borderBottomLeftRadius: 3,
+              height: 80,
+            },
+          ]}
+          inputStyle={[widgetStyles.inputStyle, {alignItems: 'center'}]}
+          label={showLabel ? I18n.t('additional_information') : null}
+          labelStyle={[
+            styles.titleLabelStyle,
+            {color: colors.main_theme_color, paddingBottom: 10},
+          ]}
+          shake={true}
+          keyboardType="default"
+          // multiline={true}
+          numberOfLines={3}
+        />
+      </View>
       <View style={{backgroundColor: 'white', margin: 15, padding: 15}}>
         <View
           style={{
@@ -178,15 +455,15 @@ const DesigneratCartListConfirmationScreen = ({shipment_notes, COD}) => {
                 building: cBuilding,
                 street: cStreet,
                 area: cArea,
-                area_id: cAreaId,
-                country_id: cCountryId,
+                area_id,
+                country_id,
                 cart,
                 price: total,
                 net_price: grossTotal,
                 shipment_fees: shipmentFees,
                 cash_on_delivery: settings.cash_on_delivery,
-                coupon_id: !isNull(coupon) ? coupon.id : null,
-                discount: !isNull(coupon) ? coupon.value : 0,
+                coupon_id: !isEmpty(coupon) ? coupon.id : null,
+                discount: !isEmpty(coupon) ? coupon.value : 0,
                 notes: cNotes,
                 payment_method: isIOS
                   ? 'IOS - My Fatoorah'
@@ -210,15 +487,15 @@ const DesigneratCartListConfirmationScreen = ({shipment_notes, COD}) => {
                 building: cBuilding,
                 street: cStreet,
                 area: cArea,
-                area_id: cAreaId,
-                country_id: cCountryId,
+                area_id,
+                country_id,
                 cart,
                 price: total,
                 net_price: grossTotal,
                 shipment_fees: shipmentFees,
                 cash_on_delivery: settings.cash_on_delivery,
-                coupon_id: !isNull(coupon) ? coupon.id : null,
-                discount: !isNull(coupon) ? coupon.value : 0,
+                coupon_id: !isEmpty(coupon) ? coupon.id : null,
+                discount: !isEmpty(coupon) ? coupon.value : 0,
                 notes: cNotes,
                 payment_method: isIOS
                   ? 'IOS - My Fatoorah'

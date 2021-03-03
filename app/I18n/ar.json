@@ -717,5 +717,8 @@
   "street" : "شارع",
   "change_modify_address" : "تعديل / تغيير العنوان",
   "add_new_address" : "اضف عنوان جديد",
-  "go_to_payment_page" : "الذهاب إلى صفحة الدفع"
+  "go_to_payment_page" : "الذهاب إلى صفحة الدفع",
+  "order_summary" : "ملخص الطلب",
+  "deliver_to" : "التوصيل إلى",
+  "designerat" : "ديزينرات"
 }

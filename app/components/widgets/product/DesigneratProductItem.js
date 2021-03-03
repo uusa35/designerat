@@ -155,7 +155,7 @@ const DesigneratProductItem = ({
             </View>
           ) : null}
           {!validate.isEmpty(notes) ? (
-            <View style={{flexDirection: 'row', paddingTop: 3, maxWidth: 140}}>
+            <View style={{flexDirection: 'row', paddingTop: 8, maxWidth: 150}}>
               <Text style={[widgetStyles.headerFour, {width: 100}]}>
                 {I18n.t('notes')}
                 <Text>:</Text>

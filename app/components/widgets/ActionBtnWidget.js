@@ -16,13 +16,13 @@ const ActionBtnWidget = ({visible = false}) => {
       style={{
         position: 'absolute',
         left: '1%',
-        bottom: '1%',
+        bottom: '15%',
         backgroundColor: 'transparent',
         height: 100,
         zIndex: 99,
       }}>
       <ActionButton
-        style={{opacity: 0.6}}
+        style={{opacity: 0.4}}
         renderIcon={() => (
           <Icon
             name="menu"

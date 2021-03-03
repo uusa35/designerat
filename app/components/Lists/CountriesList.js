@@ -16,10 +16,9 @@ import {View as Animated} from 'react-native-animatable';
 import {shuffle, first} from 'lodash';
 import {themeColors} from '../../constants/colors';
 
-const CountriesList = ({country, countries}) => {
-  const {countryModal} = useSelector((state) => state);
+const CountriesList = () => {
+  const {countryModal, country, countries} = useSelector((state) => state);
   const dispatch = useDispatch();
-  const {colors} = useContext(GlobalValuesContext);
 
   const handleClick = (c) => {
     // if (c.id !== country.id) {
@@ -123,11 +122,7 @@ const CountriesList = ({country, countries}) => {
 
 export default CountriesList;
 
-CountriesList.propTypes = {
-  country: PropTypes.object.isRequired,
-  countries: PropTypes.array.isRequired,
-  countryModal: PropTypes.bool.isRequired,
-};
+CountriesList.propTypes = {};
 const styles = StyleSheet.create({
   container: {
     position: 'absolute',

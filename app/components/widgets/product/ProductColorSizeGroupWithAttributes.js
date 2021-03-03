@@ -22,6 +22,7 @@ import ImageLoaderContainer from '../ImageLoaderContainer';
 import {useDispatch, useSelector} from 'react-redux';
 import WrapAsGiftWidget from './WrapAsGiftWidget';
 import {EXPO} from './../../../../app';
+import * as validate from 'validate.js';
 
 const ProductColorSizeGroupWithAttributes = ({
   element,
@@ -47,9 +48,10 @@ const ProductColorSizeGroupWithAttributes = ({
 
   useEffect(() => {
     setAddToCartStatus(!productAttribute || requestQty <= 0);
-    if (requestQty <= 0) {
-      setCartItem({});
-    } else {
+  }, [requestQty]);
+
+  useMemo(() => {
+    if (!validate.isEmpty(productAttribute) && !requestQty <= 0) {
       setCartItem({
         element,
         type: 'product',
@@ -70,7 +72,7 @@ const ProductColorSizeGroupWithAttributes = ({
           : notes,
       });
     }
-  }, [requestQty]);
+  }, [requestQty, notes, giftMessage, productAttribute]);
 
   useMemo(() => {
     if (sizeVisible) {
@@ -252,11 +254,7 @@ const ProductColorSizeGroupWithAttributes = ({
           placeholder={
             element.notes
               ? element.notes
-              : I18n.t(
-                  EXPO
-                    ? 'add_notes_shoulders_height_and_other_notes_expo'
-                    : 'add_notes_shoulders_height_and_other_notes',
-                )
+              : I18n.t('add_notes_shoulders_height_and_other_notes')
           }
           defaultValue={notes ? notes : null}
           inputContainerStyle={{
@@ -277,7 +275,7 @@ const ProductColorSizeGroupWithAttributes = ({
           keyboardType="default"
           multiline={true}
           numberOfLines={3}
-          onChangeText={(notes) => setNotes(notes)}
+          onChangeText={(c) => setNotes(c)}
         />
       </View>
     </View>

@@ -222,7 +222,11 @@ export function* startChooseCountryScenario(action) {
             type: actions.SET_SHIPMENT_FEES,
             payload: country.fixed_shipment_charge,
           }),
-          call(setGrossTotalCartValue, {total, coupon, country, cart}),
+          call(setGrossTotalCartValue, {
+            total,
+            coupon,
+            cart,
+          }),
         ]);
         yield call(startClearCartScenario);
         yield call(startResetStoreScenario);
@@ -318,8 +322,8 @@ export function* setHomeSplashes() {
 export function* startAddToCartScenario(action) {
   try {
     console.log('action payload', action.payload);
-    const {cart, country, product, settings} = yield select();
-    if (!country.is_local && action.payload.type === 'service') {
+    const {cart, shipmentCountry, settings} = yield select();
+    if (!shipmentCountry.is_local && action.payload.type === 'service') {
       throw I18n.t(
         'orders_that_include_services_are_not_accepted_out_side_kuwait',
       );
@@ -337,11 +341,12 @@ export function* startAddToCartScenario(action) {
           throw I18n.t('you_can_only_add_to_cart_from_only_single_merchant');
         }
       }
+      console.log('filtered', filteredCart);
       if (!validate.isEmpty(filteredCart)) {
         yield all([
-          call(startGoogleAnalyticsScenario, {
-            payload: {type: 'AddToCart', element: product},
-          }),
+          // call(startGoogleAnalyticsScenario, {
+          //   payload: {type: 'AddToCart', element: product},
+          // }),
           call(
             enableSuccessMessage,
             !action.payload.directPurchase
@@ -373,10 +378,10 @@ export function* setTotalCartValue(cart) {
         (i) =>
           (i.element.finalPrice + (i.wrapGift ? settings.gift_fee : 0)) * i.qty,
       );
-      const {coupon, country} = yield select();
+      const {coupon} = yield select();
       yield all([
         put({type: actions.SET_TOTAL_CART, payload: total}),
-        call(setGrossTotalCartValue, {total, coupon, country, cart}),
+        call(setGrossTotalCartValue, {total, coupon, cart}),
       ]);
     }
   } catch (e) {
@@ -391,8 +396,8 @@ export function* setTotalCartValue(cart) {
 
 export function* setGrossTotalCartValue(values) {
   try {
-    const {total, coupon, country} = values;
-    const {cart} = yield select();
+    const {total, coupon} = values;
+    const {cart, shipmentCountry} = yield select();
     const countPieces = sumBy(cart, (i) => i.qty);
     if (__DEV__) {
       // console.log('the total', total);
@@ -403,9 +408,9 @@ export function* setGrossTotalCartValue(values) {
     const finalShipment = parseFloat(
       cart.length === 1 && first(cart).type === 'service'
         ? 0
-        : country.is_local
-        ? country.fixed_shipment_charge
-        : country.fixed_shipment_charge * countPieces,
+        : shipmentCountry.is_local
+        ? shipmentCountry.fixed_shipment_charge
+        : shipmentCountry.fixed_shipment_charge * countPieces,
     );
     const couponValue = parseFloat(
       !validate.isEmpty(coupon) ? coupon.value : 0,
@@ -571,7 +576,7 @@ export function* startSubmitCartScenario(action) {
 
 export function* startGetCouponScenario(action) {
   try {
-    const {total, country} = yield select();
+    const {total} = yield select();
     if (validate.isEmpty(action.payload)) {
       throw I18n.t('coupon_is_empty');
     }
@@ -579,7 +584,7 @@ export function* startGetCouponScenario(action) {
     if (!validate.isEmpty(coupon) && validate.isObject(coupon)) {
       yield all([
         put({type: actions.SET_COUPON, payload: coupon}),
-        call(setGrossTotalCartValue, {total, coupon, country}),
+        call(setGrossTotalCartValue, {total, coupon}),
         call(enableSuccessMessage, I18n.t('coupon_is_added_and_applied')),
       ]);
     } else {
@@ -603,14 +608,9 @@ export function* startCreateMyFatorrahPaymentUrlScenario(action) {
     yield call(enableLoading, I18n.t('create_payment_url'));
     const url = yield call(api.makeMyFatoorahPayment, action.payload);
     if (validate.isObject(url) && url.paymentUrl.includes('https')) {
-      yield put(
-        RootNavigation.navigate({
-          routeName: 'PaymentIndex',
-          params: {
-            paymentUrl: url.paymentUrl,
-          },
-        }),
-      );
+      RootNavigation.navigate('PaymentIndex', {
+        paymentUrl: url.paymentUrl,
+      });
     } else {
       throw url;
     }
@@ -622,11 +622,9 @@ export function* startCreateMyFatorrahPaymentUrlScenario(action) {
       // console.log('the e', e);
     }
     yield call(enableErrorMessage, e);
-    yield put(
-      RootNavigation.navigate({
-        routeName: 'CartIndex',
-      }),
-    );
+    RootNavigation.navigate({
+      routeName: 'CartIndex',
+    });
   } finally {
     yield call(disableLoading);
   }
@@ -648,11 +646,7 @@ export function* startCreateTapPaymentUrlScenario(action) {
     // console.log('the e', e);
     // }
     yield call(enableErrorMessage, e);
-    yield put(
-      RootNavigation.navigate({
-        routeName: 'CartIndex',
-      }),
-    );
+    RootNavigation.navigate('CartIndex');
   } finally {
     yield call(disableLoading);
   }
@@ -664,14 +658,9 @@ export function* startCreateCashOnDeliveryPayment(action) {
     const element = yield call(api.makeCashOnDeliveryPayment, action.payload);
     if (validate.isObject(element) && element.url) {
       yield call(enableSuccessMessage, I18n.t('order_is_complete'));
-      yield put(
-        RootNavigation.navigate({
-          routeName: 'PaymentIndex',
-          params: {
-            paymentUrl: element.url,
-          },
-        }),
-      );
+      RootNavigation.navigate('PaymentIndex', {
+        paymentUrl: element.url,
+      });
       yield call(disableLoading);
     } else {
       throw element;
