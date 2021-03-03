@@ -717,8 +717,24 @@
   "street" : "شارع",
   "change_modify_address" : "تعديل / تغيير العنوان",
   "add_new_address" : "اضف عنوان جديد",
+  "edit_address" : "تعديل العنوان",
   "go_to_payment_page" : "الذهاب إلى صفحة الدفع",
   "order_summary" : "ملخص الطلب",
   "deliver_to" : "التوصيل إلى",
-  "designerat" : "ديزينرات"
+  "designerat" : "ديزينرات",
+  "modify" : "تعديل",
+  "select" : "اختيار",
+  "addresses" : "العناوين",
+  "addresses_list" : "قائمة العناوين",
+  "payment" : "الدفع",
+  "address_name" : "اسم العنوان",
+  "full_name" : "الاسم بالكامل",
+  "building_or_house" : "رقم المبنى / المنزل",
+  "delete" : "حذف",
+  "address_created" : "تم إنشاء العنوان بنجاح",
+  "address_updated" : "تم تحديث العنوان بنجاح",
+  "address_deleted" : "تم حذف العنوان بنجاح",
+  "address_one" : "Address One",
+  "address_changed" : "تم تغير العنوان المرتبط بالطلب"
+
 }

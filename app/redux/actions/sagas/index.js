@@ -69,6 +69,10 @@ export default function* rootSaga() {
     fork(triggers.triggerAddComment),
     fork(triggers.triggerResetStore),
     fork(triggers.triggerGetRoles),
+    fork(triggers.triggerCreateAddress),
+    fork(triggers.triggerUpdateAddress),
+    fork(triggers.triggerDeleteAddress),
+    fork(triggers.triggerChangeAddress),
     // fork(networkSaga, {pingInterval: 20000}),
   ]);
   yield take(REHYDRATE); // Wait for rehydrate to prevent sagas from running with empty store

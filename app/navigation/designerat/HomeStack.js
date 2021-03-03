@@ -41,7 +41,7 @@ import DesigneratCartIndexFormScreen from '../../screens/cart/DesigneratCartInde
 import DesigneratCartConfirmationScreen from '../../screens/cart/DesigneratCartConfirmationScreen';
 import UserAddressIndexScreen from '../../screens/auth/UserAddressIndexScreen';
 import UserAddressCreateScreen from '../../screens/auth/UserAddressCreateScreen';
-import FastImage from 'react-native-fast-image';
+import UserAddressEditScreen from '../../screens/auth/UserAddressEditScreen';
 import {Icon} from 'react-native-elements';
 import {iconSizes} from '../../constants/sizes';
 
@@ -232,16 +232,16 @@ const HomeStack = () => {
         name="CartIndexForm"
         component={DesigneratCartIndexFormScreen}
         options={{
-          headerTitle: () => <HeaderMiddle title={I18n.t('cart')} />,
+          headerTitle: () => (
+            <HeaderMiddle title={I18n.t('cart_confirmation')} />
+          ),
         }}
       />
       <Stack.Screen
         name="CartConfirmation"
         component={DesigneratCartConfirmationScreen}
         options={{
-          headerTitle: () => (
-            <HeaderMiddle title={I18n.t('cart_confirmation')} />
-          ),
+          headerTitle: () => <HeaderMiddle title={I18n.t('payment')} />,
         }}
       />
 
@@ -257,6 +257,14 @@ const HomeStack = () => {
         component={UserAddressCreateScreen}
         options={{
           headerTitle: () => <HeaderMiddle title={I18n.t('add_new_address')} />,
+        }}
+      />
+
+      <Stack.Screen
+        name="UserAddressEdit"
+        component={UserAddressEditScreen}
+        options={{
+          headerTitle: () => <HeaderMiddle title={I18n.t('edit_address')} />,
         }}
       />
       {/*<Stack.Screen*/}

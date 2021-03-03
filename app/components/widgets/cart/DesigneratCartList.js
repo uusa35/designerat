@@ -75,7 +75,6 @@ const DesigneratCartList = ({
   const [checked, setChecked] = useState(false);
   const [area, setArea] = useState('');
 
-  console.log('cart', cart);
   useEffect(() => {
     setEmail(auth.email);
     setName(auth.name);

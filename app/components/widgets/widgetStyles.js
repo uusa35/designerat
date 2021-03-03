@@ -18,7 +18,6 @@ const widgetStyles = StyleSheet.create({
     width: '100%',
   },
   panelContent: {
-    flex: 1,
     marginLeft: text.medium,
     marginRight: text.medium,
     marginTop: text.medium,

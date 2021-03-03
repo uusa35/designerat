@@ -683,10 +683,25 @@
   "street" : "Street",
   "change_modify_address" : "Change / Modify Address",
   "add_new_address" : "Add new address",
+  "edit_address" : "Edit Address",
   "go_to_payment_page" : "Go to payment page",
   "order_summary" : "Order Summary",
   "deliver_to" : "Deliver To",
-  "designerat" : "DESIGNERAT"
+  "designerat" : "DESIGNERAT",
+  "modify" : "Modify",
+  "select" : "Select",
+  "addresses" : "Addresses",
+  "addresses_list" : "Addresses List",
+  "payment" : "Payment",
+  "address_name" : "Address Name",
+  "full_name" : "Full Name",
+  "building_or_house" : "Building / House No.",
+  "delete" : "Delete",
+  "address_created" : "Address created successfully",
+  "address_updated" : "Address updated successfully",
+  "address_deleted" : "Address deleted successfully",
+  "address_one" : "Address One",
+  "address_changed" : "Address activated with current order."
 
 }
 

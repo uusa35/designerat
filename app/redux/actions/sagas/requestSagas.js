@@ -289,7 +289,11 @@ export function* startDeepLinkingScenario(action) {
 
 export function* startRefetchHomeElementsScenario() {
   try {
+    const {guest} = yield select();
     yield call(designeratBootStrap);
+    if (!guest) {
+      yield call(startReAuthenticateScenario);
+    }
   } catch (e) {
     if (__DEV__) {
       console.log('the e', e);

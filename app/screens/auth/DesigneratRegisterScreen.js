@@ -7,24 +7,15 @@ import {useDispatch, useSelector} from 'react-redux';
 import validate from 'validate.js';
 import DesigneratRegisterFormWidget from '../../components/widgets/user/DesigneratRegisterFormWidget';
 
-const DesigneratRegisterScreen = ({navigation}) => {
+const DesigneratRegisterScreen = () => {
   const [userCountryId, setUserCountryId] = useState('');
-  const {token} = useSelector((state) => state);
-  const dispatch = useDispatch();
-  const {navigate} = navigation;
   // const [visible, setVisible] = useState(false);
   // const {goBack, navigate, dangerouslyGetParent} = useNavigation();
   // const parent = dangerouslyGetParent();
 
-  useEffect(() => {
-    if (!validate.isEmpty(token) && token) {
-      dispatch(navigate('SettingIndex'));
-    }
-  }, [token]);
-
   return (
     <BgContainer showImage={false}>
-      <DesigneratRegisterFormWidget userCountryId={userCountryId} />
+      <DesigneratRegisterFormWidget />
     </BgContainer>
   );
 };

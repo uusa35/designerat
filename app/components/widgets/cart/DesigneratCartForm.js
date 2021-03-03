@@ -5,7 +5,7 @@ import {StyleSheet, Text, TouchableOpacity} from 'react-native';
 import {showCountryModal} from '../../../redux/actions';
 import {View} from 'react-native-animatable';
 import {clearCart, getCoupon, submitCart} from '../../../redux/actions/cart';
-import React, {useContext, useEffect, useState} from 'react';
+import React, {useContext, useEffect, useMemo, useState} from 'react';
 import {
   CREATE_MYFATOORAH_PAYMENT_URL,
   CREATE_TAP_PAYMENT_URL,
@@ -59,6 +59,14 @@ const DesigneratCartForm = ({
   const [block, setBlock] = useState(address ? address.block : null);
   const [street, setStreet] = useState(address ? address.street : null);
   const [building, setBuilding] = useState(address ? address.building : null);
+
+  useMemo(() => {
+    setCurrentAddress(address);
+    setArea(address.area);
+    setBlock(address.block);
+    setBuilding(address.building);
+    setStreet(address.street);
+  }, [address]);
 
   useEffect(() => {
     const {country_name, area, block, street, building} = address;

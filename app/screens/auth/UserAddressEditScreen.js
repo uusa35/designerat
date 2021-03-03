@@ -1,6 +1,6 @@
 import React, {useContext, useState} from 'react';
 import {View, Text, StyleSheet} from 'react-native';
-import {useNavigation} from '@react-navigation/native';
+import {useNavigation, useRoute} from '@react-navigation/native';
 import BgContainer from '../../components/containers/BgContainer';
 import KeyBoardContainer from '../../components/containers/KeyBoardContainer';
 import I18n from '../../I18n';
@@ -9,19 +9,32 @@ import {Input} from 'react-native-elements';
 import {GlobalValuesContext} from '../../redux/GlobalValuesContext';
 import {text} from '../../constants/sizes';
 import DesigneratBtn from '../../components/widgets/Button/DesigneratBtn';
-import {createAddress, updateAddress} from '../../redux/actions/user';
+import {updateAddress} from '../../redux/actions/user';
 import {useDispatch} from 'react-redux';
 
-const UserAddressCreateScreen = ({showLabel = true}) => {
+const UserAddressEditScreen = ({showLabel = true}) => {
   const navigation = useNavigation();
   const dispatch = useDispatch();
+  const route = useRoute();
   const {colors} = useContext(GlobalValuesContext);
-  const [addName, setAddName] = useState(null);
-  const [addContent, setAddContent] = useState(null);
-  const [addArea, setAddArea] = useState(null);
-  const [addBlock, setAddBlock] = useState(null);
-  const [addStreet, setAddStreet] = useState(null);
-  const [addBuilding, setAddBuilding] = useState(null);
+  const {
+    name,
+    content,
+    area,
+    block,
+    building,
+    country_name,
+    country_id,
+    area_id,
+    street,
+    id,
+  } = route.params.currentAddress;
+  const [addName, setAddName] = useState(name);
+  const [addContent, setAddContent] = useState(content);
+  const [addArea, setAddArea] = useState(area);
+  const [addBlock, setAddBlock] = useState(block);
+  const [addStreet, setAddStreet] = useState(street);
+  const [addBuilding, setAddBuilding] = useState(building);
   return (
     <BgContainer showImage={false}>
       <KeyBoardContainer>
@@ -37,24 +50,28 @@ const UserAddressCreateScreen = ({showLabel = true}) => {
             widgetStyles.panelContent,
             {flex: 1, paddingTop: 20, paddingBottom: 20},
           ]}>
-          <Input
-            placeholder={I18n.t('address_name') + '*'}
-            disabled={addName === 'address_one'}
-            containerStyle={{maxHeight: 100}}
-            inputContainerStyle={[widgetStyles.inputContainerStyle]}
-            inputStyle={widgetStyles.inputStyle}
-            label={showLabel ? I18n.t('address_name') + '*' : null}
-            labelStyle={[
-              styles.titleLabelStyle,
-              {color: colors.main_theme_color, paddingBottom: 10},
-            ]}
-            shake={true}
-            keyboardType="default"
-            onChangeText={(text) => setAddName(text)}
-          />
+          {name !== 'address_one' && (
+            <Input
+              placeholder={I18n.t('address_name') + '*'}
+              value={addName ? addName : null}
+              disabled={addName === 'address_one'}
+              containerStyle={{maxHeight: 100}}
+              inputContainerStyle={[widgetStyles.inputContainerStyle]}
+              inputStyle={widgetStyles.inputStyle}
+              label={showLabel ? I18n.t('address_name') + '*' : null}
+              labelStyle={[
+                styles.titleLabelStyle,
+                {color: colors.main_theme_color, paddingBottom: 10},
+              ]}
+              shake={true}
+              keyboardType="default"
+              onChangeText={(text) => setAddName(text)}
+            />
+          )}
           <Input
             placeholder={I18n.t('full_name')}
             containerStyle={{maxHeight: 100}}
+            value={addContent ? addContent : null}
             inputContainerStyle={[widgetStyles.inputContainerStyle]}
             inputStyle={widgetStyles.inputStyle}
             label={showLabel ? I18n.t('full_name') + '*' : null}
@@ -70,6 +87,7 @@ const UserAddressCreateScreen = ({showLabel = true}) => {
           <Input
             placeholder={I18n.t('area')}
             containerStyle={{maxHeight: 100}}
+            value={addArea ? addArea : null}
             inputContainerStyle={[widgetStyles.inputContainerStyle]}
             inputStyle={widgetStyles.inputStyle}
             label={showLabel ? I18n.t('area') + '*' : null}
@@ -85,6 +103,7 @@ const UserAddressCreateScreen = ({showLabel = true}) => {
           <Input
             placeholder={I18n.t('block')}
             containerStyle={{maxHeight: 100}}
+            value={addBlock ? addBlock : null}
             inputContainerStyle={[widgetStyles.inputContainerStyle]}
             inputStyle={widgetStyles.inputStyle}
             label={showLabel ? I18n.t('block') + '*' : null}
@@ -100,6 +119,7 @@ const UserAddressCreateScreen = ({showLabel = true}) => {
           <Input
             placeholder={I18n.t('street')}
             containerStyle={{maxHeight: 100}}
+            value={addStreet ? addStreet : null}
             inputContainerStyle={[widgetStyles.inputContainerStyle]}
             inputStyle={widgetStyles.inputStyle}
             label={showLabel ? I18n.t('street') : null}
@@ -115,6 +135,7 @@ const UserAddressCreateScreen = ({showLabel = true}) => {
           <Input
             placeholder={I18n.t('building_or_house')}
             containerStyle={{maxHeight: 100}}
+            value={addBuilding ? addBuilding : null}
             inputContainerStyle={[widgetStyles.inputContainerStyle]}
             inputStyle={widgetStyles.inputStyle}
             label={showLabel ? I18n.t('building_or_house') : null}
@@ -129,13 +150,14 @@ const UserAddressCreateScreen = ({showLabel = true}) => {
           <DesigneratBtn
             handleClick={() =>
               dispatch(
-                createAddress({
+                updateAddress({
                   name: addName,
                   content: addContent,
                   area: addArea,
                   block: addBlock,
                   street: addStreet,
                   building: addBuilding,
+                  id,
                 }),
               )
             }
@@ -151,7 +173,7 @@ const UserAddressCreateScreen = ({showLabel = true}) => {
   );
 };
 
-export default UserAddressCreateScreen;
+export default UserAddressEditScreen;
 
 const styles = StyleSheet.create({
   titleLabelStyle: {

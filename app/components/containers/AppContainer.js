@@ -48,15 +48,23 @@ const AppContainer = ({children}) => {
     if (!validate.isEmpty(token) && token.length > 5) {
       axiosInstance.defaults.headers['Authorization'] = `Bearer ${token}`;
     }
-  }, [token]);
+    axiosInstance.defaults.headers['currency'] = currency.currency_symbol;
+    axiosInstance.defaults.headers.common['currency'] =
+      currency.currency_symbol;
+    axiosInstance.defaults.headers['country'] = country.slug;
+    axiosInstance.defaults.headers.common['country'] = country.slug;
+  }, [token, lang]);
 
   useEffect(() => {
+    if (!validate.isEmpty(token) && token.length > 5) {
+      axiosInstance.defaults.headers['Authorization'] = `Bearer ${token}`;
+    }
     axiosInstance.defaults.headers['currency'] = currency.currency_symbol;
     axiosInstance.defaults.headers.common['currency'] =
       currency.currency_symbol;
     axiosInstance.defaults.headers['country'] = country.name;
     axiosInstance.defaults.headers.common['country'] = country.name;
-  }, [lang]);
+  }, []);
 
   useEffect(() => {
     if (appState === 'background' && resetApp) {

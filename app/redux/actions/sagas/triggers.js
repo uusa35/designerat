@@ -294,6 +294,22 @@ export function* triggerGetHomeDesigners() {
   yield takeLatest(actions.GET_HOME_DESIGNERS, userSaga.startGetHomeDesigners);
 }
 
+export function* triggerUpdateAddress() {
+  yield takeLatest(actions.UPDATE_ADDRESS, userSaga.startUpdateAddressScenario);
+}
+
+export function* triggerCreateAddress() {
+  yield takeLatest(actions.CREATE_ADDRESS, userSaga.startCreateAddressScenario);
+}
+
+export function* triggerDeleteAddress() {
+  yield takeLatest(actions.DELETE_ADDRESS, userSaga.startDeleteAddressScenario);
+}
+
+export function* triggerChangeAddress() {
+  yield takeLatest(actions.CHANGE_ADDRESS, userSaga.startChangeAddressScenario);
+}
+
 // classified
 export function* triggerGetAllClassifieds() {
   yield takeLatest(

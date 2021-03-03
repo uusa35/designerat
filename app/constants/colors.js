@@ -1,6 +1,6 @@
 export const themeColors = {
   main: 'white',
-  danger: 'red',
+  danger: '#d33d3d',
   warning: 'yellow',
   success: 'green',
   desinerat: {
