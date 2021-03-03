@@ -45,7 +45,7 @@ const CelebrityHorizontalWidget = ({
               <Text
                 style={[
                   widgetStyles.title,
-                  {color: colors.header_one_theme_color},
+                  {color: colors.header_one_theme_color, paddingLeft: 10},
                 ]}>
                 {title}
               </Text>

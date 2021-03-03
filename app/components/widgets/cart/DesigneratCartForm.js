@@ -396,7 +396,7 @@ const DesigneratCartForm = ({
             {I18n.t('change_modify_address')}
           </Text>
           <Icon
-            name="chevron-right"
+            name={`chevron-${isRTL ? 'left' : 'right'}`}
             type="evilicon"
             size={iconSizes.medium}
             color={colors.icon_theme_color}
@@ -424,7 +424,7 @@ const DesigneratCartForm = ({
             {I18n.t('add_new_address')}
           </Text>
           <Icon
-            name="chevron-right"
+            name={`chevron-${isRTL ? 'left' : 'right'}`}
             type="evilicon"
             size={iconSizes.medium}
             color={colors.icon_theme_color}
@@ -444,6 +444,7 @@ const DesigneratCartForm = ({
               street,
               building,
               country_id: shipmentCountry.id,
+              area_id: address.area_id,
               notes,
             }),
           )

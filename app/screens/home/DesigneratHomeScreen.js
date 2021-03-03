@@ -45,7 +45,7 @@ const DesigneratHomeScreen = () => {
   const handleRefresh = () => dispatch(refetchHomeElements());
 
   return (
-    <BgContainer>
+    <BgContainer showImage={false}>
       <AppHomeConfigComponent />
       {settings.splash_on && (
         <IntroductionWidget

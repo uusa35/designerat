@@ -36,7 +36,7 @@ export const HeaderLeft = ({
           onPress={() => navigation.openDrawer()}
           underlayColor="transparent"
           hitSlop={{top: 15, bottom: 15, left: 15, right: 15}}
-          color={colors.icon_theme_color}
+          color={colors.footer_theme_color}
         />
       )}
       {showCompanySearchTextInputModal && (
@@ -51,7 +51,7 @@ export const HeaderLeft = ({
           size={iconSizes.small - 6}
           underlayColor="transparent"
           hitSlop={{top: 10, bottom: 10, left: 10, right: 10}}
-          color={colors.icon_theme_color}
+          color={colors.footer_theme_color}
         />
       )}
       {showProductsSearch && (
@@ -62,7 +62,7 @@ export const HeaderLeft = ({
           size={iconSizes.small}
           underlayColor="transparent"
           hitSlop={{top: 10, bottom: 10, left: 10, right: 10}}
-          color={colors.icon_theme_color}
+          color={colors.footer_theme_color}
         />
       )}
       {showCart ? (
@@ -74,7 +74,7 @@ export const HeaderLeft = ({
             size={iconSizes.small}
             underlayColor="transparent"
             hitSlop={{top: 10, bottom: 10, left: 10, right: 10}}
-            color={colors.icon_theme_color}
+            color={colors.footer_theme_color}
           />
           {cartLength > 0 ? (
             <Badge
@@ -97,7 +97,7 @@ export const HeaderLeft = ({
           size={iconSizes.small}
           underlayColor="transparent"
           hitSlop={{top: 10, bottom: 10, left: 10, right: 10}}
-          color={colors.icon_theme_color}
+          color={colors.footer_theme_color}
         />
       ) : null}
     </View>

@@ -119,7 +119,7 @@ export const HeaderRight = ({
           size={iconSizes.small}
           underlayColor="transparent"
           hitSlop={{top: 15, bottom: 15, left: 15, right: 15}}
-          color="black"
+          color={colors.footer_theme_color}
         />
       )}
       {showClassifiedsFilter && (
@@ -132,7 +132,7 @@ export const HeaderRight = ({
           size={iconSizes.small}
           underlayColor="transparent"
           hitSlop={{top: 15, bottom: 15, left: 15, right: 15}}
-          color="black"
+          color={colors.footer_theme_color}
         />
       )}
       {showProductsSearch && (
@@ -145,7 +145,7 @@ export const HeaderRight = ({
           size={iconSizes.small}
           underlayColor="transparent"
           hitSlop={{top: 15, bottom: 15, left: 15, right: 15}}
-          color="black"
+          color={colors.footer_theme_color}
         />
       )}
       {showExpoSearch && (
@@ -158,7 +158,7 @@ export const HeaderRight = ({
           size={iconSizes.small}
           underlayColor="transparent"
           hitSlop={{top: 15, bottom: 15, left: 15, right: 15}}
-          color="black"
+          color={colors.footer_theme_color}
         />
       )}
       {showHome && (
@@ -171,7 +171,7 @@ export const HeaderRight = ({
           size={iconSizes.smaller}
           underlayColor="transparent"
           hitSlop={{top: 15, bottom: 15, left: 15, right: 15}}
-          color="black"
+          color={colors.footer_theme_color}
         />
       )}
       {showCart && (
@@ -183,7 +183,7 @@ export const HeaderRight = ({
             size={iconSizes.small}
             underlayColor="transparent"
             hitSlop={{top: 10, bottom: 10, left: 10, right: 10}}
-            color={colors.icon_theme_color}
+            color={colors.footer_theme_color}
           />
           {cartLength > 0 ? (
             <Badge
@@ -209,7 +209,7 @@ export const HeaderRight = ({
           size={iconSizes.small}
           underlayColor="transparent"
           hitSlop={{top: 15, bottom: 15, left: 15, right: 15}}
-          color="black"
+          color={colors.footer_theme_color}
         />
       )}
     </View>

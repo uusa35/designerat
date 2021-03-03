@@ -20,7 +20,7 @@ import ProductItem from '../product/ProductItem';
 import {GlobalValuesContext} from '../../../redux/GlobalValuesContext';
 import {MALLR, ABATI, HOMEKEY, PAYMENT} from './../../../../app';
 import validate from 'validate.js';
-import {useDispatch} from 'react-redux';
+import {useDispatch, useSelector} from 'react-redux';
 import {useNavigation, useRoute} from '@react-navigation/native';
 import widgetStyles from '../widgetStyles';
 import {adjustColor} from '../../../helpers';
@@ -31,35 +31,30 @@ import {
 import DesigneratBtn from '../Button/DesigneratBtn';
 import DesingeratBtn from '../Button/DesigneratBtn';
 
-const DesigneratCartListConfirmationScreen = ({
-  cart,
-  shipmentCountry,
-  grossTotal,
-  shipment_notes,
-  shipmentFees,
-  guest,
-  discount = 0,
-  editModeDefault = true,
-  coupon = {},
-  COD,
-}) => {
+const DesigneratCartListConfirmationScreen = ({shipment_notes, COD}) => {
   const dispatch = useDispatch();
-  const {colors, total} = useContext(GlobalValuesContext);
+  const {colors, total, grossTotal, discount} = useContext(GlobalValuesContext);
+  const {coupon, shipmentFees, cart, settings} = useSelector((state) => state);
   const navigation = useNavigation();
   const route = useRoute();
-  const {cName, cEmail, cMobile, cAddress, cNotes, cArea} = route.params;
-  const [name, setName] = useState(cName);
-  const [email, setEmail] = useState(cEmail);
-  const [mobile, setMobile] = useState(cMobile);
-  const [address, setAddress] = useState(cAddress);
-  const [notes, setNotes] = useState(cNotes);
-  const [area, setArea] = useState(cArea);
-  const [editMode, setEditMode] = useState(editModeDefault);
+  const {
+    cName,
+    cEmail,
+    cMobile,
+    cAddress,
+    cNotes,
+    cArea,
+    cBlock,
+    cStreet,
+    cBuilding,
+    cAreaId,
+    cCountryId,
+  } = route.params;
   const [checked, setChecked] = useState(false);
 
   console.log('route params', route.params);
 
-  const handleCashOnDelivery = useCallback(() => {
+  const handleCashOnDelivery = () => {
     return Alert.alert(
       I18n.t('order_confirmation'),
       I18n.t('order_cash_on_delivery_confirmation'),
@@ -74,19 +69,24 @@ const DesigneratCartListConfirmationScreen = ({
           onPress: () =>
             dispatch(
               storeOrderCashOnDelivery({
-                name,
-                email,
-                mobile,
-                address,
-                area,
-                country_id: shipmentCountry.id,
-                coupon_id: !isNull(coupon) ? coupon.id : null,
+                name: cName,
+                email: cEmail,
+                mobile: cMobile,
+                address: cAddress,
+                block: cBlock,
+                building: cBuilding,
+                street: cStreet,
+                area: cArea,
+                area_id: cAreaId,
+                country_id: cCountryId,
                 cart,
                 price: total,
                 net_price: grossTotal,
                 shipment_fees: shipmentFees,
-                cash_on_delivery: COD,
-                discount,
+                cash_on_delivery: settings.cash_on_delivery,
+                coupon_id: !isNull(coupon) ? coupon.id : null,
+                discount: !isNull(coupon) ? coupon.value : 0,
+                notes: cNotes,
                 payment_method: isIOS
                   ? 'Iphone - CASH ON DELIVERY'
                   : 'Android - CASH ON DELIVERY',
@@ -96,7 +96,7 @@ const DesigneratCartListConfirmationScreen = ({
       ],
       {cancelable: true},
     );
-  });
+  };
 
   return (
     <View style={{flexDirection: 'column', width}}>
@@ -127,18 +127,21 @@ const DesigneratCartListConfirmationScreen = ({
           <Text style={widgetStyles.headerThree}>{shipment_notes}</Text>
         </View>
       )}
-      <View style={{backgroundColor: 'white', margin: 15, padding: 10}}>
+      <View style={{backgroundColor: 'white', margin: 15, padding: 15}}>
         <View
           style={{
-            marginTop: 0,
-            marginBottom: 10,
-            width: '100%',
+            flex: 1,
             flexDirection: 'row',
-            justifyContent: 'center',
+            justifyContent: 'space-between',
             alignItems: 'center',
           }}>
           <CheckBox
-            containerStyle={{width: '90%'}}
+            containerStyle={{
+              backgroundColor: 'transparent',
+              alignItems: 'baseline',
+              justifyContent: 'center',
+              borderWidth: 0,
+            }}
             title={I18n.t('agree_on_conditions_and_terms')}
             iconType="material"
             checkedIcon="check-box"
@@ -148,70 +151,89 @@ const DesigneratCartListConfirmationScreen = ({
             textStyle={{fontFamily: text.font, paddingTop: 5}}
           />
           <Icon
-            name="book"
-            type="font-awesome"
-            size={15}
-            onPress={() => navigate('TermAndCondition')}
+            name="read"
+            type="material-community"
+            size={iconSizes.smaller}
+            onPress={() => navigation.navigate('TermAndCondition')}
           />
         </View>
-        <View>
+        {settings.cash_on_delivery && (
           <DesigneratBtn
             disabled={!checked}
-            handleClick={() => {
-              dispatch({
-                type: CREATE_MYFATOORAH_PAYMENT_URL,
-                payload: {
-                  name,
-                  email,
-                  mobile,
-                  address,
-                  country_id: shipmentCountry.id,
-                  coupon_id: !isNull(coupon) ? coupon.id : 0,
-                  cart,
-                  total,
-                  grossTotal,
-                  shipment_fees: shipmentCountry.fixed_shipment_charge,
-                  discount: coupon.value,
-                  payment_method: isIOS
-                    ? 'IOS - My Fatoorah'
-                    : 'Android - My Fatoorah',
-                },
-              });
-            }}
-            title={I18n.t('pay_myfatoorah')}
+            handleClick={() => handleCashOnDelivery()}
+            title={I18n.t('cash_on_delivery')}
           />
-          <DesingeratBtn
-            disabled={!checked}
-            handleClick={() => {
-              dispatch({
-                type: CREATE_TAP_PAYMENT_URL,
-                payload: {
-                  name,
-                  email,
-                  mobile,
-                  address,
-                  country_id: shipmentCountry.id,
-                  coupon_id: !isNull(coupon) ? coupon.id : 0,
-                  cart,
-                  total,
-                  grossTotal,
-                  shipment_fees: shipmentCountry.fixed_shipment_charge,
-                  discount: coupon.value,
-                  payment_method: isIOS
-                    ? 'IOS - My Fatoorah'
-                    : 'Android - My Fatoorah',
-                },
-              });
-            }}
-            title={I18n.t('go_tap')}
-          />
-          <DesingeratBtn
-            handleClick={() => dispatch(clearCart())}
-            title={I18n.t('clear_cart')}
-            bgColor={adjustColor(colors.btn_bg_theme_color, 15)}
-            marginTop={15}
-          />
-        </View>
+        )}
+        <DesigneratBtn
+          disabled={!checked}
+          handleClick={() => {
+            dispatch({
+              type: CREATE_MYFATOORAH_PAYMENT_URL,
+              payload: {
+                name: cName,
+                email: cEmail,
+                mobile: cMobile,
+                address: cAddress,
+                block: cBlock,
+                building: cBuilding,
+                street: cStreet,
+                area: cArea,
+                area_id: cAreaId,
+                country_id: cCountryId,
+                cart,
+                price: total,
+                net_price: grossTotal,
+                shipment_fees: shipmentFees,
+                cash_on_delivery: settings.cash_on_delivery,
+                coupon_id: !isNull(coupon) ? coupon.id : null,
+                discount: !isNull(coupon) ? coupon.value : 0,
+                notes: cNotes,
+                payment_method: isIOS
+                  ? 'IOS - My Fatoorah'
+                  : 'Android - My Fatoorah',
+              },
+            });
+          }}
+          title={I18n.t('pay_myfatoorah')}
+        />
+        <DesingeratBtn
+          disabled={!checked}
+          handleClick={() => {
+            dispatch({
+              type: CREATE_TAP_PAYMENT_URL,
+              payload: {
+                name: cName,
+                email: cEmail,
+                mobile: cMobile,
+                address: cAddress,
+                block: cBlock,
+                building: cBuilding,
+                street: cStreet,
+                area: cArea,
+                area_id: cAreaId,
+                country_id: cCountryId,
+                cart,
+                price: total,
+                net_price: grossTotal,
+                shipment_fees: shipmentFees,
+                cash_on_delivery: settings.cash_on_delivery,
+                coupon_id: !isNull(coupon) ? coupon.id : null,
+                discount: !isNull(coupon) ? coupon.value : 0,
+                notes: cNotes,
+                payment_method: isIOS
+                  ? 'IOS - My Fatoorah'
+                  : 'Android - My Fatoorah',
+              },
+            });
+          }}
+          title={I18n.t('go_tap')}
+        />
+        <DesingeratBtn
+          handleClick={() => dispatch(clearCart())}
+          title={I18n.t('clear_cart')}
+          bgColor={adjustColor(colors.btn_bg_theme_color, 15)}
+          marginTop={15}
+        />
       </View>
     </View>
   );

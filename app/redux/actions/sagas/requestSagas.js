@@ -509,6 +509,7 @@ export function* startClearCartScenario() {
       put({type: actions.SET_TOTAL_CART, payload: 0}),
       put({type: actions.SET_GROSS_TOTAL_CART, payload: 0}),
     ]);
+    RootNavigation.navigate('CartIndex');
   } catch (e) {
     if (__DEV__) {
       // console.log('the e', e);
@@ -532,6 +533,7 @@ export function* startSubmitCartScenario(action) {
       block,
       street,
       building,
+      area_id,
     } = action.payload;
     const result = validate({name, mobile, email, address}, registerConstrains);
     if (validate.isEmpty(result)) {
@@ -545,6 +547,7 @@ export function* startSubmitCartScenario(action) {
         cBuilding: building,
         cAddress: address,
         country_id,
+        area_id,
         cNotes: notes,
       });
     } else {

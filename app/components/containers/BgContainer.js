@@ -1,5 +1,5 @@
 import React, {Fragment, useState, useMemo, useContext, useEffect} from 'react';
-import {ImageBackground, SafeAreaView, View} from 'react-native';
+import {ImageBackground, SafeAreaView, StatusBar, View} from 'react-native';
 import {height, width} from '../../constants/sizes';
 import {images} from '../../constants/images';
 import AndroidBackHandlerComponent from './AndroidBackHandlerComponent';
@@ -64,6 +64,13 @@ const BgContainer = ({
           <LoadingView />
         ) : (
           <View style={{flex: 1, paddingTop: enableMargin ? marginVal : 0}}>
+            <StatusBar
+              animated={true}
+              backgroundColor="#61dafb"
+              barStyle={'light-content'}
+              // showHideTransition={statusBarTransition}
+              // hidden={hidden}
+            />
             {children}
           </View>
         )

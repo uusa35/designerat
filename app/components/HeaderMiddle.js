@@ -30,7 +30,7 @@ export const HeaderMiddle = ({title, showLogo = false}) => {
             fontFamily: text.font,
             fontSize: text.medium,
             textAlign: 'center',
-            color: colors.header_one_theme_color,
+            color: colors.footer_theme_color,
           }}>
           {route.params?.name ? route.params.name : title.substring(0, 20)}
         </Text>

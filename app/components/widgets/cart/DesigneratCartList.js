@@ -147,7 +147,7 @@ const DesigneratCartList = ({
           </Text>
         </TouchableOpacity>
         <Icon
-          name="chevron-right"
+          name={`chevron-${isRTL ? 'left' : 'right'}`}
           type="evilicon"
           size={iconSizes.medium}
           color={colors.icon_theme_color}

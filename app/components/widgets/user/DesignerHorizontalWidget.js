@@ -71,7 +71,7 @@ const DesignerHorizontalWidget = ({
               <Text
                 style={[
                   widgetStyles.title,
-                  {color: colors.header_one_theme_color},
+                  {color: colors.header_one_theme_color, paddingLeft: 10},
                 ]}>
                 {title}
               </Text>
@@ -136,7 +136,7 @@ const DesignerHorizontalWidget = ({
                           ? userWidget[APP_CASE].medium.width * 2
                           : 0,
                     }}
-                    resizeMode="contain"
+                    resizeMode="cover"
                   />
                   {showName ? (
                     <Text

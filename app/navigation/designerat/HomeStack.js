@@ -1,7 +1,7 @@
 import React, {useContext} from 'react';
 import {Text} from 'react-native';
 import {createStackNavigator} from '@react-navigation/stack';
-import I18n from '../../I18n';
+import I18n, {isRTL} from '../../I18n';
 import {HeaderRight} from '../../components/HeaderRight';
 import {HeaderLeft} from '../../components/HeaderLeft';
 import {HeaderMiddle} from '../../components/HeaderMiddle';
@@ -41,6 +41,9 @@ import DesigneratCartIndexFormScreen from '../../screens/cart/DesigneratCartInde
 import DesigneratCartConfirmationScreen from '../../screens/cart/DesigneratCartConfirmationScreen';
 import UserAddressIndexScreen from '../../screens/auth/UserAddressIndexScreen';
 import UserAddressCreateScreen from '../../screens/auth/UserAddressCreateScreen';
+import FastImage from 'react-native-fast-image';
+import {Icon} from 'react-native-elements';
+import {iconSizes} from '../../constants/sizes';
 
 const Stack = createStackNavigator();
 const HomeStack = () => {
@@ -52,10 +55,24 @@ const HomeStack = () => {
         tabBarVisible: false,
         headerBackTitleVisible: false,
         headerStyle: {
-          backgroundColor: colors.header_theme_bg,
+          backgroundColor: colors.footer_bg_theme_color,
         },
+        headerTintColor: {
+          color: colors.footer_theme_color,
+        },
+        headerBackTitleStyle: {
+          color: colors.footer_theme_color,
+        },
+        headerBackImage: () => (
+          <Icon
+            name={`chevron-${isRTL ? 'right' : 'left'}`}
+            type="evilicon"
+            size={iconSizes.medium}
+            color={colors.footer_theme_color}
+          />
+        ),
         headerTitleStyle: {
-          color: colors.header_theme_color,
+          color: colors.footer_theme_color,
         },
       }}>
       <Stack.Screen
@@ -64,16 +81,17 @@ const HomeStack = () => {
             <Ionicons
               name="ios-menu"
               size={25}
-              style={[{color: 'black'}]}
+              color={colors.footer_theme_color}
               onPress={() => navigation.dispatch(DrawerActions.toggleDrawer())}
             />
           ),
           headerTitle: () => <HeaderMiddle showLogo={true} />,
           headerRight: () => (
             <HeaderRight
-              showCart={true}
+              showCart={false}
               showProductFavorite={true}
               showCountry={false}
+              showProductsSearch={true}
             />
           ),
         })}
@@ -142,12 +160,12 @@ const HomeStack = () => {
         name="ProfileIndex"
         component={ProfileIndexScreen}
         options={{
-          headerStyle: {
-            backgroundColor: colors.header_theme_bg,
-          },
-          headerTitleStyle: {
-            color: colors.header_theme_color,
-          },
+          // headerStyle: {
+          //   backgroundColor: colors.header_theme_bg,
+          // },
+          // headerTitleStyle: {
+          //   color: colors.header_theme_color,
+          // },
           headerTitle: () => <HeaderMiddle title={I18n.t('profile')} />,
         }}
       />
@@ -155,12 +173,6 @@ const HomeStack = () => {
         name="UserEdit"
         component={UserEditScreen}
         options={{
-          headerStyle: {
-            backgroundColor: colors.header_theme_bg,
-          },
-          headerTitleStyle: {
-            color: colors.header_theme_color,
-          },
           headerTitle: () => (
             <HeaderMiddle title={I18n.t('edit_information')} />
           ),
@@ -190,12 +202,6 @@ const HomeStack = () => {
         name="FavoriteProductIndex"
         component={FavoriteProductIndexScreen}
         options={{
-          headerStyle: {
-            backgroundColor: colors.header_theme_bg,
-          },
-          headerTitleStyle: {
-            color: colors.header_theme_color,
-          },
           headerTitle: () => <HeaderMiddle title={I18n.t('wishlist')} />,
         }}
       />
@@ -203,12 +209,6 @@ const HomeStack = () => {
         name="BrandIndex"
         component={BrandIndexScreen}
         options={{
-          headerStyle: {
-            backgroundColor: colors.header_theme_bg,
-          },
-          headerTitleStyle: {
-            color: colors.header_theme_color,
-          },
           headerTitle: () => <HeaderMiddle title={I18n.t('brands')} />,
         }}
       />
@@ -216,12 +216,6 @@ const HomeStack = () => {
         name="OrderIndex"
         component={OrderIndexScreen}
         options={{
-          headerStyle: {
-            backgroundColor: colors.header_theme_bg,
-          },
-          headerTitleStyle: {
-            color: colors.header_theme_color,
-          },
           headerTitle: () => <HeaderMiddle title={I18n.t('order_history')} />,
         }}
       />
@@ -229,46 +223,22 @@ const HomeStack = () => {
 
       <Stack.Screen
         name="CartIndex"
-        headerBackTitleVisible={false}
         component={CartIndexScreen}
         options={{
-          headerBackTitleVisible: false,
-          headerStyle: {
-            backgroundColor: colors.header_theme_bg,
-          },
-          headerTitleStyle: {
-            color: colors.header_theme_color,
-          },
           headerTitle: () => <HeaderMiddle title={I18n.t('cart')} />,
         }}
       />
       <Stack.Screen
         name="CartIndexForm"
-        headerBackTitleVisible={false}
         component={DesigneratCartIndexFormScreen}
         options={{
-          headerBackTitleVisible: false,
-          headerStyle: {
-            backgroundColor: colors.header_theme_bg,
-          },
-          headerTitleStyle: {
-            color: colors.header_theme_color,
-          },
           headerTitle: () => <HeaderMiddle title={I18n.t('cart')} />,
         }}
       />
       <Stack.Screen
         name="CartConfirmation"
-        headerBackTitleVisible={false}
         component={DesigneratCartConfirmationScreen}
         options={{
-          headerBackTitleVisible: false,
-          headerStyle: {
-            backgroundColor: colors.header_theme_bg,
-          },
-          headerTitleStyle: {
-            color: colors.header_theme_color,
-          },
           headerTitle: () => (
             <HeaderMiddle title={I18n.t('cart_confirmation')} />
           ),
@@ -277,31 +247,15 @@ const HomeStack = () => {
 
       <Stack.Screen
         name="UserAddressIndex"
-        headerBackTitleVisible={false}
         component={UserAddressIndexScreen}
         options={{
-          headerBackTitleVisible: false,
-          headerStyle: {
-            backgroundColor: colors.header_theme_bg,
-          },
-          headerTitleStyle: {
-            color: colors.header_theme_color,
-          },
           headerTitle: () => <HeaderMiddle title={I18n.t('addresses')} />,
         }}
       />
       <Stack.Screen
         name="UserAddressCreate"
-        headerBackTitleVisible={false}
         component={UserAddressCreateScreen}
         options={{
-          headerBackTitleVisible: false,
-          headerStyle: {
-            backgroundColor: colors.header_theme_bg,
-          },
-          headerTitleStyle: {
-            color: colors.header_theme_color,
-          },
           headerTitle: () => <HeaderMiddle title={I18n.t('add_new_address')} />,
         }}
       />
@@ -324,28 +278,14 @@ const HomeStack = () => {
         name="PaymentIndex"
         component={PaymentIndexScreen}
         options={{
-          headerStyle: {
-            backgroundColor: colors.header_theme_bg,
-          },
-          headerTitleStyle: {
-            color: colors.header_theme_color,
-          },
           headerTitle: () => <HeaderMiddle title={I18n.t('payment_page')} />,
           headerLeft: () => <HeaderBack removeCart={true} />,
         }}
       />
       <Stack.Screen
         name="TermAndCondition"
-        headerBackTitleVisible={false}
         component={TermAndConditionScreen}
         options={{
-          headerBackTitleVisible: false,
-          headerStyle: {
-            backgroundColor: colors.header_theme_bg,
-          },
-          headerTitleStyle: {
-            color: colors.header_theme_color,
-          },
           headerTitle: () => (
             <HeaderMiddle title={I18n.t('terms_and_conditions')} />
           ),
@@ -353,16 +293,8 @@ const HomeStack = () => {
       />
       <Stack.Screen
         name="Policy"
-        headerBackTitleVisible={false}
         component={PolicyScreen}
         options={{
-          headerBackTitleVisible: false,
-          headerStyle: {
-            backgroundColor: colors.header_theme_bg,
-          },
-          headerTitleStyle: {
-            color: colors.header_theme_color,
-          },
           headerTitle: () => <HeaderMiddle title={I18n.t('policies')} />,
         }}
       />

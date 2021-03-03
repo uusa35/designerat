@@ -59,7 +59,7 @@ const MainTab = () => {
               resizeMode="contain"
               style={{width: 25, height: 25}}
               tintColor={
-                focused ? colors.btn_bg_theme_color : colors.icon_theme_color
+                focused ? colors.btn_bg_theme_color : colors.footer_theme_color
               }
             />
           ),
@@ -91,7 +91,7 @@ const MainTab = () => {
               resizeMode="contain"
               style={{width: 25, height: 25}}
               tintColor={
-                focused ? colors.btn_bg_theme_color : colors.icon_theme_color
+                focused ? colors.btn_bg_theme_color : colors.footer_theme_color
               }
             />
           ),
@@ -114,7 +114,7 @@ const MainTab = () => {
               resizeMode="contain"
               style={{width: 25, height: 25}}
               tintColor={
-                focused ? colors.btn_bg_theme_color : colors.icon_theme_color
+                focused ? colors.btn_bg_theme_color : colors.footer_theme_color
               }
             />
           ),
@@ -137,7 +137,7 @@ const MainTab = () => {
               resizeMode="contain"
               style={{width: 25, height: 25}}
               tintColor={
-                focused ? colors.btn_bg_theme_color : colors.icon_theme_color
+                focused ? colors.btn_bg_theme_color : colors.footer_theme_color
               }
             />
           ),
@@ -161,7 +161,7 @@ const MainTab = () => {
               resizeMode="contain"
               style={{width: 25, height: 25}}
               tintColor={
-                focused ? colors.btn_bg_theme_color : colors.icon_theme_color
+                focused ? colors.btn_bg_theme_color : colors.footer_theme_color
               }
             />
           ),
