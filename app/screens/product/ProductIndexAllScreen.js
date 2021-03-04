@@ -26,7 +26,8 @@ const ProductIndexAllScreen = () => {
         elements={currentElements}
         searchParams={{country_id: country.id}}
         type="product"
-        pageLimit={15}
+        productGalaryMode={true}
+        pageLimit={55}
         showRefresh={true}
         showFooter={true}
         showSearch={false}
@@ -34,6 +35,7 @@ const ProductIndexAllScreen = () => {
         showProductsFilter={true}
         showTitleIcons={true}
         showMore={true}
+        columns={3}
       />
     </BgContainer>
   );

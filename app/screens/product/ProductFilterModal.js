@@ -6,7 +6,7 @@ import {
   Text,
   TouchableOpacity,
 } from 'react-native';
-import {width, text} from '../../constants/sizes';
+import {width, text, rightHorizontalContentInset} from '../../constants/sizes';
 import {isIOS} from '../../constants';
 import MultiSlider from '@ptomasroos/react-native-multi-slider';
 import PropTypes from 'prop-types';
@@ -85,9 +85,9 @@ const ProductFilterModal = () => {
     setMax(priceRange[1]);
   }, [priceRange]);
 
-  const handleHideModal = useCallback(() => {
+  const handleHideModal = () => {
     dispatch(hideProductFilter());
-  });
+  };
 
   useEffect(() => {
     setSelectedCategory({id: searchParams.product_category_id});
@@ -121,6 +121,7 @@ const ProductFilterModal = () => {
             horizontal={true}
             showsVerticalScrollIndicator={false}
             showsHorizontalScrollIndicator={false}
+            contentInset={{right: rightHorizontalContentInset}}
             style={{minHeight: 80, width: '100%'}}
             contentContainerStyle={{alignItems: 'center'}}>
             {map(categories, (c, i) => (
@@ -130,6 +131,7 @@ const ProductFilterModal = () => {
                 style={[
                   styles.btnStyle,
                   {
+                    minWidth: 120,
                     borderColor:
                       selectedCategory && selectedCategory.id === c.id
                         ? settings.colors.btn_bg_theme_color

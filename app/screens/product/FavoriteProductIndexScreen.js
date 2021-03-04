@@ -17,7 +17,7 @@ const FavoriteProductIndexScreen = () => {
   }, [productFavorites]);
 
   return (
-    <BgContainer showImage={true}>
+    <BgContainer showImage={false}>
       <View
         style={{
           flex: 1,

@@ -14,6 +14,7 @@ import {
   ActivityIndicator,
   StyleSheet,
   ScrollView,
+  TouchableOpacity,
 } from 'react-native';
 import {
   getCompany,
@@ -66,6 +67,7 @@ import {
   SET_PRODUCTS,
   SET_SERVICES,
 } from '../../redux/actions/types';
+import ImageLoaderContainer from '../widgets/ImageLoaderContainer';
 
 const ElementsHorizontalList = ({
   elements,
@@ -88,6 +90,7 @@ const ElementsHorizontalList = ({
   columns = 2,
   customHeight = 240,
   pageLimit = 10,
+  productGalaryMode = false,
 }) => {
   const [items, setItems] = useState(elements);
   const [originalItems, setOriginalItems] = useState(elements);
@@ -294,7 +297,7 @@ const ElementsHorizontalList = ({
     }
   }, [isLoading]);
 
-  const handleClick = useCallback((element) => {
+  const handleClick = (element) => {
     dispatch(setElementType(type));
     switch (type) {
       case 'designer':
@@ -354,19 +357,30 @@ const ElementsHorizontalList = ({
       default:
         null;
     }
-  });
+  };
 
-  const renderItem = useCallback((item) => {
+  const renderItem = (item) => {
     switch (type) {
       case 'product':
-        return (
-          <ProductWidget
-            element={item}
-            showName={showName}
-            key={item.id}
-            handleClickProductWidget={handleClick}
-          />
-        );
+        if (productGalaryMode) {
+          return (
+            <TouchableOpacity onPress={() => handleClick(item)}>
+              <ImageLoaderContainer
+                img={item.thumb}
+                style={{width: 135, height: 180}}
+              />
+            </TouchableOpacity>
+          );
+        } else {
+          return (
+            <ProductWidget
+              element={item}
+              showName={showName}
+              key={item.id}
+              handleClickProductWidget={handleClick}
+            />
+          );
+        }
         break;
       case 'service':
         return (
@@ -424,7 +438,7 @@ const ElementsHorizontalList = ({
           />
         );
     }
-  });
+  };
 
   useEffect(() => {
     setItems(elements);
@@ -570,10 +584,10 @@ const ElementsHorizontalList = ({
           justifyContent: 'flex-start',
           alignItems: 'flex-start',
           alignSelf: 'center',
-          marginLeft: 15,
-          marginRight: 15,
+          marginLeft: productGalaryMode ? 0 : 15,
+          marginRight: productGalaryMode ? 0 : 15,
           // marginBottom : 15,
-          marginTop: 15,
+          marginTop: productGalaryMode ? 0 : 15,
         }}
         renderItem={({item}) => renderItem(item)}
         ListFooterComponent={() => renderFooter()}
