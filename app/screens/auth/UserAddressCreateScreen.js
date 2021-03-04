@@ -10,12 +10,13 @@ import {GlobalValuesContext} from '../../redux/GlobalValuesContext';
 import {text} from '../../constants/sizes';
 import DesigneratBtn from '../../components/widgets/Button/DesigneratBtn';
 import {createAddress, updateAddress} from '../../redux/actions/user';
-import {useDispatch} from 'react-redux';
+import {useDispatch, useSelector} from 'react-redux';
 
 const UserAddressCreateScreen = ({showLabel = true}) => {
   const navigation = useNavigation();
   const dispatch = useDispatch();
   const {colors} = useContext(GlobalValuesContext);
+  const {shipmentCountry} = useSelector((state) => state);
   const [addName, setAddName] = useState(null);
   const [addContent, setAddContent] = useState(null);
   const [addArea, setAddArea] = useState(null);
@@ -136,6 +137,8 @@ const UserAddressCreateScreen = ({showLabel = true}) => {
                   block: addBlock,
                   street: addStreet,
                   building: addBuilding,
+                  country_name: shipmentCountry.slug,
+                  country_id: shipmentCountry.id,
                 }),
               )
             }

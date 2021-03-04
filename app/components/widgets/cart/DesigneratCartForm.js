@@ -20,7 +20,6 @@ import {APP_CASE} from '../../../../app.json';
 import widgetStyles from '../widgetStyles';
 import DesigneratBtn from '../Button/DesigneratBtn';
 const DesigneratCartForm = ({
-  shipmentCountry,
   shipment_notes = null,
   editModeDefault = true,
   coupon,
@@ -37,7 +36,9 @@ const DesigneratCartForm = ({
     currency_symbol,
     cartLength,
   } = useContext(GlobalValuesContext);
-  const {cart, auth, address, guest, country} = useSelector((state) => state);
+  const {cart, auth, address, guest, shipmentCountry} = useSelector(
+    (state) => state,
+  );
   const {navigate} = useNavigation();
   const [name, setName] = useState(!validate.isEmpty(auth) ? auth.name : null);
   const [email, setEmail] = useState(
@@ -75,6 +76,7 @@ const DesigneratCartForm = ({
     );
   }, [address]);
 
+  console.log('address', address);
   return (
     <View style={{flexDirection: 'column', width}}>
       <View
@@ -182,7 +184,7 @@ const DesigneratCartForm = ({
           editable={editMode}
           value={mobile ? mobile : null}
           textContentType="telephoneNumber"
-          leftIcon={() => <Text>+{country.calling_code}</Text>}
+          leftIcon={() => <Text>+{shipmentCountry.calling_code}</Text>}
           leftIconContainerStyle={{paddingRight: 15, paddingBottom: 4}}
           containerStyle={{marginBottom: 0, paddingBottom: 0, height: 50}}
           placeholder={I18n.t('mobile') + '*'}

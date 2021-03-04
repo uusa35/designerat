@@ -33,6 +33,8 @@ import {useDispatch, useSelector} from 'react-redux';
 import BgContainer from '../../containers/BgContainer';
 import KeyBoardContainer from '../../containers/KeyBoardContainer';
 import {useNavigation} from '@react-navigation/native';
+import widgetStyles from '../widgetStyles';
+import DesigneratBtn from '../Button/DesigneratBtn';
 
 const UserEditFormWidget = ({showIcon = true}) => {
   const {colors, logo} = useContext(GlobalValuesContext);
@@ -121,74 +123,55 @@ const UserEditFormWidget = ({showIcon = true}) => {
       </TouchableOpacity>
       <View style={{width: '90%', alignSelf: 'center'}}>
         <Input
-          inputContainerStyle={{
-            borderWidth: 1,
-            borderColor: 'lightgrey',
-            borderRadius: 10,
-            paddingLeft: 15,
-            paddingRight: 15,
-            marginBottom: 20,
-          }}
-          inputStyle={{
-            fontFamily: text.font,
-            textAlign: isRTL ? 'right' : 'left',
-          }}
+          inputContainerStyle={[widgetStyles.inputContainerStyle]}
+          inputStyle={widgetStyles.inputStyle}
+          labelStyle={[
+            styles.titleLabelStyle,
+            {color: colors.main_theme_color, paddingBottom: 10},
+          ]}
           shake={true}
           keyboardType="default"
           defaultValue={name ? name : null}
           onChangeText={(text) => setName(text)}
           placeholder={name ? name : I18n.t('name')}
           label={I18n.t('name')}
-          labelStyle={{fontFamily: text.font, fontSize: text.small}}
         />
         <Input
-          inputContainerStyle={{
-            borderWidth: 1,
-            borderColor: 'lightgrey',
-            borderRadius: 10,
-            paddingLeft: 15,
-            paddingRight: 15,
-            marginBottom: 20,
-          }}
-          inputStyle={{
-            fontFamily: text.font,
-            textAlign: isRTL ? 'right' : 'left',
-          }}
+          inputContainerStyle={[widgetStyles.inputContainerStyle]}
+          inputStyle={widgetStyles.inputStyle}
+          labelStyle={[
+            styles.titleLabelStyle,
+            {color: colors.main_theme_color, paddingBottom: 10},
+          ]}
           shake={true}
           keyboardType="email-address"
           defaultValue={email ? email : null}
           onChangeText={(text) => setEmail(text)}
           placeholder={email ? email : I18n.t('email')}
           label={I18n.t('email')}
-          labelStyle={{fontFamily: text.font, fontSize: text.small}}
         />
         <Input
-          inputContainerStyle={{
-            borderWidth: 1,
-            borderColor: 'lightgrey',
-            borderRadius: 10,
-            paddingLeft: 15,
-            paddingRight: 15,
-            marginBottom: 20,
-          }}
-          inputStyle={{
-            fontFamily: text.font,
-            textAlign: isRTL ? 'right' : 'left',
-          }}
+          inputContainerStyle={[widgetStyles.inputContainerStyle]}
+          inputStyle={widgetStyles.inputStyle}
+          labelStyle={[
+            styles.titleLabelStyle,
+            {color: colors.main_theme_color, paddingBottom: 10},
+          ]}
           shake={true}
           keyboardType="number-pad"
           defaultValue={mobile ? mobile : null}
           onChangeText={(text) => setMobile(text)}
           placeholder={mobile ? mobile : I18n.t('mobile')}
           label={I18n.t('mobile')}
-          labelStyle={{fontFamily: text.font, fontSize: text.small}}
         />
         <TouchableOpacity
           onPress={() => handleSelectedCountry()}
+          disabled={true}
           style={{
             borderWidth: 1,
             borderColor: 'lightgrey',
-            borderRadius: 10,
+            backgroundColor: 'white',
+            borderRadius: 5,
             paddingLeft: 15,
             paddingRight: 15,
             marginBottom: 20,
@@ -209,66 +192,38 @@ const UserEditFormWidget = ({showIcon = true}) => {
           </Text>
         </TouchableOpacity>
         <Input
-          inputContainerStyle={{
-            borderWidth: 1,
-            borderColor: 'lightgrey',
-            borderRadius: 10,
-            paddingLeft: 15,
-            paddingRight: 15,
-            marginBottom: 20,
-            height: 80,
-          }}
-          inputStyle={{
-            fontFamily: text.font,
-            fontSize: 14,
-            textAlign: isRTL ? 'right' : 'left',
-          }}
+          disabled={true}
+          inputContainerStyle={[widgetStyles.inputContainerStyle]}
+          inputStyle={widgetStyles.inputStyle}
+          labelStyle={[
+            styles.titleLabelStyle,
+            {color: colors.main_theme_color, paddingBottom: 10},
+          ]}
           numberOfLines={3}
           shake={true}
           label={I18n.t('address')}
-          labelStyle={{fontFamily: text.font, fontSize: text.small}}
           keyboardType="default"
           defaultValue={address}
           onChangeText={(text) => setAddress(text)}
           placeholder={I18n.t('address')}
         />
         <Input
-          inputContainerStyle={{
-            borderWidth: 1,
-            borderColor: 'lightgrey',
-            borderRadius: 10,
-            paddingLeft: 15,
-            paddingRight: 15,
-            marginBottom: 20,
-            height: 80,
-          }}
-          inputStyle={{
-            fontFamily: text.font,
-            fontSize: 14,
-            textAlign: isRTL ? 'right' : 'left',
-          }}
+          inputContainerStyle={[widgetStyles.inputContainerStyle]}
+          inputStyle={widgetStyles.inputStyle}
+          labelStyle={[
+            styles.titleLabelStyle,
+            {color: colors.main_theme_color, paddingBottom: 10},
+          ]}
           numberOfLines={3}
           shake={true}
           keyboardType="default"
           defaultValue={description}
           onChangeText={(text) => setDescription(text)}
           label={I18n.t('description')}
-          labelStyle={{fontFamily: text.font, fontSize: text.small}}
           placeholder={I18n.t('description')}
         />
-        <Button
-          raised
-          containerStyle={{marginBottom: 10, width: '100%'}}
-          buttonStyle={{
-            backgroundColor: colors.btn_bg_theme_color,
-            borderRadius: 0,
-          }}
-          titleStyle={{
-            fontFamily: text.font,
-            color: colors.btn_text_theme_color,
-          }}
-          title={I18n.t('update_information')}
-          onPress={() =>
+        <DesigneratBtn
+          handleClick={() =>
             dispatch(
               updateUser({
                 id: auth.id,
@@ -284,6 +239,7 @@ const UserEditFormWidget = ({showIcon = true}) => {
               }),
             )
           }
+          title={I18n.t('update_information')}
         />
       </View>
     </KeyBoardContainer>
@@ -294,4 +250,12 @@ export default UserEditFormWidget;
 
 UserEditFormWidget.propTypes = {};
 
-const styles = StyleSheet.create({});
+const styles = StyleSheet.create({
+  titleLabelStyle: {
+    fontFamily: text.font,
+    fontSize: text.medium,
+    paddingLeft: 10,
+    paddingRight: 10,
+    textAlign: 'left',
+  },
+});

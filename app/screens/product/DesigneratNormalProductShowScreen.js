@@ -59,8 +59,6 @@ const DesineratNormalProductShowScreen = () => {
     }
   };
 
-  console.log('cartItem', cartItem);
-
   return (
     <BgContainer showImage={false} white={true}>
       <KeyBoardContainer behavior="position" handleRefresh={handleRefresh}>

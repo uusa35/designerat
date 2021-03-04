@@ -50,7 +50,7 @@ const ActionBtnWidget = ({visible = false}) => {
         <ActionButton.Item
           buttonColor={colors.btn_bg_theme_color}
           title={I18n.t('cart')}
-          onPress={() => navigate('CartIndex')}
+          onPress={() => navigate('CartTab')}
           textStyle={styles.title}>
           <Icon
             name="cart"

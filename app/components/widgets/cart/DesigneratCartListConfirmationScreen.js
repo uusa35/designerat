@@ -59,6 +59,8 @@ const DesigneratCartListConfirmationScreen = ({
   } = route.params;
   const [checked, setChecked] = useState(false);
 
+  console.log('the address', cAddress);
+
   const handleCashOnDelivery = () => {
     return Alert.alert(
       I18n.t('order_confirmation'),

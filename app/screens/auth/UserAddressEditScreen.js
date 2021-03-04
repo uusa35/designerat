@@ -10,13 +10,15 @@ import {GlobalValuesContext} from '../../redux/GlobalValuesContext';
 import {text} from '../../constants/sizes';
 import DesigneratBtn from '../../components/widgets/Button/DesigneratBtn';
 import {updateAddress} from '../../redux/actions/user';
-import {useDispatch} from 'react-redux';
+import {useDispatch, useSelector} from 'react-redux';
+import shipmentCountry from '../../redux/reducers/shipmentCountry';
 
 const UserAddressEditScreen = ({showLabel = true}) => {
   const navigation = useNavigation();
   const dispatch = useDispatch();
   const route = useRoute();
   const {colors} = useContext(GlobalValuesContext);
+  const {shipmentCountry} = useSelector((state) => state);
   const {
     name,
     content,
@@ -35,6 +37,7 @@ const UserAddressEditScreen = ({showLabel = true}) => {
   const [addBlock, setAddBlock] = useState(block);
   const [addStreet, setAddStreet] = useState(street);
   const [addBuilding, setAddBuilding] = useState(building);
+
   return (
     <BgContainer showImage={false}>
       <KeyBoardContainer>
@@ -134,15 +137,15 @@ const UserAddressEditScreen = ({showLabel = true}) => {
 
           <Input
             placeholder={I18n.t('building_or_house')}
-            containerStyle={{maxHeight: 100}}
             value={addBuilding ? addBuilding : null}
+            containerStyle={{maxHeight: 100}}
             inputContainerStyle={[widgetStyles.inputContainerStyle]}
             inputStyle={widgetStyles.inputStyle}
-            label={showLabel ? I18n.t('building_or_house') : null}
             labelStyle={[
               styles.titleLabelStyle,
               {color: colors.main_theme_color, paddingBottom: 10},
             ]}
+            label={showLabel ? I18n.t('building_or_house') : null}
             shake={true}
             keyboardType="default"
             onChangeText={(text) => setAddBuilding(text)}
@@ -158,6 +161,10 @@ const UserAddressEditScreen = ({showLabel = true}) => {
                   street: addStreet,
                   building: addBuilding,
                   id,
+                  country_name: country_name
+                    ? country_name
+                    : shipmentCountry.slug,
+                  country_id: country_id ? country_id : shipmentCountry.id,
                 }),
               )
             }
