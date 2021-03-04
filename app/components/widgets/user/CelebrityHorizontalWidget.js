@@ -6,15 +6,20 @@ import FastImage from 'react-native-fast-image';
 import PropTypes from 'prop-types';
 import {getCelebrity, getSearchCelebrities} from '../../../redux/actions/user';
 import {Icon} from 'react-native-elements';
-import {isRTL} from './../../../I18n';
+import I18n, {isRTL} from './../../../I18n';
 import widgetStyles from './../widgetStyles';
 import {
+  iconSizes,
   rightHorizontalContentInset,
   touchOpacity,
+  userWidget,
 } from '../../../constants/sizes';
 import {images} from '../../../constants/images';
 import {useDispatch, useSelector} from 'react-redux';
 import {isEmpty} from 'lodash';
+import {APP_CASE} from '../../../../app.json';
+import {isIOS} from '../../../constants';
+import ImageLoaderContainer from '../ImageLoaderContainer';
 
 const CelebrityHorizontalWidget = ({
   elements,
@@ -22,6 +27,8 @@ const CelebrityHorizontalWidget = ({
   title,
   name,
   searchParams,
+  rounded = false,
+  showAll = false,
 }) => {
   const dispatch = useDispatch();
   const {colors} = useSelector((state) => state.settings);
@@ -50,12 +57,29 @@ const CelebrityHorizontalWidget = ({
                 {title}
               </Text>
             </View>
-            <Icon
-              type="entypo"
-              name={isRTL ? 'chevron-thin-left' : 'chevron-thin-right'}
-              size={20}
-              color={colors.header_one_theme_color}
-            />
+            {showAll && (
+              <View
+                style={{
+                  flexDirection: 'row',
+                  alignItems: 'center',
+                  justifyContent: 'center',
+                  alignContent: 'center',
+                }}>
+                <Text
+                  style={[
+                    widgetStyles.headerThree,
+                    {color: colors.header_one_theme_color},
+                  ]}>
+                  {I18n.t('show_all')}
+                </Text>
+                <Icon
+                  type="entypo"
+                  name={isRTL ? 'chevron-thin-left' : 'chevron-thin-right'}
+                  size={iconSizes.smallest}
+                  color={colors.header_one_theme_color}
+                />
+              </View>
+            )}
           </TouchableOpacity>
           <ScrollView
             horizontal={true}
@@ -81,14 +105,19 @@ const CelebrityHorizontalWidget = ({
                       }),
                     )
                   }>
-                  <FastImage
-                    source={{
-                      uri: c.thumb,
-                      priority: FastImage.priority.normal,
+                  <ImageLoaderContainer
+                    img={c.thumb}
+                    style={{
+                      width: userWidget[APP_CASE].medium.width,
+                      height: userWidget[APP_CASE].medium.height,
+                      borderRadius:
+                        isIOS && rounded
+                          ? userWidget[APP_CASE].medium.width / 2
+                          : !isIOS
+                          ? userWidget[APP_CASE].medium.width * 2
+                          : 0,
                     }}
-                    loadingIndicatorSource={images.logo}
-                    style={styles.image}
-                    resizeMode="contain"
+                    resizeMode="cover"
                   />
                   {showName ? (
                     <Text

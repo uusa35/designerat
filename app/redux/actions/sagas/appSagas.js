@@ -32,7 +32,7 @@ export function* startAppBootStrap() {
 
 export function* goBackBtnScenario(action) {
   if (action.payload) {
-    yield put(RootNavigation.back());
+    RootNavigation.back();
   } else {
     Alert.alert(I18n.t('do_you_want_to_exit_the_app'), '', [
       {
@@ -48,14 +48,8 @@ export function* goBackBtnScenario(action) {
 }
 
 export function* startResetStoreScenario() {
-  yield all([
-    put(
-      RootNavigation.navigate({
-        routeName: 'Home',
-      }),
-    ),
-    put({type: actions.TOGGLE_BOOTSTRAPPED, payload: false}),
-  ]);
+  RootNavigation.navigate('Home');
+  yield all([put({type: actions.TOGGLE_BOOTSTRAPPED, payload: false})]);
   PersistStore.purge();
   yield delay(1000);
   yield call(startAppBootStrap);

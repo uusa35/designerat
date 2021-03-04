@@ -1,5 +1,5 @@
-import React, {useContext} from 'react';
-import {View, Text, TouchableOpacity} from 'react-native';
+import React, {useContext, useState} from 'react';
+import {View, Text, TouchableOpacity, StyleSheet} from 'react-native';
 import widgetStyles from '../../components/widgets/widgetStyles';
 import BgContainer from '../../components/containers/BgContainer';
 import {useDispatch, useSelector} from 'react-redux';
@@ -16,12 +16,15 @@ import {
 } from '../../redux/actions/user';
 import {useNavigation} from '@react-navigation/native';
 import {themeColors} from '../../constants/colors';
+import ConfirmationModal from '../../components/ConfirmationModal';
 
 const UserAddressIndexScreen = () => {
   const {auth, address} = useSelector((state) => state);
   const {colors} = useContext(GlobalValuesContext);
   const dispatch = useDispatch();
   const navigation = useNavigation();
+  const [modalVisible, setModalVisible] = useState(false);
+  const [deleteId, setDeleteId] = useState(null);
   return (
     <BgContainer showImage={false}>
       <Text
@@ -81,7 +84,10 @@ const UserAddressIndexScreen = () => {
               </TouchableOpacity>
               {d.name !== 'address_one' && (
                 <TouchableOpacity
-                  onPress={() => dispatch(deleteAddress(d.id))}
+                  onPress={() => {
+                    setDeleteId(d.id);
+                    setModalVisible(true);
+                  }}
                   style={{
                     borderWidth: 0.5,
                     padding: 10,
@@ -98,9 +104,26 @@ const UserAddressIndexScreen = () => {
             </View>
           </View>
         ))}
+        <ConfirmationModal
+          handleClick={() => dispatch(deleteAddress(deleteId))}
+          confirmTitle="confirm"
+          message={I18n.t('confirm_delete_address')}
+          modalVisible={modalVisible}
+          setModalVisible={setModalVisible}
+        />
       </View>
     </BgContainer>
   );
 };
 
 export default UserAddressIndexScreen;
+
+const styles = StyleSheet.create({
+  absolute: {
+    position: 'absolute',
+    top: 0,
+    left: 0,
+    bottom: 0,
+    right: 0,
+  },
+});

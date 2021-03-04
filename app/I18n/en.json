@@ -701,7 +701,8 @@
   "address_updated" : "Address updated successfully",
   "address_deleted" : "Address deleted successfully",
   "address_one" : "Address One",
-  "address_changed" : "Address activated with current order."
+  "address_changed" : "Address activated with current order.",
+  "confirm_delete_address" : "Confirm delete address?"
 
 }
 

@@ -18,10 +18,6 @@ import ProductSearchForm from '../../components/widgets/search/ProductSearchForm
 import BgContainer from '../../components/containers/BgContainer';
 import AppHomeConfigComponent from '../../components/containers/AppHomeConfigComponent';
 import {bottomContentInset} from '../../constants/sizes';
-import {isIOS} from '../../constants';
-import AppContainer from '../../components/containers/AppContainer';
-import CompanyCategoryHorizontalWidget from '../../components/widgets/category/CompanyCategoryHorizontalWidget';
-import ExpoDesignerHorizontalWidget from '../../components/widgets/user/ExpoDesignerHorizontalWidget';
 
 const DesigneratHomeScreen = () => {
   const {
@@ -76,15 +72,18 @@ const DesigneratHomeScreen = () => {
           />
         }>
         <MainSliderWidget elements={slides} />
-        {homeDesigners && (
-          <DesignersHorizontalWidget
-            elements={homeDesigners}
+        {homeCelebrities && (
+          <CelebrityHorizontalWidget
+            elements={homeCelebrities}
             showName={true}
-            type="designer"
-            title={I18n.t('celebrities')}
             showAll={true}
-            rounded={false}
-            searchParams={{is_designer: 1, country_id: country.id}}
+            name="celebrities"
+            title={I18n.t('celebrities')}
+            searchParams={{
+              is_celebrity: 1,
+              country_id: country.id,
+              on_home: true,
+            }}
           />
         )}
         {homeCompanies && (
@@ -109,57 +108,18 @@ const DesigneratHomeScreen = () => {
             searchParams={{is_designer: 1, country_id: country.id}}
           />
         )}
-        {homeCategories && (
-          <ProductCategoryHorizontalRoundedWidget
-            elements={homeCategories}
+        {homeDesigners && (
+          <DesignersHorizontalWidget
+            elements={homeDesigners}
             showName={true}
-            title={I18n.t('categories')}
-            type="products"
-          />
-        )}
-        {homeCelebrities && (
-          <CelebrityHorizontalWidget
-            elements={homeCelebrities}
-            showName={true}
-            name="celebrities"
-            title={I18n.t('celebrities')}
-            searchParams={{
-              is_celebrity: 1,
-              country_id: country.id,
-              on_home: true,
-            }}
-          />
-        )}
-        {homeProducts && (
-          <ProductHorizontalWidget
-            elements={homeProducts}
-            showName={true}
-            title={I18n.t('featured_products')}
-            searchParams={{on_home: 1, country_id: country.id}}
-          />
-        )}
-        {!validate.isEmpty(brands) && validate.isArray(brands) && (
-          <BrandHorizontalWidget
-            elements={brands}
-            showName={false}
-            title={I18n.t('brands')}
-          />
-        )}
-        {!validate.isEmpty(services) && (
-          <ServiceHorizontalWidget
-            elements={services}
-            showName={true}
-            title={I18n.t('our_services')}
+            type="designer"
+            title={I18n.t('designers')}
+            showAll={true}
+            rounded={false}
+            searchParams={{is_designer: 1, country_id: country.id}}
           />
         )}
       </ScrollView>
-      {show_commercials && (
-        <View style={{flex: 0.2}}>
-          {!validate.isEmpty(commercials) && (
-            <FixedCommercialSliderWidget sliders={commercials} />
-          )}
-        </View>
-      )}
     </BgContainer>
   );
 };

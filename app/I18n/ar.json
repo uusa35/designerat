@@ -735,6 +735,7 @@
   "address_updated" : "تم تحديث العنوان بنجاح",
   "address_deleted" : "تم حذف العنوان بنجاح",
   "address_one" : "Address One",
-  "address_changed" : "تم تغير العنوان المرتبط بالطلب"
+  "address_changed" : "تم تغير العنوان المرتبط بالطلب",
+  "confirm_delete_address" : "تأكيد حذف العنوان ؟"
 
 }
