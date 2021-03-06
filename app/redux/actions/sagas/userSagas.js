@@ -94,17 +94,12 @@ export function* startGetShopperScenario(action) {
         yield call(startGoogleAnalyticsScenario, {
           payload: {type: 'User', element},
         });
-        yield put(
-          RootNavigation.navigate({
-            routeName: 'ShopperShow',
-            params: {
-              name: element.slug,
-              id: element.id,
-              model: 'user',
-              type: 'shopper',
-            },
-          }),
-        );
+        RootNavigation.navigate('ShopperShow', {
+          name: element.slug,
+          id: element.id,
+          model: 'user',
+          type: 'shopper',
+        });
       }
       yield call(disableLoadingProfile);
     } else {
@@ -146,31 +141,12 @@ export function* startGetCompanyScenario(action) {
         yield call(startGoogleAnalyticsScenario, {
           payload: {type: 'User', element},
         });
-        if (HOMEKEY) {
-          yield put(
-            RootNavigation.navigate({
-              routeName: 'CompanyClassifiedShow',
-              params: {
-                name: element.slug,
-                id: element.id,
-                model: 'user',
-                type: 'company',
-              },
-            }),
-          );
-        } else {
-          yield put(
-            RootNavigation.navigate({
-              routeName: 'CompanyShow',
-              params: {
-                name: element.slug,
-                id: element.id,
-                model: 'user',
-                type: 'company',
-              },
-            }),
-          );
-        }
+        RootNavigation.navigate('CompanyShow', {
+          name: element.slug,
+          id: element.id,
+          model: 'user',
+          type: 'company',
+        });
       }
     } else {
       yield put({type: actions.SET_COMPANY, payload: {}});
@@ -231,17 +207,12 @@ export function* startGetUserScenario(action) {
     const element = yield call(api.getUser, action.payload);
     if (!validate.isEmpty(element) && validate.isObject(element)) {
       yield put({type: actions.SET_USER, payload: element});
-      yield put(
-        RootNavigation.navigate({
-          routeName: 'DesignerShow',
-          params: {
-            name: element.slug,
-            id: element.id,
-            model: 'user',
-            type: 'user',
-          },
-        }),
-      );
+      RootNavigation.navigate('DesignerShow', {
+        name: element.slug,
+        id: element.id,
+        model: 'user',
+        type: 'user',
+      });
     }
   } catch (e) {
     // if (__DEV__) {
@@ -257,12 +228,7 @@ export function* startGetVideoScenario(action) {
     const element = yield call(api.getVideo, action.payload);
     if (!validate.isEmpty(element) && validate.isObject(element)) {
       yield put({type: actions.SET_VIDEO, payload: element});
-      yield put(
-        RootNavigation.navigate({
-          routeName: 'VideoShow',
-          params: {name: element.name},
-        }),
-      );
+      RootNavigation.navigate('VideoShow', {name: element.name});
     }
   } catch (e) {
     // if (__DEV__) {
@@ -491,14 +457,9 @@ export function* startGetCelebritiesScenario(action) {
         put({type: actions.SET_SEARCH_PARAMS, payload: searchParams}),
       ]);
       if (!validate.isEmpty(redirect) && redirect) {
-        yield put(
-          RootNavigation.navigate({
-            routeName: 'CelebrityIndex',
-            params: {
-              name: action.payload.name,
-            },
-          }),
-        );
+        RootNavigation.navigate('CelebrityIndex', {
+          name: action.payload.name,
+        });
       }
     } else {
       yield put({type: actions.SET_CELEBRITIES, payload: []});
@@ -548,14 +509,9 @@ export function* startGetHomeCompaniesScenario(action) {
     if (!validate.isEmpty(elements) && validate.isArray(elements)) {
       yield put({type: actions.SET_HOME_COMPANIES, payload: elements});
       if (!validate.isEmpty(redirect) && redirect) {
-        yield put(
-          RootNavigation.navigate({
-            routeName: 'CompanyIndex',
-            params: {
-              name: I18n.t('companies'),
-            },
-          }),
-        );
+        RootNavigation.navigate('CompanyIndex', {
+          name: I18n.t('companies'),
+        });
       }
     } else {
       yield put({type: actions.SET_HOME_COMPANIES, payload: []});

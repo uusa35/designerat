@@ -3,7 +3,7 @@ import {iconSizes, text} from '../../constants/sizes';
 import {Icon, Input} from 'react-native-elements';
 import React from 'react';
 
-const TopSearchInput = ({search, setSearch}) => {
+const TopSearchInput = ({search = '', setSearch}) => {
   return (
     <Input
       placeholder={I18n.t('search')}

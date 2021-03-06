@@ -8,7 +8,7 @@ import {HOMEKEY} from './../../app';
 
 const ContactusScreen = () => {
   return (
-    <BgContainer showImage={!HOMEKEY}>
+    <BgContainer showImage={false}>
       <ScrollView
         horizontal={false}
         automaticallyAdjustContentInsets={true}

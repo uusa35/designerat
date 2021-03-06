@@ -23,7 +23,7 @@ import validate from 'validate.js';
 import {HOMEKEY, ESCRAP} from './../../app';
 import {useSelector, useDispatch} from 'react-redux';
 import AppContainer from './containers/AppContainer';
-import {TabActions} from '@react-navigation/native';
+import {TabActions, DrawerActions} from '@react-navigation/native';
 
 const DesigneratSideMenu = ({showLogo = true, navigation}) => {
   const {logo, company, menu_bg, youtube, colors, terms, policy} = useSelector(
@@ -118,9 +118,10 @@ const DesigneratSideMenu = ({showLogo = true, navigation}) => {
             ) : null}
             {!guest ? (
               <TouchableOpacity
-                onPress={() =>
-                  navigation.dispatch(TabActions.jumpTo('SettingTab'))
-                }
+                onPress={() => {
+                  navigation.dispatch(DrawerActions.toggleDrawer());
+                  navigation.dispatch(TabActions.jumpTo('SettingTab'));
+                }}
                 style={styles.menuBtn}>
                 <Icon
                   name="gear"
