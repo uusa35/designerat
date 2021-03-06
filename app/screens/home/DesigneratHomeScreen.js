@@ -108,17 +108,6 @@ const DesigneratHomeScreen = () => {
             searchParams={{is_designer: 1, country_id: country.id}}
           />
         )}
-        {homeDesigners && (
-          <DesignersHorizontalWidget
-            elements={homeDesigners}
-            showName={true}
-            type="designer"
-            title={I18n.t('designers')}
-            showAll={true}
-            rounded={false}
-            searchParams={{is_designer: 1, country_id: country.id}}
-          />
-        )}
       </ScrollView>
     </BgContainer>
   );
