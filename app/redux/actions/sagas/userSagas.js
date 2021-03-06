@@ -702,7 +702,7 @@ export function* startDeleteAddressScenario(action) {
   try {
     const element = yield call(api.deleteAddress, action.payload);
     if (!validate.isEmpty(element) && validate.isObject(element)) {
-      // yield put({type: SET_ADDRESS, payload: element});
+      yield call(startReAuthenticateScenario);
     } else {
       throw element;
     }

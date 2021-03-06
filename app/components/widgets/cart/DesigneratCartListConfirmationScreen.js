@@ -26,6 +26,7 @@ import widgetStyles from '../widgetStyles';
 import {adjustColor} from '../../../helpers';
 import {
   CREATE_MYFATOORAH_PAYMENT_URL,
+  CREATE_PAYMENT_URL,
   CREATE_TAP_PAYMENT_URL,
 } from '../../../redux/actions/types';
 import DesigneratBtn from '../Button/DesigneratBtn';
@@ -58,8 +59,6 @@ const DesigneratCartListConfirmationScreen = ({
     area_id,
   } = route.params;
   const [checked, setChecked] = useState(false);
-
-  console.log('the address', cAddress);
 
   const handleCashOnDelivery = () => {
     return Alert.alert(
@@ -443,70 +442,74 @@ const DesigneratCartListConfirmationScreen = ({
             title={I18n.t('cash_on_delivery')}
           />
         )}
-        <DesigneratBtn
-          disabled={!checked}
-          handleClick={() => {
-            dispatch({
-              type: CREATE_MYFATOORAH_PAYMENT_URL,
-              payload: {
-                name: cName,
-                email: cEmail,
-                mobile: cMobile,
-                address: cAddress,
-                block: cBlock,
-                building: cBuilding,
-                street: cStreet,
-                area: cArea,
-                area_id,
-                country_id,
-                cart,
-                price: total,
-                net_price: grossTotal,
-                shipment_fees: shipmentFees,
-                cash_on_delivery: settings.cash_on_delivery,
-                coupon_id: !isEmpty(coupon) ? coupon.id : null,
-                discount: !isEmpty(coupon) ? coupon.value : 0,
-                notes: cNotes,
-                payment_method: isIOS
-                  ? 'IOS - My Fatoorah'
-                  : 'Android - My Fatoorah',
-              },
-            });
-          }}
-          title={I18n.t('pay_myfatoorah')}
-        />
-        <DesingeratBtn
-          disabled={!checked}
-          handleClick={() => {
-            dispatch({
-              type: CREATE_TAP_PAYMENT_URL,
-              payload: {
-                name: cName,
-                email: cEmail,
-                mobile: cMobile,
-                address: cAddress,
-                block: cBlock,
-                building: cBuilding,
-                street: cStreet,
-                area: cArea,
-                area_id,
-                country_id,
-                cart,
-                price: total,
-                net_price: grossTotal,
-                shipment_fees: shipmentFees,
-                cash_on_delivery: settings.cash_on_delivery,
-                coupon_id: !isEmpty(coupon) ? coupon.id : null,
-                discount: !isEmpty(coupon) ? coupon.value : 0,
-                notes: cNotes,
-                payment_method: isIOS
-                  ? 'IOS - My Fatoorah'
-                  : 'Android - My Fatoorah',
-              },
-            });
-          }}
-          title={I18n.t('go_tap')}
-        />
+        {settings.payment_method === 'myfatoorah' && (
+          <DesigneratBtn
+            disabled={!checked}
+            handleClick={() => {
+              dispatch({
+                type: CREATE_MYFATOORAH_PAYMENT_URL,
+                payload: {
+                  name: cName,
+                  email: cEmail,
+                  mobile: cMobile,
+                  address: cAddress,
+                  block: cBlock,
+                  building: cBuilding,
+                  street: cStreet,
+                  area: cArea,
+                  area_id,
+                  country_id,
+                  cart,
+                  price: total,
+                  net_price: grossTotal,
+                  shipment_fees: shipmentFees,
+                  cash_on_delivery: settings.cash_on_delivery,
+                  coupon_id: !isEmpty(coupon) ? coupon.id : null,
+                  discount: !isEmpty(coupon) ? coupon.value : 0,
+                  notes: cNotes,
+                  payment_method: isIOS
+                    ? 'IOS - My Fatoorah'
+                    : 'Android - My Fatoorah',
+                },
+              });
+            }}
+            title={I18n.t('go_to_payment_page')}
+          />
+        )}
+        {settings.payment_method === 'tap' && (
+          <DesingeratBtn
+            disabled={!checked}
+            handleClick={() => {
+              dispatch({
+                type: CREATE_TAP_PAYMENT_URL,
+                payload: {
+                  name: cName,
+                  email: cEmail,
+                  mobile: cMobile,
+                  address: cAddress,
+                  block: cBlock,
+                  building: cBuilding,
+                  street: cStreet,
+                  area: cArea,
+                  area_id,
+                  country_id,
+                  cart,
+                  price: total,
+                  net_price: grossTotal,
+                  shipment_fees: shipmentFees,
+                  cash_on_delivery: settings.cash_on_delivery,
+                  coupon_id: !isEmpty(coupon) ? coupon.id : null,
+                  discount: !isEmpty(coupon) ? coupon.value : 0,
+                  notes: cNotes,
+                  payment_method: isIOS
+                    ? 'IOS - My Fatoorah'
+                    : 'Android - My Fatoorah',
+                },
+              });
+            }}
+            title={I18n.t('go_to_payment_page')}
+          />
+        )}
         <DesingeratBtn
           handleClick={() => dispatch(clearCart())}
           title={I18n.t('clear_cart')}

@@ -618,13 +618,11 @@ export async function updateAddress(params) {
 }
 
 export async function deleteAddress(params) {
-  console.log('params', params);
   const {id, api_token} = params;
   return await axiosInstance
     .delete(`address/${id}`, {data: {id, api_token}})
     .then((r) => r.data)
-    .catch((e) => console.log('e', e));
-  // .catch((e) => e.response.date.message);
+    .catch((e) => e.response.data.message);
 }
 
 export async function getRoles() {

@@ -25,6 +25,7 @@ const UserAddressIndexScreen = () => {
   const navigation = useNavigation();
   const [modalVisible, setModalVisible] = useState(false);
   const [deleteId, setDeleteId] = useState(null);
+
   return (
     <BgContainer showImage={false}>
       <Text
@@ -84,6 +85,7 @@ const UserAddressIndexScreen = () => {
               </TouchableOpacity>
               {d.name !== 'address_one' && (
                 <TouchableOpacity
+                  disabled={d.id === address.id}
                   onPress={() => {
                     setDeleteId(d.id);
                     setModalVisible(true);
@@ -94,7 +96,10 @@ const UserAddressIndexScreen = () => {
                     marginLeft: 10,
                     borderColor: colors.btn_bg_theme_color,
                     borderRadius: text.smallest,
-                    backgroundColor: themeColors.danger,
+                    backgroundColor:
+                      d.id === address.id
+                        ? themeColors.desinerat.darkGray
+                        : themeColors.danger,
                   }}>
                   <Text style={[widgetStyles.headerFour, {color: 'white'}]}>
                     {I18n.t('delete')}
@@ -105,11 +110,15 @@ const UserAddressIndexScreen = () => {
           </View>
         ))}
         <ConfirmationModal
-          handleClick={() => dispatch(deleteAddress(deleteId))}
-          confirmTitle="confirm"
+          handleConfirmClick={() =>
+            dispatch(deleteAddress({id: deleteId, api_token: auth.api_token}))
+          }
+          confirmTitle={I18n.t('confirm')}
           message={I18n.t('confirm_delete_address')}
           modalVisible={modalVisible}
           setModalVisible={setModalVisible}
+          iconName="delete"
+          iconType="antdesign"
         />
       </View>
     </BgContainer>

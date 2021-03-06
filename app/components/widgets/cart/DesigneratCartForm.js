@@ -76,7 +76,6 @@ const DesigneratCartForm = ({
     );
   }, [address]);
 
-  console.log('address', address);
   return (
     <View style={{flexDirection: 'column', width}}>
       <View

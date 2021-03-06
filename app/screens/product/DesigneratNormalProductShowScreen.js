@@ -115,6 +115,7 @@ const DesineratNormalProductShowScreen = () => {
                 }}>
                 <Text
                   style={{
+                    textAlign: 'center',
                     fontFamily: text.font,
                     color: settings.colors.btn_text_theme_color,
                     backgroundColor: settings.colors.btn_bg_theme_color,
@@ -269,13 +270,6 @@ const DesineratNormalProductShowScreen = () => {
     </BgContainer>
   );
 };
-
-// DesineratNormalProductShowScreen.navigationOptions = ({navigation}) => ({
-//   headerTransparent: navigation.state.params.headerBg,
-//   headerStyle: {
-//     backgroundColor: navigation.state.params.headerBgColor
-//   }
-// });
 
 export default DesineratNormalProductShowScreen;
 

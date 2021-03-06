@@ -84,7 +84,11 @@ export const HeaderLeft = ({
                 position: 'absolute',
                 top: -4,
                 right: -4,
-                opacity: 0.8,
+                opacity: 0.9,
+              }}
+              badgeStyle={{
+                backgroundColor: colors.btn_bg_theme_color,
+                color: colors.footer_theme_color,
               }}
             />
           ) : null}

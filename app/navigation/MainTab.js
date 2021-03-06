@@ -142,6 +142,10 @@ const MainTab = () => {
             />
           ),
           tabBarBadge: cartLength ? cartLength : null,
+          tabBarBadgeStyle: {
+            backgroundColor: colors.btn_bg_theme_color,
+            color: colors.footer_theme_color,
+          },
         })}
       />
       <Tab.Screen

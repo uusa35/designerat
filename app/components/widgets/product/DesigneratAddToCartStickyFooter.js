@@ -49,7 +49,7 @@ const DesigneratAddToCartStickyFooter = ({
         disabled={disabled}
         style={{
           backgroundColor: disabled
-            ? adjustColor(colors.footer_bg_theme_color, 50)
+            ? adjustColor(colors.footer_bg_theme_color, 90)
             : colors.footer_bg_theme_color,
           flex: 0.7,
           height: '100%',
@@ -61,9 +61,13 @@ const DesigneratAddToCartStickyFooter = ({
           source={icons.cart}
           resizeMode="contain"
           style={{width: 25, height: 25, marginRight: 20}}
+          tintColor={colors.footer_theme_color}
         />
         <Text
-          style={[widgetStyles.headerThree, {color: colors.btn_theme_color}]}>
+          style={[
+            widgetStyles.headerThree,
+            {color: colors.footer_theme_color},
+          ]}>
           {I18n.t('add_to_cart')}
         </Text>
       </TouchableOpacity>

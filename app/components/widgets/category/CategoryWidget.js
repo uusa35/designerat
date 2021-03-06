@@ -45,7 +45,7 @@ const CategoryWidget = ({
             width,
             height: 200,
           }}
-          resizeMode="stretch"
+          resizeMode="cover"
           img={element.thumb}
         />
         {showName && (
@@ -53,7 +53,7 @@ const CategoryWidget = ({
             style={[
               widgetStyles.headerOne,
               {
-                color: colors.header_one_theme_color,
+                color: colors.header_tow_theme_color,
                 position: 'relative',
                 bottom: 50,
                 alignSelf: 'center',

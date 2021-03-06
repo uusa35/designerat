@@ -7,12 +7,14 @@ import {icons} from '../constants/images';
 import FastImage from 'react-native-fast-image';
 import {Icon} from 'react-native-elements';
 import {GlobalValuesContext} from '../redux/GlobalValuesContext';
+import PropTypes from 'prop-types';
+import CelebrityHorizontalWidget from './widgets/user/CelebrityHorizontalWidget';
 
 const ConfirmationModal = ({
   modalVisible = false,
   message = 'Are you sure?',
   setModalVisible,
-  handleClick,
+  handleConfirmClick,
   confirmTitle = 'confirm',
   cancelTitle = 'cancel',
   iconName = 'shopping-bag',
@@ -63,8 +65,11 @@ const ConfirmationModal = ({
                 paddingBottom: 20,
               }}>
               <DesigneratBtn
-                handleClick={() => handleClick}
-                title={I18n.t('delete')}
+                handleClick={() => {
+                  handleConfirmClick();
+                  setModalVisible(!modalVisible);
+                }}
+                title={confirmTitle}
                 width={100}
               />
               <DesigneratBtn
@@ -78,6 +83,12 @@ const ConfirmationModal = ({
       </Modal>
     </View>
   );
+};
+
+ConfirmationModal.propTypes = {
+  handleConfirmClick: PropTypes.func.isRequired,
+  modalVisible: PropTypes.bool.isRequired,
+  setModalVisible: PropTypes.func.isRequired,
 };
 
 const styles = StyleSheet.create({
