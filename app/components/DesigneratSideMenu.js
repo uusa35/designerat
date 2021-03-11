@@ -175,8 +175,8 @@ const DesigneratSideMenu = ({showLogo = true, navigation}) => {
               onPress={() => navigation.navigate('Contactus', {reset: false})}
               style={styles.menuBtn}>
               <Icon
-                name="old-phone"
-                type="entypo"
+                name="perm-phone-msg"
+                type="material"
                 size={iconSizes.smaller}
                 color={colors.menu_theme_color}
               />

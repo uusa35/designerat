@@ -18,6 +18,7 @@ import ProductSearchForm from '../../components/widgets/search/ProductSearchForm
 import BgContainer from '../../components/containers/BgContainer';
 import AppHomeConfigComponent from '../../components/containers/AppHomeConfigComponent';
 import {bottomContentInset} from '../../constants/sizes';
+import CompanyHorizontalWidget from '../../components/widgets/user/CompanyHorizontalWidget';
 
 const DesigneratHomeScreen = () => {
   const {
@@ -42,7 +43,7 @@ const DesigneratHomeScreen = () => {
 
   return (
     <BgContainer showImage={false}>
-      <AppHomeConfigComponent />
+      {/*<AppHomeConfigComponent />*/}
       {settings.splash_on && (
         <IntroductionWidget
           elements={splashes}
@@ -76,13 +77,14 @@ const DesigneratHomeScreen = () => {
           <CelebrityHorizontalWidget
             elements={homeCelebrities}
             showName={true}
+            rounded={false}
             showAll={true}
             name="celebrities"
             title={I18n.t('celebrities')}
             searchParams={{
               is_celebrity: 1,
               country_id: country.id,
-              on_home: true,
+              on_home: 1,
             }}
           />
         )}
@@ -94,7 +96,7 @@ const DesigneratHomeScreen = () => {
             title={I18n.t('elites')}
             rounded={true}
             showAll={true}
-            searchParams={{is_company: 1, country_id: country.id}}
+            searchParams={{is_company: 1, country_id: country.id, on_home: 1}}
           />
         )}
         {homeDesigners && (
@@ -105,7 +107,7 @@ const DesigneratHomeScreen = () => {
             title={I18n.t('designers')}
             showAll={true}
             rounded={false}
-            searchParams={{is_designer: 1, country_id: country.id}}
+            searchParams={{is_designer: 1, country_id: country.id, on_home: 1}}
           />
         )}
       </ScrollView>

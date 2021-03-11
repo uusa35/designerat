@@ -702,7 +702,13 @@
   "address_deleted" : "Address deleted successfully",
   "address_one" : "Address One",
   "address_changed" : "Address activated with current order.",
-  "confirm_delete_address" : "Confirm delete address?"
+  "confirm_delete_address" : "Confirm delete address?",
+  "my_orders" : "My Orders",
+  "my_addresses" : "My Addresses",
+  "follow_us_on_instagram" : "Follow us on Instagram",
+  "rate_us" : "Rate us",
+  "share_our_app" : "Share our app",
+  "welcome" : "Welcome"
 
 }
 

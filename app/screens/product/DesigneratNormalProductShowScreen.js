@@ -139,7 +139,7 @@ const DesineratNormalProductShowScreen = () => {
               borderRadius: 5,
               borderColor: 'lightgrey',
             }}>
-            {product.description && (
+            {product.description ? (
               <View>
                 <Text
                   style={[
@@ -150,8 +150,8 @@ const DesineratNormalProductShowScreen = () => {
                 </Text>
                 <Text style={styles.normalText}>{product.description}</Text>
               </View>
-            )}
-            {product.user && (
+            ) : null}
+            {product.user ? (
               <ProductInfoWidgetElement
                 elementName="designer"
                 name={product.user.slug}
@@ -165,8 +165,8 @@ const DesineratNormalProductShowScreen = () => {
                   )
                 }
               />
-            )}
-            {product.categories && (
+            ) : null}
+            {product.categories ? (
               <ProductInfoWidgetElement
                 elementName="categories"
                 name={first(product.categories).name}
@@ -183,22 +183,22 @@ const DesineratNormalProductShowScreen = () => {
                   )
                 }
               />
-            )}
-            {product.sku && (
+            ) : null}
+            {product.sku ? (
               <ProductInfoWidgetElement
                 elementName="sku"
                 name={product.sku}
                 showIcon={false}
               />
-            )}
-            {product.weight && (
+            ) : null}
+            {product.weight ? (
               <ProductInfoWidgetElement
                 elementName="product_weight"
                 name={`${product.weight} ${I18n.t('kg')}`}
                 showIcon={false}
               />
-            )}
-            {(product.user.fullMobile || mobile) && (
+            ) : null}
+            {product.user.fullMobile || mobile ? (
               <ProductInfoWidgetElement
                 elementName="contactus_order_by_phone"
                 name={
@@ -212,8 +212,8 @@ const DesineratNormalProductShowScreen = () => {
                   )
                 }
               />
-            )}
-            {!validate.isEmpty(shipment_prices) && (
+            ) : null}
+            {!validate.isEmpty(shipment_prices) ? (
               <ProductInfoWidgetElement
                 elementName="shipment_fees"
                 link={() =>
@@ -224,7 +224,7 @@ const DesineratNormalProductShowScreen = () => {
                   })
                 }
               />
-            )}
+            ) : null}
             {product.show_attribute && product.size_chart_image ? (
               <ProductInfoWidgetElement
                 elementName="size_chart"

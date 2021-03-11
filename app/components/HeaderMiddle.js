@@ -8,6 +8,7 @@ import FastImage from 'react-native-fast-image';
 import {useSelector} from 'react-redux';
 import ImageLoaderContainer from './widgets/ImageLoaderContainer';
 import {useRoute} from '@react-navigation/native';
+import {upperFirst} from 'lodash';
 
 export const HeaderMiddle = ({title, showLogo = false}) => {
   const route = useRoute();
@@ -32,7 +33,9 @@ export const HeaderMiddle = ({title, showLogo = false}) => {
             textAlign: 'center',
             color: colors.footer_theme_color,
           }}>
-          {route.params?.name ? route.params.name : title.substring(0, 20)}
+          {upperFirst(
+            route.params?.name ? route.params.name : title.substring(0, 20),
+          )}
         </Text>
       )}
     </View>

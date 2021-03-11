@@ -14,6 +14,9 @@ import {isIOS} from '../../constants';
 
 export const axiosInstance = axios.create({
   baseURL: links.apiUrl,
+  // headers: {
+  //   'Content-Type': 'application/json',
+  // },
 });
 
 if (__DEV__) {

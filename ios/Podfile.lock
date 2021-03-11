@@ -120,7 +120,7 @@ PODS:
     - lottie-ios (~> 3.1.8)
     - React
   - Mixpanel (3.6.5)
-  - OneSignal (3.2.1)
+  - OneSignal (3.2.3)
   - OpenSSL-Universal (1.0.2.20):
     - OpenSSL-Universal/Static (= 1.0.2.20)
   - OpenSSL-Universal/Static (1.0.2.20)
@@ -318,14 +318,14 @@ PODS:
     - React
   - react-native-netinfo (6.0.0):
     - React-Core
-  - react-native-onesignal (4.0.4):
-    - OneSignal (= 3.2.1)
+  - react-native-onesignal (4.0.5):
+    - OneSignal (= 3.2.3)
     - React (< 1.0.0, >= 0.13.0)
   - react-native-pdf (6.3.0):
     - React-Core
   - react-native-restart (0.0.20):
     - React-Core
-  - react-native-safe-area-context (3.1.9):
+  - react-native-safe-area-context (3.2.0):
     - React-Core
   - react-native-spinkit (1.4.1):
     - React
@@ -430,12 +430,12 @@ PODS:
     - React-Core
   - RNScreens (2.18.1):
     - React-Core
-  - RNSentry (2.2.2):
+  - RNSentry (2.3.0):
     - React-Core
     - Sentry (= 6.1.4)
   - RNShare (5.1.4):
     - React-Core
-  - RNSnackbar (2.3.2):
+  - RNSnackbar (2.4.0):
     - React-Core
   - RNSVG (12.1.0):
     - React
@@ -486,6 +486,7 @@ DEPENDENCIES:
   - Folly (from `../node_modules/react-native/third-party-podspecs/Folly.podspec`)
   - glog (from `../node_modules/react-native/third-party-podspecs/glog.podspec`)
   - lottie-react-native (from `../node_modules/lottie-react-native`)
+  - OneSignal (< 4.0, >= 3.0)
   - RCTRequired (from `../node_modules/react-native/Libraries/RCTRequired`)
   - RCTTypeSafety (from `../node_modules/react-native/Libraries/TypeSafety`)
   - RCTYouTube (from `../node_modules/react-native-youtube`)
@@ -728,7 +729,7 @@ SPEC CHECKSUMS:
   lottie-ios: 3a3758ef5a008e762faec9c9d50a39842f26d124
   lottie-react-native: 1fb4ce21d6ad37dab8343eaff8719df76035bd93
   Mixpanel: de8296d8568806ab17bfced0f823c908b808e1e0
-  OneSignal: a804911626ac0eb183ed0420c114923e82f2d2bb
+  OneSignal: 6f152411fc436071461af3514b58731fd8e38b9f
   OpenSSL-Universal: ff34003318d5e1163e9529b08470708e389ffcdd
   RCTRequired: 082f10cd3f905d6c124597fd1c14f6f2655ff65e
   RCTTypeSafety: 8c9c544ecbf20337d069e4ae7fd9a377aadf504b
@@ -747,10 +748,10 @@ SPEC CHECKSUMS:
   react-native-maps: f4b89da81626ad7f151a8bfcb79733295d31ce5c
   react-native-mixpanel: 5d0bcea791fd938c35138be2d00e50e19b9de601
   react-native-netinfo: e849fc21ca2f4128a5726c801a82fc6f4a6db50d
-  react-native-onesignal: 1de5a24906823ec20fb2a6576c7a4e2df869bfc3
+  react-native-onesignal: e071e143c92345aaccddaa7d9f49ef22952994e8
   react-native-pdf: ef641e79a6d550cfabe5d7ec1916799726514c43
   react-native-restart: a01029aadfe8e71f9e8205fdb17da2f0a4472d50
-  react-native-safe-area-context: b6e0e284002381d2ff29fa4fff42b4d8282e3c94
+  react-native-safe-area-context: f0906bf8bc9835ac9a9d3f97e8bde2a997d8da79
   react-native-spinkit: da294fd828216ad211fe36a5c14c1e09f09e62db
   react-native-video: 0bb76b6d6b77da3009611586c7dbf817b947f30e
   react-native-viewpager: 32259f9d01874abdf42b25cf81a1d78d1aa55582
@@ -776,9 +777,9 @@ SPEC CHECKSUMS:
   RNImageCropPicker: e641bf83ac47324994cac139bde74635ec52c17c
   RNReanimated: e03f7425cb7a38dcf1b644d680d1bfc91c3337ad
   RNScreens: f7ad633b2e0190b77b6a7aab7f914fad6f198d8d
-  RNSentry: 490708be01d0871588b33435d144369551ab038d
+  RNSentry: 4f6907f9a4a41058988ebaa17666e9a402b50ff2
   RNShare: 8af5349f05fc042d230674dd650d19789187ff9c
-  RNSnackbar: 2f790a7b5b685e9d3525968990ba3f82354b064c
+  RNSnackbar: be3333a21a453ccc272f41a8add5a71f7d44dfcd
   RNSVG: ce9d996113475209013317e48b05c21ee988d42e
   RNVectorIcons: 31cebfcf94e8cf8686eb5303ae0357da64d7a5a4
   SDWebImage: c666b97e1fa9c64b4909816a903322018f0a9c84
@@ -791,6 +792,6 @@ SPEC CHECKSUMS:
   YogaKit: f782866e155069a2cca2517aafea43200b01fd5a
   YoutubePlayer-in-WKWebView: cfbf46da51d7370662a695a8f351e5fa1d3e1008
 
-PODFILE CHECKSUM: 9c96ea0c9bd83783958e28b752be8ff112e5f793
+PODFILE CHECKSUM: f213543bbbe708a30aaf3f2cc1119c42fafc3051
 
 COCOAPODS: 1.10.1

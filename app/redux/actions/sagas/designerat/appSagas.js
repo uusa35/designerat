@@ -56,26 +56,26 @@ export function* designeratBootStrap() {
       call(startAuthenticatedScenario),
       call(setDeviceId),
       call(setHomeProducts, {payload: {on_home: 1, country_id: country.id}}),
-      call(getOnSaleProducts, {
-        payload: {on_home: 1, country_id: country.id, on_sale: 1},
-      }),
-      call(getBestSaleProducts, {
-        payload: {on_home: 1, country_id: country.id, best_sale: 1},
-      }),
-      call(getHotDealsProducts, {
-        payload: {on_home: 1, country_id: country.id, hot_deals: 1},
-      }),
-      call(getLatestProducts, {
-        payload: {on_home: 1, country_id: country.id, latest: 1},
-      }),
+      // call(getOnSaleProducts, {
+      //   payload: {on_home: 1, country_id: country.id, on_sale: 1},
+      // }),
+      // call(getBestSaleProducts, {
+      //   payload: {on_home: 1, country_id: country.id, best_sale: 1},
+      // }),
+      // call(getHotDealsProducts, {
+      //   payload: {on_home: 1, country_id: country.id, hot_deals: 1},
+      // }),
+      // call(getLatestProducts, {
+      //   payload: {on_home: 1, country_id: country.id, latest: 1},
+      // }),
       call(getPages),
       // call(getTags),
       call(getVideos),
       // call(getProductIndex),
-      call(getHomeServicesScenario, {
-        payload: {page: 1, country_id: country.id, on_home: 1},
-      }),
-      call(getServiceIndex, {payload: {page: 1, country_id: country.id}}),
+      // call(getHomeServicesScenario, {
+      //   payload: {page: 1, country_id: country.id, on_home: 1},
+      // }),
+      // call(getServiceIndex, {payload: {page: 1, country_id: country.id}}),
       call(setHomeSplashes),
       call(startGetColorsScenario),
       call(startGetSizesScenario),

@@ -1,8 +1,8 @@
 import React, {useEffect, useState, Fragment, useMemo} from 'react';
-import {AppState, useColorScheme, StatusBar, Text} from 'react-native';
+import {AppState, useColorScheme, StatusBar, Text, Linking} from 'react-native';
 import codePush from 'react-native-code-push';
 import {useDispatch, useSelector} from 'react-redux';
-import {appBootstrap} from './../../redux/actions';
+import {appBootstrap, goDeepLinking} from './../../redux/actions';
 import validate from 'validate.js';
 import AlertMessage from './../../components/AlertMessage';
 import CountriesList from './../../components/Lists/CountriesList';
@@ -16,8 +16,15 @@ import LoadingOfflineView from './../../components/Loading/LoadingOfflineView';
 import {useNetInfo} from '@react-native-community/netinfo';
 import DeviceInfo from 'react-native-device-info';
 import OldVersionComponent from './../../components/widgets/OldVersionComponenet';
-import {minOldVersionApple, minOldVersionAndroid} from './../../../app.json';
+import {
+  minOldVersionApple,
+  minOldVersionAndroid,
+  DESIGNERAT_ONE_SIGNAL_APP_ID,
+} from './../../../app.json';
 import {isIOS} from './../../constants';
+import OneSignal from 'react-native-onesignal';
+import {getPathForDeepLinking} from '../../helpers';
+import LoadingContainer from '../Loading/LoadingContainer';
 
 const AppContainer = ({children}) => {
   const {
@@ -62,15 +69,9 @@ const AppContainer = ({children}) => {
     axiosInstance.defaults.headers['currency'] = currency.currency_symbol;
     axiosInstance.defaults.headers.common['currency'] =
       currency.currency_symbol;
-    axiosInstance.defaults.headers['country'] = country.name;
-    axiosInstance.defaults.headers.common['country'] = country.name;
+    axiosInstance.defaults.headers['country'] = country.slug;
+    axiosInstance.defaults.headers.common['country'] = country.slug;
   }, []);
-
-  useEffect(() => {
-    if (appState === 'background' && resetApp) {
-    } else {
-    }
-  }, [appState]);
 
   useEffect(() => {
     // codePush.sync({installMode: codePush.InstallMode.IMMEDIATE});
@@ -83,32 +84,16 @@ const AppContainer = ({children}) => {
         }
       }
     });
-    AppState.addEventListener('change', handleAppStateChange);
     if (!bootStrapped) {
       dispatch(appBootstrap());
     }
   }, []);
-
-  // useMemo(() => {
-  //   if (!bootStrapped) {
-  //     setTimeout(() => {
-  //       dispatch({type: TOGGLE_BOOTSTRAPPED, payload: true});
-  //     }, 5000);
-  //   }
-  // }, [bootStrapped]);
 
   useEffect(() => {
     if (isConnected) {
       dispatch(appBootstrap());
     }
   }, [isConnected]);
-
-  const handleAppStateChange = (nextAppState) => {
-    if (appState.match(/inactive|background/) && nextAppState === 'active') {
-      console.log('active');
-    }
-    setAppState(nextAppState);
-  };
 
   return (
     <Fragment>
@@ -131,14 +116,14 @@ const AppContainer = ({children}) => {
                 resetApp,
                 lang,
               }}>
-              <React.Suspense fallback={<SimpleSpinner />}>
+              <>
                 {DeviceInfo.getVersion() >=
                 (isIOS ? minOldVersionApple : minOldVersionAndroid) ? (
                   children
                 ) : (
                   <OldVersionComponent />
                 )}
-              </React.Suspense>
+              </>
               {validate.isBoolean(loginModal) && (
                 <LoginScreenModal
                   logo={logo}

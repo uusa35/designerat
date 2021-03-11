@@ -35,10 +35,13 @@ const CelebrityHorizontalWidget = ({
   return (
     <Fragment>
       {!isEmpty(elements) && (
-        <View style={widgetStyles.container}>
+        <View style={[widgetStyles.container]}>
           <TouchableOpacity
             activeOpacity={touchOpacity}
-            style={widgetStyles.titleContainer}
+            style={[
+              widgetStyles.titleContainer,
+              {height: 40, alignItems: 'center'},
+            ]}
             onPress={() =>
               dispatch(
                 getSearchCelebrities({
@@ -48,7 +51,7 @@ const CelebrityHorizontalWidget = ({
                 }),
               )
             }>
-            <View style={widgetStyles.titleWrapper}>
+            <View style={[widgetStyles.titleWrapper]}>
               <Text
                 style={[
                   widgetStyles.title,
@@ -68,7 +71,7 @@ const CelebrityHorizontalWidget = ({
                 <Text
                   style={[
                     widgetStyles.headerThree,
-                    {color: colors.header_one_theme_color},
+                    {color: colors.header_one_theme_color, paddingBottom: 4},
                   ]}>
                   {I18n.t('show_all')}
                 </Text>
@@ -123,7 +126,7 @@ const CelebrityHorizontalWidget = ({
                     <Text
                       style={[
                         widgetStyles.elementName,
-                        {color: colors.header_tow_theme_color},
+                        {color: colors.header_one_theme_color},
                       ]}>
                       {c.slug}
                     </Text>

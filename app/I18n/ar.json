@@ -736,6 +736,12 @@
   "address_deleted" : "تم حذف العنوان بنجاح",
   "address_one" : "Address One",
   "address_changed" : "تم تغير العنوان المرتبط بالطلب",
-  "confirm_delete_address" : "تأكيد حذف العنوان ؟"
+  "confirm_delete_address" : "تأكيد حذف العنوان ؟",
+  "my_orders" : "طلباتي",
+  "my_addresses" : "عناويني",
+  "follow_us_on_instagram" : "تابعنا على الانستجرام",
+  "rate_us" : "قيمنا",
+  "share_our_app" : "شارك التطبيق",
+  "welcome" : "مرحبا"
 
 }

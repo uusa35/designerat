@@ -18,7 +18,7 @@ const CompanyIndexScreen = () => {
   }, []);
 
   return (
-    <BgContainer showImage={false}>
+    <BgContainer showImage={false} white={true}>
       {ESCRAP ? (
         <ElementsVerticalList
           type="company"

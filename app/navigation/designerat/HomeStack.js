@@ -98,7 +98,13 @@ const HomeStack = () => {
         name={'MainTab'}
         component={MainTab}
       />
-      <Stack.Screen name={'UserShow'} component={CelebrityIndexScreen} />
+      <Stack.Screen
+        name={'CelebrityIndex'}
+        options={{
+          headerTitle: () => <HeaderMiddle title={I18n.t('celebrities')} />,
+        }}
+        component={CelebrityIndexScreen}
+      />
       <Stack.Screen
         name={'DesignerShow'}
         options={{
@@ -123,9 +129,6 @@ const HomeStack = () => {
         name={'CompanyIndex'}
         options={{
           headerTitle: () => <HeaderMiddle title={I18n.t('elites')} />,
-          headerRight: () => (
-            <HeaderRight showCart={true} displayShare={true} />
-          ),
         }}
         component={CompanyIndexScreen}
       />

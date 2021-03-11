@@ -81,6 +81,7 @@ export const userWidget = {
       width: 200,
       height: 200,
     },
+    radius: 5,
   },
   x4Small: {
     width: 100,

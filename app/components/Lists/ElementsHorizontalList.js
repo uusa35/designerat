@@ -19,6 +19,7 @@ import {
 import {
   getCompany,
   getDesigner,
+  getSearchCelebrities,
   getSearchCompanies,
   getSearchDesigners,
 } from '../../redux/actions/user';
@@ -68,6 +69,7 @@ import {
   SET_SERVICES,
 } from '../../redux/actions/types';
 import ImageLoaderContainer from '../widgets/ImageLoaderContainer';
+import Pluralize from 'pluralize';
 
 const ElementsHorizontalList = ({
   elements,
@@ -144,6 +146,21 @@ const ElementsHorizontalList = ({
             .catch((e) => e);
           break;
         case 'designer':
+          return axiosInstance(`search/user?page=${page}`, {
+            params,
+          })
+            .then((r) => {
+              if (!validate.isEmpty(r.data)) {
+                const elementsGroup = uniqBy(items.concat(r.data), 'id');
+                dispatch({type: SET_DESIGNERS, payload: elementsGroup});
+                setItems(elementsGroup);
+              } else {
+                setIsLoading(false);
+              }
+            })
+            .catch((e) => e);
+          break;
+        case 'celebrity':
           return axiosInstance(`search/user?page=${page}`, {
             params,
           })
@@ -248,6 +265,9 @@ const ElementsHorizontalList = ({
         case 'designer':
           dispatch(getSearchDesigners({searchParams: params}));
           break;
+        case 'celebrity':
+          dispatch(getSearchCelebrities({searchParams: params}));
+          break;
         case 'product':
           dispatch(getSearchProducts({searchParams: params, redirect: false}));
           break;
@@ -301,6 +321,15 @@ const ElementsHorizontalList = ({
     dispatch(setElementType(type));
     switch (type) {
       case 'designer':
+        return dispatch(
+          getDesigner({
+            id: element.id,
+            searchParams,
+            redirect: true,
+          }),
+        );
+        break;
+      case 'celebrity':
         return dispatch(
           getDesigner({
             id: element.id,
@@ -416,7 +445,18 @@ const ElementsHorizontalList = ({
             user={item}
             showName={true}
             showDescription={true}
-            showRating={ABATI}
+            showRating={false}
+            rounded={true}
+          />
+        );
+        break;
+      case 'celebrity':
+        return (
+          <UserWidgetHorizontal
+            user={item}
+            showName={true}
+            showDescription={true}
+            showRating={false}
           />
         );
         break;
@@ -450,7 +490,7 @@ const ElementsHorizontalList = ({
     if (showFooter) {
       return !validate.isEmpty(items) ? (
         <NoMoreElements
-          title={I18n.t('no_more_', {item: I18n.t(type)})}
+          title={I18n.t('no_more_', {item: I18n.t(Pluralize(type))})}
           isLoading={isLoading}
         />
       ) : (

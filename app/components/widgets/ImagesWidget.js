@@ -93,7 +93,7 @@ const ImagesWidget = ({
               source={images.loading}
               onLoadEnd={() => setImageLoading(false)}
               style={{width, height}}
-              resizeMode={'center'}>
+              resizeMode={'cover'}>
               <ImageLoaderContainer
                 img={item.large}
                 resizeMode="contain"

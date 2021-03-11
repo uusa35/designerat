@@ -179,7 +179,7 @@ export function* startGetCelebrityScenario(action) {
       }
       if (!validate.isEmpty(redirect) && redirect) {
         yield put(
-          RootNavigation.navigate('UserShow', {
+          RootNavigation.navigate('DesignerShow', {
             name: element.slug,
             id: element.id,
             type: 'designer',

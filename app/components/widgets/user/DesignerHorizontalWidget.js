@@ -65,7 +65,10 @@ const DesignerHorizontalWidget = ({
         <View style={widgetStyles.container}>
           <TouchableOpacity
             activeOpacity={touchOpacity}
-            style={widgetStyles.titleContainer}
+            style={[
+              widgetStyles.titleContainer,
+              {height: 40, alignItems: 'center'},
+            ]}
             onPress={() => handleClick()}>
             <View style={widgetStyles.titleWrapper}>
               <Text
@@ -87,7 +90,7 @@ const DesignerHorizontalWidget = ({
                 <Text
                   style={[
                     widgetStyles.headerThree,
-                    {color: colors.header_one_theme_color},
+                    {color: colors.header_one_theme_color, paddingBottom: 4},
                   ]}>
                   {I18n.t('show_all')}
                 </Text>
@@ -142,7 +145,7 @@ const DesignerHorizontalWidget = ({
                     <Text
                       style={[
                         widgetStyles.elementName,
-                        {color: colors.header_tow_theme_color},
+                        {color: colors.header_one_theme_color},
                       ]}>
                       {c.slug}
                     </Text>

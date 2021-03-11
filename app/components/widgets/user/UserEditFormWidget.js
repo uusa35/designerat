@@ -192,22 +192,6 @@ const UserEditFormWidget = ({showIcon = true}) => {
           </Text>
         </TouchableOpacity>
         <Input
-          disabled={true}
-          inputContainerStyle={[widgetStyles.inputContainerStyle]}
-          inputStyle={widgetStyles.inputStyle}
-          labelStyle={[
-            styles.titleLabelStyle,
-            {color: colors.main_theme_color, paddingBottom: 10},
-          ]}
-          numberOfLines={3}
-          shake={true}
-          label={I18n.t('address')}
-          keyboardType="default"
-          defaultValue={address}
-          onChangeText={(text) => setAddress(text)}
-          placeholder={I18n.t('address')}
-        />
-        <Input
           inputContainerStyle={[widgetStyles.inputContainerStyle]}
           inputStyle={widgetStyles.inputStyle}
           labelStyle={[

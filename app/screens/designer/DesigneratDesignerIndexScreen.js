@@ -15,7 +15,7 @@ const DesigneratDesignerIndexScreen = () => {
   }, []);
 
   return (
-    <BgContainer showImage={false}>
+    <BgContainer showImage={false} white={true}>
       <ElementsHorizontalList
         elements={currentElements}
         type="designer"
