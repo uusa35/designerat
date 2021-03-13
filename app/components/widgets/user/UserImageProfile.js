@@ -55,7 +55,7 @@ const UserImageProfile = ({
       animation="bounceInLeft"
       easing="ease-out"
       style={styles.elementRow}>
-      <ImageLoaderContainer img={medium} style={styles.logo} />
+      {medium && <ImageLoaderContainer img={medium} style={styles.logo} />}
       <View
         style={{
           justifyContent: 'flex-start',

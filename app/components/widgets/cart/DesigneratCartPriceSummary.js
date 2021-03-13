@@ -126,6 +126,7 @@ const DesigeratCartPriceSummary = ({title = I18n.t('total_details')}) => {
         <View
           style={{
             flexDirection: 'row',
+            width: '100%',
             justifyContent: 'space-between',
             alignItems: 'center',
             paddingTop: 20,

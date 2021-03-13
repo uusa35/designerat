@@ -13,6 +13,7 @@ import {clearCart} from '../redux/actions/cart';
 import {useDispatch} from 'react-redux';
 import {GlobalValuesContext} from '../redux/GlobalValuesContext';
 import {iconSizes} from '../constants/sizes';
+import {isRTL} from './../I18n';
 
 export const HeaderBack = ({removeCart = false}) => {
   const navigation = useNavigation();
@@ -31,8 +32,8 @@ export const HeaderBack = ({removeCart = false}) => {
   return (
     <Icon
       type="fontawesome"
-      name="chevron-right"
-      size={iconSizes.smaller}
+      name={isRTL ? 'chevron-right' : 'chevron-left'}
+      size={iconSizes.small}
       // onPress={() => handleBack()}
       onPress={() => handleBack()}
       underlayColor="transparent"

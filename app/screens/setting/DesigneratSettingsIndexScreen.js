@@ -20,21 +20,18 @@ import {
 import {Button, Icon} from 'react-native-elements';
 import I18n from './../../I18n';
 import {changeLang, refetchHomeElements} from '../../redux/actions';
-import {HOMEKEY, MALLR, ABATI, ESCRAP, APP_CASE} from './../../../app';
-import {appUrlIos} from '../../env';
-import PagesList from '../../components/widgets/page/PagesList';
-import {getMyClassifieds} from '../../redux/actions/classified';
+import {APP_CASE} from './../../../app';
 import {reAuthenticate, setRole, submitAuth} from '../../redux/actions/user';
 import BgContainer from '../../components/containers/BgContainer';
 import CopyRightInfo from '../../components/widgets/setting/CopyRightInfo';
 import {isEmpty, first, filter} from 'lodash';
 import {isIOS, width} from './../../constants';
 import widgetStyles from '../../components/widgets/widgetStyles';
-import DesigneratBtn from '../../components/widgets/Button/DesigneratBtn';
 import {icons} from '../../constants/images';
 import FastImage from 'react-native-fast-image';
 import Share from 'react-native-share';
 import {adjustColor} from '../../helpers';
+import {REGISTER_AS_CLIENT} from '../../redux/actions/types';
 
 const DesigneratSettingsIndexScreen = ({navigation}) => {
   const {guest, lang, settings, version, roles, auth} = useSelector(
@@ -52,10 +49,7 @@ const DesigneratSettingsIndexScreen = ({navigation}) => {
   };
 
   const handleRegisterClick = () => {
-    if (!isEmpty(roles)) {
-      dispatch(setRole(first(filter(roles, (r) => r.name === 'Client'))));
-    }
-    return navigation.navigate('Register');
+    dispatch({type: REGISTER_AS_CLIENT, payload: {isClient: false}});
   };
 
   const shareLink = (link) => {
@@ -104,14 +98,15 @@ const DesigneratSettingsIndexScreen = ({navigation}) => {
             alignItems: 'center',
             backgroundColor: adjustColor(colors.btn_bg_theme_color, 215),
           }}
-          onPress={() => navigation.navigate('UserEdit')}
-        >
+          onPress={() =>
+            guest ? handleRegisterClick() : navigation.navigate('UserEdit')
+          }>
           <FastImage
             source={{uri: auth.thumb ? auth.thumb : settings.logo}}
             resizeMode="cover"
             style={{width: 70, height: 70, borderRadius: 70 / 2}}
           />
-          <Pressable
+          <View
             style={{
               paddingTop: 10,
               flexDirection: 'row',
@@ -119,16 +114,18 @@ const DesigneratSettingsIndexScreen = ({navigation}) => {
               alignItems: 'baseline',
             }}>
             <Text style={widgetStyles.headerThree}>{`${I18n.t('welcome')} ${
-              auth.name
+              !guest ? auth.name : ''
             }`}</Text>
-            <Icon
-              color={colors.icon_theme_color}
-              name="pencil"
-              type="material-community"
-              size={iconSizes.smallest}
-              style={{paddingLeft: 10}}
-            />
-          </Pressable>
+            {!guest && (
+              <Icon
+                color={colors.icon_theme_color}
+                name="pencil"
+                type="material-community"
+                size={iconSizes.smallest}
+                style={{paddingLeft: 10}}
+              />
+            )}
+          </View>
         </TouchableOpacity>
         <View
           animation="bounceIn"
@@ -145,6 +142,26 @@ const DesigneratSettingsIndexScreen = ({navigation}) => {
           }}>
           {!guest && (
             <>
+              {auth.role && !auth.role.isClient && (
+                <Pressable
+                  style={{
+                    width: '100%',
+                    flexDirection: 'row',
+                    alignItems: 'center',
+                    height: 60,
+                  }}
+                  onPress={() => navigation.navigate('ProductCreate')}>
+                  <Icon
+                    color={colors.menu_theme_color}
+                    name="add-circle-outline"
+                    type="material"
+                    size={iconSizes.smaller}
+                  />
+                  <Text style={[widgetStyles.headerTow, {paddingLeft: 30}]}>
+                    {I18n.t('add_new_product')}
+                  </Text>
+                </Pressable>
+              )}
               <Pressable
                 style={{
                   width: '100%',

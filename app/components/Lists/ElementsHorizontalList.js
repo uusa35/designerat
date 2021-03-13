@@ -393,10 +393,12 @@ const ElementsHorizontalList = ({
       case 'product':
         if (productGalaryMode) {
           return (
-            <TouchableOpacity onPress={() => handleClick(item)}>
+            <TouchableOpacity
+              onPress={() => handleClick(item)}
+              style={{width: '33%'}}>
               <ImageLoaderContainer
                 img={item.thumb}
-                style={{width: 135, height: 180}}
+                style={{width: '100%', height: 180}}
               />
             </TouchableOpacity>
           );

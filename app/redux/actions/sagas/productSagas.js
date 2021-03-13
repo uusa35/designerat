@@ -198,7 +198,7 @@ export function* startGetProductScenario(action) {
     }
   } catch (e) {
     if (__DEV__) {
-      console.log('e', e);
+      // console.log('e', e);
     }
     yield call(enableWarningMessage, I18n.t('error_while_loading_product'));
   } finally {
@@ -295,7 +295,6 @@ export function* setProductFavorites(productFavorites) {
 export function* startToggleProductFavoriteScenario(action) {
   try {
     const elements = yield call(api.toggleFavorite, action.payload);
-    console.log('favorite', elements);
     if (!validate.isEmpty(elements) && validate.isArray(elements)) {
       yield all([
         put({type: actions.SET_PRODUCT_FAVORITES, payload: elements}),

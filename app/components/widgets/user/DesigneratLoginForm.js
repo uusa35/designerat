@@ -15,6 +15,7 @@ import {APP_CASE} from '../../../../app.json';
 import widgetStyles from './../widgetStyles';
 import {width} from '../../../constants';
 import DesigneratBtn from '../Button/DesigneratBtn';
+import {REGISTER_AS_CLIENT} from '../../../redux/actions/types';
 
 const DesigneratLoginForm = ({showBtns = false, showLabel = false}) => {
   const {roles} = useSelector((state) => state);
@@ -38,10 +39,11 @@ const DesigneratLoginForm = ({showBtns = false, showLabel = false}) => {
   // });
 
   const handleRegisterClick = () => {
-    if (!isEmpty(roles)) {
-      dispatch(setRole(first(filter(roles, (r) => r.name === 'Client'))));
-    }
-    return navigate('Register');
+    // // if (!isEmpty(roles)) {
+    // //   dispatch(setRole(first(filter(roles, (r) => r.name === 'Client'))));
+    // // }
+    // return navigate('RoleIndex');
+    dispatch({type: REGISTER_AS_CLIENT, payload: {isClient: false}});
   };
 
   return (

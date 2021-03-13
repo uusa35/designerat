@@ -32,7 +32,7 @@ import FavoriteIcon from '../favorite/FavoriteIcon';
 
 const ProductWidget = ({
   element,
-  showName = false,
+  showName = true,
   handleClickProductWidget,
   width = '48%',
 }) => {
@@ -98,7 +98,7 @@ const ProductWidget = ({
                 {
                   textAlign: 'center',
                   fontSize: text.small,
-                  color: colors.header_tow_theme_color,
+                  color: colors.header_one_theme_color,
                 },
               ]}>
               {element.name.substring(0, 20)}
@@ -125,7 +125,7 @@ const ProductWidget = ({
                 {
                   textAlign: 'center',
                   fontSize: text.small,
-                  color: colors.header_tow_theme_color,
+                  color: colors.header_one_theme_color,
                   paddingRight: 5,
                   paddingLeft: 5,
                 },

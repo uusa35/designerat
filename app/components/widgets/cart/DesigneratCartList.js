@@ -24,6 +24,7 @@ import {KeyboardAwareScrollView} from 'react-native-keyboard-aware-scroll-view';
 import {
   CREATE_MYFATOORAH_PAYMENT_URL,
   CREATE_TAP_PAYMENT_URL,
+  REGISTER_AS_CLIENT,
 } from '../../../redux/actions/types';
 import KeyBoardContainer from '../../containers/KeyBoardContainer';
 import {useNavigation} from '@react-navigation/native';
@@ -81,6 +82,10 @@ const DesigneratCartList = ({
     setMobile(auth.mobile);
     setAddress(auth.address);
   }, [auth]);
+
+  const handleRegisterClick = () => {
+    dispatch({type: REGISTER_AS_CLIENT, payload: {isClient: true}});
+  };
 
   return (
     <View style={{flexDirection: 'column', width}}>
@@ -204,7 +209,9 @@ const DesigneratCartList = ({
       ) : null}
       <DesigneratBtn
         title={I18n.t('continue')}
-        handleClick={() => navigate('CartIndexForm')}
+        handleClick={() =>
+          guest ? handleRegisterClick() : navigate('CartIndexForm')
+        }
         marginTop={20}
       />
     </View>

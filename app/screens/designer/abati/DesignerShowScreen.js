@@ -116,7 +116,7 @@ const DesignerShowScreen = ({navigation}) => {
               isFanned={designer.isFanned}
               totalFans={designer.totalFans}
               currentRating={designer.rating}
-              medium={designer.medium}
+              medium={designer.banner}
               logo={logo}
               slug={designer.slug}
               type={designer.role.slug}

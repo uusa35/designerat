@@ -648,3 +648,11 @@ export async function getSizes() {
     .then((r) => r.data)
     .catch((e) => e.response.date.message);
 }
+
+export async function submitMobileConfirmationCode(code) {
+  return await axiosInstance
+    .get(`mobile/code`, {params: {code}})
+    .then((r) => r.data)
+    .catch((e) => console.log('eee', e.response));
+  // .catch((e) => e.response.date.message);
+}

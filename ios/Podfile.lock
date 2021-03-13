@@ -336,7 +336,7 @@ PODS:
     - React-Core
   - react-native-viewpager (4.2.4):
     - React-Core
-  - react-native-webview (11.2.3):
+  - react-native-webview (11.2.4):
     - React-Core
   - React-RCTActionSheet (0.63.4):
     - React-Core/RCTActionSheetHeaders (= 0.63.4)
@@ -404,7 +404,7 @@ PODS:
     - React-Core
   - RNCMaskedView (0.1.10):
     - React
-  - RNDeviceInfo (8.0.2):
+  - RNDeviceInfo (8.0.5):
     - React-Core
   - RNFastImage (8.3.4):
     - React-Core
@@ -755,7 +755,7 @@ SPEC CHECKSUMS:
   react-native-spinkit: da294fd828216ad211fe36a5c14c1e09f09e62db
   react-native-video: 0bb76b6d6b77da3009611586c7dbf817b947f30e
   react-native-viewpager: 32259f9d01874abdf42b25cf81a1d78d1aa55582
-  react-native-webview: 6520e3e7b4933de76b95ef542c8d7115cf45b68e
+  react-native-webview: d924ebd615d0d0c0e67dcfc3aa982ed313574b8d
   React-RCTActionSheet: 89a0ca9f4a06c1f93c26067af074ccdce0f40336
   React-RCTAnimation: 1bde3ecc0c104c55df246eda516e0deb03c4e49b
   React-RCTBlob: a97d378b527740cc667e03ebfa183a75231ab0f0
@@ -769,7 +769,7 @@ SPEC CHECKSUMS:
   rn-fetch-blob: f065bb7ab7fb48dd002629f8bdcb0336602d3cba
   RNCAsyncStorage: b03032fdbdb725bea0bd9e5ec5a7272865ae7398
   RNCMaskedView: 5a8ec07677aa885546a0d98da336457e2bea557f
-  RNDeviceInfo: a9601119924a67d2479d3facf04cec7b658f44ed
+  RNDeviceInfo: 7828eb110e3146324c0583c134e59db5d39f7e8b
   RNFastImage: d4870d58f5936111c56218dbd7fcfc18e65b58ff
   RNGestureHandler: a479ebd5ed4221a810967000735517df0d2db211
   RNGoogleSignin: ad866d4c4af2651e36801dd3b7771d7715353499

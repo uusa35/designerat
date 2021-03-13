@@ -96,7 +96,7 @@ const ImagesWidget = ({
               resizeMode={'cover'}>
               <ImageLoaderContainer
                 img={item.large}
-                resizeMode="contain"
+                resizeMode="cover"
                 style={{width, height, position: 'absolute', top: 0}}
               />
               {showLabels && index === 0 ? (

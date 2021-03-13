@@ -6,6 +6,7 @@ export const themeColors = {
   desinerat: {
     bg: '#f7f7f7',
     darkGray: '#dbdbdb',
+    lightGray: '#efefef',
   },
   expo: {
     main: '#43cfd7',

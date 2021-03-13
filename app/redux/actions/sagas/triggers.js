@@ -247,10 +247,24 @@ export function* triggerRegister() {
   yield takeLatest(actions.REGISTER, userSaga.startRegisterScenario);
 }
 
+export function* triggerRegisterClient() {
+  yield takeLatest(
+    actions.REGISTER_AS_CLIENT,
+    userSaga.startRegisterAsClientScenario,
+  );
+}
+
 export function* triggerCompanyRegister() {
   yield takeLatest(
     actions.COMPANY_REGISTER,
     userSaga.startCompanyRegisterScenario,
+  );
+}
+
+export function* triggerSubmitMobileConfirmationCode() {
+  yield takeLatest(
+    actions.SUBMIT_MOBILE_CONFIRMATION_CODE,
+    userSaga.startSubmitMobileConfirmationCode,
   );
 }
 

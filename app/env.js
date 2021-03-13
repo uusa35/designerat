@@ -11,7 +11,7 @@ const appUrl = () => {
   switch (APP_CASE) {
     case 'DESIGNERAT':
       return 'http://mallr.test/';
-    // return 'http://designeraat.com/';
+    // return 'https://designeraat.com/';
     default:
       return 'http://mallr.test/';
   }

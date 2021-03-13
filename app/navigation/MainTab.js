@@ -151,7 +151,7 @@ const MainTab = () => {
       <Tab.Screen
         name="SettingTab"
         component={DesigneratSettingsIndexScreen}
-        options={({route}) => ({
+        options={() => ({
           tabBarLabel: ({focused}) => (
             <TextTabBar
               showLabel={true}

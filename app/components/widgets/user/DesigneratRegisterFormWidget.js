@@ -60,7 +60,7 @@ const DesigneratRegisterFormWidget = ({showLabel = false}) => {
       height: 1000,
       multiple: false,
       cropping: true,
-      freeStyleCropEnabled: true,
+      freeStyleCropEnabled: false,
       includeBase64: true,
       includeExif: true,
       compressImageQuality: 0.5,
@@ -75,15 +75,17 @@ const DesigneratRegisterFormWidget = ({showLabel = false}) => {
 
   const openImagesPicker = () => {
     return ImagePicker.openPicker({
+      width: 1080,
+      height: 1440,
       compressImageMaxWidth: 1080,
       compressImageMaxHeight: 1440,
       multiple: true,
       cropping: true,
-      freeStyleCropEnabled: true,
+      freeStyleCropEnabled: false,
       includeBase64: false,
       includeExif: true,
-      maxFiles: 5,
-      minFiles: 2,
+      maxFiles: 2,
+      minFiles: 1,
       compressImageQuality: 0.5,
       storageOptions: {
         skipBackup: true,
@@ -99,71 +101,71 @@ const DesigneratRegisterFormWidget = ({showLabel = false}) => {
   };
 
   const handleRegister = () => {
-    if (!validate.isEmpty(role) && !role.isClient) {
-      return validateSubmitRegister
-        .validate({
-          name,
-          email,
-          password,
-          mobile,
-          country_id: country.id,
-          address,
-          player_id: playerId,
-          description,
-          image,
-          images,
-          role_id: role.id,
-        })
-        .then((r) => {
-          // ImagePicker.clean()
-          //   .then(() => {
-          // console.log('removed all tmp images from tmp directory');
-          // })
-          // .catch((e) => {
-          // console.log('picker error', e);
-          // });
-          return dispatch(
-            companyRegister({
-              name,
-              email,
-              password,
-              mobile,
-              country_id: country.id,
-              address,
-              player_id: playerId,
-              description,
-              image,
-              images,
-              role_id: role
-                ? role.id
-                : first(filter(roles, (r) => r.isCompany)).id,
-            }),
-          );
-        })
-        .catch((e) => {
-          const {message, item} = first(e.errors);
-          return dispatch(
-            enableErrorMessage(
-              message ? I18n.t(message, {item}) : I18n.t(first(e.errors)),
-            ),
-          );
-        });
-    } else {
-      dispatch(
-        register({
-          name,
-          email,
-          password,
-          mobile,
-          country_id: country.id,
-          address,
-          player_id: playerId,
-          description,
-          is_male: isMale,
-          role_id: role ? role.id : first(filter(roles, (r) => r.isClient)).id,
-        }),
-      );
-    }
+    // if (!validate.isEmpty(role) && !role.isClient) {
+    //   return validateSubmitRegister
+    //     .validate({
+    //       name,
+    //       email,
+    //       password,
+    //       mobile,
+    //       country_id: country.id,
+    //       address,
+    //       player_id: playerId,
+    //       description,
+    //       image,
+    //       images,
+    //       role_id: role.id,
+    //     })
+    //     .then((r) => {
+    //       // ImagePicker.clean()
+    //       //   .then(() => {
+    //       // console.log('removed all tmp images from tmp directory');
+    //       // })
+    //       // .catch((e) => {
+    //       // console.log('picker error', e);
+    //       // });
+    //       return dispatch(
+    //         companyRegister({
+    //           name,
+    //           email,
+    //           password,
+    //           mobile,
+    //           country_id: country.id,
+    //           address,
+    //           player_id: playerId,
+    //           description,
+    //           image,
+    //           images,
+    //           role_id: role
+    //             ? role.id
+    //             : first(filter(roles, (r) => r.isCompany)).id,
+    //         }),
+    //       );
+    //     })
+    //     .catch((e) => {
+    //       const {message, item} = first(e.errors);
+    //       return dispatch(
+    //         enableErrorMessage(
+    //           message ? I18n.t(message, {item}) : I18n.t(first(e.errors)),
+    //         ),
+    //       );
+    //     });
+    // } else {
+    dispatch(
+      register({
+        name,
+        email,
+        password,
+        mobile,
+        country_id: country.id,
+        address,
+        player_id: playerId,
+        description,
+        is_male: isMale,
+        role_id: role ? role.id : first(filter(roles, (r) => r.isClient)).id,
+      }),
+    );
+    // }
   };
 
   return (
@@ -173,33 +175,38 @@ const DesigneratRegisterFormWidget = ({showLabel = false}) => {
         style={{
           width: 50,
           height: 50,
-          marginTop: '3%',
-          marginBottom: '3%',
+          marginTop: '10%',
+          marginBottom: '10%',
           alignSelf: 'center',
         }}
         resizeMode="contain"
       />
-      {(role.isDesigner || role.isCompany) && (
-        <TouchableOpacity
-          onPress={() => openLogoPicker()}
-          style={{width: '100%', marginTop: 0, alignItems: 'center'}}>
-          <ImageLoaderContainer
-            img={image && image.path ? image.path : sampleLogo}
-            style={{
-              width: 120,
-              height: 120,
-              margin: 10,
-              borderWidth: 1,
-              borderColor: 'lightgrey',
-              borderRadius: 120 / 2,
-            }}
-            resizeMode="cover"
-          />
-          <Text style={{fontFamily: text.font, fontSize: text.small}}>
-            {I18n.t('add_logo')}
-          </Text>
-        </TouchableOpacity>
-      )}
+      {/*{(role.isDesigner || role.isCompany) && (*/}
+      {/*  <TouchableOpacity*/}
+      {/*    onPress={() => openLogoPicker()}*/}
+      {/*    style={{*/}
+      {/*      width: '100%',*/}
+      {/*      alignItems: 'center',*/}
+      {/*      marginTop: 20,*/}
+      {/*      marginBottom: 20,*/}
+      {/*    }}>*/}
+      {/*    <ImageLoaderContainer*/}
+      {/*      img={image && image.path ? image.path : sampleLogo}*/}
+      {/*      style={{*/}
+      {/*        width: 120,*/}
+      {/*        height: 120,*/}
+      {/*        margin: 10,*/}
+      {/*        borderWidth: 1,*/}
+      {/*        borderColor: 'lightgrey',*/}
+      {/*        borderRadius: 120 / 2,*/}
+      {/*      }}*/}
+      {/*      resizeMode="cover"*/}
+      {/*    />*/}
+      {/*    <Text style={{fontFamily: text.font, fontSize: text.small}}>*/}
+      {/*      {I18n.t('add_logo')}*/}
+      {/*    </Text>*/}
+      {/*  </TouchableOpacity>*/}
+      {/*)}*/}
       <Input
         placeholder={I18n.t('email') + '*'}
         containerStyle={{marginBottom: 0, paddingBottom: 0, height: 50}}
@@ -305,40 +312,41 @@ const DesigneratRegisterFormWidget = ({showLabel = false}) => {
         isMale={isMale}
         setIsMale={setIsMale}
       />
-      {(role.isDesigner || role.isCompany) && (
-        <Fragment>
-          <Text
-            style={[
-              styles.titleLabelStyle,
-              {
-                color: colors.main_theme_color,
-                paddingBottom: 10,
-                paddingLeft: 20,
-                width: '100%',
-              },
-            ]}>
-            {I18n.t('product_samples')}
-          </Text>
-          <TouchableOpacity
-            onPress={() => openImagesPicker()}
-            style={{width: '100%', marginTop: 0, alignItems: 'center'}}>
-            {validate.isEmpty(first(images)) && (
-              <ImageLoaderContainer
-                img={first(images) ? first(images).path : sampleLogo}
-                style={{
-                  width: 120,
-                  height: 120,
-                  margin: 20,
-                  borderWidth: 1,
-                  borderColor: 'lightgrey',
-                  borderRadius: 120 / 2,
-                }}
-                resizeMode="cover"
-              />
-            )}
-          </TouchableOpacity>
-        </Fragment>
-      )}
+      {/*{(role.isDesigner || role.isCompany) && (*/}
+      {/*  <>*/}
+      {/*    <Text*/}
+      {/*      style={[*/}
+      {/*        styles.titleLabelStyle,*/}
+      {/*        {*/}
+      {/*          color: colors.main_theme_color,*/}
+      {/*          marginTop: 20,*/}
+      {/*          paddingLeft: 15,*/}
+      {/*        },*/}
+      {/*      ]}>*/}
+      {/*      {I18n.t('more_images')}*/}
+      {/*    </Text>*/}
+      {/*    <View style={{backgroundColor: 'white', borderRadius: 5, margin: 15}}>*/}
+      {/*      <TouchableOpacity*/}
+      {/*        onPress={() => openImagesPicker()}*/}
+      {/*        style={{width: '100%', marginTop: 0, alignItems: 'center'}}>*/}
+      {/*        {validate.isEmpty(first(images)) && (*/}
+      {/*          <ImageLoaderContainer*/}
+      {/*            img={first(images) ? first(images).path : sampleLogo}*/}
+      {/*            style={{*/}
+      {/*              width: 120,*/}
+      {/*              height: 120,*/}
+      {/*              margin: 20,*/}
+      {/*              borderWidth: 1,*/}
+      {/*              borderColor: 'lightgrey',*/}
+      {/*              borderRadius: 120 / 2,*/}
+      {/*            }}*/}
+      {/*            resizeMode="cover"*/}
+      {/*          />*/}
+      {/*        )}*/}
+      {/*      </TouchableOpacity>*/}
+      {/*    </View>*/}
+      {/*  </>*/}
+      {/*)}*/}
 
       {!validate.isEmpty(images) && (
         <ScrollView
@@ -387,7 +395,7 @@ const DesigneratRegisterFormWidget = ({showLabel = false}) => {
       <DesigneratBtn
         handleClick={() => handleRegister()}
         marginTop={20}
-        title={I18n.t('login')}
+        title={I18n.t('register')}
       />
 
       <DesigneratBtn

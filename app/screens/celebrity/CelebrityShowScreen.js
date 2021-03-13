@@ -103,7 +103,7 @@ const CelebrityShowScreen = ({navigation}) => {
             isFanned={celebrity.isFanned}
             totalFans={celebrity.totalFans}
             currentRating={celebrity.rating}
-            medium={celebrity.medium}
+            medium={celebrity.banner}
             logo={logo}
             slug={celebrity.slug}
             type={celebrity.role.slug}

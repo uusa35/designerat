@@ -44,34 +44,3 @@ const ProductIndexAllScreen = () => {
 export default ProductIndexAllScreen;
 
 const styles = StyleSheet.create({});
-
-{
-  /*<ProductList*/
-}
-{
-  /*    products={products}*/
-}
-{
-  /*    showName={true}*/
-}
-{
-  /*    searchElements={{}}*/
-}
-{
-  /*    showSearch={true}*/
-}
-{
-  /*    showFooter={true}*/
-}
-{
-  /*    showRefresh={true}*/
-}
-{
-  /*    showSortSearch={true}*/
-}
-{
-  /*    showProductsFilter={true}*/
-}
-{
-  /*/>*/
-}

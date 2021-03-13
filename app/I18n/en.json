@@ -12,7 +12,7 @@
   "Resendpassword": "Resend password",
   "email_placeholder": "Email@domain.com",
   "required": "This field is required",
-  "aboutus": "About us Eng",
+  "aboutus": "About us",
   "checkPhone": "Please check your phone ",
   "ok": "OK",
   "currency": "Ksa ryial",
@@ -708,7 +708,13 @@
   "follow_us_on_instagram" : "Follow us on Instagram",
   "rate_us" : "Rate us",
   "share_our_app" : "Share our app",
-  "welcome" : "Welcome"
+  "welcome" : "Welcome",
+  "app_is_updating_shall_restart_in_few_seconds" : "App is updating. The app will restart in few seconds.",
+  "more_images" : "More Images",
+  "add_new_product" : "Add New Product",
+  "main_image" : "Main Image",
+  "mobile_confirmation" : "Mobile Confirmation",
+  "mobile_confirmation_message" : "Please enter the 4 digits sent to your mobile in order to complete registration process."
 
 }
 

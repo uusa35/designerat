@@ -49,7 +49,7 @@ const AppHomeConfigComponent = () => {
     OneSignal.setLogLevel(6, 0);
     OneSignal.setRequiresUserPrivacyConsent(false);
     OneSignal.promptForPushNotificationsWithUserResponse((response) => {
-      console.log('Prompt response:', response);
+      // console.log('Prompt response:', response);
     });
   }, [bootStrapped]);
 

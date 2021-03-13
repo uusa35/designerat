@@ -44,6 +44,10 @@ import UserAddressCreateScreen from '../../screens/auth/UserAddressCreateScreen'
 import UserAddressEditScreen from '../../screens/auth/UserAddressEditScreen';
 import {Icon} from 'react-native-elements';
 import {iconSizes} from '../../constants/sizes';
+import ClassifiedStoreScreen from '../../screens/classified/ClassifiedStoreScreen';
+import ProductCreateScreen from '../../screens/product/ProductCreateScreen';
+import DesigneratAboutusScreen from '../../screens/setting/DesigneratAboutusScreen';
+import DesigneratMobileConfirmationScreen from '../../screens/auth/DesigneratMobileConfirmationScreen';
 
 const Stack = createStackNavigator();
 const HomeStack = () => {
@@ -151,11 +155,22 @@ const HomeStack = () => {
         }}
       />
       <Stack.Screen
+        name={'MobileConfirmation'}
+        component={DesigneratMobileConfirmationScreen}
+        options={{
+          headerRight: () => <HeaderRight />,
+          headerTitle: () => (
+            <HeaderMiddle title={I18n.t('mobile_confirmation')} />
+          ),
+          headerBackTitle: () => null,
+        }}
+      />
+      <Stack.Screen
         name={'RoleIndex'}
         component={RoleIndexScreen}
         options={{
           headerRight: () => <HeaderRight />,
-          headerTitle: () => <HeaderMiddle title={I18n.t('roles')} />,
+          headerTitle: () => <HeaderMiddle title={I18n.t('register')} />,
           headerBackTitle: () => null,
         }}
       />
@@ -196,7 +211,7 @@ const HomeStack = () => {
         options={{
           headerTitle: () => <HeaderMiddle />,
           headerRight: () => (
-            <HeaderRight showCart={true} displayShare={true} />
+            <HeaderRight showCart={true} displayShare={false} />
           ),
         }}
         component={SearchProductIndexScreen}
@@ -315,6 +330,24 @@ const HomeStack = () => {
         options={{
           headerRight: () => <HeaderRight />,
           headerTitle: () => <HeaderMiddle />,
+          headerBackTitle: () => null,
+        }}
+      />
+      <Stack.Screen
+        name={'ProductCreate'}
+        component={ProductCreateScreen}
+        options={{
+          headerRight: () => <HeaderRight />,
+          headerTitle: () => <HeaderMiddle title={I18n.t('add_new_product')} />,
+          headerBackTitle: () => null,
+        }}
+      />
+      <Stack.Screen
+        name={'Aboutus'}
+        component={DesigneratAboutusScreen}
+        options={{
+          headerRight: () => <HeaderRight />,
+          headerTitle: () => <HeaderMiddle title={I18n.t('aboutus')} />,
           headerBackTitle: () => null,
         }}
       />

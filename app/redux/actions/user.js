@@ -151,6 +151,13 @@ export function companyRegister(payload) {
   };
 }
 
+export function submitMobileConfirmationCode(payload) {
+  return {
+    type: actions.SUBMIT_MOBILE_CONFIRMATION_CODE,
+    payload,
+  };
+}
+
 export function reAuthenticate() {
   return {
     type: actions.REAUTHENTICATE,

@@ -31,6 +31,7 @@ import {useNavigation} from '@react-navigation/native';
 import ImageLoaderContainer from '../../components/widgets/ImageLoaderContainer';
 import DesingeratBtn from '../../components/widgets/Button/DesigneratBtn';
 import widgetStyles from '../../components/widgets/widgetStyles';
+import UserImageProfileRounded from '../../components/widgets/user/UserImageProfileRounded';
 
 const DesigneratDesignerShowScreen = ({route}) => {
   const {designer, comments, commentModal, searchParams} = useSelector(
@@ -122,13 +123,17 @@ const DesigneratDesignerShowScreen = ({route}) => {
               <MainSliderWidget elements={designer.slides} />
             </View>
           )}
-          <Text
-            style={[
-              widgetStyles.headerTow,
-              {marginTop: 20, marginBottom: 20, alignSelf: 'center'},
-            ]}>
-            {I18n.t('my_designs')}
-          </Text>
+          <View
+            style={{flex: 1, justifyContent: 'center', alignItems: 'center'}}>
+            <ImageLoaderContainer img={designer.logo} style={styles.image} />
+            <Text
+              style={[
+                widgetStyles.headerTow,
+                {marginTop: 10, marginBottom: 20, alignSelf: 'center'},
+              ]}>
+              {I18n.t('my_designs')}
+            </Text>
+          </View>
           <ElementsHorizontalList
             elements={products}
             searchParams={currentSearchParams}
@@ -203,5 +208,10 @@ const styles = StyleSheet.create({
   },
   scene: {
     flex: 1,
+  },
+  image: {
+    width: 80,
+    height: 80,
+    borderRadius: 80 / 2,
   },
 });

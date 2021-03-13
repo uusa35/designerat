@@ -20,7 +20,7 @@ import I18n from '../../../I18n';
 import validate from 'validate.js';
 import {HOMEKEY, ABATI, MALLR, ESCRAP} from './../../../../app';
 import {CHANGE_ADDRESS, SET_ADDRESS, SET_ROLES} from '../types';
-import {first} from 'lodash';
+import {first, filter} from 'lodash';
 import {reAuthenticate} from '../user';
 
 export function* startGetDesignerScenario(action) {
@@ -330,7 +330,6 @@ export function* startSubmitAuthScenario(action) {
     const {email, password} = action.payload;
     const {player_id, loginModal} = yield select();
     const element = yield call(api.authenticate, {email, password, player_id});
-    console.log('element', element);
     if (!validate.isEmpty(element) && validate.isObject(element)) {
       yield all([
         put({type: actions.SET_AUTH, payload: element}),
@@ -347,9 +346,10 @@ export function* startSubmitAuthScenario(action) {
       ]);
       if (loginModal) {
         yield put({type: actions.HIDE_LOGIN_MODAL, payload: false});
-      } else {
-        RootNavigation.back();
       }
+      // else {
+      //   RootNavigation.back();
+      // }
     } else {
       yield call(startLogoutScenario);
       throw element;
@@ -386,7 +386,7 @@ export function* startReAuthenticateScenario() {
         put({type: actions.SET_SHIPMENT_COUNTRY, payload: element.country}),
       ]);
     } else {
-      throw user;
+      throw element;
     }
   } catch (e) {
     yield call(enableErrorMessage, e);
@@ -399,6 +399,7 @@ export function* startUpdateUserScenario(action) {
   try {
     yield call(enableLoading);
     const element = yield call(api.updateUser, action.payload);
+    console.log('the element', element);
     if (!validate.isEmpty(element) && validate.isObject(element)) {
       yield all([
         put({type: actions.SET_AUTH, payload: element}),
@@ -546,6 +547,7 @@ export function* startAuthenticatedScenario() {
 
 export function* startRegisterScenario(action) {
   try {
+    yield call(enableLoading);
     const element = yield call(api.register, action.payload);
     if (validate.isObject(element) && !validate.isEmpty(element)) {
       const {email, password} = action.payload;
@@ -556,9 +558,31 @@ export function* startRegisterScenario(action) {
         // }),
         call(enableSuccessMessage, I18n.t('register_success')),
       ]);
-      RootNavigation.navigate('Home');
+      if (element.mobile_verified) {
+        RootNavigation.navigate('Home');
+      } else {
+        RootNavigation.navigate('MobileConfirmation');
+      }
     } else {
       throw element;
+    }
+  } catch (e) {
+    yield call(enableErrorMessage, e);
+  } finally {
+    yield call(disableLoading);
+  }
+}
+
+export function* startRegisterAsClientScenario(action) {
+  try {
+    const {isClient} = action.payload;
+    const {roles} = yield select();
+    const role = first(filter(roles, (r) => r.isClient));
+    if (!validate.isEmpty(role) && isClient) {
+      yield put({type: actions.SET_ROLE, payload: role});
+      RootNavigation.navigate('Register');
+    } else {
+      RootNavigation.navigate('RoleIndex');
     }
   } catch (e) {
     yield call(enableErrorMessage, e);
@@ -580,7 +604,11 @@ export function* startCompanyRegisterScenario(action) {
         // }),
         call(enableSuccessMessage, I18n.t('register_success')),
       ]);
-      RootNavigation.navigate('Home');
+      if (element.mobile_verified) {
+        RootNavigation.navigate('Home');
+      } else {
+        RootNavigation.navigate('MobileConfirmation');
+      }
     } else {
       throw element;
     }
@@ -675,6 +703,38 @@ export function* startChangeAddressScenario(action) {
       call(enableSuccessMessage, I18n.t('address_changed')),
     ]);
     RootNavigation.back();
+  } catch (e) {
+    yield call(enableErrorMessage, e);
+  } finally {
+  }
+}
+
+export function* startSubmitMobileConfirmationCode(action) {
+  try {
+    const element = yield call(
+      api.submitMobileConfirmationCode,
+      action.payload,
+    );
+    console.log('element', element);
+    if (!validate.isEmpty(element) && validate.isObject(element)) {
+      yield all([
+        put({type: actions.SET_AUTH, payload: element}),
+        put({type: actions.SET_TOKEN, payload: element.api_token}),
+        put({type: actions.SET_ORDERS, payload: element.orders}),
+        put({type: actions.SET_ADDRESS, payload: first(element.addresses)}),
+        put({type: actions.TOGGLE_GUEST, payload: false}),
+        call(setProductFavorites, element.product_favorites),
+        call(setClassifiedFavorites, element.classified_favorites),
+        call(enableSuccessMessage, I18n.t('login_success')),
+        // call(startGoogleAnalyticsScenario, {
+        //   payload: {type: 'UserLogged', element},
+        // }),
+      ]);
+      yield put({type: actions.HIDE_LOGIN_MODAL, payload: false});
+      RootNavigation.navigate('Home');
+    } else {
+      throw element;
+    }
   } catch (e) {
     yield call(enableErrorMessage, e);
   } finally {

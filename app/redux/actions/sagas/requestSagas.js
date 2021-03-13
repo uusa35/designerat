@@ -325,7 +325,6 @@ export function* setHomeSplashes() {
 
 export function* startAddToCartScenario(action) {
   try {
-    console.log('action payload', action.payload);
     const {cart, shipmentCountry, settings} = yield select();
     if (!shipmentCountry.is_local && action.payload.type === 'service') {
       throw I18n.t(
@@ -345,7 +344,6 @@ export function* startAddToCartScenario(action) {
           throw I18n.t('you_can_only_add_to_cart_from_only_single_merchant');
         }
       }
-      console.log('filtered', filteredCart);
       if (!validate.isEmpty(filteredCart)) {
         yield all([
           // call(startGoogleAnalyticsScenario, {

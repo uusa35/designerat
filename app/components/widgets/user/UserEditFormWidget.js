@@ -43,7 +43,7 @@ const UserEditFormWidget = ({showIcon = true}) => {
   const [email, setEmail] = useState(auth.email);
   const [mobile, setMobile] = useState(auth.mobile);
   const [address, setAddress] = useState(auth.address);
-  const [description, setDescription] = useState(auth.address);
+  const [description, setDescription] = useState(auth.description);
   const [image, setImage] = useState(null);
   const [sampleLogo, setSampleLogo] = useState(null);
   const {goBack, navigate, dangerouslyGetParent} = useNavigation();

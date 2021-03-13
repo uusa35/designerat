@@ -15,7 +15,7 @@
   "APP_CASE" : "DESIGNERAT",
   "apiUrl" : "http://mallr.test/",
   "ENV" : "production",
-  "buildVersion" : "0.1.5",
+  "buildVersion" : "1.1.1",
   "minOldVersionApple" : "0",
   "minOldVersionAndroid" : 50,
   "PORT" : 4000,

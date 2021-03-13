@@ -179,7 +179,7 @@ const DesigneratProductItem = ({
           }}>
           <Button
             containerStyle={{
-              flex: 0.3,
+              flex: 0.4,
               justifyContent: 'space-between',
               alignItems: 'center',
             }}
@@ -204,7 +204,7 @@ const DesigneratProductItem = ({
           />
           <Button
             containerStyle={{
-              flex: 0.7,
+              flex: 0.6,
               justifyContent: 'space-between',
               alignItems: 'center',
             }}

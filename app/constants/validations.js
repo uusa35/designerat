@@ -184,10 +184,10 @@ export const validateSubmitRegister = Yup.object().shape({
       item: 6,
     })
     .required({message: 'validations.password_is_required'}),
-  address: Yup.string().min(5, {message: 'validations.address_is_required'}),
-  description: Yup.string()
-    // .required({message: 'validations.description_is_required'})
-    .min(10, {message: 'validations.description_is_very_small'}),
+  // address: Yup.string().min(5, {message: 'validations.address_is_required'}),
+  description: Yup.string().nullable(),
+  // .min(10, {message: 'validations.description_is_very_small'}),
+  // .required({message: 'validations.description_is_required'})
   role_id: Yup.number().required(),
   image: Yup.object()
     .typeError({message: 'validations.logo_is_required'})

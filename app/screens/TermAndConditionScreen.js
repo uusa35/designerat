@@ -11,7 +11,7 @@ import BgContainer from '../components/containers/BgContainer';
 const TermAndConditionScreen = () => {
   const {terms} = useSelector((state) => state.settings);
   return (
-    <BgContainer>
+    <BgContainer showImage={false} white={false}>
       <ScrollView
         horizontal={false}
         automaticallyAdjustContentInsets={false}
@@ -22,9 +22,13 @@ const TermAndConditionScreen = () => {
           margin: 15,
           paddingBottom: '15%',
           justifyContent: 'center',
+          backgroundColor: 'white',
+          paddingLeft: 10,
+          paddingRight: 10,
+          borderRadius: 5,
         }}
         contentInset={{bottom: bottomContentInset}}>
-        {!validate.isEmpty(terms) && terms.length > 100 ? (
+        {!validate.isEmpty(terms) && terms.length > 80 ? (
           <WebView
             showsVerticalScrollIndicator={false}
             source={{html: terms}}

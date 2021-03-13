@@ -7,6 +7,7 @@ import {GlobalValuesContext} from '../../../redux/GlobalValuesContext';
 import PropTypes from 'prop-types';
 import {useSelector} from 'react-redux';
 import {isNull} from 'lodash';
+import {themeColors} from '../../../constants/colors';
 
 const DesingeratBtn = ({
   handleClick,

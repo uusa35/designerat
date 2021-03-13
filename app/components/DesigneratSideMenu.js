@@ -9,9 +9,10 @@ import {
   Linking,
   ImageBackground,
   SafeAreaView,
+  Pressable,
 } from 'react-native';
 import I18n from './../I18n';
-import {iconSizes, text} from './../constants/sizes';
+import {bottomContentInset, iconSizes, text} from './../constants/sizes';
 import {images} from '../constants/images';
 import {isIOS} from './../constants';
 import FastImage from 'react-native-fast-image';
@@ -49,7 +50,7 @@ const DesigneratSideMenu = ({showLogo = true, navigation}) => {
         <ScrollView
           style={[styles.container]}
           contentContainerStyle={{alignItems: 'center', paddingTop: 10}}
-          contentInset={{bottom: 200}}
+          contentInset={{bottom: bottomContentInset}}
           horizontal={false}
           automaticallyAdjustContentInsets={false}
           showsHorizontalScrollIndicator={false}

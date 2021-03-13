@@ -67,7 +67,7 @@ const DesignerHorizontalWidget = ({
             activeOpacity={touchOpacity}
             style={[
               widgetStyles.titleContainer,
-              {height: 40, alignItems: 'center'},
+              {height: 40, alignItems: 'baseline'},
             ]}
             onPress={() => handleClick()}>
             <View style={widgetStyles.titleWrapper}>
@@ -83,21 +83,21 @@ const DesignerHorizontalWidget = ({
               <View
                 style={{
                   flexDirection: 'row',
-                  alignItems: 'center',
+                  alignItems: 'baseline',
                   justifyContent: 'center',
                   alignContent: 'center',
                 }}>
                 <Text
                   style={[
                     widgetStyles.headerThree,
-                    {color: colors.header_one_theme_color, paddingBottom: 4},
+                    {color: colors.header_one_theme_color},
                   ]}>
                   {I18n.t('show_all')}
                 </Text>
                 <Icon
                   type="entypo"
                   name={isRTL ? 'chevron-thin-left' : 'chevron-thin-right'}
-                  size={iconSizes.smallest}
+                  size={iconSizes.tiny}
                   color={colors.header_one_theme_color}
                 />
               </View>

@@ -742,6 +742,12 @@
   "follow_us_on_instagram" : "تابعنا على الانستجرام",
   "rate_us" : "قيمنا",
   "share_our_app" : "شارك التطبيق",
-  "welcome" : "مرحبا"
+  "welcome" : "مرحبا",
+  "app_is_updating_shall_restart_in_few_seconds" : "تحديث بسيط في التطبيق، جاري التحديث.",
+  "more_images" : "المزيد من الصور",
+  "add_new_product" : "إضافة منتج جديد",
+  "main_image" : "الصورة الرئيسية",
+  "mobile_confirmation" : "تأكيد رقم الهاتف",
+  "mobile_confirmation_message" : "من فضلك ادخل الرمز المكون من ٤ أرقام الذي تم ارساله على هاتفك لإكمال عملية التسجيل"
 
 }

@@ -2,7 +2,11 @@ import React, {useEffect, useState, Fragment, useMemo} from 'react';
 import {AppState, useColorScheme, StatusBar, Text, Linking} from 'react-native';
 import codePush from 'react-native-code-push';
 import {useDispatch, useSelector} from 'react-redux';
-import {appBootstrap, goDeepLinking} from './../../redux/actions';
+import {
+  appBootstrap,
+  enableMessage,
+  goDeepLinking,
+} from './../../redux/actions';
 import validate from 'validate.js';
 import AlertMessage from './../../components/AlertMessage';
 import CountriesList from './../../components/Lists/CountriesList';
@@ -25,6 +29,7 @@ import {isIOS} from './../../constants';
 import OneSignal from 'react-native-onesignal';
 import {getPathForDeepLinking} from '../../helpers';
 import LoadingContainer from '../Loading/LoadingContainer';
+import I18n from './../../I18n';
 
 const AppContainer = ({children}) => {
   const {
@@ -74,13 +79,13 @@ const AppContainer = ({children}) => {
   }, []);
 
   useEffect(() => {
-    // codePush.sync({installMode: codePush.InstallMode.IMMEDIATE});
+    codePush.sync({installMode: codePush.InstallMode.IMMEDIATE});
     codePush.checkForUpdate().then((update) => {
       if (!update) {
-        console.warn('====> The app is up to date!');
+        // console.warn('====> The app is up to date!');
       } else {
         if (__DEV__) {
-          console.warn('===> there is an update here');
+          // console.warn('===> there is an update here');
         }
       }
     });
@@ -155,6 +160,4 @@ const AppContainer = ({children}) => {
   );
 };
 
-export default codePush({
-  checkFrequency: codePush.CheckFrequency.IMMEDIATE,
-})(AppContainer);
+export default AppContainer;
