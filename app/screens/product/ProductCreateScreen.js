@@ -32,22 +32,24 @@ import {useNavigation} from '@react-navigation/native';
 import DesigneratBtn from '../../components/widgets/Button/DesigneratBtn';
 import {themeColors} from '../../constants/colors';
 import BgContainer from '../../components/containers/BgContainer';
+import Actionsheet from 'react-native-enhanced-actionsheet';
 
 const ProductCreateScreen = ({showLabel = false}) => {
   const {colors, logo} = useContext(GlobalValuesContext);
-  const {country, playerId, role, roles, auth} = useSelector((state) => state);
+  const {country, playerId, role, roles, categories, auth} = useSelector(
+    (state) => state,
+  );
   const dispatch = useDispatch();
   const navigation = useNavigation();
   const [name, setName] = useState('');
-  const [email, setEmail] = useState('');
-  const [mobile, setMobile] = useState('');
-  const [address, setAddress] = useState('');
-  const [password, setPassword] = useState('');
+  const [sku, setSku] = useState('');
+  const [price, setPrice] = useState('');
+  const [weight, setWeight] = useState('');
+  const [selectedCategories, setSelectedCategories] = useState('');
+  const [categoryVisible, setCategoryVisible] = useState(false);
   const [description, setDescription] = useState('');
   const [image, setImage] = useState(null);
-  const [sampleLogo, setSampleLogo] = useState(null);
   const [images, setImages] = useState();
-  const [isMale, setIsMale] = useState(false);
 
   const openLogoPicker = () => {
     return ImagePicker.openPicker({
@@ -93,312 +95,276 @@ const ProductCreateScreen = ({showLabel = false}) => {
     setImages(newImages);
   };
 
-  const handleRegister = () => {
-    if (!validate.isEmpty(role) && !role.isClient) {
-      return validateSubmitRegister
-        .validate({
-          name,
-          email,
-          password,
-          mobile,
-          country_id: country.id,
-          address,
-          player_id: playerId,
-          description,
-          image,
-          images,
-          role_id: role.id,
-        })
-        .then((r) => {
-          // ImagePicker.clean()
-          //   .then(() => {
-          // console.log('removed all tmp images from tmp directory');
-          // })
-          // .catch((e) => {
-          // console.log('picker error', e);
-          // });
-          return dispatch(
-            companyRegister({
-              name,
-              email,
-              password,
-              mobile,
-              country_id: country.id,
-              address,
-              player_id: playerId,
-              description,
-              image,
-              images,
-              role_id: role
-                ? role.id
-                : first(filter(roles, (r) => r.isCompany)).id,
-            }),
-          );
-        })
-        .catch((e) => {
-          const {message, item} = first(e.errors);
-          return dispatch(
-            enableErrorMessage(
-              message ? I18n.t(message, {item}) : I18n.t(first(e.errors)),
-            ),
-          );
-        });
-    } else {
-      dispatch(
-        register({
-          name,
-          email,
-          password,
-          mobile,
-          country_id: country.id,
-          address,
-          player_id: playerId,
-          description,
-          is_male: isMale,
-          role_id: role ? role.id : first(filter(roles, (r) => r.isClient)).id,
-        }),
-      );
-    }
+  const handleSubmit = () => {
+    return validateSubmitRegister
+      .validate({
+        name,
+        sku,
+        category: selectedCategories,
+        country_id: country.id,
+        player_id: playerId,
+        description,
+        image,
+        images,
+        role_id: role.id,
+      })
+      .then((r) => {
+        // ImagePicker.clean()
+        //   .then(() => {
+        // console.log('removed all tmp images from tmp directory');
+        // })
+        // .catch((e) => {
+        // console.log('picker error', e);
+        // });
+        return dispatch(
+          companyRegister({
+            name,
+            sku,
+            country_id: country.id,
+            category,
+            player_id: playerId,
+            description,
+            image,
+            images,
+            role_id: role
+              ? role.id
+              : first(filter(roles, (r) => r.isCompany)).id,
+          }),
+        );
+      })
+      .catch((e) => {
+        const {message, item} = first(e.errors);
+        return dispatch(
+          enableErrorMessage(
+            message ? I18n.t(message, {item}) : I18n.t(first(e.errors)),
+          ),
+        );
+      });
   };
 
   return (
-    <BgContainer showImage={false}>
+    <BgContainer showImage={false} white={false}>
       <KeyBoardContainer>
-        <ImageLoaderContainer
-          img={auth.logo}
+        <View
           style={{
-            width: 50,
-            height: 50,
+            flex: 1,
             marginTop: '10%',
-            marginBottom: '10%',
-            alignSelf: 'center',
-          }}
-          resizeMode="contain"
-        />
-        <Input
-          placeholder={I18n.t('email') + '*'}
-          containerStyle={{marginBottom: 0, paddingBottom: 0, height: 50}}
-          inputContainerStyle={[
-            widgetStyles.inputContainerStyle,
-            {
-              borderBottomWidth: 0,
-              borderRadius: 0,
-              borderTopRightRadius: 3,
-              borderTopLeftRadius: 3,
-            },
-          ]}
-          inputStyle={widgetStyles.inputStyle}
-          label={showLabel ? I18n.t('email') : null}
-          labelStyle={[
-            styles.titleLabelStyle,
-            {color: colors.main_theme_color, paddingBottom: 10},
-          ]}
-          shake={true}
-          keyboardType="email-address"
-          onChangeText={(text) => setEmail(text)}
-          leftIcon={() => (
-            <Icon
-              name="envelope"
-              type="evilicon"
-              size={iconSizes.smaller}
-              onPress={() => setVisiblePassword(!visiblePassword)}
-            />
-          )}
-        />
-        <Input
-          placeholder={I18n.t('password')}
-          secureTextEntry={true}
-          containerStyle={{marginBottom: 0, paddingBottom: 0, height: 50}}
-          inputContainerStyle={[
-            widgetStyles.inputContainerStyle,
-            {borderBottomWidth: 0, borderRadius: 0},
-          ]}
-          inputStyle={widgetStyles.inputStyle}
-          label={showLabel ? I18n.t('password') : null}
-          labelStyle={[
-            styles.titleLabelStyle,
-            {color: colors.main_theme_color, paddingBottom: 10},
-          ]}
-          shake={true}
-          keyboardType="default"
-          onChangeText={(text) => setPassword(text)}
-          leftIcon={() => (
-            <Icon
-              name="lock"
-              type="evilicon"
-              size={iconSizes.smaller}
-              onPress={() => setVisiblePassword(!visiblePassword)}
-            />
-          )}
-        />
-        <Input
-          placeholder={I18n.t('first_name') + '*'}
-          containerStyle={{marginBottom: 0, paddingBottom: 0, height: 50}}
-          inputContainerStyle={[
-            widgetStyles.inputContainerStyle,
-            {
-              borderBottomWidth: 0,
-              borderRadius: 0,
-            },
-          ]}
-          inputStyle={widgetStyles.inputStyle}
-          label={showLabel ? I18n.t('first_name') : null}
-          labelStyle={[
-            styles.titleLabelStyle,
-            {color: colors.main_theme_color, paddingBottom: 10},
-          ]}
-          shake={true}
-          keyboardType="default"
-          onChangeText={(text) => setName(text)}
-        />
-        <Input
-          leftIcon={() => <Text>+{country.calling_code}</Text>}
-          leftIconContainerStyle={{paddingRight: 15}}
-          containerStyle={{marginBottom: 0, paddingBottom: 0, height: 50}}
-          placeholder={I18n.t('mobile') + '*'}
-          inputContainerStyle={[
-            widgetStyles.inputContainerStyle,
-            {
-              borderTopRightRadius: 0,
-              borderTopLeftRadius: 0,
-              borderBottomLeftRadius: 3,
-              borderBottomRightRadius: 3,
-            },
-          ]}
-          inputStyle={widgetStyles.inputStyle}
-          label={showLabel ? I18n.t('mobile') : null}
-          labelStyle={[
-            styles.titleLabelStyle,
-            {color: colors.main_theme_color, paddingBottom: 10},
-          ]}
-          shake={true}
-          keyboardType="number-pad"
-          onChangeText={(text) => setMobile(text)}
-        />
-        <Text
-          style={[
-            styles.titleLabelStyle,
-            {
-              color: colors.main_theme_color,
-              marginTop: 20,
-              paddingLeft: 15,
-            },
-          ]}>
-          {I18n.t('main_image')}
-        </Text>
-        <View style={{backgroundColor: 'white', borderRadius: 5, margin: 15}}>
-          <TouchableOpacity
-            onPress={() => openLogoPicker()}
-            style={{
-              width: '100%',
-              alignItems: 'center',
-              marginTop: 20,
-              marginBottom: 20,
-            }}>
-            <ImageLoaderContainer
-              img={image && image.path ? image.path : sampleLogo}
+            backgroundColor: 'transparent',
+            marginLeft: 5,
+            marginRight: 5,
+          }}>
+          <Text
+            style={[
+              widgetStyles.headerTow,
+              {marginBottom: '10%', textAlign: 'left', marginLeft: 10},
+            ]}>
+            {I18n.t('main_details')}
+          </Text>
+          <Input
+            placeholder="0052212"
+            containerStyle={{maxHeight: 100}}
+            inputContainerStyle={[widgetStyles.inputContainerStyle]}
+            inputStyle={widgetStyles.inputStyle}
+            label={I18n.t('sku') + '*'}
+            labelStyle={[
+              styles.titleLabelStyle,
+              {color: colors.main_theme_color, paddingBottom: 10},
+            ]}
+            shake={true}
+            keyboardType="default"
+            onChangeText={(text) => setSku(text)}
+          />
+          <Input
+            placeholder={I18n.t('tshirt')}
+            containerStyle={{maxHeight: 100}}
+            inputContainerStyle={[widgetStyles.inputContainerStyle]}
+            inputStyle={widgetStyles.inputStyle}
+            label={I18n.t('name_ar') + '*'}
+            labelStyle={[
+              styles.titleLabelStyle,
+              {color: colors.main_theme_color, paddingBottom: 10},
+            ]}
+            shake={true}
+            keyboardType="default"
+            onChangeText={(text) => setName(text)}
+          />
+          <Input
+            placeholder={I18n.t('price')}
+            containerStyle={{maxHeight: 100}}
+            inputContainerStyle={[widgetStyles.inputContainerStyle]}
+            inputStyle={widgetStyles.inputStyle}
+            label={I18n.t('price') + '*'}
+            labelStyle={[
+              styles.titleLabelStyle,
+              {color: colors.main_theme_color, paddingBottom: 10},
+            ]}
+            shake={true}
+            keyboardType="numeric"
+            onChangeText={(text) => setPrice(text)}
+          />
+          <View style={{marginLeft: 10, marginRight: 10}}>
+            <Text
+              style={[
+                widgetStyles.headerThree,
+                {textAlign: 'left', marginBottom: 10, marginLeft: 10},
+              ]}>
+              {I18n.t('category')}*
+            </Text>
+            <TouchableOpacity
               style={{
-                width: 120,
-                height: 120,
-                margin: 10,
+                width: '100%',
+                alignSelf: 'center',
                 borderWidth: 1,
                 borderColor: 'lightgrey',
-                borderRadius: 120 / 2,
+                borderRadius: 5,
+                height: 55,
+                backgroundColor: 'white',
+                justifyContent: 'center',
+                alignItems: 'center',
               }}
-              resizeMode="cover"
-            />
-            <Text style={{fontFamily: text.font, fontSize: text.small}}>
-              {I18n.t('add_logo')}
-            </Text>
-          </TouchableOpacity>
-        </View>
-        <Text
-          style={[
-            styles.titleLabelStyle,
-            {
-              color: colors.main_theme_color,
-              marginTop: 20,
-              paddingLeft: 15,
-            },
-          ]}>
-          {I18n.t('more_images')}
-        </Text>
-        <View style={{backgroundColor: 'white', borderRadius: 5, margin: 15}}>
-          <TouchableOpacity
-            onPress={() => openImagesPicker()}
-            style={{width: '100%', marginTop: 0, alignItems: 'center'}}>
-            {validate.isEmpty(first(images)) && (
+              onPress={() => setCategoryVisible(true)}>
+              <Text style={widgetStyles.headerThree}>
+                {I18n.t('choose_category')}
+              </Text>
+            </TouchableOpacity>
+          </View>
+          <Text
+            style={[
+              styles.titleLabelStyle,
+              {
+                color: colors.main_theme_color,
+                marginTop: 20,
+                paddingLeft: 15,
+              },
+            ]}>
+            {I18n.t('main_image')}
+          </Text>
+          <View style={{backgroundColor: 'white', borderRadius: 5, margin: 15}}>
+            <TouchableOpacity
+              onPress={() => openLogoPicker()}
+              style={{
+                width: '100%',
+                alignItems: 'center',
+                marginTop: 20,
+                marginBottom: 20,
+              }}>
               <ImageLoaderContainer
-                img={first(images) ? first(images).path : sampleLogo}
+                img={image && image.path ? image.path : logo}
                 style={{
                   width: 120,
                   height: 120,
-                  margin: 20,
+                  margin: 10,
                   borderWidth: 1,
                   borderColor: 'lightgrey',
                   borderRadius: 120 / 2,
                 }}
                 resizeMode="cover"
               />
-            )}
-          </TouchableOpacity>
-        </View>
-
-        {!validate.isEmpty(images) && (
-          <ScrollView
-            horizontal={true}
-            showsHorizontalScrollIndicator={false}
-            contentContainerStyle={{
-              flexDirection: 'row',
-              justifyContent: 'center',
-              alignItems: 'center',
-              padding: 10,
-            }}
+              <Text style={{fontFamily: text.font, fontSize: text.small}}>
+                {I18n.t('add_logo')}
+              </Text>
+            </TouchableOpacity>
+          </View>
+          <Text
             style={[
-              widgetStyles.wrapper,
-              {borderWidth: 1, borderColor: 'lightgrey', minHeight: 120},
+              styles.titleLabelStyle,
+              {
+                color: colors.main_theme_color,
+                marginTop: 20,
+                paddingLeft: 15,
+              },
             ]}>
-            {map(images, (img, i) => (
-              <ImageBackground
-                key={i}
-                source={{uri: img.path}}
-                style={{
-                  width: 100,
-                  height: 100,
-                  marginRight: 5,
-                  marginLeft: 5,
-                }}>
-                <View
+            {I18n.t('more_images')}
+          </Text>
+          <View style={{backgroundColor: 'white', borderRadius: 5, margin: 15}}>
+            <TouchableOpacity
+              onPress={() => openImagesPicker()}
+              style={{width: '100%', marginTop: 0, alignItems: 'center'}}>
+              {validate.isEmpty(first(images)) && (
+                <ImageLoaderContainer
+                  img={first(images) ? first(images).path : logo}
                   style={{
-                    flexDirection: 'row',
-                    justifyContent: 'space-between',
-                    alignItems: 'center',
-                    backgroundColor: 'white',
-                    opacity: 0.7,
+                    width: 120,
+                    height: 120,
+                    margin: 20,
+                    borderWidth: 1,
+                    borderColor: 'lightgrey',
+                    borderRadius: 120 / 2,
+                  }}
+                  resizeMode="cover"
+                />
+              )}
+            </TouchableOpacity>
+          </View>
+
+          {!validate.isEmpty(images) && (
+            <ScrollView
+              horizontal={true}
+              showsHorizontalScrollIndicator={false}
+              contentContainerStyle={{
+                flexDirection: 'row',
+                justifyContent: 'center',
+                alignItems: 'center',
+                padding: 10,
+              }}
+              style={[
+                widgetStyles.wrapper,
+                {borderWidth: 1, borderColor: 'lightgrey', minHeight: 120},
+              ]}>
+              {map(images, (img, i) => (
+                <ImageBackground
+                  key={i}
+                  source={{uri: img.path}}
+                  style={{
+                    width: 100,
+                    height: 100,
+                    marginRight: 5,
+                    marginLeft: 5,
                   }}>
-                  <Icon
-                    size={30}
-                    name="close"
-                    type="evil-icons"
-                    onPress={() => removeImage(i)}
-                  />
-                </View>
-              </ImageBackground>
-            ))}
-          </ScrollView>
-        )}
+                  <View
+                    style={{
+                      flexDirection: 'row',
+                      justifyContent: 'space-between',
+                      alignItems: 'center',
+                      backgroundColor: 'white',
+                      opacity: 0.7,
+                    }}>
+                    <Icon
+                      size={30}
+                      name="close"
+                      type="evil-icons"
+                      onPress={() => removeImage(i)}
+                    />
+                  </View>
+                </ImageBackground>
+              ))}
+            </ScrollView>
+          )}
 
-        <DesigneratBtn
-          handleClick={() => handleRegister()}
-          marginTop={20}
-          title={I18n.t('register')}
-        />
-
-        <DesigneratBtn
-          handleClick={() => navigation.navigate('Login')}
-          marginTop={20}
-          bg={false}
-          title={I18n.t('u_have_account_already_log_in_now')}
+          <DesigneratBtn
+            handleClick={() => handleSubmit()}
+            marginTop={20}
+            title={I18n.t('submit')}
+          />
+        </View>
+        <Actionsheet
+          visible={categoryVisible}
+          data={map(categories, (c) => {
+            return {
+              id: c.id,
+              label: c.name,
+            };
+          })}
+          title={I18n.t('choose')}
+          selected={selectedCategories}
+          onOptionPress={(e) => {
+            setSelectedCategories(e.id);
+          }}
+          optionTextStyle={widgetStyles.headerThree}
+          titleStyle={styles.normalText}
+          onCancelPress={() => setCategoryVisible(false)}
+          cancelBtnText={I18n.t('cancel')}
+          cancelTextStyle={widgetStyles.headerThree}
         />
       </KeyBoardContainer>
     </BgContainer>
@@ -413,6 +379,7 @@ const styles = StyleSheet.create({
   titleLabelStyle: {
     fontFamily: text.font,
     fontSize: text.medium,
+    fontWeight: 'normal',
     paddingLeft: 10,
     paddingRight: 10,
     textAlign: 'left',

@@ -202,7 +202,7 @@
   "continue_to_payment" : "الاستمرار لعملية الدفع",
   "all_data_required" : "يرجى مراجعة بياناتك .. جميع البيانات مطلوبة لاستكمال عملية التسجيل",
   "plan_details" : "تفاصيل قيمة الاشتراك",
-  "category" : "القطاع",
+  "category" : "التصنيف",
   "most_visited_keywords" : "أشهر كلمات البحث",
   "search_message" : "البحث بأي كلمة",
   "services" : "الخدمات",
@@ -748,6 +748,11 @@
   "add_new_product" : "إضافة منتج جديد",
   "main_image" : "الصورة الرئيسية",
   "mobile_confirmation" : "تأكيد رقم الهاتف",
-  "mobile_confirmation_message" : "من فضلك ادخل الرمز المكون من ٤ أرقام الذي تم ارساله على هاتفك لإكمال عملية التسجيل"
+  "mobile_confirmation_message" : "من فضلك ادخل الرمز المكون من ٤ أرقام الذي تم ارساله على هاتفك لإكمال عملية التسجيل",
+  "main_details" : "تفاصيل اساسية",
+  "tshirt" : "تيشيرت",
+  "choose" : "اختر",
+  "choose_category" : "اختر التصنيف"
+
 
 }

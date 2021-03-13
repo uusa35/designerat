@@ -714,7 +714,11 @@
   "add_new_product" : "Add New Product",
   "main_image" : "Main Image",
   "mobile_confirmation" : "Mobile Confirmation",
-  "mobile_confirmation_message" : "Please enter the 4 digits sent to your mobile in order to complete registration process."
+  "mobile_confirmation_message" : "Please enter the 4 digits sent to your mobile in order to complete registration process.",
+  "main_details" : "Main Details",
+  "tshirt" : "T-shirt",
+  "choose" : "choose",
+  "choose_category" : "Choose Category"
 
 }
 
