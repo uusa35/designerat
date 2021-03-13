@@ -1,4 +1,4 @@
-import React, {useState, useContext, Fragment} from 'react';
+import React, {useState, useContext, Fragment, useMemo} from 'react';
 import {
   ImageBackground,
   ScrollView,
@@ -33,6 +33,7 @@ import DesigneratBtn from '../../components/widgets/Button/DesigneratBtn';
 import {themeColors} from '../../constants/colors';
 import BgContainer from '../../components/containers/BgContainer';
 import Actionsheet from 'react-native-enhanced-actionsheet';
+import {flatten} from 'lodash';
 
 const ProductCreateScreen = ({showLabel = false}) => {
   const {colors, logo} = useContext(GlobalValuesContext);
@@ -45,11 +46,33 @@ const ProductCreateScreen = ({showLabel = false}) => {
   const [sku, setSku] = useState('');
   const [price, setPrice] = useState('');
   const [weight, setWeight] = useState('');
-  const [selectedCategories, setSelectedCategories] = useState('');
+  const [selectedCategories, setSelectedCategories] = useState([]);
   const [categoryVisible, setCategoryVisible] = useState(false);
   const [description, setDescription] = useState('');
   const [image, setImage] = useState(null);
   const [images, setImages] = useState();
+  const [finalCategories, setFinalCategories] = useState([]);
+
+  useMemo(() => {
+    const finalcategories = [];
+    map(categories, (c) => {
+      if (c.isParent) {
+        finalcategories.push({
+          id: c.id,
+          label: c.name,
+        });
+      }
+      if (c.isParent && c.has_children) {
+        map(c.children, (child) => {
+          finalcategories.push({
+            id: child.id,
+            label: child.name,
+          });
+        });
+      }
+    });
+    setFinalCategories(flatten(finalcategories));
+  }, []);
 
   const openLogoPicker = () => {
     return ImagePicker.openPicker({
@@ -142,6 +165,7 @@ const ProductCreateScreen = ({showLabel = false}) => {
       });
   };
 
+  console.log('categories', categories);
   return (
     <BgContainer showImage={false} white={false}>
       <KeyBoardContainer>
@@ -349,19 +373,14 @@ const ProductCreateScreen = ({showLabel = false}) => {
         </View>
         <Actionsheet
           visible={categoryVisible}
-          data={map(categories, (c) => {
-            return {
-              id: c.id,
-              label: c.name,
-            };
-          })}
+          data={finalCategories}
           title={I18n.t('choose')}
           selected={selectedCategories}
           onOptionPress={(e) => {
-            setSelectedCategories(e.id);
+            setSelectedCategories([selectedCategories, ...e.id]);
           }}
           optionTextStyle={widgetStyles.headerThree}
-          titleStyle={styles.normalText}
+          titleStyle={widgetStyles.headerThree}
           onCancelPress={() => setCategoryVisible(false)}
           cancelBtnText={I18n.t('cancel')}
           cancelTextStyle={widgetStyles.headerThree}
