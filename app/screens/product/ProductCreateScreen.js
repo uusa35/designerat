@@ -165,7 +165,7 @@ const ProductCreateScreen = ({showLabel = false}) => {
       });
   };
 
-  console.log('categories', categories);
+  console.log('selectedCategories', selectedCategories);
   return (
     <BgContainer showImage={false} white={false}>
       <KeyBoardContainer>
@@ -234,23 +234,50 @@ const ProductCreateScreen = ({showLabel = false}) => {
               ]}>
               {I18n.t('category')}*
             </Text>
-            <TouchableOpacity
+            <View
               style={{
-                width: '100%',
-                alignSelf: 'center',
-                borderWidth: 1,
-                borderColor: 'lightgrey',
-                borderRadius: 5,
-                height: 55,
-                backgroundColor: 'white',
-                justifyContent: 'center',
+                flexDirection: 'row',
+                flex: 1,
+                justifyContent: 'space-between',
                 alignItems: 'center',
-              }}
-              onPress={() => setCategoryVisible(true)}>
-              <Text style={widgetStyles.headerThree}>
-                {I18n.t('choose_category')}
-              </Text>
-            </TouchableOpacity>
+              }}>
+              <TouchableOpacity
+                style={{
+                  flex: 0.9,
+                  alignSelf: 'center',
+                  borderWidth: 1,
+                  borderColor: 'lightgrey',
+                  borderRadius: 5,
+                  height: 55,
+                  backgroundColor: 'white',
+                  justifyContent: 'center',
+                  alignItems: 'center',
+                  flexDirection: 'row',
+                }}
+                onPress={() => setCategoryVisible(true)}>
+                <Text style={widgetStyles.headerThree}>
+                  {selectedCategories.length >= 1
+                    ? `${I18n.t('choosen_categories')} (${
+                        selectedCategories.length
+                      })`
+                    : I18n.t('choose_category')}
+                </Text>
+              </TouchableOpacity>
+              <View
+                style={{
+                  alignSelf: 'center',
+                  flex: 0.1,
+                  height: 55,
+                  alignItems: 'center',
+                  justifyContent: 'center',
+                }}>
+                <Icon
+                  name="restart"
+                  type="material-community"
+                  onPress={() => setSelectedCategories([])}
+                />
+              </View>
+            </View>
           </View>
           <Text
             style={[
@@ -377,7 +404,7 @@ const ProductCreateScreen = ({showLabel = false}) => {
           title={I18n.t('choose')}
           selected={selectedCategories}
           onOptionPress={(e) => {
-            setSelectedCategories([selectedCategories, ...e.id]);
+            setSelectedCategories(selectedCategories.concat(e.id));
           }}
           optionTextStyle={widgetStyles.headerThree}
           titleStyle={widgetStyles.headerThree}
