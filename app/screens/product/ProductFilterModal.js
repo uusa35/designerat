@@ -69,12 +69,12 @@ const ProductFilterModal = () => {
     );
   };
 
-  const handleClearFilter = useCallback(() => {
+  const handleClearFilter = () => {
     dispatch(setColor(null));
     dispatch(setSize(null));
     setSelectedCategory(null);
     setPriceRange([0, 1000]);
-  });
+  };
 
   useEffect(() => {
     selectedCategory ? dispatch(setCategory(selectedCategory)) : null;

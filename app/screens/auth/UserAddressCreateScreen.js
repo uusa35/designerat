@@ -31,7 +31,7 @@ const UserAddressCreateScreen = ({showLabel = true}) => {
             widgetStyles.headerThree,
             {textAlign: 'left', marginLeft: text.medium, marginTop: 25},
           ]}>
-          {I18n.t('edit_address')}
+          {I18n.t('new_address')}
         </Text>
         <View
           style={[

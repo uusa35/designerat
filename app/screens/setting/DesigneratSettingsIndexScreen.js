@@ -205,6 +205,24 @@ const DesigneratSettingsIndexScreen = ({navigation}) => {
                   alignItems: 'center',
                   height: 60,
                 }}
+                onPress={() => navigation.navigate('UserAddressCreate')}>
+                <Icon
+                  color={colors.menu_theme_color}
+                  name="add-circle-outline"
+                  type="ionicons"
+                  size={iconSizes.smaller}
+                />
+                <Text style={[widgetStyles.headerTow, {paddingLeft: 30}]}>
+                  {I18n.t('add_new_address')}
+                </Text>
+              </Pressable>
+              <Pressable
+                style={{
+                  width: '100%',
+                  flexDirection: 'row',
+                  alignItems: 'center',
+                  height: 60,
+                }}
                 onPress={() => navigation.navigate('FavoriteProductIndex')}>
                 <Icon
                   color={colors.menu_theme_color}

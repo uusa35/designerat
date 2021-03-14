@@ -656,3 +656,46 @@ export async function submitMobileConfirmationCode(code) {
     .catch((e) => console.log('eee', e.response));
   // .catch((e) => e.response.date.message);
 }
+
+export async function submitCreateNewProduct(params) {
+  const {
+    name,
+    sku,
+    price,
+    categories,
+    api_token,
+    description,
+    image,
+    images,
+  } = params;
+  const formData = new FormData();
+  if (checkImage(image)) {
+    formData.append('image', {
+      uri: getImagePath(image),
+      name: getImageName(image),
+      type: getImageExtension(image),
+    });
+  }
+  const filteredImages = filter(images, (img, i) => img.path !== image.path);
+  map(filteredImages, (img, i) => {
+    if (checkImage(img)) {
+      formData.append(`images[${i}]`, {
+        uri: getImagePath(img),
+        name: getImageName(img),
+        type: getImageExtension(img),
+      });
+    }
+  });
+  formData.append('name', name);
+  formData.append('price', price);
+  formData.append('sku', sku);
+  formData.append('api_token', api_token);
+  formData.append('description', description);
+  map(categories, (c, i) => {
+    formData.append(`categories[${i}]`, c);
+  });
+  return await axiosInstance
+    .post(`product`, formData)
+    .then((r) => r.data)
+    .catch((e) => e.response.data.message);
+}

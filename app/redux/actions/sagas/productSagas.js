@@ -317,3 +317,20 @@ export function* startToggleProductFavoriteScenario(action) {
   } finally {
   }
 }
+
+export function* startSubmitCreateNewProduct(action) {
+  try {
+    console.log('the whole action payload', action.payload);
+    const element = yield call(api.submitCreateNewProduct, action.payload);
+    console.log('element', element);
+    if (!validate.isEmpty(element) && validate.isObject(element)) {
+    } else {
+    }
+  } catch (e) {
+    if (__DEV__) {
+      console.log('e', e);
+    }
+    yield call(enableWarningMessage, I18n.t('product_failure'));
+  } finally {
+  }
+}

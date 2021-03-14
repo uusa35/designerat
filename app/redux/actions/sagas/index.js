@@ -33,6 +33,7 @@ export default function* rootSaga() {
     fork(triggers.triggerGetSearchDesigners),
     fork(triggers.triggerGetSearchCelebrities),
     fork(triggers.triggerGetAllProducts),
+    fork(triggers.triggerSubmitCreateNewProduct),
     fork(triggers.triggerGetCollections),
     fork(triggers.triggerTriggerGetCollection),
     fork(triggers.triggerGetAllClassifieds),

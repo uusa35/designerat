@@ -628,7 +628,11 @@
     "address_is_required" : "Address is required",
     "password_is_required" : "Password is required and must be at least 6 letters or numbers.",
     "name_is_required" : "Name is required",
-    "mobile_is_required" : "Mobile is required"
+    "mobile_is_required" : "Mobile is required",
+    "main_image_is_required" : "Main image required.",
+    "categories_is_required" : "Categories are required.",
+    "sku_is_required" : "SKU is required.",
+    "price_is_required" : "Price is required."
   },
   "no_" : "No %{item}",
   "no_more_" : "No More %{item}",
@@ -683,6 +687,7 @@
   "street" : "Street",
   "change_modify_address" : "Change / Modify Address",
   "add_new_address" : "Add new address",
+  "new_address" : "New Address",
   "edit_address" : "Edit Address",
   "go_to_payment_page" : "Go to payment page",
   "order_summary" : "Order Summary",
@@ -718,7 +723,8 @@
   "main_details" : "Main Details",
   "tshirt" : "T-shirt",
   "choose" : "choose",
-  "choose_category" : "Choose Category"
+  "choose_category" : "Choose Category",
+  "product_description" : "Product Description"
 
 }
 

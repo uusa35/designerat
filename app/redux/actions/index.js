@@ -313,6 +313,11 @@ export function toggleIntroduction(payload) {
   };
 }
 
+export const submitCreateNewProduct = (payload) => ({
+  type: actions.SUBMIT_CREATE_NEW_PRODUCT,
+  payload,
+});
+
 export const showProductFilter = () => ({
   type: actions.SHOW_PRODUCT_FILTER_MODAL,
   payload: true,

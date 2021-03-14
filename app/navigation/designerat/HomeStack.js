@@ -247,7 +247,13 @@ const HomeStack = () => {
           headerTitle: () => <HeaderMiddle title={I18n.t('order_history')} />,
         }}
       />
-      <Stack.Screen name={'Contactus'} component={ContactusScreen} />
+      <Stack.Screen
+        name={'Contactus'}
+        options={{
+          headerTitle: () => <HeaderMiddle title={I18n.t('contactus')} />,
+        }}
+        component={ContactusScreen}
+      />
 
       <Stack.Screen
         name="CartIndex"
@@ -339,7 +345,7 @@ const HomeStack = () => {
         component={ImageZoomWidget}
         options={{
           headerRight: () => <HeaderRight />,
-          headerTitle: () => <HeaderMiddle />,
+          headerTitle: () => <HeaderMiddle title={I18n.t('gallery')} />,
           headerBackTitle: () => null,
         }}
       />

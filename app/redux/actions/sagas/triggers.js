@@ -144,6 +144,13 @@ export function* triggerCreateMyFatoorahPaymentUrl() {
 }
 
 // product
+export function* triggerSubmitCreateNewProduct() {
+  yield takeLatest(
+    actions.SUBMIT_CREATE_NEW_PRODUCT,
+    productSaga.startSubmitCreateNewProduct,
+  );
+}
+
 export function* triggerGetProduct() {
   yield takeLatest(actions.GET_PRODUCT, productSaga.startGetProductScenario);
 }

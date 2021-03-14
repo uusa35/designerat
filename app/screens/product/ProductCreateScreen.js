@@ -17,38 +17,42 @@ import {
   formWidget,
 } from '../../constants/sizes';
 import {icons} from '../../constants/images';
-import {enableErrorMessage, showCountryModal} from '../../redux/actions';
+import {
+  enableErrorMessage,
+  showCountryModal,
+  submitCreateNewProduct,
+} from '../../redux/actions';
 import {companyRegister, register, submitAuth} from '../../redux/actions/user';
 import {GlobalValuesContext} from '../../redux/GlobalValuesContext';
 import {useDispatch, useSelector} from 'react-redux';
-import {filter, first, map, remove} from 'lodash';
+import {filter, first, map, remove, flatten, uniq} from 'lodash';
 import ImageLoaderContainer from '../../components/widgets/ImageLoaderContainer';
 import ImagePicker from 'react-native-image-crop-picker';
 import widgetStyles from '../../components/widgets/widgetStyles';
 import validate from 'validate.js';
-import {validateSubmitRegister} from '../../constants/validations';
+import {
+  validateCreateProduct,
+  validateSubmitRegister,
+} from '../../constants/validations';
 import KeyBoardContainer from '../../components/containers/KeyBoardContainer';
 import {useNavigation} from '@react-navigation/native';
 import DesigneratBtn from '../../components/widgets/Button/DesigneratBtn';
 import {themeColors} from '../../constants/colors';
 import BgContainer from '../../components/containers/BgContainer';
 import Actionsheet from 'react-native-enhanced-actionsheet';
-import {flatten} from 'lodash';
 
 const ProductCreateScreen = ({showLabel = false}) => {
   const {colors, logo} = useContext(GlobalValuesContext);
-  const {country, playerId, role, roles, categories, auth} = useSelector(
-    (state) => state,
-  );
+  const {categories, auth} = useSelector((state) => state);
   const dispatch = useDispatch();
   const navigation = useNavigation();
-  const [name, setName] = useState('');
-  const [sku, setSku] = useState('');
-  const [price, setPrice] = useState('');
+  const [name, setName] = useState('dsfdsf');
+  const [sku, setSku] = useState('343');
+  const [price, setPrice] = useState('11');
   const [weight, setWeight] = useState('');
   const [selectedCategories, setSelectedCategories] = useState([]);
   const [categoryVisible, setCategoryVisible] = useState(false);
-  const [description, setDescription] = useState('');
+  const [description, setDescription] = useState('dsfdsfdsfdsf');
   const [image, setImage] = useState(null);
   const [images, setImages] = useState();
   const [finalCategories, setFinalCategories] = useState([]);
@@ -76,8 +80,8 @@ const ProductCreateScreen = ({showLabel = false}) => {
 
   const openLogoPicker = () => {
     return ImagePicker.openPicker({
-      width: 1000,
-      height: 1000,
+      width: 1080,
+      height: 1440,
       multiple: false,
       cropping: true,
       freeStyleCropEnabled: true,
@@ -118,40 +122,29 @@ const ProductCreateScreen = ({showLabel = false}) => {
     setImages(newImages);
   };
 
-  const handleSubmit = () => {
-    return validateSubmitRegister
+  const handleSubmitNewProduct = () => {
+    return validateCreateProduct
       .validate({
         name,
         sku,
-        category: selectedCategories,
-        country_id: country.id,
-        player_id: playerId,
+        price,
+        categories: selectedCategories,
+        user_id: auth.id,
         description,
         image,
         images,
-        role_id: role.id,
       })
       .then((r) => {
-        // ImagePicker.clean()
-        //   .then(() => {
-        // console.log('removed all tmp images from tmp directory');
-        // })
-        // .catch((e) => {
-        // console.log('picker error', e);
-        // });
         return dispatch(
-          companyRegister({
+          submitCreateNewProduct({
             name,
             sku,
-            country_id: country.id,
-            category,
-            player_id: playerId,
+            price,
+            categories: selectedCategories,
             description,
             image,
             images,
-            role_id: role
-              ? role.id
-              : first(filter(roles, (r) => r.isCompany)).id,
+            api_token: auth.api_token,
           }),
         );
       })
@@ -165,7 +158,6 @@ const ProductCreateScreen = ({showLabel = false}) => {
       });
   };
 
-  console.log('selectedCategories', selectedCategories);
   return (
     <BgContainer showImage={false} white={false}>
       <KeyBoardContainer>
@@ -215,6 +207,7 @@ const ProductCreateScreen = ({showLabel = false}) => {
           <Input
             placeholder={I18n.t('price')}
             containerStyle={{maxHeight: 100}}
+            maxLength={4}
             inputContainerStyle={[widgetStyles.inputContainerStyle]}
             inputStyle={widgetStyles.inputStyle}
             label={I18n.t('price') + '*'}
@@ -226,13 +219,27 @@ const ProductCreateScreen = ({showLabel = false}) => {
             keyboardType="numeric"
             onChangeText={(text) => setPrice(text)}
           />
+          <Input
+            placeholder={I18n.t('product_description')}
+            containerStyle={{maxHeight: 100}}
+            inputContainerStyle={[widgetStyles.inputContainerStyle]}
+            inputStyle={widgetStyles.inputStyle}
+            label={I18n.t('description') + '*'}
+            labelStyle={[
+              styles.titleLabelStyle,
+              {color: colors.main_theme_color, paddingBottom: 10},
+            ]}
+            shake={true}
+            keyboardType="default"
+            onChangeText={(text) => setDescription(text)}
+          />
           <View style={{marginLeft: 10, marginRight: 10}}>
             <Text
               style={[
                 widgetStyles.headerThree,
                 {textAlign: 'left', marginBottom: 10, marginLeft: 10},
               ]}>
-              {I18n.t('category')}*
+              {I18n.t('categories')}*
             </Text>
             <View
               style={{
@@ -312,7 +319,7 @@ const ProductCreateScreen = ({showLabel = false}) => {
                 resizeMode="cover"
               />
               <Text style={{fontFamily: text.font, fontSize: text.small}}>
-                {I18n.t('add_logo')}
+                {I18n.t('main_image')}
               </Text>
             </TouchableOpacity>
           </View>
@@ -393,7 +400,7 @@ const ProductCreateScreen = ({showLabel = false}) => {
           )}
 
           <DesigneratBtn
-            handleClick={() => handleSubmit()}
+            handleClick={() => handleSubmitNewProduct()}
             marginTop={20}
             title={I18n.t('submit')}
           />
@@ -404,7 +411,7 @@ const ProductCreateScreen = ({showLabel = false}) => {
           title={I18n.t('choose')}
           selected={selectedCategories}
           onOptionPress={(e) => {
-            setSelectedCategories(selectedCategories.concat(e.id));
+            setSelectedCategories(uniq(selectedCategories.concat(e.id)));
           }}
           optionTextStyle={widgetStyles.headerThree}
           titleStyle={widgetStyles.headerThree}

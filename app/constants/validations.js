@@ -684,3 +684,40 @@ export const validateFinalRating = Yup.object().shape({
     .typeError({message: 'validations.field_is_required'})
     .required({message: 'validations.field_is_required'}),
 });
+
+export const validateCreateProduct = Yup.object().shape({
+  name: Yup.string()
+    .min(5, {message: 'validations.name_is_required', item: 5})
+    .required('validations.name_is_required'),
+  // .matches(/^[A-Za-z][A-Za-z0-9]*$/, {
+  //   message: 'validations.strings_must_matches_the_expression'
+  // }),
+  sku: Yup.string()
+    .min(2, {message: 'validations.sku_is_required', item: 2})
+    .required('validations.sku_is_required'),
+  description: Yup.string()
+    .min(10, {message: 'validations.description_is_very_small'})
+    .required({message: 'validations.description_is_required'}),
+  price: Yup.number().required({message: 'validations.price_is_required'}),
+  categories: Yup.array()
+    .typeError({message: 'validations.categories_is_required'})
+    .required({
+      message: 'validations.categories_is_required',
+    }),
+  image: Yup.object()
+    .typeError({message: 'validations.main_image_is_required'})
+    .required({
+      message: 'validations.main_image_is_required',
+    }),
+  images: Yup.array()
+    .typeError({message: 'validations.product_images_is_required'})
+    .required({
+      message: 'validations.product_images_is_required',
+    }),
+  // password2: Yup.string()
+  //     .min(6, {
+  //       message: 'validations.password_must_not_be_larger_than',
+  //       item: 6
+  //     })
+  //     .oneOf([Yup.ref('password1'), null], 'validations.password_must_match')
+});
