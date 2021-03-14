@@ -37,7 +37,7 @@ const ProductInfoWidget = ({
           containerStyle={{width: '95%', alignSelf: 'center'}}
         />
       )}
-      {element.show_attribute && (
+      {element.is_available && (
         <ProductInfoWidgetBtns
           element={element}
           setAddToCartStatus={setAddToCartStatus}

@@ -662,6 +662,7 @@ export async function submitCreateNewProduct(params) {
     name,
     sku,
     price,
+    qty,
     categories,
     api_token,
     description,
@@ -688,6 +689,7 @@ export async function submitCreateNewProduct(params) {
   });
   formData.append('name', name);
   formData.append('price', price);
+  formData.append('qty', qty);
   formData.append('sku', sku);
   formData.append('api_token', api_token);
   formData.append('description', description);

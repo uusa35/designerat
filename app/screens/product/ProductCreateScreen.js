@@ -40,6 +40,7 @@ import DesigneratBtn from '../../components/widgets/Button/DesigneratBtn';
 import {themeColors} from '../../constants/colors';
 import BgContainer from '../../components/containers/BgContainer';
 import Actionsheet from 'react-native-enhanced-actionsheet';
+import {convertNumberToEnglish} from '../../helpers';
 
 const ProductCreateScreen = ({showLabel = false}) => {
   const {colors, logo} = useContext(GlobalValuesContext);
@@ -49,6 +50,7 @@ const ProductCreateScreen = ({showLabel = false}) => {
   const [name, setName] = useState('dsfdsf');
   const [sku, setSku] = useState('343');
   const [price, setPrice] = useState('11');
+  const [qty, setQty] = useState('10');
   const [weight, setWeight] = useState('');
   const [selectedCategories, setSelectedCategories] = useState([]);
   const [categoryVisible, setCategoryVisible] = useState(false);
@@ -128,6 +130,7 @@ const ProductCreateScreen = ({showLabel = false}) => {
         name,
         sku,
         price,
+        qty,
         categories: selectedCategories,
         user_id: auth.id,
         description,
@@ -140,6 +143,7 @@ const ProductCreateScreen = ({showLabel = false}) => {
             name,
             sku,
             price,
+            qty,
             categories: selectedCategories,
             description,
             image,
@@ -217,7 +221,22 @@ const ProductCreateScreen = ({showLabel = false}) => {
             ]}
             shake={true}
             keyboardType="numeric"
-            onChangeText={(text) => setPrice(text)}
+            onChangeText={(text) => setPrice(convertNumberToEnglish(text))}
+          />
+          <Input
+            placeholder={I18n.t('qty')}
+            containerStyle={{maxHeight: 100}}
+            maxLength={4}
+            inputContainerStyle={[widgetStyles.inputContainerStyle]}
+            inputStyle={widgetStyles.inputStyle}
+            label={I18n.t('qty') + '*'}
+            labelStyle={[
+              styles.titleLabelStyle,
+              {color: colors.main_theme_color, paddingBottom: 10},
+            ]}
+            shake={true}
+            keyboardType="numeric"
+            onChangeText={(text) => setQty(text)}
           />
           <Input
             placeholder={I18n.t('product_description')}
@@ -231,7 +250,9 @@ const ProductCreateScreen = ({showLabel = false}) => {
             ]}
             shake={true}
             keyboardType="default"
-            onChangeText={(text) => setDescription(text)}
+            onChangeText={(text) =>
+              setDescription(convertNumberToEnglish(text))
+            }
           />
           <View style={{marginLeft: 10, marginRight: 10}}>
             <Text

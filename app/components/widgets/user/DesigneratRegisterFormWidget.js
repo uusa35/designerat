@@ -37,6 +37,7 @@ import {useNavigation} from '@react-navigation/native';
 import DesigneratBtn from '../Button/DesigneratBtn';
 import {themeColors} from '../../../constants/colors';
 import DesineratRegisterFormIsMaleComponenet from './DesineratRegisterFormIsMaleComponenet';
+import {convertNumberToEnglish} from '../../../helpers';
 
 const DesigneratRegisterFormWidget = ({showLabel = false}) => {
   const {colors, logo} = useContext(GlobalValuesContext);
@@ -305,7 +306,7 @@ const DesigneratRegisterFormWidget = ({showLabel = false}) => {
         ]}
         shake={true}
         keyboardType="number-pad"
-        onChangeText={(text) => setMobile(text)}
+        onChangeText={(text) => setMobile(convertNumberToEnglish(text))}
       />
 
       <DesineratRegisterFormIsMaleComponenet

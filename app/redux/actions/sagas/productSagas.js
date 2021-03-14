@@ -10,6 +10,7 @@ import {
   enableLoading,
   enableLoadingBoxedList,
   enableLoadingContent,
+  enableSuccessMessage,
   enableWarningMessage,
   startGoogleAnalyticsScenario,
 } from './settingSagas';
@@ -17,6 +18,7 @@ import I18n from '../../../I18n';
 import * as RootNavigation from './../../../RootNavigation.js';
 import {SET_ELEMENT_TYPE} from '../types';
 import Animated from 'react-native-reanimated';
+import {startNavigateScenario} from './userSagas';
 
 export function* setHomeProducts(action) {
   try {
@@ -320,11 +322,12 @@ export function* startToggleProductFavoriteScenario(action) {
 
 export function* startSubmitCreateNewProduct(action) {
   try {
-    console.log('the whole action payload', action.payload);
     const element = yield call(api.submitCreateNewProduct, action.payload);
-    console.log('element', element);
     if (!validate.isEmpty(element) && validate.isObject(element)) {
+      yield call(enableSuccessMessage, I18n.t('product_saved_successfully')),
+        yield call(startNavigateScenario);
     } else {
+      throw element;
     }
   } catch (e) {
     if (__DEV__) {

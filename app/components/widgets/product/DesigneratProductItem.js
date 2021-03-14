@@ -215,7 +215,7 @@ const DesigneratProductItem = ({
               alignItems: 'center',
             }}
             titleStyle={[
-              widgetStyles.headerThree,
+              widgetStyles.headerFour,
               {color: colors.header_one_theme_color},
             ]}
             onPress={() =>

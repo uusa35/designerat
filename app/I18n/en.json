@@ -632,7 +632,8 @@
     "main_image_is_required" : "Main image required.",
     "categories_is_required" : "Categories are required.",
     "sku_is_required" : "SKU is required.",
-    "price_is_required" : "Price is required."
+    "price_is_required" : "Price is required.",
+    "qty_is_required" : "Qty is required."
   },
   "no_" : "No %{item}",
   "no_more_" : "No More %{item}",
@@ -724,7 +725,8 @@
   "tshirt" : "T-shirt",
   "choose" : "choose",
   "choose_category" : "Choose Category",
-  "product_description" : "Product Description"
+  "product_description" : "Product Description",
+  "product_saved_successfully" : "Product added successfully."
 
 }
 

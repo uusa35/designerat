@@ -11,6 +11,7 @@ import {text} from '../../constants/sizes';
 import DesigneratBtn from '../../components/widgets/Button/DesigneratBtn';
 import {createAddress, updateAddress} from '../../redux/actions/user';
 import {useDispatch, useSelector} from 'react-redux';
+import {convertNumberToEnglish} from '../../helpers';
 
 const UserAddressCreateScreen = ({showLabel = true}) => {
   const navigation = useNavigation();
@@ -82,7 +83,6 @@ const UserAddressCreateScreen = ({showLabel = true}) => {
             keyboardType="default"
             onChangeText={(text) => setAddArea(text)}
           />
-
           <Input
             placeholder={I18n.t('block')}
             containerStyle={{maxHeight: 100}}
@@ -95,7 +95,7 @@ const UserAddressCreateScreen = ({showLabel = true}) => {
             ]}
             shake={true}
             keyboardType="numeric"
-            onChangeText={(text) => setAddBlock(text)}
+            onChangeText={(text) => setAddBlock(convertNumberToEnglish(text))}
           />
 
           <Input
@@ -124,8 +124,10 @@ const UserAddressCreateScreen = ({showLabel = true}) => {
               {color: colors.main_theme_color, paddingBottom: 10},
             ]}
             shake={true}
-            keyboardType="default"
-            onChangeText={(text) => setAddBuilding(text)}
+            keyboardType="numeric"
+            onChangeText={(text) =>
+              setAddBuilding(convertNumberToEnglish(text))
+            }
           />
           <DesigneratBtn
             handleClick={() =>

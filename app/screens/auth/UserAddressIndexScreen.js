@@ -50,7 +50,7 @@ const UserAddressIndexScreen = () => {
               borderBottomColor: colors.btn_bg_theme_color,
               borderBottomWidth: auth.addresses.length - 1 <= i,
             }}>
-            <Text>{d.name}</Text>
+            <Text style={widgetStyles.headerThree}>{d.name}</Text>
             <View style={{flexDirection: 'row', alignItems: 'center'}}>
               {address && address.id === d.id && (
                 <Icon
