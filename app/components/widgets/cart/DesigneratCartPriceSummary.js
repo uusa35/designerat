@@ -9,9 +9,13 @@ import {GlobalValuesContext} from '../../../redux/GlobalValuesContext';
 
 const DesigeratCartPriceSummary = ({title = I18n.t('total_details')}) => {
   const {shipmentFees, shipmentCountry, coupon} = useSelector((state) => state);
-  const {total, grossTotal, currency_symbol, exchange_rate} = useContext(
-    GlobalValuesContext,
-  );
+  const {
+    total,
+    grossTotal,
+    currency_symbol,
+    exchange_rate,
+    colors,
+  } = useContext(GlobalValuesContext);
   return (
     <View
       style={[
@@ -44,6 +48,8 @@ const DesigeratCartPriceSummary = ({title = I18n.t('total_details')}) => {
           paddingBottom: 20,
           borderTopWidth: 1,
           borderBottomWidth: 1,
+          borderTopColor: colors.btn_bg_theme_color,
+          borderBottomColor: colors.btn_bg_theme_color,
         }}>
         <Text style={[widgetStyles.headerThree]}>{I18n.t('total_sum')}</Text>
         <View style={{flexDirection: 'row', minWidth: 50}}>
@@ -65,6 +71,7 @@ const DesigeratCartPriceSummary = ({title = I18n.t('total_details')}) => {
             paddingRight: 15,
             paddingBottom: 20,
             borderBottomWidth: 1,
+            borderBottomColor: colors.btn_bg_theme_color,
           }}>
           <Text style={widgetStyles.headerThree}>
             {I18n.t('shipment_fees_per_piece')}
@@ -91,6 +98,7 @@ const DesigeratCartPriceSummary = ({title = I18n.t('total_details')}) => {
             paddingRight: 15,
             paddingBottom: 20,
             borderBottomWidth: 1,
+            borderBottomColor: colors.btn_bg_theme_color,
           }}>
           <Text style={widgetStyles.headerThree}>{I18n.t('discount')}</Text>
           <View style={{flexDirection: 'row', minWidth: 50}}>
@@ -112,6 +120,7 @@ const DesigeratCartPriceSummary = ({title = I18n.t('total_details')}) => {
           paddingRight: 15,
           paddingBottom: 20,
           borderBottomWidth: 1,
+          borderBottomColor: colors.btn_bg_theme_color,
         }}>
         <Text style={widgetStyles.headerThree}>{I18n.t('grossTotal')}</Text>
         <View style={{flexDirection: 'row', minWidth: 50}}>
@@ -135,6 +144,7 @@ const DesigeratCartPriceSummary = ({title = I18n.t('total_details')}) => {
             paddingBottom: 20,
             backgroundColor: 'white',
             borderBottomWidth: 1,
+            borderBottomColor: colors.btn_bg_theme_color,
           }}>
           <Text style={widgetStyles.headerThree}>{`${I18n.t(
             'gross_total_in',

@@ -612,7 +612,6 @@ export async function createAddress(params) {
 }
 
 export async function updateAddress(params) {
-  console.log('params', params);
   return await axiosInstance
     .put(`address/${params.id}`, params)
     .then((r) => r.data)
