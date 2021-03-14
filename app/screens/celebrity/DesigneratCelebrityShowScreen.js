@@ -33,8 +33,8 @@ import DesingeratBtn from '../../components/widgets/Button/DesigneratBtn';
 import widgetStyles from '../../components/widgets/widgetStyles';
 import UserImageProfileRounded from '../../components/widgets/user/UserImageProfileRounded';
 
-const DesigneratDesignerShowScreen = ({route}) => {
-  const {designer, comments, commentModal, searchParams} = useSelector(
+const DesigneratCelebrityShowScreen = ({route}) => {
+  const {celebrity, comments, commentModal, searchParams} = useSelector(
     (state) => state,
   );
   const dispatch = useDispatch();
@@ -59,24 +59,24 @@ const DesigneratDesignerShowScreen = ({route}) => {
   }, []);
 
   useMemo(() => {
-    if (designer) {
-      if (!validate.isEmpty(designer.products)) {
+    if (celebrity) {
+      if (!validate.isEmpty(celebrity.products)) {
         setCollectedCategories(
-          collectedCategories.concat(designer.productCategories),
+          collectedCategories.concat(celebrity.productCategories),
         );
-        setProducts(products.concat(designer.products));
+        setProducts(products.concat(celebrity.products));
       }
-      if (!validate.isEmpty(designer.productGroup)) {
+      if (!validate.isEmpty(celebrity.productGroup)) {
         setCollectedCategories(
-          collectedCategories.concat(designer.productGroupCategories),
+          collectedCategories.concat(celebrity.productGroupCategories),
         );
-        setProducts(products.concat(designer.productGroup));
+        setProducts(products.concat(celebrity.productGroup));
       }
     } else {
       dispatch(enableWarningMessage(I18n.t('element_does_not_exist')));
       return dispatch(navigation.goBack());
     }
-  }, [designer]);
+  }, [celebrity]);
 
   useMemo(() => {
     navigation.setParams({headerBg, headerBgColor});
@@ -85,8 +85,8 @@ const DesigneratDesignerShowScreen = ({route}) => {
   const handleRefresh = useCallback(() => {
     return dispatch(
       getDesigner({
-        id: designer.id,
-        searchParams: {user_id: designer.id},
+        id: celebrity.id,
+        searchParams: {user_id: celebrity.id},
       }),
     );
   }, [refresh]);
@@ -103,7 +103,7 @@ const DesigneratDesignerShowScreen = ({route}) => {
         containerStyle={{flex: 1}}
         overlayColor="white"
         headerImage={{
-          uri: designer.banner ? designer.banner : logo,
+          uri: celebrity.banner ? celebrity.banner : logo,
         }}
         refreshControl={
           <RefreshControl
@@ -111,21 +111,21 @@ const DesigneratDesignerShowScreen = ({route}) => {
             onRefresh={() => handleRefresh()}
           />
         }>
-        {designer.banner && (
+        {celebrity.banner && (
           <ImageLoaderContainer
-            img={designer.banner}
+            img={celebrity.banner}
             style={{width: '100%', height: 140, marginTop: 15}}
           />
         )}
         <View style={styles.wrapper}>
-          {!validate.isEmpty(designer.slides) && (
+          {!validate.isEmpty(celebrity.slides) && (
             <View style={{paddingTop: 10, paddingBottom: 10, width: width}}>
-              <MainSliderWidget elements={designer.slides} />
+              <MainSliderWidget elements={celebrity.slides} />
             </View>
           )}
           <View
             style={{flex: 1, justifyContent: 'center', alignItems: 'center'}}>
-            <ImageLoaderContainer img={designer.thumb} style={styles.image} />
+            <ImageLoaderContainer img={celebrity.thumb} style={styles.image} />
             <Text
               style={[
                 widgetStyles.headerTow,
@@ -153,14 +153,14 @@ const DesigneratDesignerShowScreen = ({route}) => {
   );
 };
 
-DesigneratDesignerShowScreen.navigationOptions = ({navigation}) => ({
+DesigneratCelebrityShowScreen.navigationOptions = ({navigation}) => ({
   // headerTransparent: navigation.state.params.headerBg,
   // headerStyle: {
   //   backgroundColor: navigation.state.params.headerBgColor
   // }
 });
 
-export default DesigneratDesignerShowScreen;
+export default DesigneratCelebrityShowScreen;
 
 const styles = StyleSheet.create({
   mainTitle: {

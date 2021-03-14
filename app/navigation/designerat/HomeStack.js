@@ -48,7 +48,7 @@ import ClassifiedStoreScreen from '../../screens/classified/ClassifiedStoreScree
 import ProductCreateScreen from '../../screens/product/ProductCreateScreen';
 import DesigneratAboutusScreen from '../../screens/setting/DesigneratAboutusScreen';
 import DesigneratMobileConfirmationScreen from '../../screens/auth/DesigneratMobileConfirmationScreen';
-
+import DesigneratCelebrityShowScreen from '../../screens/celebrity/DesigneratCelebrityShowScreen';
 const Stack = createStackNavigator();
 const HomeStack = () => {
   const {colors} = useContext(GlobalValuesContext);
@@ -108,6 +108,16 @@ const HomeStack = () => {
           headerTitle: () => <HeaderMiddle title={I18n.t('celebrities')} />,
         }}
         component={CelebrityIndexScreen}
+      />
+      <Stack.Screen
+        name={'CelebrityShow'}
+        options={{
+          headerTitle: () => <HeaderMiddle />,
+          headerRight: () => (
+            <HeaderRight showCart={true} displayShare={true} />
+          ),
+        }}
+        component={DesigneratCelebrityShowScreen}
       />
       <Stack.Screen
         name={'DesignerShow'}

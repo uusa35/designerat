@@ -20,7 +20,7 @@ import I18n from '../../../I18n';
 import validate from 'validate.js';
 import {HOMEKEY, ABATI, MALLR, ESCRAP} from './../../../../app';
 import {CHANGE_ADDRESS, SET_ADDRESS, SET_ROLES} from '../types';
-import {first, filter} from 'lodash';
+import {first, filter, isNull} from 'lodash';
 import {reAuthenticate} from '../user';
 
 export function* startGetDesignerScenario(action) {
@@ -179,10 +179,10 @@ export function* startGetCelebrityScenario(action) {
       }
       if (!validate.isEmpty(redirect) && redirect) {
         yield put(
-          RootNavigation.navigate('DesignerShow', {
+          RootNavigation.navigate('CelebrityShow', {
             name: element.slug,
             id: element.id,
-            type: 'designer',
+            type: 'celebrity',
             model: 'user',
           }),
         );
@@ -346,10 +346,9 @@ export function* startSubmitAuthScenario(action) {
       ]);
       if (loginModal) {
         yield put({type: actions.HIDE_LOGIN_MODAL, payload: false});
+      } else if (action.payload.redirect) {
+        yield call(startNavigateScenario, action.payload.destination);
       }
-      // else {
-      //   RootNavigation.back();
-      // }
     } else {
       yield call(startLogoutScenario);
       throw element;
@@ -399,7 +398,6 @@ export function* startUpdateUserScenario(action) {
   try {
     yield call(enableLoading);
     const element = yield call(api.updateUser, action.payload);
-    console.log('the element', element);
     if (!validate.isEmpty(element) && validate.isObject(element)) {
       yield all([
         put({type: actions.SET_AUTH, payload: element}),
@@ -451,6 +449,9 @@ export function* startGetSearchCompaniesScenario(action) {
 export function* startGetCelebritiesScenario(action) {
   try {
     const {searchParams, redirect} = action.payload;
+    if (!validate.isEmpty(redirect) && redirect) {
+      yield call(enableLoadingBoxedList);
+    }
     const elements = yield call(api.getUsers, searchParams);
     if (!validate.isEmpty(elements) && validate.isArray(elements)) {
       yield all([
@@ -458,9 +459,7 @@ export function* startGetCelebritiesScenario(action) {
         put({type: actions.SET_SEARCH_PARAMS, payload: searchParams}),
       ]);
       if (!validate.isEmpty(redirect) && redirect) {
-        RootNavigation.navigate('CelebrityIndex', {
-          name: action.payload.name,
-        });
+        yield call(startNavigateScenario, 'CelebrityIndex');
       }
     } else {
       yield put({type: actions.SET_CELEBRITIES, payload: []});
@@ -470,7 +469,7 @@ export function* startGetCelebritiesScenario(action) {
   } catch (e) {
     yield call(enableWarningMessage, e);
   } finally {
-    yield call(disableLoading);
+    yield call(disableLoadingBoxedList);
   }
 }
 
@@ -547,9 +546,10 @@ export function* startAuthenticatedScenario() {
 
 export function* startRegisterScenario(action) {
   try {
-    yield call(enableLoading);
+    const {settings} = yield select();
     const element = yield call(api.register, action.payload);
     if (validate.isObject(element) && !validate.isEmpty(element)) {
+      yield call(enableLoading);
       const {email, password} = action.payload;
       yield put({type: actions.SUBMIT_AUTH, payload: {email, password}});
       yield all([
@@ -558,10 +558,11 @@ export function* startRegisterScenario(action) {
         // }),
         call(enableSuccessMessage, I18n.t('register_success')),
       ]);
-      if (element.mobile_verified) {
-        RootNavigation.navigate('Home');
+
+      if (element.mobile_verified && !settings.mobileVerification) {
+        yield call(startNavigateScenario, 'Home');
       } else {
-        RootNavigation.navigate('MobileConfirmation');
+        yield call(startNavigateScenario, 'MobileConfirmation');
       }
     } else {
       throw element;
@@ -573,6 +574,14 @@ export function* startRegisterScenario(action) {
   }
 }
 
+export function* startNavigateScenario(destination = null) {
+  if (!isNull(destination)) {
+    RootNavigation.navigate(destination);
+  } else {
+    RootNavigation.back();
+  }
+}
+
 export function* startRegisterAsClientScenario(action) {
   try {
     const {isClient} = action.payload;
@@ -580,9 +589,9 @@ export function* startRegisterAsClientScenario(action) {
     const role = first(filter(roles, (r) => r.isClient));
     if (!validate.isEmpty(role) && isClient) {
       yield put({type: actions.SET_ROLE, payload: role});
-      RootNavigation.navigate('Register');
+      yield call(startNavigateScenario, 'Register');
     } else {
-      RootNavigation.navigate('RoleIndex');
+      yield call(startNavigateScenario, 'RoleIndex');
     }
   } catch (e) {
     yield call(enableErrorMessage, e);
@@ -594,6 +603,7 @@ export function* startRegisterAsClientScenario(action) {
 export function* startCompanyRegisterScenario(action) {
   try {
     yield call(enableLoading);
+    const {settings} = yield select();
     const element = yield call(api.companyRegister, action.payload);
     if (validate.isObject(element) && !validate.isEmpty(element)) {
       const {email, password} = action.payload;
@@ -604,10 +614,10 @@ export function* startCompanyRegisterScenario(action) {
         // }),
         call(enableSuccessMessage, I18n.t('register_success')),
       ]);
-      if (element.mobile_verified) {
-        RootNavigation.navigate('Home');
+      if (element.mobile_verified && !settings.mobileVerification) {
+        yield call(startNavigateScenario, 'Home');
       } else {
-        RootNavigation.navigate('MobileConfirmation');
+        yield call(startNavigateScenario, 'MobileConfirmation');
       }
     } else {
       throw element;
@@ -715,7 +725,6 @@ export function* startSubmitMobileConfirmationCode(action) {
       api.submitMobileConfirmationCode,
       action.payload,
     );
-    console.log('element', element);
     if (!validate.isEmpty(element) && validate.isObject(element)) {
       yield all([
         put({type: actions.SET_AUTH, payload: element}),

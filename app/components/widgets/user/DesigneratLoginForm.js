@@ -115,7 +115,16 @@ const DesigneratLoginForm = ({showBtns = false, showLabel = false}) => {
         />
         <DesigneratBtn
           title={I18n.t('login')}
-          handleClick={() => dispatch(submitAuth({email, password}))}
+          handleClick={() =>
+            dispatch(
+              submitAuth({
+                email,
+                password,
+                redirect: true,
+                destination: 'Home',
+              }),
+            )
+          }
         />
         {showBtns && (
           <Fragment>
