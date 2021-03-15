@@ -30,6 +30,7 @@ import {
 } from '../../../constants/validations';
 import {GoogleSignin} from '@react-native-community/google-signin';
 import {
+  startGetCelebrityScenario,
   startGetCompanyScenario,
   startGetDesignerScenario,
   startGetSearchCompaniesScenario,
@@ -255,12 +256,12 @@ export function* startDeepLinkingScenario(action) {
           return yield call(startGetDesignerScenario, {
             payload: {id, redirect: true, searchParams: {user_id: id}},
           });
-        case 'company':
-          return yield call(startGetCompanyScenario, {
+        case 'celebrity':
+          return yield call(startGetCelebrityScenario, {
             payload: {id, redirect: true, searchParams: {user_id: id}},
           });
-        case 'shopper':
-          return yield call(startGetShopperScenario, {
+        case 'company':
+          return yield call(startGetCompanyScenario, {
             payload: {id, redirect: true, searchParams: {user_id: id}},
           });
         case 'classified':
@@ -417,7 +418,8 @@ export function* setGrossTotalCartValue(values) {
     const couponValue = parseFloat(
       !validate.isEmpty(coupon) ? coupon.value : 0,
     );
-    const grossTotal = parseFloat(total + finalShipment - couponValue);
+    const grossTotal =
+      parseFloat(total) + parseFloat(finalShipment) - parseFloat(couponValue);
     yield put({type: actions.SET_GROSS_TOTAL_CART, payload: grossTotal});
     yield put({type: actions.SET_SHIPMENT_FEES, payload: finalShipment});
   } catch (e) {

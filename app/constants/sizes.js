@@ -69,9 +69,17 @@ export const productWidget = {
 
 export const userWidget = {
   DESIGNERAT: {
-    small: {
+    xsmall: {
       width: 80,
       height: 80,
+    },
+    small: {
+      width: 100,
+      height: 100,
+    },
+    smaller: {
+      width: 120,
+      height: 120,
     },
     medium: {
       width: 150,

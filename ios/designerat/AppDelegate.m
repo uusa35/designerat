@@ -4,7 +4,7 @@
 #import <React/RCTBundleURLProvider.h>
 #import <React/RCTRootView.h>
 #import <React/RCTLinkingManager.h>
-//#import <Firebase.h>
+#import <Firebase.h>
 #import <CodePush/CodePush.h>
 
 #ifdef FB_SONARKIT_ENABLED
@@ -46,10 +46,10 @@ static void InitializeFlipper(UIApplication *application) {
   rootViewController.view = rootView;
   self.window.rootViewController = rootViewController;
   [self.window makeKeyAndVisible];
-  // firebase
-      //if ([FIRApp defaultApp] == nil) {
-        //[FIRApp configure];
-      //}
+//   firebase
+      if ([FIRApp defaultApp] == nil) {
+        [FIRApp configure];
+      }
   return YES;
 }
 

@@ -40,7 +40,13 @@ const CelebrityHorizontalWidget = ({
             activeOpacity={touchOpacity}
             style={[
               widgetStyles.titleContainer,
-              {height: 40, alignItems: 'baseline'},
+              {
+                height: 40,
+                alignItems: 'baseline',
+                borderBottomColor: colors.header_one_theme_color,
+                borderBottomWidth: 0.5,
+                marginBottom: 10,
+              },
             ]}
             onPress={() =>
               dispatch(
@@ -111,7 +117,7 @@ const CelebrityHorizontalWidget = ({
                   <ImageLoaderContainer
                     img={c.thumb}
                     style={{
-                      width: userWidget[APP_CASE].medium.width,
+                      width: userWidget[APP_CASE].small.width + 15,
                       height: userWidget[APP_CASE].medium.height,
                       borderRadius:
                         isIOS && rounded

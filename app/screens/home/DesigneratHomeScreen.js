@@ -105,7 +105,7 @@ const DesigneratHomeScreen = () => {
             type="designer"
             title={I18n.t('designers')}
             showAll={true}
-            rounded={false}
+            rounded={true}
             searchParams={{is_designer: 1, country_id: country.id, on_home: 1}}
           />
         )}

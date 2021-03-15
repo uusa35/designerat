@@ -185,11 +185,9 @@ export function* startGetProductScenario(action) {
       }
       yield all([put({type: actions.SET_PRODUCT, payload: element})]);
       if (!validate.isEmpty(redirect) && redirect) {
-        yield all([
-          // call(startGoogleAnalyticsScenario, {
-          //   payload: {type: 'Product', element},
-          // }),
-        ]);
+        yield call(startGoogleAnalyticsScenario, {
+          payload: {type: 'Product', element},
+        });
         RootNavigation.navigate('ProductShow', {
           name: element.name,
           id: element.id,

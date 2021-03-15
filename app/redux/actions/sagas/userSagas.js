@@ -45,11 +45,9 @@ export function* startGetDesignerScenario(action) {
         yield put({type: actions.SET_COMMENTS, payload: []});
       }
       if (!validate.isEmpty(redirect) && redirect) {
-        yield all([
-          // call(startGoogleAnalyticsScenario, {
-          //   payload: {type: 'User', element},
-          // }),
-        ]);
+        yield call(startGoogleAnalyticsScenario, {
+          payload: {type: 'User', element},
+        });
         RootNavigation.navigate('DesignerShow', {
           name: element.slug,
           id: element.id,
@@ -340,9 +338,9 @@ export function* startSubmitAuthScenario(action) {
         call(setProductFavorites, element.product_favorites),
         call(setClassifiedFavorites, element.classified_favorites),
         call(enableSuccessMessage, I18n.t('login_success')),
-        // call(startGoogleAnalyticsScenario, {
-        //   payload: {type: 'UserLogged', element},
-        // }),
+        call(startGoogleAnalyticsScenario, {
+          payload: {type: 'UserLogged', element},
+        }),
       ]);
       if (loginModal) {
         yield put({type: actions.HIDE_LOGIN_MODAL, payload: false});
@@ -553,9 +551,9 @@ export function* startRegisterScenario(action) {
       const {email, password} = action.payload;
       yield put({type: actions.SUBMIT_AUTH, payload: {email, password}});
       yield all([
-        // call(startGoogleAnalyticsScenario, {
-        //   payload: {type: 'UserRegister', element},
-        // }),
+        call(startGoogleAnalyticsScenario, {
+          payload: {type: 'UserRegister', element},
+        }),
         call(enableSuccessMessage, I18n.t('register_success')),
       ]);
 
@@ -609,9 +607,9 @@ export function* startCompanyRegisterScenario(action) {
       const {email, password} = action.payload;
       yield put({type: actions.SUBMIT_AUTH, payload: {email, password}});
       yield all([
-        // call(startGoogleAnalyticsScenario, {
-        //   payload: {type: 'UserRegister', element},
-        // }),
+        call(startGoogleAnalyticsScenario, {
+          payload: {type: 'UserRegister', element},
+        }),
         call(enableSuccessMessage, I18n.t('register_success')),
       ]);
       if (element.mobile_verified && !settings.mobileVerification) {
@@ -735,9 +733,9 @@ export function* startSubmitMobileConfirmationCode(action) {
         call(setProductFavorites, element.product_favorites),
         call(setClassifiedFavorites, element.classified_favorites),
         call(enableSuccessMessage, I18n.t('login_success')),
-        // call(startGoogleAnalyticsScenario, {
-        //   payload: {type: 'UserLogged', element},
-        // }),
+        call(startGoogleAnalyticsScenario, {
+          payload: {type: 'UserLogged', element},
+        }),
       ]);
       yield put({type: actions.HIDE_LOGIN_MODAL, payload: false});
       RootNavigation.navigate('Home');

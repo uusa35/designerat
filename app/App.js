@@ -9,6 +9,8 @@ import {ActivityIndicator} from 'react-native';
 import {navigationRef, isReadyRef} from './RootNavigation';
 import SimpleSpinner from './components/SimpleSpinner';
 import AppContainer from './components/containers/AppContainer';
+import linking from './linking';
+import LoadingView from './components/Loading/LoadingView';
 
 const SwitchNavigator = createSwitchNavigator(
   {
@@ -26,6 +28,7 @@ export default function App() {
         <React.Suspense fallback={<SimpleSpinner />}>
           <NavigationContainer
             ref={navigationRef}
+            linking={linking}
             onReady={() => {
               isReadyRef.current = true;
             }}>

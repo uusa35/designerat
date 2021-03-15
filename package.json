@@ -20,6 +20,8 @@
     "@react-native-community/masked-view": "^0.1.10",
     "@react-native-community/netinfo": "^6.0.0",
     "@react-native-community/viewpager": "^4.2.3",
+    "@react-native-firebase/analytics": "^11.1.0",
+    "@react-native-firebase/app": "^11.1.0",
     "@react-navigation/bottom-tabs": "^5.11.7",
     "@react-navigation/compat": "^5.3.13",
     "@react-navigation/drawer": "^5.12.3",
@@ -114,6 +116,7 @@
     "rn-fetch-blob": "^0.12.0",
     "rn-redux-middleware-flipper": "^0.1.0",
     "tslib": "^2.1.0",
+    "uri-scheme": "^1.0.68",
     "validate.js": "^0.13.1",
     "yup": "^0.32.9"
   },

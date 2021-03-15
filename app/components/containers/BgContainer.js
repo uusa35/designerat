@@ -16,9 +16,12 @@ import LoadingView from '../Loading/LoadingView';
 import LoadingOfflineView from '../Loading/LoadingOfflineView';
 import {GlobalValuesContext} from '../../redux/GlobalValuesContext';
 import OneSignal from 'react-native-onesignal';
-import {DESIGNERAT_ONE_SIGNAL_APP_ID} from '../../../app.json';
+import {DESIGNERAT_ONE_SIGNAL_APP_ID, APP_CASE} from '../../../app.json';
 import {getPathForDeepLinking} from '../../helpers';
 import {goDeepLinking, setDeepLinking, setPlayerId} from '../../redux/actions';
+import {useRoute} from '@react-navigation/native';
+import moment from 'moment';
+import analytics from '@react-native-firebase/analytics';
 
 const BgContainer = ({
   children,
@@ -45,6 +48,7 @@ const BgContainer = ({
   const [appState, setAppState] = useState(AppState.currentState);
   const [device, setDevice] = useState('');
   const dispatch = useDispatch();
+  const route = useRoute();
 
   useMemo(() => {
     setBg(!showImage ? images.whiteBg : mainBg.includes('.') ? mainBg : img);
@@ -57,26 +61,19 @@ const BgContainer = ({
   }, [isLoading, isLoadingBoxedList, isLoadingProfile, isLoadingContent]);
 
   useEffect(() => {
-    // if (!isEmpty(navigation)) {
-    //   const {routeName} = navigation.state;
-    //   if (__DEV__) {
-    //     // console.log('dev routeName', routeName);
-    //   }
-    //   analytics().logEvent(routeName, {
-    //     item: `${APP_CASE}_${routeName}`,
-    //     description: `${routeName}_${moment().format('YYYY-MM-DD')}`,
-    //     start_date: moment().format('YYYY-MM-DD'),
-    //   });
-    //   analytics().setCurrentScreen(routeName);
-    // }
+    analytics().logEvent(route.name, {
+      item: `${APP_CASE}_${route.name}`,
+      description: `${route.name}_${moment().format('YYYY-MM-DD')}`,
+      start_date: moment().format('YYYY-MM-DD'),
+    });
     AppState.addEventListener('change', handleAppStateChange);
     /* O N E S I G N A L   S E T U P */
     OneSignal.setAppId(DESIGNERAT_ONE_SIGNAL_APP_ID);
     OneSignal.setLogLevel(6, 0);
     OneSignal.setRequiresUserPrivacyConsent(false);
     OneSignal.promptForPushNotificationsWithUserResponse((response) => {
-      // console.log('Prompt response:', response);
-    });
+      console.log('Prompt response:', response);
+    }, []);
 
     /* O N E S I G N A L  H A N D L E R S */
     OneSignal.setNotificationWillShowInForegroundHandler(
@@ -117,6 +114,8 @@ const BgContainer = ({
     });
     OneSignal.setInAppMessageClickHandler((event) => {
       // console.log('OneSignal IAM clicked:', event);
+      const {type, id} = getPathForDeepLinking(event.click_url);
+      return dispatch(goDeepLinking({type, id}));
     });
     OneSignal.addEmailSubscriptionObserver((event) => {
       // console.log('OneSignal: email subscription changed: ', event);
