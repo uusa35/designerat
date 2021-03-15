@@ -125,7 +125,7 @@ const ProductColorSizeGroup = ({
       />
       {element.wrap_as_gift && (
         <WrapAsGiftWidget
-          wrapGift={element.wrap_as_gift}
+          wrapGift={wrapGift}
           setWrapGift={setWrapGift}
           giftMessage={giftMessage}
           setGiftMessage={setGiftMessage}

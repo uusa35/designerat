@@ -72,7 +72,7 @@ const BgContainer = ({
     OneSignal.setLogLevel(6, 0);
     OneSignal.setRequiresUserPrivacyConsent(false);
     OneSignal.promptForPushNotificationsWithUserResponse((response) => {
-      console.log('Prompt response:', response);
+      // console.log('Prompt response:', response);
     }, []);
 
     /* O N E S I G N A L  H A N D L E R S */
