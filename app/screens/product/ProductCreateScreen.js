@@ -25,7 +25,7 @@ import {
 import {companyRegister, register, submitAuth} from '../../redux/actions/user';
 import {GlobalValuesContext} from '../../redux/GlobalValuesContext';
 import {useDispatch, useSelector} from 'react-redux';
-import {filter, first, map, remove, flatten, uniq} from 'lodash';
+import {filter, first, map, remove, flatten, uniq, forEach} from 'lodash';
 import ImageLoaderContainer from '../../components/widgets/ImageLoaderContainer';
 import ImagePicker from 'react-native-image-crop-picker';
 import widgetStyles from '../../components/widgets/widgetStyles';
@@ -99,7 +99,7 @@ const ProductCreateScreen = ({showLabel = false}) => {
     });
   };
 
-  const openImagesPicker = () => {
+  const openImagesPicker = async () => {
     return ImagePicker.openPicker({
       compressImageMaxWidth: 1080,
       compressImageMaxHeight: 1440,
@@ -114,8 +114,18 @@ const ProductCreateScreen = ({showLabel = false}) => {
       storageOptions: {
         skipBackup: true,
       },
-    }).then((images) => {
-      setImages(images);
+    }).then(async (images) => {
+      const result = [];
+      for (const img of images) {
+        result.push(
+          await ImagePicker.openCropper({
+            path: img.path,
+            width: 1080,
+            height: 1440,
+          }),
+        );
+      }
+      setImages(result);
     });
   };
 
@@ -236,7 +246,7 @@ const ProductCreateScreen = ({showLabel = false}) => {
             ]}
             shake={true}
             keyboardType="numeric"
-            onChangeText={(text) => setQty(text)}
+            onChangeText={(text) => setQty(convertNumberToEnglish(text))}
           />
           <Input
             placeholder={I18n.t('product_description')}

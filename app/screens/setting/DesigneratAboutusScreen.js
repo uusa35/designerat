@@ -32,7 +32,11 @@ const DesigneratAboutusScreen = () => {
               minHeight: 200,
             },
           ]}>
-          <Text style={[widgetStyles.headerThree, {textAlign: 'left'}]}>
+          <Text
+            style={[
+              widgetStyles.headerThree,
+              {textAlign: 'left', lineHeight: 50},
+            ]}>
             {settings.description}
           </Text>
         </View>

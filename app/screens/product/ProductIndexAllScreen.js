@@ -4,9 +4,10 @@ import {useDispatch, useSelector} from 'react-redux';
 import {getAllProducts} from '../../redux/actions/product';
 import BgContainer from '../../components/containers/BgContainer';
 import ElementsHorizontalList from '../../components/Lists/ElementsHorizontalList';
+import {filter, unionBy} from 'lodash';
 
 const ProductIndexAllScreen = () => {
-  const {products, country} = useSelector((state) => state);
+  const {products, searchProducts, country} = useSelector((state) => state);
   const dispatch = useDispatch();
   const [currentElements, setCurrentElements] = useState([]);
 
@@ -15,10 +16,9 @@ const ProductIndexAllScreen = () => {
   }, []);
 
   useMemo(() => {
-    // if (!validate.isEmpty(products)) {
-    setCurrentElements(products);
-    // }
-  }, [products]);
+    const finalProducts = unionBy(products.concat(searchProducts), (p) => p.id);
+    setCurrentElements(finalProducts);
+  }, [products, searchProducts]);
 
   return (
     <BgContainer showImage={false}>

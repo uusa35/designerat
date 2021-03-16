@@ -203,6 +203,7 @@ export const getFont = () => {
 };
 
 export const text = {
+  tiny: 5,
   smallest: 5,
   smaller: 10,
   small: 12,

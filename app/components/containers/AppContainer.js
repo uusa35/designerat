@@ -109,8 +109,12 @@ const AppContainer = ({children}) => {
               value={{
                 cartLength: cart.length,
                 countriesLength: countries.length,
-                currency_symbol: currency ? currency.currency_symbol : 'KWD',
-                exchange_rate: currency ? currency.exchange_rate : '1',
+                currency_symbol: currency
+                  ? currency.currency_symbol
+                  : country.currency.currency_symbol,
+                exchange_rate: currency
+                  ? currency.exchange_rate
+                  : country.currency.exchange_rate,
                 total,
                 grossTotal,
                 colors: settings.colors,

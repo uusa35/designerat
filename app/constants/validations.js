@@ -698,8 +698,12 @@ export const validateCreateProduct = Yup.object().shape({
   description: Yup.string()
     .min(10, {message: 'validations.description_is_very_small'})
     .required({message: 'validations.description_is_required'}),
-  price: Yup.number().required({message: 'validations.price_is_required'}),
-  qty: Yup.number().required({message: 'validations.qty_is_required'}),
+  price: Yup.number()
+    .typeError({message: 'validations.price_must_be_english_number'})
+    .required({message: 'validations.price_is_required'}),
+  qty: Yup.number()
+    .typeError({message: 'validations.qty_must_be_english_number'})
+    .required({message: 'validations.qty_is_required'}),
   categories: Yup.array()
     .typeError({message: 'validations.categories_is_required'})
     .required({

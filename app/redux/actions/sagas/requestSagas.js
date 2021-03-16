@@ -178,20 +178,17 @@ export function* setCountries() {
 // get the country if it' snot set
 export function* getCountry(country_id = null) {
   try {
-    const {country} = yield select();
-    if (!country.slug) {
-      const fetchedCountry = isNull(country_id)
-        ? yield call(api.getCountry)
-        : yield call(api.getCountry, country_id);
-      if (
-        !validate.isEmpty(fetchedCountry) &&
-        validate.isObject(fetchedCountry) &&
-        fetchedCountry.currency
-      ) {
-        yield call(startChooseCountryScenario, {
-          payload: {country: fetchedCountry},
-        });
-      }
+    const fetchedCountry = isNull(country_id)
+      ? yield call(api.getCountry)
+      : yield call(api.getCountry, country_id);
+    if (
+      !validate.isEmpty(fetchedCountry) &&
+      validate.isObject(fetchedCountry) &&
+      fetchedCountry.currency
+    ) {
+      yield call(startChooseCountryScenario, {
+        payload: {country: fetchedCountry},
+      });
     }
   } catch (e) {
     if (__DEV__) {

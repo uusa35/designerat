@@ -68,7 +68,7 @@ const UserAddressIndexScreen = () => {
                   padding: 10,
                   marginLeft: 10,
                   borderColor: colors.btn_bg_theme_color,
-                  borderRadius: text.smallest,
+                  borderRadius: text.tiny,
                 }}>
                 <Text style={widgetStyles.headerFour}>{I18n.t('modify')}</Text>
               </TouchableOpacity>
@@ -79,7 +79,7 @@ const UserAddressIndexScreen = () => {
                   padding: 10,
                   marginLeft: 10,
                   borderColor: colors.btn_bg_theme_color,
-                  borderRadius: text.smallest,
+                  borderRadius: text.tiny,
                 }}>
                 <Text style={widgetStyles.headerFour}>{I18n.t('select')}</Text>
               </TouchableOpacity>
@@ -95,7 +95,7 @@ const UserAddressIndexScreen = () => {
                     padding: 10,
                     marginLeft: 10,
                     borderColor: colors.btn_bg_theme_color,
-                    borderRadius: text.smallest,
+                    borderRadius: text.tiny,
                     backgroundColor:
                       d.id === address.id
                         ? themeColors.desinerat.darkGray

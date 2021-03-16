@@ -113,7 +113,7 @@ const DesigneratSettingsIndexScreen = ({navigation}) => {
               justifyContent: 'center',
               alignItems: 'baseline',
             }}>
-            <Text style={widgetStyles.headerThree}>{`${I18n.t('welcome')} ${
+            <Text style={widgetStyles.headerThree}>{`${I18n.t('welcome')}  ${
               !guest ? auth.name : ''
             }`}</Text>
             {!guest && (

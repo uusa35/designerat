@@ -668,7 +668,9 @@
     "categories_is_required" : "التصنيفات مطلوبة",
     "sku_is_required" : "الرقم التعريفي للمنتج مطلوب",
     "price_is_required" : "السعر مطلوب",
-    "qty_is_required" : "الكمية مطلوب"
+    "qty_is_required" : "الكمية مطلوب",
+    "qty_must_be_english_number" : "الكمية يجب أن تكون رقما وباللغة الانجليزية فقط",
+    "price_must_be_english_number" : "السعر يجب أن تكون رقما وباللغة الانجليزية فقط"
   },
   "no_" : "لا يوجد %{item} ",
   "orders" : "الطلبات",

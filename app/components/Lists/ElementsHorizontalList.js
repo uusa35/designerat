@@ -398,7 +398,7 @@ const ElementsHorizontalList = ({
               style={{width: '33%'}}>
               <ImageLoaderContainer
                 img={item.thumb}
-                style={{width: '100%', height: 180}}
+                style={{width: '100%', height: 175}}
               />
             </TouchableOpacity>
           );

@@ -148,7 +148,9 @@ const DesineratNormalProductShowScreen = () => {
                   ]}>
                   {I18n.t('description')}
                 </Text>
-                <Text style={styles.normalText}>{product.description}</Text>
+                <Text style={[styles.normalText, {lineHeight: 30}]}>
+                  {product.description}
+                </Text>
               </View>
             ) : null}
             {product.user ? (
