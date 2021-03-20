@@ -310,8 +310,9 @@ const ProductCreateScreen = ({showLabel = false}) => {
                   justifyContent: 'center',
                 }}>
                 <Icon
-                  name="restart"
-                  type="material-community"
+                  name="redo"
+                  type="evilicon"
+                  size={iconSizes.medium}
                   onPress={() => setSelectedCategories([])}
                 />
               </View>
@@ -421,7 +422,7 @@ const ProductCreateScreen = ({showLabel = false}) => {
                     <Icon
                       size={30}
                       name="close"
-                      type="evil-icons"
+                      type="evilicon"
                       onPress={() => removeImage(i)}
                     />
                   </View>

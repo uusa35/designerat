@@ -1,5 +1,5 @@
 import React, {useContext} from 'react';
-import {StyleSheet, View, Text} from 'react-native';
+import {StyleSheet, View, Text, ImageBackground} from 'react-native';
 import {useSelector} from 'react-redux';
 import validate from 'validate.js';
 import {text, width, height} from '../../constants/sizes';
@@ -15,6 +15,10 @@ import {useNavigation} from '@react-navigation/native';
 import DesigneratCartList from '../../components/widgets/cart/DesigneratCartList';
 import DesigneratBtn from '../../components/widgets/Button/DesigneratBtn';
 import widgetStyles from '../../components/widgets/widgetStyles';
+import {themeColors} from '../../constants/colors';
+import FastImage from 'react-native-fast-image';
+import {images} from '../../constants/images';
+
 const DesigneratCartIndexScreen = () => {
   const {
     cart,
@@ -36,7 +40,7 @@ const DesigneratCartIndexScreen = () => {
             justifyContent: 'center',
             alignItems: 'center',
             alignSelf: 'center',
-            backgroundColor: '#f7f7f7',
+            backgroundColor: themeColors.desinerat.lightGray,
           }}>
           <KeyBoardContainer>
             <DesigneratCartList
@@ -53,31 +57,28 @@ const DesigneratCartIndexScreen = () => {
         </View>
       )}
       {validate.isEmpty(cart) && (
-        <View
+        <ImageBackground
           style={{
             justifyContent: 'center',
             backgroundColor: 'white',
             flex: 1,
             padding: 20,
-          }}>
-          <LottieView
-            source={animations.emptyCart}
-            // source={animations.cart}
-            autoPlay
-            loop
-            resizeMode="cover"
-            style={{
-              alignSelf: 'center',
-              width: width / 3,
-              height: width / 3,
-            }}
-            enableMergePathsAndroidForKitKatAndAbove
+          }}
+          source={images.cartBg}
+          imageStyle={{resizeMode: 'repeat', opacity: 0.2}}>
+          <FastImage
+            source={images.cartEmpty}
+            style={{width: 100, height: 100, alignSelf: 'center', margin: 20}}
           />
           <Animating
             animation="bounceIn"
             easing="ease-out"
             useNativeDriver={true}>
-            <Text style={[widgetStyles.headerThree, {marginBottom: 20}]}>
+            <Text
+              style={[
+                widgetStyles.headerThree,
+                {marginBottom: 20, color: colors.header_one_theme_color},
+              ]}>
               {I18n.t('cart_is_empty')}
             </Text>
             <DesigneratBtn
@@ -90,7 +91,7 @@ const DesigneratCartIndexScreen = () => {
               title={I18n.t('continue_shopping')}
             />
           </Animating>
-        </View>
+        </ImageBackground>
       )}
     </BgContainer>
   );

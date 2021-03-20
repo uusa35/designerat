@@ -357,7 +357,3 @@ export const setElementType = (payload) => ({
   type: actions.SET_ELEMENT_TYPE,
   payload,
 });
-
-export const checkConnection = () => ({
-  type: actions.CHECK_CONNECTION,
-});

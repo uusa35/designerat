@@ -100,7 +100,7 @@ const DesigneratCelebrityShowScreen = ({route}) => {
         showsVerticalScrollIndicator={false}
         // maxHeight={150}
         // minHeight={90}
-        containerStyle={{flex: 1}}
+        containerStyle={{flex: 1, borderWidth: 10}}
         overlayColor="white"
         headerImage={{
           uri: celebrity.banner ? celebrity.banner : logo,

@@ -49,7 +49,13 @@ const DesingeratBtn = ({
       <Text
         style={[
           titleStyle,
-          {color: colors.btn_theme_color, textAlign: 'center', paddingTop: 5},
+          {
+            color: bg
+              ? colors.btn_text_theme_color
+              : colors.header_one_theme_color,
+            textAlign: 'center',
+            paddingTop: 5,
+          },
         ]}>
         {title}
       </Text>

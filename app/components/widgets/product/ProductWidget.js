@@ -7,6 +7,7 @@ import {
   Text,
   TouchableHighlight,
   Linking,
+  Pressable,
 } from 'react-native';
 import widgetStyles from '../widgetStyles';
 import {getConvertedFinalPrice} from '../../../helpers';
@@ -43,8 +44,7 @@ const ProductWidget = ({
   const dispatch = useDispatch();
 
   return (
-    <TouchableOpacity
-      activeOpacity={touchOpacity}
+    <Pressable
       key={element.id}
       style={[
         widgetStyles.productServiceWidget,
@@ -182,7 +182,7 @@ const ProductWidget = ({
           </View>
         </View>
       )}
-    </TouchableOpacity>
+    </Pressable>
   );
 };
 

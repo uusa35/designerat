@@ -17,6 +17,8 @@ import KeyBoardContainer from '../../components/containers/KeyBoardContainer';
 import {useNavigation} from '@react-navigation/native';
 import DesigneratCartList from '../../components/widgets/cart/DesigneratCartList';
 import DesigneratCartForm from '../../components/widgets/cart/DesigneratCartForm';
+import {themeColors} from '../../constants/colors';
+
 const DesigneratCartFormIndexScreen = () => {
   const {
     cart,
@@ -37,7 +39,7 @@ const DesigneratCartFormIndexScreen = () => {
           justifyContent: 'center',
           alignItems: 'center',
           alignSelf: 'center',
-          backgroundColor: '#f7f7f7',
+          backgroundColor: themeColors.desinerat.lightGray,
         }}>
         {!validate.isEmpty(cart) ? (
           <KeyBoardContainer>

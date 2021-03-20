@@ -1,24 +1,14 @@
-import React, {useContext, useState, useCallback} from 'react';
+import React, {useContext, useState} from 'react';
 import {StyleSheet, Text, TouchableOpacity, Alert} from 'react-native';
 import {View} from 'react-native-animatable';
-import I18n, {isRTL} from '../../../I18n';
+import I18n from '../../../I18n';
 import {isIOS, width} from '../../../constants';
-import {text, height, iconSizes} from '../../../constants/sizes';
-import {showCountryModal} from '../../../redux/actions';
-import {
-  clearCart,
-  getCoupon,
-  storeOrderCashOnDelivery,
-  storeOrderMyFatoorah,
-  storeOrderTap,
-  submitCart,
-} from '../../../redux/actions/cart';
-import {Button, CheckBox, Icon, Input} from 'react-native-elements';
+import {text, iconSizes} from '../../../constants/sizes';
+import {clearCart, storeOrderCashOnDelivery} from '../../../redux/actions/cart';
+import {CheckBox, Icon, Input} from 'react-native-elements';
 import PropTypes from 'prop-types';
-import {map, round, isEmpty} from 'lodash';
-import ProductItem from '../product/ProductItem';
+import {isEmpty} from 'lodash';
 import {GlobalValuesContext} from '../../../redux/GlobalValuesContext';
-import {MALLR, ABATI, HOMEKEY, PAYMENT} from './../../../../app';
 import validate from 'validate.js';
 import {useDispatch, useSelector} from 'react-redux';
 import {useNavigation, useRoute} from '@react-navigation/native';
@@ -26,12 +16,11 @@ import widgetStyles from '../widgetStyles';
 import {adjustColor} from '../../../helpers';
 import {
   CREATE_MYFATOORAH_PAYMENT_URL,
-  CREATE_PAYMENT_URL,
   CREATE_TAP_PAYMENT_URL,
 } from '../../../redux/actions/types';
 import DesigneratBtn from '../Button/DesigneratBtn';
-import DesingeratBtn from '../Button/DesigneratBtn';
 import DesigneratCartPriceSummary from './DesigneratCartPriceSummary';
+import DesingeratBtn from '../Button/DesigneratBtn';
 
 const DesigneratCartListConfirmationScreen = ({
   showLabel = false,
@@ -105,7 +94,7 @@ const DesigneratCartListConfirmationScreen = ({
   };
 
   return (
-    <View style={{flexDirection: 'column', width}}>
+    <View style={{flexDirection: 'column', width, paddingBottom: '10%'}}>
       <View
         style={{
           flex: 1,
@@ -408,10 +397,11 @@ const DesigneratCartListConfirmationScreen = ({
       <View style={{backgroundColor: 'white', margin: 15, padding: 15}}>
         <View
           style={{
-            flex: 1,
+            width: '95%',
             flexDirection: 'row',
             justifyContent: 'space-between',
             alignItems: 'center',
+            alignSelf: 'center',
           }}>
           <CheckBox
             containerStyle={{
@@ -425,12 +415,15 @@ const DesigneratCartListConfirmationScreen = ({
             checkedIcon="check-box"
             uncheckedIcon="check-box-outline-blank"
             checked={checked}
+            checkedColor={colors.btn_bg_theme_color}
+            uncheckedColor={colors.btn_bg_theme_color}
+            style={{color: colors.btn_bg_theme_color}}
             onPress={() => setChecked(!checked)}
             textStyle={{fontFamily: text.font, paddingTop: 5}}
           />
           <Icon
-            name="read"
-            type="material-community"
+            name="book"
+            type="octicon"
             size={iconSizes.smaller}
             onPress={() => navigation.navigate('TermAndCondition')}
           />

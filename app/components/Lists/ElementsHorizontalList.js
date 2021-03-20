@@ -15,6 +15,8 @@ import {
   StyleSheet,
   ScrollView,
   TouchableOpacity,
+  SafeAreaView,
+  Pressable,
 } from 'react-native';
 import {
   getCompany,
@@ -393,14 +395,15 @@ const ElementsHorizontalList = ({
       case 'product':
         if (productGalaryMode) {
           return (
-            <TouchableOpacity
+            <Pressable
               onPress={() => handleClick(item)}
-              style={{width: '33%'}}>
+              style={{width: '33.2%', height: 175}}>
               <ImageLoaderContainer
                 img={item.thumb}
-                style={{width: '100%', height: 175}}
+                style={{width: '100%', height: '100%'}}
+                resizeMode="cover"
               />
-            </TouchableOpacity>
+            </Pressable>
           );
         } else {
           return (
@@ -504,7 +507,7 @@ const ElementsHorizontalList = ({
 
   const renderHeader = () => {
     return (
-      <Fragment>
+      <SafeAreaView style={{flex: 1}}>
         {!validate.isEmpty(items) && (
           <View
             style={{
@@ -566,7 +569,7 @@ const ElementsHorizontalList = ({
             )}
           </View>
         )}
-      </Fragment>
+      </SafeAreaView>
     );
   };
 
@@ -589,7 +592,7 @@ const ElementsHorizontalList = ({
   };
 
   return (
-    <Fragment>
+    <View>
       {showSearch && <TopSearchInput search={search} setSearch={setSearch} />}
       <FlatList
         ListEmptyComponent={() => renderEmptyComponent()}
@@ -652,7 +655,7 @@ const ElementsHorizontalList = ({
         setSort={setSort}
         type={type}
       />
-    </Fragment>
+    </View>
   );
 };
 

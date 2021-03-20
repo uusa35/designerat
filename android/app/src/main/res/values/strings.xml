@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">designerat</string>
+    <string name="app_name">DESIGNERAAT</string>
     <string moduleConfig="true" name="CodePushDeploymentKey" translatable="false">xmLuAKueLalt5s5YHs3nfsV1BoF6RfRwWslVl9</string>
     <string name="facebook_app_id">2151249995182148</string>
     <color name="white">#ffffff</color>

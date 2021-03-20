@@ -82,9 +82,10 @@ const HomeStack = () => {
       <Stack.Screen
         options={({navigation}) => ({
           headerLeft: () => (
-            <Ionicons
-              name="ios-menu"
-              size={25}
+            <Icon
+              name="menu"
+              type="material"
+              size={iconSizes.small}
               color={colors.footer_theme_color}
               onPress={() => navigation.dispatch(DrawerActions.toggleDrawer())}
             />

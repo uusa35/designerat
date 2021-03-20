@@ -31,7 +31,7 @@ export function* startAppBootStrap() {
 }
 
 export function* goBackBtnScenario(action) {
-  if (action.payload) {
+  if (action.payload !== 'Home') {
     RootNavigation.back();
   } else {
     Alert.alert(I18n.t('do_you_want_to_exit_the_app'), '', [

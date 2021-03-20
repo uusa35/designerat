@@ -1,5 +1,7 @@
 export const images = {
   pin: require('./../../assets/images/pin.png'),
+  cartEmpty: require('./../../assets/images/cart_empty.png'),
+  cartBg: require('./../../assets/images/cart_bg.png'),
   loading: require('./../../assets/images/loading.gif'),
   loadingSm: require('./../../assets/images/loading_sm.gif'),
   whiteBg: require('./../../assets/images/whiteBg.png'),

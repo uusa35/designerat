@@ -1,6 +1,5 @@
 import axios from 'axios';
 import {links} from '../../constants/links';
-import {createTransform} from 'redux-persist';
 import {
   checkImage,
   getImageExtension,
@@ -9,8 +8,6 @@ import {
   getImageUri,
 } from '../../helpers';
 import {map, filter} from 'lodash';
-import NetInfo from '@react-native-community/netinfo';
-import {isIOS} from '../../constants';
 
 export const axiosInstance = axios.create({
   baseURL: links.apiUrl,
@@ -228,52 +225,6 @@ export async function storePlayerId(player_id) {
     .post(`device`, {player_id})
     .then((r) => r.data)
     .catch((e) => e.response.data.message);
-}
-
-// Transform how the persistor reads the network state
-export const networkTransform = createTransform(
-  (inboundState, key) => {
-    const actionQueue = [];
-
-    inboundState.actionQueue.forEach((action) => {
-      if (typeof action === 'function') {
-        actionQueue.push({
-          function: action.meta.name,
-          args: action.meta.args,
-        });
-      } else if (typeof action === 'object') {
-        actionQueue.push(action);
-      }
-    });
-
-    return {
-      ...inboundState,
-      actionQueue,
-    };
-  },
-  (outboundState, key) => {
-    const actionQueue = [];
-
-    outboundState.actionQueue.forEach((action) => {
-      if (action.function) {
-        const actionFunction = actions[action.function];
-        actionQueue.push(actionFunction(...action.args));
-      } else {
-        actionQueue.push(action);
-      }
-    });
-
-    return {...outboundState, actionQueue};
-  },
-  // The 'network' key may change depending on what you
-  // named your network reducer.
-  {whitelist: ['isConnected']},
-);
-
-export async function checkConnectionStatus() {
-  return await NetInfo.fetch()
-    .then((state) => state.isConnected)
-    .catch((e) => e);
 }
 
 export async function authenticated(api_token) {

@@ -48,7 +48,7 @@ const UserAddressIndexScreen = () => {
               paddingBottom: 10,
               paddingTop: 10,
               borderBottomColor: colors.btn_bg_theme_color,
-              borderBottomWidth: auth.addresses.length - 1 <= i,
+              // borderBottomWidth: auth.addresses.length - 1 <= i,
             }}>
             <Text style={widgetStyles.headerThree}>{d.name}</Text>
             <View style={{flexDirection: 'row', alignItems: 'center'}}>
@@ -68,7 +68,7 @@ const UserAddressIndexScreen = () => {
                   padding: 10,
                   marginLeft: 10,
                   borderColor: colors.btn_bg_theme_color,
-                  borderRadius: text.tiny,
+                  borderRadius: text.smallest,
                 }}>
                 <Text style={widgetStyles.headerFour}>{I18n.t('modify')}</Text>
               </TouchableOpacity>
@@ -79,7 +79,7 @@ const UserAddressIndexScreen = () => {
                   padding: 10,
                   marginLeft: 10,
                   borderColor: colors.btn_bg_theme_color,
-                  borderRadius: text.tiny,
+                  borderRadius: text.smallest,
                 }}>
                 <Text style={widgetStyles.headerFour}>{I18n.t('select')}</Text>
               </TouchableOpacity>
@@ -95,7 +95,7 @@ const UserAddressIndexScreen = () => {
                     padding: 10,
                     marginLeft: 10,
                     borderColor: colors.btn_bg_theme_color,
-                    borderRadius: text.tiny,
+                    borderRadius: text.smallest,
                     backgroundColor:
                       d.id === address.id
                         ? themeColors.desinerat.darkGray

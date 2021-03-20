@@ -1,45 +1,27 @@
-import {Button, CheckBox, Icon, Input} from 'react-native-elements';
+import {Icon, Input} from 'react-native-elements';
 import I18n, {isRTL} from '../../../I18n';
-import {formWidget, iconSizes, text} from '../../../constants/sizes';
-import {StyleSheet, Text, TouchableOpacity} from 'react-native';
-import {showCountryModal} from '../../../redux/actions';
+import {iconSizes, text} from '../../../constants/sizes';
+import {Pressable, StyleSheet, Text, TouchableOpacity} from 'react-native';
 import {View} from 'react-native-animatable';
-import {clearCart, getCoupon, submitCart} from '../../../redux/actions/cart';
+import {submitCart} from '../../../redux/actions/cart';
 import React, {useContext, useEffect, useMemo, useState} from 'react';
-import {
-  CREATE_MYFATOORAH_PAYMENT_URL,
-  CREATE_TAP_PAYMENT_URL,
-} from '../../../redux/actions/types';
-import {isNull} from 'lodash';
-import {isIOS, width} from '../../../constants';
+import {width} from '../../../constants';
 import {useDispatch, useSelector} from 'react-redux';
 import {GlobalValuesContext} from '../../../redux/GlobalValuesContext';
 import {useNavigation} from '@react-navigation/native';
 import validate from 'validate.js';
-import {APP_CASE} from '../../../../app.json';
 import widgetStyles from '../widgetStyles';
 import DesigneratBtn from '../Button/DesigneratBtn';
 const DesigneratCartForm = ({
   shipment_notes = null,
   editModeDefault = true,
   coupon,
-  selectedArea,
-  shipmentFees,
   showLabel = false,
 }) => {
   const dispatch = useDispatch();
-  const {
-    colors,
-    total,
-    grossTotal,
-    exchange_rate,
-    currency_symbol,
-    cartLength,
-  } = useContext(GlobalValuesContext);
-  const {cart, auth, address, guest, shipmentCountry} = useSelector(
-    (state) => state,
-  );
-  const {navigate} = useNavigation();
+  const {colors} = useContext(GlobalValuesContext);
+  const {auth, address, shipmentCountry} = useSelector((state) => state);
+  const navigation = useNavigation();
   const [name, setName] = useState(!validate.isEmpty(auth) ? auth.name : null);
   const [email, setEmail] = useState(
     !validate.isEmpty(auth) ? auth.email : null,
@@ -77,7 +59,7 @@ const DesigneratCartForm = ({
   }, [address]);
 
   return (
-    <View style={{flexDirection: 'column', width}}>
+    <View style={{flexDirection: 'column', width, paddingBottom: '10%'}}>
       <View
         style={{
           flex: 1,
@@ -382,8 +364,8 @@ const DesigneratCartForm = ({
       </View>
 
       <View style={[widgetStyles.panelContent, {marginTop: 0}]}>
-        <TouchableOpacity
-          onPress={() => navigate('UserAddressIndex')}
+        <Pressable
+          onPress={() => navigation.navigate('UserAddressIndex')}
           style={{
             flex: 1,
             flexDirection: 'row',
@@ -400,7 +382,11 @@ const DesigneratCartForm = ({
           <Text
             style={[
               widgetStyles.headerThree,
-              {paddingLeft: 20, color: colors.btn_theme_color},
+              {
+                paddingLeft: 20,
+                paddingRight: 20,
+                color: colors.header_one_theme_color,
+              },
             ]}>
             {I18n.t('change_modify_address')}
           </Text>
@@ -410,9 +396,9 @@ const DesigneratCartForm = ({
             size={iconSizes.medium}
             color={colors.icon_theme_color}
           />
-        </TouchableOpacity>
+        </Pressable>
         <TouchableOpacity
-          onPress={() => navigate('UserAddressCreate')}
+          onPress={() => navigation.navigate('UserAddressCreate')}
           style={{
             flex: 1,
             flexDirection: 'row',
@@ -430,7 +416,11 @@ const DesigneratCartForm = ({
           <Text
             style={[
               widgetStyles.headerThree,
-              {paddingLeft: 20, color: colors.btn_theme_color},
+              {
+                paddingLeft: 20,
+                paddingRight: 20,
+                color: colors.header_one_theme_color,
+              },
             ]}>
             {I18n.t('add_new_address')}
           </Text>

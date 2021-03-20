@@ -23,7 +23,7 @@ const widgetStyles = StyleSheet.create({
     marginTop: text.medium,
     padding: text.smallest,
     backgroundColor: 'white',
-    borderRadius: text.tiny,
+    borderRadius: text.smallest,
   },
   titleContainer: {
     flexDirection: 'row',

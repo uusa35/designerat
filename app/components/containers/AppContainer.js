@@ -60,22 +60,22 @@ const AppContainer = ({children}) => {
     if (!validate.isEmpty(token) && token.length > 5) {
       axiosInstance.defaults.headers['Authorization'] = `Bearer ${token}`;
     }
-    axiosInstance.defaults.headers['currency'] = currency.currency_symbol;
+    axiosInstance.defaults.headers['currency'] = currency.currency_symbol_en;
     axiosInstance.defaults.headers.common['currency'] =
-      currency.currency_symbol;
-    axiosInstance.defaults.headers['country'] = country.slug;
-    axiosInstance.defaults.headers.common['country'] = country.slug;
+      currency.currency_symbol_en;
+    axiosInstance.defaults.headers['country'] = country.slug_en;
+    axiosInstance.defaults.headers.common['country'] = country.slug_en;
   }, [token, lang]);
 
   useEffect(() => {
     if (!validate.isEmpty(token) && token.length > 5) {
       axiosInstance.defaults.headers['Authorization'] = `Bearer ${token}`;
     }
-    axiosInstance.defaults.headers['currency'] = currency.currency_symbol;
+    axiosInstance.defaults.headers['currency'] = currency.currency_symbol_en;
     axiosInstance.defaults.headers.common['currency'] =
-      currency.currency_symbol;
-    axiosInstance.defaults.headers['country'] = country.slug;
-    axiosInstance.defaults.headers.common['country'] = country.slug;
+      currency.currency_symbol_en;
+    axiosInstance.defaults.headers['country'] = country.slug_en;
+    axiosInstance.defaults.headers.common['country'] = country.slug_en;
   }, []);
 
   useEffect(() => {

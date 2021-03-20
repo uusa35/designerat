@@ -208,9 +208,9 @@ export const HeaderRight = ({
           onPress={() => {
             navigation.navigate('FavoriteProductIndex');
           }}
-          name="heart-outline"
-          type="ionicon"
-          size={iconSizes.small}
+          name="heart"
+          type="evilicon"
+          size={iconSizes.medium}
           underlayColor="transparent"
           hitSlop={{top: 15, bottom: 15, left: 15, right: 15}}
           color={colors.footer_theme_color}

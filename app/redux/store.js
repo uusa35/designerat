@@ -5,17 +5,14 @@ import createSagaMiddleware from 'redux-saga';
 import reducers from './reducers';
 import {persistStore, persistReducer} from 'redux-persist';
 import AsyncStorage from '@react-native-community/async-storage';
-// import {createNetworkMiddleware} from 'react-native-offline';
-import {networkTransform} from './../redux/actions/api';
 import {composeWithDevTools} from 'redux-devtools-extension';
 
 const persistConfig = {
   key: 'root',
   storage: AsyncStorage,
-  // transforms: [networkTransform],
   blacklist: [
     'message',
-    'cart',
+    // 'cart',
     'coupon',
     'player_id',
     'shipment_fees',
@@ -33,7 +30,6 @@ const persistConfig = {
     'companySearchTextInputModal',
     'isLoadingBoxedList',
     'showIntroduction',
-    'isConnected',
     'bootStrapped',
     'commentModal',
   ], // navigation will not be persisted
@@ -49,9 +45,6 @@ if (__DEV__) {
   // the 1st parameter's object.
   const persistedReducer = persistReducer(persistConfig, reducers);
   const sagaMiddleware = createSagaMiddleware();
-  // const networkMiddleware = createNetworkMiddleware({
-  //   queueReleaseThrottle: 200,
-  // });
   const appLogger = createLogger({
     collapsed: true,
     duration: true,
@@ -77,9 +70,6 @@ if (__DEV__) {
 } else {
   const persistedReducer = persistReducer(persistConfig, reducers);
   const sagaMiddleware = createSagaMiddleware();
-  // const networkMiddleware = createNetworkMiddleware({
-  //   queueReleaseThrottle: 200,
-  // });
   Store = createStore(persistedReducer, applyMiddleware(sagaMiddleware));
   PersistStore = persistStore(Store);
   sagaMiddleware.run(rootSaga);

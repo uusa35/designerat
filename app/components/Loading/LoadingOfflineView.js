@@ -9,6 +9,7 @@ import LottieView from 'lottie-react-native';
 import PropTypes from 'prop-types';
 import {useSelector} from 'react-redux';
 import RNRestart from 'react-native-restart';
+import DesingeratBtn from '../widgets/Button/DesigneratBtn';
 
 const LoadingOfflineView = () => {
   const {settings} = useSelector((state) => state);
@@ -32,36 +33,15 @@ const LoadingOfflineView = () => {
         loop
         style={{height: 120}}
       />
-      <Button
-        onPress={() => handleClick()}
+      <DesingeratBtn
+        handleClick={() => handleClick()}
+        bg={false}
         title={I18n.t('no_internet')}
-        raised
-        type="outline"
-        containerStyle={{marginBottom: 20, width: '90%'}}
-        titleStyle={{
-          fontFamily: text.font,
-          fontSize: text.medium,
-          color: settings.colors
-            ? settings.colors.main_text_theme_color
-            : 'black',
-        }}
       />
-      <Button
-        raised
-        icon={{name: 'wifi-off', type: 'feather', color: 'red'}}
-        onPress={() => handleClick()}
+      <DesingeratBtn
+        handleClick={() => handleClick()}
+        bg={false}
         title={I18n.t('retry')}
-        type="outline"
-        containerStyle={{marginBottom: 20, width: '90%'}}
-        titleStyle={{
-          paddingRight: 10,
-          paddingLeft: 10,
-          fontFamily: text.font,
-          fontSize: text.medium,
-          color: settings.colors
-            ? settings.colors.main_text_theme_color
-            : 'black',
-        }}
       />
     </ImageBackground>
   );

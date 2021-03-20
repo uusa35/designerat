@@ -155,7 +155,7 @@ const ProductColorSizeGroupWithAttributes = ({
             containerStyle={{flex: 0.45}}
             buttonStyle={{
               backgroundColor: 'whitesmoke',
-              borderRadius: text.tiny,
+              borderRadius: text.smallest,
               borderWidth: 0.5,
               borderColor: 'lightgray',
               alignItems: 'center',
@@ -187,7 +187,7 @@ const ProductColorSizeGroupWithAttributes = ({
             containerStyle={{flex: 0.45}}
             buttonStyle={{
               backgroundColor: 'whitesmoke',
-              borderRadius: text.tiny,
+              borderRadius: text.smallest,
               borderWidth: 0.5,
               borderColor: 'lightgray',
               alignItems: 'center',
@@ -260,7 +260,7 @@ const ProductColorSizeGroupWithAttributes = ({
           inputContainerStyle={{
             borderWidth: 1,
             borderColor: 'lightgrey',
-            borderRadius: text.tiny,
+            borderRadius: text.smallest,
             paddingLeft: 15,
             paddingRight: 15,
             // marginTop: 5,

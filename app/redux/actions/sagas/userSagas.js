@@ -345,7 +345,12 @@ export function* startSubmitAuthScenario(action) {
       if (loginModal) {
         yield put({type: actions.HIDE_LOGIN_MODAL, payload: false});
       } else if (action.payload.redirect) {
-        yield call(startNavigateScenario, action.payload.destination);
+        const {settings} = yield select();
+        if (!element.mobile_verified && settings.mobileVerification) {
+          yield call(startNavigateScenario, 'MobileConfirmation');
+        } else {
+          yield call(startNavigateScenario, action.payload.destination);
+        }
       }
     } else {
       yield call(startLogoutScenario);

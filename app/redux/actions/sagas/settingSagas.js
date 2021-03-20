@@ -4,7 +4,7 @@ import * as actions from '../types';
 import {getUniqueId} from 'react-native-device-info';
 import {displayName} from './../../../../app';
 import {isLocal} from '../../../env';
-import {checkConnectionStatus, getColors, getSizes} from '../api';
+import {getColors, getSizes} from '../api';
 import {startResetStoreScenario} from './appSagas';
 import validate from 'validate.js';
 import analytics from '@react-native-firebase/analytics';
@@ -114,17 +114,6 @@ export function* enableWarningMessage(
       visible: true,
       color: 'orange',
     },
-  });
-}
-
-export function* checkConnection() {
-  const internetStatus = yield call(checkConnectionStatus);
-  // if (__DEV__) {
-  //   console.log('internetStatus', internetStatus);
-  // }
-  yield put({
-    type: TOGGLE_IS_CONNECTED,
-    payload: internetStatus,
   });
 }
 

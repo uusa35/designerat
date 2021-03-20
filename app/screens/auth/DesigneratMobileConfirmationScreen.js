@@ -111,10 +111,13 @@ const DesigneratMobileConfirmationScreen = () => {
         <DesigneratBtn
           disabled={!codeComplete}
           title={I18n.t('confirm')}
-          titleStyle={{color: colors.btn_theme_color, fontFamily: text.font}}
+          titleStyle={{
+            color: colors.btn_text_theme_color,
+            fontFamily: text.font,
+          }}
           bgColor={
             codeComplete
-              ? colors.btn_theme_color
+              ? colors.btn_text_theme_color
               : themeColors.desinerat.lightGray
           }
           handleClick={() => dispatch(submitMobileConfirmationCode(code))}

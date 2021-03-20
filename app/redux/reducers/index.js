@@ -97,8 +97,6 @@ import roles from './roles';
 import role from './role';
 import resetApp from './resetApp';
 import elementType from './elementType';
-// import {reducer as network} from 'react-native-offline';
-import isConnected from './isConnected';
 
 let reducers = combineReducers({
   isLoading,
@@ -168,8 +166,6 @@ let reducers = combineReducers({
   countryModal,
   areaModal,
   coupon,
-  // network,
-  isConnected,
   searchParams,
   loginModal,
   showIntroduction,

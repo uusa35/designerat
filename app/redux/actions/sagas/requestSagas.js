@@ -396,8 +396,8 @@ export function* setTotalCartValue(cart) {
 
 export function* setGrossTotalCartValue(values) {
   try {
-    const {total, coupon} = values;
-    const {cart, shipmentCountry} = yield select();
+    const {total, coupon, cart} = values;
+    const {shipmentCountry} = yield select();
     const countPieces = sumBy(cart, (i) => i.qty);
     if (__DEV__) {
       // console.log('the total', total);
@@ -515,7 +515,7 @@ export function* startClearCartScenario() {
       put({type: actions.SET_TOTAL_CART, payload: 0}),
       put({type: actions.SET_GROSS_TOTAL_CART, payload: 0}),
     ]);
-    RootNavigation.navigate('CartIndex');
+    RootNavigation.navigate('CartTab');
   } catch (e) {
     if (__DEV__) {
       // console.log('the e', e);

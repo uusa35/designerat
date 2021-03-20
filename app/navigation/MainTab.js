@@ -16,6 +16,7 @@ import {GlobalValuesContext} from '../redux/GlobalValuesContext';
 import FastImage from 'react-native-fast-image';
 import DesigneratCartIndexScreen from '../screens/cart/DesigneratCartIndexScreen';
 import {icons} from '../constants/images';
+import {Icon} from 'react-native-elements';
 
 const MaterialTab = createMaterialBottomTabNavigator();
 const Tab = createBottomTabNavigator();
@@ -66,8 +67,9 @@ const MainTab = () => {
           tabBarVisible: true,
         })}
         headerLeft={({navigation}) => (
-          <Ionicons
-            name="ios-menu"
+          <Icon
+            menu="menu"
+            type="feather"
             size={25}
             style={[{color: 'black'}]}
             onPress={() => navigation.dispatch(DrawerActions.toggleDrawer())}

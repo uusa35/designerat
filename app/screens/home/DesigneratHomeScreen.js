@@ -80,6 +80,8 @@ const DesigneratHomeScreen = () => {
             showAll={true}
             name="celebrities"
             title={I18n.t('celebrities')}
+            width={120}
+            height={135}
             searchParams={{
               is_celebrity: 1,
               country_id: country.id,
@@ -93,6 +95,8 @@ const DesigneratHomeScreen = () => {
             showName={true}
             type="company"
             title={I18n.t('elites')}
+            width={120}
+            height={120}
             rounded={true}
             showAll={true}
             searchParams={{is_company: 1, country_id: country.id, on_home: 1}}

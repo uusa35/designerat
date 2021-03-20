@@ -5,6 +5,7 @@ import {getAllProducts} from '../../redux/actions/product';
 import BgContainer from '../../components/containers/BgContainer';
 import ElementsHorizontalList from '../../components/Lists/ElementsHorizontalList';
 import {filter, unionBy} from 'lodash';
+import finalPropsSelectorFactory from 'react-redux/lib/connect/selectorFactory';
 
 const ProductIndexAllScreen = () => {
   const {products, searchProducts, country} = useSelector((state) => state);

@@ -29,6 +29,8 @@ const CelebrityHorizontalWidget = ({
   searchParams,
   rounded = false,
   showAll = false,
+  width = userWidget[APP_CASE].small.width,
+  height = userWidget[APP_CASE].small.height,
 }) => {
   const dispatch = useDispatch();
   const {colors} = useSelector((state) => state.settings);
@@ -94,7 +96,7 @@ const CelebrityHorizontalWidget = ({
             horizontal={true}
             showsHorizontalScrollIndicator={false}
             contentInset={{right: rightHorizontalContentInset}}
-            style={widgetStyles.wrapper}>
+            contentContainerStyle={widgetStyles.wrapper}>
             {map(elements, (c, i) => (
               <View
                 animation="pulse"
@@ -117,13 +119,13 @@ const CelebrityHorizontalWidget = ({
                   <ImageLoaderContainer
                     img={c.thumb}
                     style={{
-                      width: userWidget[APP_CASE].small.width + 15,
-                      height: userWidget[APP_CASE].medium.height,
+                      width,
+                      height,
                       borderRadius:
                         isIOS && rounded
-                          ? userWidget[APP_CASE].medium.width / 2
-                          : !isIOS
-                          ? userWidget[APP_CASE].medium.width * 2
+                          ? width / 2
+                          : !isIOS && rounded
+                          ? width * 2
                           : 0,
                     }}
                     resizeMode="cover"

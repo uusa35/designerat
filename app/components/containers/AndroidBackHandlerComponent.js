@@ -13,9 +13,9 @@ const AndroidBackHandlerComponent = ({navigation}) => {
       : null;
   }, []);
 
-  const handleBackPress = useCallback(() => {
+  const handleBackPress = () => {
     return dispatch(goBackBtn(navigation.dangerouslyGetParent().state.index));
-  });
+  };
   return <Fragment></Fragment>;
 };
 export default AndroidBackHandlerComponent;

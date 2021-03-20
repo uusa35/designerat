@@ -7,6 +7,7 @@ import {
   StatusBar,
   View,
   Alert,
+  BackHandler,
 } from 'react-native';
 import {height, width} from '../../constants/sizes';
 import {images} from '../../constants/images';
@@ -18,10 +19,17 @@ import {GlobalValuesContext} from '../../redux/GlobalValuesContext';
 import OneSignal from 'react-native-onesignal';
 import {DESIGNERAT_ONE_SIGNAL_APP_ID, APP_CASE} from '../../../app.json';
 import {getPathForDeepLinking} from '../../helpers';
-import {goDeepLinking, setDeepLinking, setPlayerId} from '../../redux/actions';
-import {useRoute} from '@react-navigation/native';
+import {
+  goBackBtn,
+  goDeepLinking,
+  setDeepLinking,
+  setPlayerId,
+} from '../../redux/actions';
+import {useNavigation, useRoute} from '@react-navigation/native';
 import moment from 'moment';
 import analytics from '@react-native-firebase/analytics';
+import {isIOS} from '../../constants';
+import {useAndroidBackHandler} from 'react-navigation-backhandler';
 
 const BgContainer = ({
   children,
@@ -40,7 +48,7 @@ const BgContainer = ({
     isLoadingBoxedList,
     deviceId,
   } = useSelector((state) => state);
-  const {mainBg} = useContext(GlobalValuesContext);
+  const {mainBg, colors} = useContext(GlobalValuesContext);
   const [currentLoading, setCurrentLoading] = useState(
     isLoading || isLoadingProfile || isLoadingContent || isLoadingBoxedList,
   );
@@ -53,6 +61,10 @@ const BgContainer = ({
   useMemo(() => {
     setBg(!showImage ? images.whiteBg : mainBg.includes('.') ? mainBg : img);
   }, []);
+
+  useAndroidBackHandler(() => {
+    return dispatch(goBackBtn(route.name));
+  });
 
   useMemo(() => {
     setCurrentLoading(
@@ -71,10 +83,11 @@ const BgContainer = ({
     OneSignal.setAppId(DESIGNERAT_ONE_SIGNAL_APP_ID);
     OneSignal.setLogLevel(6, 0);
     OneSignal.setRequiresUserPrivacyConsent(false);
-    OneSignal.promptForPushNotificationsWithUserResponse((response) => {
-      // console.log('Prompt response:', response);
-    }, []);
-
+    if (isIOS) {
+      OneSignal.promptForPushNotificationsWithUserResponse((response) => {
+        // console.log('Prompt response:', response);
+      }, []);
+    }
     /* O N E S I G N A L  H A N D L E R S */
     OneSignal.setNotificationWillShowInForegroundHandler(
       (notifReceivedEvent) => {
@@ -161,25 +174,18 @@ const BgContainer = ({
       source={!showImage ? (white ? images.whiteBg : images.grayBg) : {uri: bg}}
       style={{height, width, backgroundColor: 'white', flexGrow: 1, flex: 1}}
       resizeMode="cover">
-      {isConnected ? (
-        currentLoading ? (
-          <LoadingView />
-        ) : (
-          <View style={{flex: 1, paddingTop: enableMargin ? marginVal : 0}}>
-            <StatusBar
-              animated={true}
-              backgroundColor="#61dafb"
-              barStyle={'light-content'}
-              // showHideTransition={statusBarTransition}
-              // hidden={hidden}
-            />
-            {children}
-          </View>
-        )
+      {currentLoading ? (
+        <LoadingView />
       ) : (
-        <LoadingOfflineView />
+        <View style={{flex: 1, paddingTop: enableMargin ? marginVal : 0}}>
+          <StatusBar
+            animated={true}
+            backgroundColor={colors.footer_bg_theme_color}
+            barStyle={'light-content'}
+          />
+          {children}
+        </View>
       )}
-      <AndroidBackHandlerComponent />
     </ImageBackground>
   );
 };

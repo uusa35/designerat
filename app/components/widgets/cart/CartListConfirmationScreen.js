@@ -47,7 +47,7 @@ const CartListConfirmationScreen = ({
   const [area, setArea] = useState(cArea);
   const [editMode, setEditMode] = useState(editModeDefault);
 
-  const handleCashOnDelivery = useCallback(() => {
+  const handleCashOnDelivery = () => {
     return Alert.alert(
       I18n.t('order_confirmation'),
       I18n.t('order_cash_on_delivery_confirmation'),
@@ -84,7 +84,7 @@ const CartListConfirmationScreen = ({
       ],
       {cancelable: true},
     );
-  });
+  };
 
   return (
     <View style={{width: '100%', padding: '5%', alignSelf: 'center'}}>
@@ -480,39 +480,6 @@ const CartListConfirmationScreen = ({
                   }}>
                   {I18n.t('have_coupon')}
                 </Text>
-                <Input
-                  placeholder={I18n.t('coupon')}
-                  value={code ? code : null}
-                  inputContainerStyle={{
-                    borderWidth: 1,
-                    borderColor: 'lightgrey',
-                    borderRadius: 10,
-                    paddingLeft: 15,
-                    paddingRight: 15,
-                    marginBottom: 20,
-                  }}
-                  inputStyle={{
-                    fontFamily: text.font,
-                    textAlign: isRTL ? 'right' : 'left',
-                  }}
-                  shake={true}
-                  keyboardType="default"
-                  onChangeText={(code) => setCode(code)}
-                />
-                <Button
-                  raised
-                  containerStyle={{marginBottom: 10, width: '90%%'}}
-                  buttonStyle={{
-                    backgroundColor: colors.btn_bg_theme_color,
-                    borderRadius: 0,
-                  }}
-                  title={I18n.t('add_coupon')}
-                  titleStyle={{
-                    fontFamily: text.font,
-                    color: colors.btn_text_theme_color,
-                  }}
-                  onPress={() => dispatch(getCoupon(code))}
-                />
               </View>
             ) : null}
           </View>

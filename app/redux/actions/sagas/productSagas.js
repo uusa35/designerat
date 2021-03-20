@@ -251,12 +251,12 @@ export function* startGetSearchProductsScenario(action) {
 
 export function* startGetAllProductsScenario(action) {
   try {
-    const products = yield call(api.getSearchProducts, action.payload);
+    const elements = yield call(api.getSearchProducts, action.payload);
     yield call(enableLoading);
     yield put({type: SET_ELEMENT_TYPE, payload: 'product'});
-    if (!validate.isEmpty(products) && validate.isArray(products)) {
+    if (!validate.isEmpty(elements) && validate.isArray(elements)) {
       yield all([
-        put({type: actions.SET_PRODUCTS, payload: products}),
+        put({type: actions.SET_PRODUCTS, payload: elements}),
         // put({type : actions.SET_SEARCH_PRODUCTS, payload : []})
         // put({type: actions.SET_SEARCH_PARAMS, payload: {}}),
       ]);
@@ -264,7 +264,7 @@ export function* startGetAllProductsScenario(action) {
       yield all([
         put({type: actions.SET_PRODUCTS, payload: []}),
         // put({type : actions.SET_SEARCH_PRODUCTS, payload : []}),
-        put({type: actions.SET_SEARCH_PARAMS, payload: {}}),
+        // put({type: actions.SET_SEARCH_PARAMS, payload: {}}),
       ]);
       throw 'no_products';
     }

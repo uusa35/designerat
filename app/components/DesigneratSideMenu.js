@@ -43,7 +43,7 @@ const DesigneratSideMenu = ({showLogo = true, navigation}) => {
         width: '100%',
         flex: 1,
         opacity: 1,
-        backgroundColor: colors.menu_theme_bg,
+        backgroundColor: colors.footer_bg_theme_color,
       }}
       resizeMode="cover">
       <SafeAreaView style={{flex: 1}}>
@@ -57,14 +57,14 @@ const DesigneratSideMenu = ({showLogo = true, navigation}) => {
           showsVerticalScrollIndicator={false}>
           <StatusBar
             barStyle={isIOS ? `dark-content` : `light-content`}
-            backgroundColor={colors.menu_theme_bg}
+            backgroundColor={colors.footer_bg_theme_color}
           />
           <View style={{alignItems: 'flex-end', width: '100%'}}>
             <Icon
               name="close-o"
               type="evilicon"
               size={iconSizes.medium}
-              color={colors.menu_theme_color}
+              color={colors.footer_theme_color}
               onPress={() => navigation.closeDrawer()}
             />
           </View>
@@ -77,23 +77,39 @@ const DesigneratSideMenu = ({showLogo = true, navigation}) => {
             />
           ) : null}
 
-          <Text style={[styles.mainMenuText, {color: colors.menu_theme_color}]}>
+          <Text
+            style={[styles.mainMenuText, {color: colors.footer_theme_color}]}>
             {I18n.t('menu')}
           </Text>
-          <Text style={[styles.mainMenuText, {color: colors.menu_theme_color}]}>
+          <Text
+            style={[styles.mainMenuText, {color: colors.footer_theme_color}]}>
             {company}
           </Text>
           <View style={{width: '100%'}}>
-            <Divider style={{marginTop: 10}} />
-            <TouchableOpacity onPress={() => goToHome()} style={styles.menuBtn}>
+            <Divider
+              style={{
+                marginTop: 20,
+                borderWidth: 0.4,
+                borderColor: colors.btn_bg_theme_color,
+              }}
+            />
+            <TouchableOpacity
+              onPress={() => goToHome()}
+              style={[
+                styles.menuBtn,
+                {
+                  borderBottomWidth: 0.5,
+                  borderBottomColor: colors.btn_bg_theme_color,
+                },
+              ]}>
               <Icon
                 name="home"
                 type="antdesign"
                 size={iconSizes.smaller}
-                color={colors.menu_theme_color}
+                color={colors.footer_theme_color}
               />
               <Text
-                style={[styles.titleStyle, {color: colors.menu_theme_color}]}>
+                style={[styles.titleStyle, {color: colors.footer_theme_color}]}>
                 {I18n.t('home')}
               </Text>
             </TouchableOpacity>
@@ -104,15 +120,24 @@ const DesigneratSideMenu = ({showLogo = true, navigation}) => {
                     ? navigation.navigate('ChooseCategory')
                     : navigation.navigate('Login')
                 }
-                style={styles.menuBtn}>
+                style={[
+                  styles.menuBtn,
+                  {
+                    borderBottomWidth: 0.5,
+                    borderBottomColor: colors.btn_bg_theme_color,
+                  },
+                ]}>
                 <Icon
                   name="home"
                   type="antdesign"
                   size={iconSizes.smaller}
-                  color={colors.menu_theme_color}
+                  color={colors.footer_theme_color}
                 />
                 <Text
-                  style={[styles.titleStyle, {color: colors.menu_theme_color}]}>
+                  style={[
+                    styles.titleStyle,
+                    {color: colors.footer_theme_color},
+                  ]}>
                   {I18n.t('new_classified')}
                 </Text>
               </TouchableOpacity>
@@ -123,15 +148,24 @@ const DesigneratSideMenu = ({showLogo = true, navigation}) => {
                   navigation.dispatch(DrawerActions.toggleDrawer());
                   navigation.dispatch(TabActions.jumpTo('SettingTab'));
                 }}
-                style={styles.menuBtn}>
+                style={[
+                  styles.menuBtn,
+                  {
+                    borderBottomWidth: 0.5,
+                    borderBottomColor: colors.btn_bg_theme_color,
+                  },
+                ]}>
                 <Icon
                   name="gear"
                   type="evilicon"
                   size={iconSizes.smaller}
-                  color={colors.menu_theme_color}
+                  color={colors.footer_theme_color}
                 />
                 <Text
-                  style={[styles.titleStyle, {color: colors.menu_theme_color}]}>
+                  style={[
+                    styles.titleStyle,
+                    {color: colors.footer_theme_color},
+                  ]}>
                   {I18n.t('settings')}
                 </Text>
               </TouchableOpacity>
@@ -139,15 +173,24 @@ const DesigneratSideMenu = ({showLogo = true, navigation}) => {
             {guest ? (
               <TouchableOpacity
                 onPress={() => navigation.navigate('Login')}
-                style={styles.menuBtn}>
+                style={[
+                  styles.menuBtn,
+                  {
+                    borderBottomWidth: 0.5,
+                    borderBottomColor: colors.btn_bg_theme_color,
+                  },
+                ]}>
                 <Icon
                   name="login"
                   type="antdesign"
                   size={iconSizes.smaller}
-                  color={colors.menu_theme_color}
+                  color={colors.footer_theme_color}
                 />
                 <Text
-                  style={[styles.titleStyle, {color: colors.menu_theme_color}]}>
+                  style={[
+                    styles.titleStyle,
+                    {color: colors.footer_theme_color},
+                  ]}>
                   {I18n.t('login')}
                 </Text>
               </TouchableOpacity>
@@ -155,17 +198,23 @@ const DesigneratSideMenu = ({showLogo = true, navigation}) => {
               <View>
                 <TouchableOpacity
                   onPress={() => dispatch(logout())}
-                  style={styles.menuBtn}>
+                  style={[
+                    styles.menuBtn,
+                    {
+                      borderBottomWidth: 0.5,
+                      borderBottomColor: colors.btn_bg_theme_color,
+                    },
+                  ]}>
                   <Icon
                     name="login"
                     type="antdesign"
                     size={iconSizes.smaller}
-                    color={colors.menu_theme_color}
+                    color={colors.footer_theme_color}
                   />
                   <Text
                     style={[
                       styles.titleStyle,
-                      {color: colors.menu_theme_color},
+                      {color: colors.footer_theme_color},
                     ]}>
                     {I18n.t('logout')}
                   </Text>
@@ -174,30 +223,45 @@ const DesigneratSideMenu = ({showLogo = true, navigation}) => {
             )}
             <TouchableOpacity
               onPress={() => navigation.navigate('Contactus', {reset: false})}
-              style={styles.menuBtn}>
+              style={[
+                styles.menuBtn,
+                {
+                  borderBottomWidth: 0.5,
+                  borderBottomColor: colors.btn_bg_theme_color,
+                },
+              ]}>
               <Icon
                 name="perm-phone-msg"
                 type="material"
                 size={iconSizes.smaller}
-                color={colors.menu_theme_color}
+                color={colors.footer_theme_color}
               />
               <Text
-                style={[styles.titleStyle, {color: colors.menu_theme_color}]}>
+                style={[styles.titleStyle, {color: colors.footer_theme_color}]}>
                 {I18n.t('contactus')}
               </Text>
             </TouchableOpacity>
             {terms.length > 100 ? (
               <TouchableOpacity
                 onPress={() => navigation.navigate('TermAndCondition')}
-                style={styles.menuBtn}>
+                style={[
+                  styles.menuBtn,
+                  {
+                    borderBottomWidth: 0.5,
+                    borderBottomColor: colors.btn_bg_theme_color,
+                  },
+                ]}>
                 <Icon
                   name="book-open"
                   type="simple-line-icon"
                   size={iconSizes.smaller}
-                  color={colors.menu_theme_color}
+                  color={colors.footer_theme_color}
                 />
                 <Text
-                  style={[styles.titleStyle, {color: colors.menu_theme_color}]}>
+                  style={[
+                    styles.titleStyle,
+                    {color: colors.footer_theme_color},
+                  ]}>
                   {I18n.t('terms_and_conditions')}
                 </Text>
               </TouchableOpacity>
@@ -205,15 +269,24 @@ const DesigneratSideMenu = ({showLogo = true, navigation}) => {
             {policy.length > 100 ? (
               <TouchableOpacity
                 onPress={() => navigation.navigate('Policy')}
-                style={styles.menuBtn}>
+                style={[
+                  styles.menuBtn,
+                  {
+                    borderBottomWidth: 0.5,
+                    borderBottomColor: colors.btn_bg_theme_color,
+                  },
+                ]}>
                 <Icon
                   name="handshake-o"
                   type="font-awesome"
                   size={iconSizes.smaller}
-                  color={colors.menu_theme_color}
+                  color={colors.footer_theme_color}
                 />
                 <Text
-                  style={[styles.titleStyle, {color: colors.menu_theme_color}]}>
+                  style={[
+                    styles.titleStyle,
+                    {color: colors.footer_theme_color},
+                  ]}>
                   {I18n.t('policies')}
                 </Text>
               </TouchableOpacity>
@@ -227,15 +300,24 @@ const DesigneratSideMenu = ({showLogo = true, navigation}) => {
                     index: 0,
                   })
                 }
-                style={styles.menuBtn}>
+                style={[
+                  styles.menuBtn,
+                  {
+                    borderBottomWidth: 0.5,
+                    borderBottomColor: colors.btn_bg_theme_color,
+                  },
+                ]}>
                 <Icon
                   name="image"
                   type="entypo"
                   size={iconSizes.smaller}
-                  color={colors.menu_theme_color}
+                  color={colors.footer_theme_color}
                 />
                 <Text
-                  style={[styles.titleStyle, {color: colors.menu_theme_color}]}>
+                  style={[
+                    styles.titleStyle,
+                    {color: colors.footer_theme_color},
+                  ]}>
                   {I18n.t('our_gallery', {name: company})}
                 </Text>
               </TouchableOpacity>
@@ -243,30 +325,45 @@ const DesigneratSideMenu = ({showLogo = true, navigation}) => {
             {youtube ? (
               <TouchableOpacity
                 onPress={() => Linking.openURL(youtube)}
-                style={styles.menuBtn}>
+                style={[
+                  styles.menuBtn,
+                  {
+                    borderBottomWidth: 0.5,
+                    borderBottomColor: colors.btn_bg_theme_color,
+                  },
+                ]}>
                 <Icon
                   name="youtube"
                   type="entypo"
                   size={iconSizes.smaller}
-                  color={colors.menu_theme_color}
+                  color={colors.footer_theme_color}
                 />
                 <Text
-                  style={[styles.titleStyle, {color: colors.menu_theme_color}]}>
+                  style={[
+                    styles.titleStyle,
+                    {color: colors.footer_theme_color},
+                  ]}>
                   {I18n.t('our_youtube_channel')}
                 </Text>
               </TouchableOpacity>
             ) : null}
             <TouchableOpacity
               onPress={() => dispatch(changeLang(lang === 'ar' ? 'en' : 'ar'))}
-              style={styles.menuBtn}>
+              style={[
+                styles.menuBtn,
+                {
+                  borderBottomWidth: 0.5,
+                  borderBottomColor: colors.btn_bg_theme_color,
+                },
+              ]}>
               <Icon
                 name="language"
                 type="fontawesome"
                 size={iconSizes.smaller}
-                color={colors.menu_theme_color}
+                color={colors.footer_theme_color}
               />
               <Text
-                style={[styles.titleStyle, {color: colors.menu_theme_color}]}>
+                style={[styles.titleStyle, {color: colors.footer_theme_color}]}>
                 {I18n.t('lang')}
               </Text>
             </TouchableOpacity>
@@ -301,7 +398,6 @@ const styles = StyleSheet.create({
     backgroundColor: 'transparent',
     justifyContent: 'flex-start',
     alignItems: 'center',
-    borderBottomWidth: 1,
     padding: 10,
     minHeight: 50,
     borderBottomColor: 'lightgrey',

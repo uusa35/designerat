@@ -40,7 +40,10 @@ const DesigneratAddToCartStickyFooter = ({
         }}>
         <FavoriteIcon id={product.id} />
         <Text
-          style={[widgetStyles.headerThree, {color: colors.btn_theme_color}]}>
+          style={[
+            widgetStyles.headerThree,
+            {color: colors.btn_text_theme_color},
+          ]}>
           {I18n.t('favorite')}
         </Text>
       </View>

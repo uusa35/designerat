@@ -96,7 +96,7 @@ const DesigneratSettingsIndexScreen = ({navigation}) => {
             width: '100%',
             justifyContent: 'center',
             alignItems: 'center',
-            backgroundColor: adjustColor(colors.btn_bg_theme_color, 215),
+            backgroundColor: adjustColor(colors.btn_bg_theme_color, 50),
           }}
           onPress={() =>
             guest ? handleRegisterClick() : navigation.navigate('UserEdit')
@@ -119,8 +119,8 @@ const DesigneratSettingsIndexScreen = ({navigation}) => {
             {!guest && (
               <Icon
                 color={colors.icon_theme_color}
-                name="pencil"
-                type="material-community"
+                name="edit"
+                type="material-icons"
                 size={iconSizes.smallest}
                 style={{paddingLeft: 10}}
               />
@@ -157,7 +157,11 @@ const DesigneratSettingsIndexScreen = ({navigation}) => {
                     type="material"
                     size={iconSizes.smaller}
                   />
-                  <Text style={[widgetStyles.headerTow, {paddingLeft: 30}]}>
+                  <Text
+                    style={[
+                      widgetStyles.headerTow,
+                      {paddingLeft: 30, paddingRight: 30},
+                    ]}>
                     {I18n.t('add_new_product')}
                   </Text>
                 </Pressable>
@@ -176,7 +180,11 @@ const DesigneratSettingsIndexScreen = ({navigation}) => {
                   type="antdesign"
                   size={iconSizes.smaller}
                 />
-                <Text style={[widgetStyles.headerTow, {paddingLeft: 30}]}>
+                <Text
+                  style={[
+                    widgetStyles.headerTow,
+                    {paddingLeft: 30, paddingRight: 30},
+                  ]}>
                   {I18n.t('my_orders')}
                 </Text>
               </Pressable>
@@ -194,7 +202,11 @@ const DesigneratSettingsIndexScreen = ({navigation}) => {
                   type="font-awesome"
                   size={iconSizes.smaller}
                 />
-                <Text style={[widgetStyles.headerTow, {paddingLeft: 30}]}>
+                <Text
+                  style={[
+                    widgetStyles.headerTow,
+                    {paddingLeft: 30, paddingRight: 30},
+                  ]}>
                   {I18n.t('my_addresses')}
                 </Text>
               </Pressable>
@@ -212,7 +224,11 @@ const DesigneratSettingsIndexScreen = ({navigation}) => {
                   type="ionicons"
                   size={iconSizes.smaller}
                 />
-                <Text style={[widgetStyles.headerTow, {paddingLeft: 30}]}>
+                <Text
+                  style={[
+                    widgetStyles.headerTow,
+                    {paddingLeft: 30, paddingRight: 30},
+                  ]}>
                   {I18n.t('add_new_address')}
                 </Text>
               </Pressable>
@@ -230,7 +246,11 @@ const DesigneratSettingsIndexScreen = ({navigation}) => {
                   type="antdesign"
                   size={iconSizes.smaller}
                 />
-                <Text style={[widgetStyles.headerTow, {paddingLeft: 30}]}>
+                <Text
+                  style={[
+                    widgetStyles.headerTow,
+                    {paddingLeft: 30, paddingRight: 30},
+                  ]}>
                   {I18n.t('wishlist')}
                 </Text>
               </Pressable>
@@ -251,7 +271,11 @@ const DesigneratSettingsIndexScreen = ({navigation}) => {
               style={{width: 25, height: 25}}
               tintColor="black"
             />
-            <Text style={[widgetStyles.headerTow, {paddingLeft: 30}]}>
+            <Text
+              style={[
+                widgetStyles.headerTow,
+                {paddingLeft: 30, paddingRight: 30},
+              ]}>
               {I18n.t('aboutus')}
             </Text>
           </Pressable>
@@ -270,7 +294,11 @@ const DesigneratSettingsIndexScreen = ({navigation}) => {
               type="material"
               size={iconSizes.smaller}
             />
-            <Text style={[widgetStyles.headerTow, {paddingLeft: 30}]}>
+            <Text
+              style={[
+                widgetStyles.headerTow,
+                {paddingLeft: 30, paddingRight: 30},
+              ]}>
               {I18n.t('contactus')}
             </Text>
           </Pressable>
@@ -291,7 +319,11 @@ const DesigneratSettingsIndexScreen = ({navigation}) => {
                 type="font-awesome"
                 color={colors.menu_theme_color}
               />
-              <Text style={[widgetStyles.headerTow, {paddingLeft: 30}]}>
+              <Text
+                style={[
+                  widgetStyles.headerTow,
+                  {paddingLeft: 30, paddingRight: 30},
+                ]}>
                 {I18n.t('follow_us_on_instagram')}
               </Text>
             </Pressable>
@@ -313,7 +345,11 @@ const DesigneratSettingsIndexScreen = ({navigation}) => {
                 type="antdesign"
                 color={colors.menu_theme_color}
               />
-              <Text style={[widgetStyles.headerTow, {paddingLeft: 30}]}>
+              <Text
+                style={[
+                  widgetStyles.headerTow,
+                  {paddingLeft: 30, paddingRight: 30},
+                ]}>
                 {I18n.t('rate_us')}
               </Text>
             </Pressable>
@@ -335,7 +371,11 @@ const DesigneratSettingsIndexScreen = ({navigation}) => {
                 type="antdesign"
                 color={colors.menu_theme_color}
               />
-              <Text style={[widgetStyles.headerTow, {paddingLeft: 30}]}>
+              <Text
+                style={[
+                  widgetStyles.headerTow,
+                  {paddingLeft: 30, paddingRight: 30},
+                ]}>
                 {I18n.t('rate_us')}
               </Text>
             </Pressable>
@@ -357,7 +397,11 @@ const DesigneratSettingsIndexScreen = ({navigation}) => {
               type="entypo"
               color={colors.menu_theme_color}
             />
-            <Text style={[widgetStyles.headerTow, {paddingLeft: 30}]}>
+            <Text
+              style={[
+                widgetStyles.headerTow,
+                {paddingLeft: 30, paddingRight: 30},
+              ]}>
               {I18n.t('share_our_app')}
             </Text>
           </Pressable>

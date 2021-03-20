@@ -19,8 +19,6 @@ import ProductItem from '../product/ProductItem';
 import {GlobalValuesContext} from '../../../redux/GlobalValuesContext';
 import validate from 'validate.js';
 import {useDispatch, useSelector} from 'react-redux';
-import {getConvertedFinalPrice} from '../../../helpers';
-import {KeyboardAwareScrollView} from 'react-native-keyboard-aware-scroll-view';
 import {
   CREATE_MYFATOORAH_PAYMENT_URL,
   CREATE_TAP_PAYMENT_URL,
@@ -88,7 +86,7 @@ const DesigneratCartList = ({
   };
 
   return (
-    <View style={{flexDirection: 'column', width}}>
+    <View style={{flexDirection: 'column', width, paddingBottom: '10%'}}>
       <View
         style={{
           flex: 1,
@@ -144,7 +142,11 @@ const DesigneratCartList = ({
             alignItems: 'center',
           }}>
           <Icon name="heart" type="antdesign" size={iconSizes.smaller} />
-          <Text style={[widgetStyles.headerThree, {paddingLeft: 20}]}>
+          <Text
+            style={[
+              widgetStyles.headerThree,
+              {paddingLeft: 20, paddingRight: 20},
+            ]}>
             {I18n.t('add_from_favorite_list')}
           </Text>
         </TouchableOpacity>

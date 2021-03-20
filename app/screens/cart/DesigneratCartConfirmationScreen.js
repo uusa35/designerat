@@ -12,6 +12,8 @@ import KeyBoardContainer from '../../components/containers/KeyBoardContainer';
 import BgContainer from '../../components/containers/BgContainer';
 import {useNavigation} from '@react-navigation/native';
 import DesigneratCartListConfirmationScreen from '../../components/widgets/cart/DesigneratCartListConfirmationScreen';
+import DesigneratBtn from '../../components/widgets/Button/DesigneratBtn';
+import DesingeratBtn from '../../components/widgets/Button/DesigneratBtn';
 
 const DesigneratCartConfirmationScreen = () => {
   const {
@@ -50,23 +52,14 @@ const DesigneratCartConfirmationScreen = () => {
               width: width - 50,
               alignSelf: 'center',
             }}>
-            <Button
-              raised
+            <DesingeratBtn
+              handleClick={() => null}
+              bg={false}
               title={I18n.t('no_items')}
-              type="outline"
-              containerStyle={{marginBottom: 20}}
-              titleStyle={{fontFamily: text.font}}
             />
-            <Button
-              onPress={() => navigation.navigate('Home')}
-              raised
+            <DesigneratBtn
               title={I18n.t('shop_now')}
-              type="outline"
-              containerStyle={{marginBottom: 20}}
-              titleStyle={{
-                fontFamily: text.font,
-                color: colors.main_text_theme_color,
-              }}
+              handleClick={() => navigation.navigate('Home')}
             />
           </View>
         )}

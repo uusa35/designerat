@@ -28,7 +28,9 @@ const QuickCallActionBtnWidget = ({
       <ActionButton
         useNativeFeedback={true}
         style={{opacity: 0.6}}
-        renderIcon={() => <Icon name="ios-call" type="ionicon" color="white" />}
+        renderIcon={() => (
+          <Icon name="phone-call" type="feather" color="white" />
+        )}
         size={iconSizes.large}
         spacing={20}
         position="left"

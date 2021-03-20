@@ -7,7 +7,7 @@ import BgContainer from '../components/containers/BgContainer';
 
 const ContactusScreen = () => {
   return (
-    <BgContainer showImage={false}>
+    <BgContainer showImage={false} white={false}>
       <ScrollView
         horizontal={false}
         automaticallyAdjustContentInsets={true}

@@ -98,7 +98,7 @@ const CopyRightInfo = ({version}) => {
 export default CopyRightInfo;
 
 CopyRightInfo.propTypes = {
-  version: PropTypes.string,
+  version: PropTypes.any,
 };
 
 const styles = StyleSheet.create({

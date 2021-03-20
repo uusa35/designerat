@@ -1,5 +1,11 @@
 import React, {Fragment, useContext} from 'react';
-import {ScrollView, TouchableOpacity, StyleSheet, Text} from 'react-native';
+import {
+  ScrollView,
+  TouchableOpacity,
+  I18nManager,
+  StyleSheet,
+  Text,
+} from 'react-native';
 import {View} from 'react-native-animatable';
 import {map} from 'lodash';
 import PropTypes from 'prop-types';
@@ -35,6 +41,8 @@ const DesignerHorizontalWidget = ({
   searchParams,
   rounded = true,
   showAll = false,
+  width = userWidget[APP_CASE].small.width,
+  height = userWidget[APP_CASE].small.height,
 }) => {
   const dispatch = useDispatch();
   const {colors} = useContext(GlobalValuesContext);
@@ -113,7 +121,7 @@ const DesignerHorizontalWidget = ({
             horizontal={true}
             showsHorizontalScrollIndicator={false}
             contentInset={{right: rightHorizontalContentInset}}
-            style={widgetStyles.wrapper}>
+            contentContainerStyle={widgetStyles.wrapper}>
             {map(elements, (c, i) => (
               <View
                 animation={animations.flip}
@@ -136,13 +144,13 @@ const DesignerHorizontalWidget = ({
                   <ImageLoaderContainer
                     img={c.thumb}
                     style={{
-                      width: userWidget[APP_CASE].small.width,
-                      height: userWidget[APP_CASE].small.height,
+                      width,
+                      height,
                       borderRadius:
                         isIOS && rounded
-                          ? userWidget[APP_CASE].small.width / 2
-                          : !isIOS
-                          ? userWidget[APP_CASE].small.width * 2
+                          ? width / 2
+                          : !isIOS && rounded
+                          ? width * 2
                           : 0,
                     }}
                     resizeMode="cover"
