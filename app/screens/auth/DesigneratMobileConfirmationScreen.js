@@ -1,6 +1,6 @@
 import React, {useContext, useState, createRef, useMemo} from 'react';
 import PropTypes from 'prop-types';
-import {StyleSheet, View, Text, TextInput} from 'react-native';
+import {StyleSheet, View, Text, TextInput, I18nManager} from 'react-native';
 import LoginForm from '../../components/widgets/user/LoginForm';
 import BgContainer from '../../components/containers/BgContainer';
 import {HOMEKEY} from './../../../app';
@@ -12,8 +12,13 @@ import DesigneratBtn from '../../components/widgets/Button/DesigneratBtn';
 import {GlobalValuesContext} from '../../redux/GlobalValuesContext';
 import {text} from '../../constants/sizes';
 import {isEmpty} from 'lodash';
-import {submitMobileConfirmationCode} from '../../redux/actions/user';
+import {
+  resendtMobileConfirmationCode,
+  submitMobileConfirmationCode,
+} from '../../redux/actions/user';
 import {useDispatch} from 'react-redux';
+import DesigneratCartPriceSummary from '../../components/widgets/cart/DesigneratCartPriceSummary';
+import DesingeratBtn from '../../components/widgets/Button/DesigneratBtn';
 
 const secondTextInput = createRef();
 const thirdTextInput = createRef();
@@ -48,7 +53,11 @@ const DesigneratMobileConfirmationScreen = () => {
   }, [codeThird]);
 
   useMemo(() => {
-    setCode(`${codeForth}${codeThird}${codeSecond}${codeFirst}`);
+    if (I18nManager.isRTL) {
+      setCode(`${codeForth}${codeThird}${codeSecond}${codeFirst}`);
+    } else {
+      setCode(`${codeFirst}${codeSecond}${codeThird}${codeForth}`);
+    }
   }, [codeFirst, codeSecond, codeThird, codeForth]);
 
   useMemo(() => {
@@ -117,10 +126,15 @@ const DesigneratMobileConfirmationScreen = () => {
           }}
           bgColor={
             codeComplete
-              ? colors.btn_text_theme_color
+              ? colors.btn_bg_theme_color
               : themeColors.desinerat.lightGray
           }
           handleClick={() => dispatch(submitMobileConfirmationCode(code))}
+        />
+        <DesingeratBtn
+          title={I18n.t('resend_code')}
+          marginTop={20}
+          handleClick={() => dispatch(resendtMobileConfirmationCode())}
         />
       </View>
     </BgContainer>

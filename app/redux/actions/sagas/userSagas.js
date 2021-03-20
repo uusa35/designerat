@@ -752,3 +752,21 @@ export function* startSubmitMobileConfirmationCode(action) {
   } finally {
   }
 }
+
+export function* startResendMobileConfirmationCode() {
+  try {
+    const {token} = yield select();
+    const element = yield call(api.resendMobileConfirmationCode, token);
+    if (!validate.isEmpty(element) && validate.isObject(element)) {
+      yield call(
+        enableSuccessMessage,
+        I18n.t('verification_code_sent_successfully'),
+      );
+    } else {
+      throw element;
+    }
+  } catch (e) {
+    yield call(enableErrorMessage, e);
+  } finally {
+  }
+}

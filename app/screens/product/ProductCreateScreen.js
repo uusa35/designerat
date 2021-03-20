@@ -312,7 +312,8 @@ const ProductCreateScreen = ({showLabel = false}) => {
                 <Icon
                   name="redo"
                   type="evilicon"
-                  size={iconSizes.medium}
+                  size={iconSizes.small}
+                  hitSlop={{top: 20, bottom: 20, left: 20, right: 20}}
                   onPress={() => setSelectedCategories([])}
                 />
               </View>

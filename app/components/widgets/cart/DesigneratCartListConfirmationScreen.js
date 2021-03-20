@@ -425,6 +425,12 @@ const DesigneratCartListConfirmationScreen = ({
             name="book"
             type="octicon"
             size={iconSizes.smaller}
+            hitSlop={{
+              top: iconSizes.smaller,
+              bottom: iconSizes.smaller,
+              left: iconSizes.smaller,
+              right: iconSizes.smaller,
+            }}
             onPress={() => navigation.navigate('TermAndCondition')}
           />
         </View>

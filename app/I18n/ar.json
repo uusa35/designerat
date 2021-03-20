@@ -764,7 +764,9 @@
   "choose_category" : "اختر التصنيف",
   "product_description" : "وصف المنتج",
   "product_saved_successfully" : "تم إضافة المنتج بنجاح",
-  "DESIGNERAT" : "ديزينرات"
+  "DESIGNERAT" : "ديزينرات",
+  "resend_code" : "إعادة إرسال كود التفعيل",
+  "verification_code_sent_successfully" : "تم إعادة إرسال كود التفعيل بنجاح"
 
 
 }

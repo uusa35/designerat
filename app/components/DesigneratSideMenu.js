@@ -27,9 +27,8 @@ import AppContainer from './containers/AppContainer';
 import {TabActions, DrawerActions} from '@react-navigation/native';
 
 const DesigneratSideMenu = ({showLogo = true, navigation}) => {
-  const {logo, company, menu_bg, youtube, colors, terms, policy} = useSelector(
-    (state) => state.settings,
-  );
+  const settings = useSelector((state) => state.settings);
+  const {logo, company, menu_bg, youtube, colors, terms, policy} = settings;
   const {lang, guest} = useSelector((state) => state);
   const dispatch = useDispatch();
 
@@ -291,11 +290,11 @@ const DesigneratSideMenu = ({showLogo = true, navigation}) => {
                 </Text>
               </TouchableOpacity>
             ) : null}
-            {!validate.isEmpty(images) ? (
+            {!validate.isEmpty(settings.images) ? (
               <TouchableOpacity
                 onPress={() =>
                   navigation.navigate('ImageZoom', {
-                    images: images,
+                    images: settings.images,
                     name: company,
                     index: 0,
                   })

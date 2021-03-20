@@ -269,6 +269,13 @@ export function* triggerSubmitMobileConfirmationCode() {
   );
 }
 
+export function* triggerResendMobileConfirmationCode() {
+  yield takeLatest(
+    actions.RESEND_MOBILE_CONFIRMATION_CODE,
+    userSaga.startResendMobileConfirmationCode,
+  );
+}
+
 export function* triggerRateUser() {
   yield takeLatest(actions.RATE_USER, userSaga.startRateUserScenario);
 }

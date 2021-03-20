@@ -606,6 +606,13 @@ export async function submitMobileConfirmationCode(code) {
     .catch((e) => e.response.date.message);
 }
 
+export async function resendMobileConfirmationCode(token) {
+  return await axiosInstance
+    .post(`mobile/resend/code`, {api_token: token})
+    .then((r) => r.data)
+    .catch((e) => e.response.data.message);
+}
+
 export async function submitCreateNewProduct(params) {
   const {
     name,

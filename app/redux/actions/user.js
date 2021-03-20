@@ -158,6 +158,12 @@ export function submitMobileConfirmationCode(payload) {
   };
 }
 
+export function resendtMobileConfirmationCode() {
+  return {
+    type: actions.RESEND_MOBILE_CONFIRMATION_CODE,
+  };
+}
+
 export function reAuthenticate() {
   return {
     type: actions.REAUTHENTICATE,

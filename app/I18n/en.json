@@ -728,7 +728,9 @@
   "choose_category" : "Choose Category",
   "product_description" : "Product Description",
   "product_saved_successfully" : "Product added successfully.",
-  "DESIGNERAT" : "DESIGNERAAT"
+  "DESIGNERAT" : "DESIGNERAAT",
+  "resend_code" : "Resend Mobile Verification Code",
+  "verification_code_sent_successfully" : "Mobile Verification code resent successfully."
 
 }
 

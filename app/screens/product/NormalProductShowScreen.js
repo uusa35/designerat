@@ -46,20 +46,6 @@ const NormalProductShowScreen = () => {
     );
   };
 
-  React.useEffect(() => {
-    const unsubscribe = navigation.addListener('focus', () => {
-      // The screen is focused
-      // Call any action
-      console.log('here');
-      navigation.setOptions({
-        tabBarVisible: false,
-      });
-    });
-
-    // Return the function to unsubscribe from the event so it gets removed on unmount
-    return unsubscribe;
-  }, [navigation]);
-
   return (
     <BgContainer showImage={false}>
       <KeyBoardContainer behavior="position" handleRefresh={handleRefresh}>
