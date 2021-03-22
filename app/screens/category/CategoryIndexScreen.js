@@ -1,4 +1,4 @@
-import React, {useEffect} from 'react';
+import React from 'react';
 import {useSelector} from 'react-redux';
 import CategoriesList from '../../components/Lists/CategoriesList';
 import CommercialSliderWidget from '../../components/widgets/CommercialSliderWidget';
@@ -26,7 +26,7 @@ const CategoryIndexScreen = () => {
           <CategoriesList
             elements={homeCategories}
             columns={1}
-            showBtn={true}
+            showBtn={false}
             showName={true}
             type={'product'}
           />

@@ -2,13 +2,19 @@ import React, {useState, useEffect, useMemo, useCallback} from 'react';
 import {StyleSheet, Text, Linking, View} from 'react-native';
 import {useDispatch, useSelector} from 'react-redux';
 import ImagesWidget from '../../components/widgets/ImagesWidget';
-import {width, text, height, productWidget} from './../../constants/sizes';
+import {
+  width,
+  text,
+  height,
+  productWidget,
+  iconSizes,
+} from './../../constants/sizes';
 import ProductInfoWidget from '../../components/widgets/product/ProductInfoWidget';
 import ProductInfoWidgetElement from './../../components/widgets/product/ProductInfoWidgetElement';
 import I18n from './../../I18n';
 import {first, shuffle, take} from 'lodash';
 import {getProduct, getSearchProducts} from '../../redux/actions/product';
-import {getDesigner} from '../../redux/actions/user';
+import {getDesigner, rateElement} from '../../redux/actions/user';
 import validate from 'validate.js';
 import PropTypes from 'prop-types';
 import ActionBtnWidget from '../../components/widgets/ActionBtnWidget';
@@ -22,10 +28,18 @@ import MainTab from '../../navigation/MainTab';
 import widgetStyles from '../../components/widgets/widgetStyles';
 import DesigneratAddToCartStickyFooter from '../../components/widgets/product/DesigneratAddToCartStickyFooter';
 import {addToCart} from '../../redux/actions/cart';
+import {Rating, AirbnbRating} from 'react-native-ratings';
+import {Icon} from 'react-native-elements';
+import {themeColors} from '../../constants/colors';
+import {adjustColor} from '../../helpers';
+import FastImage from 'react-native-fast-image';
+import {images} from '../../constants/images';
 
-const DesineratNormalProductShowScreen = () => {
-  const {product, token, settings, products} = useSelector((state) => state);
-  const {phone, mobile, shipment_prices, size_chart} = settings;
+const DesineratNormalProductShowScreen = ({showRating = true}) => {
+  const {product, token, settings, products, guest} = useSelector(
+    (state) => state,
+  );
+  const {phone, mobile, shipment_prices, size_chart, colors} = settings;
   const dispatch = useDispatch();
   const navigation = useNavigation();
   const [refresh, setRefresh] = useState(false);
@@ -33,6 +47,17 @@ const DesineratNormalProductShowScreen = () => {
   const [headerBgColor, setHeaderBgColor] = useState('transparent');
   const [addToCartStatus, setAddToCartStatus] = useState(false);
   const [cartItem, setCartItem] = useState({});
+  const [rating, setRating] = useState(product.rating);
+
+  const handleRating = useCallback(
+    (rating) => {
+      if (rating !== product.rating) {
+        setRating(rating);
+        return dispatch(rateElement({value: rating, product_id: product.id}));
+      }
+    },
+    [rating],
+  );
 
   const handleRefresh = () => {
     setRefresh(false);
@@ -91,8 +116,8 @@ const DesineratNormalProductShowScreen = () => {
                 borderWidth: 1,
                 borderColor: 'lightgrey',
                 marginLeft: 10,
-                marginTop: 20,
                 marginBottom: 10,
+                marginTop: 20,
               }}>
               <View
                 style={{
@@ -111,20 +136,47 @@ const DesineratNormalProductShowScreen = () => {
                   borderBottomRightRadius: 10,
                   alignItems: 'center',
                   justifyContent: 'center',
-                  backgroundColor: settings.colors.btn_bg_theme_color,
+                  backgroundColor: colors.btn_bg_theme_color,
                 }}>
                 <Text
                   style={{
                     textAlign: 'center',
                     fontFamily: text.font,
-                    color: settings.colors.btn_text_theme_color,
-                    backgroundColor: settings.colors.btn_bg_theme_color,
+                    color: colors.btn_text_theme_color,
                   }}>
                   {product.brand.slug}
                 </Text>
               </View>
             </View>
           )}
+          <View
+            style={{
+              alignItems: 'center',
+              marginTop: 10,
+              marginLeft: 10,
+              flexDirection: 'row',
+              justifyContent: 'flex-start',
+            }}>
+            <Rating
+              type="custom"
+              readonly={guest}
+              showRating={false}
+              startingValue={rating}
+              count={10}
+              ratingCount={5}
+              ratingColor={colors.btn_bg_theme_color}
+              ratingBackgroundColor={'white'}
+              onFinishRating={(rating) => handleRating(rating)}
+              imageSize={iconSizes.smaller}
+            />
+            <Text
+              style={[
+                widgetStyles.headerFour,
+                {paddingLeft: 15, paddingRight: 15},
+              ]}>
+              {I18n.t('be_first_who_rates')}
+            </Text>
+          </View>
           <ProductInfoWidget
             element={product}
             setAddToCartStatus={setAddToCartStatus}

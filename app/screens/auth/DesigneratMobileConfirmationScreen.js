@@ -32,6 +32,8 @@ const DesigneratMobileConfirmationScreen = () => {
   const [codeThird, setCodeThird] = useState('');
   const [codeForth, setCodeForth] = useState('');
   const [codeComplete, setCodeComplete] = useState(false);
+  const [resendEnabled, setResendEnabled] = useState(true);
+  const [counter, setCounter] = useState(0);
   const dispatch = useDispatch();
 
   useMemo(() => {
@@ -67,6 +69,24 @@ const DesigneratMobileConfirmationScreen = () => {
       setCodeComplete(false);
     }
   }, [code]);
+
+  useMemo(() => {
+    if (!resendEnabled) {
+      dispatch(resendtMobileConfirmationCode());
+      setCounter(3);
+    } else {
+      setTimeout(() => {
+        setResendEnabled(true);
+        setCounter(0);
+      }, 3000);
+    }
+  }, [resendEnabled]);
+
+  useMemo(() => {
+    if (counter >= 1) {
+      setCounter(counter - 1);
+    }
+  }, [counter]);
 
   return (
     <BgContainer showImage={false}>
@@ -134,7 +154,8 @@ const DesigneratMobileConfirmationScreen = () => {
         <DesingeratBtn
           title={I18n.t('resend_code')}
           marginTop={20}
-          handleClick={() => dispatch(resendtMobileConfirmationCode())}
+          disabled={!resendEnabled}
+          handleClick={() => setResendEnabled(!resendEnabled)}
         />
       </View>
     </BgContainer>

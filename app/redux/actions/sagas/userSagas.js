@@ -633,9 +633,9 @@ export function* startCompanyRegisterScenario(action) {
   }
 }
 
-export function* startRateUserScenario(action) {
+export function* startRateElementScenario(action) {
   try {
-    const element = yield call(api.rateUser, action.payload);
+    const element = yield call(api.rateElement, action.payload);
     if (!validate.isEmpty(element) && validate.isObject(element)) {
       yield call(enableSuccessMessage, I18n.t('rate_success'));
     }

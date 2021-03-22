@@ -109,6 +109,7 @@
 		F5527D04C6E64558BF38418B /* pin.png in Resources */ = {isa = PBXBuildFile; fileRef = 7296E724F40B40C38E6BAC0E /* pin.png */; };
 		4FB5A0A91C51469F9B694CFE /* pin_old.png in Resources */ = {isa = PBXBuildFile; fileRef = 4A4F4BF4EADB4C08A2C2B714 /* pin_old.png */; };
 		CFEF3937B5A84CF0BCAF2FA3 /* whiteBg.png in Resources */ = {isa = PBXBuildFile; fileRef = 9E7BE19A4F4A45DEA3DDDAC4 /* whiteBg.png */; };
+		7624CACE0669492495EA3814 /* star.png in Resources */ = {isa = PBXBuildFile; fileRef = AF02E672FE9A499BBD799A60 /* star.png */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -276,6 +277,7 @@
 		7296E724F40B40C38E6BAC0E /* pin.png */ = {isa = PBXFileReference; name = "pin.png"; path = "../assets/images/pin.png"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
 		4A4F4BF4EADB4C08A2C2B714 /* pin_old.png */ = {isa = PBXFileReference; name = "pin_old.png"; path = "../assets/images/pin_old.png"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
 		9E7BE19A4F4A45DEA3DDDAC4 /* whiteBg.png */ = {isa = PBXFileReference; name = "whiteBg.png"; path = "../assets/images/whiteBg.png"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
+		AF02E672FE9A499BBD799A60 /* star.png */ = {isa = PBXFileReference; name = "star.png"; path = "../assets/images/star.png"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -485,6 +487,7 @@
 				7296E724F40B40C38E6BAC0E /* pin.png */,
 				4A4F4BF4EADB4C08A2C2B714 /* pin_old.png */,
 				9E7BE19A4F4A45DEA3DDDAC4 /* whiteBg.png */,
+				AF02E672FE9A499BBD799A60 /* star.png */,
 			);
 			name = Resources;
 			sourceTree = "<group>";
@@ -788,6 +791,7 @@
 				F5527D04C6E64558BF38418B /* pin.png in Resources */,
 				4FB5A0A91C51469F9B694CFE /* pin_old.png in Resources */,
 				CFEF3937B5A84CF0BCAF2FA3 /* whiteBg.png in Resources */,
+				7624CACE0669492495EA3814 /* star.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -30,7 +30,7 @@ const CategoryWidget = ({
         styles.categoriesContainer,
         {
           width: columns > 1 ? '50%' : '100%',
-          height: categoryWidget[APP_CASE].large.width,
+          height: 300,
           marginBottom: 10,
         },
       ]}>
@@ -43,18 +43,18 @@ const CategoryWidget = ({
         <ImageLoaderContainer
           style={{
             width,
-            height: 200,
+            height: 300,
           }}
           resizeMode="cover"
           img={element.thumb}
         />
-        {showName && (
+        {showName && element.is_featured && (
           <Text
             style={[
               widgetStyles.headerOne,
               {
                 color: colors.header_tow_theme_color,
-                position: 'relative',
+                position: 'absolute',
                 bottom: 50,
                 alignSelf: 'center',
               },

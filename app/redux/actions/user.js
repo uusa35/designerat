@@ -111,9 +111,9 @@ export function updateUser(payload) {
   };
 }
 
-export function rateUser(payload) {
+export function rateElement(payload) {
   return {
-    type: actions.RATE_USER,
+    type: actions.RATE_ELEMENT,
     payload,
   };
 }

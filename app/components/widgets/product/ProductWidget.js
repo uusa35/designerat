@@ -36,6 +36,7 @@ const ProductWidget = ({
   showName = true,
   handleClickProductWidget,
   width = '48%',
+  showSku = true,
 }) => {
   const {currency_symbol, exchange_rate, colors} = useContext(
     GlobalValuesContext,
@@ -118,7 +119,7 @@ const ProductWidget = ({
               </Text>
             </Text>
           </View>
-          {element.sku && (
+          {element.sku && showSku && (
             <Text
               style={[
                 widgetStyles.elementName,

@@ -469,17 +469,17 @@ PODS:
     - React-Core
   - RNCMaskedView (0.1.10):
     - React
-  - RNDeviceInfo (8.0.5):
+  - RNDeviceInfo (8.0.6):
     - React-Core
   - RNFastImage (8.3.4):
     - React-Core
     - SDWebImage (~> 5.8)
     - SDWebImageWebPCoder (~> 0.6.1)
-  - RNFBAnalytics (11.1.1):
+  - RNFBAnalytics (11.1.2):
     - Firebase/Analytics (= 7.8.1)
     - React-Core
     - RNFBApp
-  - RNFBApp (11.1.1):
+  - RNFBApp (11.1.2):
     - Firebase/CoreOnly (= 7.8.1)
     - React-Core
   - RNGestureHandler (1.10.3):
@@ -505,7 +505,7 @@ PODS:
   - RNSentry (2.3.0):
     - React-Core
     - Sentry (= 6.1.4)
-  - RNShare (5.1.4):
+  - RNShare (5.1.6):
     - React-Core
   - RNSnackbar (2.4.0):
     - React-Core
@@ -867,10 +867,10 @@ SPEC CHECKSUMS:
   rn-fetch-blob: f065bb7ab7fb48dd002629f8bdcb0336602d3cba
   RNCAsyncStorage: b03032fdbdb725bea0bd9e5ec5a7272865ae7398
   RNCMaskedView: 5a8ec07677aa885546a0d98da336457e2bea557f
-  RNDeviceInfo: 7828eb110e3146324c0583c134e59db5d39f7e8b
+  RNDeviceInfo: a91ad51aaf8dc7079f56614045cf6f0a923237bb
   RNFastImage: d4870d58f5936111c56218dbd7fcfc18e65b58ff
-  RNFBAnalytics: 1d148d71352fff61c03fae581c76b42ba122054b
-  RNFBApp: 27bb6551d41886fb7352c66174defc26d2c298b4
+  RNFBAnalytics: b924aec7a5b8289dbc4f3a961c3222cd7705f236
+  RNFBApp: bb830cc7f7598e46437b833adc841df345e19e2f
   RNGestureHandler: a479ebd5ed4221a810967000735517df0d2db211
   RNGoogleSignin: ad866d4c4af2651e36801dd3b7771d7715353499
   RNI18n: e2f7e76389fcc6e84f2c8733ea89b92502351fd8
@@ -878,7 +878,7 @@ SPEC CHECKSUMS:
   RNReanimated: e03f7425cb7a38dcf1b644d680d1bfc91c3337ad
   RNScreens: f7ad633b2e0190b77b6a7aab7f914fad6f198d8d
   RNSentry: 4f6907f9a4a41058988ebaa17666e9a402b50ff2
-  RNShare: 8af5349f05fc042d230674dd650d19789187ff9c
+  RNShare: 2db8b0346a4859f83d15528602ed5b6120a0452a
   RNSnackbar: be3333a21a453ccc272f41a8add5a71f7d44dfcd
   RNSVG: ce9d996113475209013317e48b05c21ee988d42e
   RNVectorIcons: 31cebfcf94e8cf8686eb5303ae0357da64d7a5a4

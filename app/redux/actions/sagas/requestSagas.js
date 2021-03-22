@@ -466,8 +466,12 @@ export function* filterCartAndItems([cart, action]) {
     if (directPurchaseCart.length === 0) {
       let cleanCart = map(cart, (e) => {
         // check if cart_id is available (means this product has_attributes true)
+        // if same product but different qty update the cart
         if (e.type == 'product') {
-          if (e.product_id === action.payload.product_id) {
+          if (
+            e.cart_id === action.payload.cart_id &&
+            e.qty !== action.payload.qty
+          ) {
             return action.payload;
           } else {
             return e;
@@ -480,12 +484,7 @@ export function* filterCartAndItems([cart, action]) {
         }
       });
       const filteredCart =
-        cart.length > 0
-          ? uniqBy(
-              cleanCart,
-              isNull(action.payload.cart_id) ? 'product_id' : 'cart_id',
-            )
-          : [action.payload];
+        cart.length > 0 ? uniqBy(cleanCart, 'cart_id') : [action.payload];
       return filteredCart;
     } else {
       if (action.payload.directPurchase) {
@@ -623,9 +622,7 @@ export function* startCreateMyFatorrahPaymentUrlScenario(action) {
       // console.log('the e', e);
     }
     yield call(enableErrorMessage, e);
-    RootNavigation.navigate({
-      routeName: 'CartIndex',
-    });
+    RootNavigation.back();
   } finally {
     yield call(disableLoading);
   }
@@ -643,11 +640,11 @@ export function* startCreateTapPaymentUrlScenario(action) {
       throw url;
     }
   } catch (e) {
-    // if (__DEV__) {
-    // console.log('the e', e);
-    // }
+    if (__DEV__) {
+      console.log('the e', e);
+    }
     yield call(enableErrorMessage, e);
-    RootNavigation.navigate('CartIndex');
+    RootNavigation.back();
   } finally {
     yield call(disableLoading);
   }

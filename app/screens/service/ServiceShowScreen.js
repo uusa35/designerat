@@ -74,8 +74,6 @@ const ServiceShowScreen = ({navigation}) => {
             }}
           />
         }
-        showsHorizontalScrollIndicator={false}
-        showsVerticalScrollIndicator={false}
         contentInset={{bottom: 50}}>
         <View style={{alignSelf: 'center', width: '95%'}}>
           <ServiceInfoWidget element={service} />

@@ -23,7 +23,7 @@ export default function* rootSaga() {
     fork(triggers.triggerCompanyRegister),
     fork(triggers.triggerSubmitMobileConfirmationCode),
     fork(triggers.triggerResendMobileConfirmationCode),
-    fork(triggers.triggerRateUser),
+    fork(triggers.triggerRateElement),
     fork(triggers.triggerBecomeFan),
     fork(triggers.triggerGetProduct),
     fork(triggers.triggerGetSearchProducts),

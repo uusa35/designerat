@@ -104,7 +104,7 @@ const DesignerHorizontalWidget = ({
                 <Text
                   style={[
                     widgetStyles.headerThree,
-                    {color: colors.header_one_theme_color},
+                    {color: colors.btn_bg_theme_color},
                   ]}>
                   {I18n.t('show_all')}
                 </Text>

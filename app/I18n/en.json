@@ -730,7 +730,8 @@
   "product_saved_successfully" : "Product added successfully.",
   "DESIGNERAT" : "DESIGNERAAT",
   "resend_code" : "Resend Mobile Verification Code",
-  "verification_code_sent_successfully" : "Mobile Verification code resent successfully."
+  "verification_code_sent_successfully" : "Mobile Verification code resent successfully.",
+  "be_first_who_rates" : "Be first who rate with us"
 
 }
 

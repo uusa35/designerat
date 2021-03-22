@@ -534,7 +534,7 @@ export async function toggleFavorite(params) {
     .catch((e) => e.response.data.message);
 }
 
-export async function rateUser(params) {
+export async function rateElement(params) {
   return await axiosInstance
     .post(`rating`, params)
     .then((r) => r.data)

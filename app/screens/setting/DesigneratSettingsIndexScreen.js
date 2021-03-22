@@ -257,6 +257,30 @@ const DesigneratSettingsIndexScreen = ({navigation}) => {
             </>
           )}
 
+          {guest && (
+            <Pressable
+              style={{
+                width: '100%',
+                flexDirection: 'row',
+                alignItems: 'center',
+                height: 60,
+              }}
+              onPress={() => navigation.navigate('Login')}>
+              <Icon
+                color={colors.menu_theme_color}
+                name="user"
+                type="font-awesome"
+                size={iconSizes.smaller}
+              />
+              <Text
+                style={[
+                  widgetStyles.headerTow,
+                  {paddingLeft: 30, paddingRight: 30},
+                ]}>
+                {I18n.t('login')}
+              </Text>
+            </Pressable>
+          )}
           <Pressable
             style={{
               width: '100%',

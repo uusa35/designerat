@@ -276,8 +276,8 @@ export function* triggerResendMobileConfirmationCode() {
   );
 }
 
-export function* triggerRateUser() {
-  yield takeLatest(actions.RATE_USER, userSaga.startRateUserScenario);
+export function* triggerRateElement() {
+  yield takeLatest(actions.RATE_ELEMENT, userSaga.startRateElementScenario);
 }
 
 export function* triggerGetSearchCompanies() {

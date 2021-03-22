@@ -27,7 +27,7 @@ const ProductIndexAllScreen = () => {
         elements={currentElements}
         searchParams={{country_id: country.id}}
         type="product"
-        productGalaryMode={true}
+        productGalleryMode={true}
         pageLimit={55}
         showRefresh={true}
         showFooter={true}

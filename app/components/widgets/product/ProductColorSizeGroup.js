@@ -37,7 +37,7 @@ const ProductColorSizeGroup = ({
         type: 'product',
         product_attribute_id: null,
         product_id: element.id,
-        cart_id: null,
+        cart_id: element.id,
         qty: requestQty,
         directPurchase: element.directPurchase,
         wrapGift,

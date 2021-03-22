@@ -94,7 +94,7 @@ const ElementsHorizontalList = ({
   columns = 2,
   customHeight = 240,
   pageLimit = 10,
-  productGalaryMode = false,
+  productGalleryMode = false,
 }) => {
   const [items, setItems] = useState(elements);
   const [originalItems, setOriginalItems] = useState(elements);
@@ -393,7 +393,7 @@ const ElementsHorizontalList = ({
   const renderItem = (item) => {
     switch (type) {
       case 'product':
-        if (productGalaryMode) {
+        if (productGalleryMode) {
           return (
             <Pressable
               onPress={() => handleClick(item)}
@@ -411,6 +411,7 @@ const ElementsHorizontalList = ({
               element={item}
               showName={showName}
               key={item.id}
+              showSku={false}
               handleClickProductWidget={handleClick}
             />
           );
@@ -629,10 +630,10 @@ const ElementsHorizontalList = ({
           justifyContent: 'flex-start',
           alignItems: 'flex-start',
           alignSelf: 'center',
-          marginLeft: productGalaryMode ? 0 : 15,
-          marginRight: productGalaryMode ? 0 : 15,
+          marginLeft: productGalleryMode ? 0 : 15,
+          marginRight: productGalleryMode ? 0 : 15,
           // marginBottom : 15,
-          marginTop: productGalaryMode ? 0 : 15,
+          marginTop: productGalleryMode ? 0 : 15,
         }}
         renderItem={({item}) => renderItem(item)}
         ListFooterComponent={() => renderFooter()}

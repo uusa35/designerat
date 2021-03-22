@@ -55,7 +55,7 @@ const DesigneratSideMenu = ({showLogo = true, navigation}) => {
           showsHorizontalScrollIndicator={false}
           showsVerticalScrollIndicator={false}>
           <StatusBar
-            barStyle={isIOS ? `dark-content` : `light-content`}
+            barStyle={`light-content`}
             backgroundColor={colors.footer_bg_theme_color}
           />
           <View style={{alignItems: 'flex-end', width: '100%'}}>

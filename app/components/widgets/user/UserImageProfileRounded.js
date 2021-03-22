@@ -6,7 +6,7 @@ import PropTypes from 'prop-types';
 import validate from 'validate.js';
 import {Rating} from 'react-native-ratings';
 import {showCommentModal} from '../../../redux/actions';
-import {becomeFan, rateUser} from '../../../redux/actions/user';
+import {becomeFan, rateElement, rateUser} from '../../../redux/actions/user';
 import I18n from './../../../I18n';
 import {Badge, Icon} from 'react-native-elements';
 import {GlobalValuesContext} from '../../../redux/GlobalValuesContext';
@@ -54,7 +54,7 @@ const UserImageProfileRounded = ({
   const handleRating = useCallback(
     (rating) => {
       if (rating !== currentRating) {
-        return dispatch(rateUser({value: rating, member_id}));
+        return dispatch(rateElement({value: rating, member_id}));
       }
     },
     [rating],

@@ -30,6 +30,7 @@ import OneSignal from 'react-native-onesignal';
 import {getPathForDeepLinking} from '../../helpers';
 import LoadingContainer from '../Loading/LoadingContainer';
 import I18n from './../../I18n';
+import LoadingView from '../Loading/LoadingView';
 
 const AppContainer = ({children}) => {
   const {
@@ -152,7 +153,7 @@ const AppContainer = ({children}) => {
           )}
         </Fragment>
       ) : (
-        <LoadingOfflineView />
+        <LoadingView />
       )}
       {!validate.isEmpty(message) &&
         message.visible &&
