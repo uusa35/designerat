@@ -6,6 +6,7 @@
 #import <React/RCTLinkingManager.h>
 #import <Firebase.h>
 #import <CodePush/CodePush.h>
+#import "RNSplashScreen.h"
 
 #ifdef FB_SONARKIT_ENABLED
 #import <FlipperKit/FlipperClient.h>
@@ -50,6 +51,10 @@ static void InitializeFlipper(UIApplication *application) {
       if ([FIRApp defaultApp] == nil) {
         [FIRApp configure];
       }
+  // splash screen
+  [RNSplashScreen show];
+  // app sleep for the first time loading
+  //[NSThread sleepForTimeInterval:2.0];
   return YES;
 }
 

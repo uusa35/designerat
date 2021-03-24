@@ -19,29 +19,14 @@ const CompanyIndexScreen = () => {
 
   return (
     <BgContainer showImage={false} white={true}>
-      {ESCRAP ? (
-        <ElementsVerticalList
-          type="company"
-          elements={currentElements}
-          searchParams={currentSearchParams}
-          showRefresh={true}
-          showFooter={true}
-          showSearch={true}
-          showTitleIcons={true}
-          showMore={true}
-        />
-      ) : (
-        <ElementsHorizontalList
-          type="company"
-          elements={companies}
-          searchParams={searchParams}
-          showRefresh={true}
-          showFooter={true}
-          showSearch={true}
-          showTitleIcons={true}
-          showMore={true}
-        />
-      )}
+      <ElementsHorizontalList
+        elements={currentElements}
+        type="company"
+        searchParams={currentSearchParams}
+        showMore={true}
+        showSearch={true}
+        showFooter={true}
+      />
     </BgContainer>
   );
 };

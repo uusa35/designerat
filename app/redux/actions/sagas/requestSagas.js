@@ -431,7 +431,7 @@ export function* startRemoveFromCartScenario(action) {
     const {cart} = yield select();
     const filteredCart = remove(cart, (item) =>
       item.type === 'product'
-        ? item.product_id !== action.payload
+        ? item.cart_id !== action.payload
         : item.service_id !== action.payload,
     );
     if (!validate.isEmpty(filteredCart) && cart.length > 0) {
@@ -448,7 +448,7 @@ export function* startRemoveFromCartScenario(action) {
         call(startClearCartScenario),
         call(enableWarningMessage, I18n.t('cart_cleared')),
       ]);
-      RootNavigation.navigate('Home');
+      // RootNavigation.navigate('CartTab');
     }
   } catch (e) {
     if (__DEV__) {

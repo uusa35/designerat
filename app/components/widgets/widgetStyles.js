@@ -169,8 +169,6 @@ const widgetStyles = StyleSheet.create({
     backgroundColor: 'white',
     marginTop: 5,
     marginBottom: 5,
-    maxHeight: 300,
-    paddingBottom: 10,
     justifyContent: 'flex-start',
     marginLeft: 3,
     marginRight: 3,

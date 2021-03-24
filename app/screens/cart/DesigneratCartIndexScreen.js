@@ -1,4 +1,4 @@
-import React, {useContext} from 'react';
+import React, {useContext, useEffect} from 'react';
 import {StyleSheet, View, Text, ImageBackground} from 'react-native';
 import {useSelector} from 'react-redux';
 import validate from 'validate.js';
@@ -30,6 +30,8 @@ const DesigneratCartIndexScreen = () => {
   } = useSelector((state) => state);
   const {grossTotal, colors} = useContext(GlobalValuesContext);
   const navigation = useNavigation();
+
+  useEffect(() => {}, [cart]);
 
   return (
     <BgContainer showImage={false}>

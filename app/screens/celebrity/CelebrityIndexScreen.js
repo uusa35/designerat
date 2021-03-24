@@ -15,6 +15,7 @@ const CelebrityIndexScreen = () => {
     setCurrentSearchParams(searchParams);
     setCurrentElements(celebrities);
   }, []);
+
   return (
     <BgContainer showImage={false} white={true}>
       <ElementsHorizontalList

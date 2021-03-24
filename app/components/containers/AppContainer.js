@@ -1,12 +1,8 @@
-import React, {useEffect, useState, Fragment, useMemo} from 'react';
-import {AppState, useColorScheme, StatusBar, Text, Linking} from 'react-native';
+import React, {useEffect, useState, Fragment} from 'react';
+import {AppState} from 'react-native';
 import codePush from 'react-native-code-push';
 import {useDispatch, useSelector} from 'react-redux';
-import {
-  appBootstrap,
-  enableMessage,
-  goDeepLinking,
-} from './../../redux/actions';
+import {appBootstrap} from './../../redux/actions';
 import validate from 'validate.js';
 import AlertMessage from './../../components/AlertMessage';
 import CountriesList from './../../components/Lists/CountriesList';
@@ -16,21 +12,13 @@ import LoginScreenModal from './../../screens/auth/LoginScreenModal';
 import AreasList from './../../components/Lists/AreasList';
 import SimpleSpinner from './../../components/SimpleSpinner';
 import ProductFilterModal from './../../screens/product/ProductFilterModal';
-import LoadingOfflineView from './../../components/Loading/LoadingOfflineView';
 import {useNetInfo} from '@react-native-community/netinfo';
 import DeviceInfo from 'react-native-device-info';
 import OldVersionComponent from './../../components/widgets/OldVersionComponenet';
-import {
-  minOldVersionApple,
-  minOldVersionAndroid,
-  DESIGNERAT_ONE_SIGNAL_APP_ID,
-} from './../../../app.json';
+import {minOldVersionApple, minOldVersionAndroid} from './../../../app.json';
 import {isIOS} from './../../constants';
-import OneSignal from 'react-native-onesignal';
-import {getPathForDeepLinking} from '../../helpers';
-import LoadingContainer from '../Loading/LoadingContainer';
-import I18n from './../../I18n';
 import LoadingView from '../Loading/LoadingView';
+import SplashScreen from 'react-native-splash-screen';
 
 const AppContainer = ({children}) => {
   const {
@@ -94,6 +82,14 @@ const AppContainer = ({children}) => {
       dispatch(appBootstrap());
     }
   }, []);
+
+  // useEffect(() => {
+  //   if(bootStrapped) {
+  //     SplashScreen.hide();
+  //   } else {
+  //     SplashScreen.show();
+  //   }
+  // },[bootStrapped])
 
   useEffect(() => {
     if (isConnected) {

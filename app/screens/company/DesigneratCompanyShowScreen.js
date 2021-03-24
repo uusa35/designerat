@@ -33,8 +33,8 @@ import DesingeratBtn from '../../components/widgets/Button/DesigneratBtn';
 import widgetStyles from '../../components/widgets/widgetStyles';
 import UserImageProfileRounded from '../../components/widgets/user/UserImageProfileRounded';
 
-const DesigneratCelebrityShowScreen = ({route}) => {
-  const {celebrity, comments, commentModal, searchParams} = useSelector(
+const DesigneratCompanyShowScreen = ({route}) => {
+  const {company, comments, commentModal, searchParams} = useSelector(
     (state) => state,
   );
   const dispatch = useDispatch();
@@ -59,24 +59,24 @@ const DesigneratCelebrityShowScreen = ({route}) => {
   }, []);
 
   useMemo(() => {
-    if (celebrity) {
-      if (!validate.isEmpty(celebrity.products)) {
+    if (company) {
+      if (!validate.isEmpty(company.products)) {
         setCollectedCategories(
-          collectedCategories.concat(celebrity.productCategories),
+          collectedCategories.concat(company.productCategories),
         );
-        setProducts(products.concat(celebrity.products));
+        setProducts(products.concat(company.products));
       }
-      if (!validate.isEmpty(celebrity.productGroup)) {
+      if (!validate.isEmpty(company.productGroup)) {
         setCollectedCategories(
-          collectedCategories.concat(celebrity.productGroupCategories),
+          collectedCategories.concat(company.productGroupCategories),
         );
-        setProducts(products.concat(celebrity.productGroup));
+        setProducts(products.concat(company.productGroup));
       }
     } else {
       dispatch(enableWarningMessage(I18n.t('element_does_not_exist')));
       return dispatch(navigation.goBack());
     }
-  }, [celebrity]);
+  }, [company]);
 
   useMemo(() => {
     navigation.setParams({headerBg, headerBgColor});
@@ -85,8 +85,8 @@ const DesigneratCelebrityShowScreen = ({route}) => {
   const handleRefresh = useCallback(() => {
     return dispatch(
       getDesigner({
-        id: celebrity.id,
-        searchParams: {user_id: celebrity.id},
+        id: company.id,
+        searchParams: {user_id: company.id},
       }),
     );
   }, [refresh]);
@@ -100,29 +100,28 @@ const DesigneratCelebrityShowScreen = ({route}) => {
         showsVerticalScrollIndicator={false}
         style={{flex: 1}}
         overlayColor="white"
-        stickyHeaderIndices={[0]}
         refreshControl={
           <RefreshControl
             refreshing={refresh}
             onRefresh={() => handleRefresh()}
           />
         }>
-        {celebrity.banner && !validate.isEmpty(celebrity.banner) ? (
+        {company.banner && !validate.isEmpty(company.banner) ? (
           <ImageLoaderContainer
-            img={celebrity.banner}
-            style={{width: '100%', height: 200, borderWidth: 10}}
+            img={company.banner}
+            style={{width: '100%', height: 200}}
             resizeMode={'cover'}
           />
         ) : null}
         <View style={[styles.wrapper, {marginTop: '5%'}]}>
-          {!validate.isEmpty(celebrity.slides) && (
+          {!validate.isEmpty(company.slides) && (
             <View style={{paddingTop: 10, paddingBottom: 10, width: width}}>
-              <MainSliderWidget elements={celebrity.slides} />
+              <MainSliderWidget elements={company.slides} />
             </View>
           )}
           <View
             style={{flex: 1, justifyContent: 'center', alignItems: 'center'}}>
-            <ImageLoaderContainer img={celebrity.thumb} style={styles.image} />
+            <ImageLoaderContainer img={company.thumb} style={styles.image} />
             <Text
               style={[
                 widgetStyles.headerTow,
@@ -150,14 +149,14 @@ const DesigneratCelebrityShowScreen = ({route}) => {
   );
 };
 
-DesigneratCelebrityShowScreen.navigationOptions = ({navigation}) => ({
+DesigneratCompanyShowScreen.navigationOptions = ({navigation}) => ({
   // headerTransparent: navigation.state.params.headerBg,
   // headerStyle: {
   //   backgroundColor: navigation.state.params.headerBgColor
   // }
 });
 
-export default DesigneratCelebrityShowScreen;
+export default DesigneratCompanyShowScreen;
 
 const styles = StyleSheet.create({
   mainTitle: {

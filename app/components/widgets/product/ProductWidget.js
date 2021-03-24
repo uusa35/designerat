@@ -49,20 +49,31 @@ const ProductWidget = ({
       key={element.id}
       style={[
         widgetStyles.productServiceWidget,
-        {width: width, borderWidth: 0.5},
+        {
+          width: width,
+          height: 280,
+          borderRadius: 5,
+          borderBottomLeftRadius: 10,
+          borderBottomRightRadius: 10,
+        },
       ]}
       onPress={() => handleClickProductWidget(element)}>
       <Fragment>
         <ImageLoaderContainer
           img={element.thumb}
-          style={styles.image}
+          style={{
+            borderTopRightRadius: 5,
+            borderTopLeftRadius: 5,
+            width: '100%',
+            height: '80%',
+          }}
           resizeMode="cover"
         />
         <View
           style={{
             flex: 1,
             position: 'absolute',
-            top: 80,
+            top: 90,
             right: 0,
             opacity: 0.5,
           }}>
@@ -80,16 +91,20 @@ const ProductWidget = ({
         <View
           style={{
             width: '100%',
-            paddingTop: 5,
+            height: '10%',
+            // paddingTop: 5,
             alignItems: 'flex-start',
-            justifyContent: 'center',
+            justifyContent: 'space-between',
+            flex: 1,
+            flexDirection: 'column',
           }}>
           <View
             style={{
               flexDirection: 'row',
               width: '100%',
+              flex: 1,
               justifyContent: 'space-between',
-              alignItems: 'baseline',
+              alignItems: 'center',
               paddingRight: 5,
               paddingLeft: 5,
             }}>
@@ -134,55 +149,55 @@ const ProductWidget = ({
               {`${I18n.t('sku')} :  ${element.sku.substring(0, 15)}`}
             </Text>
           )}
-          <View
-            style={{
-              marginTop: 5,
-              flexDirection: 'row',
-              alignItems: 'flex-start',
-              justifyContent: 'flex-start',
-              height: 35,
-            }}>
-            <TouchableOpacity
-              onPress={() => handleClickProductWidget(element)}
-              style={{
-                width: '80%',
-                backgroundColor: 'black',
-                justifyContent: 'center',
-                height: 35,
-                borderBottomLeftRadius: 10,
-              }}>
-              <Text
-                style={{
-                  fontFamily: text.font,
-                  fontSize: text.small,
-                  textAlign: 'center',
-                  color: 'white',
-                }}>
-                {I18n.t('buy_now')}
-              </Text>
-            </TouchableOpacity>
-            <TouchableOpacity
-              onPress={() => {
-                dispatch(
-                  toggleProductFavorite({
-                    api_token: token,
-                    product_id: element.id,
-                  }),
-                );
-              }}
-              style={{
-                justifyContent: 'center',
-                alignItems: 'center',
-                flex: 1,
-                backgroundColor: 'lightgrey',
-                borderBottomRightRadius: 5,
-                height: 35,
-              }}>
-              <FavoriteIcon id={element.id} size={iconSizes.smaller} />
-            </TouchableOpacity>
-          </View>
         </View>
       )}
+      <View
+        style={{
+          height: '10%',
+          flexDirection: 'row',
+          alignItems: 'flex-start',
+          justifyContent: 'flex-start',
+          flex: 1,
+        }}>
+        <TouchableOpacity
+          onPress={() => handleClickProductWidget(element)}
+          style={{
+            flex: 0.8,
+            backgroundColor: 'black',
+            justifyContent: 'center',
+            height: '100%',
+            borderBottomLeftRadius: 10,
+          }}>
+          <Text
+            style={{
+              fontFamily: text.font,
+              fontSize: text.small,
+              textAlign: 'center',
+              color: 'white',
+            }}>
+            {I18n.t('buy_now')}
+          </Text>
+        </TouchableOpacity>
+        <TouchableOpacity
+          onPress={() => {
+            dispatch(
+              toggleProductFavorite({
+                api_token: token,
+                product_id: element.id,
+              }),
+            );
+          }}
+          style={{
+            justifyContent: 'center',
+            alignItems: 'center',
+            flex: 0.2,
+            backgroundColor: 'lightgrey',
+            borderBottomRightRadius: 5,
+            height: '100%',
+          }}>
+          <FavoriteIcon id={element.id} size={iconSizes.smaller} />
+        </TouchableOpacity>
+      </View>
     </Pressable>
   );
 };

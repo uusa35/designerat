@@ -26,7 +26,7 @@ const OrderIndexScreen = ({}) => {
   }, [orders]);
 
   return (
-    <BgContainer showImage={false} white={true}>
+    <BgContainer showImage={false} white={false}>
       <ElementsHorizontalList
         elements={currentElements}
         searchParams={{}}

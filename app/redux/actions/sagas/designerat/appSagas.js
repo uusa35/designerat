@@ -42,6 +42,7 @@ import {getHomeServicesScenario, getServiceIndex} from '../serviceSagas';
 import {getHomeUserCategories} from '../categorySagas';
 import * as actions from '../../types';
 import {GET_ROLES} from '../../types';
+import SplashScreen from 'react-native-splash-screen';
 
 export function* designeratBootStrap() {
   try {
@@ -68,9 +69,9 @@ export function* designeratBootStrap() {
       // call(getLatestProducts, {
       //   payload: {on_home: 1, country_id: country.id, latest: 1},
       // }),
-      call(getPages),
+      // call(getPages),
       // call(getTags),
-      call(getVideos),
+      // call(getVideos),
       // call(getProductIndex),
       // call(getHomeServicesScenario, {
       //   payload: {page: 1, country_id: country.id, on_home: 1},
@@ -104,6 +105,7 @@ export function* designeratBootStrap() {
       put({type: actions.TOGGLE_RESET_APP, payload: false}),
     ]);
     yield put({type: actions.TOGGLE_BOOTSTRAPPED, payload: true});
+    SplashScreen.hide();
   } finally {
     yield all([call(disableLoading), call(disableLoadingBoxedList)]);
   }

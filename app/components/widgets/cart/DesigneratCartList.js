@@ -117,7 +117,7 @@ const DesigneratCartList = ({
           <DesigneratProductItem
             item={item}
             timeData={item.type === 'service' ? item.timeData : null}
-            key={item.element.cart_id}
+            key={item.cart_id}
             editMode={editMode}
             qty={item.qty}
             notes={item.notes}

@@ -98,26 +98,22 @@ const DesigneratDesignerShowScreen = ({route}) => {
         automaticallyAdjustContentInsets={false}
         showsHorizontalScrollIndicator={false}
         showsVerticalScrollIndicator={false}
-        // maxHeight={150}
-        // minHeight={90}
-        containerStyle={{flex: 1}}
+        style={{flex: 1}}
         overlayColor="white"
-        headerImage={{
-          uri: designer.banner ? designer.banner : logo,
-        }}
         refreshControl={
           <RefreshControl
             refreshing={refresh}
             onRefresh={() => handleRefresh()}
           />
         }>
-        {designer.banner && (
+        {designer.banner && !validate.isEmpty(designer.banner) ? (
           <ImageLoaderContainer
             img={designer.banner}
-            style={{width: '100%', height: 140, marginTop: 15}}
+            style={{width: '100%', height: 200}}
+            resizeMode={'cover'}
           />
-        )}
-        <View style={styles.wrapper}>
+        ) : null}
+        <View style={[styles.wrapper, {marginTop: '5%'}]}>
           {!validate.isEmpty(designer.slides) && (
             <View style={{paddingTop: 10, paddingBottom: 10, width: width}}>
               <MainSliderWidget elements={designer.slides} />
@@ -184,7 +180,6 @@ const styles = StyleSheet.create({
   },
   wrapper: {
     flex: 1,
-    borderTopWidth: 1,
     borderColor: 'lightgrey',
   },
   logo: {

@@ -86,7 +86,10 @@ const DesineratNormalProductShowScreen = ({showRating = true}) => {
 
   return (
     <BgContainer showImage={false} white={true}>
-      <KeyBoardContainer behavior="position" handleRefresh={handleRefresh}>
+      <KeyBoardContainer
+        behavior="position"
+        handleRefresh={() => handleRefresh()}
+        showRefresh={true}>
         <ImagesWidget
           sku={product.sku}
           qr={product.qr}

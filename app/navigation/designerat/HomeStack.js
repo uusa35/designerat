@@ -49,6 +49,7 @@ import ProductCreateScreen from '../../screens/product/ProductCreateScreen';
 import DesigneratAboutusScreen from '../../screens/setting/DesigneratAboutusScreen';
 import DesigneratMobileConfirmationScreen from '../../screens/auth/DesigneratMobileConfirmationScreen';
 import DesigneratCelebrityShowScreen from '../../screens/celebrity/DesigneratCelebrityShowScreen';
+import DesigneratCompanyShowScreen from '../../screens/company/DesigneratCompanyShowScreen';
 const Stack = createStackNavigator();
 const HomeStack = () => {
   const {colors} = useContext(GlobalValuesContext);
@@ -146,6 +147,16 @@ const HomeStack = () => {
           headerTitle: () => <HeaderMiddle title={I18n.t('elites')} />,
         }}
         component={CompanyIndexScreen}
+      />
+      <Stack.Screen
+        name={'CompanyShow'}
+        options={{
+          headerTitle: () => <HeaderMiddle />,
+          headerRight: () => (
+            <HeaderRight showCart={true} displayShare={true} />
+          ),
+        }}
+        component={DesigneratCompanyShowScreen}
       />
       <Stack.Screen
         name={'Login'}

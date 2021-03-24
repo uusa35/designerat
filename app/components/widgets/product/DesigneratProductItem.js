@@ -177,31 +177,33 @@ const DesigneratProductItem = ({
             flexDirection: 'row',
             flex: 1,
           }}>
-          <Button
-            containerStyle={{
-              flex: 0.4,
-              justifyContent: 'space-between',
-              alignItems: 'center',
-            }}
-            buttonStyle={{
-              width: '90%',
-              borderRadius: 0,
-              justifyContent: 'space-around',
-              alignItems: 'center',
-              borderRightWidth: 1,
-              borderRightColor: colors.btn_bg_theme_color,
-            }}
-            titleStyle={[
-              widgetStyles.headerThree,
-              {color: colors.header_one_theme_color},
-            ]}
-            onPress={() => dispatch(removeItem(element.id))}
-            title={I18n.t('remove')}
-            icon={
-              <Icon name="close" type="evilicon" size={iconSizes.smaller} />
-            }
-            type="clear"
-          />
+          {item.cart_id && (
+            <Button
+              containerStyle={{
+                flex: 0.4,
+                justifyContent: 'space-between',
+                alignItems: 'center',
+              }}
+              buttonStyle={{
+                width: '90%',
+                borderRadius: 0,
+                justifyContent: 'space-around',
+                alignItems: 'center',
+                borderRightWidth: 1,
+                borderRightColor: colors.btn_bg_theme_color,
+              }}
+              titleStyle={[
+                widgetStyles.headerThree,
+                {color: colors.header_one_theme_color},
+              ]}
+              onPress={() => dispatch(removeItem(item.cart_id))}
+              title={I18n.t('remove')}
+              icon={
+                <Icon name="close" type="evilicon" size={iconSizes.smaller} />
+              }
+              type="clear"
+            />
+          )}
           <Button
             containerStyle={{
               flex: 0.6,
