@@ -72,6 +72,9 @@ const AppContainer = ({children}) => {
     codePush.checkForUpdate().then((update) => {
       if (!update) {
         // console.warn('====> The app is up to date!');
+        setTimeout(() => {
+          SplashScreen.hide();
+        }, 4000);
       } else {
         if (__DEV__) {
           // console.warn('===> there is an update here');

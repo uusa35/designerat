@@ -50,6 +50,8 @@ import DesigneratAboutusScreen from '../../screens/setting/DesigneratAboutusScre
 import DesigneratMobileConfirmationScreen from '../../screens/auth/DesigneratMobileConfirmationScreen';
 import DesigneratCelebrityShowScreen from '../../screens/celebrity/DesigneratCelebrityShowScreen';
 import DesigneratCompanyShowScreen from '../../screens/company/DesigneratCompanyShowScreen';
+import StatisticIndexScreen from '../../screens/setting/StatisticIndexScreen';
+
 const Stack = createStackNavigator();
 const HomeStack = () => {
   const {colors} = useContext(GlobalValuesContext);
@@ -378,6 +380,13 @@ const HomeStack = () => {
           headerTitle: () => <HeaderMiddle title={I18n.t('aboutus')} />,
           headerBackTitle: () => null,
         }}
+      />
+      <Stack.Screen
+        name={'StatisticIndex'}
+        options={{
+          headerTitle: () => <HeaderMiddle title={I18n.t('statistics')} />,
+        }}
+        component={StatisticIndexScreen}
       />
     </Stack.Navigator>
   );

@@ -17,7 +17,7 @@ import {
   text,
   touchOpacity,
 } from '../../constants/sizes';
-import {Button, Icon} from 'react-native-elements';
+import {Button, Icon, Badge} from 'react-native-elements';
 import I18n from './../../I18n';
 import {changeLang, refetchHomeElements} from '../../redux/actions';
 import {APP_CASE} from './../../../app';
@@ -34,9 +34,7 @@ import {adjustColor} from '../../helpers';
 import {REGISTER_AS_CLIENT} from '../../redux/actions/types';
 
 const DesigneratSettingsIndexScreen = ({navigation}) => {
-  const {guest, lang, settings, version, roles, auth} = useSelector(
-    (state) => state,
-  );
+  const {guest, settings, version, auth} = useSelector((state) => state);
   const {colors} = settings;
   const [refresh, setRefresh] = useState(false);
   const dispatch = useDispatch();
@@ -143,28 +141,63 @@ const DesigneratSettingsIndexScreen = ({navigation}) => {
           {!guest && (
             <>
               {auth.role && !auth.role.isClient && (
-                <Pressable
-                  style={{
-                    width: '100%',
-                    flexDirection: 'row',
-                    alignItems: 'center',
-                    height: 60,
-                  }}
-                  onPress={() => navigation.navigate('ProductCreate')}>
-                  <Icon
-                    color={colors.menu_theme_color}
-                    name="add-circle-outline"
-                    type="material"
-                    size={iconSizes.smaller}
-                  />
-                  <Text
-                    style={[
-                      widgetStyles.headerTow,
-                      {paddingLeft: 30, paddingRight: 30},
-                    ]}>
-                    {I18n.t('add_new_product')}
-                  </Text>
-                </Pressable>
+                <>
+                  <Pressable
+                    style={{
+                      width: '100%',
+                      flexDirection: 'row',
+                      alignItems: 'center',
+                      height: 60,
+                    }}
+                    onPress={() => navigation.navigate('ProductCreate')}>
+                    <Icon
+                      color={colors.menu_theme_color}
+                      name="add-circle-outline"
+                      type="material"
+                      size={iconSizes.smaller}
+                    />
+                    <Text
+                      style={[
+                        widgetStyles.headerTow,
+                        {paddingLeft: 30, paddingRight: 30},
+                      ]}>
+                      {I18n.t('add_new_product')}
+                    </Text>
+                  </Pressable>
+                  {auth.statistics.orders >= 1 && (
+                    <Pressable
+                      style={{
+                        width: '100%',
+                        flexDirection: 'row',
+                        justifyContent: 'center',
+                        alignItems: 'center',
+                        height: 60,
+                      }}
+                      onPress={() => navigation.navigate('StatisticIndex')}>
+                      <Icon
+                        color={colors.menu_theme_color}
+                        name="piechart"
+                        type="antdesign"
+                        size={iconSizes.smaller}
+                      />
+                      <View
+                        style={{
+                          flexDirection: 'row',
+                          justifyContent: 'space-between',
+                          alignItems: 'center',
+                          flex: 1,
+                        }}>
+                        <Text
+                          style={[
+                            widgetStyles.headerTow,
+                            {paddingLeft: 30, paddingRight: 30},
+                          ]}>
+                          {I18n.t('statistics')}
+                        </Text>
+                      </View>
+                    </Pressable>
+                  )}
+                </>
               )}
               <Pressable
                 style={{
@@ -387,7 +420,9 @@ const DesigneratSettingsIndexScreen = ({navigation}) => {
                 alignItems: 'center',
                 height: 60,
               }}
-              onPress={() => Linking.openURL(settings.android)}>
+              onPress={() =>
+                Linking.openURL(isIOS ? settings.apple : settings.android)
+              }>
               <Icon
                 hitSlop={{top: 15, bottom: 15, left: 15, right: 15}}
                 size={iconSizes.smaller}

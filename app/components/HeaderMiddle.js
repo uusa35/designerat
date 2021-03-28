@@ -14,7 +14,7 @@ export const HeaderMiddle = ({title, showLogo = false}) => {
   const route = useRoute();
   const {app_logo, colors} = useSelector((state) => state.settings);
   return (
-    <View style={[styles.container, {flex: 1, maxWidth: 250}]}>
+    <View style={[styles.container, {flex: 1, maxWidth: isIOS ? 250 : 350}]}>
       {showLogo ? (
         <ImageLoaderContainer
           resizeMode="contain"

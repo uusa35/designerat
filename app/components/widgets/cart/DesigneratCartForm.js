@@ -1,7 +1,13 @@
 import {Icon, Input} from 'react-native-elements';
 import I18n, {isRTL} from '../../../I18n';
 import {iconSizes, text} from '../../../constants/sizes';
-import {Pressable, StyleSheet, Text, TouchableOpacity} from 'react-native';
+import {
+  Linking,
+  Pressable,
+  StyleSheet,
+  Text,
+  TouchableOpacity,
+} from 'react-native';
 import {View} from 'react-native-animatable';
 import {submitCart} from '../../../redux/actions/cart';
 import React, {useContext, useEffect, useMemo, useState} from 'react';
@@ -12,6 +18,9 @@ import {useNavigation} from '@react-navigation/native';
 import validate from 'validate.js';
 import widgetStyles from '../widgetStyles';
 import DesigneratBtn from '../Button/DesigneratBtn';
+import {getWhatsappLink} from '../../../helpers';
+import {APP_CASE} from '../../../../app.json';
+
 const DesigneratCartForm = ({
   shipment_notes = null,
   editModeDefault = true,
@@ -20,7 +29,9 @@ const DesigneratCartForm = ({
 }) => {
   const dispatch = useDispatch();
   const {colors} = useContext(GlobalValuesContext);
-  const {auth, address, shipmentCountry} = useSelector((state) => state);
+  const {auth, address, shipmentCountry, settings} = useSelector(
+    (state) => state,
+  );
   const navigation = useNavigation();
   const [name, setName] = useState(!validate.isEmpty(auth) ? auth.name : null);
   const [email, setEmail] = useState(
@@ -88,6 +99,50 @@ const DesigneratCartForm = ({
         </View>
       )}
 
+      {settings.whatsapp && (
+        <View
+          style={[
+            widgetStyles.panelContent,
+            {
+              flexDirection: 'row',
+              alignItems: 'center',
+              justifyContent: 'space-between',
+              padding: 15,
+            },
+          ]}>
+          <TouchableOpacity
+            onPress={() =>
+              Linking.openURL(
+                getWhatsappLink(settings.whatsapp, I18n.t(APP_CASE)),
+              )
+            }
+            style={{
+              flexDirection: 'row',
+              justifyContent: 'space-evenly',
+              alignItems: 'center',
+            }}>
+            <Icon
+              name="whatsapp"
+              type="font-awesome"
+              size={iconSizes.smaller}
+              color={colors.icon_theme_color}
+            />
+            <Text
+              style={[
+                widgetStyles.headerThree,
+                {paddingLeft: 20, paddingRight: 20},
+              ]}>
+              {I18n.t('whatsapp')}
+            </Text>
+          </TouchableOpacity>
+          <Icon
+            name={`chevron-${isRTL ? 'left' : 'right'}`}
+            type="evilicon"
+            size={iconSizes.medium}
+            color={colors.icon_theme_color}
+          />
+        </View>
+      )}
       <Text
         style={[widgetStyles.headerThree, {padding: 15, textAlign: 'left'}]}>
         {I18n.t('confirm_information')}

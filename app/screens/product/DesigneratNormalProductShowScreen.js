@@ -34,6 +34,7 @@ import {themeColors} from '../../constants/colors';
 import {adjustColor} from '../../helpers';
 import FastImage from 'react-native-fast-image';
 import {images} from '../../constants/images';
+import {isIOS} from '../../constants';
 
 const DesineratNormalProductShowScreen = ({showRating = true}) => {
   const {product, token, settings, products, guest} = useSelector(
@@ -307,10 +308,12 @@ const DesineratNormalProductShowScreen = ({showRating = true}) => {
             ) : null}
           </View>
         </View>
-        {validate.isObject(product.videoGroup) &&
-          !validate.isEmpty(product.videoGroup) && (
-            <VideosVerticalWidget videos={product.videoGroup} />
-          )}
+        <View style={{paddingBottom: !isIOS ? '8%' : 0}}>
+          {validate.isObject(product.videoGroup) &&
+            !validate.isEmpty(product.videoGroup) && (
+              <VideosVerticalWidget videos={product.videoGroup} />
+            )}
+        </View>
         {/*{!validate.isEmpty(products) && EXPO && (*/}
         {/*  <ProductHorizontalWidget*/}
         {/*    elements={take(shuffle(products), 5)}*/}

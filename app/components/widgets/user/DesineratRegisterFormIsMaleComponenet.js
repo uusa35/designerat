@@ -37,8 +37,8 @@ const DesineratRegisterFormIsMaleComponent = ({isMale, setIsMale}) => {
         }}
         onPress={() => setIsMale(true)}>
         <Icon
-          name="checkmark"
-          type="ionicon"
+          name="check"
+          type="antdesign"
           color={isMale ? colors.btn_bg_theme_color : 'white'}
           size={iconSizes.smaller}
         />
@@ -59,8 +59,8 @@ const DesineratRegisterFormIsMaleComponent = ({isMale, setIsMale}) => {
         }}
         onPress={() => setIsMale(false)}>
         <Icon
-          name="checkmark"
-          type="ionicon"
+          name="check"
+          type="antdesign"
           color={isMale === false ? colors.btn_bg_theme_color : 'white'}
           size={iconSizes.smaller}
         />
@@ -81,8 +81,8 @@ const DesineratRegisterFormIsMaleComponent = ({isMale, setIsMale}) => {
         }}
         onPress={() => setIsMale(null)}>
         <Icon
-          name="checkmark"
-          type="ionicon"
+          name="check"
+          type="antdesign"
           color={isMale == null ? colors.btn_bg_theme_color : 'white'}
           size={iconSizes.smaller}
         />
