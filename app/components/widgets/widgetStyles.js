@@ -37,6 +37,7 @@ const widgetStyles = StyleSheet.create({
   title: {
     fontFamily: text.font,
     fontSize: text.large,
+    color: 'black',
     shadowColor: '#000',
     shadowOffset: {
       width: 0,
@@ -50,6 +51,7 @@ const widgetStyles = StyleSheet.create({
   headerOne: {
     fontFamily: text.font,
     fontSize: text.xlarge,
+    color: 'black',
     shadowColor: '#000',
     shadowOffset: {
       width: 0,
@@ -63,6 +65,7 @@ const widgetStyles = StyleSheet.create({
   headerTow: {
     fontFamily: text.font,
     fontSize: text.large,
+    color: 'black',
     shadowColor: '#000',
     shadowOffset: {
       width: 0,
@@ -76,6 +79,7 @@ const widgetStyles = StyleSheet.create({
   headerThree: {
     fontFamily: text.font,
     fontSize: text.medium,
+    color: 'black',
     shadowColor: '#000',
     shadowOffset: {
       width: 0,
@@ -89,6 +93,7 @@ const widgetStyles = StyleSheet.create({
   headerFour: {
     fontFamily: text.font,
     fontSize: text.small,
+    color: 'black',
     shadowColor: '#000',
     shadowOffset: {
       width: 0,
@@ -102,6 +107,7 @@ const widgetStyles = StyleSheet.create({
   headerFive: {
     fontFamily: text.font,
     fontSize: text.smaller,
+    color: 'black',
     shadowColor: '#000',
     shadowOffset: {
       width: 0,
@@ -115,6 +121,7 @@ const widgetStyles = StyleSheet.create({
   headerSix: {
     fontFamily: text.font,
     fontSize: text.smallest,
+    color: 'black',
     shadowColor: '#000',
     shadowOffset: {
       width: 0,

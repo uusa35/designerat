@@ -62,6 +62,7 @@ const DesigneratSettingsIndexScreen = ({navigation}) => {
       .catch((err) => {});
   };
 
+  console.log('colors', colors);
   return (
     <BgContainer enableMargin={false} showImage={false} white={true}>
       <ScrollView
@@ -111,9 +112,11 @@ const DesigneratSettingsIndexScreen = ({navigation}) => {
               justifyContent: 'center',
               alignItems: 'baseline',
             }}>
-            <Text style={widgetStyles.headerThree}>{`${I18n.t('welcome')}  ${
-              !guest ? auth.name : ''
-            }`}</Text>
+            <Text
+              style={[
+                widgetStyles.headerThree,
+                {color: colors.btn_text_theme_color},
+              ]}>{`${I18n.t('welcome')}  ${!guest ? auth.name : ''}`}</Text>
             {!guest && (
               <Icon
                 color={colors.icon_theme_color}

@@ -1,9 +1,8 @@
-import React, {Fragment, useState, useMemo, useContext, useEffect} from 'react';
+import React, {useState, useMemo, useContext, useEffect} from 'react';
 import {
   AppState,
   ImageBackground,
   Linking,
-  SafeAreaView,
   StatusBar,
   View,
   Alert,
@@ -11,10 +10,8 @@ import {
 } from 'react-native';
 import {height, width} from '../../constants/sizes';
 import {images} from '../../constants/images';
-import AndroidBackHandlerComponent from './AndroidBackHandlerComponent';
 import {useDispatch, useSelector} from 'react-redux';
 import LoadingView from '../Loading/LoadingView';
-import LoadingOfflineView from '../Loading/LoadingOfflineView';
 import {GlobalValuesContext} from '../../redux/GlobalValuesContext';
 import OneSignal from 'react-native-onesignal';
 import {DESIGNERAT_ONE_SIGNAL_APP_ID, APP_CASE} from '../../../app.json';
@@ -30,6 +27,9 @@ import moment from 'moment';
 import analytics from '@react-native-firebase/analytics';
 import {isIOS} from '../../constants';
 import {useAndroidBackHandler} from 'react-navigation-backhandler';
+import {deleteAddress} from '../../redux/actions/user';
+import I18n from '../../I18n';
+import ConfirmationModal from '../ConfirmationModal';
 
 const BgContainer = ({
   children,
@@ -54,16 +54,23 @@ const BgContainer = ({
   );
   const [bg, setBg] = useState();
   const [appState, setAppState] = useState(AppState.currentState);
+  const [modalVisible, setModalVisible] = useState(false);
   const [device, setDevice] = useState('');
   const dispatch = useDispatch();
   const route = useRoute();
+  const navigation = useNavigation();
 
   useMemo(() => {
     setBg(!showImage ? images.whiteBg : mainBg.includes('.') ? mainBg : img);
   }, []);
 
   useAndroidBackHandler(() => {
-    return dispatch(goBackBtn(route.name));
+    // return dispatch(goBackBtn(route.name));
+    if (route.name !== 'Home') {
+      navigation.goBack();
+    } else {
+      setModalVisible(true);
+    }
   });
 
   useMemo(() => {
@@ -182,6 +189,15 @@ const BgContainer = ({
             animated={true}
             backgroundColor={colors.footer_bg_theme_color}
             barStyle={'light-content'}
+          />
+          <ConfirmationModal
+            handleConfirmClick={() => BackHandler.exitApp()}
+            confirmTitle={I18n.t('confirm')}
+            message={I18n.t('do_you_want_to_exit_the_app')}
+            modalVisible={modalVisible}
+            setModalVisible={setModalVisible}
+            iconName="exit"
+            iconType="antdesign"
           />
           {children}
         </View>

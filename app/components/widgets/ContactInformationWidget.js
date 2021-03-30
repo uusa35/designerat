@@ -58,9 +58,18 @@ const ContactInformationWidget = () => {
                 iconStyle={{paddingLeft: 10}}
                 color={colors.icon_theme_color}
               />
-              <Text style={styles.phoneNo}>{I18n.t('mobile')}</Text>
+              <Text
+                style={[
+                  styles.phoneNo,
+                  {color: colors.header_one_theme_color},
+                ]}>
+                {I18n.t('mobile')}
+              </Text>
             </View>
-            <Text style={styles.phoneNo}>{settings.mobile}</Text>
+            <Text
+              style={[styles.phoneNo, {color: colors.header_one_theme_color}]}>
+              {settings.mobile}
+            </Text>
           </TouchableOpacity>
         )}
         {settings.whatsapp && (
@@ -81,9 +90,18 @@ const ContactInformationWidget = () => {
                 iconStyle={{paddingLeft: 10}}
                 color={colors.icon_theme_color}
               />
-              <Text style={styles.phoneNo}>{I18n.t('whatsapp')}</Text>
+              <Text
+                style={[
+                  styles.phoneNo,
+                  {color: colors.header_one_theme_color},
+                ]}>
+                {I18n.t('whatsapp')}
+              </Text>
             </View>
-            <Text style={styles.phoneNo}>{settings.whatsapp}</Text>
+            <Text
+              style={[styles.phoneNo, {color: colors.header_one_theme_color}]}>
+              {settings.whatsapp}
+            </Text>
           </TouchableOpacity>
         )}
         {settings.address && (
@@ -95,9 +113,23 @@ const ContactInformationWidget = () => {
                 iconStyle={{paddingLeft: 10}}
                 color={colors.icon_theme_color}
               />
-              <Text style={styles.phoneNo}>{I18n.t('address')}</Text>
+              <Text
+                style={[
+                  styles.phoneNo,
+                  {color: colors.header_one_theme_color},
+                ]}>
+                {I18n.t('address')}
+              </Text>
             </View>
-            <Text style={[styles.phoneNo, {flex: 1, textAlign: 'right'}]}>
+            <Text
+              style={[
+                styles.phoneNo,
+                {
+                  flex: 1,
+                  textAlign: 'right',
+                  color: colors.header_one_theme_color,
+                },
+              ]}>
               {settings.address}
             </Text>
           </View>
@@ -120,9 +152,21 @@ const ContactInformationWidget = () => {
                   iconStyle={{paddingLeft: 10}}
                   color={colors.icon_theme_color}
                 />
-                <Text style={styles.phoneNo}>{I18n.t('location')}</Text>
+                <Text
+                  style={[
+                    styles.phoneNo,
+                    {color: colors.header_one_theme_color},
+                  ]}>
+                  {I18n.t('location')}
+                </Text>
               </View>
-              <Text style={styles.phoneNo}>{settings.company}</Text>
+              <Text
+                style={[
+                  styles.phoneNo,
+                  {color: colors.header_one_theme_color},
+                ]}>
+                {settings.company}
+              </Text>
             </TouchableOpacity>
           ))}
         {settings.email && (
@@ -138,9 +182,18 @@ const ContactInformationWidget = () => {
                 iconStyle={{paddingLeft: 10}}
                 color={colors.icon_theme_color}
               />
-              <Text style={styles.phoneNo}>{I18n.t('email')}</Text>
+              <Text
+                style={[
+                  styles.phoneNo,
+                  {color: colors.header_one_theme_color},
+                ]}>
+                {I18n.t('email')}
+              </Text>
             </View>
-            <Text style={styles.phoneNo}>{settings.email}</Text>
+            <Text
+              style={[styles.phoneNo, {color: colors.header_one_theme_color}]}>
+              {settings.email}
+            </Text>
           </TouchableOpacity>
         )}
       </View>

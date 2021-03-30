@@ -95,10 +95,11 @@ const DesigneratCartForm = ({
             marginBottom: 10,
             backgroundColor: 'white',
           }}>
-          <Text style={widgetStyles.headerThree}>{shipment_notes}</Text>
+          <Text style={[widgetStyles.headerThree, {lineHeight: 35}]}>
+            {shipment_notes}
+          </Text>
         </View>
       )}
-
       {settings.whatsapp && (
         <View
           style={[

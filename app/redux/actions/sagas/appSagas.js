@@ -34,16 +34,20 @@ export function* goBackBtnScenario(action) {
   if (action.payload !== 'Home') {
     RootNavigation.back();
   } else {
-    Alert.alert(I18n.t('do_you_want_to_exit_the_app'), '', [
-      {
-        text: I18n.t('confirm'),
-        onPress: () => BackHandler.exitApp(),
-      },
-      {
-        text: I18n.t('cancel'),
-        onPress: () => false,
-      },
-    ]);
+    Alert.alert(
+      I18n.t('do_you_want_to_exit_the_app'),
+      I18n.t('do_you_want_to_exit_the_app'),
+      [
+        {
+          text: I18n.t('confirm'),
+          onPress: () => BackHandler.exitApp(),
+        },
+        {
+          text: I18n.t('cancel'),
+          onPress: () => false,
+        },
+      ],
+    );
   }
 }
 

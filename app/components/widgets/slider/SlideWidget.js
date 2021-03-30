@@ -9,7 +9,13 @@ const SlideWidget = ({slide}) => {
     <Pressable
       key={slide.id}
       onPress={() => {
-        Linking.openURL(!isNull(slide.path) ? slide.path : slide.url);
+        Linking.openURL(
+          !isNull(slide.path)
+            ? slide.path
+            : !isNull(slide.url)
+            ? slide.url
+            : '',
+        );
       }}>
       <ImageLoaderContainer
         img={slide.large}

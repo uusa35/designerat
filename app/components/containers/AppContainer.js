@@ -19,6 +19,7 @@ import {minOldVersionApple, minOldVersionAndroid} from './../../../app.json';
 import {isIOS} from './../../constants';
 import LoadingView from '../Loading/LoadingView';
 import SplashScreen from 'react-native-splash-screen';
+import LoadingOfflineView from '../Loading/LoadingOfflineView';
 
 const AppContainer = ({children}) => {
   const {
@@ -54,7 +55,7 @@ const AppContainer = ({children}) => {
       currency.currency_symbol_en;
     axiosInstance.defaults.headers['country'] = country.slug_en;
     axiosInstance.defaults.headers.common['country'] = country.slug_en;
-  }, [token, lang]);
+  }, [token, lang, bootStrapped]);
 
   useEffect(() => {
     if (!validate.isEmpty(token) && token.length > 5) {
@@ -72,9 +73,6 @@ const AppContainer = ({children}) => {
     codePush.checkForUpdate().then((update) => {
       if (!update) {
         // console.warn('====> The app is up to date!');
-        setTimeout(() => {
-          SplashScreen.hide();
-        }, 4000);
       } else {
         if (__DEV__) {
           // console.warn('===> there is an update here');
@@ -84,15 +82,10 @@ const AppContainer = ({children}) => {
     if (!bootStrapped) {
       dispatch(appBootstrap());
     }
+    setTimeout(() => {
+      SplashScreen.hide();
+    }, 4000);
   }, []);
-
-  // useEffect(() => {
-  //   if(bootStrapped) {
-  //     SplashScreen.hide();
-  //   } else {
-  //     SplashScreen.show();
-  //   }
-  // },[bootStrapped])
 
   useEffect(() => {
     if (isConnected) {
@@ -152,7 +145,7 @@ const AppContainer = ({children}) => {
           )}
         </Fragment>
       ) : (
-        <LoadingView />
+        <LoadingOfflineView />
       )}
       {!validate.isEmpty(message) &&
         message.visible &&

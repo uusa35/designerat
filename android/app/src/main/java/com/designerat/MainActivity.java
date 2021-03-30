@@ -19,17 +19,6 @@ public class MainActivity extends ReactActivity {
     return "designerat";
   }
 
-/*
-  @Override
-      protected void onCreate(Bundle savedInstanceState) {
-      SplashScreen.show(this);  // here
-      super.onCreate(savedInstanceState);
-      }
-      */
-
-
-
-
   @Override
       protected ReactActivityDelegate createReactActivityDelegate() {
         return new ReactActivityDelegate(this, getMainComponentName()) {

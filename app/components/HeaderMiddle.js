@@ -31,6 +31,8 @@ export const HeaderMiddle = ({title, showLogo = false}) => {
             fontFamily: text.font,
             fontSize: text.medium,
             textAlign: 'left',
+            alignSelf: 'flex-start',
+            paddingLeft: !isIOS ? '10%' : 0,
             color: colors.footer_theme_color,
           }}>
           {upperFirst(

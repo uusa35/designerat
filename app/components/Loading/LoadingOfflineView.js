@@ -12,9 +12,8 @@ import RNRestart from 'react-native-restart';
 import DesingeratBtn from '../widgets/Button/DesigneratBtn';
 
 const LoadingOfflineView = () => {
-  const {settings} = useSelector((state) => state);
-
   const handleClick = () => RNRestart.Restart();
+  const {colors} = useSelector((state) => state.settings);
 
   return (
     <ImageBackground
@@ -25,7 +24,7 @@ const LoadingOfflineView = () => {
         justifyContent: 'center',
         alignItems: 'center',
       }}
-      source={settings ? {uri: settings.main_bg} : images.whiteBg}
+      source={images.whiteBg}
       resizeMode="cover">
       <LottieView
         source={animations.offline}
@@ -33,16 +32,20 @@ const LoadingOfflineView = () => {
         loop
         style={{height: 120}}
       />
-      <DesingeratBtn
-        handleClick={() => handleClick()}
-        bg={false}
-        title={I18n.t('no_internet')}
-      />
-      <DesingeratBtn
-        handleClick={() => handleClick()}
-        bg={false}
-        title={I18n.t('retry')}
-      />
+      {colors && (
+        <>
+          <DesingeratBtn
+            handleClick={() => handleClick()}
+            bg={false}
+            title={I18n.t('no_internet')}
+          />
+          <DesingeratBtn
+            handleClick={() => handleClick()}
+            bg={false}
+            title={I18n.t('retry')}
+          />
+        </>
+      )}
     </ImageBackground>
   );
 };
