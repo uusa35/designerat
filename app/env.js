@@ -9,9 +9,12 @@ import Pusher from 'pusher-js/react-native';
 const isLocal = __DEV__;
 const appUrl = () => {
   switch (APP_CASE) {
-    case 'DESIGNERAT':
+    case 'DESIGNERAAT':
       // return 'http://mallr.test/';
-      return 'https://designeraat.com/';
+      return 'http://designeraat.com/';
+    case 'MYEXPO':
+      // return 'http://mallr.test/';
+      return 'http://myexpo.live/';
     default:
       return 'http://mallr.test/';
   }

@@ -285,7 +285,11 @@ const DesigneratRegisterFormWidget = ({showLabel = false}) => {
         onChangeText={(text) => setName(text)}
       />
       <Input
-        leftIcon={() => <Text>+{country.calling_code}</Text>}
+        leftIcon={() => (
+          <Text style={{color: 'black', textAlign: 'left'}}>
+            +{country.calling_code}
+          </Text>
+        )}
         leftIconContainerStyle={{paddingRight: 15}}
         containerStyle={{marginBottom: 0, paddingBottom: 0, height: 50}}
         placeholder={I18n.t('mobile') + '*'}

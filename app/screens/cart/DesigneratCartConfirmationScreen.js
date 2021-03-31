@@ -1,12 +1,10 @@
 import React, {useContext} from 'react';
-import {StyleSheet, ScrollView, View} from 'react-native';
+import {StyleSheet, View} from 'react-native';
 import {useSelector} from 'react-redux';
-import {Button} from 'react-native-elements';
 import validate from 'validate.js';
 import PropTypes from 'prop-types';
-import {text, width} from '../../constants/sizes';
+import {width} from '../../constants/sizes';
 import I18n from '../../I18n';
-import CartListConfirmationScreen from '../../components/widgets/cart/CartListConfirmationScreen';
 import {GlobalValuesContext} from '../../redux/GlobalValuesContext';
 import KeyBoardContainer from '../../components/containers/KeyBoardContainer';
 import BgContainer from '../../components/containers/BgContainer';

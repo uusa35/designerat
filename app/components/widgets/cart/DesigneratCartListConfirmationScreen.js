@@ -1,7 +1,7 @@
 import React, {useContext, useState} from 'react';
-import {StyleSheet, Text, TouchableOpacity, Alert} from 'react-native';
+import {StyleSheet, Text, TouchableOpacity, Alert, Linking} from 'react-native';
 import {View} from 'react-native-animatable';
-import I18n from '../../../I18n';
+import I18n, {isRTL} from '../../../I18n';
 import {isIOS, width} from '../../../constants';
 import {text, iconSizes} from '../../../constants/sizes';
 import {clearCart, storeOrderCashOnDelivery} from '../../../redux/actions/cart';
@@ -13,7 +13,7 @@ import validate from 'validate.js';
 import {useDispatch, useSelector} from 'react-redux';
 import {useNavigation, useRoute} from '@react-navigation/native';
 import widgetStyles from '../widgetStyles';
-import {adjustColor} from '../../../helpers';
+import {adjustColor, getWhatsappLink} from '../../../helpers';
 import {
   CREATE_MYFATOORAH_PAYMENT_URL,
   CREATE_TAP_PAYMENT_URL,
@@ -21,6 +21,7 @@ import {
 import DesigneratBtn from '../Button/DesigneratBtn';
 import DesigneratCartPriceSummary from './DesigneratCartPriceSummary';
 import DesingeratBtn from '../Button/DesigneratBtn';
+import {APP_CASE} from '../../../../app.json';
 
 const DesigneratCartListConfirmationScreen = ({
   showLabel = false,
@@ -109,7 +110,7 @@ const DesigneratCartListConfirmationScreen = ({
         <Text style={widgetStyles.headerThree}>{I18n.t('step')} (3/3)</Text>
       </View>
       {settings.shipment_notes && (
-        <View
+        <TouchableOpacity
           style={{
             flex: 1,
             flexDirection: 'row',
@@ -118,13 +119,57 @@ const DesigneratCartListConfirmationScreen = ({
             marginTop: 10,
             marginBottom: 10,
             backgroundColor: 'white',
-          }}>
-          <Text style={widgetStyles.headerThree}>
+          }}
+          onPress={() => navigation.navigate('Contactus')}>
+          <Text style={[widgetStyles.headerThree, {lineHeight: 35}]}>
             {settings.shipment_notes}
           </Text>
+        </TouchableOpacity>
+      )}
+      {settings.whatsapp && (
+        <View
+          style={[
+            widgetStyles.panelContent,
+            {
+              flexDirection: 'row',
+              alignItems: 'center',
+              justifyContent: 'space-between',
+              padding: 15,
+            },
+          ]}>
+          <TouchableOpacity
+            onPress={() =>
+              Linking.openURL(
+                getWhatsappLink(settings.whatsapp, I18n.t(APP_CASE)),
+              )
+            }
+            style={{
+              flexDirection: 'row',
+              justifyContent: 'space-evenly',
+              alignItems: 'center',
+            }}>
+            <Icon
+              name="whatsapp"
+              type="font-awesome"
+              size={iconSizes.smaller}
+              color={colors.icon_theme_color}
+            />
+            <Text
+              style={[
+                widgetStyles.headerThree,
+                {paddingLeft: 20, paddingRight: 20},
+              ]}>
+              {I18n.t('whatsapp')}
+            </Text>
+          </TouchableOpacity>
+          <Icon
+            name={`chevron-${isRTL ? 'left' : 'right'}`}
+            type="evilicon"
+            size={iconSizes.medium}
+            color={colors.icon_theme_color}
+          />
         </View>
       )}
-
       <DesigneratCartPriceSummary title={I18n.t('order_summary')} />
       <Text
         style={[widgetStyles.headerThree, {textAlign: 'left', padding: 20}]}>
@@ -201,7 +246,11 @@ const DesigneratCartListConfirmationScreen = ({
           editable={editMode}
           value={cMobile ? cMobile : null}
           textContentType="telephoneNumber"
-          leftIcon={() => <Text>+{shipmentCountry.calling_code}</Text>}
+          leftIcon={() => (
+            <Text style={{textAlign: 'left', color: 'black'}}>
+              +{shipmentCountry.calling_code}
+            </Text>
+          )}
           leftIconContainerStyle={{paddingRight: 15, paddingBottom: 4}}
           containerStyle={{marginBottom: 0, paddingBottom: 0, height: 50}}
           placeholder={I18n.t('mobile') + '*'}

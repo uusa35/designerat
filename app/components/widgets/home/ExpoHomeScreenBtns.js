@@ -4,14 +4,15 @@ import widgetStyles from '../widgetStyles';
 import {Icon} from 'react-native-elements';
 import {iconSizes, text} from '../../../constants/sizes';
 import I18n from '../../../I18n';
-import {colors as col} from '../../../constants/colors';
+import {themeColors} from '../../../constants/colors';
 import {useSelector} from 'react-redux';
 import {View as Animating} from 'react-native-animatable';
 import {EXPO} from './../../../../app';
+import {useNavigation} from '@react-navigation/native';
 
-const ExpoHomeScreenBtns = ({navigation}) => {
+const ExpoHomeScreenBtns = () => {
   const {guest} = useSelector((state) => state);
-  const {navigate} = navigation;
+  const {navigate} = useNavigation();
   return (
     <Animating animation="bounceIn" easing="ease-out" useNativeDriver={true}>
       <TouchableOpacity
@@ -88,7 +89,7 @@ const ExpoHomeScreenBtns = ({navigation}) => {
               type="antdesign"
               iconStyle={{fontSize: iconSizes.smaller}}
               size={iconSizes.smaller}
-              color={col.expo.main}
+              color={themeColors.expo.main}
             />
             <Text
               style={{
@@ -127,7 +128,7 @@ const ExpoHomeScreenBtns = ({navigation}) => {
               type="antdesign"
               iconStyle={{fontSize: iconSizes.smaller}}
               size={iconSizes.smaller}
-              color={col.expo.main}
+              color={themeColors.expo.main}
             />
             <Text
               style={{

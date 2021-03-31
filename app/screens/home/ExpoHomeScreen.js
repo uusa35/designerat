@@ -39,7 +39,7 @@ const ExpoHomeScreen = () => {
   const handleRefresh = () => dispatch(refetchHomeElements());
 
   return (
-    <BgContainer>
+    <BgContainer showImage={true} white={true}>
       <AppHomeConfigComponent />
       {settings.splash_on && (
         <IntroductionWidget
@@ -51,7 +51,6 @@ const ExpoHomeScreen = () => {
       <ScrollView
         contentContainerStyle={{
           backgroundColor: 'transparent',
-          paddingTop: isIOS ? '25%' : '20%',
         }}
         contentInset={{bottom: bottomContentInset}}
         horizontal={false}

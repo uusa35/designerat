@@ -85,7 +85,7 @@ const DesigneratCartForm = ({
         <Text style={widgetStyles.headerThree}>{I18n.t('step')} (2/3)</Text>
       </View>
       {shipment_notes && (
-        <View
+        <TouchableOpacity
           style={{
             flex: 1,
             flexDirection: 'row',
@@ -94,11 +94,12 @@ const DesigneratCartForm = ({
             marginTop: 10,
             marginBottom: 10,
             backgroundColor: 'white',
-          }}>
+          }}
+          onPress={() => navigation.navigate('Contactus')}>
           <Text style={[widgetStyles.headerThree, {lineHeight: 35}]}>
             {shipment_notes}
           </Text>
-        </View>
+        </TouchableOpacity>
       )}
       {settings.whatsapp && (
         <View
@@ -145,7 +146,10 @@ const DesigneratCartForm = ({
         </View>
       )}
       <Text
-        style={[widgetStyles.headerThree, {padding: 15, textAlign: 'left'}]}>
+        style={[
+          widgetStyles.headerThree,
+          {padding: 20, textAlign: 'left', paddingTop: 25, paddingBottom: 25},
+        ]}>
         {I18n.t('confirm_information')}
       </Text>
       <View
@@ -221,7 +225,11 @@ const DesigneratCartForm = ({
           editable={editMode}
           value={mobile ? mobile : null}
           textContentType="telephoneNumber"
-          leftIcon={() => <Text>+{shipmentCountry.calling_code}</Text>}
+          leftIcon={() => (
+            <Text style={{textAlign: 'left', color: 'black'}}>
+              +{shipmentCountry.calling_code}
+            </Text>
+          )}
           leftIconContainerStyle={{paddingRight: 15, paddingBottom: 4}}
           containerStyle={{marginBottom: 0, paddingBottom: 0, height: 50}}
           placeholder={I18n.t('mobile') + '*'}

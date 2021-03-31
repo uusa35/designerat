@@ -1,5 +1,5 @@
 import React, {useState, useCallback, useMemo, useContext} from 'react';
-import {StyleSheet, RefreshControl} from 'react-native';
+import {StyleSheet, RefreshControl, ScrollView} from 'react-native';
 import {useDispatch, useSelector} from 'react-redux';
 import HeaderImageScrollView, {
   TriggeringView,
@@ -24,6 +24,7 @@ import {GlobalValuesContext} from '../../../redux/GlobalValuesContext';
 import ElementsHorizontalList from '../../../components/Lists/ElementsHorizontalList';
 import BgContainer from '../../../components/containers/BgContainer';
 import ProductCategoryVerticalWidget from '../../../components/widgets/category/ProductCategoryVerticalWidget';
+import ImageLoaderContainer from '../../../components/widgets/ImageLoaderContainer';
 
 const DesignerShowScreen = ({navigation}) => {
   const {designer, comments, commentModal, searchParams, guest} = useSelector(
@@ -85,24 +86,26 @@ const DesignerShowScreen = ({navigation}) => {
 
   return (
     <BgContainer showImage={false}>
-      <HeaderImageScrollView
+      <ScrollView
         horizontal={false}
         automaticallyAdjustContentInsets={false}
         showsHorizontalScrollIndicator={false}
         showsVerticalScrollIndicator={false}
-        maxHeight={150}
-        minHeight={90}
-        containerStyle={{flex: 1}}
+        style={{flex: 1}}
         overlayColor="white"
-        headerImage={{
-          uri: designer.banner ? designer.banner : logo,
-        }}
         refreshControl={
           <RefreshControl
             refreshing={refresh}
             onRefresh={() => handleRefresh()}
           />
         }>
+        {designer.banner && !validate.isEmpty(designer.banner) ? (
+          <ImageLoaderContainer
+            img={designer.banner}
+            style={{width: '100%', height: 200}}
+            resizeMode={'cover'}
+          />
+        ) : null}
         <View style={styles.wrapper}>
           <TriggeringView
           // onHide={() => console.log('text hidden')}
@@ -223,7 +226,7 @@ const DesignerShowScreen = ({navigation}) => {
             id={designer.id}
           />
         </View>
-      </HeaderImageScrollView>
+      </ScrollView>
     </BgContainer>
   );
 };

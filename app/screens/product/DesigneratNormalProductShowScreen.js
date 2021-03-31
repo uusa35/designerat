@@ -1,4 +1,4 @@
-import React, {useState, useEffect, useMemo, useCallback} from 'react';
+import React, {useState, useCallback} from 'react';
 import {StyleSheet, Text, Linking, View} from 'react-native';
 import {useDispatch, useSelector} from 'react-redux';
 import ImagesWidget from '../../components/widgets/ImagesWidget';
@@ -12,7 +12,7 @@ import {
 import ProductInfoWidget from '../../components/widgets/product/ProductInfoWidget';
 import ProductInfoWidgetElement from './../../components/widgets/product/ProductInfoWidgetElement';
 import I18n from './../../I18n';
-import {first, shuffle, take} from 'lodash';
+import {first} from 'lodash';
 import {getProduct, getSearchProducts} from '../../redux/actions/product';
 import {getDesigner, rateElement} from '../../redux/actions/user';
 import validate from 'validate.js';
@@ -21,19 +21,12 @@ import ActionBtnWidget from '../../components/widgets/ActionBtnWidget';
 import VideosVerticalWidget from '../../components/widgets/video/VideosVerticalWidget';
 import BgContainer from '../../components/containers/BgContainer';
 import KeyBoardContainer from '../../components/containers/KeyBoardContainer';
-import ProductHorizontalWidget from '../../components/widgets/product/ProductHorizontalWidget';
-import {EXPO, APP_CASE} from './../../../app';
+import {APP_CASE} from './../../../app';
 import {useNavigation} from '@react-navigation/native';
-import MainTab from '../../navigation/MainTab';
 import widgetStyles from '../../components/widgets/widgetStyles';
 import DesigneratAddToCartStickyFooter from '../../components/widgets/product/DesigneratAddToCartStickyFooter';
 import {addToCart} from '../../redux/actions/cart';
-import {Rating, AirbnbRating} from 'react-native-ratings';
-import {Icon} from 'react-native-elements';
-import {themeColors} from '../../constants/colors';
-import {adjustColor} from '../../helpers';
-import FastImage from 'react-native-fast-image';
-import {images} from '../../constants/images';
+import {Rating} from 'react-native-ratings';
 import {isIOS} from '../../constants';
 
 const DesineratNormalProductShowScreen = ({showRating = true}) => {

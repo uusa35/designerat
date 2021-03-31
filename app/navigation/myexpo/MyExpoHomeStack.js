@@ -30,7 +30,7 @@ import TermAndConditionScreen from '../../screens/TermAndConditionScreen';
 import PolicyScreen from '../../screens/PolicyScreen';
 import {GlobalValuesContext} from '../../redux/GlobalValuesContext';
 import {HeaderBack} from '../../components/HeaderBack';
-import MainTab from './MainTab';
+import MyExpoMainTab from './MyExpoMainTab';
 import Ionicons from 'react-native-vector-icons/Ionicons';
 import {DrawerActions} from '@react-navigation/native';
 import CartConfirmationScreen from '../../screens/cart/CartConfirmationScreen';
@@ -50,9 +50,11 @@ import DesigneratMobileConfirmationScreen from '../../screens/auth/DesigneratMob
 import DesigneratCelebrityShowScreen from '../../screens/celebrity/DesigneratCelebrityShowScreen';
 import DesigneratCompanyShowScreen from '../../screens/company/DesigneratCompanyShowScreen';
 import StatisticIndexScreen from '../../screens/setting/StatisticIndexScreen';
+import CalendarIndexScreen from '../../screens/calender/CalendarIndexScreen';
+import DesignerShowScreen from '../../screens/designer/expo/DesignerShowScreen';
 
 const Stack = createStackNavigator();
-const HomeStack = () => {
+const MyExpoHomeStack = () => {
   const {colors} = useContext(GlobalValuesContext);
   return (
     <Stack.Navigator
@@ -95,15 +97,15 @@ const HomeStack = () => {
           headerTitle: () => <HeaderMiddle showLogo={true} />,
           headerRight: () => (
             <HeaderRight
-              showCart={false}
-              showProductFavorite={true}
+              showCart={true}
+              showProductFavorite={false}
               showCountry={false}
               showProductsSearch={true}
             />
           ),
         })}
         name={'MainTab'}
-        component={MainTab}
+        component={MyExpoMainTab}
       />
       <Stack.Screen
         name={'CelebrityIndex'}
@@ -130,7 +132,7 @@ const HomeStack = () => {
             <HeaderRight showCart={true} displayShare={true} />
           ),
         }}
-        component={DesigneratDesignerShowScreen}
+        component={DesignerShowScreen}
       />
       <Stack.Screen
         name={'DesignerIndex'}
@@ -306,7 +308,6 @@ const HomeStack = () => {
           headerTitle: () => <HeaderMiddle title={I18n.t('add_new_address')} />,
         }}
       />
-
       <Stack.Screen
         name="UserAddressEdit"
         component={UserAddressEditScreen}
@@ -314,21 +315,6 @@ const HomeStack = () => {
           headerTitle: () => <HeaderMiddle title={I18n.t('edit_address')} />,
         }}
       />
-      {/*<Stack.Screen*/}
-      {/*  name="CartConfirmation"*/}
-      {/*  component={CartConfirmationScreen}*/}
-      {/*  options={{*/}
-      {/*    headerStyle: {*/}
-      {/*      backgroundColor: colors.header_theme_bg,*/}
-      {/*    },*/}
-      {/*    headerTitleStyle: {*/}
-      {/*      color: colors.header_theme_color,*/}
-      {/*    },*/}
-      {/*    headerTitle: () => (*/}
-      {/*      <HeaderMiddle title={I18n.t('cart_confirmation')} />*/}
-      {/*    ),*/}
-      {/*  }}*/}
-      {/*/>*/}
       <Stack.Screen
         name="PaymentIndex"
         component={PaymentIndexScreen}
@@ -387,8 +373,16 @@ const HomeStack = () => {
         }}
         component={StatisticIndexScreen}
       />
+      <Stack.Screen
+        name={'CalendarIndex'}
+        options={{
+          headerTitle: () => <HeaderMiddle title={I18n.t('expo_calender')} />,
+          headerRight: () => <HeaderRight display={false} showCountry={true} />,
+        }}
+        component={CalendarIndexScreen}
+      />
     </Stack.Navigator>
   );
 };
 
-export default HomeStack;
+export default MyExpoHomeStack;

@@ -12,6 +12,8 @@ import {
   enableResetApp,
 } from './settingSagas';
 import {designeratBootStrap} from './designerat/appSagas';
+import {expoBootStrap} from './expo/appSagas';
+import {DESIGNERAT, EXPO} from './../../../../app.json';
 
 export function* startAppBootStrap() {
   try {
@@ -19,7 +21,11 @@ export function* startAppBootStrap() {
     yield call(defaultLang);
     yield call(setVersion);
     if (!bootStrapped) {
-      yield call(designeratBootStrap);
+      if (EXPO) {
+        yield call(expoBootStrap);
+      } else if (DESIGNERAT) {
+        yield call(designeratBootStrap);
+      }
     }
   } catch (e) {
     if (__DEV__) {

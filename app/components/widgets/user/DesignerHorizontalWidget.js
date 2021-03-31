@@ -120,8 +120,14 @@ const DesignerHorizontalWidget = ({
           <ScrollView
             horizontal={true}
             showsHorizontalScrollIndicator={false}
+            showsVerticalScrollIndicator={false}
+            // alwaysBounceVertical={false}
+            // pagingEnabled={true}
             contentInset={{right: rightHorizontalContentInset}}
-            contentContainerStyle={widgetStyles.wrapper}>
+            // contentInset={{right: 1000}}
+            //   style={{ flexDirection : 'row', borderWidth : 5, borderColor : 'blue', flex : 1 }}
+            // contentContainerStyle={{ flexDirection : 'row', borderWidth : 10 , flex : 1 }}
+          >
             {map(elements, (c, i) => (
               <View
                 animation={animations.flip}

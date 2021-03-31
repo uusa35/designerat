@@ -23,6 +23,8 @@ import I18n from '../../I18n';
 import {GlobalValuesContext} from '../../redux/GlobalValuesContext';
 import ImageLoaderContainer from './ImageLoaderContainer';
 import {useNavigation} from '@react-navigation/native';
+import FastImage from 'react-native-fast-image';
+
 const ImagesGridWidget = ({
   elements,
   name,
@@ -89,7 +91,6 @@ const ImagesGridWidget = ({
         alwaysBounceVertical={false}
         alwaysBounceHorizontal={false}
         showsHorizontalScrollIndicator={false}
-        showsHorizontalScrollIndicator={false}
         snapToInterval={width + 10}
         bounces={true}
         disableIntervalMomentum={true}
@@ -133,8 +134,8 @@ const ImagesGridWidget = ({
                       alignItems: 'flex-end',
                     }}>
                     {qr ? (
-                      <ImageLoaderContainer
-                        img={qr}
+                      <FastImage
+                        source={qr}
                         style={{
                           width: 80,
                           height: 80,

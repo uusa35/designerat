@@ -238,12 +238,7 @@ const RegisterFormWidget = () => {
         keyboardType="default"
         onChangeText={(text) => setPassword(text)}
         leftIcon={() => (
-          <Icon
-            name="lock"
-            type="evilicon"
-            size={iconSizes.smaller}
-            onPress={() => setVisiblePassword(!visiblePassword)}
-          />
+          <Icon name="lock" type="evilicon" size={iconSizes.smaller} />
         )}
       />
       <Input
@@ -271,16 +266,15 @@ const RegisterFormWidget = () => {
         keyboardType="email-address"
         onChangeText={(text) => setEmail(text)}
         leftIcon={() => (
-          <Icon
-            name="envelope"
-            type="evilicon"
-            size={iconSizes.smaller}
-            onPress={() => setVisiblePassword(!visiblePassword)}
-          />
+          <Icon name="envelope" type="evilicon" size={iconSizes.smaller} />
         )}
       />
       <Input
-        leftIcon={() => <Text>+{country.calling_code}</Text>}
+        leftIcon={() => (
+          <Text style={{color: 'black', textAlign: 'left'}}>
+            +{country.calling_code}
+          </Text>
+        )}
         leftIconContainerStyle={{paddingRight: 15}}
         placeholder={I18n.t('mobile') + '*'}
         inputContainerStyle={{

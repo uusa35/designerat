@@ -26,7 +26,7 @@ import {useNavigation, useRoute} from '@react-navigation/native';
 import moment from 'moment';
 import analytics from '@react-native-firebase/analytics';
 import {isIOS} from '../../constants';
-import {useAndroidBackHandler} from 'react-navigation-backhandler';
+
 import {deleteAddress} from '../../redux/actions/user';
 import I18n from '../../I18n';
 import ConfirmationModal from '../ConfirmationModal';
@@ -54,24 +54,14 @@ const BgContainer = ({
   );
   const [bg, setBg] = useState();
   const [appState, setAppState] = useState(AppState.currentState);
-  const [modalVisible, setModalVisible] = useState(false);
+
   const [device, setDevice] = useState('');
   const dispatch = useDispatch();
   const route = useRoute();
-  const navigation = useNavigation();
 
   useMemo(() => {
     setBg(!showImage ? images.whiteBg : mainBg.includes('.') ? mainBg : img);
   }, []);
-
-  useAndroidBackHandler(() => {
-    // return dispatch(goBackBtn(route.name));
-    if (route.name !== 'Home') {
-      navigation.goBack();
-    } else {
-      setModalVisible(true);
-    }
-  });
 
   useMemo(() => {
     setCurrentLoading(
@@ -189,15 +179,6 @@ const BgContainer = ({
             animated={true}
             backgroundColor={colors.footer_bg_theme_color}
             barStyle={'light-content'}
-          />
-          <ConfirmationModal
-            handleConfirmClick={() => BackHandler.exitApp()}
-            confirmTitle={I18n.t('confirm')}
-            message={I18n.t('do_you_want_to_exit_the_app')}
-            modalVisible={modalVisible}
-            setModalVisible={setModalVisible}
-            iconName="exit"
-            iconType="antdesign"
           />
           {children}
         </View>

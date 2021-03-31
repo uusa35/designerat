@@ -1,5 +1,11 @@
-import React from 'react';
-import {RefreshControl, ScrollView, View, StyleSheet} from 'react-native';
+import React, {useState} from 'react';
+import {
+  RefreshControl,
+  ScrollView,
+  View,
+  StyleSheet,
+  BackHandler,
+} from 'react-native';
 import {useDispatch, useSelector} from 'react-redux';
 import {refetchHomeElements} from '../../redux/actions';
 import PropTypes from 'prop-types';
@@ -18,7 +24,6 @@ import ProductSearchForm from '../../components/widgets/search/ProductSearchForm
 import BgContainer from '../../components/containers/BgContainer';
 import AppHomeConfigComponent from '../../components/containers/AppHomeConfigComponent';
 import {bottomContentInset} from '../../constants/sizes';
-import CompanyHorizontalWidget from '../../components/widgets/user/CompanyHorizontalWidget';
 
 const DesigneratHomeScreen = () => {
   const {
@@ -43,6 +48,7 @@ const DesigneratHomeScreen = () => {
 
   return (
     <BgContainer showImage={false} white={true}>
+      <AppHomeConfigComponent />
       {settings.splash_on && (
         <IntroductionWidget
           elements={splashes}

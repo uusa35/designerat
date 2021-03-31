@@ -1,91 +1,40 @@
-import React, {
-  Fragment,
-  useEffect,
-  useState,
-  useMemo,
-  useCallback,
-} from 'react';
-import {Linking} from 'react-native';
-import {
-  ABATI,
-  DESIGNERAT_ONE_SIGNAL_APP_ID,
-  MALLR,
-  MALLR_ONE_SIGNAL_APP_ID,
-  HOMEKEY,
-  HOMKEY_ONE_SIGNAL_APP_ID,
-  ESCRAP,
-  ESCRAP_ONE_SIGNAL_APP_ID,
-  EXPO,
-  EXPO_ONE_SIGNAL_APP_ID,
-  DAILY,
-  DAILY_ONE_SIGNAL_APP_ID,
-} from '../../../app';
-import OneSignal from 'react-native-onesignal';
-import {getPathForDeepLinking} from './../../helpers';
-import {
-  goDeepLinking,
-  setDeepLinking,
-  setPlayerId,
-} from './../../redux/actions';
-import validate from 'validate.js';
-// import analytics from '@react-native-firebase/analytics';
-import {useDispatch, useSelector} from 'react-redux';
+import React, {Fragment, useEffect, useState} from 'react';
+import {BackHandler} from 'react-native';
+import I18n from '../../I18n';
+import ConfirmationModal from '../ConfirmationModal';
+import {useAndroidBackHandler} from 'react-navigation-backhandler';
+import {useNavigation, useRoute} from '@react-navigation/native';
+import {goBackBtn} from '../../redux/actions';
+import {useDispatch} from 'react-redux';
 
 const AppHomeConfigComponent = () => {
+  const [modalVisible, setModalVisible] = useState(false);
+  const navigation = useNavigation();
+  const route = useRoute();
   const dispatch = useDispatch();
-  const {bootStrapped, resetApp, playerId, linking} = useSelector(
-    (state) => state,
+
+  useAndroidBackHandler(() => {
+    if (route.name !== 'Home') {
+      return navigation.goBack();
+    } else {
+      setModalVisible(true);
+      return dispatch(goBackBtn('No'));
+    }
+  });
+
+  return (
+    <Fragment>
+      <ConfirmationModal
+        handleConfirmClick={() => BackHandler.exitApp()}
+        confirmTitle={I18n.t('confirm')}
+        message={I18n.t('do_you_want_to_exit_the_app')}
+        modalVisible={modalVisible}
+        setModalVisible={setModalVisible}
+        iconName="exclamationcircleo"
+        iconType="antdesign"
+      />
+    </Fragment>
   );
-  const [deviceId, setDeviceId] = useState('');
-  const [device, setDevice] = useState('');
-  const [signalId, setSignalId] = useState();
-
-  useMemo(() => {
-    // analytics().setAnalyticsCollectionEnabled(true);
-  }, [bootStrapped]);
-
-  useEffect(() => {
-    OneSignal.setAppId(DESIGNERAT_ONE_SIGNAL_APP_ID);
-    OneSignal.setLogLevel(6, 0);
-    OneSignal.setRequiresUserPrivacyConsent(false);
-    OneSignal.promptForPushNotificationsWithUserResponse((response) => {
-      // console.log('Prompt response:', response);
-    });
-  }, [bootStrapped]);
-
-  useEffect(() => {});
-
-  const onReceived = (notification) => {
-    // __DEV__ ? console.log('Notification received: ', notification) : null;
-  };
-
-  const onOpened = (openResult) => {
-    if (__DEV__) {
-      // console.log('the whole thing', openResult.notification.payload);
-      // console.log('Message: ', openResult.notification.payload.body);
-      // console.log('Data: ', openResult.notification.payload.additionalData);
-      // console.log('isActive: ', openResult.notification.isAppInFocus);
-      // console.log('openResult: ', openResult.notification.payload.launchURL);
-    }
-    const notification = getPathForDeepLinking(
-      openResult.notification.payload.launchURL,
-    );
-    dispatch(setDeepLinking(notification));
-    setTimeout(() => {
-      dispatch(goDeepLinking(notification));
-    }, 1000);
-  };
-
-  const onIds = (device) => {
-    if (!validate.isEmpty(device.userId) && playerId !== device.userId) {
-      setDeviceId(device.userId);
-      if (device.userId !== deviceId) {
-        dispatch(setPlayerId(device.userId));
-      }
-    }
-  };
-
-  return <Fragment></Fragment>;
 };
 
 export default React.memo(AppHomeConfigComponent);

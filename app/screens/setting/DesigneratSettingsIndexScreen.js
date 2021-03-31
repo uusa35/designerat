@@ -62,7 +62,6 @@ const DesigneratSettingsIndexScreen = ({navigation}) => {
       .catch((err) => {});
   };
 
-  console.log('colors', colors);
   return (
     <BgContainer enableMargin={false} showImage={false} white={true}>
       <ScrollView

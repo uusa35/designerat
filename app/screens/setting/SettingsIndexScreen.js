@@ -50,10 +50,7 @@ const SettingsIndexScreen = ({navigation}) => {
   };
 
   return (
-    <BgContainer
-      enableMargin={true}
-      marginVal={width / 20}
-      showImage={!HOMEKEY}>
+    <BgContainer enableMargin={true} marginVal={width / 20} showImage={false}>
       <ScrollView
         contentContainerStyle={{
           width: '100%',

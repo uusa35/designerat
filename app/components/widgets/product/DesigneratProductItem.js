@@ -79,7 +79,7 @@ const DesigneratProductItem = ({
             <View style={{flexDirection: 'row', paddingTop: 3}}>
               <Text style={[widgetStyles.headerFour, {width: 100}]}>
                 {I18n.t('service_date_and_time')}
-                <Text>:</Text>
+                <Text style={{color: 'black'}}>:</Text>
               </Text>
               <Text style={widgetStyles.headerThree}>
                 {timeData.date} - {timeData.start}
@@ -90,7 +90,7 @@ const DesigneratProductItem = ({
             <View style={{flexDirection: 'row', paddingTop: 8}}>
               <Text style={[widgetStyles.headerFour, {width: 100}]}>
                 {I18n.t('company')}
-                <Text>:</Text>
+                <Text style={{color: 'black'}}>:</Text>
               </Text>
               <Text style={widgetStyles.headerThree}>{element.user.slug}</Text>
             </View>
@@ -99,7 +99,7 @@ const DesigneratProductItem = ({
             <View style={{flexDirection: 'row', paddingTop: 8}}>
               <Text style={[widgetStyles.headerFour, {width: 100}]}>
                 {I18n.t('sku')}
-                <Text>:</Text>
+                <Text style={{color: 'black'}}>:</Text>
               </Text>
               <Text style={widgetStyles.headerThree}>
                 {element.sku} - {element.id}
@@ -110,7 +110,7 @@ const DesigneratProductItem = ({
             <View style={{flexDirection: 'row', paddingTop: 8}}>
               <Text style={[widgetStyles.headerFour, {width: 100}]}>
                 {I18n.t('size')}
-                <Text>:</Text>
+                <Text style={{color: 'black'}}>:</Text>
               </Text>
               <Text style={widgetStyles.headerThree}>{element.size.name}</Text>
             </View>
@@ -119,7 +119,7 @@ const DesigneratProductItem = ({
             <View style={{flexDirection: 'row', paddingTop: 8}}>
               <Text style={[widgetStyles.headerFour, {width: 100}]}>
                 {I18n.t('color_or_height')}
-                <Text>:</Text>
+                <Text style={{color: 'black'}}>:</Text>
               </Text>
               <Text style={widgetStyles.headerThree}>{element.color.name}</Text>
             </View>
@@ -128,7 +128,7 @@ const DesigneratProductItem = ({
             <View style={{flexDirection: 'row', paddingTop: 8}}>
               <Text style={[widgetStyles.headerFour, {width: 100}]}>
                 {I18n.t('qty')}
-                <Text>:</Text>
+                <Text style={{color: 'black'}}>:</Text>
               </Text>
               <Text style={widgetStyles.headerThree}>{qty}</Text>
             </View>
@@ -137,7 +137,7 @@ const DesigneratProductItem = ({
             <View style={{flexDirection: 'row', paddingTop: 8}}>
               <Text style={[widgetStyles.headerFour, {width: 100}]}>
                 {I18n.t('size')}
-                <Text>:</Text>
+                <Text style={{color: 'black'}}>:</Text>
               </Text>
               <Text style={widgetStyles.headerThree}>{selectedSize.name}</Text>
             </View>
@@ -146,7 +146,7 @@ const DesigneratProductItem = ({
             <View style={{flexDirection: 'row', paddingTop: 8}}>
               <Text style={[widgetStyles.headerFour, {width: 100}]}>
                 {I18n.t('color_or_height')}
-                <Text>:</Text>
+                <Text style={{color: 'black'}}>:</Text>
               </Text>
               <Text
                 style={[widgetStyles.headerFour, {color: selectedColor.code}]}>
@@ -158,7 +158,7 @@ const DesigneratProductItem = ({
             <View style={{flexDirection: 'row', paddingTop: 8, maxWidth: 150}}>
               <Text style={[widgetStyles.headerFour, {width: 100}]}>
                 {I18n.t('notes')}
-                <Text>:</Text>
+                <Text style={{color: 'black'}}>:</Text>
               </Text>
               <Text style={widgetStyles.headerFour}>{notes}</Text>
             </View>

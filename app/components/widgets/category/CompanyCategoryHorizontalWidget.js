@@ -23,6 +23,7 @@ import {
   touchOpacity,
 } from '../../../constants/sizes';
 import {isEmpty} from 'lodash';
+import {useNavigation} from '@react-navigation/native';
 
 const CompanyCategoryHorizontalWidget = ({
   elements,
@@ -30,10 +31,9 @@ const CompanyCategoryHorizontalWidget = ({
   showName = true,
   showImage = true,
   showArrow = false,
-  navigation,
 }) => {
   const {colors} = useSelector((state) => state.settings);
-  const {navigate} = navigation;
+  const {navigate} = useNavigation();
   const dispatch = useDispatch();
 
   const handleClick = (c) =>

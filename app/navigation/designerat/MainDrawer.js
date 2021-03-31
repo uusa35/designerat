@@ -1,11 +1,7 @@
 import React from 'react';
-import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
 import {createDrawerNavigator} from '@react-navigation/drawer';
-import {createStackNavigator} from '@react-navigation/stack';
-import DesigneratSideMenu from '../components/DesigneratSideMenu';
-import HomeStack from './designerat/HomeStack';
-const Tab = createBottomTabNavigator();
-const Stack = createStackNavigator();
+import DesigneratSideMenu from '../../components/DesigneratSideMenu';
+import HomeStack from './../designerat/HomeStack';
 const Drawer = createDrawerNavigator();
 
 const MainDrawer = () => {

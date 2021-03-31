@@ -23,7 +23,25 @@ export const bottomVerticalContentInset = 200;
 export const bottomContentInset = 200;
 export const TheHold = 0.5;
 export const productWidget = {
-  DESIGNERAT: {
+  DESIGNERAAT: {
+    smaller: {
+      width: 120,
+      height: 220,
+    },
+    small: {
+      width: 220,
+      height: 293,
+    },
+    medium: {
+      width: 250,
+      height: 333,
+    },
+    large: {
+      width: 280,
+      height: 373,
+    },
+  },
+  MYEXPO: {
     smaller: {
       width: 120,
       height: 220,
@@ -68,7 +86,30 @@ export const productWidget = {
 };
 
 export const userWidget = {
-  DESIGNERAT: {
+  DESIGNERAAT: {
+    xsmall: {
+      width: 80,
+      height: 80,
+    },
+    small: {
+      width: 100,
+      height: 100,
+    },
+    smaller: {
+      width: 120,
+      height: 120,
+    },
+    medium: {
+      width: 150,
+      height: 150,
+    },
+    large: {
+      width: 200,
+      height: 200,
+    },
+    radius: 5,
+  },
+  MYEXPO: {
     xsmall: {
       width: 80,
       height: 80,
@@ -118,7 +159,21 @@ export const userWidget = {
 };
 
 export const categoryWidget = {
-  DESIGNERAT: {
+  DESIGNERAAT: {
+    small: {
+      width: 80,
+      height: 80,
+    },
+    medium: {
+      width: 150,
+      height: 150,
+    },
+    large: {
+      width: 200,
+      height: 200,
+    },
+  },
+  MYEXPO: {
     small: {
       width: 80,
       height: 80,
@@ -195,7 +250,7 @@ export const iconSizes = {
 
 export const getFont = () => {
   switch (APP_CASE) {
-    case 'DESIGNERAT':
+    case 'DESIGNERAAT':
       return isRTL ? FIRST_AR_FONT : FIFTH_EN_FONT;
     default:
       return isRTL ? FIRST_AR_FONT : FIFTH_EN_FONT;
@@ -215,7 +270,26 @@ export const text = {
 };
 
 export const formWidget = {
-  DESIGNERAT: {
+  DESIGNERAAT: {
+    smaller: {
+      width: 120,
+      height: 50,
+    },
+    small: {
+      width: 220,
+      height: 293,
+    },
+    medium: {
+      width: 250,
+      height: 333,
+    },
+    large: {
+      width: 280,
+      height: 373,
+    },
+    inputRadius: 4,
+  },
+  MYEXPO: {
     smaller: {
       width: 120,
       height: 50,
