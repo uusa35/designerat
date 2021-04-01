@@ -13,8 +13,9 @@ const appUrl = () => {
       // return 'http://mallr.test/';
       return 'http://designeraat.com/';
     case 'MYEXPO':
-      // return 'http://mallr.test/';
       return 'http://myexpo.live/';
+    case 'ABATI':
+      return 'http://abatiapp.com/';
     default:
       return 'http://mallr.test/';
   }

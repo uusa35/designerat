@@ -1,4 +1,4 @@
-import React, {Fragment, useEffect} from 'react';
+import React from 'react';
 import {
   View,
   StyleSheet,
@@ -7,24 +7,19 @@ import {
   Text,
   TouchableOpacity,
   Linking,
-  ImageBackground,
   SafeAreaView,
-  Pressable,
 } from 'react-native';
-import I18n from './../I18n';
-import {bottomContentInset, iconSizes, text} from './../constants/sizes';
-import {images} from '../constants/images';
-import {isIOS} from './../constants';
+import I18n from './../../I18n';
+import {bottomContentInset, iconSizes, text} from './../../constants/sizes';
 import FastImage from 'react-native-fast-image';
 import {Icon, Divider} from 'react-native-elements';
-import {changeLang} from '../redux/actions';
-import {logout} from '../redux/actions/user';
-import PropTypes from 'prop-types';
 import validate from 'validate.js';
-import {HOMEKEY, ESCRAP} from './../../app';
 import {useSelector, useDispatch} from 'react-redux';
-import AppContainer from './containers/AppContainer';
+import {HOMEKEY} from './../../app';
 import {TabActions, DrawerActions} from '@react-navigation/native';
+import {changeLang} from '../../redux/actions';
+import {logout} from '../../redux/actions/user';
+import PropTypes from 'prop-types';
 
 const DesigneratSideMenu = ({showLogo = true, navigation}) => {
   const settings = useSelector((state) => state.settings);
