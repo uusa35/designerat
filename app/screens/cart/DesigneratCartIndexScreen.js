@@ -18,6 +18,7 @@ import widgetStyles from '../../components/widgets/widgetStyles';
 import {themeColors} from '../../constants/colors';
 import FastImage from 'react-native-fast-image';
 import {images} from '../../constants/images';
+import {EXPO} from '../../../app.json';
 
 const DesigneratCartIndexScreen = () => {
   const {
@@ -68,9 +69,17 @@ const DesigneratCartIndexScreen = () => {
           }}
           source={images.cartBg}
           imageStyle={{resizeMode: 'repeat', opacity: 0.2}}>
-          <FastImage
-            source={images.cartEmpty}
-            style={{width: 100, height: 100, alignSelf: 'center', margin: 20}}
+          <LottieView
+            source={EXPO ? animations.emptyCart : animations.cart}
+            autoPlay
+            loop
+            style={{
+              alignSelf: 'center',
+              width: width / 2,
+              height: width / 2,
+              marginBottom: 20,
+            }}
+            enableMergePathsAndroidForKitKatAndAbove
           />
           <Animating
             animation="bounceIn"

@@ -184,7 +184,7 @@ PODS:
     - nanopb/encode (= 2.30907.0)
   - nanopb/decode (2.30907.0)
   - nanopb/encode (2.30907.0)
-  - OneSignal (3.2.3)
+  - OneSignal (3.3.0)
   - OpenSSL-Universal (1.0.2.20):
     - OpenSSL-Universal/Static (= 1.0.2.20)
   - OpenSSL-Universal/Static (1.0.2.20)
@@ -383,8 +383,8 @@ PODS:
     - React
   - react-native-netinfo (6.0.0):
     - React-Core
-  - react-native-onesignal (4.0.5):
-    - OneSignal (= 3.2.3)
+  - react-native-onesignal (4.0.6):
+    - OneSignal (= 3.3.0)
     - React (< 1.0.0, >= 0.13.0)
   - react-native-pdf (6.3.0):
     - React-Core
@@ -471,7 +471,7 @@ PODS:
     - React-Core
   - RNCMaskedView (0.1.10):
     - React
-  - RNDeviceInfo (8.0.7):
+  - RNDeviceInfo (8.0.8):
     - React-Core
   - RNFastImage (8.3.4):
     - React-Core
@@ -831,7 +831,7 @@ SPEC CHECKSUMS:
   lottie-react-native: 1fb4ce21d6ad37dab8343eaff8719df76035bd93
   Mixpanel: de8296d8568806ab17bfced0f823c908b808e1e0
   nanopb: 59221d7f958fb711001e6a449489542d92ae113e
-  OneSignal: 6f152411fc436071461af3514b58731fd8e38b9f
+  OneSignal: 48898fc2ee74f84a90b50dfa4b1ca62a84b5d6de
   OpenSSL-Universal: ff34003318d5e1163e9529b08470708e389ffcdd
   PromisesObjC: 3113f7f76903778cf4a0586bd1ab89329a0b7b97
   RCTRequired: 082f10cd3f905d6c124597fd1c14f6f2655ff65e
@@ -851,7 +851,7 @@ SPEC CHECKSUMS:
   react-native-maps: f4b89da81626ad7f151a8bfcb79733295d31ce5c
   react-native-mixpanel: 5d0bcea791fd938c35138be2d00e50e19b9de601
   react-native-netinfo: e849fc21ca2f4128a5726c801a82fc6f4a6db50d
-  react-native-onesignal: e071e143c92345aaccddaa7d9f49ef22952994e8
+  react-native-onesignal: b4b93d774fd626e90c5a5abafa342f9af21c66dc
   react-native-pdf: ef641e79a6d550cfabe5d7ec1916799726514c43
   react-native-restart: a01029aadfe8e71f9e8205fdb17da2f0a4472d50
   react-native-safe-area-context: f0906bf8bc9835ac9a9d3f97e8bde2a997d8da79
@@ -873,7 +873,7 @@ SPEC CHECKSUMS:
   rn-fetch-blob: f065bb7ab7fb48dd002629f8bdcb0336602d3cba
   RNCAsyncStorage: b03032fdbdb725bea0bd9e5ec5a7272865ae7398
   RNCMaskedView: 5a8ec07677aa885546a0d98da336457e2bea557f
-  RNDeviceInfo: 55463fa6e252ca3f0e2ba6001a7b82f879914338
+  RNDeviceInfo: 41a8c8a41ae0e70d85cbe652cd5318150cb2cc40
   RNFastImage: d4870d58f5936111c56218dbd7fcfc18e65b58ff
   RNFBAnalytics: 11873c6dccab66da20fc1c75fc47c88244845410
   RNFBApp: d9ab9f2e63c70a9974294bb44c749b728cd4028f

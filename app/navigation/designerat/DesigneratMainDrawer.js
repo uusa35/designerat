@@ -1,19 +1,19 @@
 import React from 'react';
 import {createDrawerNavigator} from '@react-navigation/drawer';
-import DesigneratSideMenu from '../../components/DesigneratSideMenu';
-import HomeStack from './../designerat/HomeStack';
+import DesigneratSideMenu from '../../components/drawers/DesigneratSideMenu';
+import DesigneratHomeStack from './../designerat/DesigneratHomeStack';
 const Drawer = createDrawerNavigator();
 
-const MainDrawer = () => {
+const DesigneratMainDrawer = () => {
   return (
     <Drawer.Navigator
       initialRouteName="Home"
       drawerContent={(props) => (
         <DesigneratSideMenu {...props} showLogo={true} />
       )}>
-      <Drawer.Screen name="HomeStack" component={HomeStack} />
+      <Drawer.Screen name="HomeStack" component={DesigneratHomeStack} />
     </Drawer.Navigator>
   );
 };
 
-export default MainDrawer;
+export default DesigneratMainDrawer;

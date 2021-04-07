@@ -15,6 +15,10 @@ export function toggleDrawer() {
   navigationRef.current?.dispatch(DrawerActions.toggleDrawer());
 }
 
+export function closeDrawer() {
+  navigationRef.current?.dispatch(DrawerActions.closeDrawer());
+}
+
 export function navigate(name, params) {
   if (isReadyRef.current && navigationRef.current) {
     // Perform navigation if the app has mounted

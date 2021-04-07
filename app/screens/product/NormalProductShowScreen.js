@@ -18,7 +18,6 @@ import KeyBoardContainer from '../../components/containers/KeyBoardContainer';
 import ProductHorizontalWidget from '../../components/widgets/product/ProductHorizontalWidget';
 import {EXPO, APP_CASE} from './../../../app';
 import {useNavigation} from '@react-navigation/native';
-import MainTab from '../../navigation/designerat/MainTab';
 
 const NormalProductShowScreen = () => {
   const {product, token, settings, products} = useSelector((state) => state);

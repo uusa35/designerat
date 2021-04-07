@@ -30,7 +30,7 @@ export function* setDirection(lang) {
 export function* startChangeLang(action) {
   try {
     yield call(enableLoading);
-    yield call(RootNavigation.toggleDrawer);
+    yield call(RootNavigation.closeDrawer);
     const lang = action.payload;
     helpers.setLang(lang);
     yield call(setDirection, lang);

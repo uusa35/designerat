@@ -1,4 +1,4 @@
-import React, {Fragment} from 'react';
+import React from 'react';
 import {
   View,
   StyleSheet,
@@ -16,23 +16,16 @@ import {Icon, Divider} from 'react-native-elements';
 import validate from 'validate.js';
 import {useSelector, useDispatch} from 'react-redux';
 import {HOMEKEY} from './../../../app.json';
-import {
-  TabActions,
-  DrawerActions,
-  useNavigation,
-  useRoute,
-} from '@react-navigation/native';
+import {TabActions, DrawerActions} from '@react-navigation/native';
 import {changeLang} from '../../redux/actions';
 import {logout} from '../../redux/actions/user';
 import PropTypes from 'prop-types';
-import {appUrlIos} from '../../env';
 
-const DesigneratSideMenu = ({showLogo = true}) => {
-  const {settings, lang, guest} = useSelector((state) => state);
+const AbatiSideMenu = ({showLogo = true, navigation}) => {
+  const settings = useSelector((state) => state.settings);
   const {logo, company, menu_bg, youtube, colors, terms, policy} = settings;
+  const {lang, guest} = useSelector((state) => state);
   const dispatch = useDispatch();
-  const navigation = useNavigation();
-  const route = useRoute();
 
   const goToHome = () => {
     navigation.closeDrawer();
@@ -94,21 +87,6 @@ const DesigneratSideMenu = ({showLogo = true}) => {
                 borderColor: colors.btn_bg_theme_color,
               }}
             />
-            {__DEV__ && (
-              <Fragment>
-                <TouchableOpacity onPress={() => navigation.navigate('Mallr')}>
-                  <Text style={{color: 'white'}}>Mallr</Text>
-                </TouchableOpacity>
-                <TouchableOpacity
-                  onPress={() => Linking.openURL(`${appUrlIos}panorama/view`)}>
-                  <Text style={{color: 'white'}}>Panorama</Text>
-                </TouchableOpacity>
-                <TouchableOpacity
-                  onPress={() => navigation.navigate('PanoramaShow')}>
-                  <Text style={{color: 'white'}}>Panorama Show</Text>
-                </TouchableOpacity>
-              </Fragment>
-            )}
             <TouchableOpacity
               onPress={() => goToHome()}
               style={[
@@ -390,7 +368,7 @@ const DesigneratSideMenu = ({showLogo = true}) => {
   );
 };
 
-export default DesigneratSideMenu;
+export default AbatiSideMenu;
 
 const styles = StyleSheet.create({
   container: {

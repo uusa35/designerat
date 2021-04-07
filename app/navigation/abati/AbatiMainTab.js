@@ -17,6 +17,7 @@ import DesigneratCartIndexScreen from '../../screens/cart/DesigneratCartIndexScr
 import {icons} from '../../constants/images';
 import ExpoHomeScreen from '../../screens/home/ExpoHomeScreen';
 import IconTabBar from '../../components/IconTabBar';
+import AbatiHomeScreen from '../../screens/home/AbatiHomeScreen';
 
 const MaterialTab = createMaterialBottomTabNavigator();
 const Tab = createBottomTabNavigator();
@@ -45,7 +46,7 @@ const AbatiMainTab = () => {
       labeled={true}>
       <Tab.Screen
         name="Home"
-        component={ExpoHomeScreen}
+        component={AbatiHomeScreen}
         options={() => ({
           tabBarLabel: ({focused}) => (
             <TextTabBar

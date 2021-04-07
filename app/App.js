@@ -1,7 +1,7 @@
 import React from 'react';
 import {NavigationContainer} from '@react-navigation/native';
 import {createSwitchNavigator} from '@react-navigation/compat';
-import MainDrawer from './navigation/designerat/MainDrawer';
+import DesigneratMainDrawer from './navigation/designerat/DesigneratMainDrawer';
 import MyExpoMainDrawer from './navigation/myexpo/MyExpoMainDrawer';
 import AbatiMainDrawer from './navigation/abati/AbatiMainDrawer';
 import {Provider} from 'react-redux';
@@ -17,7 +17,7 @@ import {APP_CASE} from './../app.json';
 
 const DesigneratSwitchNavigator = createSwitchNavigator(
   {
-    MainDrawer,
+    MainDrawer: DesigneratMainDrawer,
   },
   {
     initialRouteName: 'MainDrawer',

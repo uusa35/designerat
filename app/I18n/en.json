@@ -729,6 +729,7 @@
   "product_description" : "Product Description",
   "product_saved_successfully" : "Product added successfully.",
   "DESIGNERAT" : "DESIGNERAAT",
+  "DESIGNERAAT" : "DESIGNERAAT",
   "resend_code" : "Resend Mobile Verification Code",
   "verification_code_sent_successfully" : "Mobile Verification code resent successfully.",
   "be_first_who_rates" : "Be first who rate with us",
@@ -737,6 +738,7 @@
   "total_products_participated" : "Total Products requested from the 1st of this month till now.",
   "statistics" : "Statistics",
   "for_more_information_contact_administration" : "For more information. please find our mobile numbers and whatsapp on contact us page.",
+  "panorama" : "Panorama 360 View"
 
 }
 

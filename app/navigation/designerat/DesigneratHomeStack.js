@@ -30,7 +30,7 @@ import TermAndConditionScreen from '../../screens/TermAndConditionScreen';
 import PolicyScreen from '../../screens/PolicyScreen';
 import {GlobalValuesContext} from '../../redux/GlobalValuesContext';
 import {HeaderBack} from '../../components/HeaderBack';
-import MainTab from './MainTab';
+import DesigneratMainTab from './DesigneratMainTab';
 import Ionicons from 'react-native-vector-icons/Ionicons';
 import {DrawerActions} from '@react-navigation/native';
 import CartConfirmationScreen from '../../screens/cart/CartConfirmationScreen';
@@ -50,9 +50,10 @@ import DesigneratMobileConfirmationScreen from '../../screens/auth/DesigneratMob
 import DesigneratCelebrityShowScreen from '../../screens/celebrity/DesigneratCelebrityShowScreen';
 import DesigneratCompanyShowScreen from '../../screens/company/DesigneratCompanyShowScreen';
 import StatisticIndexScreen from '../../screens/setting/StatisticIndexScreen';
+import PanoramaShowScreen from '../../screens/PanoramaShowScreen';
 
 const Stack = createStackNavigator();
-const HomeStack = () => {
+const DesigneratHomeStack = () => {
   const {colors} = useContext(GlobalValuesContext);
   return (
     <Stack.Navigator
@@ -103,7 +104,7 @@ const HomeStack = () => {
           ),
         })}
         name={'MainTab'}
-        component={MainTab}
+        component={DesigneratMainTab}
       />
       <Stack.Screen
         name={'CelebrityIndex'}
@@ -387,8 +388,15 @@ const HomeStack = () => {
         }}
         component={StatisticIndexScreen}
       />
+      <Stack.Screen
+        name={'PanoramaShow'}
+        options={{
+          headerTitle: () => <HeaderMiddle title={I18n.t('panorama')} />,
+        }}
+        component={PanoramaShowScreen}
+      />
     </Stack.Navigator>
   );
 };
 
-export default HomeStack;
+export default DesigneratHomeStack;

@@ -11,7 +11,7 @@ const appUrl = () => {
   switch (APP_CASE) {
     case 'DESIGNERAAT':
       // return 'http://mallr.test/';
-      return 'http://designeraat.com/';
+      return 'https://designeraat.com/';
     case 'MYEXPO':
       return 'http://myexpo.live/';
     case 'ABATI':

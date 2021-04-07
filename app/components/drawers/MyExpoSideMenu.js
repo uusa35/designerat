@@ -15,7 +15,7 @@ import FastImage from 'react-native-fast-image';
 import {Icon, Divider} from 'react-native-elements';
 import validate from 'validate.js';
 import {useSelector, useDispatch} from 'react-redux';
-import {HOMEKEY} from './../../app';
+import {HOMEKEY} from './../../../app.json';
 import {TabActions, DrawerActions} from '@react-navigation/native';
 import {changeLang} from '../../redux/actions';
 import {logout} from '../../redux/actions/user';

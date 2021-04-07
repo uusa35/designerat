@@ -34,7 +34,7 @@ import {adjustColor} from '../../helpers';
 import {REGISTER_AS_CLIENT} from '../../redux/actions/types';
 
 const DesigneratSettingsIndexScreen = ({navigation}) => {
-  const {guest, settings, version, auth} = useSelector((state) => state);
+  const {guest, settings, version, auth, lang} = useSelector((state) => state);
   const {colors} = settings;
   const [refresh, setRefresh] = useState(false);
   const dispatch = useDispatch();
@@ -325,10 +325,9 @@ const DesigneratSettingsIndexScreen = ({navigation}) => {
             }}
             onPress={() => navigation.navigate('Aboutus')}>
             <FastImage
-              source={icons.designerat}
-              resizeMode="contain"
+              source={{uri: settings.logo}}
+              resizeMode="cover"
               style={{width: 25, height: 25}}
-              tintColor="black"
             />
             <Text
               style={[
@@ -464,6 +463,29 @@ const DesigneratSettingsIndexScreen = ({navigation}) => {
                 {paddingLeft: 30, paddingRight: 30},
               ]}>
               {I18n.t('share_our_app')}
+            </Text>
+          </Pressable>
+          <Pressable
+            style={{
+              width: '100%',
+              flexDirection: 'row',
+              alignItems: 'center',
+              height: 60,
+            }}
+            onPress={() => dispatch(changeLang(lang === 'ar' ? 'en' : 'ar'))}>
+            <Icon
+              hitSlop={{top: 15, bottom: 15, left: 15, right: 15}}
+              size={iconSizes.smaller}
+              name="language"
+              type="fontawesome"
+              color={colors.menu_theme_color}
+            />
+            <Text
+              style={[
+                widgetStyles.headerTow,
+                {paddingLeft: 30, paddingRight: 30},
+              ]}>
+              {I18n.t('lang')}
             </Text>
           </Pressable>
         </View>

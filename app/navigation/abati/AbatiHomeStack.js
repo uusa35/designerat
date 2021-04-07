@@ -30,7 +30,7 @@ import TermAndConditionScreen from '../../screens/TermAndConditionScreen';
 import PolicyScreen from '../../screens/PolicyScreen';
 import {GlobalValuesContext} from '../../redux/GlobalValuesContext';
 import {HeaderBack} from '../../components/HeaderBack';
-import AbatiMainTab from './MyExpoMainTab';
+import AbatiMainTab from './AbatiMainTab';
 import Ionicons from 'react-native-vector-icons/Ionicons';
 import {DrawerActions} from '@react-navigation/native';
 import CartConfirmationScreen from '../../screens/cart/CartConfirmationScreen';
@@ -52,7 +52,7 @@ import DesigneratCompanyShowScreen from '../../screens/company/DesigneratCompany
 import StatisticIndexScreen from '../../screens/setting/StatisticIndexScreen';
 import CalendarIndexScreen from '../../screens/calender/CalendarIndexScreen';
 import DesignerShowScreen from '../../screens/designer/expo/DesignerShowScreen';
-
+import PanoramaShowScreen from '../../screens/PanoramaShowScreen';
 const Stack = createStackNavigator();
 const AbatiHomeStack = () => {
   const {colors} = useContext(GlobalValuesContext);
@@ -380,6 +380,13 @@ const AbatiHomeStack = () => {
           headerRight: () => <HeaderRight display={false} showCountry={true} />,
         }}
         component={CalendarIndexScreen}
+      />
+      <Stack.Screen
+        name={'PanoramaShow'}
+        options={{
+          headerTitle: () => <HeaderMiddle title={I18n.t('panorama')} />,
+        }}
+        component={PanoramaShowScreen}
       />
     </Stack.Navigator>
   );

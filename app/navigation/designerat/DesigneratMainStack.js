@@ -2,7 +2,7 @@ import React, {useEffect} from 'react';
 import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
 import {createDrawerNavigator} from '@react-navigation/drawer';
 import {createStackNavigator} from '@react-navigation/stack';
-import MainTab from './MainTab';
+import DesigneratMainTab from './MainTab';
 import SideMenu from '../components/SideMenu';
 import {useNetInfo} from '@react-native-community/netinfo';
 import {useDispatch} from 'react-redux';
@@ -28,7 +28,7 @@ const Tab = createBottomTabNavigator();
 const Stack = createStackNavigator();
 const Drawer = createDrawerNavigator();
 
-const MainStack = () => {
+const DesigneratMainStack = () => {
   return (
     <Stack.Navigator
       screenOptions={{
@@ -38,4 +38,4 @@ const MainStack = () => {
   );
 };
 
-export default MainStack;
+export default DesigneratMainStack;

@@ -21,7 +21,7 @@ const Tab = createBottomTabNavigator();
 const Stack = createStackNavigator();
 const Drawer = createDrawerNavigator();
 
-const MainTab = () => {
+const DesigneratMainTab = () => {
   const {colors, cartLength} = useContext(GlobalValuesContext);
   return (
     <Tab.Navigator
@@ -175,4 +175,4 @@ const MainTab = () => {
   );
 };
 
-export default MainTab;
+export default DesigneratMainTab;

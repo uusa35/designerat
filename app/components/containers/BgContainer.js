@@ -178,7 +178,7 @@ const BgContainer = ({
           <StatusBar
             animated={true}
             backgroundColor={colors.footer_bg_theme_color}
-            barStyle={'light-content'}
+            barStyle={'dark-content'}
           />
           {children}
         </View>

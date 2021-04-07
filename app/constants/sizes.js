@@ -59,6 +59,24 @@ export const productWidget = {
       height: 373,
     },
   },
+  ABATI: {
+    smaller: {
+      width: 120,
+      height: 220,
+    },
+    small: {
+      width: 220,
+      height: 293,
+    },
+    medium: {
+      width: 250,
+      height: 333,
+    },
+    large: {
+      width: 280,
+      height: 373,
+    },
+  },
   x4Small: {
     width: 100,
     height: 160,
@@ -132,6 +150,29 @@ export const userWidget = {
     },
     radius: 5,
   },
+  ABATI: {
+    xsmall: {
+      width: 80,
+      height: 80,
+    },
+    small: {
+      width: 100,
+      height: 100,
+    },
+    smaller: {
+      width: 120,
+      height: 120,
+    },
+    medium: {
+      width: 150,
+      height: 150,
+    },
+    large: {
+      width: 200,
+      height: 200,
+    },
+    radius: 5,
+  },
   x4Small: {
     width: 100,
     height: 160,
@@ -174,6 +215,20 @@ export const categoryWidget = {
     },
   },
   MYEXPO: {
+    small: {
+      width: 80,
+      height: 80,
+    },
+    medium: {
+      width: 150,
+      height: 150,
+    },
+    large: {
+      width: 200,
+      height: 200,
+    },
+  },
+  ABATI: {
     small: {
       width: 80,
       height: 80,
@@ -252,6 +307,10 @@ export const getFont = () => {
   switch (APP_CASE) {
     case 'DESIGNERAAT':
       return isRTL ? FIRST_AR_FONT : FIFTH_EN_FONT;
+    case 'ABATI':
+      return isRTL ? SEVENTH_AR_FONT : FIFTH_EN_FONT;
+    case 'EXPO':
+      return isRTL ? FIRST_AR_FONT : THIRD_EN_FONT;
     default:
       return isRTL ? FIRST_AR_FONT : FIFTH_EN_FONT;
   }
@@ -290,6 +349,25 @@ export const formWidget = {
     inputRadius: 4,
   },
   MYEXPO: {
+    smaller: {
+      width: 120,
+      height: 50,
+    },
+    small: {
+      width: 220,
+      height: 293,
+    },
+    medium: {
+      width: 250,
+      height: 333,
+    },
+    large: {
+      width: 280,
+      height: 373,
+    },
+    inputRadius: 4,
+  },
+  ABATI: {
     smaller: {
       width: 120,
       height: 50,

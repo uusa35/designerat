@@ -1,17 +1,16 @@
 import React from 'react';
 import {createDrawerNavigator} from '@react-navigation/drawer';
-import DesigneratSideMenu from '../../components/DesigneratSideMenu';
-import HomeStack from './../myexpo/MyExpoHomeStack';
+import MyExpoSideMenu from '../../components/drawers/MyExpoSideMenu';
+import MyExpoHomeStack from './../myexpo/MyExpoHomeStack';
+
 const Drawer = createDrawerNavigator();
 
 const MyExpoMainDrawer = () => {
   return (
     <Drawer.Navigator
       initialRouteName="Home"
-      drawerContent={(props) => (
-        <DesigneratSideMenu {...props} showLogo={true} />
-      )}>
-      <Drawer.Screen name="HomeStack" component={HomeStack} />
+      drawerContent={(props) => <MyExpoSideMenu {...props} showLogo={true} />}>
+      <Drawer.Screen name="HomeStack" component={MyExpoHomeStack} />
     </Drawer.Navigator>
   );
 };

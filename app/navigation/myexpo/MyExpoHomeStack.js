@@ -52,6 +52,7 @@ import DesigneratCompanyShowScreen from '../../screens/company/DesigneratCompany
 import StatisticIndexScreen from '../../screens/setting/StatisticIndexScreen';
 import CalendarIndexScreen from '../../screens/calender/CalendarIndexScreen';
 import DesignerShowScreen from '../../screens/designer/expo/DesignerShowScreen';
+import PanoramaShowScreen from '../../screens/PanoramaShowScreen';
 
 const Stack = createStackNavigator();
 const MyExpoHomeStack = () => {
@@ -380,6 +381,13 @@ const MyExpoHomeStack = () => {
           headerRight: () => <HeaderRight display={false} showCountry={true} />,
         }}
         component={CalendarIndexScreen}
+      />
+      <Stack.Screen
+        name={'PanoramaShow'}
+        options={{
+          headerTitle: () => <HeaderMiddle title={I18n.t('panorama')} />,
+        }}
+        component={PanoramaShowScreen}
       />
     </Stack.Navigator>
   );
