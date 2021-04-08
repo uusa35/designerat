@@ -21,8 +21,11 @@ const TermAndConditionScreen = () => {
           flex: 1,
           margin: 15,
           paddingBottom: '15%',
-          justifyContent: 'center',
-          backgroundColor: 'white',
+          alignSelf: 'center',
+          width: '100%',
+          justifyContent: 'flex-start',
+          alignItems: 'center',
+          backgroundColor: 'transparent',
           paddingLeft: 10,
           paddingRight: 10,
           borderRadius: 5,
@@ -30,9 +33,14 @@ const TermAndConditionScreen = () => {
         contentInset={{bottom: bottomContentInset}}>
         {!validate.isEmpty(terms) && terms.length > 80 ? (
           <WebView
+            javaScriptEnabled={true}
             showsVerticalScrollIndicator={false}
             source={{html: terms}}
-            style={{width: '100%', marginTop: 10, borderRadius: 10}}
+            containerStyle={{
+              width: '100%',
+              padding: 10,
+              backgroundColor: 'white',
+            }}
           />
         ) : (
           <NoMoreElements title={I18n.t('not_available')} />

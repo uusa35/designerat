@@ -339,22 +339,6 @@ const DesigneratHomeStack = () => {
         }}
       />
       <Stack.Screen
-        name="TermAndCondition"
-        component={TermAndConditionScreen}
-        options={{
-          headerTitle: () => (
-            <HeaderMiddle title={I18n.t('terms_and_conditions')} />
-          ),
-        }}
-      />
-      <Stack.Screen
-        name="Policy"
-        component={PolicyScreen}
-        options={{
-          headerTitle: () => <HeaderMiddle title={I18n.t('policies')} />,
-        }}
-      />
-      <Stack.Screen
         name={'ImageZoom'}
         component={ImageZoomWidget}
         options={{
@@ -394,6 +378,22 @@ const DesigneratHomeStack = () => {
           headerTitle: () => <HeaderMiddle title={I18n.t('panorama')} />,
         }}
         component={PanoramaShowScreen}
+      />
+      <Stack.Screen
+        name="TermAndCondition"
+        component={TermAndConditionScreen}
+        options={{
+          headerTitle: () => (
+            <HeaderMiddle title={I18n.t('terms_and_conditions')} />
+          ),
+        }}
+      />
+      <Stack.Screen
+        name="Policy"
+        component={PolicyScreen}
+        options={{
+          headerTitle: () => <HeaderMiddle title={I18n.t('policies')} />,
+        }}
       />
     </Stack.Navigator>
   );

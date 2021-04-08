@@ -7,20 +7,19 @@ import {appUrlIos} from '../env';
 import {useNavigation} from '@react-navigation/native';
 
 const PanoramaShowScreen = () => {
-  const {cart} = useSelector((state) => state);
   const dispatch = useDispatch();
   const navigation = useNavigation();
 
   return (
     <BgContainer>
       <WebView
-        useWebKit={true}
+        javaScriptEnabled={true}
         source={{uri: `${appUrlIos}panorama/view`}}
         // style={{marginTop: 20}}
-        injectedJavaScript={'(function(){ return "test"}());'}
-        onNavigationStateChange={(navEvent) =>
-          !isEmpty(cart) ? dispatch({type: 'CLEAR_CART'}) : null
-        }
+        // injectedJavaScript={'(function(){ return "test"}());'}
+        // onNavigationStateChange={(navEvent) =>
+        //   !isEmpty(cart) ? dispatch({type: 'CLEAR_CART'}) : null
+        // }
       />
     </BgContainer>
   );

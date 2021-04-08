@@ -7,7 +7,7 @@ import {
   TouchableOpacity,
   View,
 } from 'react-native';
-import {Button, Icon, Input} from 'react-native-elements';
+import {Button, CheckBox, Icon, Input} from 'react-native-elements';
 import I18n, {isRTL} from '../../../I18n';
 import {
   bottomContentInset,
@@ -54,6 +54,7 @@ const DesigneratRegisterFormWidget = ({showLabel = false}) => {
   const [sampleLogo, setSampleLogo] = useState(null);
   const [images, setImages] = useState();
   const [isMale, setIsMale] = useState(false);
+  const [checked, setChecked] = useState(false);
 
   const openLogoPicker = () => {
     return ImagePicker.openPicker({
@@ -396,8 +397,49 @@ const DesigneratRegisterFormWidget = ({showLabel = false}) => {
           ))}
         </ScrollView>
       )}
-
+      <View style={{backgroundColor: 'white', margin: 15, padding: 15}}>
+        <View
+          style={{
+            width: '95%',
+            flexDirection: 'row',
+            justifyContent: 'space-between',
+            alignItems: 'center',
+            alignSelf: 'center',
+          }}>
+          <CheckBox
+            containerStyle={{
+              backgroundColor: 'transparent',
+              alignItems: 'baseline',
+              justifyContent: 'center',
+              borderWidth: 0,
+            }}
+            title={I18n.t('agree_on_polices')}
+            iconType="material"
+            checkedIcon="check-box"
+            uncheckedIcon="check-box-outline-blank"
+            checked={checked}
+            checkedColor={colors.btn_bg_theme_color}
+            uncheckedColor={colors.btn_bg_theme_color}
+            style={{color: colors.btn_bg_theme_color}}
+            onPress={() => setChecked(!checked)}
+            textStyle={{fontFamily: text.font, paddingTop: 5}}
+          />
+          <Icon
+            name="book"
+            type="octicon"
+            size={iconSizes.smaller}
+            hitSlop={{
+              top: iconSizes.smaller,
+              bottom: iconSizes.smaller,
+              left: iconSizes.smaller,
+              right: iconSizes.smaller,
+            }}
+            onPress={() => navigation.navigate('Policy')}
+          />
+        </View>
+      </View>
       <DesigneratBtn
+        disabled={!checked}
         handleClick={() => handleRegister()}
         marginTop={20}
         title={I18n.t('register')}

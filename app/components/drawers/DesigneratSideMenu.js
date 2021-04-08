@@ -27,11 +27,11 @@ import {logout} from '../../redux/actions/user';
 import PropTypes from 'prop-types';
 import {appUrlIos} from '../../env';
 
-const DesigneratSideMenu = ({showLogo = true}) => {
-  const {settings, lang, guest} = useSelector((state) => state);
+const DesigneratSideMenu = ({showLogo = true, navigation}) => {
+  const {settings, lang, guest, auth} = useSelector((state) => state);
   const {logo, company, menu_bg, youtube, colors, terms, policy} = settings;
   const dispatch = useDispatch();
-  const navigation = useNavigation();
+  // const navigation = useNavigation();
   const route = useRoute();
 
   const goToHome = () => {
@@ -77,7 +77,6 @@ const DesigneratSideMenu = ({showLogo = true}) => {
               loadingIndicatorSource={{uri: logo}}
             />
           ) : null}
-
           <Text
             style={[styles.mainMenuText, {color: colors.footer_theme_color}]}>
             {I18n.t('menu')}
@@ -94,11 +93,8 @@ const DesigneratSideMenu = ({showLogo = true}) => {
                 borderColor: colors.btn_bg_theme_color,
               }}
             />
-            {__DEV__ && (
+            {!guest && auth.role && auth.role.id === 1 && (
               <Fragment>
-                <TouchableOpacity onPress={() => navigation.navigate('Mallr')}>
-                  <Text style={{color: 'white'}}>Mallr</Text>
-                </TouchableOpacity>
                 <TouchableOpacity
                   onPress={() => Linking.openURL(`${appUrlIos}panorama/view`)}>
                   <Text style={{color: 'white'}}>Panorama</Text>
