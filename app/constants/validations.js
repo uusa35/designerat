@@ -197,11 +197,11 @@ export const validateSubmitRegister = Yup.object().shape({
   mobile: Yup.string()
     .required({message: 'validations.mobile_is_required'})
     .min(6, {message: 'validations.mobile_is_required'}),
-  images: Yup.array()
-    .typeError({message: 'validations.product_images_is_required'})
-    .required({
-      message: 'validations.product_images_is_required',
-    }),
+  // images: Yup.array()
+  //   .typeError({message: 'validations.product_images_is_required'})
+  //   .required({
+  //     message: 'validations.product_images_is_required',
+  //   }),
   // password2: Yup.string()
   //     .min(6, {
   //       message: 'validations.password_must_not_be_larger_than',

@@ -21,7 +21,7 @@ import ActionBtnWidget from '../../components/widgets/ActionBtnWidget';
 import VideosVerticalWidget from '../../components/widgets/video/VideosVerticalWidget';
 import BgContainer from '../../components/containers/BgContainer';
 import KeyBoardContainer from '../../components/containers/KeyBoardContainer';
-import {APP_CASE} from './../../../app';
+import {APP_CASE, DESIGNERAT} from './../../../app';
 import {useNavigation} from '@react-navigation/native';
 import widgetStyles from '../../components/widgets/widgetStyles';
 import DesigneratAddToCartStickyFooter from '../../components/widgets/product/DesigneratAddToCartStickyFooter';
@@ -249,7 +249,7 @@ const DesineratNormalProductShowScreen = ({showRating = true}) => {
                 showIcon={false}
               />
             ) : null}
-            {product.user.fullMobile || mobile ? (
+            {(product.user.fullMobile || mobile) && !DESIGNERAT ? (
               <ProductInfoWidgetElement
                 elementName="contactus_order_by_phone"
                 name={

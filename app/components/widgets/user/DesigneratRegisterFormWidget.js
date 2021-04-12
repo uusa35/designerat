@@ -38,10 +38,14 @@ import DesigneratBtn from '../Button/DesigneratBtn';
 import {themeColors} from '../../../constants/colors';
 import DesineratRegisterFormIsMaleComponenet from './DesineratRegisterFormIsMaleComponenet';
 import {convertNumberToEnglish} from '../../../helpers';
+import {WebView} from 'react-native-webview';
+import {DESIGNERAT} from '../../../../app.json';
 
 const DesigneratRegisterFormWidget = ({showLabel = false}) => {
   const {colors, logo} = useContext(GlobalValuesContext);
-  const {country, playerId, role, roles} = useSelector((state) => state);
+  const {country, playerId, role, roles, settings} = useSelector(
+    (state) => state,
+  );
   const dispatch = useDispatch();
   const navigation = useNavigation();
   const [name, setName] = useState('');
@@ -54,7 +58,7 @@ const DesigneratRegisterFormWidget = ({showLabel = false}) => {
   const [sampleLogo, setSampleLogo] = useState(null);
   const [images, setImages] = useState();
   const [isMale, setIsMale] = useState(false);
-  const [checked, setChecked] = useState(false);
+  const [checked, setChecked] = useState(role.isClient);
 
   const openLogoPicker = () => {
     return ImagePicker.openPicker({
@@ -103,112 +107,113 @@ const DesigneratRegisterFormWidget = ({showLabel = false}) => {
   };
 
   const handleRegister = () => {
-    // if (!validate.isEmpty(role) && !role.isClient) {
-    //   return validateSubmitRegister
-    //     .validate({
-    //       name,
-    //       email,
-    //       password,
-    //       mobile,
-    //       country_id: country.id,
-    //       address,
-    //       player_id: playerId,
-    //       description,
-    //       image,
-    //       images,
-    //       role_id: role.id,
-    //     })
-    //     .then((r) => {
-    //       // ImagePicker.clean()
-    //       //   .then(() => {
-    //       // console.log('removed all tmp images from tmp directory');
-    //       // })
-    //       // .catch((e) => {
-    //       // console.log('picker error', e);
-    //       // });
-    //       return dispatch(
-    //         companyRegister({
-    //           name,
-    //           email,
-    //           password,
-    //           mobile,
-    //           country_id: country.id,
-    //           address,
-    //           player_id: playerId,
-    //           description,
-    //           image,
-    //           images,
-    //           role_id: role
-    //             ? role.id
-    //             : first(filter(roles, (r) => r.isCompany)).id,
-    //         }),
-    //       );
-    //     })
-    //     .catch((e) => {
-    //       const {message, item} = first(e.errors);
-    //       return dispatch(
-    //         enableErrorMessage(
-    //           message ? I18n.t(message, {item}) : I18n.t(first(e.errors)),
-    //         ),
-    //       );
-    //     });
-    // } else {
-    dispatch(
-      register({
-        name,
-        email,
-        password,
-        mobile,
-        country_id: country.id,
-        address,
-        player_id: playerId,
-        description,
-        is_male: isMale,
-        role_id: role ? role.id : first(filter(roles, (r) => r.isClient)).id,
-      }),
-    );
-    // }
+    if (!validate.isEmpty(role) && !role.isClient) {
+      return validateSubmitRegister
+        .validate({
+          name,
+          email,
+          password,
+          mobile,
+          country_id: country.id,
+          address,
+          player_id: playerId,
+          description,
+          image,
+          images,
+          role_id: role.id,
+        })
+        .then((r) => {
+          // ImagePicker.clean()
+          //   .then(() => {
+          // console.log('removed all tmp images from tmp directory');
+          // })
+          // .catch((e) => {
+          // console.log('picker error', e);
+          // });
+          return dispatch(
+            companyRegister({
+              name,
+              email,
+              password,
+              mobile,
+              country_id: country.id,
+              address,
+              player_id: playerId,
+              description,
+              image,
+              images,
+              role_id: role
+                ? role.id
+                : first(filter(roles, (r) => r.isCompany)).id,
+            }),
+          );
+        })
+        .catch((e) => {
+          const {message, item} = first(e.errors);
+          return dispatch(
+            enableErrorMessage(
+              message ? I18n.t(message, {item}) : I18n.t(first(e.errors)),
+            ),
+          );
+        });
+    } else {
+      dispatch(
+        register({
+          name,
+          email,
+          password,
+          mobile,
+          country_id: country.id,
+          address,
+          player_id: playerId,
+          description,
+          is_male: isMale,
+          role_id: role ? role.id : first(filter(roles, (r) => r.isClient)).id,
+        }),
+      );
+    }
   };
 
   return (
     <KeyBoardContainer>
-      <ImageLoaderContainer
-        img={logo}
-        style={{
-          width: 50,
-          height: 50,
-          marginTop: '10%',
-          marginBottom: '10%',
-          alignSelf: 'center',
-        }}
-        resizeMode="contain"
-      />
-      {/*{(role.isDesigner || role.isCompany) && (*/}
-      {/*  <TouchableOpacity*/}
-      {/*    onPress={() => openLogoPicker()}*/}
-      {/*    style={{*/}
-      {/*      width: '100%',*/}
-      {/*      alignItems: 'center',*/}
-      {/*      marginTop: 20,*/}
-      {/*      marginBottom: 20,*/}
-      {/*    }}>*/}
-      {/*    <ImageLoaderContainer*/}
-      {/*      img={image && image.path ? image.path : sampleLogo}*/}
-      {/*      style={{*/}
-      {/*        width: 120,*/}
-      {/*        height: 120,*/}
-      {/*        margin: 10,*/}
-      {/*        borderWidth: 1,*/}
-      {/*        borderColor: 'lightgrey',*/}
-      {/*        borderRadius: 120 / 2,*/}
-      {/*      }}*/}
-      {/*      resizeMode="cover"*/}
-      {/*    />*/}
-      {/*    <Text style={{fontFamily: text.font, fontSize: text.small}}>*/}
-      {/*      {I18n.t('add_logo')}*/}
-      {/*    </Text>*/}
-      {/*  </TouchableOpacity>*/}
-      {/*)}*/}
+      {!role.isClient ? (
+        <TouchableOpacity
+          onPress={() => openLogoPicker()}
+          style={{
+            width: '100%',
+            alignItems: 'center',
+            marginTop: 20,
+            marginBottom: 20,
+          }}>
+          <ImageLoaderContainer
+            img={image && image.path ? image.path : sampleLogo}
+            style={{
+              width: 120,
+              height: 120,
+              margin: 10,
+              borderWidth: 1,
+              borderColor: 'lightgrey',
+              borderRadius: 120 / 2,
+            }}
+            resizeMode="cover"
+          />
+          <Text style={{fontFamily: text.font, fontSize: text.small}}>
+            {I18n.t('add_logo')}
+          </Text>
+        </TouchableOpacity>
+      ) : (
+        <ImageLoaderContainer
+          img={logo}
+          style={{
+            width: 50,
+            height: 50,
+            marginTop: '10%',
+            marginBottom: '10%',
+            alignSelf: 'center',
+          }}
+          resizeMode="contain"
+        />
+      )}
       <Input
         placeholder={I18n.t('email') + '*'}
         containerStyle={{marginBottom: 0, paddingBottom: 0, height: 50}}
@@ -235,7 +240,7 @@ const DesigneratRegisterFormWidget = ({showLabel = false}) => {
             name="envelope"
             type="evilicon"
             size={iconSizes.smaller}
-            onPress={() => setVisiblePassword(!visiblePassword)}
+            // onPress={() => setVisiblePassword(!visiblePassword)}
           />
         )}
       />
@@ -397,47 +402,58 @@ const DesigneratRegisterFormWidget = ({showLabel = false}) => {
           ))}
         </ScrollView>
       )}
-      <View style={{backgroundColor: 'white', margin: 15, padding: 15}}>
-        <View
-          style={{
-            width: '95%',
-            flexDirection: 'row',
-            justifyContent: 'space-between',
-            alignItems: 'center',
-            alignSelf: 'center',
-          }}>
-          <CheckBox
-            containerStyle={{
-              backgroundColor: 'transparent',
-              alignItems: 'baseline',
-              justifyContent: 'center',
-              borderWidth: 0,
-            }}
-            title={I18n.t('agree_on_polices')}
-            iconType="material"
-            checkedIcon="check-box"
-            uncheckedIcon="check-box-outline-blank"
-            checked={checked}
-            checkedColor={colors.btn_bg_theme_color}
-            uncheckedColor={colors.btn_bg_theme_color}
-            style={{color: colors.btn_bg_theme_color}}
-            onPress={() => setChecked(!checked)}
-            textStyle={{fontFamily: text.font, paddingTop: 5}}
-          />
-          <Icon
-            name="book"
-            type="octicon"
-            size={iconSizes.smaller}
-            hitSlop={{
-              top: iconSizes.smaller,
-              bottom: iconSizes.smaller,
-              left: iconSizes.smaller,
-              right: iconSizes.smaller,
-            }}
-            onPress={() => navigation.navigate('Policy')}
-          />
+      {!role.isClient && (
+        <View style={{backgroundColor: 'white', margin: 15, padding: 15}}>
+          {!validate.isEmpty(settings.policy) &&
+            settings.policy.length > 100 &&
+            DESIGNERAT && (
+              <WebView
+                showsVerticalScrollIndicator={false}
+                showsHorizontalScrollIndicator={false}
+                source={{html: settings.policy}}
+                style={{width: '100%', minHeight: 400, marginTop: 10}}
+              />
+            )}
+          <View
+            style={{
+              width: '95%',
+              flexDirection: 'row',
+              justifyContent: 'space-between',
+              alignItems: 'center',
+            }}>
+            <CheckBox
+              containerStyle={{
+                backgroundColor: 'transparent',
+                alignItems: 'baseline',
+                justifyContent: 'center',
+                borderWidth: 0,
+              }}
+              title={I18n.t('agree_on_polices')}
+              iconType="material"
+              checkedIcon="check-box"
+              uncheckedIcon="check-box-outline-blank"
+              checked={checked}
+              checkedColor={colors.btn_bg_theme_color}
+              uncheckedColor={colors.btn_bg_theme_color}
+              style={{color: colors.btn_bg_theme_color}}
+              onPress={() => setChecked(!checked)}
+              textStyle={{fontFamily: text.font, paddingTop: 5}}
+            />
+            <Icon
+              name="book"
+              type="octicon"
+              size={iconSizes.smaller}
+              hitSlop={{
+                top: iconSizes.smaller,
+                bottom: iconSizes.smaller,
+                left: iconSizes.smaller,
+                right: iconSizes.smaller,
+              }}
+              onPress={() => navigation.navigate('Policy')}
+            />
+          </View>
         </View>
-      </View>
+      )}
       <DesigneratBtn
         disabled={!checked}
         handleClick={() => handleRegister()}
