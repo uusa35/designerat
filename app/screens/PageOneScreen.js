@@ -13,8 +13,8 @@ import {bottomVerticalContentInset} from '../constants/sizes';
 const PageOneScreen = () => {
   const {categories} = useSelector((state) => state);
   const dispatch = useDispatch();
-  [title, setTitle] = useState('');
-  [refresh, setRefresh] = useState(false);
+  const [title, setTitle] = useState('');
+  const [refresh, setRefresh] = useState(false);
 
   const handleRefresh = useCallback(() => {
     dispatch(refetchHomeElements());

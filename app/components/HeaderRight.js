@@ -139,6 +139,7 @@ export const HeaderRight = ({
         <Icon
           onPress={() => {
             dispatch(showProductFilter());
+            // navigation.navigate('SearchTab');
           }}
           name="search1"
           type="antdesign"

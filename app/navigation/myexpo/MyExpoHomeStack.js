@@ -53,6 +53,7 @@ import StatisticIndexScreen from '../../screens/setting/StatisticIndexScreen';
 import CalendarIndexScreen from '../../screens/calender/CalendarIndexScreen';
 import DesignerShowScreen from '../../screens/designer/expo/DesignerShowScreen';
 import PanoramaShowScreen from '../../screens/PanoramaShowScreen';
+import MyExpoSearchTab from './MyExpoSearchTab';
 
 const Stack = createStackNavigator();
 const MyExpoHomeStack = () => {
@@ -107,6 +108,13 @@ const MyExpoHomeStack = () => {
         })}
         name={'MainTab'}
         component={MyExpoMainTab}
+      />
+      <Stack.Screen
+        name={'SearchTab'}
+        options={{
+          headerTitle: () => <HeaderMiddle title={I18n.t('celebrities')} />,
+        }}
+        component={MyExpoSearchTab}
       />
       <Stack.Screen
         name={'CelebrityIndex'}

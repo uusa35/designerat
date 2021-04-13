@@ -12,7 +12,7 @@ const ImageLoaderContainer = ({img, style, resizeMode = 'stretch'}) => {
   return (
     <FastImage
       source={
-        imageLoading && !isNull(img)
+        imageLoading
           ? images.loading
           : // : {uri: img ? img : logo, cache: 'force-cache'}
             {uri: img ? img : logo}

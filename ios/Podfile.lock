@@ -467,7 +467,7 @@ PODS:
     - React-Core
   - RNCMaskedView (0.1.10):
     - React
-  - RNDeviceInfo (8.0.8):
+  - RNDeviceInfo (8.1.0):
     - React-Core
   - RNFastImage (8.3.4):
     - React-Core
@@ -503,7 +503,7 @@ PODS:
   - RNSentry (2.4.0):
     - React-Core
     - Sentry (= 6.1.4)
-  - RNShare (5.1.7):
+  - RNShare (5.2.2):
     - React-Core
   - RNSnackbar (2.4.0):
     - React-Core
@@ -869,7 +869,7 @@ SPEC CHECKSUMS:
   rn-fetch-blob: f065bb7ab7fb48dd002629f8bdcb0336602d3cba
   RNCAsyncStorage: b03032fdbdb725bea0bd9e5ec5a7272865ae7398
   RNCMaskedView: 5a8ec07677aa885546a0d98da336457e2bea557f
-  RNDeviceInfo: 41a8c8a41ae0e70d85cbe652cd5318150cb2cc40
+  RNDeviceInfo: 677a08eaafcfac4e85d2d2aab68a3708ff261c04
   RNFastImage: d4870d58f5936111c56218dbd7fcfc18e65b58ff
   RNFBAnalytics: 11873c6dccab66da20fc1c75fc47c88244845410
   RNFBApp: d9ab9f2e63c70a9974294bb44c749b728cd4028f
@@ -880,7 +880,7 @@ SPEC CHECKSUMS:
   RNReanimated: 514a11da3a2bcc6c3dfd9de32b38e2b9bf101926
   RNScreens: f7ad633b2e0190b77b6a7aab7f914fad6f198d8d
   RNSentry: b0d55027200c96f52e26b9bfb20296d47fc5051d
-  RNShare: 503c37af86611beadccba46156fcc42170c9fb42
+  RNShare: 5cfe16bfd42cd2c4869a7692462181ac8cc15a6d
   RNSnackbar: be3333a21a453ccc272f41a8add5a71f7d44dfcd
   RNSVG: ce9d996113475209013317e48b05c21ee988d42e
   RNVectorIcons: 31cebfcf94e8cf8686eb5303ae0357da64d7a5a4
