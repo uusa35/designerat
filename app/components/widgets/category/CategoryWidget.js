@@ -31,7 +31,7 @@ const CategoryWidget = ({
         {
           width: columns > 1 ? '50%' : '100%',
           height: 300,
-          marginBottom: 10,
+          // marginBottom: 10,
         },
       ]}>
       <TouchableOpacity

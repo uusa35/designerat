@@ -25,7 +25,7 @@ const PageOneScreen = () => {
   // }, [navigation.state.params]);
 
   return (
-    <BgContainer showImage={false}>
+    <BgContainer showImage={true}>
       <ScrollView
         refreshing={refresh}
         refreshControl={

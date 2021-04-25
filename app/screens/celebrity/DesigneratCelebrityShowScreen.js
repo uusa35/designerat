@@ -110,7 +110,7 @@ const DesigneratCelebrityShowScreen = ({route}) => {
         {celebrity.banner && !validate.isEmpty(celebrity.banner) ? (
           <ImageLoaderContainer
             img={celebrity.banner}
-            style={{width: '100%', height: 200, borderWidth: 10}}
+            style={{width: '100%', height: 200}}
             resizeMode={'cover'}
           />
         ) : null}

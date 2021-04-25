@@ -18,7 +18,7 @@ import widgetStyles from '../../components/widgets/widgetStyles';
 import {themeColors} from '../../constants/colors';
 import FastImage from 'react-native-fast-image';
 import {images} from '../../constants/images';
-import {EXPO} from '../../../app.json';
+import {EXPO, DESIGNERAT} from '../../../app.json';
 
 const DesigneratCartIndexScreen = () => {
   const {
@@ -67,7 +67,7 @@ const DesigneratCartIndexScreen = () => {
             flex: 1,
             padding: 20,
           }}
-          source={images.cartBg}
+          source={DESIGNERAT ? images.cartBg : images.whiteBg}
           imageStyle={{resizeMode: 'repeat', opacity: 0.2}}>
           <LottieView
             source={EXPO ? animations.emptyCart : animations.cart}

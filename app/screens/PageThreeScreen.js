@@ -24,25 +24,20 @@ const PageThreeScreen = () => {
   }, [companies]);
 
   return (
-    <BgContainer>
+    <BgContainer showImage={true}>
       <ElementsVerticalList
         elements={currentElements}
         showMore={true}
         showFooter={true}
+        scrollEnabled={true}
         searchParams={{is_company: 1}}
         iconSize={iconSizes.large}
         textSize={text.medium}
-        type="designer"
+        type="company"
       />
     </BgContainer>
   );
 };
-
-PageThreeScreen.navigationOptions = ({navigation}) => ({
-  // headerTitle: navigation.state.params.title
-  // title : has(navigation.state,'params') ? navigation.state.params.title : I18n.t('categories')
-  title: I18n.t('companies'),
-});
 
 export default PageThreeScreen;
 

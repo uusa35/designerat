@@ -6,7 +6,6 @@ import {
   StatusBar,
   View,
   Alert,
-  BackHandler,
 } from 'react-native';
 import {height, width} from '../../constants/sizes';
 import {images} from '../../constants/images';
@@ -16,20 +15,17 @@ import {GlobalValuesContext} from '../../redux/GlobalValuesContext';
 import OneSignal from 'react-native-onesignal';
 import {DESIGNERAT_ONE_SIGNAL_APP_ID, APP_CASE} from '../../../app.json';
 import {getPathForDeepLinking} from '../../helpers';
+import I18n from './../../I18n';
 import {
   goBackBtn,
   goDeepLinking,
   setDeepLinking,
   setPlayerId,
 } from '../../redux/actions';
-import {useNavigation, useRoute} from '@react-navigation/native';
+import {useRoute} from '@react-navigation/native';
 import moment from 'moment';
 import analytics from '@react-native-firebase/analytics';
 import {isIOS} from '../../constants';
-
-import {deleteAddress} from '../../redux/actions/user';
-import I18n from '../../I18n';
-import ConfirmationModal from '../ConfirmationModal';
 
 const BgContainer = ({
   children,
@@ -87,69 +83,79 @@ const BgContainer = ({
     }
     /* O N E S I G N A L  H A N D L E R S */
     OneSignal.setNotificationWillShowInForegroundHandler(
-      (notifReceivedEvent) => {
-        // console.log(
-        //   'OneSignal: notification will show in foreground:',
-        //   notifReceivedEvent,
-        // );
-        let notif = notifReceivedEvent.getNotification();
-
+      (notificationReceivedEvent) => {
+        let notification = notificationReceivedEvent.getNotification();
+        const url = notification.payload
+          ? notification.payload.launchURL
+          : notification.launchURL;
+        const payload = getPathForDeepLinking(url);
+        dispatch(setDeepLinking(payload));
         const button1 = {
-          text: 'Cancel',
+          text: I18n.t('cancel'),
           onPress: () => {
-            notifReceivedEvent.complete();
+            notificationReceivedEvent.complete();
           },
           style: 'cancel',
         };
 
         const button2 = {
-          text: 'Complete',
-          onPress: () => {
-            notifReceivedEvent.complete(notif);
-          },
+          text: I18n.t('open'),
+          onPress: () => dispatch(goDeepLinking(payload)),
         };
 
-        Alert.alert('Complete notification?', 'Test', [button1, button2], {
-          cancelable: true,
-        });
+        Alert.alert(
+          I18n.t('notifications'),
+          I18n.t(APP_CASE),
+          [button1, button2],
+          {
+            cancelable: true,
+          },
+        );
       },
     );
     OneSignal.setNotificationOpenedHandler((notification) => {
-      // console.log('OneSignal: notification opened:', notification);
-      // const url = getPathForDeepLinking(notification.payload.launchURL);
-      // dispatch(setDeepLinking(notification));
-      // setTimeout(() => {
-      //   dispatch(goDeepLinking(notification));
-      // }, 1000);
+      const url = notification.payload
+        ? notification.payload.launchURL
+        : notification.notification.launchURL;
+      if (url) {
+        const payload = getPathForDeepLinking(url);
+        dispatch(setDeepLinking(payload));
+        setTimeout(() => {
+          dispatch(goDeepLinking(payload));
+        }, 1000);
+      }
     });
-    OneSignal.setInAppMessageClickHandler((event) => {
-      // console.log('OneSignal IAM clicked:', event);
-      const {type, id} = getPathForDeepLinking(event.click_url);
-      return dispatch(goDeepLinking({type, id}));
-    });
-    OneSignal.addEmailSubscriptionObserver((event) => {
-      // console.log('OneSignal: email subscription changed: ', event);
-    });
-    OneSignal.addSubscriptionObserver((event) => {
-      // console.log('OneSignal: subscription changed:', event);
-      setDevice(event.to.userId);
-    });
-    OneSignal.addPermissionObserver((event) => {
-      // console.log('OneSignal: permission changed:', event);
-    });
+    // OneSignal.setInAppMessageClickHandler((event) => {
+    //   console.log('OneSignal IAM clicked:', event);
+    // });
+    // OneSignal.addEmailSubscriptionObserver((event) => {
+    //   console.log('OneSignal: email subscription changed: ', event);
+    // });
+    // OneSignal.addSubscriptionObserver((event) => {
+    //   console.log('OneSignal: subscription changed:', event);
+    //   setDevice(event.to.userId);
+    // });
+    // OneSignal.addPermissionObserver((event) => {
+    //   console.log('OneSignal: permission changed:', event);
+    // });
+    Linking.addEventListener('url', handleOpenURL);
+    return () => {
+      Linking.removeEventListener('url', handleOpenURL);
+    };
   });
 
   useEffect(() => {
-    Linking.addEventListener('url', handleOpenURL);
     // console.log('appSateChanged', appState);
     if (appState === 'background') {
     } else {
     }
-    return () => {};
+    // return () => {
+    // };
   }, [bootStrapped, appState]);
 
   const handleOpenURL = (event) => {
     const {type, id} = getPathForDeepLinking(event.url);
+    dispatch(setDeepLinking({type, id}));
     return dispatch(goDeepLinking({type, id}));
   };
 

@@ -1,6 +1,6 @@
 import React, {useContext, useState} from 'react';
 import FastImage from 'react-native-fast-image';
-import {StyleSheet, Text, View} from 'react-native';
+import {StyleSheet, Text, View, Pressable} from 'react-native';
 import {text} from '../../../constants/sizes';
 import {images} from '../../../constants/images';
 import {getProductConvertedFinalPrice} from '../../../helpers';
@@ -14,17 +14,19 @@ import {useDispatch, useSelector} from 'react-redux';
 import {isIOS} from '../../../constants';
 import {productWidget} from '../../../constants/sizes';
 import {APP_CASE} from '../../../../app.json';
+import {useNavigation} from '@react-navigation/native';
 
 const ProductInfoWidgetMainTitle = ({element}) => {
   const dispatch = useDispatch();
   const {colors, exchange_rate, currency_symbol} = useContext(
     GlobalValuesContext,
   );
+  const navigation = useNavigation();
   const {token, guest} = useSelector((state) => state);
   const [favorite, setFavorite] = useState(element.isFavorite);
 
   return (
-    <View
+    <Pressable
       style={{
         padding: 0,
         marginTop: 20,
@@ -33,7 +35,15 @@ const ProductInfoWidgetMainTitle = ({element}) => {
         flexDirection: 'row',
         justifyContent: 'space-around',
         alignItems: 'center',
-      }}>
+      }}
+      onPress={() =>
+        navigation.navigate('DesignerShow', {
+          name: element.user.slug,
+          id: element.user.id,
+          model: 'user',
+          type: 'designer',
+        })
+      }>
       <ImageLoaderContainer
         img={element.user.thumb}
         style={{
@@ -144,11 +154,11 @@ const ProductInfoWidgetMainTitle = ({element}) => {
           />
         )}
       </View>
-    </View>
+    </Pressable>
   );
 };
 
-export default ProductInfoWidgetMainTitle;
+export default React.memo(ProductInfoWidgetMainTitle);
 
 ProductInfoWidgetMainTitle.propTypes = {
   element: PropTypes.object.isRequired,

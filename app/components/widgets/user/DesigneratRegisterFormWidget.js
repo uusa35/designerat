@@ -55,6 +55,7 @@ const DesigneratRegisterFormWidget = ({showLabel = false}) => {
   const [password, setPassword] = useState('');
   const [description, setDescription] = useState('');
   const [image, setImage] = useState(null);
+  const [banner, setBanner] = useState(null);
   const [sampleLogo, setSampleLogo] = useState(null);
   const [images, setImages] = useState();
   const [isMale, setIsMale] = useState(false);
@@ -76,6 +77,24 @@ const DesigneratRegisterFormWidget = ({showLabel = false}) => {
     }).then((image) => {
       setImage(image);
       // setSampleLogo(image.path);
+    });
+  };
+
+  const openBannerPicker = () => {
+    return ImagePicker.openPicker({
+      width: 1080,
+      height: 410,
+      multiple: false,
+      cropping: true,
+      freeStyleCropEnabled: false,
+      includeBase64: true,
+      includeExif: true,
+      compressImageQuality: 0.5,
+      storageOptions: {
+        skipBackup: true,
+      },
+    }).then((image) => {
+      setBanner(image);
     });
   };
 
@@ -141,6 +160,7 @@ const DesigneratRegisterFormWidget = ({showLabel = false}) => {
               player_id: playerId,
               description,
               image,
+              banner,
               images,
               role_id: role
                 ? role.id
@@ -177,30 +197,61 @@ const DesigneratRegisterFormWidget = ({showLabel = false}) => {
   return (
     <KeyBoardContainer>
       {!role.isClient ? (
-        <TouchableOpacity
-          onPress={() => openLogoPicker()}
+        <View
           style={{
-            width: '100%',
+            flexDirection: 'row',
+            justifyContent: 'space-around',
             alignItems: 'center',
-            marginTop: 20,
-            marginBottom: 20,
           }}>
-          <ImageLoaderContainer
-            img={image && image.path ? image.path : sampleLogo}
+          <TouchableOpacity
+            onPress={() => openLogoPicker()}
             style={{
-              width: 120,
-              height: 120,
-              margin: 10,
-              borderWidth: 1,
-              borderColor: 'lightgrey',
-              borderRadius: 120 / 2,
-            }}
-            resizeMode="cover"
-          />
-          <Text style={{fontFamily: text.font, fontSize: text.small}}>
-            {I18n.t('add_logo')}
-          </Text>
-        </TouchableOpacity>
+              width: '100%',
+              alignItems: 'center',
+              marginTop: 20,
+              marginBottom: 20,
+            }}>
+            <ImageLoaderContainer
+              img={image && image.path ? image.path : sampleLogo}
+              style={{
+                width: 120,
+                height: 120,
+                margin: 10,
+                borderWidth: 1,
+                borderColor: 'lightgrey',
+                borderRadius: 120 / 2,
+              }}
+              resizeMode="cover"
+            />
+            <Text style={{fontFamily: text.font, fontSize: text.small}}>
+              {I18n.t('add_logo')}*
+            </Text>
+          </TouchableOpacity>
+          <TouchableOpacity
+            onPress={() => openBannerPicker()}
+            style={{
+              width: '100%',
+              alignItems: 'center',
+              marginTop: 20,
+              marginBottom: 20,
+            }}>
+            <ImageLoaderContainer
+              img={banner && banner.path ? banner.path : sampleLogo}
+              style={{
+                width: 120,
+                height: 120,
+                margin: 10,
+                borderWidth: 1,
+                borderColor: 'lightgrey',
+                borderRadius: 120 / 2,
+              }}
+              resizeMode="cover"
+            />
+            <Text style={{fontFamily: text.font, fontSize: text.small}}>
+              {I18n.t('add_banner')}
+            </Text>
+          </TouchableOpacity>
+        </View>
       ) : (
         <ImageLoaderContainer
           img={logo}
@@ -266,7 +317,7 @@ const DesigneratRegisterFormWidget = ({showLabel = false}) => {
             name="lock"
             type="evilicon"
             size={iconSizes.smaller}
-            onPress={() => setVisiblePassword(!visiblePassword)}
+            // onPress={() => setVisiblePassword(!visiblePassword)}
           />
         )}
       />
@@ -411,12 +462,12 @@ const DesigneratRegisterFormWidget = ({showLabel = false}) => {
                 showsVerticalScrollIndicator={false}
                 showsHorizontalScrollIndicator={false}
                 source={{html: settings.policy}}
-                style={{width: '100%', minHeight: 400, marginTop: 10}}
+                style={{width: '100%', minHeight: height / 2.3, marginTop: 10}}
               />
             )}
           <View
             style={{
-              width: '95%',
+              width: '100%',
               flexDirection: 'row',
               justifyContent: 'space-between',
               alignItems: 'center',
@@ -425,8 +476,12 @@ const DesigneratRegisterFormWidget = ({showLabel = false}) => {
               containerStyle={{
                 backgroundColor: 'transparent',
                 alignItems: 'baseline',
-                justifyContent: 'center',
+                justifyContent: 'flex-start',
                 borderWidth: 0,
+                paddingLeft: 0,
+                paddingRight: 0,
+                marginRight: 0,
+                marginLeft: 0,
               }}
               title={I18n.t('agree_on_polices')}
               iconType="material"
@@ -437,7 +492,11 @@ const DesigneratRegisterFormWidget = ({showLabel = false}) => {
               uncheckedColor={colors.btn_bg_theme_color}
               style={{color: colors.btn_bg_theme_color}}
               onPress={() => setChecked(!checked)}
-              textStyle={{fontFamily: text.font, paddingTop: 5}}
+              textStyle={{
+                fontFamily: text.font,
+                paddingTop: 5,
+                fontSize: text.small,
+              }}
             />
             <Icon
               name="book"
@@ -460,7 +519,6 @@ const DesigneratRegisterFormWidget = ({showLabel = false}) => {
         marginTop={20}
         title={I18n.t('register')}
       />
-
       <DesigneratBtn
         handleClick={() => navigation.navigate('Login')}
         marginTop={20}

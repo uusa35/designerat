@@ -41,6 +41,24 @@ export const productWidget = {
       height: 373,
     },
   },
+  IORDER: {
+    smaller: {
+      width: 120,
+      height: 220,
+    },
+    small: {
+      width: 220,
+      height: 293,
+    },
+    medium: {
+      width: 250,
+      height: 333,
+    },
+    large: {
+      width: 280,
+      height: 373,
+    },
+  },
   MYEXPO: {
     smaller: {
       width: 120,
@@ -105,6 +123,29 @@ export const productWidget = {
 
 export const userWidget = {
   DESIGNERAAT: {
+    xsmall: {
+      width: 80,
+      height: 80,
+    },
+    small: {
+      width: 100,
+      height: 100,
+    },
+    smaller: {
+      width: 120,
+      height: 120,
+    },
+    medium: {
+      width: 150,
+      height: 150,
+    },
+    large: {
+      width: 200,
+      height: 200,
+    },
+    radius: 5,
+  },
+  IORDER: {
     xsmall: {
       width: 80,
       height: 80,
@@ -214,6 +255,20 @@ export const categoryWidget = {
       height: 200,
     },
   },
+  IORDER: {
+    small: {
+      width: 80,
+      height: 80,
+    },
+    medium: {
+      width: 150,
+      height: 150,
+    },
+    large: {
+      width: 200,
+      height: 200,
+    },
+  },
   MYEXPO: {
     small: {
       width: 80,
@@ -307,6 +362,8 @@ export const getFont = () => {
   switch (APP_CASE) {
     case 'DESIGNERAAT':
       return isRTL ? FIRST_AR_FONT : FIFTH_EN_FONT;
+    case 'IORDER':
+      return isRTL ? SEVENTH_AR_FONT : THIRD_EN_FONT;
     case 'ABATI':
       return isRTL ? SEVENTH_AR_FONT : FIFTH_EN_FONT;
     case 'EXPO':
@@ -330,6 +387,25 @@ export const text = {
 
 export const formWidget = {
   DESIGNERAAT: {
+    smaller: {
+      width: 120,
+      height: 50,
+    },
+    small: {
+      width: 220,
+      height: 293,
+    },
+    medium: {
+      width: 250,
+      height: 333,
+    },
+    large: {
+      width: 280,
+      height: 373,
+    },
+    inputRadius: 4,
+  },
+  IORDER: {
     smaller: {
       width: 120,
       height: 50,

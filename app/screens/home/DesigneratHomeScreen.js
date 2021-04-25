@@ -85,7 +85,7 @@ const DesigneratHomeScreen = () => {
             rounded={false}
             showAll={true}
             name="celebrities"
-            title={I18n.t('celebrities')}
+            title={I18n.t('designerat_app.celebrities')}
             width={120}
             height={135}
             searchParams={{
@@ -100,7 +100,7 @@ const DesigneratHomeScreen = () => {
             elements={homeCompanies}
             showName={true}
             type="company"
-            title={I18n.t('elites')}
+            title={I18n.t('designerat_app.elites')}
             width={120}
             height={120}
             rounded={true}
@@ -113,7 +113,7 @@ const DesigneratHomeScreen = () => {
             elements={homeDesigners}
             showName={true}
             type="designer"
-            title={I18n.t('designers')}
+            title={I18n.t('designerat_app.designers')}
             showAll={true}
             rounded={true}
             searchParams={{is_designer: 1, country_id: country.id, on_home: 1}}

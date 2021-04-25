@@ -78,4 +78,4 @@ const DesigneratAddToCartStickyFooter = ({
   );
 };
 
-export default DesigneratAddToCartStickyFooter;
+export default React.memo(DesigneratAddToCartStickyFooter);

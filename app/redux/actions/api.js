@@ -340,6 +340,7 @@ export async function companyRegister(params) {
     name,
     email,
     image,
+    banner,
     images,
     password,
     role_id,
@@ -355,6 +356,13 @@ export async function companyRegister(params) {
       uri: getImagePath(image),
       name: getImageName(image),
       type: getImageExtension(image),
+    });
+  }
+  if (checkImage(banner)) {
+    formData.append('banner', {
+      uri: getImagePath(banner),
+      name: getImageName(banner),
+      type: getImageExtension(banner),
     });
   }
   const filteredImages = filter(images, (img, i) => img.path !== image.path);

@@ -30,7 +30,7 @@ import TermAndConditionScreen from '../../screens/TermAndConditionScreen';
 import PolicyScreen from '../../screens/PolicyScreen';
 import {GlobalValuesContext} from '../../redux/GlobalValuesContext';
 import {HeaderBack} from '../../components/HeaderBack';
-import MyExpoMainTab from './MyExpoMainTab';
+import IorderMainTab from './IorderMainTab';
 import Ionicons from 'react-native-vector-icons/Ionicons';
 import {DrawerActions} from '@react-navigation/native';
 import CartConfirmationScreen from '../../screens/cart/CartConfirmationScreen';
@@ -53,10 +53,10 @@ import StatisticIndexScreen from '../../screens/setting/StatisticIndexScreen';
 import CalendarIndexScreen from '../../screens/calender/CalendarIndexScreen';
 import DesignerShowScreen from '../../screens/designer/expo/DesignerShowScreen';
 import PanoramaShowScreen from '../../screens/PanoramaShowScreen';
-import MyExpoSearchTab from './MyExpoSearchTab';
+import IorderSearchTab from './IorderSearchTab';
 
 const Stack = createStackNavigator();
-const MyExpoHomeStack = () => {
+const IorderHomeStack = () => {
   const {colors} = useContext(GlobalValuesContext);
   return (
     <Stack.Navigator
@@ -107,14 +107,14 @@ const MyExpoHomeStack = () => {
           ),
         })}
         name={'MainTab'}
-        component={MyExpoMainTab}
+        component={IorderMainTab}
       />
       <Stack.Screen
         name={'SearchTab'}
         options={{
           headerTitle: () => <HeaderMiddle title={I18n.t('expo')} />,
         }}
-        component={MyExpoSearchTab}
+        component={IorderSearchTab}
       />
       <Stack.Screen
         name={'CelebrityIndex'}
@@ -401,4 +401,4 @@ const MyExpoHomeStack = () => {
   );
 };
 
-export default MyExpoHomeStack;
+export default IorderHomeStack;

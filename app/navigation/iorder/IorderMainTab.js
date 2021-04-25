@@ -16,16 +16,19 @@ import {GlobalValuesContext} from '../../redux/GlobalValuesContext';
 import DesigneratCartIndexScreen from '../../screens/cart/DesigneratCartIndexScreen';
 import {icons} from '../../constants/images';
 import ExpoHomeScreen from '../../screens/home/ExpoHomeScreen';
+import IorderHomeScreen from '../../screens/home/IorderHomeScreen';
 import IconTabBar from '../../components/IconTabBar';
 import ContactusScreen from '../../screens/ContactusScreen';
 import PageOneScreen from '../../screens/PageOneScreen';
 import ExpoSettingsIndexScreen from '../../screens/setting/ExpoSettingsIndexScreen';
+import CategoryIndexChooseScreen from '../../screens/category/CategoryIndexChooseScreen';
+
 const MaterialTab = createMaterialBottomTabNavigator();
 const Tab = createBottomTabNavigator();
 const Stack = createStackNavigator();
 const Drawer = createDrawerNavigator();
 
-const MyExpoMainTab = () => {
+const IorderMainTab = () => {
   const {colors, cartLength} = useContext(GlobalValuesContext);
   return (
     <Tab.Navigator
@@ -47,21 +50,21 @@ const MyExpoMainTab = () => {
       labeled={true}>
       <Tab.Screen
         name="Home"
-        component={ExpoHomeScreen}
+        component={IorderHomeScreen}
         options={() => ({
           tabBarLabel: ({focused}) => (
             <TextTabBar
-              showLabel={false}
+              showLabel={true}
               title={I18n.t('home')}
               focused={focused}
             />
           ),
           tabBarIcon: ({focused}) => (
             <IconTabBar
-              type={'antdesign'}
+              type={'material'}
               name={'home'}
               focused={focused}
-              showLabel={false}
+              showLabel={true}
             />
           ),
           tabBarVisible: true,
@@ -82,7 +85,7 @@ const MyExpoMainTab = () => {
         options={({route}) => ({
           tabBarLabel: ({focused}) => (
             <TextTabBar
-              showLabel={false}
+              showLabel={true}
               title={I18n.t('cart')}
               focused={focused}
             />
@@ -103,11 +106,11 @@ const MyExpoMainTab = () => {
       />
       <Tab.Screen
         name="CategoryTab"
-        component={PageOneScreen}
+        component={CategoryIndexChooseScreen}
         options={({}) => ({
           tabBarLabel: ({focused}) => (
             <TextTabBar
-              showLabel={false}
+              showLabel={true}
               title={I18n.t('sections')}
               focused={focused}
             />
@@ -127,7 +130,7 @@ const MyExpoMainTab = () => {
         options={() => ({
           tabBarLabel: ({focused}) => (
             <TextTabBar
-              showLabel={false}
+              showLabel={true}
               title={I18n.t('my_account')}
               focused={focused}
             />
@@ -143,7 +146,7 @@ const MyExpoMainTab = () => {
         options={() => ({
           tabBarLabel: ({focused}) => (
             <TextTabBar
-              showLabel={false}
+              showLabel={true}
               title={I18n.t('contactus')}
               focused={focused}
             />
@@ -161,4 +164,4 @@ const MyExpoMainTab = () => {
   );
 };
 
-export default MyExpoMainTab;
+export default IorderMainTab;

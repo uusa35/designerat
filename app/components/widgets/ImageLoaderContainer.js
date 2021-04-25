@@ -14,8 +14,11 @@ const ImageLoaderContainer = ({img, style, resizeMode = 'stretch'}) => {
       source={
         imageLoading
           ? images.loading
-          : // : {uri: img ? img : logo, cache: 'force-cache'}
-            {uri: img ? img : logo}
+          : {
+              uri: img ? img : logo,
+              priority: FastImage.priority.high,
+              cache: FastImage.cacheControl.immutable,
+            }
       }
       onLoadEnd={() => setImageLoading(false)}
       style={[

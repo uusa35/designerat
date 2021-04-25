@@ -10,6 +10,7 @@ import ProductWidget from './../product/ProductWidget';
 import {GlobalValuesContext} from '../../../redux/GlobalValuesContext';
 import {rightHorizontalContentInset} from '../../../constants/sizes';
 import {useDispatch, useSelector} from 'react-redux';
+import ProductNormalWidget from './ProductNormalWidget';
 
 const ProductHorizontalWidget = ({
   elements,
@@ -77,7 +78,7 @@ const ProductHorizontalWidget = ({
             contentInset={{right: rightHorizontalContentInset}}
             style={widgetStyles.wrapper}>
             {map(elements, (c, i) => (
-              <ProductWidget
+              <ProductNormalWidget
                 element={c}
                 showName={showName}
                 key={i}

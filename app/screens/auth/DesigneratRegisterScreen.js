@@ -8,11 +8,6 @@ import validate from 'validate.js';
 import DesigneratRegisterFormWidget from '../../components/widgets/user/DesigneratRegisterFormWidget';
 
 const DesigneratRegisterScreen = () => {
-  const [userCountryId, setUserCountryId] = useState('');
-  // const [visible, setVisible] = useState(false);
-  // const {goBack, navigate, dangerouslyGetParent} = useNavigation();
-  // const parent = dangerouslyGetParent();
-
   return (
     <BgContainer showImage={false}>
       <DesigneratRegisterFormWidget />

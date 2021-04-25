@@ -14,6 +14,8 @@ const appUrl = () => {
       return 'https://designeraat.com/';
     case 'MYEXPO':
       return 'http://myexpo.live/';
+    case 'IORDER':
+      return 'http://iorder.iads-kw.com/';
     case 'ABATI':
       return 'http://abatiapp.com/';
     default:

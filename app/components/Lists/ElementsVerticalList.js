@@ -565,9 +565,6 @@ const ElementsVerticalList = ({
         ListFooterComponentStyle={{
           marginBottom: showFooter ? bottomContentInset : 0,
         }}
-        ListHeaderComponentStyle={{
-          backgroundColor: 'white',
-        }}
         ListHeaderComponent={() => renderHeader()}
       />
       <SortByModal

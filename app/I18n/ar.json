@@ -775,7 +775,24 @@
   "for_more_information_contact_administration" : "لمزيد من المعلومات او الاستفسارات يرجى التواصل مع الإدارة على الارقام المبينة بصفحة اتصل بنا",
   "DESIGNERAAT" : "ديزينرات",
   "panorama" : "بانوراما ٣٦٠",
-  "agree_on_polices" : "الموافقة على سياسة ديزينرات"
+  "agree_on_polices" : "الموافقة على سياسة ديزينرات",
+  "designerat_app" :  {
+    "celebrities" : "المشاهير",
+    "elites" : "النخبة",
+    "designers" : "ديزاينرات"
+  },
+  "add_banner" : "إضافه خلفية (بانر)",
+  "open" : "فتح",
+  "stores" : "متاجر",
+  "iorder" : {
+    "product_categories" : "أقسام المنتجات",
+    "user_categories" : "أقسام المتاجر",
+    "participated_stores" : "المتاجر المشاركة",
+    "small_business" : "المشاريع الصغيرة",
+    "recentest_products" : "أحدث المنتجات المضافة",
+    "on_sale_products" : "تنزيلات",
+    "stores" : "المتاجر"
+  }
 
 
 }

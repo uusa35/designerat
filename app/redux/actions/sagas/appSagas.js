@@ -13,7 +13,8 @@ import {
 } from './settingSagas';
 import {designeratBootStrap} from './designerat/appSagas';
 import {expoBootStrap} from './expo/appSagas';
-import {DESIGNERAT, EXPO} from './../../../../app.json';
+import {DESIGNERAT, EXPO, IORDER} from './../../../../app.json';
+import {iorderBootStrap} from './iorder/appSagas';
 
 export function* startAppBootStrap() {
   try {
@@ -25,6 +26,8 @@ export function* startAppBootStrap() {
         yield call(expoBootStrap);
       } else if (DESIGNERAT) {
         yield call(designeratBootStrap);
+      } else if (IORDER) {
+        yield call(iorderBootStrap);
       }
     }
   } catch (e) {

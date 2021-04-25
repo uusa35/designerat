@@ -80,7 +80,7 @@ const ProductInfoWidgetBtns = ({
   );
 };
 
-export default ProductInfoWidgetBtns;
+export default React.memo(ProductInfoWidgetBtns);
 
 ProductInfoWidgetBtns.propTypes = {
   element: PropTypes.object.isRequired,

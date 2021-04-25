@@ -20,7 +20,7 @@ import {
 import {Button, Icon, Badge} from 'react-native-elements';
 import I18n from './../../I18n';
 import {changeLang, refetchHomeElements} from '../../redux/actions';
-import {APP_CASE} from './../../../app';
+import {APP_CASE, DESIGNERAT} from './../../../app';
 import {reAuthenticate, setRole, submitAuth} from '../../redux/actions/user';
 import BgContainer from '../../components/containers/BgContainer';
 import CopyRightInfo from '../../components/widgets/setting/CopyRightInfo';
@@ -140,9 +140,9 @@ const DesigneratSettingsIndexScreen = ({navigation}) => {
             marginTop: '5%',
             width: '100%',
           }}>
-          {!guest && (
+          {!guest && DESIGNERAT && (
             <>
-              {auth.role && !auth.role.isClient && (
+              {auth.role && !auth.role.isClient && auth.access_dashboard && (
                 <>
                   <Pressable
                     style={{
@@ -222,6 +222,13 @@ const DesigneratSettingsIndexScreen = ({navigation}) => {
                   ]}>
                   {I18n.t('my_orders')}
                 </Text>
+                {auth.orders.length > 0 && (
+                  <Badge
+                    value={auth.orders.length}
+                    containerStyle={{position: 'relative', top: 0, left: -30}}
+                    badgeStyle={{backgroundColor: colors.btn_bg_theme_color}}
+                  />
+                )}
               </Pressable>
               <Pressable
                 style={{

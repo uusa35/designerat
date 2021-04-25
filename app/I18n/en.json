@@ -739,7 +739,25 @@
   "statistics" : "Statistics",
   "for_more_information_contact_administration" : "For more information. please find our mobile numbers and whatsapp on contact us page.",
   "panorama" : "Panorama 360 View",
-  "agree_on_polices" : "Agree on our policy."
+  "agree_on_polices" : "Agree on our policy.",
+  "designerat_app" :  {
+    "celebrities" : "Famous Designerat",
+    "elites" : "Elites Designerat",
+    "designers" : "Designerat"
+  },
+  "add_banner" : "Add Banner",
+  "open" : "Open",
+  "stores" : "Stores",
+  "iorder" : {
+    "iorder" : "أي اوردر",
+    "product_categories" : "Product Sections",
+    "user_categories" : "Stores Sections",
+    "participated_stores" : "Participated Stores",
+    "small_business" : "Small Business",
+    "recentest_products" : "Recentest Products",
+    "on_sale_products" : "On Sale",
+    "stores" : "Stores"
+  }
 
 }
 
