@@ -20,6 +20,7 @@ import IconTabBar from '../../components/IconTabBar';
 import ContactusScreen from '../../screens/ContactusScreen';
 import PageOneScreen from '../../screens/PageOneScreen';
 import ExpoSettingsIndexScreen from '../../screens/setting/ExpoSettingsIndexScreen';
+import CategoryIndexCollapseScreen from '../../screens/category/CategoryIndexCollapseScreen';
 const MaterialTab = createMaterialBottomTabNavigator();
 const Tab = createBottomTabNavigator();
 const Stack = createStackNavigator();
@@ -88,11 +89,7 @@ const MyExpoMainTab = () => {
             />
           ),
           tabBarIcon: ({focused}) => (
-            <IconTabBar
-              focused={focused}
-              name="cart-arrow-down"
-              type="font-awesome"
-            />
+            <IconTabBar focused={focused} name="shopping-cart" type="feather" />
           ),
           tabBarBadge: cartLength ? cartLength : null,
           tabBarBadgeStyle: {
@@ -103,7 +100,7 @@ const MyExpoMainTab = () => {
       />
       <Tab.Screen
         name="CategoryTab"
-        component={PageOneScreen}
+        component={CategoryIndexCollapseScreen}
         options={({}) => ({
           tabBarLabel: ({focused}) => (
             <TextTabBar
@@ -113,11 +110,7 @@ const MyExpoMainTab = () => {
             />
           ),
           tabBarIcon: ({focused}) => (
-            <IconTabBar
-              focused={focused}
-              name="layers"
-              type="simplelineicons"
-            />
+            <IconTabBar focused={focused} name="appstore1" type="antdesign" />
           ),
         })}
       />

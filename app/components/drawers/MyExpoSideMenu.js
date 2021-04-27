@@ -20,6 +20,7 @@ import {TabActions, DrawerActions} from '@react-navigation/native';
 import {changeLang} from '../../redux/actions';
 import {logout} from '../../redux/actions/user';
 import PropTypes from 'prop-types';
+import {icons} from '../../constants/images';
 
 const MyExpoSideMenu = ({showLogo = true, navigation}) => {
   const settings = useSelector((state) => state.settings);
@@ -64,7 +65,7 @@ const MyExpoSideMenu = ({showLogo = true, navigation}) => {
           </View>
           {showLogo ? (
             <FastImage
-              source={{uri: logo}}
+              source={{uri: settings.app_logo}}
               style={styles.logo}
               resizeMode="contain"
               loadingIndicatorSource={{uri: logo}}
@@ -96,11 +97,10 @@ const MyExpoSideMenu = ({showLogo = true, navigation}) => {
                   borderBottomColor: colors.btn_bg_theme_color,
                 },
               ]}>
-              <Icon
-                name="home"
-                type="antdesign"
-                size={iconSizes.smaller}
-                color={colors.footer_theme_color}
+              <FastImage
+                source={icons.homeTwo}
+                style={{width: 25, height: 25}}
+                tintColor={colors.footer_theme_color}
               />
               <Text
                 style={[styles.titleStyle, {color: colors.footer_theme_color}]}>
@@ -174,11 +174,10 @@ const MyExpoSideMenu = ({showLogo = true, navigation}) => {
                     borderBottomColor: colors.btn_bg_theme_color,
                   },
                 ]}>
-                <Icon
-                  name="login"
-                  type="antdesign"
-                  size={iconSizes.smaller}
-                  color={colors.footer_theme_color}
+                <FastImage
+                  source={icons.userThree}
+                  style={{width: iconSizes.smaller, height: iconSizes.smaller}}
+                  tintColor={colors.footer_theme_color}
                 />
                 <Text
                   style={[
@@ -224,11 +223,10 @@ const MyExpoSideMenu = ({showLogo = true, navigation}) => {
                   borderBottomColor: colors.btn_bg_theme_color,
                 },
               ]}>
-              <Icon
-                name="perm-phone-msg"
-                type="material"
-                size={iconSizes.smaller}
-                color={colors.footer_theme_color}
+              <FastImage
+                source={icons.contactus}
+                style={{width: iconSizes.smaller, height: iconSizes.smaller}}
+                tintColor={colors.footer_theme_color}
               />
               <Text
                 style={[styles.titleStyle, {color: colors.footer_theme_color}]}>
@@ -245,11 +243,10 @@ const MyExpoSideMenu = ({showLogo = true, navigation}) => {
                     borderBottomColor: colors.btn_bg_theme_color,
                   },
                 ]}>
-                <Icon
-                  name="book-open"
-                  type="simple-line-icon"
-                  size={iconSizes.smaller}
-                  color={colors.footer_theme_color}
+                <FastImage
+                  source={icons.info}
+                  style={{width: iconSizes.smaller, height: iconSizes.smaller}}
+                  tintColor={colors.footer_theme_color}
                 />
                 <Text
                   style={[
@@ -270,11 +267,10 @@ const MyExpoSideMenu = ({showLogo = true, navigation}) => {
                     borderBottomColor: colors.btn_bg_theme_color,
                   },
                 ]}>
-                <Icon
-                  name="handshake-o"
-                  type="font-awesome"
-                  size={iconSizes.smaller}
-                  color={colors.footer_theme_color}
+                <FastImage
+                  source={icons.policy}
+                  style={{width: iconSizes.smaller, height: iconSizes.smaller}}
+                  tintColor={colors.footer_theme_color}
                 />
                 <Text
                   style={[
@@ -301,11 +297,10 @@ const MyExpoSideMenu = ({showLogo = true, navigation}) => {
                     borderBottomColor: colors.btn_bg_theme_color,
                   },
                 ]}>
-                <Icon
-                  name="image"
-                  type="entypo"
-                  size={iconSizes.smaller}
-                  color={colors.footer_theme_color}
+                <FastImage
+                  source={icons.homeTwo}
+                  style={{width: iconSizes.smaller, height: iconSizes.smaller}}
+                  tintColor={colors.footer_theme_color}
                 />
                 <Text
                   style={[
@@ -350,11 +345,10 @@ const MyExpoSideMenu = ({showLogo = true, navigation}) => {
                   borderBottomColor: colors.btn_bg_theme_color,
                 },
               ]}>
-              <Icon
-                name="language"
-                type="fontawesome"
-                size={iconSizes.smaller}
-                color={colors.footer_theme_color}
+              <FastImage
+                source={icons.globeTwo}
+                style={{width: 25, height: 25}}
+                tintColor={colors.footer_theme_color}
               />
               <Text
                 style={[styles.titleStyle, {color: colors.footer_theme_color}]}>

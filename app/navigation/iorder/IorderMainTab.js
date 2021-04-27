@@ -21,7 +21,8 @@ import IconTabBar from '../../components/IconTabBar';
 import ContactusScreen from '../../screens/ContactusScreen';
 import PageOneScreen from '../../screens/PageOneScreen';
 import ExpoSettingsIndexScreen from '../../screens/setting/ExpoSettingsIndexScreen';
-import CategoryIndexChooseScreen from '../../screens/category/CategoryIndexChooseScreen';
+import CategoryIndexCollapseScreen from '../../screens/category/CategoryIndexCollapseScreen';
+import {iconSizes} from '../../constants/sizes';
 
 const MaterialTab = createMaterialBottomTabNavigator();
 const Tab = createBottomTabNavigator();
@@ -60,11 +61,13 @@ const IorderMainTab = () => {
             />
           ),
           tabBarIcon: ({focused}) => (
-            <IconTabBar
-              type={'material'}
-              name={'home'}
-              focused={focused}
-              showLabel={true}
+            <FastImage
+              source={icons.homeThree}
+              style={{width: iconSizes.smaller, height: iconSizes.smaller}}
+              tintColor={
+                focused ? colors.btn_bg_theme_color : colors.footer_theme_color
+              }
+              resizeMode="contain"
             />
           ),
           tabBarVisible: true,
@@ -91,10 +94,13 @@ const IorderMainTab = () => {
             />
           ),
           tabBarIcon: ({focused}) => (
-            <IconTabBar
-              focused={focused}
-              name="cart-arrow-down"
-              type="font-awesome"
+            <FastImage
+              source={icons.cartFive}
+              style={{width: iconSizes.smaller, height: iconSizes.smaller}}
+              tintColor={
+                focused ? colors.btn_bg_theme_color : colors.footer_theme_color
+              }
+              resizeMode="contain"
             />
           ),
           tabBarBadge: cartLength ? cartLength : null,
@@ -106,7 +112,7 @@ const IorderMainTab = () => {
       />
       <Tab.Screen
         name="CategoryTab"
-        component={CategoryIndexChooseScreen}
+        component={CategoryIndexCollapseScreen}
         options={({}) => ({
           tabBarLabel: ({focused}) => (
             <TextTabBar
@@ -116,10 +122,13 @@ const IorderMainTab = () => {
             />
           ),
           tabBarIcon: ({focused}) => (
-            <IconTabBar
-              focused={focused}
-              name="layers"
-              type="simplelineicons"
+            <FastImage
+              source={icons.categoriesSecond}
+              style={{width: iconSizes.smaller, height: iconSizes.smaller}}
+              tintColor={
+                focused ? colors.btn_bg_theme_color : colors.footer_theme_color
+              }
+              resizeMode="contain"
             />
           ),
         })}
@@ -136,7 +145,14 @@ const IorderMainTab = () => {
             />
           ),
           tabBarIcon: ({focused}) => (
-            <IconTabBar focused={focused} name="user" type="antdesign" />
+            <FastImage
+              source={icons.userThree}
+              style={{width: iconSizes.smaller, height: iconSizes.smaller}}
+              tintColor={
+                focused ? colors.btn_bg_theme_color : colors.footer_theme_color
+              }
+              resizeMode="contain"
+            />
           ),
         })}
       />
@@ -152,10 +168,13 @@ const IorderMainTab = () => {
             />
           ),
           tabBarIcon: ({focused}) => (
-            <IconTabBar
-              focused={focused}
-              name="perm-phone-msg"
-              type="material"
+            <FastImage
+              source={icons.contactus}
+              style={{width: iconSizes.smaller, height: iconSizes.smaller}}
+              tintColor={
+                focused ? colors.btn_bg_theme_color : colors.footer_theme_color
+              }
+              resizeMode="contain"
             />
           ),
         })}

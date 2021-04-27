@@ -64,7 +64,7 @@ const AbatiSideMenu = ({showLogo = true, navigation}) => {
           </View>
           {showLogo ? (
             <FastImage
-              source={{uri: logo}}
+              source={{uri: settings.app_logo}}
               style={styles.logo}
               resizeMode="contain"
               loadingIndicatorSource={{uri: logo}}

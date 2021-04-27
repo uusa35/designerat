@@ -13,7 +13,8 @@ import {useDispatch, useSelector} from 'react-redux';
 import LoadingView from '../Loading/LoadingView';
 import {GlobalValuesContext} from '../../redux/GlobalValuesContext';
 import OneSignal from 'react-native-onesignal';
-import {DESIGNERAT_ONE_SIGNAL_APP_ID, APP_CASE} from '../../../app.json';
+import {APP_CASE} from '../../../app.json';
+import {oneSignalId} from '../../env';
 import {getPathForDeepLinking} from '../../helpers';
 import I18n from './../../I18n';
 import {
@@ -73,7 +74,7 @@ const BgContainer = ({
     });
     AppState.addEventListener('change', handleAppStateChange);
     /* O N E S I G N A L   S E T U P */
-    OneSignal.setAppId(DESIGNERAT_ONE_SIGNAL_APP_ID);
+    OneSignal.setAppId(oneSignalId);
     OneSignal.setLogLevel(6, 0);
     OneSignal.setRequiresUserPrivacyConsent(false);
     if (isIOS) {

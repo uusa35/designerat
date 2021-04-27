@@ -4,6 +4,9 @@ import {
   pusherEnabled,
   DESIGNERAT_PUSHER_ID,
   DESIGNERAT_PUSHER_KEY,
+  EXPO_ONE_SIGNAL_APP_ID,
+  DESIGNERAT_ONE_SIGNAL_APP_ID,
+  ABATI_ONE_SIGNAL_APP_ID,
 } from '../app';
 import Pusher from 'pusher-js/react-native';
 const isLocal = __DEV__;
@@ -41,4 +44,15 @@ if (__DEV__) {
   Pusher.logToConsole = pusherEnabled;
 }
 const channel = pusher.subscribe('my-channel');
-export {appUrlIos, appUrlAndroid, isLocal, channel};
+const oneSignalAppId = () => {
+  switch (APP_CASE) {
+    case 'DESIGNERAT':
+      return DESIGNERAT_PUSHER_ID;
+    case 'MYEXPO':
+      return EXPO_ONE_SIGNAL_APP_ID;
+    case 'ABATI':
+      return ABATI_ONE_SIGNAL_APP_ID;
+  }
+};
+const oneSignalId = oneSignalAppId();
+export {appUrlIos, appUrlAndroid, isLocal, channel, oneSignalId};

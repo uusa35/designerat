@@ -350,6 +350,7 @@ export const iconSizes = {
   tiny: 10,
   smallest: 15,
   smaller: 25,
+  xsmall: 27,
   small: 30,
   medium: 40,
   large: 50,
@@ -363,7 +364,7 @@ export const getFont = () => {
     case 'DESIGNERAAT':
       return isRTL ? FIRST_AR_FONT : FIFTH_EN_FONT;
     case 'IORDER':
-      return isRTL ? SEVENTH_AR_FONT : THIRD_EN_FONT;
+      return isRTL ? FIRST_AR_FONT : FIFTH_EN_FONT;
     case 'ABATI':
       return isRTL ? SEVENTH_AR_FONT : FIFTH_EN_FONT;
     case 'EXPO':
@@ -380,7 +381,8 @@ export const text = {
   small: 12,
   medium: 15,
   large: 20,
-  xlarge: 25,
+  larger: 25,
+  xlarge: 30,
   bold: 'bold',
   font: getFont(),
 };

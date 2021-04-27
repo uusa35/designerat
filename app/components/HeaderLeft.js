@@ -14,6 +14,8 @@ import {
 import {useDispatch, useSelector} from 'react-redux';
 import {EXPO} from '../../app';
 import {useNavigation} from '@react-navigation/native';
+import FastImage from 'react-native-fast-image';
+import {icons} from '../constants/images';
 
 export const HeaderLeft = ({
   showCart = false,
@@ -75,6 +77,12 @@ export const HeaderLeft = ({
             underlayColor="transparent"
             hitSlop={{top: 10, bottom: 10, left: 10, right: 10}}
             color={colors.footer_theme_color}
+          />
+          <FastImage
+            source={icons.cart}
+            style={{width: 30, height: 30}}
+            hitSlop={{top: 10, bottom: 10, left: 10, right: 10}}
+            tintColor={colors.footer_theme_color}
           />
           {cartLength > 0 ? (
             <Badge

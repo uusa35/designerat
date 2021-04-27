@@ -2,7 +2,7 @@
  * Created by usamaahmed on 9/28/17.
  */
 import React, {useContext, useMemo, useState} from 'react';
-import {StyleSheet, TouchableOpacity, View} from 'react-native';
+import {Pressable, StyleSheet, TouchableOpacity, View} from 'react-native';
 import {
   hideCountryModal,
   showClassifiedFilter,
@@ -21,6 +21,8 @@ import ImageLoaderContainer from './widgets/ImageLoaderContainer';
 import {isIOS} from '../constants';
 import {GlobalValuesContext} from '../redux/GlobalValuesContext';
 import {useNavigation, useRoute} from '@react-navigation/native';
+import {icons} from '../constants/images';
+import FastImage from 'react-native-fast-image';
 
 export const HeaderRight = ({
   showCountry = false,
@@ -177,15 +179,20 @@ export const HeaderRight = ({
       )}
       {showCart && (
         <View>
-          <Icon
+          <Pressable
             onPress={() => navigation.navigate('CartTab')}
-            name="shoppingcart"
-            type="antdesign"
-            size={iconSizes.small}
-            underlayColor="transparent"
-            hitSlop={{top: 15, bottom: 15, left: 15, right: 15}}
-            color={colors.footer_theme_color}
-          />
+            hitSlop={{
+              top: iconSizes.smaller,
+              bottom: iconSizes.smaller,
+              left: iconSizes.smaller,
+              right: iconSizes.smaller,
+            }}>
+            <FastImage
+              source={icons.cart}
+              style={{width: iconSizes.small, height: iconSizes.small}}
+              tintColor={colors.footer_theme_color}
+            />
+          </Pressable>
           {cartLength > 0 ? (
             <Badge
               status="error"

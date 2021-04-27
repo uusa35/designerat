@@ -1,18 +1,13 @@
 import React, {useState, useMemo} from 'react';
-import {StyleSheet, FlatList, View, ScrollView} from 'react-native';
-import {connect, useSelector} from 'react-redux';
+import {StyleSheet, FlatList} from 'react-native';
+import {useSelector} from 'react-redux';
 import PropTypes from 'prop-types';
 import {text} from '../../constants/sizes';
-import ChooseCategoryItem from '../../components/widgets/category/ChooseCategoryItem';
 import {filter} from 'lodash';
+import CategoryCollapseWidget from '../../components/widgets/category/CategoryCollapseWidget';
 
-const CategoryIndexChooseScreen = () => {
+const CategoryIndexCollapseScreen = () => {
   const {categories} = useSelector((state) => state);
-  const [classifiedCategories, setClassifiedCategories] = useState([]);
-
-  useMemo(() => {
-    setClassifiedCategories(filter(categories, (c) => c.is_classified));
-  }, [categories]);
 
   return (
     <FlatList
@@ -21,16 +16,20 @@ const CategoryIndexChooseScreen = () => {
       showsHorizontalScrollIndicator={false}
       showsVerticalScrollIndicator={false}
       keyExtractor={(item, index) => index.toString()}
-      data={classifiedCategories}
-      renderItem={({item}) => (
-        <ChooseCategoryItem category={item} key={item.id} />
+      data={categories}
+      renderItem={({item, index}) => (
+        <CategoryCollapseWidget
+          category={item}
+          key={item.id}
+          collapsed={index === 0}
+        />
       )}
       contentInset={{bottom: 200}}
     />
   );
 };
 
-export default CategoryIndexChooseScreen;
+export default CategoryIndexCollapseScreen;
 
 const styles = StyleSheet.create({
   container: {
