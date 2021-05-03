@@ -4,7 +4,7 @@ import {useSelector} from 'react-redux';
 import PropTypes from 'prop-types';
 
 const PageFourScreen = () => {
-  const {brands} = useSelector((state) => state);
+  const {brands} = useSelector(state => state);
   return (
     <View>
       <Text>Test 3 Screen</Text>

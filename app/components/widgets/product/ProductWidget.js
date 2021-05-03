@@ -41,7 +41,7 @@ const ProductWidget = ({
   const {currency_symbol, exchange_rate, colors} = useContext(
     GlobalValuesContext,
   );
-  const {token, guest} = useSelector((state) => state);
+  const {token, guest} = useSelector(state => state);
   const dispatch = useDispatch();
 
   return (

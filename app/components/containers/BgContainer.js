@@ -1,4 +1,4 @@
-import React, {useState, useMemo, useContext, useEffect} from 'react';
+import React, {useState, useMemo, useContext, useEffect, Fragment} from 'react';
 import {
   AppState,
   ImageBackground,
@@ -27,6 +27,10 @@ import {useRoute} from '@react-navigation/native';
 import moment from 'moment';
 import analytics from '@react-native-firebase/analytics';
 import {isIOS} from '../../constants';
+import validate from 'validate.js';
+import AlertMessage from '../AlertMessage';
+import ProductFilterModal from '../../screens/product/ProductFilterModal';
+import {useNetInfo} from '@react-native-community/netinfo';
 
 const BgContainer = ({
   children,
@@ -39,22 +43,22 @@ const BgContainer = ({
   const {
     bootStrapped,
     isLoading,
-    isConnected,
     isLoadingContent,
     isLoadingProfile,
     isLoadingBoxedList,
     deviceId,
-  } = useSelector((state) => state);
+    message,
+  } = useSelector(state => state);
   const {mainBg, colors} = useContext(GlobalValuesContext);
   const [currentLoading, setCurrentLoading] = useState(
     isLoading || isLoadingProfile || isLoadingContent || isLoadingBoxedList,
   );
   const [bg, setBg] = useState();
   const [appState, setAppState] = useState(AppState.currentState);
-
   const [device, setDevice] = useState('');
   const dispatch = useDispatch();
   const route = useRoute();
+  const {isConnected} = useNetInfo();
 
   useMemo(() => {
     setBg(!showImage ? images.whiteBg : mainBg.includes('.') ? mainBg : img);
@@ -78,13 +82,13 @@ const BgContainer = ({
     OneSignal.setLogLevel(6, 0);
     OneSignal.setRequiresUserPrivacyConsent(false);
     if (isIOS) {
-      OneSignal.promptForPushNotificationsWithUserResponse((response) => {
+      OneSignal.promptForPushNotificationsWithUserResponse(response => {
         // console.log('Prompt response:', response);
       }, []);
     }
     /* O N E S I G N A L  H A N D L E R S */
     OneSignal.setNotificationWillShowInForegroundHandler(
-      (notificationReceivedEvent) => {
+      notificationReceivedEvent => {
         let notification = notificationReceivedEvent.getNotification();
         const url = notification.payload
           ? notification.payload.launchURL
@@ -114,7 +118,7 @@ const BgContainer = ({
         );
       },
     );
-    OneSignal.setNotificationOpenedHandler((notification) => {
+    OneSignal.setNotificationOpenedHandler(notification => {
       const url = notification.payload
         ? notification.payload.launchURL
         : notification.notification.launchURL;
@@ -154,13 +158,13 @@ const BgContainer = ({
     // };
   }, [bootStrapped, appState]);
 
-  const handleOpenURL = (event) => {
+  const handleOpenURL = event => {
     const {type, id} = getPathForDeepLinking(event.url);
     dispatch(setDeepLinking({type, id}));
     return dispatch(goDeepLinking({type, id}));
   };
 
-  const handleAppStateChange = (nextAppState) => {
+  const handleAppStateChange = nextAppState => {
     if (appState.match(/inactive|background/) && nextAppState === 'active') {
       // console.log('active');
     }
@@ -190,6 +194,12 @@ const BgContainer = ({
           {children}
         </View>
       )}
+      {!validate.isEmpty(message) &&
+        message.visible &&
+        validate.isString(message.content) &&
+        isConnected &&
+        bootStrapped && <AlertMessage message={message} />}
+      {bootStrapped && <ProductFilterModal />}
     </ImageBackground>
   );
 };

@@ -98,7 +98,7 @@ const HomeKeySearchTab = ({
       ) : (
         <TabView
           lazy={true}
-          renderTabBar={(props) => (
+          renderTabBar={props => (
             <TabBar
               {...props}
               tabStyle={{backgroundColor: 'transparent'}}
@@ -129,7 +129,7 @@ const HomeKeySearchTab = ({
           }}
           renderScene={renderScene}
           style={{backgroundColor: 'transparent'}}
-          onIndexChange={(i) => setIndex(i)}
+          onIndexChange={i => setIndex(i)}
           initialLayout={{width: width}}
         />
       )}

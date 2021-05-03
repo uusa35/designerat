@@ -32,7 +32,7 @@ const ShopperImageProfile = ({
   navigation,
 }) => {
   const {colors} = useContext(GlobalValuesContext);
-  const {guest} = useSelector((state) => state);
+  const {guest} = useSelector(state => state);
   const dispatch = useDispatch();
   const [rating, setRating] = useState(currentRating);
   const [fanMe, setFanMe] = useState(isFanned);
@@ -40,7 +40,7 @@ const ShopperImageProfile = ({
   const {navigate} = navigation;
 
   const handleRating = useCallback(
-    (rating) => {
+    rating => {
       if (rating !== currentRating) {
         return dispatch(rateUser({value: rating, member_id}));
       }
@@ -49,7 +49,7 @@ const ShopperImageProfile = ({
   );
 
   const handleFan = useCallback(
-    (fanMe) => {
+    fanMe => {
       fanMe ? setFans(fans + 1) : setFans(fans - 1);
       setFanMe(fanMe);
       return dispatch(becomeFan({id: member_id, fanMe}));
@@ -164,7 +164,7 @@ const ShopperImageProfile = ({
               count={10}
               ratingCount={5}
               style={{paddingVertical: 0}}
-              onFinishRating={(rating) => handleRating(rating)}
+              onFinishRating={rating => handleRating(rating)}
               imageSize={20}
             />
           ) : null}

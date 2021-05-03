@@ -9,7 +9,7 @@ const MyExpoMainDrawer = () => {
   return (
     <Drawer.Navigator
       initialRouteName="Home"
-      drawerContent={(props) => <MyExpoSideMenu {...props} showLogo={true} />}>
+      drawerContent={props => <MyExpoSideMenu {...props} showLogo={true} />}>
       <Drawer.Screen name="HomeStack" component={MyExpoHomeStack} />
     </Drawer.Navigator>
   );

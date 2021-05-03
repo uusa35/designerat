@@ -8,7 +8,7 @@ import {useSelector} from 'react-redux';
 import {GlobalValuesContext} from '../../../redux/GlobalValuesContext';
 
 const DesigeratCartPriceSummary = ({title = I18n.t('total_details')}) => {
-  const {shipmentFees, shipmentCountry, coupon} = useSelector((state) => state);
+  const {shipmentFees, shipmentCountry, coupon} = useSelector(state => state);
   const {
     total,
     grossTotal,

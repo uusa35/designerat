@@ -20,7 +20,7 @@ import DesigneratBtn from '../Button/DesigneratBtn';
 const OrderWidget = ({element}) => {
   const {colors, logo} = useContext(GlobalValuesContext);
 
-  const writeToClipboard = (text) => {
+  const writeToClipboard = text => {
     Clipboard.setString(text);
     alert(I18n.t('shipment_copied'));
   };

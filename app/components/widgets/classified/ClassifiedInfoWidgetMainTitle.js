@@ -20,7 +20,7 @@ const ClassifiedInfoWidgetMainTitle = ({element, editMode = false}) => {
   const {colors, exchange_rate, currency_symbol, logo} = useContext(
     GlobalValuesContext,
   );
-  const {token, guest} = useSelector((state) => state);
+  const {token, guest} = useSelector(state => state);
   const [favorite, setFavorite] = useState(element.isFavorite);
   const {navigate} = navigation;
 

@@ -23,7 +23,7 @@ export const bottomVerticalContentInset = 200;
 export const bottomContentInset = 200;
 export const TheHold = 0.5;
 export const productWidget = {
-  DESIGNERAAT: {
+  DESIGNERAT: {
     smaller: {
       width: 120,
       height: 220,
@@ -41,7 +41,7 @@ export const productWidget = {
       height: 373,
     },
   },
-  IORDER: {
+  ISTORES: {
     smaller: {
       width: 120,
       height: 220,
@@ -122,7 +122,7 @@ export const productWidget = {
 };
 
 export const userWidget = {
-  DESIGNERAAT: {
+  DESIGNERAT: {
     xsmall: {
       width: 80,
       height: 80,
@@ -145,7 +145,7 @@ export const userWidget = {
     },
     radius: 5,
   },
-  IORDER: {
+  ISTORES: {
     xsmall: {
       width: 80,
       height: 80,
@@ -241,7 +241,7 @@ export const userWidget = {
 };
 
 export const categoryWidget = {
-  DESIGNERAAT: {
+  DESIGNERAT: {
     small: {
       width: 80,
       height: 80,
@@ -255,7 +255,7 @@ export const categoryWidget = {
       height: 200,
     },
   },
-  IORDER: {
+  ISTORES: {
     small: {
       width: 80,
       height: 80,
@@ -361,9 +361,9 @@ export const iconSizes = {
 
 export const getFont = () => {
   switch (APP_CASE) {
-    case 'DESIGNERAAT':
+    case 'DESIGNERAT':
       return isRTL ? FIRST_AR_FONT : FIFTH_EN_FONT;
-    case 'IORDER':
+    case 'ISTORES':
       return isRTL ? FIRST_AR_FONT : FIFTH_EN_FONT;
     case 'ABATI':
       return isRTL ? SEVENTH_AR_FONT : FIFTH_EN_FONT;
@@ -388,7 +388,7 @@ export const text = {
 };
 
 export const formWidget = {
-  DESIGNERAAT: {
+  DESIGNERAT: {
     smaller: {
       width: 120,
       height: 50,
@@ -407,7 +407,7 @@ export const formWidget = {
     },
     inputRadius: 4,
   },
-  IORDER: {
+  ISTORES: {
     smaller: {
       width: 120,
       height: 50,

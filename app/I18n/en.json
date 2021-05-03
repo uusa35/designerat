@@ -520,6 +520,7 @@
   "added_from" : "added",
   "latest_products" : "Latest Products",
   "best_sale_products" : "Best Sale Products",
+  "choosen_products" : "Choosen Products",
   "on_sale_products" : "Sale",
   "hot_deals_products" : "Hot Deals",
   "mallr" : {
@@ -729,7 +730,7 @@
   "product_description" : "Product Description",
   "product_saved_successfully" : "Product added successfully.",
   "DESIGNERAT" : "DESIGNERAAT",
-  "DESIGNERAAT" : "DESIGNERAAT",
+  "DESIGNERAT" : "DESIGNERAAT",
   "resend_code" : "Resend Mobile Verification Code",
   "verification_code_sent_successfully" : "Mobile Verification code resent successfully.",
   "be_first_who_rates" : "Be first who rate with us",
@@ -748,8 +749,8 @@
   "add_banner" : "Add Banner",
   "open" : "Open",
   "stores" : "Stores",
-  "iorder" : {
-    "iorder" : "أي اوردر",
+  "istores" : {
+    "iorders" : "I-Stores",
     "product_categories" : "Product Sections",
     "user_categories" : "Stores Sections",
     "participated_stores" : "Participated Stores",

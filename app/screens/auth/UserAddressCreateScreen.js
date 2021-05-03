@@ -17,7 +17,7 @@ const UserAddressCreateScreen = ({showLabel = true}) => {
   const navigation = useNavigation();
   const dispatch = useDispatch();
   const {colors} = useContext(GlobalValuesContext);
-  const {shipmentCountry} = useSelector((state) => state);
+  const {shipmentCountry} = useSelector(state => state);
   const [addName, setAddName] = useState(null);
   const [addContent, setAddContent] = useState(null);
   const [addArea, setAddArea] = useState(null);
@@ -52,7 +52,7 @@ const UserAddressCreateScreen = ({showLabel = true}) => {
             ]}
             shake={true}
             keyboardType="default"
-            onChangeText={(text) => setAddName(text)}
+            onChangeText={text => setAddName(text)}
           />
           <Input
             placeholder={I18n.t('full_name')}
@@ -66,7 +66,7 @@ const UserAddressCreateScreen = ({showLabel = true}) => {
             ]}
             shake={true}
             keyboardType="default"
-            onChangeText={(text) => setAddContent(text)}
+            onChangeText={text => setAddContent(text)}
           />
 
           <Input
@@ -81,7 +81,7 @@ const UserAddressCreateScreen = ({showLabel = true}) => {
             ]}
             shake={true}
             keyboardType="default"
-            onChangeText={(text) => setAddArea(text)}
+            onChangeText={text => setAddArea(text)}
           />
           <Input
             placeholder={I18n.t('block')}
@@ -95,7 +95,7 @@ const UserAddressCreateScreen = ({showLabel = true}) => {
             ]}
             shake={true}
             keyboardType="numeric"
-            onChangeText={(text) => setAddBlock(convertNumberToEnglish(text))}
+            onChangeText={text => setAddBlock(convertNumberToEnglish(text))}
           />
 
           <Input
@@ -110,7 +110,7 @@ const UserAddressCreateScreen = ({showLabel = true}) => {
             ]}
             shake={true}
             keyboardType="default"
-            onChangeText={(text) => setAddStreet(text)}
+            onChangeText={text => setAddStreet(text)}
           />
 
           <Input
@@ -125,9 +125,7 @@ const UserAddressCreateScreen = ({showLabel = true}) => {
             ]}
             shake={true}
             keyboardType="numeric"
-            onChangeText={(text) =>
-              setAddBuilding(convertNumberToEnglish(text))
-            }
+            onChangeText={text => setAddBuilding(convertNumberToEnglish(text))}
           />
           <DesigneratBtn
             handleClick={() =>

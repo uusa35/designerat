@@ -108,7 +108,7 @@ const DesigneratMobileConfirmationScreen = () => {
             keyboardType="numeric"
             blurOnSubmit={false}
             style={styles.textInput}
-            onChangeText={(text) => setCodeFirst(text)}
+            onChangeText={text => setCodeFirst(text)}
             maxLength={1}
           />
           <TextInput
@@ -116,7 +116,7 @@ const DesigneratMobileConfirmationScreen = () => {
             blurOnSubmit={false}
             ref={secondTextInput}
             style={styles.textInput}
-            onChangeText={(text) => setCodeSecond(text)}
+            onChangeText={text => setCodeSecond(text)}
             maxLength={1}
           />
           <TextInput
@@ -124,7 +124,7 @@ const DesigneratMobileConfirmationScreen = () => {
             blurOnSubmit={false}
             ref={thirdTextInput}
             style={styles.textInput}
-            onChangeText={(text) => setCodeThird(text)}
+            onChangeText={text => setCodeThird(text)}
             maxLength={1}
           />
           <TextInput
@@ -132,7 +132,7 @@ const DesigneratMobileConfirmationScreen = () => {
             blurOnSubmit={false}
             ref={forthTextInput}
             style={styles.textInput}
-            onChangeText={(text) => setCodeForth(text)}
+            onChangeText={text => setCodeForth(text)}
             maxLength={1}
           />
         </View>

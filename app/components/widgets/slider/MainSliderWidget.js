@@ -9,7 +9,7 @@ import {isEmpty} from 'lodash';
 import PropTypes from 'prop-types';
 
 const MainSliderWidget = ({elements}) => {
-  const {colors} = useSelector((state) => state.settings);
+  const {colors} = useSelector(state => state.settings);
 
   return (
     <Fragment>

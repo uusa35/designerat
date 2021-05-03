@@ -28,7 +28,7 @@ import {width} from '../../constants';
 import {reAuthenticate} from '../../redux/actions/user';
 
 const MallrAccountScreen = ({navigation}) => {
-  const {guest, auth, settings} = useSelector((state) => state);
+  const {guest, auth, settings} = useSelector(state => state);
   const {colors, pages, logo} = settings;
   const dispatch = useDispatch();
   const [refresh, setRefresh] = useState(false);

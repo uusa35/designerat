@@ -25,7 +25,7 @@ import BgContainer from '../../../components/containers/BgContainer';
 
 const DesignerShowScreen = ({navigation}) => {
   const {designer, comments, commentModal, searchParams, guest} = useSelector(
-    (state) => state,
+    state => state,
   );
   const {colors, logo} = useContext(GlobalValuesContext);
   const dispatch = useDispatch();
@@ -138,7 +138,7 @@ const DesignerShowScreen = ({navigation}) => {
             )}
             <TabView
               lazy={true}
-              renderTabBar={(props) => (
+              renderTabBar={props => (
                 <TabBar
                   {...props}
                   // tabStyle={{ backgroundColor: 'white'}}
@@ -201,7 +201,7 @@ const DesignerShowScreen = ({navigation}) => {
                 ),
               })}
               style={{marginTop: 10, backgroundColor: 'white'}}
-              onIndexChange={(i) => setIndex(i)}
+              onIndexChange={i => setIndex(i)}
               initialLayout={{width: width}}
             />
           </TriggeringView>

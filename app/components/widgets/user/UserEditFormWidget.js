@@ -38,7 +38,7 @@ import DesigneratBtn from '../Button/DesigneratBtn';
 
 const UserEditFormWidget = ({showIcon = true}) => {
   const {colors, logo} = useContext(GlobalValuesContext);
-  const {token, auth, playerId, country} = useSelector((state) => state);
+  const {token, auth, playerId, country} = useSelector(state => state);
   const [name, setName] = useState(auth.name);
   const [email, setEmail] = useState(auth.email);
   const [mobile, setMobile] = useState(auth.mobile);
@@ -72,7 +72,7 @@ const UserEditFormWidget = ({showIcon = true}) => {
       freeStyleCropEnabled: true,
       includeBase64: true,
       includeExif: true,
-    }).then((image) => {
+    }).then(image => {
       setImage(image);
       setSampleLogo(image.path);
     });
@@ -132,7 +132,7 @@ const UserEditFormWidget = ({showIcon = true}) => {
           shake={true}
           keyboardType="default"
           defaultValue={name ? name : null}
-          onChangeText={(text) => setName(text)}
+          onChangeText={text => setName(text)}
           placeholder={name ? name : I18n.t('name')}
           label={I18n.t('name')}
         />
@@ -146,7 +146,7 @@ const UserEditFormWidget = ({showIcon = true}) => {
           shake={true}
           keyboardType="email-address"
           defaultValue={email ? email : null}
-          onChangeText={(text) => setEmail(text)}
+          onChangeText={text => setEmail(text)}
           placeholder={email ? email : I18n.t('email')}
           label={I18n.t('email')}
         />
@@ -160,7 +160,7 @@ const UserEditFormWidget = ({showIcon = true}) => {
           shake={true}
           keyboardType="number-pad"
           defaultValue={mobile ? mobile : null}
-          onChangeText={(text) => setMobile(text)}
+          onChangeText={text => setMobile(text)}
           placeholder={mobile ? mobile : I18n.t('mobile')}
           label={I18n.t('mobile')}
         />
@@ -202,7 +202,7 @@ const UserEditFormWidget = ({showIcon = true}) => {
           shake={true}
           keyboardType="default"
           defaultValue={description}
-          onChangeText={(text) => setDescription(text)}
+          onChangeText={text => setDescription(text)}
           label={I18n.t('description')}
           placeholder={I18n.t('description')}
         />

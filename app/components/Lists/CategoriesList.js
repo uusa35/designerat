@@ -26,7 +26,7 @@ const CategoriesList = ({
   showBtn = false,
   showName,
 }) => {
-  const {country} = useSelector((state) => state);
+  const {country} = useSelector(state => state);
   const dispatch = useDispatch();
   const {goBack} = useNavigation();
   const [refresh, setRefresh] = useState(false);
@@ -40,7 +40,7 @@ const CategoriesList = ({
 
   useEffect(() => {}, [elements]);
 
-  const handleClick = (c) => {
+  const handleClick = c => {
     switch (type) {
       case 'product':
         dispatch(

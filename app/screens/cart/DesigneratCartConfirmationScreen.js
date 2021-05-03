@@ -22,7 +22,7 @@ const DesigneratCartConfirmationScreen = () => {
     auth,
     guest,
     coupon,
-  } = useSelector((state) => state);
+  } = useSelector(state => state);
   const {grossTotal, colors} = useContext(GlobalValuesContext);
   const navigation = useNavigation();
 

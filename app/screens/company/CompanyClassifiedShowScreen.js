@@ -25,7 +25,7 @@ import ElementsHorizontalList from '../../components/Lists/ElementsHorizontalLis
 
 const CompanyClassifiedShowScreen = () => {
   const {company, comments, commentModal, searchParams} = useSelector(
-    (state) => state,
+    state => state,
   );
   const {colors, guest, logo} = useContext(GlobalValuesContext);
   const dispatch = useDispatch();
@@ -52,7 +52,7 @@ const CompanyClassifiedShowScreen = () => {
   useMemo(() => {
     if (!validate.isEmpty(company.classifieds)) {
       const categories = uniqBy(
-        map(company.classifieds, (c) => c.category),
+        map(company.classifieds, c => c.category),
         'id',
       );
       setCollectedCategories(categories);
@@ -124,7 +124,7 @@ const CompanyClassifiedShowScreen = () => {
           )}
           <TabView
             lazy={true}
-            renderTabBar={(props) => (
+            renderTabBar={props => (
               <TabBar
                 {...props}
                 // tabStyle={{ backgroundColor: 'white'}}
@@ -186,7 +186,7 @@ const CompanyClassifiedShowScreen = () => {
               ),
             })}
             style={{marginTop: 10, backgroundColor: 'white'}}
-            onIndexChange={(i) => setIndex(i)}
+            onIndexChange={i => setIndex(i)}
             initialLayout={{width: width}}
           />
         </TriggeringView>

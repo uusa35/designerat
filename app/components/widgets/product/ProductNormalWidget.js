@@ -21,7 +21,7 @@ import ImageLoaderContainer from '../ImageLoaderContainer';
 const ProductNormalWidget = ({
   element,
   showName = false,
-  handleClickProductNormalWidget,
+  handleClickProductWidget,
   width = '48%',
 }) => {
   const {currency_symbol, exchange_rate, colors} = useContext(
@@ -33,7 +33,7 @@ const ProductNormalWidget = ({
       activeOpacity={touchOpacity}
       key={element.id}
       style={[widgetStyles.productServiceWidget, {width: width}]}
-      onPress={() => handleClickProductNormalWidget(element)}>
+      onPress={() => handleClickProductWidget(element)}>
       <ImageBackground
         source={images.loading}
         style={{height: 240, width: '100%'}}>
@@ -64,6 +64,7 @@ const ProductNormalWidget = ({
             paddingLeft: 10,
             alignItems: 'flex-start',
             justifyContent: 'center',
+            marginBottom: 15,
           }}>
           <View
             style={{
@@ -121,7 +122,7 @@ export default React.memo(ProductNormalWidget);
 
 ProductNormalWidget.propTypes = {
   element: PropTypes.object.isRequired,
-  handleClickProductNormalWidget: PropTypes.func.isRequired,
+  handleClickProductWidget: PropTypes.func.isRequired,
   exchange_rate: PropTypes.number,
   currency_symbol: PropTypes.string,
   showName: PropTypes.bool,

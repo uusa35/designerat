@@ -322,7 +322,7 @@ const CartListConfirmationScreen = ({
               }}
               shake={true}
               keyboardType="default"
-              onChangeText={(name) => setName(name)}
+              onChangeText={name => setName(name)}
             />
             <Input
               editable={editMode}
@@ -342,7 +342,7 @@ const CartListConfirmationScreen = ({
               }}
               shake={true}
               keyboardType="email-address"
-              onChangeText={(email) => setEmail(email)}
+              onChangeText={email => setEmail(email)}
             />
             <Input
               editable={editMode}
@@ -363,7 +363,7 @@ const CartListConfirmationScreen = ({
               }}
               shake={true}
               keyboardType="number-pad"
-              onChangeText={(mobile) => setMobile(mobile)}
+              onChangeText={mobile => setMobile(mobile)}
             />
             <TouchableOpacity
               onPress={() => {
@@ -411,7 +411,7 @@ const CartListConfirmationScreen = ({
                 }}
                 shake={true}
                 keyboardType="default"
-                onChangeText={(area) => setArea(area)}
+                onChangeText={area => setArea(area)}
               />
             ) : null}
             <Input
@@ -435,7 +435,7 @@ const CartListConfirmationScreen = ({
               numberOfLines={3}
               shake={true}
               keyboardType="default"
-              onChangeText={(address) => setAddress(address)}
+              onChangeText={address => setAddress(address)}
             />
             <Input
               spellCheck={true}
@@ -459,7 +459,7 @@ const CartListConfirmationScreen = ({
               keyboardType="default"
               multiline={true}
               numberOfLines={3}
-              onChangeText={(notes) => setNotes(notes)}
+              onChangeText={notes => setNotes(notes)}
             />
             {!discount > 0 && editMode ? (
               <View

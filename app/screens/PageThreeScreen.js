@@ -9,7 +9,7 @@ import BgContainer from '../components/containers/BgContainer';
 import {getSearchCompanies} from '../redux/actions/user';
 
 const PageThreeScreen = () => {
-  const {companies, country} = useSelector((state) => state);
+  const {companies, country} = useSelector(state => state);
   const dispatch = useDispatch();
   const [currentElements, setCurrentElements] = useState([]);
 

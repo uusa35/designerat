@@ -25,9 +25,9 @@ const ProductCategoryHorizontalRoundedWidget = ({
 }) => {
   const navigation = useNavigation();
   const dispatch = useDispatch();
-  const {country} = useSelector((state) => state);
+  const {country} = useSelector(state => state);
   const {colors} = useContext(GlobalValuesContext);
-  const handleClick = useCallback((c) => {
+  const handleClick = useCallback(c => {
     return dispatch(
       getSearchProducts({
         name: c.name,

@@ -8,7 +8,7 @@ import {useDispatch, useSelector} from 'react-redux';
 
 const ProductWidgetQtyBtns = ({qty, requestQty = 0, setRequestQty}) => {
   const dispatch = useDispatch();
-  const {colors} = useSelector((state) => state.settings);
+  const {colors} = useSelector(state => state.settings);
 
   return (
     <View

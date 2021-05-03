@@ -20,7 +20,7 @@ import {useNavigation} from '@react-navigation/native';
 const CommentsList = ({elements, model, id}) => {
   const {navigate} = useNavigation();
   const [refresh, setRefresh] = useState(false);
-  const {guest} = useSelector((state) => state);
+  const {guest} = useSelector(state => state);
   const dispatch = useDispatch();
 
   useMemo(() => {

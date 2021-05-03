@@ -12,7 +12,7 @@ import {useSelector} from 'react-redux';
 
 const HeaderCustom = ({navigation}) => {
   const params = navigation.route.params;
-  const {settings} = useSelector((state) => state);
+  const {settings} = useSelector(state => state);
   const [downloadTitleMessage, setDownloadTitleMessage] = useState('');
   const [androidMessage, setAndroidMessage] = useState('');
   const [iphoneMessage, setIphoneMessage] = useState('');
@@ -43,7 +43,7 @@ const HeaderCustom = ({navigation}) => {
     );
   }, []);
 
-  const shareLink = (link) => {
+  const shareLink = link => {
     return Share.open({
       title: I18n.t('share_file', {name: I18n.t(APP_CASE)}),
       url: link,
@@ -51,8 +51,8 @@ const HeaderCustom = ({navigation}) => {
       message: `${downloadTitleMessage} ${androidMessage} ${iphoneMessage} ${shareMessage}`,
       // subject: I18n.t('share_title', {name: I18n.t(APP_CASE)}),
     })
-      .then((res) => {})
-      .catch((err) => {});
+      .then(res => {})
+      .catch(err => {});
   };
   return (
     <View style={styles.container}>

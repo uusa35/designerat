@@ -6,7 +6,7 @@ import I18n from './../../I18n';
 import {useNavigation} from '@react-navigation/native';
 
 const StatisiticIndexScreen = () => {
-  const {auth} = useSelector((state) => state);
+  const {auth} = useSelector(state => state);
   const navigation = useNavigation();
   return (
     <View style={[widgetStyles.panelContent, {padding: 20}]}>

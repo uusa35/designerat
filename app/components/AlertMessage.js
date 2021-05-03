@@ -12,7 +12,7 @@ import {iconSizes} from './../constants/sizes';
 const AlertMessage = () => {
   const dispatch = useDispatch();
   const [messageVisible, setMessageVisible] = useState(false);
-  const {message} = useSelector((state) => state);
+  const {message} = useSelector(state => state);
   const styles = {
     container: {
       opacity: 0.9,

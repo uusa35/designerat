@@ -56,7 +56,7 @@ export function* getBestSaleProducts(action) {
       yield put({type: actions.SET_BEST_SALE_PRODUCTS, payload: []});
     }
   } catch (e) {
-    yield call(enableErrorMessage, I18n.t('no_best_sale_products'));
+    // yield call(enableErrorMessage, I18n.t('no_best_sale_products'));
   }
 }
 

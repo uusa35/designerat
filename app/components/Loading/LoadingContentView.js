@@ -10,7 +10,7 @@ import {useSelector} from 'react-redux';
 import Modal from 'react-native-modal';
 
 const LoadingContentView = () => {
-  const {isLoadingContent} = useSelector((state) => state);
+  const {isLoadingContent} = useSelector(state => state);
   return (
     <Modal
       visible={isLoadingContent}

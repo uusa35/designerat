@@ -17,7 +17,7 @@ import ProductHorizontalWidget from '../../components/widgets/product/ProductHor
 import validate from 'validate.js';
 import BrandHorizontalWidget from '../../components/widgets/brand/BrandHorizontalWidget';
 
-const IorderHomeScreen = () => {
+const IstoresHomeScreen = () => {
   const {
     homeCategories,
     homeUserCategories,
@@ -27,6 +27,9 @@ const IorderHomeScreen = () => {
     homeDesigners,
     homeCelebrities,
     homeProducts,
+    bestSaleProducts,
+    latestProducts,
+    hotDealsProducts,
     homeCompanies,
     splashes,
     show_commercials,
@@ -35,7 +38,7 @@ const IorderHomeScreen = () => {
     mainBg,
     country,
     settings,
-  } = useSelector((state) => state);
+  } = useSelector(state => state);
   const dispatch = useDispatch();
 
   const handleRefresh = () => dispatch(refetchHomeElements());
@@ -85,29 +88,29 @@ const IorderHomeScreen = () => {
           <CompanyCategoryHorizontalWidget
             elements={homeUserCategories}
             showName={true}
-            title={I18n.t('iorder.user_categories')}
+            title={I18n.t('istores.user_categories')}
             type="companies"
           />
         )}
         <ExpoDesignerHorizontalWidget
           elements={homeDesigners}
           showName={true}
-          name={I18n.t('iorder.participated_stores')}
-          title={I18n.t('iorder.participated_stores')}
+          name={I18n.t('istores.participated_stores')}
+          title={I18n.t('istores.participated_stores')}
           searchElements={{is_designer: 1, country_id: country.id}}
         />
         <ExpoDesignerHorizontalWidget
           elements={homeCompanies}
           showName={true}
-          name={I18n.t('iorder.small_business')}
-          title={I18n.t('iorder.small_business')}
+          name={I18n.t('istores.small_business')}
+          title={I18n.t('istores.small_business')}
           searchElements={{is_company: 1, country_id: country.id}}
         />
         {homeCategories && (
           <ProductCategoryHorizontalRoundedWidget
             elements={homeCategories}
             showName={true}
-            title={I18n.t('iorder.product_categories')}
+            title={I18n.t('istores.product_categories')}
             type="products"
           />
         )}
@@ -115,16 +118,29 @@ const IorderHomeScreen = () => {
           <ProductHorizontalWidget
             elements={homeProducts}
             showName={true}
-            title={I18n.t('iorder.recentest_products')}
-            searchParams={{on_home: 1, country_id: country.id, on_sale: 1}}
+            title={I18n.t('choosen_products')}
+            searchParams={{on_home: 1, country_id: country.id}}
           />
         )}
-        {homeProducts && (
+        {latestProducts && (
           <ProductHorizontalWidget
-            elements={homeProducts}
+            elements={latestProducts}
             showName={true}
-            title={I18n.t('iorder.on_sale_products')}
-            searchParams={{on_home: 1, country_id: country.id, on_sale: 1}}
+            title={I18n.t('recentest_products')}
+            searchParams={{on_home: 1, country_id: country.id}}
+          />
+        )}
+        {hotDealsProducts && (
+          <ProductHorizontalWidget
+            elements={hotDealsProducts}
+            showName={true}
+            title={I18n.t('hot_deals_products')}
+            searchParams={{
+              on_home: 1,
+              country_id: country.id,
+              on_sale: 1,
+              hot_deal: 1,
+            }}
           />
         )}
         {/*<ExpoHomeScreenBtns />*/}
@@ -133,7 +149,7 @@ const IorderHomeScreen = () => {
   );
 };
 
-export default IorderHomeScreen;
+export default IstoresHomeScreen;
 
 const styles = StyleSheet.create({
   safeContainer: {

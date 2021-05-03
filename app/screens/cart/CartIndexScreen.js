@@ -17,7 +17,7 @@ import KeyBoardContainer from '../../components/containers/KeyBoardContainer';
 import {useNavigation} from '@react-navigation/native';
 const CartIndexScreen = () => {
   const {cart, country, shipmentFees, settings, coupon, area} = useSelector(
-    (state) => state,
+    state => state,
   );
   const {grossTotal, colors} = useContext(GlobalValuesContext);
   const navigation = useNavigation();

@@ -18,7 +18,7 @@ import VideosVerticalWidget from '../../components/widgets/video/VideosVerticalW
 import KeyBoardContainer from '../../components/containers/KeyBoardContainer';
 
 const TransparentProductShowScreen = ({navigation}) => {
-  const {product, settings, products, token} = useSelector((state) => state);
+  const {product, settings, products, token} = useSelector(state => state);
   const {phone, shipment_prices, size_chart, mobile} = settings;
   const dispatch = useDispatch();
   const [refresh, setRefresh] = useState(false);

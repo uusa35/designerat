@@ -19,7 +19,7 @@ import {themeColors} from '../../constants/colors';
 import ConfirmationModal from '../../components/ConfirmationModal';
 
 const UserAddressIndexScreen = () => {
-  const {auth, address} = useSelector((state) => state);
+  const {auth, address} = useSelector(state => state);
   const {colors} = useContext(GlobalValuesContext);
   const dispatch = useDispatch();
   const navigation = useNavigation();

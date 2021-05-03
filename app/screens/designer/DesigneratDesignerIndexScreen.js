@@ -5,7 +5,7 @@ import BgContainer from '../../components/containers/BgContainer';
 import ElementsHorizontalList from '../../components/Lists/ElementsHorizontalList';
 
 const DesigneratDesignerIndexScreen = () => {
-  const {designers, searchParams} = useSelector((state) => state);
+  const {designers, searchParams} = useSelector(state => state);
   const [currentSearchParams, setCurrentSearchParams] = useState({});
   const [currentElements, setCurrentElements] = useState([]);
 

@@ -9,7 +9,7 @@ import {ABATI} from './../../../app';
 import I18n from './../../I18n';
 import widgetStyles from '../../components/widgets/widgetStyles';
 const FavoriteProductIndexScreen = () => {
-  const {productFavorites} = useSelector((state) => state);
+  const {productFavorites} = useSelector(state => state);
   const [currentElements, setCurrentElements] = useState(productFavorites);
 
   useEffect(() => {

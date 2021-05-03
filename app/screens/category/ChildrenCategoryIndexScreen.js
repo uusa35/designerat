@@ -6,7 +6,7 @@ import CommercialSliderWidget from '../../components/widgets/CommercialSliderWid
 import validate from 'validate.js';
 
 const ChildrenCategoryIndexScreen = ({navigation}) => {
-  const {commercials, settings, subCategory} = useSelector((state) => state);
+  const {commercials, settings, subCategory} = useSelector(state => state);
   const {show_commercials} = settings;
   const dispatch = useDispatch();
 

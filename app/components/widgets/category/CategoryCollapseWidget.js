@@ -24,10 +24,10 @@ const CategoryCollapseWidget = ({
   collapsed = false,
 }) => {
   const dispatch = useDispatch();
-  const {country} = useSelector((state) => state);
+  const {country} = useSelector(state => state);
   const {colors} = useContext(GlobalValuesContext);
 
-  const handleClick = (c) => {
+  const handleClick = c => {
     switch (type) {
       case 'product':
         return dispatch(

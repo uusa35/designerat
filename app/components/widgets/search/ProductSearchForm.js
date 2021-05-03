@@ -42,7 +42,7 @@ const ProductSearchForm = ({showBtn = false}) => {
           paddingLeft: 15,
           borderColor: '#E4E4E5',
         }}
-        onChangeText={(text) => setSearch(text)}
+        onChangeText={text => setSearch(text)}
       />
       {showBtn && (
         <DesigneratBtn

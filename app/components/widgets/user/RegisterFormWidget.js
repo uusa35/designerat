@@ -32,7 +32,7 @@ import KeyBoardContainer from '../../containers/KeyBoardContainer';
 
 const RegisterFormWidget = () => {
   const {colors, logo} = useContext(GlobalValuesContext);
-  const {country, playerId, role, roles} = useSelector((state) => state);
+  const {country, playerId, role, roles} = useSelector(state => state);
   const dispatch = useDispatch();
   const [name, setName] = useState('');
   const [email, setEmail] = useState('');
@@ -57,7 +57,7 @@ const RegisterFormWidget = () => {
       storageOptions: {
         skipBackup: true,
       },
-    }).then((image) => {
+    }).then(image => {
       setImage(image);
       // setSampleLogo(image.path);
     });
@@ -78,12 +78,12 @@ const RegisterFormWidget = () => {
       storageOptions: {
         skipBackup: true,
       },
-    }).then((images) => {
+    }).then(images => {
       setImages(images);
     });
   };
 
-  const removeImage = (i) => {
+  const removeImage = i => {
     const newImages = remove(images, (img, index) => i !== index);
     setImages(newImages);
   };
@@ -104,7 +104,7 @@ const RegisterFormWidget = () => {
           images,
           role_id: role.id,
         })
-        .then((r) => {
+        .then(r => {
           // ImagePicker.clean()
           //   .then(() => {
           // console.log('removed all tmp images from tmp directory');
@@ -126,11 +126,11 @@ const RegisterFormWidget = () => {
               images,
               role_id: role
                 ? role.id
-                : first(filter(roles, (r) => r.isCompany)).id,
+                : first(filter(roles, r => r.isCompany)).id,
             }),
           );
         })
-        .catch((e) => {
+        .catch(e => {
           const {message, item} = first(e.errors);
           return dispatch(
             enableErrorMessage(
@@ -149,7 +149,7 @@ const RegisterFormWidget = () => {
           address,
           player_id: playerId,
           description,
-          role_id: role ? role.id : first(filter(roles, (r) => r.isClient)).id,
+          role_id: role ? role.id : first(filter(roles, r => r.isClient)).id,
         }),
       );
     }
@@ -211,7 +211,7 @@ const RegisterFormWidget = () => {
         }}
         shake={true}
         keyboardType="default"
-        onChangeText={(text) => setName(text)}
+        onChangeText={text => setName(text)}
       />
       <Input
         placeholder={I18n.t('password')}
@@ -236,7 +236,7 @@ const RegisterFormWidget = () => {
         ]}
         shake={true}
         keyboardType="default"
-        onChangeText={(text) => setPassword(text)}
+        onChangeText={text => setPassword(text)}
         leftIcon={() => (
           <Icon name="lock" type="evilicon" size={iconSizes.smaller} />
         )}
@@ -264,7 +264,7 @@ const RegisterFormWidget = () => {
         ]}
         shake={true}
         keyboardType="email-address"
-        onChangeText={(text) => setEmail(text)}
+        onChangeText={text => setEmail(text)}
         leftIcon={() => (
           <Icon name="envelope" type="evilicon" size={iconSizes.smaller} />
         )}
@@ -297,7 +297,7 @@ const RegisterFormWidget = () => {
         ]}
         shake={true}
         keyboardType="number-pad"
-        onChangeText={(text) => setMobile(text)}
+        onChangeText={text => setMobile(text)}
       />
       <View style={{width: '100%'}}>
         <Text
@@ -362,7 +362,7 @@ const RegisterFormWidget = () => {
           {color: colors.main_theme_color, paddingBottom: 10},
         ]}
         keyboardType="default"
-        onChangeText={(text) => setAddress(text)}
+        onChangeText={text => setAddress(text)}
       />
       {!ABATI && (
         <Input
@@ -388,7 +388,7 @@ const RegisterFormWidget = () => {
             {color: colors.main_theme_color, paddingBottom: 10},
           ]}
           keyboardType="default"
-          onChangeText={(text) => setDescription(text)}
+          onChangeText={text => setDescription(text)}
         />
       )}
 

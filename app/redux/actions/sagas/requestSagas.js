@@ -159,7 +159,7 @@ export function* setCountries() {
     const countries = yield call(api.getCountries);
     if (!validate.isEmpty(countries) && validate.isArray(countries)) {
       yield put({type: actions.SET_COUNTRIES, payload: countries});
-      const localCountry = first(filter(countries, (c) => c.is_local));
+      const localCountry = first(filter(countries, c => c.is_local));
       if (!validate.isEmpty(localCountry)) {
         yield put({type: actions.SET_SHIPMENT_COUNTRY, payload: localCountry});
       }
@@ -230,7 +230,7 @@ export function* startChooseCountryScenario(action) {
         yield call(startResetStoreScenario);
       } else {
         const {countries} = yield select();
-        const country = first(filter(countries, (c) => c.is_local));
+        const country = first(filter(countries, c => c.is_local));
         yield put({type: actions.SET_COUNTRY, payload: country});
       }
     }
@@ -333,9 +333,9 @@ export function* startAddToCartScenario(action) {
       let multiMerchantEnabled = filter(
         map(
           filteredCart,
-          (e) => e.element.user_id === first(cart).element.user_id,
+          e => e.element.user_id === first(cart).element.user_id,
         ),
-        (e) => e === false,
+        e => e === false,
       );
       if (
         !settings.multiCartMerchant &&
@@ -382,7 +382,7 @@ export function* setTotalCartValue(cart) {
       const {settings} = yield select();
       const total = sumBy(
         cart,
-        (i) =>
+        i =>
           (i.element.finalPrice + (i.wrapGift ? settings.gift_fee : 0)) * i.qty,
       );
       const {coupon} = yield select();
@@ -405,7 +405,7 @@ export function* setGrossTotalCartValue(values) {
   try {
     const {total, coupon, cart} = values;
     const {shipmentCountry} = yield select();
-    const countPieces = sumBy(cart, (i) => i.qty);
+    const countPieces = sumBy(cart, i => i.qty);
     if (__DEV__) {
       // console.log('the total', total);
     }
@@ -436,7 +436,7 @@ export function* setGrossTotalCartValue(values) {
 export function* startRemoveFromCartScenario(action) {
   try {
     const {cart} = yield select();
-    const filteredCart = remove(cart, (item) =>
+    const filteredCart = remove(cart, item =>
       item.type === 'product'
         ? item.cart_id !== action.payload
         : item.service_id !== action.payload,
@@ -469,9 +469,9 @@ export function* startRemoveFromCartScenario(action) {
 
 export function* filterCartAndItems([cart, action]) {
   try {
-    let directPurchaseCart = filter(cart, (e) => e.directPurchase);
+    let directPurchaseCart = filter(cart, e => e.directPurchase);
     if (directPurchaseCart.length === 0) {
-      let cleanCart = map(cart, (e) => {
+      let cleanCart = map(cart, e => {
         // check if cart_id is available (means this product has_attributes true)
         // if same product but different qty update the cart
         if (e.type == 'product') {
@@ -495,10 +495,10 @@ export function* filterCartAndItems([cart, action]) {
       return filteredCart;
     } else {
       if (action.payload.directPurchase) {
-        const filteredCart = [last(filter(cart, (e) => e.directPurchase))];
+        const filteredCart = [last(filter(cart, e => e.directPurchase))];
         return filteredCart;
       } else {
-        const filteredCart = filter(cart, (e) => !e.directPurchase);
+        const filteredCart = filter(cart, e => !e.directPurchase);
         return filteredCart;
       }
     }

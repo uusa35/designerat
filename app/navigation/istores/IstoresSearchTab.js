@@ -25,7 +25,7 @@ import {text} from '../../constants/sizes';
 
 const Tab = createMaterialTopTabNavigator();
 
-const IorderSearchTab = () => {
+const IstoresSearchTab = () => {
   const {colors, cartLength} = useContext(GlobalValuesContext);
   return (
     <Tab.Navigator
@@ -68,7 +68,7 @@ const IorderSearchTab = () => {
         name="PageThree"
         component={PageThreeScreen}
         options={() => ({
-          tabBarLabel: I18n.t('iorder.stores'),
+          tabBarLabel: I18n.t('istores.stores'),
           tabBarIcon: <IconTabBar focused={true} name="shop" type="entypo" />,
         })}
       />
@@ -76,4 +76,4 @@ const IorderSearchTab = () => {
   );
 };
 
-export default IorderSearchTab;
+export default IstoresSearchTab;

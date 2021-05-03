@@ -1,3 +1,4 @@
+import {name} from './../app.json';
 const configs = {
   screens: {
     Home: {
@@ -21,7 +22,7 @@ const configs = {
   },
 };
 const linking = {
-  prefix: 'designerat://',
+  prefix: `${name}://`,
   configs,
 };
 

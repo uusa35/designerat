@@ -20,7 +20,7 @@ import {EXPO, APP_CASE} from './../../../app';
 import {useNavigation} from '@react-navigation/native';
 
 const NormalProductShowScreen = () => {
-  const {product, token, settings, products} = useSelector((state) => state);
+  const {product, token, settings, products} = useSelector(state => state);
   const {phone, mobile, shipment_prices, size_chart} = settings;
   const dispatch = useDispatch();
   const navigation = useNavigation();

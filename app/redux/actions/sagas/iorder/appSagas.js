@@ -31,6 +31,8 @@ import {
   startGetSizesScenario,
 } from '../settingSagas';
 import {
+  getBestSaleProducts,
+  getHotDealsProducts,
   getLatestProducts,
   getProductIndex,
   setHomeProducts,
@@ -52,11 +54,11 @@ export function* iorderBootStrap() {
       call(startAuthenticatedScenario),
       call(setDeviceId),
       call(setHomeProducts),
-      // call(getLatestProducts),
+      call(getLatestProducts),
       call(getPages),
       call(getTags),
-      // call(getVideos),
-      call(getProductIndex),
+      call(getVideos),
+      // call(getProductIndex),
       // call(getServiceIndex),
       // call(getHomeServicesScenario),
       call(setHomeSplashes),
@@ -66,8 +68,19 @@ export function* iorderBootStrap() {
       call(getHomeUserCategories, {
         payload: {on_home: 1, type: 'is_user', country_id: country.id},
       }),
-      call(setHomeProducts, {
-        payload: {on_home: 1, country_id: country.id, on_sale: 1},
+      // call(setHomeProducts, {
+      //   payload: {on_home: 1, country_id: country.id},
+      // }),
+      call(getBestSaleProducts, {
+        payload: {on_home: 1, contry_id: country.id, on_sale: 1},
+      }),
+      call(getHotDealsProducts, {
+        payload: {
+          on_home: 1,
+          contry_id: country.id,
+          on_sale: 1,
+          is_hot_deal: 1,
+        },
       }),
       call(startGetParentCategoriesScenario),
       call(startGetHomeCategoriesScenario),
@@ -90,6 +103,8 @@ export function* iorderBootStrap() {
       put({type: actions.TOGGLE_RESET_APP, payload: false}),
     ]);
     yield put({type: actions.TOGGLE_BOOTSTRAPPED, payload: true});
+  } catch (e) {
+    console.log('eee', e);
   } finally {
     yield all([call(disableLoading), call(disableLoadingBoxedList)]);
   }

@@ -44,7 +44,7 @@ import {DESIGNERAT} from '../../../../app.json';
 const DesigneratRegisterFormWidget = ({showLabel = false}) => {
   const {colors, logo} = useContext(GlobalValuesContext);
   const {country, playerId, role, roles, settings} = useSelector(
-    (state) => state,
+    state => state,
   );
   const dispatch = useDispatch();
   const navigation = useNavigation();
@@ -74,7 +74,7 @@ const DesigneratRegisterFormWidget = ({showLabel = false}) => {
       storageOptions: {
         skipBackup: true,
       },
-    }).then((image) => {
+    }).then(image => {
       setImage(image);
       // setSampleLogo(image.path);
     });
@@ -93,7 +93,7 @@ const DesigneratRegisterFormWidget = ({showLabel = false}) => {
       storageOptions: {
         skipBackup: true,
       },
-    }).then((image) => {
+    }).then(image => {
       setBanner(image);
     });
   };
@@ -115,12 +115,12 @@ const DesigneratRegisterFormWidget = ({showLabel = false}) => {
       storageOptions: {
         skipBackup: true,
       },
-    }).then((images) => {
+    }).then(images => {
       setImages(images);
     });
   };
 
-  const removeImage = (i) => {
+  const removeImage = i => {
     const newImages = remove(images, (img, index) => i !== index);
     setImages(newImages);
   };
@@ -141,7 +141,7 @@ const DesigneratRegisterFormWidget = ({showLabel = false}) => {
           images,
           role_id: role.id,
         })
-        .then((r) => {
+        .then(r => {
           // ImagePicker.clean()
           //   .then(() => {
           // console.log('removed all tmp images from tmp directory');
@@ -164,11 +164,11 @@ const DesigneratRegisterFormWidget = ({showLabel = false}) => {
               images,
               role_id: role
                 ? role.id
-                : first(filter(roles, (r) => r.isCompany)).id,
+                : first(filter(roles, r => r.isCompany)).id,
             }),
           );
         })
-        .catch((e) => {
+        .catch(e => {
           const {message, item} = first(e.errors);
           return dispatch(
             enableErrorMessage(
@@ -188,7 +188,7 @@ const DesigneratRegisterFormWidget = ({showLabel = false}) => {
           player_id: playerId,
           description,
           is_male: isMale,
-          role_id: role ? role.id : first(filter(roles, (r) => r.isClient)).id,
+          role_id: role ? role.id : first(filter(roles, r => r.isClient)).id,
         }),
       );
     }
@@ -285,7 +285,7 @@ const DesigneratRegisterFormWidget = ({showLabel = false}) => {
         ]}
         shake={true}
         keyboardType="email-address"
-        onChangeText={(text) => setEmail(text)}
+        onChangeText={text => setEmail(text)}
         leftIcon={() => (
           <Icon
             name="envelope"
@@ -311,7 +311,7 @@ const DesigneratRegisterFormWidget = ({showLabel = false}) => {
         ]}
         shake={true}
         keyboardType="default"
-        onChangeText={(text) => setPassword(text)}
+        onChangeText={text => setPassword(text)}
         leftIcon={() => (
           <Icon
             name="lock"
@@ -339,7 +339,7 @@ const DesigneratRegisterFormWidget = ({showLabel = false}) => {
         ]}
         shake={true}
         keyboardType="default"
-        onChangeText={(text) => setName(text)}
+        onChangeText={text => setName(text)}
       />
       <Input
         leftIcon={() => (
@@ -367,7 +367,7 @@ const DesigneratRegisterFormWidget = ({showLabel = false}) => {
         ]}
         shake={true}
         keyboardType="number-pad"
-        onChangeText={(text) => setMobile(convertNumberToEnglish(text))}
+        onChangeText={text => setMobile(convertNumberToEnglish(text))}
       />
 
       <DesineratRegisterFormIsMaleComponenet

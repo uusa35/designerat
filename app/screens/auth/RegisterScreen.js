@@ -8,7 +8,7 @@ import validate from 'validate.js';
 
 const RegisterScreen = ({navigation}) => {
   const [userCountryId, setUserCountryId] = useState('');
-  const {token} = useSelector((state) => state);
+  const {token} = useSelector(state => state);
   const dispatch = useDispatch();
   const {navigate} = navigation;
   // const [visible, setVisible] = useState(false);

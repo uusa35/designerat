@@ -21,10 +21,10 @@ const ProductHorizontalWidget = ({
 }) => {
   const dispatch = useDispatch();
   const {colors} = useContext(GlobalValuesContext);
-  const {token} = useSelector((state) => state);
+  const {token} = useSelector(state => state);
 
-  const handleClickProductWidget = useCallback((element) => {
-    dispatch(
+  const handleClickProductWidget = element => {
+    return dispatch(
       getProduct({
         element,
         id: element.id,
@@ -32,7 +32,7 @@ const ProductHorizontalWidget = ({
         redirect: true,
       }),
     );
-  }, []);
+  };
 
   const handleGetProducts = () =>
     dispatch(

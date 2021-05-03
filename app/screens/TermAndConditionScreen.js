@@ -9,7 +9,7 @@ import I18n from '../I18n';
 import BgContainer from '../components/containers/BgContainer';
 
 const TermAndConditionScreen = () => {
-  const {terms} = useSelector((state) => state.settings);
+  const {terms} = useSelector(state => state.settings);
   return (
     <BgContainer showImage={false} white={false}>
       <ScrollView

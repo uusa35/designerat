@@ -258,6 +258,26 @@
       "sha1": "89624adfee1770ee7c030a9d962915ea8123e2a3"
     },
     {
+      "path": "assets/icons/cart_3.png",
+      "sha1": "7ecd1b4659d53a8d3e85ee821a758ed3501e9004"
+    },
+    {
+      "path": "assets/icons/cart_4.png",
+      "sha1": "101acb81d728ffa07335b3b7e598a51bef688888"
+    },
+    {
+      "path": "assets/icons/cart_5.png",
+      "sha1": "4de52848c838c84d55a1fd86ce97b21d87bb7d32"
+    },
+    {
+      "path": "assets/icons/categories.png",
+      "sha1": "d5351eb077da5c7097bd4314ad274e642c28c9eb"
+    },
+    {
+      "path": "assets/icons/categories_2.png",
+      "sha1": "3080abd4691e38c21a4379420816c04c665318f0"
+    },
+    {
       "path": "assets/icons/category_filter.png",
       "sha1": "312342583747289ffa2241dc8e2d50e443935539"
     },
@@ -270,8 +290,32 @@
       "sha1": "c73e23e353c805f2c7de62aacd55c4f15358847f"
     },
     {
+      "path": "assets/icons/contactus.png",
+      "sha1": "61d289a84f3fbb0581ac20c9626aabf87980b5ee"
+    },
+    {
       "path": "assets/icons/designerat.png",
       "sha1": "65433480d62f02918bc7a38f24e171019f3e9873"
+    },
+    {
+      "path": "assets/icons/female.png",
+      "sha1": "205fcdde33cbd1da4385ba7b3e77bf9e3b1de0ea"
+    },
+    {
+      "path": "assets/icons/gear_2.png",
+      "sha1": "2a70e09ceb66e4aeae9124922884c24a6957b342"
+    },
+    {
+      "path": "assets/icons/gears.png",
+      "sha1": "32f9a4f3b5cac679526075500371ba273885710d"
+    },
+    {
+      "path": "assets/icons/globe.png",
+      "sha1": "efd2e535493765dcddebaecbabf1eca31864a99f"
+    },
+    {
+      "path": "assets/icons/globe_2.png",
+      "sha1": "a589bd043f0f645d242d5cd12bb63d3e9f7125c9"
     },
     {
       "path": "assets/icons/hanger.png",
@@ -282,8 +326,40 @@
       "sha1": "a7be950b2aa0ad71788825446f9b30160ad87ff6"
     },
     {
+      "path": "assets/icons/home_2.png",
+      "sha1": "00fc22412fee7b1e905264384346e0f594e62a1a"
+    },
+    {
+      "path": "assets/icons/home_3.png",
+      "sha1": "b78916de2ff05e9090c83c537688b8610f8a95a7"
+    },
+    {
+      "path": "assets/icons/home_4.png",
+      "sha1": "c67cf2893bfcf21a4bff76161797dbecb2826a3c"
+    },
+    {
+      "path": "assets/icons/home_5.png",
+      "sha1": "29f7978cf15ad6ee66817285313f93ed20a71c1e"
+    },
+    {
+      "path": "assets/icons/home_6.png",
+      "sha1": "c309184bbbc13275081689346bf3b8ef20689de9"
+    },
+    {
+      "path": "assets/icons/home_7.png",
+      "sha1": "5c0ad7941585f7b48e9a76f71053691f2ae2dd28"
+    },
+    {
       "path": "assets/icons/info.png",
       "sha1": "33fd1e4edb9439299491e67abf9f1e7ac0aec1f6"
+    },
+    {
+      "path": "assets/icons/phone.png",
+      "sha1": "09e9fe1c039b6f327757e320020a9211bcb145b2"
+    },
+    {
+      "path": "assets/icons/policy.png",
+      "sha1": "1b9306f9bd4cd5db86292931beab8310405c8000"
     },
     {
       "path": "assets/icons/profile.png",
@@ -292,6 +368,14 @@
     {
       "path": "assets/icons/user.png",
       "sha1": "b4a525a911a041f0f153b755b58a4c76f048cbd1"
+    },
+    {
+      "path": "assets/icons/user_2.png",
+      "sha1": "08fee8a030f74ec36d4789c58366d7e3910fabfe"
+    },
+    {
+      "path": "assets/icons/user_3.png",
+      "sha1": "8914f3685acd15903e871c79a0656d788e87a4c9"
     },
     {
       "path": "assets/images/cart_bg.png",

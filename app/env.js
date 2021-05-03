@@ -12,13 +12,12 @@ import Pusher from 'pusher-js/react-native';
 const isLocal = __DEV__;
 const appUrl = () => {
   switch (APP_CASE) {
-    case 'DESIGNERAAT':
-      // return 'http://mallr.test/';
+    case 'DESIGNERAT':
       return 'https://designeraat.com/';
     case 'MYEXPO':
       return 'http://myexpo.live/';
-    case 'IORDER':
-      return 'http://iorder.iads-kw.com/';
+    case 'ISTORES':
+      return 'http://i-stores.store/';
     case 'ABATI':
       return 'http://abatiapp.com/';
     default:
@@ -50,8 +49,12 @@ const oneSignalAppId = () => {
       return DESIGNERAT_PUSHER_ID;
     case 'MYEXPO':
       return EXPO_ONE_SIGNAL_APP_ID;
+    case 'ISTORES':
+      return EXPO_ONE_SIGNAL_APP_ID;
     case 'ABATI':
       return ABATI_ONE_SIGNAL_APP_ID;
+    default:
+      null;
   }
 };
 const oneSignalId = oneSignalAppId();

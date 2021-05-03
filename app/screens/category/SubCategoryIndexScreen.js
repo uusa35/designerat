@@ -6,9 +6,7 @@ import CommercialSliderWidget from '../../components/widgets/CommercialSliderWid
 import BgContainer from '../../components/containers/BgContainer';
 import validate from 'validate.js';
 const SubCategoryIndexScreen = ({navigation}) => {
-  const {category, commercials, show_commercials} = useSelector(
-    (state) => state,
-  );
+  const {category, commercials, show_commercials} = useSelector(state => state);
   const dispatch = useDispatch();
 
   useEffect(() => {

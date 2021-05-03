@@ -12,8 +12,8 @@ import {isIOS} from '../constants';
 
 export const HeaderMiddle = ({title, showLogo = false}) => {
   const route = useRoute();
-  const {app_logo, colors} = useSelector((state) => state.settings);
-  const {settings} = useSelector((state) => state);
+  const {app_logo, colors} = useSelector(state => state.settings);
+  const {settings} = useSelector(state => state);
   return (
     <View style={[styles.container, {flex: 1, maxWidth: isIOS ? 250 : 350}]}>
       {showLogo ? (

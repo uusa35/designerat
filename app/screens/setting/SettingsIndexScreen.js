@@ -30,7 +30,7 @@ import {isEmpty, first, filter} from 'lodash';
 import {width} from './../../constants';
 
 const SettingsIndexScreen = ({navigation}) => {
-  const {guest, lang, settings, version, roles} = useSelector((state) => state);
+  const {guest, lang, settings, version, roles} = useSelector(state => state);
   const {colors} = settings;
   const [refresh, setRefresh] = useState(false);
   const dispatch = useDispatch();
@@ -44,7 +44,7 @@ const SettingsIndexScreen = ({navigation}) => {
 
   const handleRegisterClick = () => {
     if (!isEmpty(roles)) {
-      dispatch(setRole(first(filter(roles, (r) => r.name === 'Client'))));
+      dispatch(setRole(first(filter(roles, r => r.name === 'Client'))));
     }
     return navigation.navigate('Register');
   };

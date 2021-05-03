@@ -13,11 +13,11 @@ import widgetStyles from '../../components/widgets/widgetStyles';
 import {themeColors} from '../../constants/colors';
 
 const RoleIndexScreen = ({navigation}) => {
-  const {roles} = useSelector((state) => state);
+  const {roles} = useSelector(state => state);
   const {colors} = useContext(GlobalValuesContext);
   const dispatch = useDispatch();
 
-  const handleClick = (r) => {
+  const handleClick = r => {
     dispatch(setRole(r));
     navigation.navigate('Register');
   };

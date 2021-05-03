@@ -31,7 +31,7 @@ import {isIOS} from '../../constants';
 
 const DesineratNormalProductShowScreen = ({showRating = true}) => {
   const {product, token, settings, products, guest} = useSelector(
-    (state) => state,
+    state => state,
   );
   const {phone, mobile, shipment_prices, size_chart, colors} = settings;
   const dispatch = useDispatch();
@@ -44,7 +44,7 @@ const DesineratNormalProductShowScreen = ({showRating = true}) => {
   const [rating, setRating] = useState(product.rating);
 
   const handleRating = useCallback(
-    (rating) => {
+    rating => {
       if (rating !== product.rating) {
         setRating(rating);
         return dispatch(rateElement({value: rating, product_id: product.id}));
@@ -163,7 +163,7 @@ const DesineratNormalProductShowScreen = ({showRating = true}) => {
               ratingCount={5}
               ratingColor={colors.btn_bg_theme_color}
               ratingBackgroundColor={'white'}
-              onFinishRating={(rating) => handleRating(rating)}
+              onFinishRating={rating => handleRating(rating)}
               imageSize={iconSizes.smaller}
             />
             <Text
@@ -276,7 +276,7 @@ const DesineratNormalProductShowScreen = ({showRating = true}) => {
                 }
               />
             ) : null}
-            {product.show_attribute && product.size_chart_image ? (
+            {product.show_size_chart && product.size_chart_image ? (
               <ProductInfoWidgetElement
                 elementName="size_chart"
                 link={() =>
@@ -319,7 +319,7 @@ const DesineratNormalProductShowScreen = ({showRating = true}) => {
         disabled={addToCartStatus}
         handleAddToCart={handleAddToCart}
       />
-      <ActionBtnWidget />
+      {/*<ActionBtnWidget />*/}
     </BgContainer>
   );
 };

@@ -33,7 +33,7 @@ const CelebrityHorizontalWidget = ({
   height = userWidget[APP_CASE].small.height,
 }) => {
   const dispatch = useDispatch();
-  const {colors} = useSelector((state) => state.settings);
+  const {colors} = useSelector(state => state.settings);
   return (
     <Fragment>
       {!isEmpty(elements) && (

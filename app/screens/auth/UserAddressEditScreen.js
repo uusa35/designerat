@@ -18,7 +18,7 @@ const UserAddressEditScreen = ({showLabel = true}) => {
   const dispatch = useDispatch();
   const route = useRoute();
   const {colors} = useContext(GlobalValuesContext);
-  const {shipmentCountry} = useSelector((state) => state);
+  const {shipmentCountry} = useSelector(state => state);
   const {
     name,
     content,
@@ -68,7 +68,7 @@ const UserAddressEditScreen = ({showLabel = true}) => {
               ]}
               shake={true}
               keyboardType="default"
-              onChangeText={(text) => setAddName(text)}
+              onChangeText={text => setAddName(text)}
             />
           )}
           <Input
@@ -84,7 +84,7 @@ const UserAddressEditScreen = ({showLabel = true}) => {
             ]}
             shake={true}
             keyboardType="default"
-            onChangeText={(text) => setAddContent(text)}
+            onChangeText={text => setAddContent(text)}
           />
 
           <Input
@@ -100,7 +100,7 @@ const UserAddressEditScreen = ({showLabel = true}) => {
             ]}
             shake={true}
             keyboardType="default"
-            onChangeText={(text) => setAddArea(text)}
+            onChangeText={text => setAddArea(text)}
           />
 
           <Input
@@ -116,7 +116,7 @@ const UserAddressEditScreen = ({showLabel = true}) => {
             ]}
             shake={true}
             keyboardType="numeric"
-            onChangeText={(text) => setAddBlock(text)}
+            onChangeText={text => setAddBlock(text)}
           />
 
           <Input
@@ -132,7 +132,7 @@ const UserAddressEditScreen = ({showLabel = true}) => {
             ]}
             shake={true}
             keyboardType="default"
-            onChangeText={(text) => setAddStreet(text)}
+            onChangeText={text => setAddStreet(text)}
           />
 
           <Input
@@ -148,7 +148,7 @@ const UserAddressEditScreen = ({showLabel = true}) => {
             label={showLabel ? I18n.t('building_or_house') : null}
             shake={true}
             keyboardType="default"
-            onChangeText={(text) => setAddBuilding(text)}
+            onChangeText={text => setAddBuilding(text)}
           />
           <DesigneratBtn
             handleClick={() =>

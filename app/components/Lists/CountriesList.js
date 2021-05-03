@@ -17,10 +17,10 @@ import {shuffle, first} from 'lodash';
 import {themeColors} from '../../constants/colors';
 
 const CountriesList = () => {
-  const {countryModal, country, countries} = useSelector((state) => state);
+  const {countryModal, country, countries} = useSelector(state => state);
   const dispatch = useDispatch();
 
-  const handleClick = (c) => {
+  const handleClick = c => {
     // if (c.id !== country.id) {
     dispatch(chooseCountry({country: c, redirect: false}));
     // }

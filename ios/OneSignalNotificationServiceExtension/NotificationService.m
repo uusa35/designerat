@@ -1,5 +1,4 @@
 #import <OneSignal/OneSignal.h>
-
 #import "NotificationService.h"
 
 @interface NotificationService ()

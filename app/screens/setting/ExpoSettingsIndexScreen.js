@@ -35,7 +35,7 @@ import {adjustColor} from '../../helpers';
 import {REGISTER_AS_CLIENT} from '../../redux/actions/types';
 
 const DesigneratSettingsIndexScreen = ({navigation}) => {
-  const {guest, settings, version, auth, lang} = useSelector((state) => state);
+  const {guest, settings, version, auth, lang} = useSelector(state => state);
   const {colors} = settings;
   const [refresh, setRefresh] = useState(false);
   const dispatch = useDispatch();
@@ -51,7 +51,7 @@ const DesigneratSettingsIndexScreen = ({navigation}) => {
     dispatch({type: REGISTER_AS_CLIENT, payload: {isClient: false}});
   };
 
-  const shareLink = (link) => {
+  const shareLink = link => {
     return Share.open({
       title: I18n.t('share_file', {name: I18n.t(APP_CASE)}),
       url: link,
@@ -59,8 +59,8 @@ const DesigneratSettingsIndexScreen = ({navigation}) => {
       message: `${settings.company}  - ${settings.description}`,
       // subject: I18n.t('share_title', {name: I18n.t(APP_CASE)}),
     })
-      .then((res) => {})
-      .catch((err) => {});
+      .then(res => {})
+      .catch(err => {});
   };
 
   return (

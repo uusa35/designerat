@@ -17,9 +17,7 @@ import VideosHorizontalWidget from '../../components/widgets/video/VideosHorizon
 import {getDesigner} from '../../redux/actions/user';
 
 const ProductShowScreen = ({navigation}) => {
-  const {product, settings, token, homeProducts} = useSelector(
-    (state) => state,
-  );
+  const {product, settings, token, homeProducts} = useSelector(state => state);
   const {phone, mobile, shipment_prices, size_chart, weight} = settings;
   const dispatch = useDispatch();
   const [refresh, setRefresh] = useState(false);

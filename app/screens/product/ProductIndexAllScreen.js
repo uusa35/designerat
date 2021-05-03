@@ -8,7 +8,7 @@ import {filter, unionBy} from 'lodash';
 import finalPropsSelectorFactory from 'react-redux/lib/connect/selectorFactory';
 
 const ProductIndexAllScreen = () => {
-  const {products, searchProducts, country} = useSelector((state) => state);
+  const {products, searchProducts, country} = useSelector(state => state);
   const dispatch = useDispatch();
   const [currentElements, setCurrentElements] = useState([]);
 
@@ -17,7 +17,7 @@ const ProductIndexAllScreen = () => {
   }, []);
 
   useMemo(() => {
-    const finalProducts = unionBy(products.concat(searchProducts), (p) => p.id);
+    const finalProducts = unionBy(products.concat(searchProducts), p => p.id);
     setCurrentElements(finalProducts);
   }, [products, searchProducts]);
 

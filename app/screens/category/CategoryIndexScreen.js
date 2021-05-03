@@ -8,7 +8,7 @@ import BgContainer from '../../components/containers/BgContainer';
 
 const CategoryIndexScreen = () => {
   const {homeCategories, commercials, show_commercials} = useSelector(
-    (state) => state,
+    state => state,
   );
 
   return (

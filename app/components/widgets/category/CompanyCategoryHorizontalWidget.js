@@ -32,11 +32,11 @@ const CompanyCategoryHorizontalWidget = ({
   showImage = true,
   showArrow = false,
 }) => {
-  const {colors} = useSelector((state) => state.settings);
+  const {colors} = useSelector(state => state.settings);
   const {navigate} = useNavigation();
   const dispatch = useDispatch();
 
-  const handleClick = (c) =>
+  const handleClick = c =>
     dispatch(
       getSearchDesigners({
         name: c.name,

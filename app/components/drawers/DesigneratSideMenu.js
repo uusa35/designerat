@@ -28,7 +28,7 @@ import PropTypes from 'prop-types';
 import {appUrlIos} from '../../env';
 
 const DesigneratSideMenu = ({showLogo = true, navigation}) => {
-  const {settings, lang, guest, auth} = useSelector((state) => state);
+  const {settings, lang, guest, auth} = useSelector(state => state);
   const {logo, company, menu_bg, youtube, colors, terms, policy} = settings;
   const dispatch = useDispatch();
   // const navigation = useNavigation();

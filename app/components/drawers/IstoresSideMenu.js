@@ -21,10 +21,10 @@ import {changeLang} from '../../redux/actions';
 import {logout} from '../../redux/actions/user';
 import PropTypes from 'prop-types';
 
-const IorderSideMenu = ({showLogo = true, navigation}) => {
-  const settings = useSelector((state) => state.settings);
+const IstoresSideMenu = ({showLogo = true, navigation}) => {
+  const settings = useSelector(state => state.settings);
   const {logo, company, menu_bg, youtube, colors, terms, policy} = settings;
-  const {lang, guest} = useSelector((state) => state);
+  const {lang, guest} = useSelector(state => state);
   const dispatch = useDispatch();
 
   const goToHome = () => {
@@ -368,7 +368,7 @@ const IorderSideMenu = ({showLogo = true, navigation}) => {
   );
 };
 
-export default IorderSideMenu;
+export default IstoresSideMenu;
 
 const styles = StyleSheet.create({
   container: {

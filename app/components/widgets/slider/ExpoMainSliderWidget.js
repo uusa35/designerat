@@ -9,7 +9,7 @@ import {useSelector} from 'react-redux';
 import {EXPO} from './../../../../app';
 
 const ExpoMainSliderWidget = ({elements}) => {
-  const {colors} = useSelector((state) => state.settings);
+  const {colors} = useSelector(state => state.settings);
   return (
     <Fragment>
       {!isEmpty(elements) && (

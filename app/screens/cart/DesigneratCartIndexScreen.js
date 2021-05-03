@@ -28,7 +28,7 @@ const DesigneratCartIndexScreen = () => {
     settings,
     coupon,
     area,
-  } = useSelector((state) => state);
+  } = useSelector(state => state);
   const {grossTotal, colors} = useContext(GlobalValuesContext);
   const navigation = useNavigation();
 
@@ -67,7 +67,13 @@ const DesigneratCartIndexScreen = () => {
             flex: 1,
             padding: 20,
           }}
-          source={DESIGNERAT ? images.cartBg : images.whiteBg}
+          source={
+            DESIGNERAT
+              ? images.cartBg
+              : EXPO
+              ? {uri: settings.main_bg}
+              : images.whiteBg
+          }
           imageStyle={{resizeMode: 'repeat', opacity: 0.2}}>
           <LottieView
             source={EXPO ? animations.emptyCart : animations.cart}

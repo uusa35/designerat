@@ -36,7 +36,7 @@ const ProductFilterModal = () => {
     categories,
     country,
     searchParams,
-  } = useSelector((state) => state);
+  } = useSelector(state => state);
   const {product_category_id} = searchParams;
   const dispatch = useDispatch();
   const [priceRange, setPriceRange] = useState([0, 1000]);
@@ -95,7 +95,7 @@ const ProductFilterModal = () => {
 
   return (
     <ModalBackContainer
-      toggleVisible={productFilterModal}
+      toggleVisible={productFilterModal.showModal}
       setToggleVisible={handleHideModal}
       title={I18n.t('product_filter')}>
       <ProductSearchForm showBtn={true} />
@@ -145,16 +145,21 @@ const ProductFilterModal = () => {
         </View>
       ) : null}
 
-      <ProductFilterColorsWidget
-        elements={productColors}
-        colors={settings.colors}
-        color={color}
-      />
-      <ProductFilterSizesWidget
-        elements={sizes}
-        colors={settings.colors}
-        size={size}
-      />
+      {productFilterModal.showColor && (
+        <ProductFilterColorsWidget
+          elements={productColors}
+          colors={settings.colors}
+          color={color}
+        />
+      )}
+
+      {productFilterModal.showSize && (
+        <ProductFilterSizesWidget
+          elements={sizes}
+          colors={settings.colors}
+          size={size}
+        />
+      )}
       <View
         style={{
           width: '100%',
@@ -192,7 +197,7 @@ const ProductFilterModal = () => {
             values={priceRange}
             sliderLength={width - 90}
             // onValuesChangeStart={() => console.log('started')}
-            onValuesChange={(e) => setPriceRange(e)}
+            onValuesChange={e => setPriceRange(e)}
             // onValuesChangeFinish={() => console.log('end')}
             style={{alignSelf: 'center'}}
             selectedStyle={{

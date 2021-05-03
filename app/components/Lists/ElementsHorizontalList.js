@@ -72,6 +72,7 @@ import {
 } from '../../redux/actions/types';
 import ImageLoaderContainer from '../widgets/ImageLoaderContainer';
 import Pluralize from 'pluralize';
+import ProductNormalWidget from '../widgets/product/ProductNormalWidget';
 
 const ElementsHorizontalList = ({
   elements,
@@ -107,7 +108,7 @@ const ElementsHorizontalList = ({
   const [sort, setSort] = useState('');
   const [sortModal, setSortModal] = useState(false);
   const [mapModal, setMapModal] = useState(false);
-  const {token} = useSelector((state) => state);
+  const {token} = useSelector(state => state);
   const dispatch = useDispatch();
   const {colors} = useContext(GlobalValuesContext);
 
@@ -136,7 +137,7 @@ const ElementsHorizontalList = ({
           return axiosInstance(`search/product?page=${page}`, {
             params,
           })
-            .then((r) => {
+            .then(r => {
               if (!validate.isEmpty(r.data)) {
                 const elementsGroup = uniqBy(items.concat(r.data), 'id');
                 dispatch({type: SET_PRODUCTS, payload: elementsGroup});
@@ -145,13 +146,13 @@ const ElementsHorizontalList = ({
                 setIsLoading(false);
               }
             })
-            .catch((e) => e);
+            .catch(e => e);
           break;
         case 'designer':
           return axiosInstance(`search/user?page=${page}`, {
             params,
           })
-            .then((r) => {
+            .then(r => {
               if (!validate.isEmpty(r.data)) {
                 const elementsGroup = uniqBy(items.concat(r.data), 'id');
                 dispatch({type: SET_DESIGNERS, payload: elementsGroup});
@@ -160,13 +161,13 @@ const ElementsHorizontalList = ({
                 setIsLoading(false);
               }
             })
-            .catch((e) => e);
+            .catch(e => e);
           break;
         case 'celebrity':
           return axiosInstance(`search/user?page=${page}`, {
             params,
           })
-            .then((r) => {
+            .then(r => {
               if (!validate.isEmpty(r.data)) {
                 const elementsGroup = uniqBy(items.concat(r.data), 'id');
                 dispatch({type: SET_DESIGNERS, payload: elementsGroup});
@@ -175,13 +176,13 @@ const ElementsHorizontalList = ({
                 setIsLoading(false);
               }
             })
-            .catch((e) => e);
+            .catch(e => e);
           break;
         case 'company':
           return axiosInstance(`search/user?page=${page}`, {
             params,
           })
-            .then((r) => {
+            .then(r => {
               if (!validate.isEmpty(r.data)) {
                 const elementsGroup = uniqBy(items.concat(r.data), 'id');
                 setItems(elementsGroup);
@@ -190,13 +191,13 @@ const ElementsHorizontalList = ({
                 setIsLoading(false);
               }
             })
-            .catch((e) => e);
+            .catch(e => e);
           break;
         case 'classified':
           return axiosInstance(`search/classified?page=${page}`, {
             params,
           })
-            .then((r) => {
+            .then(r => {
               if (!validate.isEmpty(r.data)) {
                 const elementsGroup = uniqBy(items.concat(r.data), 'id');
                 setItems(elementsGroup);
@@ -204,13 +205,13 @@ const ElementsHorizontalList = ({
                 setIsLoading(false);
               }
             })
-            .catch((e) => e);
+            .catch(e => e);
           break;
         case 'service':
           return axiosInstance(`search/service?page=${page}`, {
             params,
           })
-            .then((r) => {
+            .then(r => {
               if (!validate.isEmpty(r.data)) {
                 const elementsGroup = uniqBy(items.concat(r.data), 'id');
                 dispatch({type: SET_SERVICES, payload: elementsGroup});
@@ -219,7 +220,7 @@ const ElementsHorizontalList = ({
                 setIsLoading(false);
               }
             })
-            .catch((e) => e);
+            .catch(e => e);
           break;
         default:
           null;
@@ -297,7 +298,7 @@ const ElementsHorizontalList = ({
     if (search.length > 0) {
       setIsLoading(false);
       setRefresh(false);
-      let filtered = filter(items, (i) =>
+      let filtered = filter(items, i =>
         i.name
           ? lowerCase(i.name).includes(lowerCase(search)) ||
             i.sku.includes(convertNumberToEnglish(search))
@@ -319,7 +320,7 @@ const ElementsHorizontalList = ({
     }
   }, [isLoading]);
 
-  const handleClick = (element) => {
+  const handleClick = element => {
     dispatch(setElementType(type));
     switch (type) {
       case 'designer':
@@ -390,7 +391,7 @@ const ElementsHorizontalList = ({
     }
   };
 
-  const renderItem = (item) => {
+  const renderItem = item => {
     switch (type) {
       case 'product':
         if (productGalleryMode) {
@@ -406,15 +407,27 @@ const ElementsHorizontalList = ({
             </Pressable>
           );
         } else {
-          return (
-            <ProductWidget
-              element={item}
-              showName={showName}
-              key={item.id}
-              showSku={false}
-              handleClickProductWidget={handleClick}
-            />
-          );
+          if (EXPO) {
+            return (
+              <ProductNormalWidget
+                element={item}
+                showName={showName}
+                key={item.id}
+                showSku={false}
+                handleClickProductWidget={handleClick}
+              />
+            );
+          } else {
+            return (
+              <ProductWidget
+                element={item}
+                showName={showName}
+                key={item.id}
+                showSku={false}
+                handleClickProductWidget={handleClick}
+              />
+            );
+          }
         }
         break;
       case 'service':

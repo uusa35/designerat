@@ -32,7 +32,7 @@ const ProductColorSizeGroupWithAttributes = ({
 }) => {
   const {colors} = useContext(GlobalValuesContext);
   const dispatch = useDispatch();
-  const {settings} = useSelector((state) => state);
+  const {settings} = useSelector(state => state);
   const [requestQty, setRequestQty] = useState(0);
   const [productAttribute, setProductAttribute] = useState(null);
   const [sizeVisible, setSizeVisible] = useState(false);
@@ -101,8 +101,8 @@ const ProductColorSizeGroupWithAttributes = ({
         .get('color/list', {
           params: {product_id: element.id, size_id: sizeItem.id},
         })
-        .then((r) => setColorItems(r.data))
-        .catch((e) => e);
+        .then(r => setColorItems(r.data))
+        .catch(e => e);
     }
   }, [sizeItem]);
 
@@ -120,8 +120,8 @@ const ProductColorSizeGroupWithAttributes = ({
             color_id: colorItem.id,
           },
         })
-        .then((r) => setProductAttribute(r.data))
-        .catch((e) => e);
+        .then(r => setProductAttribute(r.data))
+        .catch(e => e);
     }
   }, [colorItem]);
 
@@ -275,7 +275,7 @@ const ProductColorSizeGroupWithAttributes = ({
           keyboardType="default"
           multiline={true}
           numberOfLines={3}
-          onChangeText={(c) => setNotes(c)}
+          onChangeText={c => setNotes(c)}
         />
       </View>
     </View>

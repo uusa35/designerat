@@ -97,7 +97,7 @@ const ElementsVerticalList = ({
   const [sortModal, setSortModal] = useState(false);
   const dispatch = useDispatch();
   const {colors} = useContext(GlobalValuesContext);
-  const {token} = useSelector((state) => state);
+  const {token} = useSelector(state => state);
 
   const loadMore = () => {
     setTimeout(() => {
@@ -124,7 +124,7 @@ const ElementsVerticalList = ({
           return axiosInstance(`search/product?page=${page}`, {
             params,
           })
-            .then((r) => {
+            .then(r => {
               if (!validate.isEmpty(r.data)) {
                 const elementsGroup = uniqBy(items.concat(r.data), 'id');
                 dispatch({type: SET_PRODUCTS, payload: elementsGroup});
@@ -133,13 +133,13 @@ const ElementsVerticalList = ({
                 setIsLoading(false);
               }
             })
-            .catch((e) => e);
+            .catch(e => e);
           break;
         case 'designer':
           return axiosInstance(`search/user?page=${page}`, {
             params,
           })
-            .then((r) => {
+            .then(r => {
               if (!validate.isEmpty(r.data)) {
                 const elementsGroup = uniqBy(items.concat(r.data), 'id');
                 dispatch({type: SET_DESIGNERS, payload: elementsGroup});
@@ -148,13 +148,13 @@ const ElementsVerticalList = ({
                 setIsLoading(false);
               }
             })
-            .catch((e) => e);
+            .catch(e => e);
           break;
         case 'company':
           return axiosInstance(`search/user?page=${page}`, {
             params,
           })
-            .then((r) => {
+            .then(r => {
               if (!validate.isEmpty(r.data)) {
                 const elementsGroup = uniqBy(items.concat(r.data), 'id');
                 dispatch({type: SET_COMPANIES, payload: elementsGroup});
@@ -163,13 +163,13 @@ const ElementsVerticalList = ({
                 setIsLoading(false);
               }
             })
-            .catch((e) => e);
+            .catch(e => e);
           break;
         case 'classified':
           return axiosInstance(`search/classified?page=${page}`, {
             params,
           })
-            .then((r) => {
+            .then(r => {
               if (!validate.isEmpty(r.data)) {
                 const elementsGroup = uniqBy(items.concat(r.data), 'id');
                 setItems(elementsGroup);
@@ -177,13 +177,13 @@ const ElementsVerticalList = ({
                 setIsLoading(false);
               }
             })
-            .catch((e) => e);
+            .catch(e => e);
           break;
         case 'service':
           return axiosInstance(`search/service?page=${page}`, {
             params,
           })
-            .then((r) => {
+            .then(r => {
               if (!validate.isEmpty(r.data)) {
                 const elementsGroup = uniqBy(items.concat(r.data), 'id');
                 dispatch({type: SET_SERVICES, payload: elementsGroup});
@@ -192,7 +192,7 @@ const ElementsVerticalList = ({
                 setIsLoading(false);
               }
             })
-            .catch((e) => e);
+            .catch(e => e);
           break;
         default:
           null;
@@ -267,7 +267,7 @@ const ElementsVerticalList = ({
     if (search.length > 0) {
       setIsLoading(false);
       setRefresh(false);
-      let filtered = filter(items, (i) =>
+      let filtered = filter(items, i =>
         i.name ? i.name.includes(search) : i.slug.includes(search) ? i : null,
       );
       filtered.length > 0 ? setItems(filtered) : setItems(elements);
@@ -373,7 +373,7 @@ const ElementsVerticalList = ({
     );
   };
 
-  const handleClick = useCallback((element) => {
+  const handleClick = useCallback(element => {
     dispatch(setElementType(type));
     switch (type) {
       case 'designer':
@@ -435,7 +435,7 @@ const ElementsVerticalList = ({
     }
   });
 
-  const renderItem = useCallback((item) => {
+  const renderItem = useCallback(item => {
     switch (type) {
       case 'product':
         return (

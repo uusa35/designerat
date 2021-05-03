@@ -25,7 +25,7 @@ import BgContainer from '../../components/containers/BgContainer';
 
 const EscrapCompanyShowScreen = ({navigation}) => {
   const {company, comments, commentModal, searchParams} = useSelector(
-    (state) => state,
+    state => state,
   );
   const {colors, guest, logo} = useContext(GlobalValuesContext);
   const dispatch = useDispatch();
@@ -43,7 +43,7 @@ const EscrapCompanyShowScreen = ({navigation}) => {
   useMemo(() => {
     if (!validate.isEmpty(company.classifieds)) {
       const categories = uniqBy(
-        filter(company.classifieds, (c) => c.category),
+        filter(company.classifieds, c => c.category),
         'id',
       );
       setCollectedCategories(categories);
@@ -116,7 +116,7 @@ const EscrapCompanyShowScreen = ({navigation}) => {
             )}
             <TabView
               lazy={true}
-              renderTabBar={(props) => (
+              renderTabBar={props => (
                 <TabBar
                   {...props}
                   // tabStyle={{ backgroundColor: 'white'}}
@@ -177,7 +177,7 @@ const EscrapCompanyShowScreen = ({navigation}) => {
                 ),
               })}
               style={{marginTop: 10, backgroundColor: 'white'}}
-              onIndexChange={(i) => setIndex(i)}
+              onIndexChange={i => setIndex(i)}
               initialLayout={{width: width}}
             />
           </TriggeringView>

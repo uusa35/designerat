@@ -52,7 +52,15 @@ const SearchSort = ({
             borderLeftWidth: 1,
             borderLeftColor: themeColors.desinerat.darkGray,
           }}
-          onPress={() => dispatch(showProductFilter())}>
+          onPress={() =>
+            dispatch(
+              showProductFilter({
+                showModal: true,
+                showColor: false,
+                showSize: true,
+              }),
+            )
+          }>
           <FastImage
             source={icons.categoryFilter}
             style={{width: iconSizes.smaller, height: iconSizes.smaller}}
@@ -72,7 +80,15 @@ const SearchSort = ({
             borderLeftWidth: 1,
             borderLeftColor: themeColors.desinerat.darkGray,
           }}
-          onPress={() => dispatch(showProductFilter())}>
+          onPress={() =>
+            dispatch(
+              showProductFilter({
+                showModal: true,
+                showColor: true,
+                showSize: false,
+              }),
+            )
+          }>
           <FastImage
             source={icons.colorFilter}
             style={{width: iconSizes.smaller, height: iconSizes.smaller}}

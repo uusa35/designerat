@@ -42,7 +42,7 @@ const CompanySearchForm = ({title = 'search'}) => {
         borderColor: '#E4E4E5',
       }}
       inputStyle={{fontFamily: text.font, textAlign: isRTL ? 'right' : 'left'}}
-      onChangeText={(text) => setSearch(text)}
+      onChangeText={text => setSearch(text)}
     />
   );
 };

@@ -13,7 +13,7 @@ import DesingeratBtn from '../widgets/Button/DesigneratBtn';
 
 const LoadingOfflineView = () => {
   const handleClick = () => RNRestart.Restart();
-  const {colors} = useSelector((state) => state.settings);
+  const {colors} = useSelector(state => state.settings);
 
   return (
     <ImageBackground

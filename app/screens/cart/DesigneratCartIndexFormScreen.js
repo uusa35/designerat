@@ -27,7 +27,7 @@ const DesigneratCartFormIndexScreen = () => {
     settings,
     coupon,
     area,
-  } = useSelector((state) => state);
+  } = useSelector(state => state);
   const {grossTotal, colors} = useContext(GlobalValuesContext);
   const navigation = useNavigation();
 

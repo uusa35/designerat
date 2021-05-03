@@ -46,7 +46,7 @@ const ImagesGridWidget = ({
   const {navigate} = useNavigation();
   const [imageLoading, setImageLoading] = useState(true);
 
-  const handleClick = (item) => {
+  const handleClick = item => {
     navigate('ImageZoom', {
       images: elements,
       name,
@@ -104,7 +104,7 @@ const ImagesGridWidget = ({
         numColumns={3}
         scrollEnabled={false}
         data={elements}
-        renderItem={(item) => (
+        renderItem={item => (
           <TouchableOpacity
             activeOpacity={touchOpacity}
             key={item.index}

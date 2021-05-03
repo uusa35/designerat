@@ -249,7 +249,7 @@ export const chooseCountryValidation = Yup.object().shape({
   image: Yup.mixed().nullable(),
 });
 
-export const chooseTitleValidation = Yup.lazy((e) => {
+export const chooseTitleValidation = Yup.lazy(e => {
   return Yup.object({
     profession_title_id: Yup.number()
       .typeError({message: 'validations.profession_title_is_required'})
@@ -270,7 +270,7 @@ export const chooseTitleValidation = Yup.lazy((e) => {
   });
 });
 
-export const chooseSkillsValidation = Yup.lazy((e) =>
+export const chooseSkillsValidation = Yup.lazy(e =>
   Yup.object({
     skills_ids: Yup.array()
       .min(1, {message: 'validations.skills_are_required', item: 1})
@@ -297,7 +297,7 @@ export const chooseHourlyRateValidation = Yup.object().shape({
   image: Yup.string(),
 });
 
-export const createPortfolioValidation = Yup.lazy((e) =>
+export const createPortfolioValidation = Yup.lazy(e =>
   Yup.object({
     title: Yup.string()
       .min(e.validations.min_title_char, {
@@ -322,7 +322,7 @@ export const createPortfolioValidation = Yup.lazy((e) =>
   }),
 );
 
-export const editPortfolioValidation = Yup.lazy((e) =>
+export const editPortfolioValidation = Yup.lazy(e =>
   Yup.object({
     title: Yup.string()
       .min(e.validations.min_title_char, {
@@ -370,7 +370,7 @@ export const submitAuthValidation = Yup.object().shape({
     .required({message: 'validations.password_is_required'}),
 });
 
-export const createPublicJobValidation = Yup.lazy((e) =>
+export const createPublicJobValidation = Yup.lazy(e =>
   Yup.object({
     title: Yup.string()
       // .min(e.validations.min_title_char, {
@@ -425,7 +425,7 @@ export const createPublicJobValidation = Yup.lazy((e) =>
   }),
 );
 
-export const createProposalValidation = Yup.lazy((e) => {
+export const createProposalValidation = Yup.lazy(e => {
   return Yup.object({
     job: Yup.number()
       .typeError({message: 'validations.job_must_be_number'})
@@ -479,7 +479,7 @@ export const createProposalValidation = Yup.lazy((e) => {
   });
 });
 
-export const updateProposalValidation = Yup.lazy((e) => {
+export const updateProposalValidation = Yup.lazy(e => {
   return Yup.object({
     job: Yup.number()
       .typeError({message: 'validations.job_must_be_number'})
@@ -533,7 +533,7 @@ export const updateProposalValidation = Yup.lazy((e) => {
   });
 });
 
-export const addBankAccount = Yup.lazy((e) => {
+export const addBankAccount = Yup.lazy(e => {
   return Yup.object({
     account_type: Yup.number().required({
       message: 'validations.account_bank_is_required',
@@ -626,7 +626,7 @@ export const addBankAccount = Yup.lazy((e) => {
   });
 });
 
-export const addPayPalAccount = Yup.lazy((e) => {
+export const addPayPalAccount = Yup.lazy(e => {
   return Yup.object({
     withdrawal_methode: Yup.number().required({
       message: 'validations.withdrawal_method_is_required',

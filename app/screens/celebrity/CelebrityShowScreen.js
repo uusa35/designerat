@@ -28,7 +28,7 @@ const CelebrityShowScreen = ({navigation}) => {
     guest,
     searchParams,
     settings,
-  } = useSelector((state) => state);
+  } = useSelector(state => state);
   const dispatch = useDispatch();
   const {logo, colors} = settings;
   const [refresh, setRefresh] = useState(false);
@@ -124,7 +124,7 @@ const CelebrityShowScreen = ({navigation}) => {
           ) : null}
           <TabView
             lazy={true}
-            renderTabBar={(props) => (
+            renderTabBar={props => (
               <TabBar
                 {...props}
                 // tabStyle={{ backgroundColor: 'white'}}
@@ -184,7 +184,7 @@ const CelebrityShowScreen = ({navigation}) => {
               ),
             })}
             style={{marginTop: 10, backgroundColor: 'white'}}
-            onIndexChange={(i) => setIndex(i)}
+            onIndexChange={i => setIndex(i)}
             initialLayout={{width: width}}
           />
         </TriggeringView>

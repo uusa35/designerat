@@ -9,7 +9,7 @@ import {useSelector} from 'react-redux';
 
 const NewClassifiedHomeBtn = ({navigation}) => {
   const {colors, logo} = useContext(GlobalValuesContext);
-  const {guest} = useSelector((state) => state);
+  const {guest} = useSelector(state => state);
   const {navigate} = navigation;
 
   return (

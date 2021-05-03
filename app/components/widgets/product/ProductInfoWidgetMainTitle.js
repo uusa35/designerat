@@ -22,7 +22,7 @@ const ProductInfoWidgetMainTitle = ({element}) => {
     GlobalValuesContext,
   );
   const navigation = useNavigation();
-  const {token, guest} = useSelector((state) => state);
+  const {token, guest} = useSelector(state => state);
   const [favorite, setFavorite] = useState(element.isFavorite);
 
   return (

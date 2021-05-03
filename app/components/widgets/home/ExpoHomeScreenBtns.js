@@ -11,7 +11,7 @@ import {EXPO} from './../../../../app';
 import {useNavigation} from '@react-navigation/native';
 
 const ExpoHomeScreenBtns = () => {
-  const {guest} = useSelector((state) => state);
+  const {guest} = useSelector(state => state);
   const {navigate} = useNavigation();
   return (
     <Animating animation="bounceIn" easing="ease-out" useNativeDriver={true}>

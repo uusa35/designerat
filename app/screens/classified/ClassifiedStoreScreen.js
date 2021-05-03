@@ -31,7 +31,7 @@ import KeyBoardContainer from '../../components/containers/KeyBoardContainer';
 
 const ClassifiedStoreScreen = ({navigation}) => {
   const {auth, category, country, area, classifiedProps} = useSelector(
-    (state) => state,
+    state => state,
   );
   const {colors} = useContext(GlobalValuesContext);
   const dispatch = useDispatch();
@@ -71,13 +71,13 @@ const ClassifiedStoreScreen = ({navigation}) => {
       maxFiles: 5,
       minFiles: 2,
       compressImageQuality: 0.5,
-    }).then((images) => {
+    }).then(images => {
       setImage(first(images));
       setImages(images);
     });
   };
 
-  const removeImage = (i) => {
+  const removeImage = i => {
     const newImages = remove(images, (img, index) => i !== index);
     setImages(newImages);
   };
@@ -182,7 +182,7 @@ const ClassifiedStoreScreen = ({navigation}) => {
           shake={true}
           keyboardType="default"
           defaultValue={name}
-          onChangeText={(text) => setName(text)}
+          onChangeText={text => setName(text)}
           placeholder={I18n.t('classified_title')}
           label={`${I18n.t('classified_title')}*`}
           labelStyle={{
@@ -208,7 +208,7 @@ const ClassifiedStoreScreen = ({navigation}) => {
           shake={true}
           keyboardType="default"
           defaultValue={address}
-          onChangeText={(text) => setAddress(text)}
+          onChangeText={text => setAddress(text)}
           placeholder={I18n.t('address')}
           label={I18n.t('address')}
           labelStyle={{
@@ -237,7 +237,7 @@ const ClassifiedStoreScreen = ({navigation}) => {
           shake={true}
           defaultValue={description}
           keyboardType="default"
-          onChangeText={(text) => setDescription(text)}
+          onChangeText={text => setDescription(text)}
           placeholder={description ? description : I18n.t('description')}
           label={`${I18n.t('description')}*`}
           labelStyle={{
@@ -263,7 +263,7 @@ const ClassifiedStoreScreen = ({navigation}) => {
           }}
           shake={true}
           keyboardType="number-pad"
-          onChangeText={(text) => setMobile(text)}
+          onChangeText={text => setMobile(text)}
           defaultValue={mobile}
           placeholder={mobile ? mobile : I18n.t('mobile')}
           label={`${I18n.t('mobile')}*`}
@@ -289,7 +289,7 @@ const ClassifiedStoreScreen = ({navigation}) => {
           }}
           shake={true}
           keyboardType="number-pad"
-          onChangeText={(text) => setPrice(convertNumberToEnglish(text))}
+          onChangeText={text => setPrice(convertNumberToEnglish(text))}
           defaultValue={price}
           placeholder={I18n.t('price')}
           label={`${I18n.t('price')}*`}

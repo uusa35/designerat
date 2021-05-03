@@ -4,7 +4,7 @@ import {createSwitchNavigator} from '@react-navigation/compat';
 import DesigneratMainDrawer from './navigation/designerat/DesigneratMainDrawer';
 import MyExpoMainDrawer from './navigation/myexpo/MyExpoMainDrawer';
 import AbatiMainDrawer from './navigation/abati/AbatiMainDrawer';
-import IorderMainDrawer from './navigation/iorder/IorderMainDrawer';
+import IstoresMainDrawer from './navigation/istores/IstoresMainDrawer';
 import {Provider} from 'react-redux';
 import {Store, PersistStore} from './redux/store';
 import {PersistGate} from 'redux-persist/integration/react';
@@ -34,9 +34,9 @@ const MyExpoSwitchNavigator = createSwitchNavigator(
   },
 );
 
-const IorderSwitchNavigator = createSwitchNavigator(
+const IstoresSwitchNavigator = createSwitchNavigator(
   {
-    IorderMainDrawer,
+    IstoresMainDrawer,
   },
   {
     initialRouteName: 'MainDrawer',
@@ -55,14 +55,14 @@ const AbatiSwitchNavigator = createSwitchNavigator(
 export default function App() {
   const renderNavigator = () => {
     switch (APP_CASE) {
-      case 'DESIGNERAAT':
+      case 'DESIGNERAT':
         return <DesigneratSwitchNavigator />;
       case 'MYEXPO':
         return <MyExpoSwitchNavigator />;
       case 'ABATI':
         return <AbatiSwitchNavigator />;
-      case 'IORDER':
-        return <IorderSwitchNavigator />;
+      case 'ISTORES':
+        return <IstoresSwitchNavigator />;
       default:
         return <DesigneratSwitchNavigator />;
     }

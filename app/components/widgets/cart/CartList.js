@@ -38,7 +38,7 @@ const CartList = ({
     exchange_rate,
     currency_symbol,
   } = useContext(GlobalValuesContext);
-  const {cart, auth, guest, country} = useSelector((state) => state);
+  const {cart, auth, guest, country} = useSelector(state => state);
   const {navigate} = useNavigation();
   const [name, setName] = useState(!validate.isEmpty(auth) ? auth.name : null);
   const [email, setEmail] = useState(
@@ -343,7 +343,7 @@ const CartList = ({
               }}
               shake={true}
               keyboardType="default"
-              onChangeText={(name) => setName(name)}
+              onChangeText={name => setName(name)}
             />
             <Input
               editable={editMode}
@@ -370,7 +370,7 @@ const CartList = ({
               }}
               shake={true}
               keyboardType="email-address"
-              onChangeText={(email) => setEmail(email)}
+              onChangeText={email => setEmail(email)}
             />
             <Input
               editable={editMode}
@@ -400,7 +400,7 @@ const CartList = ({
               }}
               shake={true}
               keyboardType="number-pad"
-              onChangeText={(text) => setMobile(text)}
+              onChangeText={text => setMobile(text)}
             />
             <TouchableOpacity
               onPress={() => {
@@ -454,7 +454,7 @@ const CartList = ({
               }}
               shake={true}
               keyboardType="default"
-              onChangeText={(area) => setArea(area)}
+              onChangeText={area => setArea(area)}
             />
             <Input
               editable={editMode}
@@ -484,7 +484,7 @@ const CartList = ({
               numberOfLines={3}
               shake={true}
               keyboardType="default"
-              onChangeText={(address) => setAddress(address)}
+              onChangeText={address => setAddress(address)}
             />
             <Input
               spellCheck={true}
@@ -515,7 +515,7 @@ const CartList = ({
               keyboardType="default"
               multiline={true}
               numberOfLines={3}
-              onChangeText={(notes) => setNotes(notes)}
+              onChangeText={notes => setNotes(notes)}
             />
 
             {coupon && editMode ? (
@@ -554,7 +554,7 @@ const CartList = ({
                   }}
                   shake={true}
                   keyboardType="default"
-                  onChangeText={(code) => setCode(code)}
+                  onChangeText={code => setCode(code)}
                 />
                 <Button
                   raised

@@ -7,7 +7,7 @@ import {filter} from 'lodash';
 import CategoryCollapseWidget from '../../components/widgets/category/CategoryCollapseWidget';
 
 const CategoryIndexCollapseScreen = () => {
-  const {categories} = useSelector((state) => state);
+  const {categories} = useSelector(state => state);
 
   return (
     <FlatList

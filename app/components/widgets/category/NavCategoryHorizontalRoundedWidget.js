@@ -32,7 +32,7 @@ const NavCategoryHorizontalRoundedWidget = ({
   const dispatch = useDispatch();
   const {colors} = useContext(GlobalValuesContext);
   const {navigate} = navigation;
-  const handleClick = (c) => dispatch(setCategoryAndGoToNavChildren(c));
+  const handleClick = c => dispatch(setCategoryAndGoToNavChildren(c));
 
   return (
     <View style={[widgetStyles.container, {backgroundColor: 'transaprent'}]}>

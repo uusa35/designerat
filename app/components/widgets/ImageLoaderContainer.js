@@ -7,7 +7,7 @@ import {useSelector} from 'react-redux';
 
 const ImageLoaderContainer = ({img, style, resizeMode = 'stretch'}) => {
   const [imageLoading, setImageLoading] = useState(true);
-  const {logo} = useSelector((state) => state.settings);
+  const {logo} = useSelector(state => state.settings);
 
   return (
     <FastImage

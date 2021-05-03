@@ -32,7 +32,7 @@ const TopSearchInput = ({search = '', setSearch}) => {
         marginTop: 10,
         marginBottom: 2,
       }}
-      onChangeText={(e) => setSearch(e)}
+      onChangeText={e => setSearch(e)}
       value={search}
     />
   );

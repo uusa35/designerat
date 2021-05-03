@@ -28,7 +28,7 @@ import ImageLoaderContainer from '../../../components/widgets/ImageLoaderContain
 
 const DesignerShowScreen = ({navigation}) => {
   const {designer, comments, commentModal, searchParams, guest} = useSelector(
-    (state) => state,
+    state => state,
   );
   const {colors, logo} = useContext(GlobalValuesContext);
   const dispatch = useDispatch();
@@ -105,7 +105,13 @@ const DesignerShowScreen = ({navigation}) => {
             style={{width: '100%', height: 200}}
             resizeMode={'cover'}
           />
-        ) : null}
+        ) : (
+          <ImageLoaderContainer
+            img={logo}
+            style={{width: '100%', height: 200}}
+            resizeMode={'cover'}
+          />
+        )}
         <View style={styles.wrapper}>
           <TriggeringView
           // onHide={() => console.log('text hidden')}
@@ -152,7 +158,7 @@ const DesignerShowScreen = ({navigation}) => {
             )}
             <TabView
               lazy={true}
-              renderTabBar={(props) => (
+              renderTabBar={props => (
                 <TabBar
                   {...props}
                   // tabStyle={{ backgroundColor: 'white'}}
@@ -215,7 +221,7 @@ const DesignerShowScreen = ({navigation}) => {
                 ),
               })}
               style={{backgroundColor: 'white', minHeight: height / 2}}
-              onIndexChange={(i) => setIndex(i)}
+              onIndexChange={i => setIndex(i)}
               initialLayout={{width: width}}
             />
           </TriggeringView>

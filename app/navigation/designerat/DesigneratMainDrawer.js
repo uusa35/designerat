@@ -8,7 +8,7 @@ const DesigneratMainDrawer = () => {
   return (
     <Drawer.Navigator
       initialRouteName="Home"
-      drawerContent={(props) => (
+      drawerContent={props => (
         <DesigneratSideMenu {...props} showLogo={true} />
       )}>
       <Drawer.Screen name="HomeStack" component={DesigneratHomeStack} />

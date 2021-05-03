@@ -24,7 +24,6 @@ import LoadingOfflineView from '../Loading/LoadingOfflineView';
 const AppContainer = ({children}) => {
   const {
     bootStrapped,
-    message,
     countries,
     country,
     area,
@@ -41,7 +40,7 @@ const AppContainer = ({children}) => {
     currency,
     resetApp,
     settings,
-  } = useSelector((state) => state);
+  } = useSelector(state => state);
   const dispatch = useDispatch();
   const [appState, setAppState] = useState(AppState.currentState);
   const {isConnected} = useNetInfo();
@@ -70,7 +69,7 @@ const AppContainer = ({children}) => {
 
   useEffect(() => {
     codePush.sync({installMode: codePush.InstallMode.IMMEDIATE});
-    codePush.checkForUpdate().then((update) => {
+    codePush.checkForUpdate().then(update => {
       if (!update) {
         // console.warn('====> The app is up to date!');
       } else {
@@ -147,12 +146,6 @@ const AppContainer = ({children}) => {
       ) : (
         <LoadingOfflineView />
       )}
-      {!validate.isEmpty(message) &&
-        message.visible &&
-        validate.isString(message.content) &&
-        isConnected &&
-        bootStrapped && <AlertMessage message={message} />}
-      {bootStrapped && !validate.isEmpty(settings) && <ProductFilterModal />}
     </Fragment>
   );
 };

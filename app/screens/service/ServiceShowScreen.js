@@ -19,7 +19,7 @@ import VideosVerticalWidget from '../../components/widgets/video/VideosVerticalW
 import BgContainer from '../../components/containers/BgContainer';
 
 const ServiceShowScreen = ({navigation}) => {
-  const {service, services, settings, token} = useSelector((state) => state);
+  const {service, services, settings, token} = useSelector(state => state);
   const {phone, mobile} = settings;
   const dispatch = useDispatch();
   const [refresh, setRefresh] = useState(false);

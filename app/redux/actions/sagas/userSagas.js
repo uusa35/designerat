@@ -589,7 +589,7 @@ export function* startRegisterAsClientScenario(action) {
   try {
     const {isClient} = action.payload;
     const {roles} = yield select();
-    const role = first(filter(roles, (r) => r.isClient));
+    const role = first(filter(roles, r => r.isClient));
     if (!validate.isEmpty(role) && isClient) {
       yield put({type: actions.SET_ROLE, payload: role});
       yield call(startNavigateScenario, 'Register');

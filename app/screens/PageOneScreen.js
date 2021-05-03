@@ -11,7 +11,7 @@ import BgContainer from '../components/containers/BgContainer';
 import {bottomVerticalContentInset} from '../constants/sizes';
 
 const PageOneScreen = () => {
-  const {categories} = useSelector((state) => state);
+  const {categories} = useSelector(state => state);
   const dispatch = useDispatch();
   const [title, setTitle] = useState('');
   const [refresh, setRefresh] = useState(false);

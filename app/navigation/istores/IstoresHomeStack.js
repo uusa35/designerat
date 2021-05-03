@@ -30,7 +30,7 @@ import TermAndConditionScreen from '../../screens/TermAndConditionScreen';
 import PolicyScreen from '../../screens/PolicyScreen';
 import {GlobalValuesContext} from '../../redux/GlobalValuesContext';
 import {HeaderBack} from '../../components/HeaderBack';
-import IorderMainTab from './IorderMainTab';
+import IstoresMainTab from './IstoresMainTab';
 import Ionicons from 'react-native-vector-icons/Ionicons';
 import {DrawerActions} from '@react-navigation/native';
 import CartConfirmationScreen from '../../screens/cart/CartConfirmationScreen';
@@ -53,10 +53,10 @@ import StatisticIndexScreen from '../../screens/setting/StatisticIndexScreen';
 import CalendarIndexScreen from '../../screens/calender/CalendarIndexScreen';
 import DesignerShowScreen from '../../screens/designer/expo/DesignerShowScreen';
 import PanoramaShowScreen from '../../screens/PanoramaShowScreen';
-import IorderSearchTab from './IorderSearchTab';
+import IstoresSearchTab from './IstoresSearchTab';
 
 const Stack = createStackNavigator();
-const IorderHomeStack = () => {
+const IstoresHomeStack = () => {
   const {colors} = useContext(GlobalValuesContext);
   return (
     <Stack.Navigator
@@ -107,14 +107,14 @@ const IorderHomeStack = () => {
           ),
         })}
         name={'MainTab'}
-        component={IorderMainTab}
+        component={IstoresMainTab}
       />
       <Stack.Screen
         name={'SearchTab'}
         options={{
           headerTitle: () => <HeaderMiddle title={I18n.t('expo')} />,
         }}
-        component={IorderSearchTab}
+        component={IstoresSearchTab}
       />
       <Stack.Screen
         name={'CelebrityIndex'}
@@ -401,4 +401,4 @@ const IorderHomeStack = () => {
   );
 };
 
-export default IorderHomeStack;
+export default IstoresHomeStack;

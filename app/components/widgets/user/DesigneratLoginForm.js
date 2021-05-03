@@ -18,7 +18,7 @@ import DesigneratBtn from '../Button/DesigneratBtn';
 import {REGISTER_AS_CLIENT} from '../../../redux/actions/types';
 
 const DesigneratLoginForm = ({showBtns = false, showLabel = false}) => {
-  const {roles} = useSelector((state) => state);
+  const {roles} = useSelector(state => state);
   const {logo, colors} = useContext(GlobalValuesContext);
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('password');
@@ -73,7 +73,7 @@ const DesigneratLoginForm = ({showBtns = false, showLabel = false}) => {
           ]}
           shake={true}
           keyboardType="email-address"
-          onChangeText={(email) => setEmail(email)}
+          onChangeText={email => setEmail(email)}
           leftIcon={() => (
             <Icon
               name="envelope"
@@ -111,7 +111,7 @@ const DesigneratLoginForm = ({showBtns = false, showLabel = false}) => {
           ]}
           shake={true}
           keyboardType="default"
-          onChangeText={(password) => setPassword(password)}
+          onChangeText={password => setPassword(password)}
         />
         <DesigneratBtn
           title={I18n.t('login')}

@@ -26,7 +26,7 @@ export const HeaderLeft = ({
 }) => {
   const navigation = useNavigation();
   const {cartLength, colors} = useContext(GlobalValuesContext);
-  const {companySearchTextInputModal} = useSelector((state) => state);
+  const {companySearchTextInputModal} = useSelector(state => state);
   const dispatch = useDispatch();
   return (
     <View style={widgetStyles.safeContainer}>

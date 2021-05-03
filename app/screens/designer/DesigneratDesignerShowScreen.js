@@ -35,7 +35,7 @@ import UserImageProfileRounded from '../../components/widgets/user/UserImageProf
 
 const DesigneratDesignerShowScreen = ({route}) => {
   const {designer, comments, commentModal, searchParams} = useSelector(
-    (state) => state,
+    state => state,
   );
   const dispatch = useDispatch();
   const {name, id, model, type} = route.params;

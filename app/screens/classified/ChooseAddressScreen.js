@@ -27,7 +27,7 @@ const ChooseAddressScreen = ({navigation}) => {
     // });
   }, [latitude, longitude]);
 
-  const setLocation = useCallback((e) => {
+  const setLocation = useCallback(e => {
     setLatitude(e.nativeEvent.coordinate.latitude);
     setLongitude(e.nativeEvent.coordinate.longitude);
   });
@@ -35,8 +35,8 @@ const ChooseAddressScreen = ({navigation}) => {
   const getYourAddress = useCallback(() => {
     axiosInstance
       .get('location/address', {params: {latitude, longitude}})
-      .then((r) => setAddress(r.data.address))
-      .catch((e) =>
+      .then(r => setAddress(r.data.address))
+      .catch(e =>
         dispatch(
           enableErrorMessage(
             I18n.t('can_not_find_address_please_write_ur_address'),
@@ -67,7 +67,7 @@ const ChooseAddressScreen = ({navigation}) => {
             longitude: parseFloat(longitude),
           }}
           image={images.pin}
-          onDragEnd={(e) => setLocation(e)}>
+          onDragEnd={e => setLocation(e)}>
           <View
             style={{
               alignSelf: 'center',
@@ -126,7 +126,7 @@ const ChooseAddressScreen = ({navigation}) => {
           shake={true}
           keyboardType="default"
           defaultValue={address}
-          onChangeText={(address) => setAddress(address)}
+          onChangeText={address => setAddress(address)}
           placeholder={I18n.t('address')}
           label={I18n.t('address')}
           labelStyle={{

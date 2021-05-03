@@ -17,7 +17,7 @@ const ProductColorSizeGroup = ({
   setCartItem,
   handleAddToCart,
 }) => {
-  const {settings} = useSelector((state) => state);
+  const {settings} = useSelector(state => state);
   const {colors} = settings;
   const dispatch = useDispatch();
   const {size, color, qty, show_attribute} = element;
@@ -167,7 +167,7 @@ const ProductColorSizeGroup = ({
         keyboardType="default"
         multiline={true}
         numberOfLines={3}
-        onChangeText={(notes) => setNotes(notes)}
+        onChangeText={notes => setNotes(notes)}
       />
       {element.has_stock && element.is_available && (
         <Button

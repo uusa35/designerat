@@ -14,7 +14,7 @@ import {linkingPrefix} from '../constants/links';
 import Share from 'react-native-share';
 import I18n from '../I18n';
 import widgetStyles from './widgets/widgetStyles';
-import {APP_CASE, HOMEKEY, EXPO, ABATI} from '../../app';
+import {APP_CASE, HOMEKEY, EXPO, ABATI, ISTORES} from '../../app';
 import {iconSizes} from '../constants/sizes';
 import {useDispatch, useSelector} from 'react-redux';
 import ImageLoaderContainer from './widgets/ImageLoaderContainer';
@@ -34,7 +34,7 @@ export const HeaderRight = ({
   showCart = false,
   showProductFavorite = false,
 }) => {
-  const {country, settings, countryModal} = useSelector((state) => state);
+  const {country, settings, countryModal} = useSelector(state => state);
   const {cartLength, colors} = useContext(GlobalValuesContext);
   const dispatch = useDispatch();
   const route = useRoute();
@@ -70,7 +70,7 @@ export const HeaderRight = ({
     );
   }, []);
 
-  const shareLink = (link) => {
+  const shareLink = link => {
     return Share.open({
       title: I18n.t('share_file', {name: I18n.t(APP_CASE)}),
       url: link,
@@ -78,8 +78,8 @@ export const HeaderRight = ({
       message: `${downloadTitleMessage} ${androidMessage} ${iphoneMessage} ${shareMessage}`,
       // subject: I18n.t('share_title', {name: I18n.t(APP_CASE)}),
     })
-      .then((res) => {})
-      .catch((err) => {});
+      .then(res => {})
+      .catch(err => {});
   };
 
   const handleCountryModal = () => {
@@ -140,8 +140,16 @@ export const HeaderRight = ({
       {showProductsSearch && (
         <Icon
           onPress={() => {
-            // dispatch(showProductFilter());
-            navigation.navigate('SearchTab');
+            if (EXPO || ISTORES) {
+              // navigation.navigate('SearchTab');
+            }
+            dispatch(
+              showProductFilter({
+                showColor: true,
+                showSize: true,
+                showModal: true,
+              }),
+            );
           }}
           name="search1"
           type="antdesign"

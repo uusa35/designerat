@@ -30,7 +30,7 @@ const DesigneratCartListConfirmationScreen = ({
   const dispatch = useDispatch();
   const {colors, total, grossTotal} = useContext(GlobalValuesContext);
   const {coupon, shipmentFees, cart, settings, shipmentCountry} = useSelector(
-    (state) => state,
+    state => state,
   );
   const navigation = useNavigation();
   const route = useRoute();

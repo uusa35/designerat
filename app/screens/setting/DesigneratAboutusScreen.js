@@ -7,7 +7,7 @@ import {useSelector} from 'react-redux';
 import I18n from './../../I18n';
 
 const DesigneratAboutusScreen = () => {
-  const {settings} = useSelector((state) => state);
+  const {settings} = useSelector(state => state);
   return (
     <BgContainer showImage={false} white={false}>
       <ScrollView

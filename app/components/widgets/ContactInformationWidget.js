@@ -13,7 +13,7 @@ import {getWhatsappLink} from '../../helpers';
 import {themeColors} from '../../constants/colors';
 
 const ContactInformationWidget = () => {
-  const {settings} = useSelector((state) => state);
+  const {settings} = useSelector(state => state);
   const {longitude, latitude} = settings;
   const {colors} = settings;
   return (

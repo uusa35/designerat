@@ -52,7 +52,7 @@ const DesigneratCartList = ({
     currency_symbol,
     cartLength,
   } = useContext(GlobalValuesContext);
-  const {cart, auth, guest, country} = useSelector((state) => state);
+  const {cart, auth, guest, country} = useSelector(state => state);
   const {navigate} = useNavigation();
   const [name, setName] = useState(!validate.isEmpty(auth) ? auth.name : null);
   const [email, setEmail] = useState(
@@ -177,7 +177,7 @@ const DesigneratCartList = ({
           inputStyle={widgetStyles.inputStyle}
           shake={true}
           keyboardType="default"
-          onChangeText={(code) => setCode(code)}
+          onChangeText={code => setCode(code)}
         />
         <DesingeratBtn
           handleClick={() => dispatch(getCoupon(code))}

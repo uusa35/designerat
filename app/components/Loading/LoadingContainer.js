@@ -7,7 +7,7 @@ import {height, iconSizes} from './../../constants/sizes';
 import ImageLoaderContainer from '../widgets/ImageLoaderContainer';
 
 const LoadingContainer = () => {
-  const {settings, isLoading, bootStrapped} = useSelector((state) => state);
+  const {settings, isLoading, bootStrapped} = useSelector(state => state);
 
   useEffect(() => {}, [isLoading]);
 

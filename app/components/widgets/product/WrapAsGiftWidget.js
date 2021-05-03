@@ -16,7 +16,7 @@ const WrapAsGiftWidget = ({
   giftMessage,
   setGiftMessage,
 }) => {
-  const {settings} = useSelector((state) => state);
+  const {settings} = useSelector(state => state);
   const {colors} = settings;
   const dispatch = useDispatch();
 
@@ -80,7 +80,7 @@ const WrapAsGiftWidget = ({
             keyboardType="default"
             multiline={true}
             numberOfLines={3}
-            onChangeText={(e) => setGiftMessage(e)}
+            onChangeText={e => setGiftMessage(e)}
           />
         </View>
       )}

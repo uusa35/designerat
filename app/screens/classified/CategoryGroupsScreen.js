@@ -28,7 +28,7 @@ import {GlobalValuesContext} from '../../redux/GlobalValuesContext';
 
 const CategoryGroupsScreen = ({navigation}) => {
   const {category, classifiedProps, propertiesModal} = useSelector(
-    (state) => state,
+    state => state,
   );
   const dispatch = useDispatch();
   const {colors} = useContext(GlobalValuesContext);
@@ -47,17 +47,17 @@ const CategoryGroupsScreen = ({navigation}) => {
     }
   }, [currentCategoryGroup, remainingGroups]);
 
-  const handleClick = useCallback((property) => {
+  const handleClick = useCallback(property => {
     const filterSwitchProps = filter(
       selectedProperties,
-      (p) =>
+      p =>
         p.category_group_property ===
         `${currentCategoryGroup.id}${property.id}`,
     );
     if (!validate.isEmpty(filterSwitchProps)) {
       const removeProp = filter(
         selectedProperties,
-        (p) => p.property.id !== property.id,
+        p => p.property.id !== property.id,
       );
       setSelectedProperties(removeProp);
     } else {
@@ -235,7 +235,7 @@ const CategoryGroupsScreen = ({navigation}) => {
                               !validate.isEmpty(
                                 filter(
                                   selectedProperties,
-                                  (p) => p.property.id === property.id,
+                                  p => p.property.id === property.id,
                                 ),
                               ) ? (
                                 <Icon

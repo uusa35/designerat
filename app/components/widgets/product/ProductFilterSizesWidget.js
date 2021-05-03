@@ -16,7 +16,7 @@ const ProductFilterSizesWidget = ({elements, type, colors, size}) => {
   const [currentElement, setCurrentElement] = useState({});
   const dispatch = useDispatch();
 
-  const handleSetElement = useCallback((item) => {
+  const handleSetElement = useCallback(item => {
     setCurrentElement(item);
     dispatch(setSize(item));
   });

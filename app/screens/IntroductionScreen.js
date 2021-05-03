@@ -6,7 +6,7 @@ import AppIntroSlider from 'react-native-app-intro-slider';
 import SplashWidget from '../components/widgets/splash/SplashWidget';
 
 const IntroductionScreen = ({navigation}) => {
-  const {splashes} = useSelector((state) => state);
+  const {splashes} = useSelector(state => state);
   const {navigate} = navigation;
 
   return (

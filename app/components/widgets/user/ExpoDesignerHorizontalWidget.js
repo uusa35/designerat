@@ -26,7 +26,7 @@ const ExpoDesignerHorizontalWidget = ({
   searchElements,
 }) => {
   const dispatch = useDispatch();
-  const {colors} = useSelector((state) => state.settings);
+  const {colors} = useSelector(state => state.settings);
 
   return (
     <Fragment>

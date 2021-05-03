@@ -41,7 +41,7 @@ const DesigneratHomeScreen = () => {
     homeCompanies,
     country,
     settings,
-  } = useSelector((state) => state);
+  } = useSelector(state => state);
   const dispatch = useDispatch();
 
   const handleRefresh = () => dispatch(refetchHomeElements());

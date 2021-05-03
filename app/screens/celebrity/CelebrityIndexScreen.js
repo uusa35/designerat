@@ -7,7 +7,7 @@ import ElementsHorizontalList from '../../components/Lists/ElementsHorizontalLis
 import BgContainer from '../../components/containers/BgContainer';
 
 const CelebrityIndexScreen = () => {
-  const {celebrities, searchParams} = useSelector((state) => state);
+  const {celebrities, searchParams} = useSelector(state => state);
   const [currentSearchParams, setCurrentSearchParams] = useState({});
   const [currentElements, setCurrentElements] = useState([]);
 

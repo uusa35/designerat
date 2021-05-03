@@ -33,7 +33,7 @@ const ClassifiedCategoryHorizontalRoundedWidget = ({
   const {colors} = useContext(GlobalValuesContext);
   const {navigate} = navigation;
 
-  const handleClick = (c) =>
+  const handleClick = c =>
     dispatch(
       getSearchClassifieds({
         name: c.name,

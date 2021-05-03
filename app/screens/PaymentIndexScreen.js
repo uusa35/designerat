@@ -6,7 +6,7 @@ import BgContainer from '../components/containers/BgContainer';
 import {useRoute} from '@react-navigation/native';
 
 const PaymentIndexScreen = () => {
-  const {cart} = useSelector((state) => state);
+  const {cart} = useSelector(state => state);
   const dispatch = useDispatch();
   const route = useRoute();
 
@@ -17,7 +17,7 @@ const PaymentIndexScreen = () => {
         source={{uri: route.params.paymentUrl}}
         style={{marginTop: 20}}
         injectedJavaScript={'(function(){ return "test"}());'}
-        onNavigationStateChange={(navEvent) =>
+        onNavigationStateChange={navEvent =>
           !isEmpty(cart) ? dispatch({type: 'CLEAR_CART'}) : null
         }
       />

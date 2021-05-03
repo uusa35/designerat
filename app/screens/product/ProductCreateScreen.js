@@ -44,7 +44,7 @@ import {convertNumberToEnglish} from '../../helpers';
 
 const ProductCreateScreen = ({showLabel = false}) => {
   const {colors, logo} = useContext(GlobalValuesContext);
-  const {categories, auth} = useSelector((state) => state);
+  const {categories, auth} = useSelector(state => state);
   const dispatch = useDispatch();
   const navigation = useNavigation();
   const [name, setName] = useState('dsfdsf');
@@ -61,7 +61,7 @@ const ProductCreateScreen = ({showLabel = false}) => {
 
   useMemo(() => {
     const finalcategories = [];
-    map(categories, (c) => {
+    map(categories, c => {
       if (c.isParent) {
         finalcategories.push({
           id: c.id,
@@ -69,7 +69,7 @@ const ProductCreateScreen = ({showLabel = false}) => {
         });
       }
       if (c.isParent && c.has_children) {
-        map(c.children, (child) => {
+        map(c.children, child => {
           finalcategories.push({
             id: child.id,
             label: child.name,
@@ -93,7 +93,7 @@ const ProductCreateScreen = ({showLabel = false}) => {
       storageOptions: {
         skipBackup: true,
       },
-    }).then((image) => {
+    }).then(image => {
       setImage(image);
       // setSampleLogo(image.path);
     });
@@ -114,7 +114,7 @@ const ProductCreateScreen = ({showLabel = false}) => {
       storageOptions: {
         skipBackup: true,
       },
-    }).then(async (images) => {
+    }).then(async images => {
       const result = [];
       for (const img of images) {
         result.push(
@@ -129,7 +129,7 @@ const ProductCreateScreen = ({showLabel = false}) => {
     });
   };
 
-  const removeImage = (i) => {
+  const removeImage = i => {
     const newImages = remove(images, (img, index) => i !== index);
     setImages(newImages);
   };
@@ -147,7 +147,7 @@ const ProductCreateScreen = ({showLabel = false}) => {
         image,
         images,
       })
-      .then((r) => {
+      .then(r => {
         return dispatch(
           submitCreateNewProduct({
             name,
@@ -162,7 +162,7 @@ const ProductCreateScreen = ({showLabel = false}) => {
           }),
         );
       })
-      .catch((e) => {
+      .catch(e => {
         const {message, item} = first(e.errors);
         return dispatch(
           enableErrorMessage(
@@ -202,7 +202,7 @@ const ProductCreateScreen = ({showLabel = false}) => {
             ]}
             shake={true}
             keyboardType="default"
-            onChangeText={(text) => setSku(text)}
+            onChangeText={text => setSku(text)}
           />
           <Input
             placeholder={I18n.t('tshirt')}
@@ -216,7 +216,7 @@ const ProductCreateScreen = ({showLabel = false}) => {
             ]}
             shake={true}
             keyboardType="default"
-            onChangeText={(text) => setName(text)}
+            onChangeText={text => setName(text)}
           />
           <Input
             placeholder={I18n.t('price')}
@@ -231,7 +231,7 @@ const ProductCreateScreen = ({showLabel = false}) => {
             ]}
             shake={true}
             keyboardType="numeric"
-            onChangeText={(text) => setPrice(convertNumberToEnglish(text))}
+            onChangeText={text => setPrice(convertNumberToEnglish(text))}
           />
           <Input
             placeholder={I18n.t('qty')}
@@ -246,7 +246,7 @@ const ProductCreateScreen = ({showLabel = false}) => {
             ]}
             shake={true}
             keyboardType="numeric"
-            onChangeText={(text) => setQty(convertNumberToEnglish(text))}
+            onChangeText={text => setQty(convertNumberToEnglish(text))}
           />
           <Input
             placeholder={I18n.t('product_description')}
@@ -260,9 +260,7 @@ const ProductCreateScreen = ({showLabel = false}) => {
             ]}
             shake={true}
             keyboardType="default"
-            onChangeText={(text) =>
-              setDescription(convertNumberToEnglish(text))
-            }
+            onChangeText={text => setDescription(convertNumberToEnglish(text))}
           />
           <View style={{marginLeft: 10, marginRight: 10}}>
             <Text
@@ -443,7 +441,7 @@ const ProductCreateScreen = ({showLabel = false}) => {
           data={finalCategories}
           title={I18n.t('choose')}
           selected={selectedCategories}
-          onOptionPress={(e) => {
+          onOptionPress={e => {
             setSelectedCategories(uniq(selectedCategories.concat(e.id)));
           }}
           optionTextStyle={widgetStyles.headerThree}

@@ -41,7 +41,7 @@ const CompaniesList = ({
   const dispatch = useDispatch();
   const {goBack} = useNavigation();
 
-  const loadMore = (d) => {
+  const loadMore = d => {
     setPage(page + 1);
   };
 
@@ -50,13 +50,13 @@ const CompaniesList = ({
       axiosInstance(`search/user?page=${page}`, {
         params,
       })
-        .then((r) => {
+        .then(r => {
           if (!validate.isEmpty(r.data)) {
             const userGroup = uniqBy(items.concat(r.data), 'id');
             setItems(userGroup);
           }
         })
-        .catch((e) => e);
+        .catch(e => e);
     }
   }, [page]);
 
@@ -76,7 +76,7 @@ const CompaniesList = ({
     if (search.length > 0) {
       setIsLoading(false);
       setRefresh(false);
-      let filtered = filter(elements, (i) =>
+      let filtered = filter(elements, i =>
         i.slug.includes(search) ? i : null,
       );
       if (filtered.length > 0 || search.length > 0) {

@@ -32,7 +32,7 @@ import BgContainer from '../../components/containers/BgContainer';
 
 const NormalClassifiedShowScreen = ({navigation}) => {
   const {classified, commentModal, token, auth, settings} = useSelector(
-    (state) => state,
+    state => state,
   );
   const {exchange_rate} = useContext(GlobalValuesContext);
   const dispatch = useDispatch();
@@ -53,10 +53,8 @@ const NormalClassifiedShowScreen = ({navigation}) => {
   };
 
   useMemo(() => {
-    setMultiItems(filter(classified.items, (i) => i.categoryGroup.is_multi));
-    setNonMultiItems(
-      filter(classified.items, (i) => !i.categoryGroup.is_multi),
-    );
+    setMultiItems(filter(classified.items, i => i.categoryGroup.is_multi));
+    setNonMultiItems(filter(classified.items, i => !i.categoryGroup.is_multi));
   }, [classified]);
 
   // useMemo(() => {
@@ -103,7 +101,7 @@ const NormalClassifiedShowScreen = ({navigation}) => {
             <PropertiesWidget
               elements={filter(
                 classified.items,
-                (i) => !i.categoryGroup.is_multi,
+                i => !i.categoryGroup.is_multi,
               )}
             />
           )}

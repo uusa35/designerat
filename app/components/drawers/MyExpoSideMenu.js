@@ -23,9 +23,9 @@ import PropTypes from 'prop-types';
 import {icons} from '../../constants/images';
 
 const MyExpoSideMenu = ({showLogo = true, navigation}) => {
-  const settings = useSelector((state) => state.settings);
+  const settings = useSelector(state => state.settings);
   const {logo, company, menu_bg, youtube, colors, terms, policy} = settings;
-  const {lang, guest} = useSelector((state) => state);
+  const {lang, guest} = useSelector(state => state);
   const dispatch = useDispatch();
 
   const goToHome = () => {

@@ -16,7 +16,7 @@ import ElementsHorizontalList from '../components/Lists/ElementsHorizontalList';
 import {ABATI} from '../../app';
 
 const OrderIndexScreen = ({}) => {
-  const {orders} = useSelector((state) => state.auth);
+  const {orders} = useSelector(state => state.auth);
   const [currentElements, setCurrentElements] = useState([]);
 
   useMemo(() => {

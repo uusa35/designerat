@@ -30,7 +30,7 @@ const DesigneratCartForm = ({
   const dispatch = useDispatch();
   const {colors} = useContext(GlobalValuesContext);
   const {auth, address, shipmentCountry, settings} = useSelector(
-    (state) => state,
+    state => state,
   );
   const navigation = useNavigation();
   const [name, setName] = useState(!validate.isEmpty(auth) ? auth.name : null);
@@ -189,7 +189,7 @@ const DesigneratCartForm = ({
           ]}
           shake={true}
           keyboardType="default"
-          onChangeText={(name) => setName(name)}
+          onChangeText={name => setName(name)}
         />
         <Input
           editable={editMode}
@@ -219,7 +219,7 @@ const DesigneratCartForm = ({
           ]}
           shake={true}
           keyboardType="email-address"
-          onChangeText={(email) => setEmail(email)}
+          onChangeText={email => setEmail(email)}
         />
         <Input
           editable={editMode}
@@ -247,7 +247,7 @@ const DesigneratCartForm = ({
           ]}
           shake={true}
           keyboardType="number-pad"
-          onChangeText={(text) => setMobile(text)}
+          onChangeText={text => setMobile(text)}
         />
         <TouchableOpacity
           // onPress={() => {
@@ -423,7 +423,7 @@ const DesigneratCartForm = ({
           keyboardType="default"
           // multiline={true}
           numberOfLines={3}
-          onChangeText={(notes) => setNotes(notes)}
+          onChangeText={notes => setNotes(notes)}
         />
       </View>
 

@@ -16,7 +16,7 @@ import {GlobalValuesContext} from '../../redux/GlobalValuesContext';
 import DesigneratCartIndexScreen from '../../screens/cart/DesigneratCartIndexScreen';
 import {icons} from '../../constants/images';
 import ExpoHomeScreen from '../../screens/home/ExpoHomeScreen';
-import IorderHomeScreen from '../../screens/home/IorderHomeScreen';
+import IstoresHomeScreen from '../../screens/home/IstoresHomeScreen';
 import IconTabBar from '../../components/IconTabBar';
 import ContactusScreen from '../../screens/ContactusScreen';
 import PageOneScreen from '../../screens/PageOneScreen';
@@ -29,7 +29,7 @@ const Tab = createBottomTabNavigator();
 const Stack = createStackNavigator();
 const Drawer = createDrawerNavigator();
 
-const IorderMainTab = () => {
+const IstoresMainTab = () => {
   const {colors, cartLength} = useContext(GlobalValuesContext);
   return (
     <Tab.Navigator
@@ -51,7 +51,7 @@ const IorderMainTab = () => {
       labeled={true}>
       <Tab.Screen
         name="Home"
-        component={IorderHomeScreen}
+        component={IstoresHomeScreen}
         options={() => ({
           tabBarLabel: ({focused}) => (
             <TextTabBar
@@ -183,4 +183,4 @@ const IorderMainTab = () => {
   );
 };
 
-export default IorderMainTab;
+export default IstoresMainTab;

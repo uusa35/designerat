@@ -8,7 +8,7 @@ const AbatiMainDrawer = () => {
   return (
     <Drawer.Navigator
       initialRouteName="Home"
-      drawerContent={(props) => <AbatiSideMenu {...props} showLogo={true} />}>
+      drawerContent={props => <AbatiSideMenu {...props} showLogo={true} />}>
       <Drawer.Screen name="HomeStack" component={AbatiHomeStack} />
     </Drawer.Navigator>
   );

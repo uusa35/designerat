@@ -15,7 +15,7 @@ import {APP_CASE} from '../../../../app.json';
 import widgetStyles from './../widgetStyles';
 
 const LoginForm = ({showBtns = false}) => {
-  const {roles} = useSelector((state) => state);
+  const {roles} = useSelector(state => state);
   const {logo, colors} = useContext(GlobalValuesContext);
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('password');
@@ -37,7 +37,7 @@ const LoginForm = ({showBtns = false}) => {
 
   const handleRegisterClick = () => {
     if (!isEmpty(roles)) {
-      dispatch(setRole(first(filter(roles, (r) => r.name === 'Client'))));
+      dispatch(setRole(first(filter(roles, r => r.name === 'Client'))));
     }
     return navigate('Register');
   };
@@ -69,7 +69,7 @@ const LoginForm = ({showBtns = false}) => {
           ]}
           shake={true}
           keyboardType="email-address"
-          onChangeText={(email) => setEmail(email)}
+          onChangeText={email => setEmail(email)}
           leftIcon={() => (
             <Icon
               name="envelope"
@@ -107,7 +107,7 @@ const LoginForm = ({showBtns = false}) => {
           ]}
           shake={true}
           keyboardType="default"
-          onChangeText={(password) => setPassword(password)}
+          onChangeText={password => setPassword(password)}
         />
         <Button
           raised
