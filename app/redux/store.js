@@ -13,6 +13,9 @@ const persistConfig = {
   blacklist: [
     'message',
     // 'cart',
+    'branch',
+    'branches',
+    'pickupFromBranch',
     'coupon',
     'player_id',
     'shipment_fees',

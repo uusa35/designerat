@@ -51,6 +51,7 @@ import DesigneratCelebrityShowScreen from '../../screens/celebrity/DesigneratCel
 import DesigneratCompanyShowScreen from '../../screens/company/DesigneratCompanyShowScreen';
 import StatisticIndexScreen from '../../screens/setting/StatisticIndexScreen';
 import PanoramaShowScreen from '../../screens/PanoramaShowScreen';
+import CartGuestScreen from '../../screens/cart/CartGuestScreen';
 
 const Stack = createStackNavigator();
 const DesigneratHomeStack = () => {
@@ -274,6 +275,15 @@ const DesigneratHomeStack = () => {
         component={CartIndexScreen}
         options={{
           headerTitle: () => <HeaderMiddle title={I18n.t('cart')} />,
+        }}
+      />
+      <Stack.Screen
+        name="CartGuest"
+        component={CartGuestScreen}
+        options={{
+          headerTitle: () => (
+            <HeaderMiddle title={I18n.t('continue_as_guest')} />
+          ),
         }}
       />
       <Stack.Screen

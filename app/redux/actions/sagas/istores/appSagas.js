@@ -53,12 +53,12 @@ export function* istoresBootStrap() {
       call(setHomeBrands),
       call(startAuthenticatedScenario),
       call(setDeviceId),
-      call(setHomeProducts),
+      call(setHomeProducts, {payload: {on_home: 1}}),
       call(getLatestProducts),
       call(getPages),
       call(getTags),
       call(getVideos),
-      // call(getProductIndex),
+      call(getProductIndex),
       // call(getServiceIndex),
       // call(getHomeServicesScenario),
       call(setHomeSplashes),
@@ -93,11 +93,6 @@ export function* istoresBootStrap() {
         payload: {
           searchParams: {on_home: 1, is_designer: 1, country_id: country.id},
           redirect: false,
-        },
-      }),
-      call(startGetHomeCelebrities, {
-        payload: {
-          searchParams: {on_home: 1, is_celebrity: 1, country_id: country.id},
         },
       }),
       put({type: actions.TOGGLE_RESET_APP, payload: false}),

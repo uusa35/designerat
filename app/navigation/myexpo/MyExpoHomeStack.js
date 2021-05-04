@@ -54,6 +54,7 @@ import CalendarIndexScreen from '../../screens/calender/CalendarIndexScreen';
 import DesignerShowScreen from '../../screens/designer/expo/DesignerShowScreen';
 import PanoramaShowScreen from '../../screens/PanoramaShowScreen';
 import MyExpoSearchTab from './MyExpoSearchTab';
+import CartGuestScreen from '../../screens/cart/CartGuestScreen';
 
 const Stack = createStackNavigator();
 const MyExpoHomeStack = () => {
@@ -278,7 +279,15 @@ const MyExpoHomeStack = () => {
         }}
         component={ContactusScreen}
       />
-
+      <Stack.Screen
+        name="CartGuest"
+        component={CartGuestScreen}
+        options={{
+          headerTitle: () => (
+            <HeaderMiddle title={I18n.t('continue_as_guest')} />
+          ),
+        }}
+      />
       <Stack.Screen
         name="CartIndex"
         component={CartIndexScreen}

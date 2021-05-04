@@ -1,14 +1,14 @@
-import React, {useContext, useState, useEffect, Fragment} from 'react';
+import React, {useContext, useState, useEffect, Fragment, useMemo} from 'react';
 import {StyleSheet, Text, TouchableOpacity} from 'react-native';
 import {View} from 'react-native-animatable';
 import I18n, {isRTL} from '../../../I18n';
 import {isIOS} from '../../../constants';
 import {iconSizes, text} from '../../../constants/sizes';
-import {showCountryModal} from '../../../redux/actions';
+import {enableErrorMessage, showCountryModal} from '../../../redux/actions';
 import {clearCart, getCoupon, submitCart} from '../../../redux/actions/cart';
 import {Button, Input, CheckBox, Icon} from 'react-native-elements';
 import PropTypes from 'prop-types';
-import {map, round, isNull} from 'lodash';
+import {map, round, isNull, first, filter} from 'lodash';
 import ProductItem from '../product/ProductItem';
 import {GlobalValuesContext} from '../../../redux/GlobalValuesContext';
 import validate from 'validate.js';
@@ -24,6 +24,8 @@ import {useNavigation} from '@react-navigation/native';
 import widgetStyles from '../widgetStyles';
 import {themeColors} from '../../../constants/colors';
 import DesingeratBtn from '../Button/DesigneratBtn';
+import {register} from '../../../redux/actions/user';
+import {width} from '../../../constants';
 
 const CartList = ({
   shipmentCountry,
@@ -34,6 +36,7 @@ const CartList = ({
   shipmentFees,
 }) => {
   const dispatch = useDispatch();
+  const navigation = useNavigation();
   const {
     colors,
     total,
@@ -41,7 +44,16 @@ const CartList = ({
     exchange_rate,
     currency_symbol,
   } = useContext(GlobalValuesContext);
-  const {cart, auth, guest, country, settings} = useSelector(state => state);
+  const {
+    cart,
+    auth,
+    guest,
+    country,
+    settings,
+    roles,
+    role,
+    playerId,
+  } = useSelector(state => state);
   const {navigate} = useNavigation();
   const [name, setName] = useState(!validate.isEmpty(auth) ? auth.name : null);
   const [email, setEmail] = useState(
@@ -71,6 +83,23 @@ const CartList = ({
     setNotes(auth.description);
   }, [auth]);
 
+  const handleRegister = () => {
+    dispatch(
+      register({
+        name,
+        email,
+        password: mobile,
+        mobile,
+        country_id: country.id,
+        address,
+        player_id: playerId,
+        description: name,
+        is_male: true,
+        role_id: role ? role.id : first(filter(roles, r => r.isClient)).id,
+      }),
+    );
+  };
+
   return (
     <Fragment>
       <View
@@ -90,204 +119,8 @@ const CartList = ({
             />
           );
         })}
-        <View
-          style={{
-            flexDirection: 'row',
-            justifyContent: 'space-between',
-            alignText: 'center',
-            marginTop: 10,
-            paddingBottom: 20,
-            paddingTop: 20,
-            borderTopWidth: 0.5,
-            borderTopColor: 'lightgrey',
-          }}>
-          <Text
-            style={{
-              fontFamily: text.font,
-              fontSize: text.medium,
-              color: colors.header_one_theme_color,
-            }}>
-            {I18n.t('total')}
-          </Text>
-          <View style={{flexDirection: 'row'}}>
-            <Text
-              style={{
-                fontFamily: text.font,
-                fontSize: text.medium,
-                color: colors.header_one_theme_color,
-              }}>
-              {round(total, 2)}
-            </Text>
-            <Text
-              style={{
-                fontFamily: text.font,
-                fontSize: text.medium,
-                color: colors.header_one_theme_color,
-              }}>
-              {I18n.t('kwd')}
-            </Text>
-          </View>
-        </View>
-        {shipmentFees > 0 ? (
-          <View
-            style={{
-              flexDirection: 'row',
-              justifyContent: 'space-between',
-              alignText: 'center',
-              marginTop: 10,
-              paddingBottom: 20,
-            }}>
-            <Text
-              style={{
-                fontFamily: text.font,
-                fontSize: text.medium,
-                color: colors.header_one_theme_color,
-              }}>
-              {I18n.t('shipment_fees_per_piece')}
-            </Text>
-            <View style={{flexDirection: 'row'}}>
-              <Text
-                style={{
-                  fontFamily: text.font,
-                  fontSize: text.medium,
-                  color: colors.header_one_theme_color,
-                }}>
-                {round(shipmentCountry.fixed_shipment_charge, 2)}
-              </Text>
-              <Text
-                style={{
-                  fontFamily: text.font,
-                  fontSize: text.medium,
-                  color: colors.header_one_theme_color,
-                }}>
-                {I18n.t('kwd')}
-              </Text>
-            </View>
-          </View>
-        ) : null}
-
-        {coupon && coupon.value > 0 ? (
-          <View
-            style={{
-              flexDirection: 'row',
-              justifyContent: 'space-between',
-              alignText: 'center',
-              marginTop: 10,
-
-              paddingBottom: 20,
-            }}>
-            <Text
-              style={{
-                fontFamily: text.font,
-                fontSize: text.medium,
-                color: colors.header_one_theme_color,
-              }}>
-              {I18n.t('discount')}
-            </Text>
-            <View style={{flexDirection: 'row'}}>
-              <Text
-                style={{
-                  fontFamily: text.font,
-                  fontSize: text.medium,
-                  color: 'red',
-                }}>
-                {round(coupon.value, 2)}
-              </Text>
-              <Text
-                style={{
-                  fontFamily: text.font,
-                  fontSize: text.medium,
-                  color: 'red',
-                }}>
-                {I18n.t('kwd')}
-              </Text>
-            </View>
-          </View>
-        ) : null}
-        <View
-          style={{
-            flexDirection: 'row',
-            justifyContent: 'space-between',
-            alignText: 'center',
-            marginTop: 10,
-            paddingTop: 20,
-            paddingBottom: 20,
-            borderTopWidth: 0.5,
-            borderTopColor: 'lightgrey',
-          }}>
-          <Text
-            style={{
-              fontFamily: text.font,
-              fontSize: text.medium,
-              color: colors.header_one_theme_color,
-            }}>
-            {I18n.t('grossTotal')}
-          </Text>
-          <View style={{flexDirection: 'row'}}>
-            <Text
-              style={{
-                fontFamily: text.font,
-                fontSize: text.medium,
-                color: colors.header_one_theme_color,
-              }}>
-              {`${round(grossTotal, 2)} ${I18n.t('kwd')}`}
-            </Text>
-          </View>
-        </View>
-        {!country.is_local && (
-          <View
-            style={{
-              flexDirection: 'row',
-              justifyContent: 'space-between',
-              alignText: 'center',
-              marginTop: 10,
-              paddingTop: 20,
-              paddingBottom: 20,
-              borderTopWidth: 0.5,
-              borderTopColor: 'lightgrey',
-            }}>
-            <Text
-              style={{
-                fontFamily: text.font,
-                fontSize: text.medium,
-                color: colors.header_one_theme_color,
-              }}>
-              {`${I18n.t('gross_total_in')} ${currency_symbol}`}
-            </Text>
-            <View style={{flexDirection: 'row'}}>
-              <Text
-                style={{
-                  fontFamily: text.font,
-                  fontSize: text.medium,
-                  color: colors.header_one_theme_color,
-                }}>
-                {`${getConvertedFinalPrice(
-                  round(grossTotal, 2),
-                  exchange_rate,
-                )} ${currency_symbol}`}
-              </Text>
-            </View>
-          </View>
-        )}
         <View>
-          {settings.shipment_notes && (
-            <TouchableOpacity
-              style={{
-                flex: 1,
-                flexDirection: 'row',
-                justifyContent: 'center',
-                padding: 15,
-                marginTop: 10,
-                marginBottom: 10,
-                backgroundColor: themeColors.desinerat.lightGray,
-              }}
-              onPress={() => navigate('Contactus')}>
-              <Text style={[widgetStyles.headerThree, {lineHeight: 35}]}>
-                {settings.shipment_notes}
-              </Text>
-            </TouchableOpacity>
-          )}
-          <View style={{paddingTop: 20, paddingBottom: 20}}>
+          <View style={{paddingTop: 20, width: width - 20}}>
             <Input
               editable={editMode}
               placeholder={name ? name : I18n.t('name')}
@@ -481,111 +314,13 @@ const CartList = ({
             {/*  onChangeText={notes => setNotes(notes)}*/}
             {/*/>*/}
           </View>
-          <View
-            style={{
-              marginTop: 0,
-              marginBottom: 10,
-              width: '100%',
-              flexDirection: 'row',
-              justifyContent: 'center',
-              alignItems: 'center',
-            }}>
-            <CheckBox
-              containerStyle={{width: '90%'}}
-              title={I18n.t('agree_on_conditions_and_terms')}
-              iconType="material"
-              checkedIcon="check-box"
-              uncheckedIcon="check-box-outline-blank"
-              checked={checked}
-              onPress={() => setChecked(!checked)}
-              textStyle={{fontFamily: text.font, paddingTop: 5}}
-            />
-            <Icon
-              name="book"
-              type="font-awesome"
-              size={15}
-              onPress={() => navigate('TermAndCondition')}
-            />
-          </View>
-          {editMode ? (
-            <DesingeratBtn
-              disabled={!checked}
-              handleClick={() =>
-                dispatch(
-                  submitCart({
-                    name,
-                    email,
-                    mobile,
-                    address: address ? address : 'NOT APPLICABLE',
-                    country_id: shipmentCountry.id,
-                    notes,
-                    area: area ? area : 'N/A',
-                  }),
-                )
-              }
-              title={I18n.t('confirm_information')}
-            />
-          ) : (
-            <View>
-              <DesingeratBtn
-                handleClick={() =>
-                  dispatch({
-                    type: CREATE_MYFATOORAH_PAYMENT_URL,
-                    payload: {
-                      name,
-                      email,
-                      mobile,
-                      address,
-                      country_id: shipmentCountry.id,
-                      coupon_id: !isNull(coupon) ? coupon.id : 0,
-                      cart,
-                      total,
-                      grossTotal,
-                      shipment_fees: shipmentCountry.fixed_shipment_charge,
-                      discount: coupon.value,
-                      payment_method: isIOS
-                        ? 'IOS - My Fatoorah'
-                        : 'Android - My Fatoorah',
-                    },
-                  })
-                }
-                bg={true}
-                title={I18n.t('go_to_payment_my_fatoorah')}
-              />
-              <DesingeratBtn
-                handleClick={() =>
-                  dispatch({
-                    type: CREATE_TAP_PAYMENT_URL,
-                    payload: {
-                      name,
-                      email,
-                      mobile,
-                      address,
-                      country_id: shipmentCountry.id,
-                      coupon_id: !isNull(coupon) ? coupon.id : 0,
-                      cart,
-                      total,
-                      grossTotal,
-                      shipment_fees: shipmentCountry.fixed_shipment_charge,
-                      discount: coupon.value,
-                      payment_method: isIOS
-                        ? 'IOS - My Fatoorah'
-                        : 'Android - My Fatoorah',
-                    },
-                  })
-                }
-                bg={true}
-                title={I18n.t('go_to_payment_tap')}
-              />
-            </View>
-          )}
+          <DesingeratBtn
+            // disabled={!checked}
+            handleClick={() => handleRegister()}
+            title={I18n.t('confirm_information')}
+          />
         </View>
       </View>
-      <DesingeratBtn
-        handleClick={() => dispatch(clearCart())}
-        bgColor={'darkred'}
-        title={I18n.t('clear_cart')}
-      />
     </Fragment>
   );
 };

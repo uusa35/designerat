@@ -1,10 +1,15 @@
-import React, {useContext, useState, useEffect, Fragment} from 'react';
+import React, {useContext, useState, useEffect, Fragment, useMemo} from 'react';
 import {StyleSheet, Text, TouchableOpacity, View} from 'react-native';
 import I18n, {isRTL} from '../../../I18n';
 import {isIOS} from '../../../constants';
 import {iconSizes, text} from '../../../constants/sizes';
 import {showCountryModal} from '../../../redux/actions';
-import {clearCart, getCoupon, submitCart} from '../../../redux/actions/cart';
+import {
+  clearCart,
+  getCoupon,
+  setShipmentFees,
+  submitCart,
+} from '../../../redux/actions/cart';
 import {
   Button,
   Input,
@@ -16,6 +21,7 @@ import {
 import PropTypes from 'prop-types';
 import {map, round, isNull} from 'lodash';
 import ProductItem from '../product/ProductItem';
+import {togglePickup} from '../../../redux/actions/cart';
 import {GlobalValuesContext} from '../../../redux/GlobalValuesContext';
 import validate from 'validate.js';
 import {useDispatch, useSelector} from 'react-redux';
@@ -34,6 +40,8 @@ import DesigneratBtn from '../Button/DesigneratBtn';
 import DesigneratDesignerShowScreen from '../../../screens/designer/DesigneratDesignerShowScreen';
 import DesingeratBtn from '../Button/DesigneratBtn';
 import DesigneratCartPriceSummary from './DesigneratCartPriceSummary';
+import {themeColors} from '../../../constants/colors';
+import {setGrossTotalCartValue} from '../../../redux/actions/sagas/requestSagas';
 
 const DesigneratCartList = ({
   shipmentCountry,
@@ -41,18 +49,22 @@ const DesigneratCartList = ({
   editModeDefault = true,
   coupon,
   selectedArea,
-  shipmentFees,
 }) => {
   const dispatch = useDispatch();
+  const {colors, exchange_rate, currency_symbol, cartLength} = useContext(
+    GlobalValuesContext,
+  );
   const {
-    colors,
-    total,
+    cart,
+    auth,
+    guest,
+    country,
+    settings,
+    pickup,
+    shipmentFees,
     grossTotal,
-    exchange_rate,
-    currency_symbol,
-    cartLength,
-  } = useContext(GlobalValuesContext);
-  const {cart, auth, guest, country} = useSelector(state => state);
+    total,
+  } = useSelector(state => state);
   const {navigate} = useNavigation();
   const [name, setName] = useState(!validate.isEmpty(auth) ? auth.name : null);
   const [email, setEmail] = useState(
@@ -73,6 +85,10 @@ const DesigneratCartList = ({
   const [editMode, setEditMode] = useState(editModeDefault);
   const [checked, setChecked] = useState(false);
   const [area, setArea] = useState('');
+  const [originalGrossTotal, setOriginalGrossTotal] = useState(grossTotal);
+  const [originalShipmentFees, setOriginalShipmentFees] = useState(
+    shipmentFees,
+  );
 
   useEffect(() => {
     setEmail(auth.email);
@@ -80,6 +96,16 @@ const DesigneratCartList = ({
     setMobile(auth.mobile);
     setAddress(auth.address);
   }, [auth]);
+
+  useMemo(() => {
+    if (pickup && settings.pickupFromBranch) {
+      setOriginalGrossTotal(grossTotal - shipmentFees);
+      setOriginalShipmentFees(0);
+    } else {
+      setOriginalGrossTotal(grossTotal);
+      setOriginalShipmentFees(shipmentFees);
+    }
+  }, [pickup]);
 
   const handleRegisterClick = () => {
     dispatch({type: REGISTER_AS_CLIENT, payload: {isClient: true}});
@@ -186,8 +212,58 @@ const DesigneratCartList = ({
         />
       </View>
 
-      <DesigneratCartPriceSummary />
-
+      {settings.pickupFromBranch && !settings.multiCartMerchant && (
+        <View
+          style={[
+            widgetStyles.panelContent,
+            {
+              flexDirection: 'row',
+              alignItems: 'center',
+              justifyContent: 'space-between',
+              padding: 15,
+            },
+          ]}>
+          <TouchableOpacity
+            onPress={() => {
+              dispatch(togglePickup(!pickup));
+              // dispatch(setBranches(cart[0].element.user.branches))
+            }}
+            style={{
+              flexDirection: 'row',
+              justifyContent: 'space-evenly',
+              alignItems: 'center',
+            }}>
+            <Icon
+              name="people-carry"
+              type="font-awesome-5"
+              size={iconSizes.smaller}
+              color={
+                pickup
+                  ? colors.btn_bg_theme_color
+                  : themeColors.desinerat.lightGray
+              }
+            />
+            <Text
+              style={[
+                widgetStyles.headerThree,
+                {paddingLeft: 20, paddingRight: 20},
+              ]}>
+              {I18n.t('pickup_from_branch')}
+            </Text>
+          </TouchableOpacity>
+          <Icon
+            name={`chevron-${isRTL ? 'left' : 'right'}`}
+            type="evilicon"
+            size={iconSizes.medium}
+            color={colors.btn_bg_theme_color}
+          />
+        </View>
+      )}
+      <DesigneratCartPriceSummary
+        shipmentFees={originalShipmentFees}
+        total={total}
+        grossTotal={originalGrossTotal}
+      />
       {guest ? (
         <View
           style={{

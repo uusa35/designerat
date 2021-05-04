@@ -558,7 +558,7 @@
   "added_from" : "مضاف منذ",
   "latest_products" : "أحدث المنتجات",
   "best_sale_products" : "أفضل المبيعات",
-  "choosen_products" : "منتجات مختارة",
+  "chosen_products" : "منتجات مختارة",
   "on_sale_products" : "تنزيلات",
   "hot_deals_products" : "أفضل العروض",
   "mallr" : {
@@ -795,7 +795,10 @@
     "recentest_products" : "أحدث المنتجات المضافة",
     "on_sale_products" : "تنزيلات",
     "stores" : "المتاجر"
-  }
+  },
+  "pickup_from_branch" : "استلام من الفرع",
+  "pay_online_with_tap" : "الدفع اونلاين",
+  "pay_online_with_my_fatoorah" : "الدفع اونلاين"
 
 
 }

@@ -80,3 +80,10 @@ export function setShipmentFees(payload) {
     payload,
   };
 }
+
+export function togglePickup(payload) {
+  return {
+    type: actions.TOGGLE_PICKUP,
+    payload,
+  };
+}

@@ -561,7 +561,6 @@ export function* startRegisterScenario(action) {
         }),
         call(enableSuccessMessage, I18n.t('register_success')),
       ]);
-
       if (element.mobile_verified && !settings.mobileVerification) {
         yield call(startNavigateScenario, 'Home');
       } else {

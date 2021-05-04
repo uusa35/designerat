@@ -1,4 +1,4 @@
-import React, {useContext, useState} from 'react';
+import React, {useContext, useState, Fragment} from 'react';
 import {StyleSheet, Text, TouchableOpacity, Alert, Linking} from 'react-native';
 import {View} from 'react-native-animatable';
 import I18n, {isRTL} from '../../../I18n';
@@ -29,9 +29,16 @@ const DesigneratCartListConfirmationScreen = ({
 }) => {
   const dispatch = useDispatch();
   const {colors, total, grossTotal} = useContext(GlobalValuesContext);
-  const {coupon, shipmentFees, cart, settings, shipmentCountry} = useSelector(
-    state => state,
-  );
+  const {
+    coupon,
+    shipmentFees,
+    cart,
+    settings,
+    shipmentCountry,
+    pickup,
+  } = useSelector(state => state);
+
+  console.log(grossTotal);
   const navigation = useNavigation();
   const route = useRoute();
   const {
@@ -170,11 +177,22 @@ const DesigneratCartListConfirmationScreen = ({
           />
         </View>
       )}
-      <DesigneratCartPriceSummary title={I18n.t('order_summary')} />
-      <Text
-        style={[widgetStyles.headerThree, {textAlign: 'left', padding: 20}]}>
-        {I18n.t('deliver_to')}
-      </Text>
+      <DesigneratCartPriceSummary
+        title={I18n.t('order_summary')}
+        grossTotal={grossTotal}
+        shipmentFees={shipmentFees}
+      />
+      {pickup ? (
+        <Text
+          style={[widgetStyles.headerThree, {textAlign: 'left', padding: 20}]}>
+          {I18n.t('pickup_from_branch')}
+        </Text>
+      ) : (
+        <Text
+          style={[widgetStyles.headerThree, {textAlign: 'left', padding: 20}]}>
+          {I18n.t('deliver_to')}
+        </Text>
+      )}
       <View
         style={[
           widgetStyles.panelContent,
@@ -484,11 +502,19 @@ const DesigneratCartListConfirmationScreen = ({
           />
         </View>
         {settings.cash_on_delivery && (
-          <DesigneratBtn
-            disabled={!checked}
-            handleClick={() => handleCashOnDelivery()}
-            title={I18n.t('cash_on_delivery')}
-          />
+          <Fragment>
+            <DesigneratBtn
+              disabled={!checked}
+              handleClick={() => handleCashOnDelivery()}
+              bgColor="#25D366"
+              title={I18n.t('cash_on_delivery') + '  ' + I18n.t('whatsapp')}
+            />
+            <DesigneratBtn
+              disabled={!checked}
+              handleClick={() => handleCashOnDelivery()}
+              title={I18n.t('cash_on_delivery')}
+            />
+          </Fragment>
         )}
         {settings.payment_method === 'myfatoorah' && (
           <DesigneratBtn
@@ -521,7 +547,7 @@ const DesigneratCartListConfirmationScreen = ({
                 },
               });
             }}
-            title={I18n.t('go_to_payment_page')}
+            title={I18n.t('pay_online_with_my_fatorah')}
           />
         )}
         {settings.payment_method === 'tap' && (
@@ -549,13 +575,11 @@ const DesigneratCartListConfirmationScreen = ({
                   coupon_id: !isEmpty(coupon) ? coupon.id : null,
                   discount: !isEmpty(coupon) ? coupon.value : 0,
                   notes: cNotes,
-                  payment_method: isIOS
-                    ? 'IOS - My Fatoorah'
-                    : 'Android - My Fatoorah',
+                  payment_method: isIOS ? 'IOS - TAP' : 'Android - TAP',
                 },
               });
             }}
-            title={I18n.t('go_to_payment_page')}
+            title={I18n.t('pay_online_with_tap')}
           />
         )}
         <DesingeratBtn

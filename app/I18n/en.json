@@ -520,7 +520,7 @@
   "added_from" : "added",
   "latest_products" : "Latest Products",
   "best_sale_products" : "Best Sale Products",
-  "choosen_products" : "Choosen Products",
+  "chosen_products" : "Choosen Products",
   "on_sale_products" : "Sale",
   "hot_deals_products" : "Hot Deals",
   "mallr" : {
@@ -759,7 +759,10 @@
     "recentest_products" : "Recentest Products",
     "on_sale_products" : "On Sale",
     "stores" : "Stores"
-  }
+  },
+  "pickup_from_branch" : "Pick up from a branch.",
+  "pay_online_with_tap" : "Pay Online",
+  "pay_online_with_my_fatoorah" : "Pay Online"
 
 }
 

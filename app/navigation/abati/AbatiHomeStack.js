@@ -53,6 +53,8 @@ import StatisticIndexScreen from '../../screens/setting/StatisticIndexScreen';
 import CalendarIndexScreen from '../../screens/calender/CalendarIndexScreen';
 import DesignerShowScreen from '../../screens/designer/expo/DesignerShowScreen';
 import PanoramaShowScreen from '../../screens/PanoramaShowScreen';
+import CartGuestScreen from '../../screens/cart/CartGuestScreen';
+
 const Stack = createStackNavigator();
 const AbatiHomeStack = () => {
   const {colors} = useContext(GlobalValuesContext);
@@ -269,7 +271,15 @@ const AbatiHomeStack = () => {
         }}
         component={ContactusScreen}
       />
-
+      <Stack.Screen
+        name="CartGuest"
+        component={CartGuestScreen}
+        options={{
+          headerTitle: () => (
+            <HeaderMiddle title={I18n.t('continue_as_guest')} />
+          ),
+        }}
+      />
       <Stack.Screen
         name="CartIndex"
         component={CartIndexScreen}

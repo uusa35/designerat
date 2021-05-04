@@ -118,7 +118,7 @@ const IstoresHomeScreen = () => {
           <ProductHorizontalWidget
             elements={homeProducts}
             showName={true}
-            title={I18n.t('choosen_products')}
+            title={I18n.t('chosen_products')}
             searchParams={{on_home: 1, country_id: country.id}}
           />
         )}

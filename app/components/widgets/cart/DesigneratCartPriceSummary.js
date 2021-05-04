@@ -7,15 +7,17 @@ import React, {useContext} from 'react';
 import {useSelector} from 'react-redux';
 import {GlobalValuesContext} from '../../../redux/GlobalValuesContext';
 
-const DesigeratCartPriceSummary = ({title = I18n.t('total_details')}) => {
-  const {shipmentFees, shipmentCountry, coupon} = useSelector(state => state);
-  const {
-    total,
-    grossTotal,
-    currency_symbol,
-    exchange_rate,
-    colors,
-  } = useContext(GlobalValuesContext);
+const DesigeratCartPriceSummary = ({
+  title = I18n.t('total_details'),
+  shipmentFees,
+  grossTotal,
+}) => {
+  const {shipmentCountry, coupon, pickupFromBranch} = useSelector(
+    state => state,
+  );
+  const {total, currency_symbol, exchange_rate, colors} = useContext(
+    GlobalValuesContext,
+  );
   return (
     <View
       style={[
@@ -59,7 +61,7 @@ const DesigeratCartPriceSummary = ({title = I18n.t('total_details')}) => {
         </View>
       </View>
 
-      {shipmentFees > 0 ? (
+      {shipmentFees > 0 && !pickupFromBranch ? (
         <View
           style={{
             width: '100%',
@@ -78,9 +80,7 @@ const DesigeratCartPriceSummary = ({title = I18n.t('total_details')}) => {
           </Text>
           <View style={{flexDirection: 'row', minWidth: 50}}>
             <Text style={widgetStyles.headerThree}>
-              {`${round(shipmentCountry.fixed_shipment_charge, 2)} ${I18n.t(
-                'kwd',
-              )}`}
+              {`${round(shipmentFees, 2)} ${I18n.t('kwd')}`}
             </Text>
           </View>
         </View>

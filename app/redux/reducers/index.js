@@ -97,6 +97,9 @@ import roles from './roles';
 import role from './role';
 import resetApp from './resetApp';
 import elementType from './elementType';
+import pickup from './pickup';
+import branch from './branch';
+import branches from './branches';
 
 let reducers = combineReducers({
   isLoading,
@@ -197,6 +200,9 @@ let reducers = combineReducers({
   resetApp,
   searchModal,
   elementType,
+  pickup,
+  branch,
+  branches,
 });
 
 export default reducers;
