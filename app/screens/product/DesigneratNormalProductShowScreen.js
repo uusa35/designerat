@@ -79,7 +79,7 @@ const DesineratNormalProductShowScreen = ({showRating = true}) => {
   };
 
   return (
-    <BgContainer showImage={false} white={true}>
+    <BgContainer showImage={false} white={false}>
       <KeyBoardContainer
         behavior="position"
         handleRefresh={() => handleRefresh()}
@@ -99,7 +99,8 @@ const DesineratNormalProductShowScreen = ({showRating = true}) => {
           hasStock={product.has_stock}
           directPurchase={product.directPurchase}
         />
-        <View style={{alignSelf: 'center', width: '95%'}}>
+        <View
+          style={{alignSelf: 'center', width: '95%', backgroundColor: 'white'}}>
           {product.brand && (
             <View
               style={{

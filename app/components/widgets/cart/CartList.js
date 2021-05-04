@@ -21,6 +21,9 @@ import {
 import {getConvertedFinalPrice} from '../../../helpers';
 import KeyBoardContainer from '../../containers/KeyBoardContainer';
 import {useNavigation} from '@react-navigation/native';
+import widgetStyles from '../widgetStyles';
+import {themeColors} from '../../../constants/colors';
+import DesingeratBtn from '../Button/DesigneratBtn';
 
 const CartList = ({
   shipmentCountry,
@@ -38,7 +41,7 @@ const CartList = ({
     exchange_rate,
     currency_symbol,
   } = useContext(GlobalValuesContext);
-  const {cart, auth, guest, country} = useSelector(state => state);
+  const {cart, auth, guest, country, settings} = useSelector(state => state);
   const {navigate} = useNavigation();
   const [name, setName] = useState(!validate.isEmpty(auth) ? auth.name : null);
   const [email, setEmail] = useState(
@@ -266,56 +269,23 @@ const CartList = ({
             </View>
           </View>
         )}
-        {guest ? (
-          <View
-            style={{
-              flexDirection: 'row',
-              justifyContent: 'center',
-              alignItems: 'center',
-              width: '100%',
-            }}>
-            <Button
-              // onPress={() => dispatch(showLoginModal())}
-              onPress={() => navigate('Login')}
-              raised
-              containerStyle={{flex: 0.5, marginBottom: 10, margin: 5}}
-              buttonStyle={{
-                backgroundColor: 'white',
-                borderRadius: 10,
-                borderWidth: 0.5,
-                borderColor: 'black',
-              }}
-              title={I18n.t('login')}
-              titleStyle={{fontFamily: text.font, color: 'black'}}
-            />
-            <Button
-              onPress={() => navigate('Register')}
-              raised
-              containerStyle={{flex: 0.5, marginBottom: 10, margin: 5}}
-              buttonStyle={{
-                backgroundColor: 'white',
-                borderRadius: 10,
-                borderWidth: 0.5,
-                borderColor: 'black',
-              }}
-              title={I18n.t('register')}
-              titleStyle={{fontFamily: text.font, color: 'black'}}
-            />
-          </View>
-        ) : null}
         <View>
-          {shipment_notes && (
-            <Button
-              raised
-              title={shipment_notes}
-              type="outline"
-              containerStyle={{marginBottom: 20}}
-              titleStyle={{
-                fontFamily: text.font,
-                fontSize: text.medium,
-                color: colors.header_one_theme_color,
+          {settings.shipment_notes && (
+            <TouchableOpacity
+              style={{
+                flex: 1,
+                flexDirection: 'row',
+                justifyContent: 'center',
+                padding: 15,
+                marginTop: 10,
+                marginBottom: 10,
+                backgroundColor: themeColors.desinerat.lightGray,
               }}
-            />
+              onPress={() => navigate('Contactus')}>
+              <Text style={[widgetStyles.headerThree, {lineHeight: 35}]}>
+                {settings.shipment_notes}
+              </Text>
+            </TouchableOpacity>
           )}
           <View style={{paddingTop: 20, paddingBottom: 20}}>
             <Input
@@ -325,7 +295,6 @@ const CartList = ({
               inputContainerStyle={{
                 borderWidth: 1,
                 borderColor: 'lightgrey',
-                borderRadius: 10,
                 paddingLeft: 15,
                 paddingRight: 15,
                 marginBottom: iconSizes.tiny,
@@ -352,7 +321,6 @@ const CartList = ({
               inputContainerStyle={{
                 borderWidth: 1,
                 borderColor: 'lightgrey',
-                borderRadius: 10,
                 paddingLeft: 15,
                 paddingRight: 15,
                 marginBottom: iconSizes.tiny,
@@ -382,7 +350,6 @@ const CartList = ({
               inputContainerStyle={{
                 borderWidth: 1,
                 borderColor: 'lightgrey',
-                borderRadius: 10,
                 paddingLeft: 15,
                 paddingRight: 15,
                 marginBottom: iconSizes.tiny,
@@ -409,7 +376,6 @@ const CartList = ({
               style={{
                 borderWidth: 1,
                 borderColor: 'lightgrey',
-                borderRadius: 10,
                 paddingLeft: 15,
                 paddingRight: 15,
                 marginBottom: iconSizes.small,
@@ -429,33 +395,32 @@ const CartList = ({
                 {shipmentCountry.slug}
               </Text>
             </TouchableOpacity>
-            <Input
-              editable={editMode}
-              placeholder={area ? area : I18n.t('area')}
-              value={area ? area : null}
-              inputContainerStyle={{
-                borderWidth: 1,
-                borderColor: 'lightgrey',
-                borderRadius: 10,
-                paddingLeft: 15,
-                paddingRight: 15,
-                marginBottom: iconSizes.tiny,
-              }}
-              inputStyle={{
-                fontFamily: text.font,
-                textAlign: isRTL ? 'right' : 'left',
-              }}
-              label={I18n.t('area')}
-              labelStyle={{
-                paddingBottom: 10,
+            {/*<Input*/}
+            {/*  editable={editMode}*/}
+            {/*  placeholder={area ? area : I18n.t('area')}*/}
+            {/*  value={area ? area : null}*/}
+            {/*  inputContainerStyle={{*/}
+            {/*    borderWidth: 1,*/}
+            {/*    borderColor: 'lightgrey',*/}
+            {/*    paddingLeft: 15,*/}
+            {/*    paddingRight: 15,*/}
+            {/*    marginBottom: iconSizes.tiny,*/}
+            {/*  }}*/}
+            {/*  inputStyle={{*/}
+            {/*    fontFamily: text.font,*/}
+            {/*    textAlign: isRTL ? 'right' : 'left',*/}
+            {/*  }}*/}
+            {/*  label={I18n.t('area')}*/}
+            {/*  labelStyle={{*/}
+            {/*    paddingBottom: 10,*/}
 
-                fontFamily: text.font,
-                textAlign: 'left',
-              }}
-              shake={true}
-              keyboardType="default"
-              onChangeText={area => setArea(area)}
-            />
+            {/*    fontFamily: text.font,*/}
+            {/*    textAlign: 'left',*/}
+            {/*  }}*/}
+            {/*  shake={true}*/}
+            {/*  keyboardType="default"*/}
+            {/*  onChangeText={area => setArea(area)}*/}
+            {/*/>*/}
             <Input
               editable={editMode}
               placeholder={address ? address : I18n.t('full_address')}
@@ -463,7 +428,6 @@ const CartList = ({
               inputContainerStyle={{
                 borderWidth: 1,
                 borderColor: 'lightgrey',
-                borderRadius: 10,
                 paddingLeft: 15,
                 paddingRight: 15,
                 marginBottom: iconSizes.tiny,
@@ -486,91 +450,36 @@ const CartList = ({
               keyboardType="default"
               onChangeText={address => setAddress(address)}
             />
-            <Input
-              spellCheck={true}
-              editable={editMode}
-              placeholder={notes ? notes : I18n.t('additional_information')}
-              value={notes ? notes : null}
-              inputContainerStyle={{
-                borderWidth: 1,
-                borderColor: 'lightgrey',
-                borderRadius: 10,
-                paddingLeft: 15,
-                paddingRight: 15,
-                marginBottom: iconSizes.tiny,
-                height: 80,
-              }}
-              inputStyle={{
-                fontFamily: text.font,
-                textAlign: isRTL ? 'right' : 'left',
-              }}
-              label={I18n.t('additional_information')}
-              labelStyle={{
-                paddingBottom: 10,
+            {/*<Input*/}
+            {/*  spellCheck={true}*/}
+            {/*  editable={editMode}*/}
+            {/*  placeholder={notes ? notes : I18n.t('additional_information')}*/}
+            {/*  value={notes ? notes : null}*/}
+            {/*  inputContainerStyle={{*/}
+            {/*    borderWidth: 1,*/}
+            {/*    borderColor: 'lightgrey',*/}
+            {/*    paddingLeft: 15,*/}
+            {/*    paddingRight: 15,*/}
+            {/*    marginBottom: iconSizes.tiny,*/}
+            {/*    height: 80,*/}
+            {/*  }}*/}
+            {/*  inputStyle={{*/}
+            {/*    fontFamily: text.font,*/}
+            {/*    textAlign: isRTL ? 'right' : 'left',*/}
+            {/*  }}*/}
+            {/*  label={I18n.t('additional_information')}*/}
+            {/*  labelStyle={{*/}
+            {/*    paddingBottom: 10,*/}
 
-                fontFamily: text.font,
-                textAlign: 'left',
-              }}
-              shake={true}
-              keyboardType="default"
-              multiline={true}
-              numberOfLines={3}
-              onChangeText={notes => setNotes(notes)}
-            />
-
-            {coupon && editMode ? (
-              <View
-                style={{
-                  padding: 20,
-                  borderWidth: 1,
-                  borderColor: 'lightgrey',
-                  width: '100%',
-                  alignItems: 'center',
-                  justifyContent: 'center',
-                }}>
-                <Text
-                  style={{
-                    fontFamily: text.font,
-                    fontSize: text.medium,
-                    textAlign: 'center',
-                    paddingBottom: 10,
-                  }}>
-                  {I18n.t('have_coupon')}
-                </Text>
-                <Input
-                  placeholder={I18n.t('coupon')}
-                  value={code ? code : null}
-                  inputContainerStyle={{
-                    borderWidth: 1,
-                    borderColor: 'lightgrey',
-                    borderRadius: 10,
-                    paddingLeft: 15,
-                    paddingRight: 15,
-                    marginBottom: iconSizes.tiny,
-                  }}
-                  inputStyle={{
-                    fontFamily: text.font,
-                    textAlign: 'left',
-                  }}
-                  shake={true}
-                  keyboardType="default"
-                  onChangeText={code => setCode(code)}
-                />
-                <Button
-                  raised
-                  containerStyle={{marginBottom: 10, width: '90%'}}
-                  buttonStyle={{
-                    backgroundColor: colors.btn_bg_theme_color,
-                  }}
-                  title={I18n.t('add_coupon')}
-                  titleStyle={{
-                    fontFamily: text.font,
-                    color: colors.btn_text_theme_color,
-                  }}
-                  onPress={() => dispatch(getCoupon(code))}
-                />
-              </View>
-            ) : null}
+            {/*    fontFamily: text.font,*/}
+            {/*    textAlign: 'left',*/}
+            {/*  }}*/}
+            {/*  shake={true}*/}
+            {/*  keyboardType="default"*/}
+            {/*  multiline={true}*/}
+            {/*  numberOfLines={3}*/}
+            {/*  onChangeText={notes => setNotes(notes)}*/}
+            {/*/>*/}
           </View>
           <View
             style={{
@@ -599,48 +508,27 @@ const CartList = ({
             />
           </View>
           {editMode ? (
-            <Button
+            <DesingeratBtn
               disabled={!checked}
-              raised
-              containerStyle={{marginBottom: 10, width: '100%'}}
-              buttonStyle={{
-                backgroundColor: colors.btn_bg_theme_color,
-                borderRadius: 0,
-              }}
-              title={I18n.t('confirm_information')}
-              titleStyle={{
-                fontFamily: text.font,
-                color: colors.btn_text_theme_color,
-              }}
-              onPress={() =>
+              handleClick={() =>
                 dispatch(
                   submitCart({
                     name,
                     email,
                     mobile,
-                    address,
+                    address: address ? address : 'NOT APPLICABLE',
                     country_id: shipmentCountry.id,
                     notes,
                     area: area ? area : 'N/A',
                   }),
                 )
               }
+              title={I18n.t('confirm_information')}
             />
           ) : (
             <View>
-              <Button
-                raised
-                containerStyle={{marginBottom: 10, width: '100%'}}
-                buttonStyle={{
-                  backgroundColor: colors.btn_bg_theme_color,
-                  borderRadius: 0,
-                }}
-                title={I18n.t('go_to_payment_my_fatoorah')}
-                titleStyle={{
-                  fontFamily: text.font,
-                  color: colors.btn_text_theme_color,
-                }}
-                onPress={() =>
+              <DesingeratBtn
+                handleClick={() =>
                   dispatch({
                     type: CREATE_MYFATOORAH_PAYMENT_URL,
                     payload: {
@@ -661,20 +549,11 @@ const CartList = ({
                     },
                   })
                 }
+                bg={true}
+                title={I18n.t('go_to_payment_my_fatoorah')}
               />
-              <Button
-                raised
-                containerStyle={{marginBottom: 10, width: '100%'}}
-                buttonStyle={{
-                  backgroundColor: colors.btn_bg_theme_color,
-                  borderRadius: 0,
-                }}
-                title={I18n.t('go_to_payment_tap')}
-                titleStyle={{
-                  fontFamily: text.font,
-                  color: colors.btn_text_theme_color,
-                }}
-                onPress={() =>
+              <DesingeratBtn
+                handleClick={() =>
                   dispatch({
                     type: CREATE_TAP_PAYMENT_URL,
                     payload: {
@@ -695,24 +574,17 @@ const CartList = ({
                     },
                   })
                 }
+                bg={true}
+                title={I18n.t('go_to_payment_tap')}
               />
             </View>
           )}
         </View>
       </View>
-      <Button
-        raised
-        containerStyle={{marginBottom: 10}}
-        buttonStyle={{
-          backgroundColor: colors.btn_bg_theme_color,
-          borderRadius: 0,
-        }}
+      <DesingeratBtn
+        handleClick={() => dispatch(clearCart())}
+        bgColor={'darkred'}
         title={I18n.t('clear_cart')}
-        titleStyle={{
-          fontFamily: text.font,
-          color: colors.btn_text_theme_color,
-        }}
-        onPress={() => dispatch(clearCart())}
       />
     </Fragment>
   );

@@ -8,6 +8,7 @@ import {Button} from 'react-native-elements';
 import I18n from './../../../I18n';
 import {text} from '../../../constants/sizes';
 import {useSelector} from 'react-redux';
+import {themeColors} from '../../../constants/colors';
 
 const ProductInfoWidget = ({
   element,
@@ -20,9 +21,11 @@ const ProductInfoWidget = ({
       useNativeDriver={true}
       animation="bounceInLeft"
       easing="ease-out"
+      // style={{ borderWidth : 0.5, backgroundColor : themeColors.desinerat.lightGray }}
       contentContainerStyle={{
         justifyContent: 'flex-start',
         alignItems: 'flex-start',
+        width: '100%',
       }}>
       <ProductInfoWidgetMainTitle element={element} />
       {element.directPurchase && (

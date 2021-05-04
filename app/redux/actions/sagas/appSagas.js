@@ -14,7 +14,7 @@ import {
 import {designeratBootStrap} from './designerat/appSagas';
 import {expoBootStrap} from './expo/appSagas';
 import {DESIGNERAT, EXPO, ISTORES} from './../../../../app.json';
-import {iorderBootStrap} from './iorder/appSagas';
+import {istoresBootStrap} from './istores/appSagas';
 
 export function* startAppBootStrap() {
   try {
@@ -27,7 +27,7 @@ export function* startAppBootStrap() {
       } else if (DESIGNERAT) {
         yield call(designeratBootStrap);
       } else if (ISTORES) {
-        yield call(iorderBootStrap);
+        yield call(istoresBootStrap);
       }
     }
   } catch (e) {

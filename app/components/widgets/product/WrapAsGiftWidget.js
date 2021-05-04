@@ -45,7 +45,15 @@ const WrapAsGiftWidget = ({
         // disabled={!productAttribute || requestQty <= 0}
       />
       {wrapGift && (
-        <View style={{flex: 1, flexDirection: 'row', alignItems: 'center'}}>
+        <View
+          style={{
+            flexDirection: 'row',
+            marginBottom: '3%',
+            justifyContent: 'center',
+            alignItems: 'center',
+            width: '95%',
+            alignSelf: 'center',
+          }}>
           <ImageLoaderContainer
             img={settings.gift_image}
             style={{width: 100, height: 100}}
@@ -60,14 +68,13 @@ const WrapAsGiftWidget = ({
                   })
             }
             defaultValue={giftMessage ? giftMessage : null}
+            containerStyle={{height: 100, flex: 1}}
             inputContainerStyle={{
-              borderWidth: 1,
               borderColor: 'lightgrey',
-              borderRadius: 5,
-              paddingLeft: 15,
-              marginTop: 5,
-              height: 80,
-              width: '72%',
+              borderRadius: 0,
+              paddingLeft: 10,
+              height: 100,
+              width: '100%',
             }}
             inputStyle={{
               fontFamily: text.font,

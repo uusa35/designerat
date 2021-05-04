@@ -41,7 +41,7 @@ import {getHomeServicesScenario, getServiceIndex} from '../serviceSagas';
 import {getHomeUserCategories} from '../categorySagas';
 import * as actions from '../../types';
 
-export function* iorderBootStrap() {
+export function* istoresBootStrap() {
   const {country} = yield select();
   try {
     yield all([

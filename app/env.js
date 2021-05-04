@@ -6,6 +6,7 @@ import {
   DESIGNERAT_PUSHER_KEY,
   EXPO_ONE_SIGNAL_APP_ID,
   DESIGNERAT_ONE_SIGNAL_APP_ID,
+  ISTORES_ONE_SIGNAL_APP_ID,
   ABATI_ONE_SIGNAL_APP_ID,
 } from '../app';
 import Pusher from 'pusher-js/react-native';
@@ -50,7 +51,7 @@ const oneSignalAppId = () => {
     case 'MYEXPO':
       return EXPO_ONE_SIGNAL_APP_ID;
     case 'ISTORES':
-      return EXPO_ONE_SIGNAL_APP_ID;
+      return ISTORES_ONE_SIGNAL_APP_ID;
     case 'ABATI':
       return ABATI_ONE_SIGNAL_APP_ID;
     default:

@@ -54,6 +54,7 @@ import CalendarIndexScreen from '../../screens/calender/CalendarIndexScreen';
 import DesignerShowScreen from '../../screens/designer/expo/DesignerShowScreen';
 import PanoramaShowScreen from '../../screens/PanoramaShowScreen';
 import IstoresSearchTab from './IstoresSearchTab';
+import CartGuestScreen from '../../screens/cart/CartGuestScreen';
 
 const Stack = createStackNavigator();
 const IstoresHomeStack = () => {
@@ -280,10 +281,12 @@ const IstoresHomeStack = () => {
       />
 
       <Stack.Screen
-        name="CartIndex"
-        component={CartIndexScreen}
+        name="CartGuest"
+        component={CartGuestScreen}
         options={{
-          headerTitle: () => <HeaderMiddle title={I18n.t('cart')} />,
+          headerTitle: () => (
+            <HeaderMiddle title={I18n.t('continue_as_guest')} />
+          ),
         }}
       />
       <Stack.Screen

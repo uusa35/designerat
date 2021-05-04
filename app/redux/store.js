@@ -12,7 +12,7 @@ const persistConfig = {
   storage: AsyncStorage,
   blacklist: [
     'message',
-    'cart',
+    // 'cart',
     'coupon',
     'player_id',
     'shipment_fees',

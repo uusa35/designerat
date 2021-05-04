@@ -15,7 +15,7 @@ import ProductWidgetQtyBtns from './ProductWidgetQtyBtns';
 import ColorsModal from './ColorsModal';
 import {isNull, first} from 'lodash';
 import {axiosInstance} from '../../../redux/actions/api';
-import {addToCart} from '../../../redux/actions/cart';
+import {addToCart, clearCart} from '../../../redux/actions/cart';
 import {GlobalValuesContext} from '../../../redux/GlobalValuesContext';
 import {enableWarningMessage} from '../../../redux/actions';
 import ImageLoaderContainer from '../ImageLoaderContainer';
@@ -23,6 +23,7 @@ import {useDispatch, useSelector} from 'react-redux';
 import WrapAsGiftWidget from './WrapAsGiftWidget';
 import {EXPO} from './../../../../app';
 import * as validate from 'validate.js';
+import DesingeratBtn from '../Button/DesigneratBtn';
 
 const ProductColorSizeGroupWithAttributes = ({
   element,
@@ -235,20 +236,13 @@ const ProductColorSizeGroupWithAttributes = ({
         )}
       </View>
       {element.has_stock && element.is_available && (
-        <Button
-          onPress={() => handleAddToCart()}
+        <DesingeratBtn
+          handleClick={() => handleAddToCart()}
           disabled={!productAttribute || requestQty <= 0}
-          raised
-          containerStyle={{width: '100%', marginTop: 10, marginBottom: 10}}
-          buttonStyle={{backgroundColor: colors.btn_bg_theme_color}}
           title={I18n.t('add_to_cart')}
-          titleStyle={{
-            fontFamily: text.font,
-            color: colors.btn_text_theme_color,
-          }}
         />
       )}
-      <View style={{width: '105%', alignSelf: 'center'}}>
+      <View style={{width: '105%', alignSelf: 'center', marginTop: '3%'}}>
         <Input
           spellCheck={true}
           placeholder={
@@ -257,17 +251,18 @@ const ProductColorSizeGroupWithAttributes = ({
               : I18n.t('add_notes_shoulders_height_and_other_notes')
           }
           defaultValue={notes ? notes : null}
+          containerStyle={{maxHeight: 80}}
           inputContainerStyle={{
-            borderWidth: 1,
+            borderWidth: 0.5,
             borderColor: 'lightgrey',
-            borderRadius: text.smallest,
+            // borderRadius: text.smallest,
             paddingLeft: 15,
             paddingRight: 15,
-            // marginTop: 5,
-            height: 80,
           }}
           inputStyle={{
             fontFamily: text.font,
+            fontSize: text.medium,
+            lineHeight: text.large,
             textAlign: isRTL ? 'right' : 'left',
           }}
           disabled={!productAttribute || requestQty <= 0}

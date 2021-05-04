@@ -10,6 +10,7 @@ import validate from 'validate.js';
 import {useDispatch, useSelector} from 'react-redux';
 import WrapAsGiftWidget from './WrapAsGiftWidget';
 import {EXPO} from './../../../../app';
+import DesingeratBtn from '../Button/DesigneratBtn';
 
 const ProductColorSizeGroup = ({
   element,
@@ -144,22 +145,19 @@ const ProductColorSizeGroup = ({
                   : 'add_notes_shoulders_height_and_other_notes',
               )
         }
+        containerStyle={{maxHeight: 80}}
         inputContainerStyle={{
           borderWidth: 0.5,
-          borderColor: colors.btn_bg_theme_color,
+          borderColor: 'lightgrey',
           // borderRadius: text.smallest,
-          paddingLeft: 10,
-          paddingRight: 10,
-          height: 80,
-          width: '105%',
-          marginTop: 10,
-          position: 'relative',
-          left: -10,
+          paddingLeft: 15,
+          paddingRight: 15,
         }}
         inputStyle={{
           fontFamily: text.font,
+          fontSize: text.medium,
+          lineHeight: text.large,
           textAlign: isRTL ? 'right' : 'left',
-          lineHeight: 25,
         }}
         defaultValue={notes ? notes : null}
         disabled={!qty || requestQty <= 0}
@@ -170,22 +168,10 @@ const ProductColorSizeGroup = ({
         onChangeText={notes => setNotes(notes)}
       />
       {element.has_stock && element.is_available && (
-        <Button
-          onPress={() => handleAddToCart()}
+        <DesingeratBtn
+          handleClick={() => handleAddToCart()}
           disabled={!qty || requestQty <= 0}
-          raised
-          containerStyle={{width: '100%', justifyContent: 'center'}}
-          buttonStyle={{
-            backgroundColor: colors.btn_bg_theme_color,
-            height: 50,
-            justifyContent: 'center',
-            alignItems: 'center',
-          }}
           title={I18n.t('add_to_cart')}
-          titleStyle={{
-            fontFamily: text.font,
-            color: colors.btn_text_theme_color,
-          }}
         />
       )}
     </View>

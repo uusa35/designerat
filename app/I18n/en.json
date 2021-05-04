@@ -749,6 +749,7 @@
   "add_banner" : "Add Banner",
   "open" : "Open",
   "stores" : "Stores",
+  "continue_as_guest" : "Continue as guest",
   "istores" : {
     "iorders" : "I-Stores",
     "product_categories" : "Product Sections",

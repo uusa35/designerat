@@ -203,19 +203,25 @@ const DesigneratCartList = ({
             width={'45%'}
           />
           <DesingeratBtn
-            handleClick={() => navigate('Register')}
+            handleClick={() => handleRegisterClick()}
             title={I18n.t('register')}
             width={'45%'}
           />
         </View>
       ) : null}
-      <DesigneratBtn
-        title={I18n.t('continue')}
-        handleClick={() =>
-          guest ? handleRegisterClick() : navigate('CartIndexForm')
-        }
-        marginTop={20}
-      />
+      {guest ? (
+        <DesigneratBtn
+          title={I18n.t('continue_as_guest')}
+          handleClick={() => navigate('CartGuest')}
+          marginTop={20}
+        />
+      ) : (
+        <DesigneratBtn
+          title={I18n.t('continue')}
+          handleClick={() => navigate('CartIndexForm')}
+          marginTop={20}
+        />
+      )}
     </View>
   );
 };

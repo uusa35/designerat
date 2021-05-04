@@ -15,7 +15,7 @@ const ProductWidgetQtyBtns = ({qty, requestQty = 0, setRequestQty}) => {
       style={{
         flexDirection: 'row',
         alignSelf: 'center',
-        width: '100%',
+        width: '95%',
         justifyContent: 'center',
         alignItems: 'center',
         borderWidth: 0.5,
