@@ -14,8 +14,6 @@ import widgetStyles from '../../components/widgets/widgetStyles';
 const FaqIndexCollapseScreen = () => {
   const {faqs} = useSelector(state => state);
 
-  console.log('faqs', faqs);
-
   return (
     <FlatList
       style={{
@@ -65,7 +63,7 @@ const FaqIndexCollapseScreen = () => {
           </Collapse>
         </View>
       )}
-      // contentInset={{bottom: 200}}
+      contentInset={{bottom: 200}}
     />
   );
 };
