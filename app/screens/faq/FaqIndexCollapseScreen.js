@@ -1,4 +1,4 @@
-import React, {useState, useMemo} from 'react';
+import React from 'react';
 import {StyleSheet, FlatList, Text, View} from 'react-native';
 import {useSelector} from 'react-redux';
 import PropTypes from 'prop-types';
@@ -21,7 +21,6 @@ const FaqIndexCollapseScreen = () => {
         margin: 20,
         backgroundColor: themeColors.desinerat.lightGray,
       }}
-      // contentContainerStyle={{   paddingTop : 20}}
       automaticallyAdjustContentInsets={false}
       showsHorizontalScrollIndicator={false}
       showsVerticalScrollIndicator={false}

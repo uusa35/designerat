@@ -22,7 +22,12 @@ import {Button, Icon, Badge} from 'react-native-elements';
 import I18n from './../../I18n';
 import {changeLang, refetchHomeElements} from '../../redux/actions';
 import {APP_CASE, DESIGNERAT} from './../../../app';
-import {reAuthenticate, setRole, submitAuth} from '../../redux/actions/user';
+import {
+  logout,
+  reAuthenticate,
+  setRole,
+  submitAuth,
+} from '../../redux/actions/user';
 import BgContainer from '../../components/containers/BgContainer';
 import CopyRightInfo from '../../components/widgets/setting/CopyRightInfo';
 import {isEmpty, first, filter} from 'lodash';
@@ -96,7 +101,9 @@ const DesigneratSettingsIndexScreen = ({navigation}) => {
             alignItems: 'center',
           }}
           onPress={() =>
-            guest ? handleRegisterClick() : navigation.navigate('UserEdit')
+            guest && auth.active
+              ? handleRegisterClick()
+              : navigation.navigate('UserEdit')
           }>
           <ImageBackground
             source={{uri: auth.thumb}}
@@ -159,11 +166,39 @@ const DesigneratSettingsIndexScreen = ({navigation}) => {
             alignItems: 'center',
             flex: 1,
             padding: 15,
-            marginTop: '5%',
+            marginTop: '2%',
             width: '100%',
           }}>
-          {!guest && (
+          {!guest && auth.active && (
             <>
+              <Pressable
+                style={[
+                  {
+                    width: '100%',
+                    flexDirection: 'row',
+                    alignItems: 'center',
+                    height: 60,
+                    borderBottomWidth: 0.5,
+                    borderColor: colors.icon_theme_color,
+                    alignSelf: 'center',
+                    justifyContent: 'center',
+                  },
+                ]}
+                onPress={() => dispatch(logout())}>
+                <Icon
+                  color={colors.menu_theme_color}
+                  name="logout"
+                  type="antdesign"
+                  size={iconSizes.smaller}
+                />
+                <Text
+                  style={[
+                    widgetStyles.headerTow,
+                    {paddingLeft: 30, paddingRight: 30},
+                  ]}>
+                  {I18n.t('logout')}
+                </Text>
+              </Pressable>
               {auth.role && !auth.role.isClient && auth.access_dashboard && (
                 <>
                   <Pressable
