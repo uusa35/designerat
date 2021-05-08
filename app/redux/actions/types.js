@@ -226,3 +226,4 @@ export const TOGGLE_IS_CONNECTED = 'TOGGLE_IS_CONNECTED';
 export const SET_ELEMENT_TYPE = 'SET_ELEMENT_TYPE';
 export const RATE_USER = 'RATE_USER';
 export const TOGGLE_PICKUP = 'TOGGLE_PICKUP';
+export const SET_FAQS = 'SET_FAQS';

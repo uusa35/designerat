@@ -88,59 +88,67 @@ const DesigneratSettingsIndexScreen = ({navigation}) => {
             onRefresh={() => handleRefresh()}
           />
         }>
-        <ImageBackground
-          source={{uri: auth.thumb}}
-          resizeMode="cover"
+        <Pressable
           style={{
-            paddingTop: 20,
             paddingBottom: 20,
             width: '100%',
             justifyContent: 'center',
             alignItems: 'center',
-            backgroundColor: adjustColor(colors.btn_bg_theme_color, 50),
           }}
           onPress={() =>
             guest ? handleRegisterClick() : navigation.navigate('UserEdit')
           }>
-          <FastImage
-            source={{uri: auth.thumb ? auth.thumb : settings.logo}}
+          <ImageBackground
+            source={{uri: auth.thumb}}
             resizeMode="cover"
-            style={{width: 90, height: 90, borderRadius: 10}}
-          />
-          <View
             style={{
-              paddingTop: 10,
-              flexDirection: 'row',
+              paddingTop: 20,
+              paddingBottom: 20,
+              width: '100%',
               justifyContent: 'center',
-              alignItems: 'baseline',
+              alignItems: 'center',
+              backgroundColor: adjustColor(colors.btn_bg_theme_color, 50),
             }}>
+            <FastImage
+              source={{uri: auth.thumb ? auth.thumb : settings.logo}}
+              resizeMode="cover"
+              style={{width: 90, height: 90, borderRadius: 10}}
+            />
+            <View
+              style={{
+                paddingTop: 10,
+                flexDirection: 'row',
+                justifyContent: 'center',
+                alignItems: 'baseline',
+              }}>
+              {!guest && (
+                <>
+                  <Text
+                    style={[
+                      widgetStyles.headerThree,
+                      {color: colors.btn_text_theme_color},
+                    ]}>{`${!guest ? auth.name : ''}`}</Text>
+                  <Icon
+                    color={colors.icon_theme_color}
+                    name="edit"
+                    type="font-awesome"
+                    size={iconSizes.smallest}
+                    style={{paddingLeft: 10}}
+                  />
+                </>
+              )}
+            </View>
             {!guest && (
-              <>
+              <View style={{marginTop: 15}}>
                 <Text
                   style={[
                     widgetStyles.headerThree,
                     {color: colors.btn_text_theme_color},
-                  ]}>{`${!guest ? auth.name : ''}`}</Text>
-                <Icon
-                  color={colors.icon_theme_color}
-                  name="edit"
-                  type="font-awesome"
-                  size={iconSizes.smallest}
-                  style={{paddingLeft: 10}}
-                />
-              </>
+                  ]}>{`${auth.role.slug}`}</Text>
+              </View>
             )}
-          </View>
-          {!guest && (
-            <View style={{marginTop: 15}}>
-              <Text
-                style={[
-                  widgetStyles.headerThree,
-                  {color: colors.btn_text_theme_color},
-                ]}>{`${auth.role.slug}`}</Text>
-            </View>
-          )}
-        </ImageBackground>
+          </ImageBackground>
+        </Pressable>
         <View
           animation="bounceIn"
           easing="ease-out"
@@ -358,7 +366,6 @@ const DesigneratSettingsIndexScreen = ({navigation}) => {
               {I18n.t('aboutus')}
             </Text>
           </Pressable>
-
           <Pressable
             style={{
               width: '100%',
@@ -484,6 +491,27 @@ const DesigneratSettingsIndexScreen = ({navigation}) => {
                 {paddingLeft: 30, paddingRight: 30},
               ]}>
               {I18n.t('share_our_app')}
+            </Text>
+          </Pressable>
+          <Pressable
+            style={{
+              width: '100%',
+              flexDirection: 'row',
+              alignItems: 'center',
+              height: 60,
+            }}
+            onPress={() => navigation.navigate('Faq')}>
+            <FastImage
+              source={{uri: settings.logo}}
+              resizeMode="cover"
+              style={{width: 25, height: 25}}
+            />
+            <Text
+              style={[
+                widgetStyles.headerTow,
+                {paddingLeft: 30, paddingRight: 30},
+              ]}>
+              {I18n.t('faqs')}
             </Text>
           </Pressable>
           <Pressable

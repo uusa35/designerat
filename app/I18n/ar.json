@@ -798,7 +798,18 @@
   },
   "pickup_from_branch" : "استلام من الفرع",
   "pay_online_with_tap" : "الدفع اونلاين",
-  "pay_online_with_my_fatoorah" : "الدفع اونلاين"
+  "pay_online_with_my_fatoorah" : "الدفع اونلاين",
+  "delivery" :  "توصيل",
+  "choose_pickup_branch" : "اختر الفرع للتسليم",
+  "choose_branch_from_list" : "اختر الفرع المطلوب الاستلام منه",
+  "contact_with_us_through_whatsapp" : "تواصل معنا عن طريق الواتس اب",
+  "contact_with_merchant_through_whatsapp" : "تواصل مع صاحب المحل (البائع) عن طريق الواتس اب",
+  "branch_name" : "اسم الفرع",
+  "branch_address" : "عنوان الفرع",
+  "branch_description" : "تفاصيل (اوقات العمل)",
+  "branch_mobile" : "هاتف الفرع",
+  "u_have_chosed_to_pickup_ur_order_from_branch" : "لقد قمت بتفعيل خاصية (الاستلام من الفرع). يرجى التأكد من البيانات",
+  "faqs" : "أسئلة متكررة"
 
 
 }

@@ -25,6 +25,7 @@ const DesigeratCartPriceSummary = ({
         {
           paddingTop: 20,
           paddingBottom: 20,
+          marginBottom: 20,
           alignItems: 'center',
           justifyContent: 'center',
         },

@@ -1,5 +1,12 @@
 import React, {useContext, useState, Fragment} from 'react';
-import {StyleSheet, Text, TouchableOpacity, Alert, Linking} from 'react-native';
+import {
+  StyleSheet,
+  Text,
+  TouchableOpacity,
+  Alert,
+  Linking,
+  Pressable,
+} from 'react-native';
 import {View} from 'react-native-animatable';
 import I18n, {isRTL} from '../../../I18n';
 import {isIOS, width} from '../../../constants';
@@ -22,6 +29,10 @@ import DesigneratBtn from '../Button/DesigneratBtn';
 import DesigneratCartPriceSummary from './DesigneratCartPriceSummary';
 import DesingeratBtn from '../Button/DesigneratBtn';
 import {APP_CASE} from '../../../../app.json';
+import CartPickupFromBranchInformation from './CartPickupFromBranchInformation';
+import {themeColors} from '../../../constants/colors';
+import FastImage from 'react-native-fast-image';
+import {images} from '../../../constants/images';
 
 const DesigneratCartListConfirmationScreen = ({
   showLabel = false,
@@ -36,9 +47,9 @@ const DesigneratCartListConfirmationScreen = ({
     settings,
     shipmentCountry,
     pickup,
+    branch,
   } = useSelector(state => state);
 
-  console.log(grossTotal);
   const navigation = useNavigation();
   const route = useRoute();
   const {
@@ -87,6 +98,8 @@ const DesigneratCartListConfirmationScreen = ({
                 net_price: grossTotal,
                 shipment_fees: shipmentFees,
                 cash_on_delivery: settings.cash_on_delivery,
+                receive_on_branch: pickup,
+                branch_id: branch ? branch.id : null,
                 coupon_id: !isEmpty(coupon) ? coupon.id : null,
                 discount: !isEmpty(coupon) ? coupon.value : 0,
                 notes: cNotes,
@@ -133,61 +146,14 @@ const DesigneratCartListConfirmationScreen = ({
           </Text>
         </TouchableOpacity>
       )}
-      {settings.whatsapp && (
-        <View
-          style={[
-            widgetStyles.panelContent,
-            {
-              flexDirection: 'row',
-              alignItems: 'center',
-              justifyContent: 'space-between',
-              padding: 15,
-            },
-          ]}>
-          <TouchableOpacity
-            onPress={() =>
-              Linking.openURL(
-                getWhatsappLink(settings.whatsapp, I18n.t(APP_CASE)),
-              )
-            }
-            style={{
-              flexDirection: 'row',
-              justifyContent: 'space-evenly',
-              alignItems: 'center',
-            }}>
-            <Icon
-              name="whatsapp"
-              type="font-awesome"
-              size={iconSizes.smaller}
-              color={colors.icon_theme_color}
-            />
-            <Text
-              style={[
-                widgetStyles.headerThree,
-                {paddingLeft: 20, paddingRight: 20},
-              ]}>
-              {I18n.t('whatsapp')}
-            </Text>
-          </TouchableOpacity>
-          <Icon
-            name={`chevron-${isRTL ? 'left' : 'right'}`}
-            type="evilicon"
-            size={iconSizes.medium}
-            color={colors.icon_theme_color}
-          />
-        </View>
-      )}
+
+      {pickup && <CartPickupFromBranchInformation />}
       <DesigneratCartPriceSummary
         title={I18n.t('order_summary')}
         grossTotal={grossTotal}
         shipmentFees={shipmentFees}
       />
-      {pickup ? (
-        <Text
-          style={[widgetStyles.headerThree, {textAlign: 'left', padding: 20}]}>
-          {I18n.t('pickup_from_branch')}
-        </Text>
-      ) : (
+      {!pickup && (
         <Text
           style={[widgetStyles.headerThree, {textAlign: 'left', padding: 20}]}>
           {I18n.t('deliver_to')}
@@ -501,21 +467,7 @@ const DesigneratCartListConfirmationScreen = ({
             onPress={() => navigation.navigate('TermAndCondition')}
           />
         </View>
-        {settings.cash_on_delivery && (
-          <Fragment>
-            <DesigneratBtn
-              disabled={!checked}
-              handleClick={() => handleCashOnDelivery()}
-              bgColor="#25D366"
-              title={I18n.t('cash_on_delivery') + '  ' + I18n.t('whatsapp')}
-            />
-            <DesigneratBtn
-              disabled={!checked}
-              handleClick={() => handleCashOnDelivery()}
-              title={I18n.t('cash_on_delivery')}
-            />
-          </Fragment>
-        )}
+
         {settings.payment_method === 'myfatoorah' && (
           <DesigneratBtn
             disabled={!checked}
@@ -538,6 +490,8 @@ const DesigneratCartListConfirmationScreen = ({
                   net_price: grossTotal,
                   shipment_fees: shipmentFees,
                   cash_on_delivery: false,
+                  receive_on_branch: pickup,
+                  branch_id: branch ? branch.id : null,
                   coupon_id: !isEmpty(coupon) ? coupon.id : null,
                   discount: !isEmpty(coupon) ? coupon.value : 0,
                   notes: cNotes,
@@ -572,6 +526,8 @@ const DesigneratCartListConfirmationScreen = ({
                   net_price: grossTotal,
                   shipment_fees: shipmentFees,
                   cash_on_delivery: false,
+                  receive_on_branch: pickup,
+                  branch_id: branch ? branch.id : null,
                   coupon_id: !isEmpty(coupon) ? coupon.id : null,
                   discount: !isEmpty(coupon) ? coupon.value : 0,
                   notes: cNotes,
@@ -582,10 +538,73 @@ const DesigneratCartListConfirmationScreen = ({
             title={I18n.t('pay_online_with_tap')}
           />
         )}
+        <FastImage
+          source={images.knet}
+          style={{width: 200, height: 50, alignSelf: 'center', marginTop: 10}}
+        />
+        {settings.cash_on_delivery && (
+          <View>
+            <Pressable
+              style={{
+                flex: 1,
+                flexDirection: 'row',
+                justifyContent: 'space-between',
+                alignItems: 'center',
+              }}
+              handleClick={() => handleCashOnDelivery()}>
+              <View style={{flex: 0.9}}>
+                <DesigneratBtn
+                  disabled={!checked}
+                  bg={themeColors.whatsapp}
+                  title={I18n.t('cash_on_delivery') + '  ' + I18n.t('whatsapp')}
+                />
+              </View>
+              <Icon
+                name="whatsapp"
+                type="font-awesome"
+                style={{
+                  flex: 0.1,
+                  justifyContent: 'center',
+                  alignItems: 'center',
+                }}
+                color={themeColors.whatsapp}
+                size={iconSizes.small}
+              />
+            </Pressable>
+            <Pressable
+              style={{
+                flex: 1,
+                flexDirection: 'row',
+                justifyContent: 'space-between',
+                alignItems: 'center',
+              }}
+              handleClick={() => handleCashOnDelivery()}>
+              <View style={{flex: 0.9}}>
+                <DesigneratBtn
+                  disabled={!checked}
+                  handleClick={() => handleCashOnDelivery()}
+                  title={I18n.t('cash_on_delivery')}
+                />
+              </View>
+              <Icon
+                name="money"
+                type="font-awesome"
+                style={{
+                  flex: 0.1,
+                  justifyContent: 'center',
+                  alignItems: 'center',
+                }}
+                color={settings.colors.icon_theme_color}
+                size={iconSizes.smaller}
+              />
+            </Pressable>
+          </View>
+        )}
         <DesingeratBtn
           handleClick={() => dispatch(clearCart())}
           title={I18n.t('clear_cart')}
-          bgColor={adjustColor(colors.btn_bg_theme_color, 15)}
+          bgColor="#DD4132"
+          // bgColor={adjustColor(colors.btn_bg_theme_color, 15)}
           marginTop={15}
         />
       </View>

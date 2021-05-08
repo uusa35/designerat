@@ -1,4 +1,5 @@
 import React, {useContext} from 'react';
+import {Platform} from 'react-native';
 import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
 import {createDrawerNavigator} from '@react-navigation/drawer';
 import {createStackNavigator} from '@react-navigation/stack';
@@ -44,6 +45,12 @@ const IstoresMainTab = () => {
         },
         activeBackgroundColor: colors.footer_bg_theme_color,
         inactiveBackgroundColor: colors.footer_bg_theme_color,
+        tabStyle: {
+          flexDirection: 'column',
+          justifyContent: 'center',
+          alignItems: 'center',
+          maxHeight: 43,
+        },
       }}
       activeColor={colors.footer_theme_color}
       inactiveColor="white"

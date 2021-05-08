@@ -1,4 +1,5 @@
 import * as actions from './types';
+import {SET_GROSS_TOTAL_CART} from './types';
 
 export function storeOrderCashOnDelivery(payload) {
   return {
@@ -84,6 +85,20 @@ export function setShipmentFees(payload) {
 export function togglePickup(payload) {
   return {
     type: actions.TOGGLE_PICKUP,
+    payload,
+  };
+}
+
+export function setBranch(payload) {
+  return {
+    type: actions.SET_BRANCH,
+    payload,
+  };
+}
+
+export function setGrossTotal(payload) {
+  return {
+    type: actions.SET_GROSS_TOTAL_CART,
     payload,
   };
 }

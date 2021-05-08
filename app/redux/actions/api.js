@@ -27,6 +27,13 @@ export async function getSettings() {
     .catch(e => e.response.data.message);
 }
 
+export async function getFaqs() {
+  return await axiosInstance
+    .get('faq')
+    .then(r => r.data)
+    .catch(e => e.response.data.message);
+}
+
 export async function getHomeCategories(params) {
   return await axiosInstance
     .get(`category`, {params})

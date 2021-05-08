@@ -87,7 +87,7 @@ const DesigneratSettingsIndexScreen = ({navigation}) => {
             onRefresh={() => handleRefresh()}
           />
         }>
-        <TouchableOpacity
+        <Pressable
           style={{
             paddingTop: 20,
             paddingBottom: 20,
@@ -96,9 +96,7 @@ const DesigneratSettingsIndexScreen = ({navigation}) => {
             alignItems: 'center',
             backgroundColor: adjustColor(colors.btn_bg_theme_color, 50),
           }}
-          onPress={() =>
-            guest ? handleRegisterClick() : navigation.navigate('UserEdit')
-          }>
+          onPress={() => console.log('here')}>
           <FastImage
             source={{uri: auth.thumb ? auth.thumb : settings.logo}}
             resizeMode="cover"
@@ -126,7 +124,7 @@ const DesigneratSettingsIndexScreen = ({navigation}) => {
               />
             )}
           </View>
-        </TouchableOpacity>
+        </Pressable>
         <View
           animation="bounceIn"
           easing="ease-out"

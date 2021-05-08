@@ -762,7 +762,17 @@
   },
   "pickup_from_branch" : "Pick up from a branch.",
   "pay_online_with_tap" : "Pay Online",
-  "pay_online_with_my_fatoorah" : "Pay Online"
-
+  "pay_online_with_my_fatoorah" : "Pay Online",
+  "delivery" :  "Delivery",
+  "choose_pickup_branch" : "Choose branch to pickup",
+  "choose_branch_from_list" : "Choose Branch to pickup",
+  "contact_with_us_through_whatsapp" : "Contact us through whatsapp.",
+  "contact_with_merchant_through_whatsapp" : "Contact the shop (seller) through whatsapp",
+  "branch_name" : "Branch Name",
+  "branch_address" : "Branch Address",
+  "branch_description" : "Description (Working Hours)",
+  "branch_mobile" : "Branch's Mobile",
+  "u_have_chosed_to_pickup_ur_order_from_branch" : "You have choosen to pickup your order from branch. Please confirm your information below.",
+  "faqs" : "Frequent Questions"
 }
 

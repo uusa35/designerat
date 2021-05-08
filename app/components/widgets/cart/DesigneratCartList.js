@@ -1,47 +1,37 @@
 import React, {useContext, useState, useEffect, Fragment, useMemo} from 'react';
-import {StyleSheet, Text, TouchableOpacity, View} from 'react-native';
+import {
+  StyleSheet,
+  Text,
+  TouchableOpacity,
+  View,
+  Pressable,
+} from 'react-native';
 import I18n, {isRTL} from '../../../I18n';
 import {isIOS} from '../../../constants';
 import {iconSizes, text} from '../../../constants/sizes';
-import {showCountryModal} from '../../../redux/actions';
 import {
-  clearCart,
   getCoupon,
+  setBranch,
+  setGrossTotal,
   setShipmentFees,
-  submitCart,
 } from '../../../redux/actions/cart';
-import {
-  Button,
-  Input,
-  CheckBox,
-  Icon,
-  ListItem,
-  Badge,
-} from 'react-native-elements';
+import {Input, Icon} from 'react-native-elements';
 import PropTypes from 'prop-types';
-import {map, round, isNull} from 'lodash';
-import ProductItem from '../product/ProductItem';
+import {map, first} from 'lodash';
 import {togglePickup} from '../../../redux/actions/cart';
 import {GlobalValuesContext} from '../../../redux/GlobalValuesContext';
 import validate from 'validate.js';
 import {useDispatch, useSelector} from 'react-redux';
-import {
-  CREATE_MYFATOORAH_PAYMENT_URL,
-  CREATE_TAP_PAYMENT_URL,
-  REGISTER_AS_CLIENT,
-} from '../../../redux/actions/types';
-import KeyBoardContainer from '../../containers/KeyBoardContainer';
+import {REGISTER_AS_CLIENT} from '../../../redux/actions/types';
 import {useNavigation} from '@react-navigation/native';
 import DesigneratProductItem from '../product/DesigneratProductItem';
 import widgetStyles from '../widgetStyles';
-import {toggleProductFavorite} from '../../../redux/actions/product';
 import {width} from '../../../constants';
-import DesigneratBtn from '../Button/DesigneratBtn';
-import DesigneratDesignerShowScreen from '../../../screens/designer/DesigneratDesignerShowScreen';
-import DesingeratBtn from '../Button/DesigneratBtn';
 import DesigneratCartPriceSummary from './DesigneratCartPriceSummary';
 import {themeColors} from '../../../constants/colors';
-import {setGrossTotalCartValue} from '../../../redux/actions/sagas/requestSagas';
+import FastImage from 'react-native-fast-image';
+import {icons} from '../../../constants/images';
+import DesigneratBtn from '../../widgets/Button/DesigneratBtn';
 
 const DesigneratCartList = ({
   shipmentCountry,
@@ -51,19 +41,17 @@ const DesigneratCartList = ({
   selectedArea,
 }) => {
   const dispatch = useDispatch();
-  const {colors, exchange_rate, currency_symbol, cartLength} = useContext(
-    GlobalValuesContext,
-  );
+  const {colors, cartLength} = useContext(GlobalValuesContext);
   const {
     cart,
     auth,
     guest,
-    country,
     settings,
     pickup,
     shipmentFees,
     grossTotal,
     total,
+    branch,
   } = useSelector(state => state);
   const {navigate} = useNavigation();
   const [name, setName] = useState(!validate.isEmpty(auth) ? auth.name : null);
@@ -85,10 +73,9 @@ const DesigneratCartList = ({
   const [editMode, setEditMode] = useState(editModeDefault);
   const [checked, setChecked] = useState(false);
   const [area, setArea] = useState('');
-  const [originalGrossTotal, setOriginalGrossTotal] = useState(grossTotal);
-  const [originalShipmentFees, setOriginalShipmentFees] = useState(
-    shipmentFees,
-  );
+  const [currentGrossTotal, setCurrentGrossTotal] = useState(grossTotal);
+  const [currentShipmentFees, setCurrentShipmentFees] = useState(shipmentFees);
+  const [selectedBranch, setSelectedBranch] = useState({});
 
   useEffect(() => {
     setEmail(auth.email);
@@ -98,17 +85,38 @@ const DesigneratCartList = ({
   }, [auth]);
 
   useMemo(() => {
-    if (pickup && settings.pickupFromBranch) {
-      setOriginalGrossTotal(grossTotal - shipmentFees);
-      setOriginalShipmentFees(0);
+    if (
+      pickup &&
+      settings.pickupFromBranch &&
+      !settings.multiCartMerchant &&
+      shipmentCountry.is_local &&
+      !validate.isEmpty(cart[0].element.user.branches)
+    ) {
+      setCurrentGrossTotal(grossTotal - shipmentFees);
+      setCurrentShipmentFees(0);
+      setSelectedBranch(first(cart[0].element.user.branches));
     } else {
-      setOriginalGrossTotal(grossTotal);
-      setOriginalShipmentFees(shipmentFees);
+      const calculatedShipmentFees = shipmentCountry.is_local
+        ? shipmentCountry.fixed_shipment_charge
+        : shipmentCountry.fix * cartLength;
+      setCurrentGrossTotal(grossTotal + calculatedShipmentFees);
+      setCurrentShipmentFees(calculatedShipmentFees);
+      setSelectedBranch({});
     }
   }, [pickup]);
 
+  useMemo(() => {
+    dispatch(setBranch(selectedBranch));
+  }, [selectedBranch]);
+
   const handleRegisterClick = () => {
     dispatch({type: REGISTER_AS_CLIENT, payload: {isClient: true}});
+  };
+
+  const handleNext = () => {
+    dispatch(setGrossTotal(currentGrossTotal));
+    dispatch(setShipmentFees(currentShipmentFees));
+    return navigate('CartIndexForm');
   };
 
   return (
@@ -205,15 +213,152 @@ const DesigneratCartList = ({
           keyboardType="default"
           onChangeText={code => setCode(code)}
         />
-        <DesingeratBtn
+        <DesigneratBtn
           handleClick={() => dispatch(getCoupon(code))}
           title={I18n.t('add_coupon')}
           marginTop={20}
         />
       </View>
+      <DesigneratCartPriceSummary
+        shipmentFees={currentShipmentFees}
+        grossTotal={currentGrossTotal}
+      />
 
+      {settings.pickupFromBranch &&
+        !settings.multiCartMerchant &&
+        shipmentCountry.is_local &&
+        !validate.isEmpty(cart[0].element.user.branches) && (
+          <Fragment>
+            <Pressable
+              style={[
+                widgetStyles.panelContent,
+                {
+                  flexDirection: 'row',
+                  alignItems: 'center',
+                  justifyContent: 'space-between',
+                  padding: 15,
+                },
+              ]}
+              onPress={() => {
+                dispatch(togglePickup(!pickup));
+                // dispatch(setBranches(cart[0].element.user.branches))
+              }}>
+              <View
+                style={{
+                  flexDirection: 'row',
+                  justifyContent: 'space-evenly',
+                  alignItems: 'center',
+                }}>
+                <FastImage
+                  source={icons.bagOne}
+                  style={{width: iconSizes.smaller, height: iconSizes.smaller}}
+                  tintColor={
+                    pickup
+                      ? colors.btn_bg_theme_color
+                      : themeColors.desinerat.lightGray
+                  }
+                />
+                <Text
+                  style={[
+                    widgetStyles.headerThree,
+                    {paddingLeft: 20, paddingRight: 20},
+                  ]}>
+                  {I18n.t('pickup_from_branch')}
+                </Text>
+              </View>
+              <Icon
+                onPress={() => dispatch(togglePickup(!pickup))}
+                name={`chevron-${isRTL ? 'left' : 'right'}`}
+                type="evilicon"
+                size={iconSizes.medium}
+                color={colors.btn_bg_theme_color}
+              />
+            </Pressable>
+
+            {pickup && (
+              <View
+                style={[
+                  widgetStyles.panelContent,
+                  {
+                    flexDirection: 'column',
+                    alignItems: 'center',
+                    justifyContent: 'space-between',
+                    padding: 15,
+                  },
+                ]}>
+                <Text
+                  style={[
+                    widgetStyles.headerThree,
+                    {textAlign: 'left', lineHeight: 25, marginBottom: 10},
+                  ]}>
+                  {I18n.t('choose_branch_from_list')}
+                </Text>
+                {cart[0].element.user.branches.map(b => (
+                  <Pressable
+                    style={{
+                      flexDirection: 'row',
+                      // flex: 1,
+                      minHeight: 60,
+                      justifyContent: 'center',
+                      alignItems: 'center',
+                    }}
+                    onPress={() => setSelectedBranch(b)}>
+                    <View
+                      style={{
+                        flex: 1,
+                        paddingTop: 15,
+                        paddingBottom: 15,
+                        borderTopWidth: 0.5,
+                        borderTopColor: colors.btn_bg_theme_color,
+                      }}>
+                      <Text
+                        style={[
+                          widgetStyles.headerThree,
+                          {textAlign: 'left', lineHeight: 30},
+                        ]}>
+                        {b.name}
+                      </Text>
+                      <Text
+                        style={[
+                          widgetStyles.headerThree,
+                          {textAlign: 'left', lineHeight: 30},
+                        ]}>
+                        {I18n.t('mobile')} : {b.mobile}
+                      </Text>
+                      <Text
+                        style={[
+                          widgetStyles.headerFour,
+                          {textAlign: 'left', lineHeight: 30},
+                        ]}>
+                        {I18n.t('address')} : {b.address}
+                      </Text>
+                    </View>
+                    {!validate.isEmpty(selectedBranch) &&
+                      selectedBranch.id === b.id &&
+                      pickup && (
+                        <Icon
+                          name="check"
+                          type="antdesign"
+                          color={
+                            selectedBranch.id === branch.id
+                              ? colors.btn_bg_theme_color
+                              : 'white'
+                          }
+                          size={iconSizes.smaller}
+                          style={{
+                            borderWidth: 0.5,
+                            borderColor: themeColors.desinerat.darkGray,
+                          }}
+                        />
+                      )}
+                  </Pressable>
+                ))}
+              </View>
+            )}
+          </Fragment>
+        )}
       {settings.pickupFromBranch && !settings.multiCartMerchant && (
-        <View
+        <Pressable
           style={[
             widgetStyles.panelContent,
             {
@@ -222,23 +367,22 @@ const DesigneratCartList = ({
               justifyContent: 'space-between',
               padding: 15,
             },
-          ]}>
-          <TouchableOpacity
-            onPress={() => {
-              dispatch(togglePickup(!pickup));
-              // dispatch(setBranches(cart[0].element.user.branches))
-            }}
+          ]}
+          onPress={() => {
+            dispatch(togglePickup(false));
+            // dispatch(setBranches(cart[0].element.user.branches))
+          }}>
+          <View
             style={{
               flexDirection: 'row',
               justifyContent: 'space-evenly',
               alignItems: 'center',
             }}>
-            <Icon
-              name="people-carry"
-              type="font-awesome-5"
-              size={iconSizes.smaller}
-              color={
-                pickup
+            <FastImage
+              source={icons.deliveryTwo}
+              style={{width: iconSizes.smaller, height: iconSizes.smaller}}
+              tintColor={
+                !pickup
                   ? colors.btn_bg_theme_color
                   : themeColors.desinerat.lightGray
               }
@@ -248,22 +392,18 @@ const DesigneratCartList = ({
                 widgetStyles.headerThree,
                 {paddingLeft: 20, paddingRight: 20},
               ]}>
-              {I18n.t('pickup_from_branch')}
+              {I18n.t('delivery')}
             </Text>
-          </TouchableOpacity>
+          </View>
           <Icon
+            onPress={() => dispatch(togglePickup(false))}
             name={`chevron-${isRTL ? 'left' : 'right'}`}
             type="evilicon"
             size={iconSizes.medium}
             color={colors.btn_bg_theme_color}
           />
-        </View>
+        </Pressable>
       )}
-      <DesigneratCartPriceSummary
-        shipmentFees={originalShipmentFees}
-        total={total}
-        grossTotal={originalGrossTotal}
-      />
       {guest ? (
         <View
           style={{
@@ -273,12 +413,12 @@ const DesigneratCartList = ({
             flex: 1,
             margin: 15,
           }}>
-          <DesingeratBtn
+          <DesigneratBtn
             handleClick={() => navigate('Login')}
             title={I18n.t('login')}
             width={'45%'}
           />
-          <DesingeratBtn
+          <DesigneratBtn
             handleClick={() => handleRegisterClick()}
             title={I18n.t('register')}
             width={'45%'}
@@ -294,7 +434,7 @@ const DesigneratCartList = ({
       ) : (
         <DesigneratBtn
           title={I18n.t('continue')}
-          handleClick={() => navigate('CartIndexForm')}
+          handleClick={() => handleNext()}
           marginTop={20}
         />
       )}

@@ -12,10 +12,10 @@ const persistConfig = {
   storage: AsyncStorage,
   blacklist: [
     'message',
-    // 'cart',
+    'cart',
     'branch',
     'branches',
-    'pickupFromBranch',
+    'pickup',
     'coupon',
     'player_id',
     'shipment_fees',

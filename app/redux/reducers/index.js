@@ -100,6 +100,7 @@ import elementType from './elementType';
 import pickup from './pickup';
 import branch from './branch';
 import branches from './branches';
+import faqs from './faqs';
 
 let reducers = combineReducers({
   isLoading,
@@ -203,6 +204,7 @@ let reducers = combineReducers({
   pickup,
   branch,
   branches,
+  faqs,
 });
 
 export default reducers;

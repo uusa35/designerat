@@ -7,6 +7,7 @@ export const images = {
   loadingSm: require('./../../assets/images/loading_sm.gif'),
   whiteBg: require('./../../assets/images/whiteBg.png'),
   grayBg: require('./../../assets/images/grayBg.png'),
+  knet: require('./../../assets/images/knet-visa.png'),
   whiteBgUrl: 'https://via.placeholder.com/100/fffffff/fffffff?text=text',
 };
 
@@ -32,10 +33,14 @@ export const icons = {
   cartThree: require('./../../assets/icons/cart_3.png'),
   cartFore: require('./../../assets/icons/cart_4.png'),
   cartFive: require('./../../assets/icons/cart_5.png'),
+  cartSix: require('./../../assets/icons/cart_6.png'),
   policy: require('./../../assets/icons/policy.png'),
   contactus: require('./../../assets/icons/contactus.png'),
   phone: require('./../../assets/icons/phone.png'),
   female: require('./../../assets/icons/female.png'),
   gearOne: require('./../../assets/icons/gears.png'),
   gearTwo: require('./../../assets/icons/gear_2.png'),
+  deliveryOne: require('./../../assets/icons/delivery_1.png'),
+  deliveryTwo: require('./../../assets/icons/delivery_2.png'),
+  bagOne: require('./../../assets/icons/bag_1.png'),
 };

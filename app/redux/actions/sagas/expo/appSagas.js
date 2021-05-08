@@ -6,6 +6,7 @@ import {
   getVideos,
   setCommercials,
   setCountries,
+  setFaqs,
   setHomeSplashes,
   setSettings,
   setSlides,
@@ -45,6 +46,7 @@ export function* expoBootStrap() {
     yield all([
       call(getCountry),
       call(setSettings),
+      call(setFaqs),
       call(setCountries),
       call(setSlides),
       // call(setCommercials),

@@ -55,6 +55,7 @@ import DesignerShowScreen from '../../screens/designer/expo/DesignerShowScreen';
 import PanoramaShowScreen from '../../screens/PanoramaShowScreen';
 import IstoresSearchTab from './IstoresSearchTab';
 import CartGuestScreen from '../../screens/cart/CartGuestScreen';
+import FaqIndexCollapseScreen from '../../screens/faq/FaqIndexCollapseScreen';
 
 const Stack = createStackNavigator();
 const IstoresHomeStack = () => {
@@ -113,7 +114,7 @@ const IstoresHomeStack = () => {
       <Stack.Screen
         name={'SearchTab'}
         options={{
-          headerTitle: () => <HeaderMiddle title={I18n.t('expo')} />,
+          headerTitle: () => <HeaderMiddle title={I18n.t('istores.istores')} />,
         }}
         component={IstoresSearchTab}
       />
@@ -375,6 +376,15 @@ const IstoresHomeStack = () => {
         options={{
           headerRight: () => <HeaderRight />,
           headerTitle: () => <HeaderMiddle title={I18n.t('aboutus')} />,
+          headerBackTitle: () => null,
+        }}
+      />
+      <Stack.Screen
+        name={'Faq'}
+        component={FaqIndexCollapseScreen}
+        options={{
+          headerRight: () => <HeaderRight />,
+          headerTitle: () => <HeaderMiddle title={I18n.t('faqs')} />,
           headerBackTitle: () => null,
         }}
       />

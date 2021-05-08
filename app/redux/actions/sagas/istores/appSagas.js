@@ -6,6 +6,7 @@ import {
   getVideos,
   setCommercials,
   setCountries,
+  setFaqs,
   setHomeSplashes,
   setSettings,
   setSlides,
@@ -47,6 +48,7 @@ export function* istoresBootStrap() {
     yield all([
       call(getCountry),
       call(setSettings),
+      call(setFaqs),
       call(setCountries),
       call(setSlides),
       // call(setCommercials),

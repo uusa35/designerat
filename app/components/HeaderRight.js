@@ -141,15 +141,16 @@ export const HeaderRight = ({
         <Icon
           onPress={() => {
             if (EXPO || ISTORES) {
-              // navigation.navigate('SearchTab');
+              navigation.navigate('SearchTab');
+            } else {
+              dispatch(
+                showProductFilter({
+                  showColor: true,
+                  showSize: true,
+                  showModal: true,
+                }),
+              );
             }
-            dispatch(
-              showProductFilter({
-                showColor: true,
-                showSize: true,
-                showModal: true,
-              }),
-            );
           }}
           name="search1"
           type="antdesign"

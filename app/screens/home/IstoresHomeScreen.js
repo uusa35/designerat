@@ -16,6 +16,7 @@ import CompanyCategoryHorizontalWidget from '../../components/widgets/category/C
 import ProductHorizontalWidget from '../../components/widgets/product/ProductHorizontalWidget';
 import validate from 'validate.js';
 import BrandHorizontalWidget from '../../components/widgets/brand/BrandHorizontalWidget';
+import {map} from 'lodash';
 
 const IstoresHomeScreen = () => {
   const {
@@ -108,7 +109,7 @@ const IstoresHomeScreen = () => {
         />
         {homeCategories && (
           <ProductCategoryHorizontalRoundedWidget
-            elements={homeCategories}
+            elements={map(homeCategories, c => c.is_product)}
             showName={true}
             title={I18n.t('istores.product_categories')}
             type="products"
