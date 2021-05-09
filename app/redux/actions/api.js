@@ -672,3 +672,11 @@ export async function submitCreateNewProduct(params) {
     .then(r => r.data)
     .catch(e => e.response.data.message);
 }
+
+export async function getGovernates(lang) {
+  return await axiosInstance(
+    `https://api.mirsalapp.com/rest/areas?lang=${lang}`,
+  )
+    .then(r => r.data)
+    .catch(e => e.response.data.message);
+}

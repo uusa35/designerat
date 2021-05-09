@@ -31,6 +31,8 @@ import country from './country';
 import shipmentCountry from './shipmentCountry';
 import area from './area';
 import areas from './areas';
+import governate from './governate';
+import governates from './governates';
 import color from './color';
 import productColors from './productColors';
 import size from './size';
@@ -156,6 +158,8 @@ let reducers = combineReducers({
   currency,
   area,
   areas,
+  governate,
+  governates,
   color,
   productColors,
   size,

@@ -773,6 +773,7 @@
   "branch_description" : "Description (Working Hours)",
   "branch_mobile" : "Branch's Mobile",
   "u_have_chosed_to_pickup_ur_order_from_branch" : "You have choosen to pickup your order from branch. Please confirm your information below.",
-  "faqs" : "Frequent Questions"
+  "faqs" : "Frequent Questions",
+  "choose_governate" : "Choose Governate"
 }
 

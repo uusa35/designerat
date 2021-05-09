@@ -809,7 +809,8 @@
   "branch_description" : "تفاصيل (اوقات العمل)",
   "branch_mobile" : "هاتف الفرع",
   "u_have_chosed_to_pickup_ur_order_from_branch" : "لقد قمت بتفعيل خاصية (الاستلام من الفرع). يرجى التأكد من البيانات",
-  "faqs" : "أسئلة متكررة"
+  "faqs" : "أسئلة متكررة",
+  "choose_governate" : "اختر المحافظة"
 
 
 }

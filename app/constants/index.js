@@ -26,3 +26,5 @@ export const LOGIN_AUTH_KEY = () => {
       return {};
   }
 };
+
+const areas = require('/../../assets/areas.json');
