@@ -7,16 +7,14 @@ import ProductCategoryHorizontalRoundedWidget from '../../components/widgets/cat
 import I18n from '../../I18n';
 import ExpoMainSliderWidget from '../../components/widgets/slider/ExpoMainSliderWidget';
 import ExpoDesignerHorizontalWidget from '../../components/widgets/user/ExpoDesignerHorizontalWidget';
-import ExpoHomeScreenBtns from '../../components/widgets/home/ExpoHomeScreenBtns';
 import BgContainer from '../../components/containers/BgContainer';
 import AppHomeConfigComponent from '../../components/containers/AppHomeConfigComponent';
-import {bottomContentInset, height} from '../../constants/sizes';
-import {isIOS} from '../../constants';
+import {bottomContentInset} from '../../constants/sizes';
 import CompanyCategoryHorizontalWidget from '../../components/widgets/category/CompanyCategoryHorizontalWidget';
 import ProductHorizontalWidget from '../../components/widgets/product/ProductHorizontalWidget';
 import validate from 'validate.js';
 import BrandHorizontalWidget from '../../components/widgets/brand/BrandHorizontalWidget';
-import {map} from 'lodash';
+import {filter} from 'lodash';
 
 const IstoresHomeScreen = () => {
   const {
@@ -33,7 +31,6 @@ const IstoresHomeScreen = () => {
     hotDealsProducts,
     homeCompanies,
     splashes,
-    show_commercials,
     services,
     showIntroduction,
     mainBg,
@@ -93,23 +90,27 @@ const IstoresHomeScreen = () => {
             type="companies"
           />
         )}
-        <ExpoDesignerHorizontalWidget
-          elements={homeDesigners}
-          showName={true}
-          name={I18n.t('istores.participated_stores')}
-          title={I18n.t('istores.participated_stores')}
-          searchElements={{is_designer: 1, country_id: country.id}}
-        />
-        <ExpoDesignerHorizontalWidget
-          elements={homeCompanies}
-          showName={true}
-          name={I18n.t('istores.small_business')}
-          title={I18n.t('istores.small_business')}
-          searchElements={{is_company: 1, country_id: country.id}}
-        />
+        {homeCompanies && (
+          <ExpoDesignerHorizontalWidget
+            elements={homeCompanies}
+            showName={true}
+            name={I18n.t('istores.participated_stores')}
+            title={I18n.t('istores.participated_stores')}
+            searchElements={{is_company: 1, country_id: country.id}}
+          />
+        )}
+        {homeDesigners && (
+          <ExpoDesignerHorizontalWidget
+            elements={homeDesigners}
+            showName={true}
+            name={I18n.t('istores.small_business')}
+            title={I18n.t('istores.small_business')}
+            searchElements={{is_designer: 1, country_id: country.id}}
+          />
+        )}
         {homeCategories && (
           <ProductCategoryHorizontalRoundedWidget
-            elements={map(homeCategories, c => c.is_product)}
+            elements={filter(homeCategories, c => c.is_product)}
             showName={true}
             title={I18n.t('istores.product_categories')}
             type="products"

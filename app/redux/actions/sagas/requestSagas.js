@@ -248,18 +248,21 @@ export function* startChooseCountryScenario(action) {
         ]);
         yield call(startClearCartScenario);
         yield call(startResetStoreScenario);
-        if (country.is_local) {
-          const {lang} = yield select();
-          const governates = yield call(api.getGovernates, lang);
-          yield put({type: actions.SET_GOVERNATES, payload: governates.data});
+        if (country.is_local && !validate.isEmpty(country.governates.areas)) {
+          yield all([
+            put({type: actions.SET_GOVERNATES, payload: country.governates}),
+            put({type: actions.SET_AREAS, payload: country.governates.areas}),
+          ]);
         }
       } else {
         const {countries} = yield select();
         const country = first(filter(countries, c => c.is_local));
-        yield put({type: actions.SET_COUNTRY, payload: country});
-        const {lang} = yield select();
-        const governates = yield call(api.getGovernates, lang);
-        yield put({type: actions.SET_GOVERNATES, payload: governates.data});
+        if (country.is_local && !validate.isEmpty(country.governates.areas)) {
+          yield all([
+            put({type: actions.SET_GOVERNATES, payload: country.governates}),
+            put({type: actions.SET_AREAS, payload: country.governates.areas}),
+          ]);
+        }
       }
     }
   } catch (e) {

@@ -79,15 +79,6 @@ const IstoresMainTab = () => {
           ),
           tabBarVisible: true,
         })}
-        headerLeft={({navigation}) => (
-          <Icon
-            menu="menu"
-            type="feather"
-            size={25}
-            style={[{color: 'black'}]}
-            onPress={() => navigation.dispatch(DrawerActions.toggleDrawer())}
-          />
-        )}
       />
       <Tab.Screen
         name="CartTab"

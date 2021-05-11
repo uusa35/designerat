@@ -92,7 +92,7 @@ const IstoresHomeStack = () => {
           headerLeft: () => (
             <Icon
               name="menu"
-              type="material"
+              type="feather"
               size={iconSizes.small}
               color={colors.footer_theme_color}
               onPress={() => navigation.dispatch(DrawerActions.toggleDrawer())}

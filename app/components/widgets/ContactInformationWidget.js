@@ -11,6 +11,9 @@ import ImageLoaderContainer from './ImageLoaderContainer';
 import {useSelector} from 'react-redux';
 import {getWhatsappLink} from '../../helpers';
 import {themeColors} from '../../constants/colors';
+import FastImage from 'react-native-fast-image';
+import {icons} from '../../constants/images';
+import {iconSizes} from '../../constants/sizes';
 
 const ContactInformationWidget = () => {
   const {settings} = useSelector(state => state);
@@ -52,11 +55,11 @@ const ContactInformationWidget = () => {
             onPress={() => Linking.openURL(`tel:${settings.mobile}`)}
             style={styles.container}>
             <View style={styles.wrapper}>
-              <Icon
-                name="phone"
-                color="grey"
-                iconStyle={{paddingLeft: 10}}
-                color={colors.icon_theme_color}
+              <FastImage
+                source={icons.phone}
+                tintColor={colors.icon_theme_color}
+                resizeMode="contain"
+                style={{width: iconSizes.smaller, height: iconSizes.smaller}}
               />
               <Text
                 style={[
@@ -109,6 +112,7 @@ const ContactInformationWidget = () => {
             <View style={styles.wrapper}>
               <Icon
                 name="map"
+                type="evil"
                 color="grey"
                 iconStyle={{paddingLeft: 10}}
                 color={colors.icon_theme_color}
@@ -147,7 +151,8 @@ const ContactInformationWidget = () => {
               style={styles.container}>
               <View style={styles.wrapper}>
                 <Icon
-                  name="location-on"
+                  name="location"
+                  type="evil"
                   color="grey"
                   iconStyle={{paddingLeft: 10}}
                   color={colors.icon_theme_color}
@@ -178,6 +183,7 @@ const ContactInformationWidget = () => {
             <View style={styles.wrapper}>
               <Icon
                 name="email"
+                type="evil"
                 color="grey"
                 iconStyle={{paddingLeft: 10}}
                 color={colors.icon_theme_color}

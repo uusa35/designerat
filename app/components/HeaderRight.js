@@ -152,8 +152,8 @@ export const HeaderRight = ({
               );
             }
           }}
-          name="search1"
-          type="antdesign"
+          name="search"
+          type="feather"
           size={iconSizes.small}
           underlayColor="transparent"
           hitSlop={{top: 15, bottom: 15, left: 15, right: 15}}
