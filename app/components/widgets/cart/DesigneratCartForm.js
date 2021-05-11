@@ -31,15 +31,8 @@ const DesigneratCartForm = ({
 }) => {
   const dispatch = useDispatch();
   const {colors} = useContext(GlobalValuesContext);
-  const {
-    auth,
-    address,
-    shipmentCountry,
-    settings,
-    pickup,
-    cart,
-    branch,
-  } = useSelector(state => state);
+  const {auth, address, shipmentCountry, settings, pickup, cart, branch} =
+    useSelector(state => state);
   const navigation = useNavigation();
   const [name, setName] = useState(!validate.isEmpty(auth) ? auth.name : null);
   const [email, setEmail] = useState(

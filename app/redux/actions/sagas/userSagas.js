@@ -658,6 +658,7 @@ export function* startGetRolesScenario() {
 
 export function* startCreateAddressScenario(action) {
   try {
+    console.log('action', action.payload);
     const element = yield call(api.createAddress, action.payload);
     if (!validate.isEmpty(element) && validate.isObject(element)) {
       yield all([

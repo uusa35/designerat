@@ -12,14 +12,8 @@ import {themeColors} from '../../../constants/colors';
 import {useSelector} from 'react-redux';
 
 const CartPickupFromBranchInformation = () => {
-  const {
-    settings,
-    pickup,
-    grossTotal,
-    shipmentFees,
-    branch,
-    cart,
-  } = useSelector(state => state);
+  const {settings, pickup, grossTotal, shipmentFees, branch, cart} =
+    useSelector(state => state);
   return (
     <Fragment>
       {settings.whatsapp && (

@@ -54,8 +54,8 @@ if (__DEV__) {
   });
   const composeEnhancers = composeWithDevTools({realtime: true, port: 8081});
   const createDebugger = require('redux-flipper').default;
-  const createFlipperMiddleware = require('rn-redux-middleware-flipper')
-    .default;
+  const createFlipperMiddleware =
+    require('rn-redux-middleware-flipper').default;
   Store = createStore(
     persistedReducer,
     composeEnhancers(

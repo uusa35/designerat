@@ -224,45 +224,42 @@ export function* startChooseCountryScenario(action) {
     const {country, redirect} = action.payload;
     if (!validate.isEmpty(country) && validate.isObject(country)) {
       const {total, coupon, cart} = yield select();
-      yield put({type: actions.SET_CURRENCY, payload: country.currency});
-      if (!validate.isEmpty(redirect) && redirect) {
-        yield put({type: actions.SET_COUNTRY, payload: country});
+      yield all([
+        put({type: actions.SET_COUNTRY, payload: country}),
+        put({type: actions.SET_CURRENCY, payload: country.currency}),
+      ]);
+      if (country.is_local && !validate.isEmpty(country.governates)) {
         yield all([
-          put({type: actions.SET_AREAS, payload: country.areas}),
-          put({
-            type: actions.SET_AREA,
-            payload: !validate.isEmpty(country.areas)
-              ? first(country.areas)
-              : {id: 1, name: 'none'},
-          }),
-          put({type: actions.HIDE_COUNTRY_MODAL}),
-          put({
-            type: actions.SET_SHIPMENT_FEES,
-            payload: country.fixed_shipment_charge,
-          }),
-          call(setGrossTotalCartValue, {
-            total,
-            coupon,
-            cart,
-          }),
+          put({type: actions.SET_GOVERNATES, payload: country.governates}),
+          put({type: actions.SET_AREAS, payload: country.governates.areas}),
         ]);
+      } else {
+        yield all([
+          put({type: actions.SET_GOVERNATES, payload: []}),
+          put({type: actions.SET_AREAS, payload: []}),
+        ]);
+      }
+      yield all([
+        put({
+          type: actions.SET_AREA,
+          payload: !validate.isEmpty(country.areas)
+            ? first(country.areas)
+            : {id: 1, name: 'none'},
+        }),
+        put({type: actions.HIDE_COUNTRY_MODAL}),
+        put({
+          type: actions.SET_SHIPMENT_FEES,
+          payload: country.fixed_shipment_charge,
+        }),
+        call(setGrossTotalCartValue, {
+          total,
+          coupon,
+          cart,
+        }),
+      ]);
+      if (!validate.isEmpty(redirect) && redirect) {
         yield call(startClearCartScenario);
         yield call(startResetStoreScenario);
-        if (country.is_local && !validate.isEmpty(country.governates.areas)) {
-          yield all([
-            put({type: actions.SET_GOVERNATES, payload: country.governates}),
-            put({type: actions.SET_AREAS, payload: country.governates.areas}),
-          ]);
-        }
-      } else {
-        const {countries} = yield select();
-        const country = first(filter(countries, c => c.is_local));
-        if (country.is_local && !validate.isEmpty(country.governates.areas)) {
-          yield all([
-            put({type: actions.SET_GOVERNATES, payload: country.governates}),
-            put({type: actions.SET_AREAS, payload: country.governates.areas}),
-          ]);
-        }
       }
     }
   } catch (e) {

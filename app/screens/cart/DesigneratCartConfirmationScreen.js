@@ -14,15 +14,8 @@ import DesigneratBtn from '../../components/widgets/Button/DesigneratBtn';
 import DesingeratBtn from '../../components/widgets/Button/DesigneratBtn';
 
 const DesigneratCartConfirmationScreen = () => {
-  const {
-    cart,
-    shipmentCountry,
-    shipmentFees,
-    settings,
-    auth,
-    guest,
-    coupon,
-  } = useSelector(state => state);
+  const {cart, shipmentCountry, shipmentFees, settings, auth, guest, coupon} =
+    useSelector(state => state);
   const {grossTotal, colors} = useContext(GlobalValuesContext);
   const navigation = useNavigation();
 

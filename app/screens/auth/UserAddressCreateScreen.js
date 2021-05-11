@@ -33,13 +33,14 @@ const UserAddressCreateScreen = ({showLabel = true}) => {
   useMemo(() => {
     if (!isEmpty(selectedGovernate)) {
       dispatch({type: SET_AREAS, payload: selectedGovernate.areas});
+      setSelectedArea(first(selectedGovernate.areas));
     }
   }, [selectedGovernate]);
 
   useMemo(() => {
     if (!isEmpty(selectedArea)) {
       dispatch({type: SET_AREA, payload: selectedArea});
-      setAddArea(selectedArea.name);
+      setAddArea(selectedArea.slug);
     }
   }, [selectedArea]);
 
@@ -96,14 +97,16 @@ const UserAddressCreateScreen = ({showLabel = true}) => {
               {I18n.t('choose_governate')}
             </Text>
           </View>
-          {governates && (
+          {!isEmpty(governates) && (
             <Picker
               selectedValue={selectedGovernate.id}
               style={{
                 flex: 1,
-                borderWidth: 0.5,
                 marginTop: 20,
                 marginBottom: 20,
+                marginLeft: 15,
+                marginRight: 15,
+                borderWidth: 1,
                 borderColor: themeColors.desinerat.lightGray,
               }}
               itemStyle={widgetStyles.headerThree}
@@ -112,8 +115,8 @@ const UserAddressCreateScreen = ({showLabel = true}) => {
                   first(filter(governates, g => g.id === itemValue)),
                 )
               }>
-              {map(governates, g => (
-                <Picker label={g.name} value={g.id} />
+              {map(governates, (g, i) => (
+                <Picker label={g.slug} value={g.id} key={i} />
               ))}
             </Picker>
           )}
@@ -126,16 +129,24 @@ const UserAddressCreateScreen = ({showLabel = true}) => {
               {I18n.t('choose_area')}
             </Text>
           </View>
-          {areas && (
+          {!isEmpty(areas) && (
             <Picker
               itemStyle={widgetStyles.headerThree}
-              style={{flex: 1}}
+              style={{
+                flex: 1,
+                marginTop: 20,
+                marginBottom: 20,
+                marginLeft: 15,
+                marginRight: 15,
+                borderWidth: 1,
+                borderColor: themeColors.desinerat.lightGray,
+              }}
               selectedValue={selectedArea.id}
               onValueChange={itemValue =>
                 setSelectedArea(first(filter(areas, g => g.id === itemValue)))
               }>
-              {map(areas, g => (
-                <Picker label={g.name} value={g.id} />
+              {map(areas, (g, i) => (
+                <Picker label={g.slug} value={g.id} key={i} />
               ))}
             </Picker>
           )}
@@ -208,6 +219,9 @@ const UserAddressCreateScreen = ({showLabel = true}) => {
                   building: addBuilding,
                   country_name: shipmentCountry.slug,
                   country_id: shipmentCountry.id,
+                  area_id: selectedArea.id,
+                  code: selectedArea.code,
+                  governate_id: selectedGovernate.id,
                 }),
               )
             }

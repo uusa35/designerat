@@ -2,6 +2,7 @@ import {I18nManager, StyleSheet} from 'react-native';
 import {formWidget, iconSizes, text, width} from '../../constants/sizes';
 import {isRTL} from '../../I18n';
 import {APP_CASE} from '../../../app.json';
+import {themeColors} from '../../constants/colors';
 
 const widgetStyles = StyleSheet.create({
   container: {
@@ -236,8 +237,8 @@ const widgetStyles = StyleSheet.create({
   },
   inputContainerStyle: {
     borderWidth: 1,
-    borderColor: 'lightgrey',
-    borderRadius: 5,
+    borderColor: themeColors.desinerat.lightGray,
+    borderRadius: 3,
     paddingLeft: 15,
     paddingRight: 15,
     marginBottom: iconSizes.tiny,

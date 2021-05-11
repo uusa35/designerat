@@ -18,9 +18,8 @@ import {useNavigation} from '@react-navigation/native';
 
 const ProductInfoWidgetMainTitle = ({element}) => {
   const dispatch = useDispatch();
-  const {colors, exchange_rate, currency_symbol} = useContext(
-    GlobalValuesContext,
-  );
+  const {colors, exchange_rate, currency_symbol} =
+    useContext(GlobalValuesContext);
   const navigation = useNavigation();
   const {token, guest} = useSelector(state => state);
   const [favorite, setFavorite] = useState(element.isFavorite);

@@ -13,15 +13,8 @@ import BgContainer from '../../components/containers/BgContainer';
 import {useNavigation} from '@react-navigation/native';
 
 const CartConfirmationScreen = () => {
-  const {
-    cart,
-    country,
-    shipmentFees,
-    settings,
-    auth,
-    guest,
-    coupon,
-  } = useSelector(state => state);
+  const {cart, country, shipmentFees, settings, auth, guest, coupon} =
+    useSelector(state => state);
   const {grossTotal, colors} = useContext(GlobalValuesContext);
   const navigation = useNavigation();
 

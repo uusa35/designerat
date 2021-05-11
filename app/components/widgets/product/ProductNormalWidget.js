@@ -24,9 +24,8 @@ const ProductNormalWidget = ({
   handleClickProductWidget,
   width = '48%',
 }) => {
-  const {currency_symbol, exchange_rate, colors} = useContext(
-    GlobalValuesContext,
-  );
+  const {currency_symbol, exchange_rate, colors} =
+    useContext(GlobalValuesContext);
 
   return (
     <TouchableOpacity

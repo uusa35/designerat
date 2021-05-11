@@ -21,14 +21,8 @@ import {images} from '../../constants/images';
 import {EXPO, DESIGNERAT} from '../../../app.json';
 
 const DesigneratCartIndexScreen = () => {
-  const {
-    cart,
-    shipmentCountry,
-    shipmentFees,
-    settings,
-    coupon,
-    area,
-  } = useSelector(state => state);
+  const {cart, shipmentCountry, shipmentFees, settings, coupon, area} =
+    useSelector(state => state);
   const {grossTotal, colors} = useContext(GlobalValuesContext);
   const navigation = useNavigation();
 

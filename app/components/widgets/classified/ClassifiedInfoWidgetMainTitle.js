@@ -17,9 +17,8 @@ import {useDispatch, useSelector} from 'react-redux';
 
 const ClassifiedInfoWidgetMainTitle = ({element, editMode = false}) => {
   const dispatch = useDispatch();
-  const {colors, exchange_rate, currency_symbol, logo} = useContext(
-    GlobalValuesContext,
-  );
+  const {colors, exchange_rate, currency_symbol, logo} =
+    useContext(GlobalValuesContext);
   const {token, guest} = useSelector(state => state);
   const [favorite, setFavorite] = useState(element.isFavorite);
   const {navigate} = navigation;

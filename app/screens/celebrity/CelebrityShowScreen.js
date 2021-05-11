@@ -21,14 +21,8 @@ import ProductCategoryVerticalWidget from '../../components/widgets/category/Pro
 import {ABATI, ESCRAP, HOMEKEY, MALLR} from '../../../app';
 
 const CelebrityShowScreen = ({navigation}) => {
-  const {
-    celebrity,
-    commentModal,
-    comments,
-    guest,
-    searchParams,
-    settings,
-  } = useSelector(state => state);
+  const {celebrity, commentModal, comments, guest, searchParams, settings} =
+    useSelector(state => state);
   const dispatch = useDispatch();
   const {logo, colors} = settings;
   const [refresh, setRefresh] = useState(false);

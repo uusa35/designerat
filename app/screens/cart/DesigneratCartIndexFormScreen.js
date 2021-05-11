@@ -20,14 +20,8 @@ import DesigneratCartForm from '../../components/widgets/cart/DesigneratCartForm
 import {themeColors} from '../../constants/colors';
 
 const DesigneratCartFormIndexScreen = () => {
-  const {
-    cart,
-    shipmentCountry,
-    shipmentFees,
-    settings,
-    coupon,
-    area,
-  } = useSelector(state => state);
+  const {cart, shipmentCountry, shipmentFees, settings, coupon, area} =
+    useSelector(state => state);
   const {grossTotal, colors} = useContext(GlobalValuesContext);
   const navigation = useNavigation();
 

@@ -37,23 +37,10 @@ const CartList = ({
 }) => {
   const dispatch = useDispatch();
   const navigation = useNavigation();
-  const {
-    colors,
-    total,
-    grossTotal,
-    exchange_rate,
-    currency_symbol,
-  } = useContext(GlobalValuesContext);
-  const {
-    cart,
-    auth,
-    guest,
-    country,
-    settings,
-    roles,
-    role,
-    playerId,
-  } = useSelector(state => state);
+  const {colors, total, grossTotal, exchange_rate, currency_symbol} =
+    useContext(GlobalValuesContext);
+  const {cart, auth, guest, country, settings, roles, role, playerId} =
+    useSelector(state => state);
   const {navigate} = useNavigation();
   const [name, setName] = useState(!validate.isEmpty(auth) ? auth.name : null);
   const [email, setEmail] = useState(

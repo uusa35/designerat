@@ -15,9 +15,8 @@ const DesigeratCartPriceSummary = ({
   const {shipmentCountry, coupon, pickupFromBranch} = useSelector(
     state => state,
   );
-  const {total, currency_symbol, exchange_rate, colors} = useContext(
-    GlobalValuesContext,
-  );
+  const {total, currency_symbol, exchange_rate, colors} =
+    useContext(GlobalValuesContext);
   return (
     <View
       style={[

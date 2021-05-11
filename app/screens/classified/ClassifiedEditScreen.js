@@ -25,14 +25,8 @@ import KeyBoardContainer from '../../components/containers/KeyBoardContainer';
 import BgContainer from '../../components/containers/BgContainer';
 
 const ClassifiedEditScreen = ({navigation}) => {
-  const {
-    classified,
-    auth,
-    category,
-    country,
-    area,
-    classifiedProps,
-  } = useSelector(state => state);
+  const {classified, auth, category, country, area, classifiedProps} =
+    useSelector(state => state);
   const {colors} = useContext(GlobalValuesContext);
   const dispatch = useDispatch();
   const [name, setName] = useState(classified.name);
