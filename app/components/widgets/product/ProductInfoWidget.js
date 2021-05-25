@@ -30,13 +30,19 @@ const ProductInfoWidget = ({
       <ProductInfoWidgetMainTitle element={element} />
       {element.directPurchase && (
         <Button
+          disabled={true}
           title={I18n.t('you_can_add_more_than_one_product_to_cart')}
           titleStyle={{
             fontFamily: text.font,
             fontSize: text.medium,
-            fontWeight: 'bold',
+            lineHeight: text.larger,
           }}
-          buttonStyle={{backgroundColor: 'red'}}
+          buttonStyle={{
+            backgroundColor: 'red',
+            marginBottom: 15,
+            marginTop: 10,
+            width: '100%',
+          }}
           containerStyle={{width: '95%', alignSelf: 'center'}}
         />
       )}

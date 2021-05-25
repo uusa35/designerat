@@ -564,7 +564,6 @@ const DesigneratSettingsIndexScreen = ({navigation}) => {
               type="fontawesome"
               color={colors.menu_theme_color}
             />
-            <FastImage source={{}} />
             <Text
               style={[
                 widgetStyles.headerTow,

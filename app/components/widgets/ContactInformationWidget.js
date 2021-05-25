@@ -55,11 +55,11 @@ const ContactInformationWidget = () => {
             onPress={() => Linking.openURL(`tel:${settings.mobile}`)}
             style={styles.container}>
             <View style={styles.wrapper}>
-              <FastImage
-                source={icons.phone}
-                tintColor={colors.icon_theme_color}
-                resizeMode="contain"
-                style={{width: iconSizes.smaller, height: iconSizes.smaller}}
+              <Icon
+                name="perm-phone-msg"
+                type="material"
+                iconStyle={{paddingLeft: 10}}
+                color={colors.icon_theme_color}
               />
               <Text
                 style={[
@@ -89,7 +89,6 @@ const ContactInformationWidget = () => {
               <Icon
                 name="whatsapp"
                 type="font-awesome"
-                color="grey"
                 iconStyle={{paddingLeft: 10}}
                 color={colors.icon_theme_color}
               />
@@ -113,7 +112,6 @@ const ContactInformationWidget = () => {
               <Icon
                 name="map"
                 type="evil"
-                color="grey"
                 iconStyle={{paddingLeft: 10}}
                 color={colors.icon_theme_color}
               />
@@ -153,7 +151,6 @@ const ContactInformationWidget = () => {
                 <Icon
                   name="location"
                   type="evil"
-                  color="grey"
                   iconStyle={{paddingLeft: 10}}
                   color={colors.icon_theme_color}
                 />
@@ -184,7 +181,6 @@ const ContactInformationWidget = () => {
               <Icon
                 name="email"
                 type="evil"
-                color="grey"
                 iconStyle={{paddingLeft: 10}}
                 color={colors.icon_theme_color}
               />

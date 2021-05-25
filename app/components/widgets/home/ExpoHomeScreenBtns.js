@@ -51,6 +51,7 @@ const ExpoHomeScreenBtns = () => {
             paddingRight: 10,
             fontFamily: text.font,
             fontSize: text.small,
+            color: 'black',
           }}>
           {EXPO ? I18n.t('expo_calender') : I18n.t('calendar')}
         </Text>
@@ -97,6 +98,7 @@ const ExpoHomeScreenBtns = () => {
                 paddingRight: 10,
                 fontFamily: text.font,
                 fontSize: text.small,
+                color: 'black',
               }}>
               {I18n.t('login')}
             </Text>
@@ -136,6 +138,7 @@ const ExpoHomeScreenBtns = () => {
                 paddingRight: 10,
                 fontFamily: text.font,
                 fontSize: text.small,
+                color: 'black',
               }}>
               {I18n.t('joinus')}
             </Text>

@@ -249,5 +249,6 @@ const styles = StyleSheet.create({
     fontFamily: text.font,
     textAlign: 'left',
     fontSize: text.medium,
+    color: 'black',
   },
 });

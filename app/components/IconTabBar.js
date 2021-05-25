@@ -5,11 +5,17 @@ import {GlobalValuesContext} from '../redux/GlobalValuesContext';
 import {iconSizes} from '../constants/sizes';
 import {EXPO, HOMEKEY, ESCRAP} from './../../app';
 
-const IconTabBar = ({type, name, focused, showLabel = false}) => {
+const IconTabBar = ({
+  type,
+  name,
+  focused,
+  showLabel = false,
+  size = iconSizes.smaller,
+}) => {
   const {colors} = useContext(GlobalValuesContext);
   return (
     <Icon
-      size={iconSizes.smaller}
+      size={size}
       name={name}
       type={type}
       color={focused ? colors.btn_bg_theme_color : colors.footer_theme_color}

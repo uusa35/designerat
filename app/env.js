@@ -15,12 +15,6 @@ const appUrl = () => {
   switch (APP_CASE) {
     case 'DESIGNERAT':
       return 'https://designeraat.com/';
-    case 'MYEXPO':
-      return 'http://myexpo.live/';
-    case 'ISTORES':
-      return 'http://i-stores.store/';
-    case 'ABATI':
-      return 'http://abatiapp.com/';
     default:
       return 'http://mallr.test/';
   }
@@ -48,12 +42,6 @@ const oneSignalAppId = () => {
   switch (APP_CASE) {
     case 'DESIGNERAT':
       return DESIGNERAT_PUSHER_ID;
-    case 'MYEXPO':
-      return EXPO_ONE_SIGNAL_APP_ID;
-    case 'ISTORES':
-      return ISTORES_ONE_SIGNAL_APP_ID;
-    case 'ABATI':
-      return ABATI_ONE_SIGNAL_APP_ID;
     default:
       null;
   }

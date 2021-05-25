@@ -75,7 +75,7 @@
     "react-native-mixpanel": "^1.2.5",
     "react-native-modal": "^11.7.0",
     "react-native-offline": "^5.7.0",
-    "react-native-onesignal": "^4.0.5",
+    "react-native-onesignal": "^4.0.8",
     "react-native-paper": "^4.7.1",
     "react-native-parallax-view": "^2.0.6",
     "react-native-pdf": "^6.2.2",

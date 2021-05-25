@@ -59,19 +59,19 @@ const UserAddressIndexScreen = () => {
                   color={colors.icon_theme_color}
                 />
               )}
-              <TouchableOpacity
-                onPress={() =>
-                  navigation.navigate('UserAddressEdit', {currentAddress: d})
-                }
-                style={{
-                  borderWidth: 0.5,
-                  padding: 10,
-                  marginLeft: 10,
-                  borderColor: colors.btn_bg_theme_color,
-                  borderRadius: text.smallest,
-                }}>
-                <Text style={widgetStyles.headerFour}>{I18n.t('modify')}</Text>
-              </TouchableOpacity>
+              {/*<TouchableOpacity*/}
+              {/*  onPress={() =>*/}
+              {/*    navigation.navigate('UserAddressEdit', {currentAddress: d})*/}
+              {/*  }*/}
+              {/*  style={{*/}
+              {/*    borderWidth: 0.5,*/}
+              {/*    padding: 10,*/}
+              {/*    marginLeft: 10,*/}
+              {/*    borderColor: colors.btn_bg_theme_color,*/}
+              {/*    borderRadius: text.smallest,*/}
+              {/*  }}>*/}
+              {/*  <Text style={widgetStyles.headerFour}>{I18n.t('modify')}</Text>*/}
+              {/*</TouchableOpacity>*/}
               <TouchableOpacity
                 onPress={() => dispatch(changeAddress(d))}
                 style={{

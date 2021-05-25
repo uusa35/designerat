@@ -106,11 +106,13 @@ const styles = StyleSheet.create({
     fontFamily: text.font,
     fontSize: text.smaller,
     textAlign: 'center',
+    color: 'black',
   },
   title: {
     fontFamily: text.font,
     fontSize: text.smaller,
     paddingLeft: 20,
     paddingRight: 20,
+    color: 'black',
   },
 });

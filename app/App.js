@@ -2,9 +2,6 @@ import React from 'react';
 import {NavigationContainer} from '@react-navigation/native';
 import {createSwitchNavigator} from '@react-navigation/compat';
 import DesigneratMainDrawer from './navigation/designerat/DesigneratMainDrawer';
-import MyExpoMainDrawer from './navigation/myexpo/MyExpoMainDrawer';
-import AbatiMainDrawer from './navigation/abati/AbatiMainDrawer';
-import IstoresMainDrawer from './navigation/istores/IstoresMainDrawer';
 import {Provider} from 'react-redux';
 import {Store, PersistStore} from './redux/store';
 import {PersistGate} from 'redux-persist/integration/react';
@@ -13,7 +10,6 @@ import {navigationRef, isReadyRef} from './RootNavigation';
 import SimpleSpinner from './components/SimpleSpinner';
 import AppContainer from './components/containers/AppContainer';
 import linking from './linking';
-import LoadingView from './components/Loading/LoadingView';
 import {APP_CASE} from './../app.json';
 
 const DesigneratSwitchNavigator = createSwitchNavigator(
@@ -25,44 +21,11 @@ const DesigneratSwitchNavigator = createSwitchNavigator(
   },
 );
 
-const MyExpoSwitchNavigator = createSwitchNavigator(
-  {
-    MyExpoMainDrawer,
-  },
-  {
-    initialRouteName: 'MainDrawer',
-  },
-);
-
-const IstoresSwitchNavigator = createSwitchNavigator(
-  {
-    IstoresMainDrawer,
-  },
-  {
-    initialRouteName: 'MainDrawer',
-  },
-);
-
-const AbatiSwitchNavigator = createSwitchNavigator(
-  {
-    AbatiMainDrawer,
-  },
-  {
-    initialRouteName: 'MainDrawer',
-  },
-);
-
 export default function App() {
   const renderNavigator = () => {
     switch (APP_CASE) {
       case 'DESIGNERAT':
         return <DesigneratSwitchNavigator />;
-      case 'MYEXPO':
-        return <MyExpoSwitchNavigator />;
-      case 'ABATI':
-        return <AbatiSwitchNavigator />;
-      case 'ISTORES':
-        return <IstoresSwitchNavigator />;
       default:
         return <DesigneratSwitchNavigator />;
     }
