@@ -21,22 +21,13 @@ target 'designerat' do
   #
   # Note that if you have use_frameworks! enabled, Flipper will not work and
   # you should disable the next line.
-   # use_flipper!({ 'Flipper-Folly' => '2.3.0' })
+   use_flipper!({ 'Flipper' => '0.87.0', 'Flipper-Folly' => '2.5.3', 'Flipper-RSocket' => '1.3.1' })
      post_install do |installer|
-       # flipper_post_install(installer)
+        flipper_post_install(installer)
        installer.pods_project.targets.each do |target|
              target.build_configurations.each do |config|
                config.build_settings['APPLICATION_EXTENSION_API_ONLY'] = 'NO'
              end
        end
      end
-end
-
-target 'designerat-tvOS' do
-  # Pods for designerat-tvOS
-
-  target 'designerat-tvOSTests' do
-    inherit! :search_paths
-    # Pods for testing
-  end
 end

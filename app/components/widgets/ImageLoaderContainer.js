@@ -1,4 +1,5 @@
 import React, {useState} from 'react';
+import { Image } from 'react-native';
 import {images} from '../../constants/images';
 import PropTypes from 'prop-types';
 import {isNull} from 'lodash';
@@ -10,14 +11,14 @@ const ImageLoaderContainer = ({img, style, resizeMode = 'stretch'}) => {
   const {logo} = useSelector(state => state.settings);
 
   return (
-    <FastImage
+    <Image
       source={
         imageLoading
           ? images.loading
           : {
               uri: img ? img : logo,
-              priority: FastImage.priority.high,
-              cache: FastImage.cacheControl.immutable,
+              // priority: FastImage.priority.high,
+              // cache: FastImage.cacheControl.immutable,
             }
       }
       onLoadEnd={() => setImageLoading(false)}
@@ -30,6 +31,7 @@ const ImageLoaderContainer = ({img, style, resizeMode = 'stretch'}) => {
         },
       ]}
       resizeMode={resizeMode}
+      resizeMethod={'resize'}
     />
   );
 };

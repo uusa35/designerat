@@ -1,10 +1,5 @@
 import React, {Fragment, useContext} from 'react';
-import {
-  ScrollView,
-  TouchableOpacity,
-  StyleSheet,
-  Text,
-} from 'react-native';
+import {ScrollView, TouchableOpacity, StyleSheet, Text} from 'react-native';
 import {View} from 'react-native-animatable';
 import {map} from 'lodash';
 import PropTypes from 'prop-types';
@@ -120,8 +115,7 @@ const DesignerHorizontalWidget = ({
             horizontal={true}
             showsHorizontalScrollIndicator={false}
             showsVerticalScrollIndicator={false}
-            contentInset={{right: rightHorizontalContentInset}}
-          >
+            contentInset={{right: rightHorizontalContentInset}}>
             {map(elements, (c, i) => (
               <View
                 animation={animations.flip}

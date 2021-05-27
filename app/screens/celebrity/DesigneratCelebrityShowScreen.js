@@ -100,7 +100,6 @@ const DesigneratCelebrityShowScreen = ({route}) => {
         showsVerticalScrollIndicator={false}
         style={{flex: 1}}
         overlayColor="white"
-        stickyHeaderIndices={[0]}
         refreshControl={
           <RefreshControl
             refreshing={refresh}
