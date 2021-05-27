@@ -16,23 +16,15 @@ import {Icon, Divider} from 'react-native-elements';
 import validate from 'validate.js';
 import {useSelector, useDispatch} from 'react-redux';
 import {HOMEKEY} from './../../../app.json';
-import {
-  TabActions,
-  DrawerActions,
-  useNavigation,
-  useRoute,
-} from '@react-navigation/native';
+import {TabActions, DrawerActions} from '@react-navigation/native';
 import {changeLang} from '../../redux/actions';
 import {logout} from '../../redux/actions/user';
-import PropTypes from 'prop-types';
 import {appUrlIos} from '../../env';
 
 const DesigneratSideMenu = ({showLogo = true, navigation}) => {
   const {settings, lang, guest, auth} = useSelector(state => state);
-  const {logo, company, menu_bg, youtube, colors, terms, policy} = settings;
+  const {logo, company, youtube, colors, terms, policy} = settings;
   const dispatch = useDispatch();
-  // const navigation = useNavigation();
-  const route = useRoute();
 
   const goToHome = () => {
     navigation.closeDrawer();

@@ -1,42 +1,22 @@
-import React, {useState} from 'react';
-import {
-  RefreshControl,
-  ScrollView,
-  View,
-  StyleSheet,
-  BackHandler,
-} from 'react-native';
+import React from 'react';
+import {RefreshControl, ScrollView, StyleSheet} from 'react-native';
 import {useDispatch, useSelector} from 'react-redux';
 import {refetchHomeElements} from '../../redux/actions';
-import PropTypes from 'prop-types';
-import FixedCommercialSliderWidget from '../../components/widgets/FixedCommercialSliderWidget';
 import MainSliderWidget from '../../components/widgets/slider/MainSliderWidget';
-import validate from 'validate.js';
-import BrandHorizontalWidget from '../../components/widgets/brand/BrandHorizontalWidget';
-import ProductHorizontalWidget from '../../components/widgets/product/ProductHorizontalWidget';
 import IntroductionWidget from '../../components/widgets/splash/IntroductionWidget';
-import ServiceHorizontalWidget from '../../components/widgets/service/ServiceHorizontalWidget';
 import DesignersHorizontalWidget from '../../components/widgets/user/DesignerHorizontalWidget';
 import CelebrityHorizontalWidget from '../../components/widgets/user/CelebrityHorizontalWidget';
-import ProductCategoryHorizontalRoundedWidget from '../../components/widgets/category/ProductCategoryHorizontalRoundedWidget';
 import I18n from '../../I18n';
-import ProductSearchForm from '../../components/widgets/search/ProductSearchForm';
 import BgContainer from '../../components/containers/BgContainer';
 import AppHomeConfigComponent from '../../components/containers/AppHomeConfigComponent';
 import {bottomContentInset} from '../../constants/sizes';
 
 const DesigneratHomeScreen = () => {
   const {
-    homeCategories,
-    commercials,
     slides,
-    brands,
     homeDesigners,
     homeCelebrities,
-    homeProducts,
     splashes,
-    show_commercials,
-    services,
     showIntroduction,
     homeCompanies,
     country,

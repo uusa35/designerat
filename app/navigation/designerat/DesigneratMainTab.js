@@ -1,9 +1,6 @@
 import React, {useContext} from 'react';
 import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
-import {createDrawerNavigator} from '@react-navigation/drawer';
-import {createStackNavigator} from '@react-navigation/stack';
 import {DrawerActions} from '@react-navigation/native';
-import {createMaterialBottomTabNavigator} from '@react-navigation/material-bottom-tabs';
 import FastImage from 'react-native-fast-image';
 import {Icon} from 'react-native-elements';
 import I18n from '../../I18n';
@@ -16,10 +13,7 @@ import {GlobalValuesContext} from '../../redux/GlobalValuesContext';
 import DesigneratCartIndexScreen from '../../screens/cart/DesigneratCartIndexScreen';
 import {icons} from '../../constants/images';
 
-const MaterialTab = createMaterialBottomTabNavigator();
 const Tab = createBottomTabNavigator();
-const Stack = createStackNavigator();
-const Drawer = createDrawerNavigator();
 
 const DesigneratMainTab = () => {
   const {colors, cartLength} = useContext(GlobalValuesContext);

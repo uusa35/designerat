@@ -1,4 +1,4 @@
-import React, {useState, useMemo, useContext, useEffect, Fragment} from 'react';
+import React, {useState, useMemo, useContext, useEffect} from 'react';
 import {
   AppState,
   ImageBackground,
@@ -17,12 +17,7 @@ import {APP_CASE} from '../../../app.json';
 import {oneSignalId} from '../../env';
 import {getPathForDeepLinking} from '../../helpers';
 import I18n from './../../I18n';
-import {
-  goBackBtn,
-  goDeepLinking,
-  setDeepLinking,
-  setPlayerId,
-} from '../../redux/actions';
+import {goDeepLinking, setDeepLinking, setPlayerId} from '../../redux/actions';
 import {useRoute} from '@react-navigation/native';
 import moment from 'moment';
 import analytics from '@react-native-firebase/analytics';
