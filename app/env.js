@@ -4,10 +4,6 @@ import {
   pusherEnabled,
   DESIGNERAT_PUSHER_ID,
   DESIGNERAT_PUSHER_KEY,
-  EXPO_ONE_SIGNAL_APP_ID,
-  DESIGNERAT_ONE_SIGNAL_APP_ID,
-  ISTORES_ONE_SIGNAL_APP_ID,
-  ABATI_ONE_SIGNAL_APP_ID,
 } from '../app';
 import Pusher from 'pusher-js/react-native';
 const isLocal = __DEV__;

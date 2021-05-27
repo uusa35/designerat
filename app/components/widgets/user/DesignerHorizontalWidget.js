@@ -2,7 +2,6 @@ import React, {Fragment, useContext} from 'react';
 import {
   ScrollView,
   TouchableOpacity,
-  I18nManager,
   StyleSheet,
   Text,
 } from 'react-native';
@@ -29,7 +28,7 @@ import {animations} from '../../../constants/animations';
 import {useDispatch} from 'react-redux';
 import {isEmpty} from 'lodash';
 import {GlobalValuesContext} from '../../../redux/GlobalValuesContext';
-import {HOMEKEY, ABATI, APP_CASE} from './../../../../app';
+import {APP_CASE} from './../../../../app';
 import I18n from './../../../I18n';
 
 const DesignerHorizontalWidget = ({
@@ -121,12 +120,7 @@ const DesignerHorizontalWidget = ({
             horizontal={true}
             showsHorizontalScrollIndicator={false}
             showsVerticalScrollIndicator={false}
-            // alwaysBounceVertical={false}
-            // pagingEnabled={true}
             contentInset={{right: rightHorizontalContentInset}}
-            // contentInset={{right: 1000}}
-            //   style={{ flexDirection : 'row', borderWidth : 5, borderColor : 'blue', flex : 1 }}
-            // contentContainerStyle={{ flexDirection : 'row', borderWidth : 10 , flex : 1 }}
           >
             {map(elements, (c, i) => (
               <View
